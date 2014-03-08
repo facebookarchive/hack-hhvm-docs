@@ -1,0 +1,10 @@
+&reference.fam.functions.fam-cancel-monitor;
+&reference.fam.functions.fam-close;
+&reference.fam.functions.fam-monitor-collection;
+&reference.fam.functions.fam-monitor-directory;
+&reference.fam.functions.fam-monitor-file;
+&reference.fam.functions.fam-next-event;
+&reference.fam.functions.fam-open;
+&reference.fam.functions.fam-pending;
+&reference.fam.functions.fam-resume-monitor;
+&reference.fam.functions.fam-suspend-monitor;

@@ -1,0 +1,15 @@
+&reference.yaf.yaf-response-abstract.appendbody;
+&reference.yaf.yaf-response-abstract.clearbody;
+&reference.yaf.yaf-response-abstract.clearheaders;
+&reference.yaf.yaf-response-abstract.clone;
+&reference.yaf.yaf-response-abstract.construct;
+&reference.yaf.yaf-response-abstract.destruct;
+&reference.yaf.yaf-response-abstract.getbody;
+&reference.yaf.yaf-response-abstract.getheader;
+&reference.yaf.yaf-response-abstract.prependbody;
+&reference.yaf.yaf-response-abstract.response;
+&reference.yaf.yaf-response-abstract.setallheaders;
+&reference.yaf.yaf-response-abstract.setbody;
+&reference.yaf.yaf-response-abstract.setheader;
+&reference.yaf.yaf-response-abstract.setredirect;
+&reference.yaf.yaf-response-abstract.tostring;

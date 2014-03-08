@@ -1,0 +1,5 @@
+&reference.sdo.sdo-das-setting.getListIndex;
+&reference.sdo.sdo-das-setting.getPropertyIndex;
+&reference.sdo.sdo-das-setting.getPropertyName;
+&reference.sdo.sdo-das-setting.getValue;
+&reference.sdo.sdo-das-setting.isSet;

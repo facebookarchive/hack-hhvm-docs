@@ -1,0 +1,8 @@
+&reference.sam.book;
+&reference.sam.constants;
+&reference.sam.entities.SAMConnection;
+&reference.sam.entities.SAMMessage;
+&reference.sam.examples;
+&reference.sam.reference;
+&reference.sam.setup;
+&reference.sam.versions;

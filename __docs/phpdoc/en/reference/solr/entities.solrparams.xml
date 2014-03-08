@@ -1,0 +1,11 @@
+&reference.solr.solrparams.add;
+&reference.solr.solrparams.addparam;
+&reference.solr.solrparams.get;
+&reference.solr.solrparams.getparam;
+&reference.solr.solrparams.getparams;
+&reference.solr.solrparams.getpreparedparams;
+&reference.solr.solrparams.serialize;
+&reference.solr.solrparams.set;
+&reference.solr.solrparams.setparam;
+&reference.solr.solrparams.tostring;
+&reference.solr.solrparams.unserialize;

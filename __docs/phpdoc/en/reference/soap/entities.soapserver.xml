@@ -1,0 +1,10 @@
+&reference.soap.soapserver.addfunction;
+&reference.soap.soapserver.addsoapheader;
+&reference.soap.soapserver.construct;
+&reference.soap.soapserver.fault;
+&reference.soap.soapserver.getfunctions;
+&reference.soap.soapserver.handle;
+&reference.soap.soapserver.setclass;
+&reference.soap.soapserver.setobject;
+&reference.soap.soapserver.setpersistence;
+&reference.soap.soapserver.soapserver;

@@ -1,0 +1,1452 @@
+<?xml version="1.0" encoding="utf-8"?>
+<chapter xml:id="hack.methoddispatch">
+  <title>Method Dispatch</title>
+  <para>
+    There are differences between what Hack allows and what PHP (both HHVM and Zend) allows at runtime with respect to calling static and instance methods. Keeping them all straight can be confusing. Below are matrices that hopefully alleviate the pain of trying to remember the differences. The first matrix are calls from a class instance method. The second matrix represent calls from a class static method.
+  </para>
+  <para>
+    The code associated with the class instance method matrix is represented here:
+    <informalexample>
+      <programlisting role="php">
+<![CDATA[
+<?hh
+
+class A {
+public function f1(): void {
+  echo "A.f1()\n";
+}
+public static function f2(): void {
+  echo "A.f2()\n";
+}
+}
+
+class B extends A {
+public function f1(): void {
+  echo "B.f1()\n";
+}
+public static function f2(): void {
+  echo "B.f2()\n";
+}
+public function test(): void {
+  $a = new A();
+  $c = new C();
+
+  A::f1();
+  $a->f1();
+  $a::f1();
+  A::f2();
+  $a->f2();
+  $a::f2();
+
+  self::f1();
+  B::f1();
+  self::f2();
+  B::f2();
+
+  C::f3();
+  $c->f3();
+  $c::f3();
+  C::f4();
+  $c->f4();
+  $c::f4();
+
+  parent::f1();
+  parent::f2();
+
+  static::f1();
+  static::f2();
+
+  $this->f1();
+  $this->f2();
+}
+}
+
+class C {
+public function f3(): void {
+  echo "C.f3()\n";
+}
+public static function f4(): void {
+  echo "C.f4()\n";
+}
+}
+
+function main() {
+$b = new B();
+$b->test();
+}
+
+main();
+]]>
+      </programlisting>
+      <para>
+        And here is the output of the calls made in the instance <literal>test()</literal> function of class <literal>B</literal>.
+      </para>
+      <informaltable>
+        <tgroup cols="5">
+          <colspec align="center" />
+          <colspec align="center" />
+          <colspec align="center" />
+          <colspec align="center" />
+          <colspec align="center" />
+          <tbody>
+            <row>
+              <entry>
+                <para>
+                  <emphasis role="strong">Function Call</emphasis>
+                </para>
+              </entry>
+              <entry>
+                <para>
+                  <emphasis role="strong">Zend Runtime Output</emphasis>
+                </para>
+              </entry>
+              <entry>
+                <para>
+                  <emphasis role="strong">HHVM Runtime Output</emphasis>
+                </para>
+              </entry>
+              <entry>
+                <para>
+                  <emphasis role="strong">Hack Output (partial)</emphasis>
+                </para>
+              </entry>
+              <entry>
+                <para>
+                  <emphasis role="strong">Hack Output (strict)</emphasis>
+                </para>
+              </entry>
+            </row>
+            <row>
+              <entry>
+                <para>
+                  <literal>A::f1();</literal>
+                </para>
+              </entry>
+              <entry>
+                <para>
+                  <literal></literal>A.f1()
+                </para>
+              </entry>
+              <entry>
+                <para>
+                  <literal>A.f1()</literal>
+                </para>
+              </entry>
+              <entry>
+                <para>
+                  Could not find static method <literal>f1</literal>. The closest thing is <literal>f1</literal> but it's not a static method.
+                </para>
+              </entry>
+              <entry>
+                <para>
+                  Could not find static method <literal>f1</literal>. The closest thing is <literal>f1</literal> but it's not a static method.
+                </para>
+              </entry>
+            </row>
+            <row>
+              <entry>
+                <para>
+                  <literal>$a->f1();</literal>
+                </para>
+              </entry>
+              <entry>
+                <para>
+                  <literal>A.f1()</literal>
+                </para>
+              </entry>
+              <entry>
+                <para>
+                  <literal>A.f1()</literal>
+                </para>
+              </entry>
+              <entry>
+                <para>
+                  No error
+                </para>
+              </entry>
+              <entry>
+                <para>
+                  No error
+                </para>
+              </entry>
+            </row>
+            <row>
+              <entry>
+                <para>
+                  <literal>$a::f1();</literal>
+                </para>
+              </entry>
+              <entry>
+                <para>
+                  <literal>A.f1()</literal>
+                </para>
+              </entry>
+              <entry>
+                <para>
+                  <literal>A.f1()</literal>
+                </para>
+              </entry>
+              <entry>
+                <para>
+                  No error
+                </para>
+              </entry>
+              <entry>
+                <para>
+                  Don't use dynamic classes
+                </para>
+              </entry>
+            </row>
+            <row>
+              <entry>
+                <para>
+                  <literal>A::f2();</literal>
+                </para>
+              </entry>
+              <entry>
+                <para>
+                  <literal>A.f2()</literal>
+                </para>
+              </entry>
+              <entry>
+                <para>
+                  <literal>A.f2()</literal>
+                </para>
+              </entry>
+              <entry>
+                <para>
+                  No error
+                </para>
+              </entry>
+              <entry>
+                <para>
+                  No error
+                </para>
+              </entry>
+            </row>
+            <row>
+              <entry>
+                <para>
+                  <literal>$a->f2();</literal>
+                </para>
+              </entry>
+              <entry>
+                <para>
+                  <literal>A.f2()</literal>
+                </para>
+              </entry>
+              <entry>
+                <para>
+                  <literal>A.f2()</literal>
+                </para>
+              </entry>
+              <entry>
+                <para>
+                  The method <literal>f2</literal> is undefined in an object of type <literal>A</literal>. The closest thing is <literal>f2</literal> but it's a static method.
+                </para>
+              </entry>
+              <entry>
+                <para>
+                  The method <literal>f2</literal> is undefined in an object of type <literal>A</literal>. The closest thing is <literal>f2</literal> but it's a static method.
+                </para>
+              </entry>
+            </row>
+            <row>
+              <entry>
+                <para>
+                  <literal>$a::f2();</literal>
+                </para>
+              </entry>
+              <entry>
+                <para>
+                  <literal>A.f2()</literal>
+                </para>
+              </entry>
+              <entry>
+                <para>
+                  <literal>A.f2()</literal>
+                </para>
+              </entry>
+              <entry>
+                <para>
+                  No error
+                </para>
+              </entry>
+              <entry>
+                <para>
+                  Don't use dynamic classes
+                </para>
+              </entry>
+            </row>
+            <row>
+              <entry>
+                <para>
+                  <literal>self::f1();</literal>
+                </para>
+              </entry>
+              <entry>
+                <para>
+                  <literal>B.f1()</literal>
+                </para>
+              </entry>
+              <entry>
+                <para>
+                  <literal>B.f1()</literal>
+                </para>
+              </entry>
+              <entry>
+                <para>
+                  Could not find static method <literal>f1</literal>. The closest thing is <literal>f1</literal> but it's not a static
+                  method.
+                </para>
+              </entry>
+              <entry>
+                <para>
+                  Could not find static method <literal>f1</literal>. The closest thing is <literal>f1</literal> but it's not a static
+                  method.
+                </para>
+              </entry>
+            </row>
+            <row>
+              <entry>
+                <para>
+                  <literal>B::f1();</literal>
+                </para>
+              </entry>
+              <entry>
+                <para>
+                  <literal>B.f1()</literal>
+                </para>
+              </entry>
+              <entry>
+                <para>
+                  <literal>B.f1()</literal>
+                </para>
+              </entry>
+              <entry>
+                <para>
+                  Could not find static method <literal>f1</literal>. The closest thing is <literal>f1</literal> but it's not a static method.
+                </para>
+              </entry>
+              <entry>
+                <para>
+                  Could not find static method <literal>f1</literal>. The closest thing is <literal>f1</literal> but it's not a static method.
+                </para>
+              </entry>
+            </row>
+            <row>
+              <entry>
+                <para>
+                  <literal>self::f2();</literal>
+                </para>
+              </entry>
+              <entry>
+                <para>
+                  <literal>B.f2()</literal>
+                </para>
+              </entry>
+              <entry>
+                <para>
+                  <literal>B.f2()</literal>
+                </para>
+              </entry>
+              <entry>
+                <para>
+                  No error
+                </para>
+              </entry>
+              <entry>
+                <para>
+                  No error
+                </para>
+              </entry>
+            </row>
+            <row>
+              <entry>
+                <para>
+                  <literal>B::f2();</literal>
+                </para>
+              </entry>
+              <entry>
+                <para>
+                  <literal>B.f2()</literal>
+                </para>
+              </entry>
+              <entry>
+                <para>
+                  <literal>B.f2()</literal>
+                </para>
+              </entry>
+              <entry>
+                <para>
+                  No error
+                </para>
+              </entry>
+              <entry>
+                <para>
+                  No error
+                </para>
+              </entry>
+            </row>
+            <row>
+              <entry>
+                <para>
+                  <literal>C::f3();</literal>
+                </para>
+              </entry>
+              <entry>
+                <para>
+                  <literal>C.f3()</literal>
+                </para>
+              </entry>
+              <entry>
+                <para>
+                  <literal>C.f3()</literal>
+                </para>
+              </entry>
+              <entry>
+                <para>
+                  Could not find static method <literal>f3</literal>. The closest thing is <literal>f3</literal> but it's not a static method.
+                </para>
+              </entry>
+              <entry>
+                <para>
+                  Could not find static method <literal>f3</literal>. The closest thing is <literal>f3</literal> but it's not a static method.
+                </para>
+              </entry>
+            </row>
+            <row>
+              <entry>
+                <para>
+                  <literal>$c->f3();</literal>
+                </para>
+              </entry>
+              <entry>
+                <para>
+                  <literal>C.f3()</literal>
+                </para>
+              </entry>
+              <entry>
+                <para>
+                  <literal>C.f3()</literal>
+                </para>
+              </entry>
+              <entry>
+                <para>
+                  No error
+                </para>
+              </entry>
+              <entry>
+                <para>
+                  No error
+                </para>
+              </entry>
+            </row>
+            <row>
+              <entry>
+                <para>
+                  <literal>$c::f3();</literal>
+                </para>
+              </entry>
+              <entry>
+                <para>
+                  <literal>C.f3()</literal>
+                </para>
+              </entry>
+              <entry>
+                <para>
+                  <literal>C.f3()</literal>
+                </para>
+              </entry>
+              <entry>
+                <para>
+                  No error
+                </para>
+              </entry>
+              <entry>
+                <para>
+                  Don't use dynamic classes
+                </para>
+              </entry>
+            </row>
+            <row>
+              <entry>
+                <para>
+                  <literal>C::f4();</literal>
+                </para>
+              </entry>
+              <entry>
+                <para>
+                  <literal>C.f4()</literal>
+                </para>
+              </entry>
+              <entry>
+                <para>
+                  <literal>C.f4()</literal>
+                </para>
+              </entry>
+              <entry>
+                <para>
+                  No error
+                </para>
+              </entry>
+              <entry>
+                <para>
+                  No error
+                </para>
+              </entry>
+            </row>
+            <row>
+              <entry>
+                <para>
+                  <literal>$c->f4();</literal>
+                </para>
+              </entry>
+              <entry>
+                <para>
+                  <literal>C.f4()</literal>
+                </para>
+              </entry>
+              <entry>
+                <para>
+                  <literal>C.f4()</literal>
+                </para>
+              </entry>
+              <entry>
+                <para>
+                  The method <literal>f4</literal> is undefined in an object of type <literal>C</literal>. The closest thing is <literal>f4</literal> but it's a static method.
+                </para>
+              </entry>
+              <entry>
+                <para>
+                  The method <literal>f4</literal> is undefined in an object of type <literal>C</literal>. The closest thing is <literal>f4</literal> but it's a static method.
+                </para>
+              </entry>
+            </row>
+            <row>
+              <entry>
+                <para>
+                  <literal>$c::f4();</literal>
+                </para>
+              </entry>
+              <entry>
+                <para>
+                  <literal>C.f4()</literal>
+                </para>
+              </entry>
+              <entry>
+                <para>
+                  <literal>C.f4()</literal>
+                </para>
+              </entry>
+              <entry>
+                <para>
+                  No error
+                </para>
+              </entry>
+              <entry>
+                <para>
+                  Don't use dynamic classes
+                </para>
+              </entry>
+            </row>
+            <row>
+              <entry>
+                <para>
+                  <literal>parent::f1();</literal>
+                </para>
+              </entry>
+              <entry>
+                <para>
+                  <literal>A.f1()</literal>
+                </para>
+              </entry>
+              <entry>
+                <para>
+                  <literal>A.f1()</literal>
+                </para>
+              </entry>
+              <entry>
+                <para>
+                  No error
+                </para>
+              </entry>
+              <entry>
+                <para>
+                  No error
+                </para>
+              </entry>
+            </row>
+            <row>
+              <entry>
+                <para>
+                  <literal>parent::f2();</literal>
+                </para>
+              </entry>
+              <entry>
+                <para>
+                  <literal>A.f2()</literal>
+                </para>
+              </entry>
+              <entry>
+                <para>
+                  <literal>A.f2()</literal>
+                </para>
+              </entry>
+              <entry>
+                <para>
+                  The method <literal>f2</literal> is undefined in an object of type <literal>A</literal>. The closest thing is <literal>f2</literal> but it's a static method.
+                </para>
+              </entry>
+              <entry>
+                <para>
+                  The method <literal>f2</literal>is undefine in an object of type <literal>A</literal>. The closest thing is <literal>f2</literal> but it's a static method.
+                </para>
+              </entry>
+            </row>
+            <row>
+              <entry>
+                <para>
+                  <literal>static::f1();</literal>
+                </para>
+              </entry>
+              <entry>
+                <para>
+                  <literal>B.f1()</literal>
+                </para>
+              </entry>
+              <entry>
+                <para>
+                  <literal>B.f1()</literal>
+                </para>
+              </entry>
+              <entry>
+                <para>
+                  Could not find static method <literal>f1</literal>. The closest thing is <literal>f1</literal> but it's not a static method.
+                </para>
+              </entry>
+              <entry>
+                <para>
+                  Could not find static method <literal>f1</literal>. The closest thing is <literal>f1</literal> but it's not a static method.
+                </para>
+              </entry>
+            </row>
+            <row>
+              <entry>
+                <para>
+                  <literal>static::f2();</literal>
+                </para>
+              </entry>
+              <entry>
+                <para>
+                  <literal>B.f2()</literal>
+                </para>
+              </entry>
+              <entry>
+                <para>
+                  <literal>B.f2()</literal>
+                </para>
+              </entry>
+              <entry>
+                <para>
+                  No error
+                </para>
+              </entry>
+              <entry>
+                <para>
+                  No error
+                </para>
+              </entry>
+            </row>
+            <row>
+              <entry>
+                <para>
+                  <literal>$this->f1();</literal>
+                </para>
+              </entry>
+              <entry>
+                <para>
+                  <literal>B.f1()</literal>
+                </para>
+              </entry>
+              <entry>
+                <para>
+                  <literal>B.f1()</literal>
+                </para>
+              </entry>
+              <entry>
+                <para>
+                  No error
+                </para>
+              </entry>
+              <entry>
+                <para>
+                  No error
+                </para>
+              </entry>
+            </row>
+            <row>
+              <entry>
+                <para>
+                  <literal>$this->f2();</literal>
+                </para>
+              </entry>
+              <entry>
+                <para>
+                  <literal>B.f2()</literal>
+                </para>
+              </entry>
+              <entry>
+                <para>
+                  <literal>B.f2()</literal>
+                </para>
+              </entry>
+              <entry>
+                <para>
+                  The method <literal>f2</literal>is undefined in an object of type <literal>B</literal>. The closest thing is <literal>f2</literal> but it's a static method.
+                </para>
+              </entry>
+              <entry>
+                <para>
+                  The method <literal>f2</literal>is undefined in an object of type <literal>B</literal>. The closest thing is <literal>f2</literal> but it's a static method.
+                </para>
+              </entry>
+            </row>
+          </tbody>
+        </tgroup>
+      </informaltable>
+    </informalexample>
+  </para>
+  <para>
+    The code associated with the class static method matrix is represented here:
+    <informalexample>
+      <programlisting role="php">
+<![CDATA[
+<?hh
+
+class A {
+public function f1(): void {
+  echo "A.f1()\n";
+}
+public static function f2(): void {
+  echo "A.f2()\n";
+}
+}
+
+class B extends A {
+public function f1(): void {
+  echo "B.f1()\n";
+}
+public static function f2(): void {
+  echo "B.f2()\n";
+}
+
+public static function stest(): void {
+  $a = new A();
+  $c = new C();
+
+  A::f1();
+  $a->f1();
+  $a::f1();
+  A::f2();
+  $a->f2();
+  $a::f2();
+
+  self::f1();
+  B::f1();
+  self::f2();
+  B::f2();
+
+  C::f3();
+  $c->f3();
+  $c::f3();
+  C::f4();
+  $c->f4();
+  $c::f4();
+
+  parent::f1();
+  parent::f2();
+
+  static::f1();
+  static::f2();
+
+  $this->f1();
+  $this->f2();
+}
+}
+
+class C {
+public function f3(): void {
+  echo "C.f3()\n";
+}
+public static function f4(): void {
+  echo "C.f4()\n";
+}
+}
+
+function main() {
+B::stest();
+}
+
+main();
+]]>
+      </programlisting>
+      <para>
+        And here is the output of the calls made in the static <literal>stest()</literal> function of class <literal>B</literal>.
+      </para>
+      <informaltable>
+        <tgroup cols="5">
+          <colspec align="center" />
+          <colspec align="center" />
+          <colspec align="center" />
+          <colspec align="center" />
+          <colspec align="center" />
+          <tbody>
+            <row>
+              <entry>
+                <para>
+                  <emphasis role="strong">Function Call</emphasis>
+                </para>
+              </entry>
+              <entry>
+                <para>
+                  <emphasis role="strong">Zend Runtime Ouput</emphasis>
+                </para>
+              </entry>
+              <entry>
+                <para>
+                  <emphasis role="strong">HHVM Runtime Output</emphasis>
+                </para>
+              </entry>
+              <entry>
+                <para>
+                  <emphasis role="strong">Hack Output (partial)</emphasis>
+                </para>
+              </entry>
+              <entry>
+                <para>
+                  <emphasis role="strong">Hack Output (strict)</emphasis>
+                </para>
+              </entry>
+            </row>
+            <row>
+              <entry>
+                <para>
+                  <literal>A::f1();</literal>
+                </para>
+              </entry>
+              <entry>
+                <para>
+                  <literal></literal>A.f1()
+                </para>
+              </entry>
+              <entry>
+                <para>
+                  <literal>A.f1()</literal>
+                </para>
+              </entry>
+              <entry>
+                <para>
+                  Could not find static method <literal>f1</literal>. The closest thing is <literal>f1</literal> but it's not a static method.
+                </para>
+              </entry>
+              <entry>
+                <para>
+                  Could not find static method <literal>f1</literal>. The closest thing is <literal>f1</literal> but it's not a static method.
+                </para>
+              </entry>
+            </row>
+            <row>
+              <entry>
+                <para>
+                  <literal>$a->f1();</literal>
+                </para>
+              </entry>
+              <entry>
+                <para>
+                  <literal>A.f1()</literal>
+                </para>
+              </entry>
+              <entry>
+                <para>
+                  <literal>A.f1()</literal>
+                </para>
+              </entry>
+              <entry>
+                <para>
+                  No error
+                </para>
+              </entry>
+              <entry>
+                <para>
+                  No error
+                </para>
+              </entry>
+            </row>
+            <row>
+              <entry>
+                <para>
+                  <literal>$a::f1();</literal>
+                </para>
+              </entry>
+              <entry>
+                <para>
+                  <literal>A.f1()</literal>
+                </para>
+              </entry>
+              <entry>
+                <para>
+                  <literal>A.f1()</literal>
+                </para>
+              </entry>
+              <entry>
+                <para>
+                  No error
+                </para>
+              </entry>
+              <entry>
+                <para>
+                  Don't use dynamic classes
+                </para>
+              </entry>
+            </row>
+            <row>
+              <entry>
+                <para>
+                  <literal>A::f2();</literal>
+                </para>
+              </entry>
+              <entry>
+                <para>
+                  <literal>A.f2()</literal>
+                </para>
+              </entry>
+              <entry>
+                <para>
+                  <literal>A.f2()</literal>
+                </para>
+              </entry>
+              <entry>
+                <para>
+                  No error
+                </para>
+              </entry>
+              <entry>
+                <para>
+                  No error
+                </para>
+              </entry>
+            </row>
+            <row>
+              <entry>
+                <para>
+                  <literal>$a->f2();</literal>
+                </para>
+              </entry>
+              <entry>
+                <para>
+                  <literal>A.f2()</literal>
+                </para>
+              </entry>
+              <entry>
+                <para>
+                  <literal>A.f2()</literal>
+                </para>
+              </entry>
+              <entry>
+                <para>
+                  The method <literal>f2</literal> is undefined in an object of type <literal>A</literal>. The closest thing is <literal>f2</literal> but it's a static method.
+                </para>
+              </entry>
+              <entry>
+                <para>
+                  The method <literal>f2</literal> is undefined in an object of type <literal>A</literal>. The closest thing is <literal>f2</literal> but it's a static method.
+                </para>
+              </entry>
+            </row>
+            <row>
+              <entry>
+                <para>
+                  <literal>$a::f2();</literal>
+                </para>
+              </entry>
+              <entry>
+                <para>
+                  <literal>A.f2()</literal>
+                </para>
+              </entry>
+              <entry>
+                <para>
+                  <literal>A.f2()</literal>
+                </para>
+              </entry>
+              <entry>
+                <para>
+                  No error
+                </para>
+              </entry>
+              <entry>
+                <para>
+                  Don't use dynamic classes
+                </para>
+              </entry>
+            </row>
+            <row>
+              <entry>
+                <para>
+                  <literal>self::f1();</literal>
+                </para>
+              </entry>
+              <entry>
+                <para>
+                  <literal>B.f1()</literal>
+                </para>
+              </entry>
+              <entry>
+                <para>
+                  <literal>B.f1()</literal>
+                </para>
+              </entry>
+              <entry>
+                <para>
+                  Could not find static method <literal>f1</literal>. The closest thing is <literal>f1</literal> but it's not a static method.
+                </para>
+              </entry>
+              <entry>
+                <para>
+                  Could not find static method <literal>f1</literal>. The closest thing is <literal>f1</literal> but it's not a static method.
+                </para>
+              </entry>
+            </row>
+            <row>
+              <entry>
+                <para>
+                  <literal>B::f1();</literal>
+                </para>
+              </entry>
+              <entry>
+                <para>
+                  <literal>B.f1()</literal>
+                </para>
+              </entry>
+              <entry>
+                <para>
+                  <literal>B.f1()</literal>
+                </para>
+              </entry>
+              <entry>
+                <para>
+                  Could not find static method <literal>f1</literal>. The closest thing is <literal>f1</literal> but it's not a static method.
+                </para>
+              </entry>
+              <entry>
+                <para>
+                  Could not find static method <literal>f1</literal>. The closest thing is <literal>f1</literal> but it's not a static method.
+                </para>
+              </entry>
+            </row>
+            <row>
+              <entry>
+                <para>
+                  <literal>self::f2();</literal>
+                </para>
+              </entry>
+              <entry>
+                <para>
+                  <literal>B.f2()</literal>
+                </para>
+              </entry>
+              <entry>
+                <para>
+                  <literal>B.f2()</literal>
+                </para>
+              </entry>
+              <entry>
+                <para>
+                  No error
+                </para>
+              </entry>
+              <entry>
+                <para>
+                  No error
+                </para>
+              </entry>
+            </row>
+            <row>
+              <entry>
+                <para>
+                  <literal>B::f2();</literal>
+                </para>
+              </entry>
+              <entry>
+                <para>
+                  <literal>B.f2()</literal>
+                </para>
+              </entry>
+              <entry>
+                <para>
+                  <literal>B.f2()</literal>
+                </para>
+              </entry>
+              <entry>
+                <para>
+                  No error
+                </para>
+              </entry>
+              <entry>
+                <para>
+                  No error
+                </para>
+              </entry>
+            </row>
+            <row>
+              <entry>
+                <para>
+                  <literal>C::f3();</literal>
+                </para>
+              </entry>
+              <entry>
+                <para>
+                  <literal>C.f3()</literal>
+                </para>
+              </entry>
+              <entry>
+                <para>
+                  <literal>C.f3()</literal>
+                </para>
+              </entry>
+              <entry>
+                <para>
+                  Could not find static method <literal>f3</literal>. The closest thing is <literal>f3</literal> but it's not a static method.
+                </para>
+              </entry>
+              <entry>
+                <para>
+                  Could not find static method <literal>f3</literal>. The closest thing is <literal>f3</literal> but it's not a static method.
+                </para>
+              </entry>
+            </row>
+            <row>
+              <entry>
+                <para>
+                  <literal>$c->f3();</literal>
+                </para>
+              </entry>
+              <entry>
+                <para>
+                  <literal>C.f3()</literal>
+                </para>
+              </entry>
+              <entry>
+                <para>
+                  <literal>C.f3()</literal>
+                </para>
+              </entry>
+              <entry>
+                <para>
+                  No error
+                </para>
+              </entry>
+              <entry>
+                <para>
+                  No error
+                </para>
+              </entry>
+            </row>
+            <row>
+              <entry>
+                <para>
+                  <literal>$c::f3();</literal>
+                </para>
+              </entry>
+              <entry>
+                <para>
+                  <literal>C.f3()</literal>
+                </para>
+              </entry>
+              <entry>
+                <para>
+                  <literal>C.f3()</literal>
+                </para>
+              </entry>
+              <entry>
+                <para>
+                  No error
+                </para>
+              </entry>
+              <entry>
+                <para>
+                  Don't use dynamic classes
+                </para>
+              </entry>
+            </row>
+            <row>
+              <entry>
+                <para>
+                  <literal>C::f4();</literal>
+                </para>
+              </entry>
+              <entry>
+                <para>
+                  <literal>C.f4()</literal>
+                </para>
+              </entry>
+              <entry>
+                <para>
+                  <literal>C.f4()</literal>
+                </para>
+              </entry>
+              <entry>
+                <para>
+                  No error
+                </para>
+              </entry>
+              <entry>
+                <para>
+                  No error
+                </para>
+              </entry>
+            </row>
+            <row>
+              <entry>
+                <para>
+                  <literal>$c->f4();</literal>
+                </para>
+              </entry>
+              <entry>
+                <para>
+                  <literal>C.f4()</literal>
+                </para>
+              </entry>
+              <entry>
+                <para>
+                  <literal>C.f4()</literal>
+                </para>
+              </entry>
+              <entry>
+                <para>
+                  The method <literal>f4</literal> is undefined in an object of type <literal>C</literal>. The closest thing is <literal>f4</literal> but it's a static method.
+                </para>
+              </entry>
+              <entry>
+                <para>
+                  The method <literal>f4</literal> is undefined in an object of type <literal>C</literal>. The closest thing is <literal>f4</literal> but it's a static method.
+                </para>
+              </entry>
+            </row>
+            <row>
+              <entry>
+                <para>
+                  <literal>$c::f4();</literal>
+                </para>
+              </entry>
+              <entry>
+                <para>
+                  <literal>C.f4()</literal>
+                </para>
+              </entry>
+              <entry>
+                <para>
+                  <literal>C.f4()</literal>
+                </para>
+              </entry>
+              <entry>
+                <para>
+                  No error
+                </para>
+              </entry>
+              <entry>
+                <para>
+                  Don't use dynamic classes
+                </para>
+              </entry>
+            </row>
+            <row>
+              <entry>
+                <para>
+                  <literal>parent::f1();</literal>
+                </para>
+              </entry>
+              <entry>
+                <para>
+                  <literal>A.f1()</literal>
+                </para>
+              </entry>
+              <entry>
+                <para>
+                  <literal>A.f1()</literal>
+                </para>
+              </entry>
+              <entry>
+                <para>
+                  No error
+                </para>
+              </entry>
+              <entry>
+                <para>
+                  No error
+                </para>
+              </entry>
+            </row>
+            <row>
+              <entry>
+                <para>
+                  <literal>parent::f2();</literal>
+                </para>
+              </entry>
+              <entry>
+                <para>
+                  <literal>A.f2()</literal>
+                </para>
+              </entry>
+              <entry>
+                <para>
+                  <literal>A.f2()</literal>
+                </para>
+              </entry>
+              <entry>
+                <para>
+                  The method <literal>f2</literal> is undefined in an object of type <literal>A</literal>. The closest thing is <literal>f2</literal> but it's a static method.
+                </para>
+              </entry>
+              <entry>
+                <para>
+                  The method <literal>f2</literal>is undefined in an object of type <literal>A</literal>. The closest thing is <literal>f2</literal> but it's a static method.
+                </para>
+              </entry>
+            </row>
+            <row>
+              <entry>
+                <para>
+                  <literal>static::f1();</literal>
+                </para>
+              </entry>
+              <entry>
+                <para>
+                  <literal>B.f1()</literal>
+                </para>
+              </entry>
+              <entry>
+                <para>
+                  <literal>B.f1()</literal>
+                </para>
+              </entry>
+              <entry>
+                <para>
+                  Could not find static method <literal>f1</literal>. The closest thing is <literal>f1</literal> but it's not a static method.
+                </para>
+              </entry>
+              <entry>
+                <para>
+                  Could not find static method <literal>f1</literal>. The closest thing is <literal>f1</literal> but it's not a static method.
+                </para>
+              </entry>
+            </row>
+            <row>
+              <entry>
+                <para>
+                  <literal>static::f2();</literal>
+                </para>
+              </entry>
+              <entry>
+                <para>
+                  <literal>B.f2()</literal>
+                </para>
+              </entry>
+              <entry>
+                <para>
+                  <literal>B.f2()</literal>
+                </para>
+              </entry>
+              <entry>
+                <para>
+                  No error
+                </para>
+              </entry>
+              <entry>
+                <para>
+                  No error
+                </para>
+              </entry>
+            </row>
+            <row>
+              <entry>
+                <para>
+                  <literal>$this->f1();</literal>
+                </para>
+              </entry>
+              <entry>
+                <para>
+                  Error. Using <literal>$this</literal> when not in object context.
+                </para>
+              </entry>
+              <entry>
+                <para>
+                  HipHop Fatal error: <literal>$this</literal> is <literal>null</literal>.
+                </para>
+              </entry>
+              <entry>
+                <para>
+                  Do not use <literal>$this</literal> in a static method.
+                </para>
+              </entry>
+              <entry>
+                <para>
+                  Do not use <literal>$this</literal> in a static method.
+                </para>
+              </entry>
+            </row>
+            <row>
+              <entry>
+                <para>
+                  <literal>$this->f2();</literal>
+                </para>
+              </entry>
+              <entry>
+                <para>
+                  Error. Using <literal>$this</literal> when not in object context.
+                </para>
+              </entry>
+              <entry>
+                <para>
+                  HipHop Fatal error: <literal>$this</literal> is <literal>null</literal>.
+                </para>
+              </entry>
+              <entry>
+                <para>
+                  Do not use <literal>$this</literal> in a static method.
+                </para>
+              </entry>
+              <entry>
+                <para>
+                  Do not use <literal>$this</literal> in a static method.
+                </para>
+              </entry>
+            </row>
+          </tbody>
+        </tgroup>
+      </informaltable>
+    </informalexample>
+  </para>
+</chapter>
+
+<!-- Keep this comment at the end of the file
+Local variables:
+mode: sgml
+sgml-omittag:t
+sgml-shorttag:t
+sgml-minimize-attributes:nil
+sgml-always-quote-attributes:t
+sgml-indent-step:1
+sgml-indent-data:t
+indent-tabs-mode:nil
+sgml-parent-document:nil
+sgml-default-dtd-file:"~/.phpdoc/manual.ced"
+sgml-exposed-tags:nil
+sgml-local-catalogs:nil
+sgml-local-ecat-files:nil
+End:
+vim600: syn=xml fen fdm=syntax fdl=2 si
+vim: et tw=78 syn=sgml
+vi: ts=1 sw=1
+-->

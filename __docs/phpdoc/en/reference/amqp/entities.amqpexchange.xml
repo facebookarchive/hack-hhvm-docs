@@ -1,0 +1,15 @@
+&reference.amqp.amqpexchange.bind;
+&reference.amqp.amqpexchange.construct;
+&reference.amqp.amqpexchange.declareexchange;
+&reference.amqp.amqpexchange.delete;
+&reference.amqp.amqpexchange.getargument;
+&reference.amqp.amqpexchange.getarguments;
+&reference.amqp.amqpexchange.getflags;
+&reference.amqp.amqpexchange.getname;
+&reference.amqp.amqpexchange.gettype;
+&reference.amqp.amqpexchange.publish;
+&reference.amqp.amqpexchange.setargument;
+&reference.amqp.amqpexchange.setarguments;
+&reference.amqp.amqpexchange.setflags;
+&reference.amqp.amqpexchange.setname;
+&reference.amqp.amqpexchange.settype;

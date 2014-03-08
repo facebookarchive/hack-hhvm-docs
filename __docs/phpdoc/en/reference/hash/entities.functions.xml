@@ -1,0 +1,12 @@
+&reference.hash.functions.hash-algos;
+&reference.hash.functions.hash-copy;
+&reference.hash.functions.hash-file;
+&reference.hash.functions.hash-final;
+&reference.hash.functions.hash-hmac-file;
+&reference.hash.functions.hash-hmac;
+&reference.hash.functions.hash-init;
+&reference.hash.functions.hash-pbkdf2;
+&reference.hash.functions.hash-update-file;
+&reference.hash.functions.hash-update-stream;
+&reference.hash.functions.hash-update;
+&reference.hash.functions.hash;

@@ -1,0 +1,7 @@
+&reference.spl.filesystemiterator.construct;
+&reference.spl.filesystemiterator.current;
+&reference.spl.filesystemiterator.getflags;
+&reference.spl.filesystemiterator.key;
+&reference.spl.filesystemiterator.next;
+&reference.spl.filesystemiterator.rewind;
+&reference.spl.filesystemiterator.setflags;

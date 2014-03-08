@@ -1,0 +1,15 @@
+&reference.imagick.book;
+&reference.imagick.constants;
+&reference.imagick.entities.figures;
+&reference.imagick.entities.imagick;
+&reference.imagick.entities.imagickdraw;
+&reference.imagick.entities.imagickpixel;
+&reference.imagick.entities.imagickpixeliterator;
+&reference.imagick.examples;
+&reference.imagick.imagick;
+&reference.imagick.imagickdraw;
+&reference.imagick.imagickpixel;
+&reference.imagick.imagickpixeliterator;
+&reference.imagick.ini;
+&reference.imagick.setup;
+&reference.imagick.versions;

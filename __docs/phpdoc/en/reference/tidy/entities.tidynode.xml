@@ -1,0 +1,9 @@
+&reference.tidy.tidynode.getparent;
+&reference.tidy.tidynode.haschildren;
+&reference.tidy.tidynode.hassiblings;
+&reference.tidy.tidynode.isasp;
+&reference.tidy.tidynode.iscomment;
+&reference.tidy.tidynode.ishtml;
+&reference.tidy.tidynode.isjste;
+&reference.tidy.tidynode.isphp;
+&reference.tidy.tidynode.istext;

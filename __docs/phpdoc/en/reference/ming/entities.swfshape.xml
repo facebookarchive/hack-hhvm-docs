@@ -1,0 +1,16 @@
+&reference.ming.swfshape.addfill;
+&reference.ming.swfshape.construct;
+&reference.ming.swfshape.drawarc;
+&reference.ming.swfshape.drawcircle;
+&reference.ming.swfshape.drawcubic;
+&reference.ming.swfshape.drawcubicto;
+&reference.ming.swfshape.drawcurve;
+&reference.ming.swfshape.drawcurveto;
+&reference.ming.swfshape.drawglyph;
+&reference.ming.swfshape.drawline;
+&reference.ming.swfshape.drawlineto;
+&reference.ming.swfshape.movepen;
+&reference.ming.swfshape.movepento;
+&reference.ming.swfshape.setleftfill;
+&reference.ming.swfshape.setline;
+&reference.ming.swfshape.setrightfill;

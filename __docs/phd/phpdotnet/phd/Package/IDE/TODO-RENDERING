@@ -1,0 +1,8 @@
+IDE Function Skeleton: http://wiki.php.net/doc/skeletons/ide-function
+
+- Render the description of the seealso entry
++ Render the description of the params
+- Render examples
++ Render notes
++ Render <version>
++ Render <manualid>

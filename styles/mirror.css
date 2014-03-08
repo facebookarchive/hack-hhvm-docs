@@ -1,0 +1,104 @@
+/* TOC elements on manual pages ------------------------------------------- */
+ul.toc li {
+    background-image: url(/images/box-0.gif);
+}
+ul.toc li.up {
+    background-image: url(/images/caret-u.gif);
+}
+ul.toc li.home {
+    background-image: url(/images/caret-t.gif);
+}
+ul.toc li.active {
+    background-image: url(/images/box-1.gif);
+}
+
+/* Sidebar backgrounds ---------------------------------------------------- */
+#layout_2, #layout_3 {
+    background-image: url(/images/leftbar.png);
+}
+#layout_3_helper {
+    background-image: url(/images/rightbar.png);
+}
+
+/* Tips and warning icons, mainly used in the manual */
+div.tip {
+    background-image: url(/images/dialog-information.png);
+}
+div.warning {
+    background-image: url(/images/dialog-warning.png);
+}
+
+/* Voting images ---------------------------------------------------------- */
+div#usernotes a.usernotes-voteu,
+div#usernotes a.usernotes-voted,
+div#usernotes a.usernotes-voteu:hover,
+div#usernotes a.usernotes-voted:hover {
+    background-image: url(/images/notes-features.png);
+}
+
+
+#mirrors-container {
+
+}
+
+#mirrors-container h1.title {
+    font-size: 1.7em;
+}
+
+#mirrors-container .download-file small {
+	text-align: right;
+	padding-left: 25px;
+	font-size: 0.7em;
+}
+#mirrors-container .download-file {
+	display: block;
+	padding: 20px;
+	border: 1px;
+	font-size: 1.4em;
+	background-color: #EEE;
+	text-align: center;
+	margin: 0;
+}
+
+
+#mirrors-container .mirrors-list .mirror {
+	display: inline-block;
+	vertical-align: middle;
+	width: 300px;
+    height: 150px;
+    border: 1px solid #CCC;
+	padding: 20px;
+	margin: 5px;
+}
+#mirrors-container .mirrors-list .homecountry {
+	display: block;
+	margin: 5px auto;
+	height: 100%;
+	background-color: #9C9;
+	padding: 20px 20px 40px 20px;
+}
+
+#mirrors-container .mirrors-list .mirror:hover {
+	background-color: #9C9;
+}
+
+#mirrors-container .mirrors-list .mirror .url {
+	display: inline-block;
+}
+
+#mirrors-container .mirrors-list .mirror .provider {
+	display: inline-block;
+	text-indent: 10px;
+}
+
+#mirrors-container .mirrors-list .mirror .title {
+    font-size: 1.4em;
+	position: relative;
+}
+
+#mirrors-container .mirrors-list img {
+	position: absolute;
+	right: 0px;
+}
+
+

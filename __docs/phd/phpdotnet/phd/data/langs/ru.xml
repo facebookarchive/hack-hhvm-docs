@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!-- $Revision$ -->
+<section xml:id="autogen" xml:lang="ru">
+ <title>Сгенерированный текст</title>
+ <variablelist>
+  <varlistentry>
+   <term>toc</term>
+   <listitem>
+    <simpara>Содержание</simpara>
+   </listitem>
+  </varlistentry>
+  <varlistentry>
+   <term>warning</term>
+   <listitem>
+    <simpara>Внимание</simpara>
+   </listitem>
+  </varlistentry>
+  <varlistentry>
+   <term>note</term>
+   <listitem>
+    <simpara>Замечание</simpara>
+   </listitem>
+  </varlistentry>
+  <varlistentry>
+   <term>caution</term>
+   <listitem>
+    <simpara>Предостережение</simpara>
+   </listitem>
+  </varlistentry>
+  <varlistentry>
+   <term>tip</term>
+   <listitem>
+    <simpara>Подсказка</simpara>
+   </listitem>
+  </varlistentry>
+  <varlistentry>
+   <term>important</term>
+   <listitem>
+    <simpara>Важно</simpara>
+   </listitem>
+  </varlistentry>
+  <varlistentry>
+   <term>by</term>
+   <listitem>
+    <simpara>от</simpara>
+   </listitem>
+  </varlistentry>
+  <varlistentry>
+   <term>editedby</term>
+   <listitem>
+    <simpara>Под редакцией</simpara>
+   </listitem>
+  </varlistentry>
+  <varlistentry>
+   <term>example</term>
+   <listitem>
+    <simpara>Пример #</simpara>
+   </listitem>
+  </varlistentry>
+  <varlistentry>
+   <term>unknownversion</term>
+   <listitem>
+    <simpara>Информация о версии неизвестна, возможно, только в SVN</simpara>
+   </listitem>
+  </varlistentry>
+  <varlistentry>
+   <term>refname</term>
+   <listitem>
+    <simpara>ИМЯ</simpara>
+   </listitem>
+  </varlistentry>
+  <varlistentry>
+   <term>refsynopsis</term>
+   <listitem>
+    <simpara>СОДЕРЖАНИЕ</simpara>
+   </listitem>
+  </varlistentry>
+  <varlistentry>
+   <term>mediaobject</term>
+   <listitem>
+    <simpara>[НЕОТОБРАЖАЕМЫЙ МЕДИА-ФАЙЛ]</simpara>
+   </listitem>
+  </varlistentry>
+ </variablelist>
+</section>
+

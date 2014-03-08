@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- $Revision$ -->
+<section xml:id="autogen" xml:lang="pt_BR">
+ <title>Texto autogerado</title>
+ <variablelist>
+  <varlistentry>
+   <term>toc</term>
+   <listitem>
+    <simpara>Índice</simpara>
+   </listitem>
+  </varlistentry>
+  <varlistentry>
+   <term>warning</term>
+   <listitem>
+    <simpara>Aviso</simpara>
+   </listitem>
+  </varlistentry>
+  <varlistentry>
+   <term>note</term>
+   <listitem>
+    <simpara>Nota</simpara>
+   </listitem>
+  </varlistentry>
+  <varlistentry>
+   <term>caution</term>
+   <listitem>
+    <simpara>Cuidado</simpara>
+   </listitem>
+  </varlistentry>
+  <varlistentry>
+   <term>tip</term>
+   <listitem>
+    <simpara>Dica</simpara>
+   </listitem>
+  </varlistentry>
+  <varlistentry>
+   <term>important</term>
+   <listitem>
+    <simpara>Importante</simpara>
+   </listitem>
+  </varlistentry>
+  <varlistentry>
+   <term>by</term>
+   <listitem>
+    <simpara>por</simpara>
+   </listitem>
+  </varlistentry>
+  <varlistentry>
+   <term>editedby</term>
+   <listitem>
+    <simpara>Editado por</simpara>
+   </listitem>
+  </varlistentry>
+  <varlistentry>
+   <term>example</term>
+   <listitem>
+    <simpara>Exemplo #</simpara>
+   </listitem>
+  </varlistentry>
+  <varlistentry>
+   <term>unknownversion</term>
+   <listitem>
+    <simpara>Não há informação de versão disponível, talvez apenas no SVN</simpara>
+   </listitem>
+  </varlistentry>
+  <varlistentry>
+   <term>refname</term>
+   <listitem>
+    <simpara>NOME</simpara>
+   </listitem>
+  </varlistentry>
+  <varlistentry>
+   <term>refsynopsis</term>
+   <listitem>
+    <simpara>SINOPSE</simpara>
+   </listitem>
+  </varlistentry>
+  <varlistentry>
+   <term>mediaobject</term>
+   <listitem>
+    <simpara>[MÍDIA NÃO DISPONÍVEL]</simpara>
+   </listitem>
+  </varlistentry>
+ </variablelist>
+</section>

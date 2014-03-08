@@ -1,0 +1,3 @@
+&reference.pdo-pgsql.PDO.pgsqlLOBCreate;
+&reference.pdo-pgsql.PDO.pgsqlLOBOpen;
+&reference.pdo-pgsql.PDO.pgsqlLOBUnlink;

@@ -1,0 +1,6 @@
+&reference.gmagick.gmagickpixel.construct;
+&reference.gmagick.gmagickpixel.getcolor;
+&reference.gmagick.gmagickpixel.getcolorcount;
+&reference.gmagick.gmagickpixel.getcolorvalue;
+&reference.gmagick.gmagickpixel.setcolor;
+&reference.gmagick.gmagickpixel.setcolorvalue;

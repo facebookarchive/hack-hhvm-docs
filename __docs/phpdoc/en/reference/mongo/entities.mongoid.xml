@@ -1,0 +1,7 @@
+&reference.mongo.mongoid.construct;
+&reference.mongo.mongoid.gethostname;
+&reference.mongo.mongoid.getinc;
+&reference.mongo.mongoid.getpid;
+&reference.mongo.mongoid.gettimestamp;
+&reference.mongo.mongoid.set-state;
+&reference.mongo.mongoid.tostring;

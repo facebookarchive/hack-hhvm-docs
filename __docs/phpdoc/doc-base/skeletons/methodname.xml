@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- $Revision:$ -->
+<refentry xml:id="classname.methodname" xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink">
+ <refnamediv>
+  <refname>ClassName::methodName</refname>
+  <refpurpose>The methodName purpose</refpurpose>
+ </refnamediv>
+ 
+ <refsect1 role="description">
+  &reftitle.description;
+<!-- If its a normal method, use this -->
+  <methodsynopsis>
+   <!-- Example: All functions have this -->
+   <type>thereturned type</type><methodname>ClassName::methodName</methodname>
+   <!-- Example: Required parameter -->
+   <methodparam><type>param1type</type><parameter>firstparameter</parameter></methodparam>
+   <!-- Example: Optional parameter, also by reference -->
+   <methodparam choice="opt"><type>int</type><parameter role="reference">secondparameter</parameter></methodparam>
+   <!-- Example: If no methodparams exist (void), use this -->
+   <void />
+  </methodsynopsis>
+<!-- If this is an property, use this -->
+  <classsynopsis>
+   <ooclass><classname>className</classname></ooclass>
+   <fieldsynopsis><type>string</type><varname>name</varname></fieldsynopsis>
+  </classsynopsis>
+ 
+<!-- Note: If this method/property as an alternate procedural mapping then the method/property synopsis MUST be listed BEFORE the function synopsis -->
+  <para>
+   The method description goes here.
+  </para>
+ </refsect1>
+ ....
+</refentry>

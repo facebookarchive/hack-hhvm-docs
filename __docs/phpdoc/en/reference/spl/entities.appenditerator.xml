@@ -1,0 +1,10 @@
+&reference.spl.appenditerator.append;
+&reference.spl.appenditerator.construct;
+&reference.spl.appenditerator.current;
+&reference.spl.appenditerator.getarrayiterator;
+&reference.spl.appenditerator.getinneriterator;
+&reference.spl.appenditerator.getiteratorindex;
+&reference.spl.appenditerator.key;
+&reference.spl.appenditerator.next;
+&reference.spl.appenditerator.rewind;
+&reference.spl.appenditerator.valid;

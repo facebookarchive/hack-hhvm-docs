@@ -1,0 +1,12 @@
+&reference.datetime.datetimeimmutable.add;
+&reference.datetime.datetimeimmutable.construct;
+&reference.datetime.datetimeimmutable.createfromformat;
+&reference.datetime.datetimeimmutable.getlasterrors;
+&reference.datetime.datetimeimmutable.modify;
+&reference.datetime.datetimeimmutable.set-state;
+&reference.datetime.datetimeimmutable.setdate;
+&reference.datetime.datetimeimmutable.setisodate;
+&reference.datetime.datetimeimmutable.settime;
+&reference.datetime.datetimeimmutable.settimestamp;
+&reference.datetime.datetimeimmutable.settimezone;
+&reference.datetime.datetimeimmutable.sub;

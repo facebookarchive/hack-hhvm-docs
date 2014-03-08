@@ -1,0 +1,12 @@
+&reference.yaf.yaf-view-simple.assign;
+&reference.yaf.yaf-view-simple.assignref;
+&reference.yaf.yaf-view-simple.clear;
+&reference.yaf.yaf-view-simple.construct;
+&reference.yaf.yaf-view-simple.display;
+&reference.yaf.yaf-view-simple.eval;
+&reference.yaf.yaf-view-simple.get;
+&reference.yaf.yaf-view-simple.getscriptpath;
+&reference.yaf.yaf-view-simple.isset;
+&reference.yaf.yaf-view-simple.render;
+&reference.yaf.yaf-view-simple.set;
+&reference.yaf.yaf-view-simple.setscriptpath;

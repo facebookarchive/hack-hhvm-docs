@@ -1,0 +1,5 @@
+&reference.rpmreader.functions.rpm-close;
+&reference.rpmreader.functions.rpm-get-tag;
+&reference.rpmreader.functions.rpm-is-valid;
+&reference.rpmreader.functions.rpm-open;
+&reference.rpmreader.functions.rpm-version;

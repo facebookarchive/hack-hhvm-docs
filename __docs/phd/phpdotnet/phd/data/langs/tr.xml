@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!-- $Revision$ -->
+<section xml:id="autogen" xml:lang="tr">
+ <title>Üretilmiş metin</title>
+ <variablelist>
+  <varlistentry>
+   <term>toc</term>
+   <listitem>
+    <simpara>İçindekiler</simpara>
+   </listitem>
+  </varlistentry>
+  <varlistentry>
+   <term>warning</term>
+   <listitem>
+    <simpara>Uyarı</simpara>
+   </listitem>
+  </varlistentry>
+  <varlistentry>
+   <term>note</term>
+   <listitem>
+    <simpara>Bilginize</simpara>
+   </listitem>
+  </varlistentry>
+  <varlistentry>
+   <term>caution</term>
+   <listitem>
+    <simpara>Dikkat</simpara>
+   </listitem>
+  </varlistentry>
+  <varlistentry>
+   <term>tip</term>
+   <listitem>
+    <simpara>İpucu</simpara>
+   </listitem>
+  </varlistentry>
+  <varlistentry>
+   <term>important</term>
+   <listitem>
+    <simpara>Önemli</simpara>
+   </listitem>
+  </varlistentry>
+  <varlistentry>
+   <term>by</term>
+   <listitem>
+    <simpara>Yazan</simpara>
+   </listitem>
+  </varlistentry>
+  <varlistentry>
+   <term>editedby</term>
+   <listitem>
+    <simpara>Düzenleyen</simpara>
+   </listitem>
+  </varlistentry>
+  <varlistentry>
+   <term>example</term>
+   <listitem>
+    <simpara>Örnek </simpara>
+   </listitem>
+  </varlistentry>
+  <varlistentry>
+   <term>unknownversion</term>
+   <listitem>
+    <simpara>Bir sürüm bilgisi bulunamadı; sadece SVN'de olabilir.</simpara>
+   </listitem>
+  </varlistentry>
+  <varlistentry>
+   <term>refname</term>
+   <listitem>
+    <simpara>İSİM</simpara>
+   </listitem>
+  </varlistentry>
+  <varlistentry>
+   <term>refsynopsis</term>
+   <listitem>
+    <simpara>SÖZDİZİMİ</simpara>
+   </listitem>
+  </varlistentry>
+  <varlistentry>
+   <term>mediaobject</term>
+   <listitem>
+    <simpara>[ORTAM GÖSTERİME UYGUN DEĞİL]</simpara>
+   </listitem>
+  </varlistentry>
+ </variablelist>
+</section>
+

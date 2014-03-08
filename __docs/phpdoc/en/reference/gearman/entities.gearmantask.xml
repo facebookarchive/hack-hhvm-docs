@@ -1,0 +1,17 @@
+&reference.gearman.gearmantask.construct;
+&reference.gearman.gearmantask.create;
+&reference.gearman.gearmantask.data;
+&reference.gearman.gearmantask.datasize;
+&reference.gearman.gearmantask.function;
+&reference.gearman.gearmantask.functionname;
+&reference.gearman.gearmantask.isknown;
+&reference.gearman.gearmantask.isrunning;
+&reference.gearman.gearmantask.jobhandle;
+&reference.gearman.gearmantask.recvdata;
+&reference.gearman.gearmantask.returncode;
+&reference.gearman.gearmantask.senddata;
+&reference.gearman.gearmantask.sendworkload;
+&reference.gearman.gearmantask.taskdenominator;
+&reference.gearman.gearmantask.tasknumerator;
+&reference.gearman.gearmantask.unique;
+&reference.gearman.gearmantask.uuid;

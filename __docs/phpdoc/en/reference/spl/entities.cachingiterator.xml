@@ -1,0 +1,17 @@
+&reference.spl.cachingiterator.construct;
+&reference.spl.cachingiterator.count;
+&reference.spl.cachingiterator.current;
+&reference.spl.cachingiterator.getcache;
+&reference.spl.cachingiterator.getflags;
+&reference.spl.cachingiterator.getinneriterator;
+&reference.spl.cachingiterator.hasnext;
+&reference.spl.cachingiterator.key;
+&reference.spl.cachingiterator.next;
+&reference.spl.cachingiterator.offsetexists;
+&reference.spl.cachingiterator.offsetget;
+&reference.spl.cachingiterator.offsetset;
+&reference.spl.cachingiterator.offsetunset;
+&reference.spl.cachingiterator.rewind;
+&reference.spl.cachingiterator.setflags;
+&reference.spl.cachingiterator.tostring;
+&reference.spl.cachingiterator.valid;

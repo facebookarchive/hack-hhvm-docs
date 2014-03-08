@@ -1,0 +1,6 @@
+&reference.sdo.sdo-dataobject.clear;
+&reference.sdo.sdo-dataobject.createDataObject;
+&reference.sdo.sdo-dataobject.getContainer;
+&reference.sdo.sdo-dataobject.getSequence;
+&reference.sdo.sdo-dataobject.getTypeName;
+&reference.sdo.sdo-dataobject.getTypeNamespaceURI;

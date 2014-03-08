@@ -1,0 +1,16 @@
+&reference.domxml.functions.domxml-new-doc;
+&reference.domxml.functions.domxml-open-file;
+&reference.domxml.functions.domxml-open-mem;
+&reference.domxml.functions.domxml-version;
+&reference.domxml.functions.domxml-xmltree;
+&reference.domxml.functions.domxml-xslt-stylesheet-doc;
+&reference.domxml.functions.domxml-xslt-stylesheet-file;
+&reference.domxml.functions.domxml-xslt-stylesheet;
+&reference.domxml.functions.domxml-xslt-version;
+&reference.domxml.functions.xpath-eval-expression;
+&reference.domxml.functions.xpath-eval;
+&reference.domxml.functions.xpath-new-context;
+&reference.domxml.functions.xpath-register-ns-auto;
+&reference.domxml.functions.xpath-register-ns;
+&reference.domxml.functions.xptr-eval;
+&reference.domxml.functions.xptr-new-context;

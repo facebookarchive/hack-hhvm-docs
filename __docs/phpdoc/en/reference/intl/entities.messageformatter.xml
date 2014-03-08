@@ -1,0 +1,10 @@
+&reference.intl.messageformatter.create;
+&reference.intl.messageformatter.format-message;
+&reference.intl.messageformatter.format;
+&reference.intl.messageformatter.get-error-code;
+&reference.intl.messageformatter.get-error-message;
+&reference.intl.messageformatter.get-locale;
+&reference.intl.messageformatter.get-pattern;
+&reference.intl.messageformatter.parse-message;
+&reference.intl.messageformatter.parse;
+&reference.intl.messageformatter.set-pattern;

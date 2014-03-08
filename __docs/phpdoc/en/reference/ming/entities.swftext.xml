@@ -1,0 +1,13 @@
+&reference.ming.swftext.addstring;
+&reference.ming.swftext.addutf8string;
+&reference.ming.swftext.construct;
+&reference.ming.swftext.getascent;
+&reference.ming.swftext.getdescent;
+&reference.ming.swftext.getleading;
+&reference.ming.swftext.getutf8width;
+&reference.ming.swftext.getwidth;
+&reference.ming.swftext.moveto;
+&reference.ming.swftext.setcolor;
+&reference.ming.swftext.setfont;
+&reference.ming.swftext.setheight;
+&reference.ming.swftext.setspacing;

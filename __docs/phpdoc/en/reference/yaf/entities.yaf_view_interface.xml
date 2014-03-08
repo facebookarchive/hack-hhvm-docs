@@ -1,0 +1,5 @@
+&reference.yaf.yaf-view-interface.assign;
+&reference.yaf.yaf-view-interface.display;
+&reference.yaf.yaf-view-interface.getscriptpath;
+&reference.yaf.yaf-view-interface.render;
+&reference.yaf.yaf-view-interface.setscriptpath;

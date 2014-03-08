@@ -1,0 +1,17 @@
+&reference.amqp.amqpconnection.connect;
+&reference.amqp.amqpconnection.construct;
+&reference.amqp.amqpconnection.disconnect;
+&reference.amqp.amqpconnection.gethost;
+&reference.amqp.amqpconnection.getlogin;
+&reference.amqp.amqpconnection.getpassword;
+&reference.amqp.amqpconnection.getport;
+&reference.amqp.amqpconnection.gettimeout;
+&reference.amqp.amqpconnection.getvhost;
+&reference.amqp.amqpconnection.isconnected;
+&reference.amqp.amqpconnection.reconnect;
+&reference.amqp.amqpconnection.sethost;
+&reference.amqp.amqpconnection.setlogin;
+&reference.amqp.amqpconnection.setpassword;
+&reference.amqp.amqpconnection.setport;
+&reference.amqp.amqpconnection.settimeout;
+&reference.amqp.amqpconnection.setvhost;

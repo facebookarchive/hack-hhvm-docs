@@ -1,0 +1,8 @@
+&reference.json.book;
+&reference.json.constants;
+&reference.json.entities.functions;
+&reference.json.entities.jsonserializable;
+&reference.json.jsonserializable;
+&reference.json.reference;
+&reference.json.setup;
+&reference.json.versions;

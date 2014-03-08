@@ -1,0 +1,695 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<book version="5.0" xmlns="http://docbook.org/ns/docbook"
+      xmlns:xlink="http://www.w3.org/1999/xlink"
+      xmlns:xi="http://www.w3.org/2001/XInclude"
+      xmlns:svg="http://www.w3.org/2000/svg"
+      xmlns:mml="http://www.w3.org/1998/Math/MathML"
+      xmlns:html="http://www.w3.org/1999/xhtml"
+      xmlns:db="http://docbook.org/ns/docbook"
+      xml:id="phd-guide">
+  <title>PhD: The definitive guide to PHP's DocBook Rendering System</title>
+
+  <preface xml:id="preface">
+    <title>About PhD</title>
+
+    <para>PhD is PHP's very own DocBook 5 rendering system. It is used to
+    convert the <acronym>PHP</acronym> Manual and PEAR Documentation into
+    different output formats like XHTML, PDF, Man pages and CHM.</para>
+
+    <para>The goal of PhD is to become a fast, general DocBook rendering
+    system. At the moment of writing, PhD is already very fast: It can create
+    the chunked version of PEAR's manual (some 3000 files) in less than a
+    minute on a 2GHz system. It also renders the PHP and PEAR manual
+    flawlessly. It does not support every DocBook 5 tag yet, and using it to
+    render own DocBook files may need some tweaks.</para>
+  </preface>
+
+  <chapter xml:id="getting-phd">
+    <title>Getting PhD</title>
+
+    <para>You might find some other tutorials in the <link
+    linkend="links">links</link> section.</para>
+
+    <section xml:id="installation">
+      <title>Installation</title>
+
+      <para>PhD is distributed via an own PEAR channel,
+      <uri>doc.php.net</uri>. Using it is also the most easy way to get
+      it.</para>
+
+      <section xml:id="installation-pear">
+        <title>Installation via PEAR</title>
+
+        <note>
+          <para>You need a working <link
+          xlink:href="http://pear.php.net/manual/en/installation.php">PEAR
+          installation</link>.</para>
+        </note>
+
+        <para>To install the latest version of PhD:</para>
+
+        <screen>
+<![CDATA[
+$ pear install doc.php.net/phd
+
+... downloading
+
+$ phd --version
+PhD Version: 1.0.0-stable
+PHP Version: 5.3.3
+Copyright(c) 2007-2010 The PHP Documentation Group
+]]>
+        </screen>
+
+        <para>Installing the PhD Packages:</para>
+
+        <screen>
+<![CDATA[
+$ pear install doc.php.net/phd_php
+Starting to download PhD_PHP-1.0.0.tgz (18,948 bytes)
+[...]
+install ok: channel://doc.php.net/PhD_PHP-1.0.0
+
+$ pear install doc.php.net/phd_pear
+downloading PhD_PEAR-1.0.0.tgz ...
+[...]
+install ok: channel://doc.php.net/PhD_PEAR-1.0.0
+]]>
+        </screen>
+
+        <para>That's it!</para>
+      </section>
+
+      <section xml:base="" xml:id="installation-svn">
+        <title>Installation from SVN</title>
+
+        <para>To get the latest and greatest features that have not been
+        released yet, you can use PhD from SVN.</para>
+
+        <screen>
+<![CDATA[
+$ svn checkout http://svn.php.net:/repository/phd/trunk phd
+... output
+
+pear install package.xml package_generic.xml package_php.xml package_pear.xml 
+[...]
+install ok: channel://doc.php.net/PhD-1.0.1
+install ok: channel://doc.php.net/PhD_Generic-1.0.1
+install ok: channel://doc.php.net/PhD_PHP-1.0.1
+install ok: channel://doc.php.net/PhD_PEAR-1.0.1
+bjori@jessica:/usr/src/php/svn/phd/trunk$ 
+
+$ phd --version
+PhD Version: phd-from-svn
+PHP Version: 5.3.3-dev
+Copyright(c) 2007-2010 The PHP Documentation Group
+]]>
+        </screen>
+
+        <para>And now you're done.</para>
+      </section>
+    </section>
+  </chapter>
+
+  <chapter xml:id="using-phd">
+    <title>Using PhD to render documentation</title>
+
+    <section xml:id="render-phpdoc">
+      <title>Rendering the PHP Documentation Sources</title>
+
+      <sidebar>
+        <title>Getting the PHP Documentation Sources</title>
+
+        <para>To get the PHP documentation sources, simply <link
+        xlink:href="http://wiki.php.net/doc/scratchpad/howto/checkout">check them out from SVN</link>
+        with the following command.</para>
+
+        <screen>
+<![CDATA[
+$ svn co http://svn.php.net/repository/phpdoc/modules/doc-en phpdoc
+... output
+]]>
+        </screen>
+
+        <para>To prepare the documentation, <command>cd</command> to the
+        phpdoc directory, and run configure.php.</para>
+
+        <screen><![CDATA[$ php doc-base/configure.php]]></screen>
+
+        <para>This process will generate a .manual.xml file in the current
+        directory, which is what we need for building the docs. Now we're
+        ready to proceed with running PhD to generate the PHP docs.</para>
+      </sidebar>
+
+      <para>To quickly become familiar with using PhD, you can download the
+      PHP documentation sources and render those.Running PhD to render the
+      docs is surprisingly simple, so we'll start with that.</para>
+
+      <screen>
+<![CDATA[
+$ phd -d doc-base/.manual.xml -P PHP
+... status messages
+]]>
+      </screen>
+
+      <para>After a running for a few moments, PhD will generate all the
+      output formats of the PHP Package into <literal>output/</literal>.</para>
+
+      <para>So now that you've seen the fruits of your labor, let's take a
+      closer look at PhD and see what capabilities are available to us.</para>
+
+      <screen>
+<![CDATA[
+$ phd --help
+PhD version: 1.1.6
+Copyright(c) 2007-2013 The PHP Documentation Group
+
+  -v
+  --verbose <int>            Adjusts the verbosity level
+  -f <formatname>
+  --format <formatname>      The build format to use
+  -P <packagename>
+  --package <packagename>    The package to use
+  -I
+  --noindex                  Do not index before rendering but load from cache
+                             (default: false)
+  -M
+  --memoryindex              Do not save indexing into a file, store it in memory.
+                             (default: false)
+  -r
+  --forceindex               Force re-indexing under all circumstances
+                             (default: false)
+  -t
+  --notoc                    Do not rewrite TOC before rendering but load from
+                             cache (default: false)
+  -d <filename>
+  --docbook <filename>       The Docbook file to render from
+  -x
+  --xinclude                 Process XML Inclusions (XInclude)
+                             (default: false)
+  -p <id[=bool]>
+  --partial <id[=bool]>      The ID to render, optionally skipping its children
+                             chunks (default to true; render children)
+  -s <id[=bool]>
+  --skip <id[=bool]>         The ID to skip, optionally skipping its children
+                             chunks (default to true; skip children)
+  -l
+  --list                     Print out the supported packages and formats
+  -o <directory>
+  --output <directory>       The output directory (default: .)
+  -F filename
+  --outputfilename filename  Filename to use when writing standalone formats
+                             (default: <packagename>-<formatname>.<formatext>)
+  -L <language>
+  --lang <language>          The language of the source file (used by the CHM
+                             theme). (default: en)
+  -c <bool>
+  --color <bool>             Enable color output when output is to a terminal
+                             (default: true)
+  -C <filename>
+  --css <filename>           Link for an external CSS file.
+  -g <classname>
+  --highlighter <classname>  Use custom source code highlighting php class
+  -V
+  --version                  Print the PhD version information
+  -h
+  --help                     This help
+  -e <extension>
+  --ext <extension>          The alternative filename extension to use,
+                             including the dot. Use 'false' for no extension.
+  -S <bool>
+  --saveconfig <bool>        Save the generated config (default: false).
+
+  -Q
+  --quit                     Don't run the build. Use with --saveconfig to
+                             just save the config.
+  -k
+  --packagedir               Use an external package directory.
+
+
+Most options can be passed multiple times for greater effect.
+]]>
+      </screen>
+
+      <para>As you can see, there are plenty of options to look into in PhD.
+      The most important options are those which allow you to select a format
+      and package to output your documentation to.</para>
+
+      <screen>
+<![CDATA[
+$ phd --list
+Supported packages:
+        Generic
+                xhtml
+                bigxhtml
+                manpage
+        IDE
+                xml
+                funclist
+                json
+                php
+                phpstub
+        PEAR
+                xhtml
+                bigxhtml
+                php
+                chm
+                tocfeed
+        PHP
+                xhtml
+                bigxhtml
+                php
+                howto
+                manpage
+                pdf
+                bigpdf
+                kdevelop
+                chm
+                tocfeed
+                epub
+                enhancedchm
+]]>
+      </screen>
+
+      <note>
+        <para>The format packages are provided by separate PEAR packages 
+        (doc.php.net/PhD_Generic, doc.php.net/PhD_IDE, doc.php.net/PhD_PEAR and 
+        doc.php.net/PhD_PHP) where only the Generic is installed by default.
+        </para>
+      </note>
+
+
+      <para>You can tell by the output of the <literal>--list</literal> option
+      that PhD can also be used to render the docs as a PDF file, or as Unix
+      Man Pages.</para>
+
+      <para>To select a format and package, you must use the <literal>-f
+      [formatName]</literal> and <literal>-P [packageName]</literal> options.</para>
+
+      <screen><![CDATA[$ phd -f manpage -P PHP -d .manual.xml]]></screen>
+
+      <para>This command will output the documentation for PHP functions in
+      the Unix Man page format.</para>
+    </section>
+
+    <section xml:id="render-phd-guide">
+      <title>Compiling the PhD guide</title>
+
+      <para>The PhD guide is this manual you are reading currently. It lives
+      in <acronym>PhD</acronym>'s SVN repository under
+      <filename>docs/phd-guide/phd-guide.xml</filename>. If you installed PhD
+      from SVN, you already have it. Otherwise, get it:</para>
+
+      <screen>
+<![CDATA[
+$ svn checkout http://svn.php.net:/repository/phd/trunk/docs/phd-guide
+U phd/docs/phd-guide/phd-guide.xml
+]]>
+      </screen>
+
+      <para>Now you have everything you need. Just type</para>
+
+      <screen>
+<![CDATA[
+$ cd phd/docs/phd-guide/
+$ phd -f bigxhtml -d phd-guide.xml
+]]>
+      </screen>
+
+      <para>There should be an .html file in the directory now. View it with a
+      browser!</para>
+
+      <para>That's all to say. This way you can render your own docbook files,
+      too.</para>
+    </section>
+
+
+    <section xml:id="render-custom">
+      <title>Customizing the rendering results</title>
+
+      <para>PhD lets you specify a number of options to customize the
+      generated documentation files. The following sections describe
+      some of them.</para>
+
+      <section xml:id="render-custom-highlighter">
+	<title>Source code highlighter</title>
+
+	<para>Part of the documentation of programming languages
+	is source code examples. PhD is able to colorize the source
+	code of many types of source code with the help of
+	<emphasis>highlighters</emphasis>.</para>
+
+	<para>To utilize syntax highlighting, your opening
+	<literal>&lt;programlisting&gt;</literal> tags need a
+	<literal>role</literal> attribute describing the type
+	of source code. Examples are <literal>php</literal>,
+	<literal>html</literal> and <literal>python</literal>.</para>
+
+	<note>
+	  <para>PhD currently only highlights the code if it is embedded
+	  in a <literal>CDATA</literal> section.</para>
+	</note>
+
+	<example>
+	  <title>A programlisting tag with a role</title>
+	  <programlisting role="xml"><![CDATA[<programlisting role="php"><![CDATA[
+<?php
+echo "Hello world!";
+?>
+]]>]]&gt;&lt;/programlisting&gt;
+	  </programlisting>
+	</example>
+
+	<para>By default, PhD uses the source code highlighter that
+	is built into PHP itself. It is only able to highlight PHP code
+	and nothing else.</para>
+
+	<para>If your documentation contains other types of source code
+	or markup, like XML, HTML, Javascript or any other language,
+	you should try the
+	<link xlink:href="http://qbnz.com/highlighter/">GeSHi</link>
+	highlighter that is shipped with PhD:</para>
+
+	<orderedlist>
+	  <listitem>
+	   <para>
+	    Install GeSHi from the MediaWiki PEAR channel:
+	   </para>
+	   <screen><![CDATA[$ pear channel-discover mediawiki.googlecode.com/svn
+$ pear install mediawiki/geshi]]></screen>
+	  </listitem>
+
+	  <listitem>
+	   <para>
+	    Use the GeSHi syntax highlighting class when rendering your
+	    documentation:
+	   <screen><![CDATA[$ phd -g 'phpdotnet\phd\Highlighter_GeSHi' -d phd-guide.xml]]></screen>
+	   </para>
+	  </listitem>
+	</orderedlist>
+
+	<para>If you have GeSHi version 1.1.x installed, you should use
+	the <literal>phpdotnet\phd\Highlighter_GeSHi11x</literal> highlighter,
+	which is adapted to GeSHi's new API.
+	</para>
+
+	<para>Apart from using the highlighter shipped with PhD, you
+	can
+	<link linkend="phd-extension-highlighter">build your own highlighters</link>.
+	</para>
+      </section>
+
+    </section>
+
+  </chapter>
+
+
+  <chapter xml:id="docbook-extensions">
+    <title>DocBook extensions</title>
+
+    <para>PhD has been tailored for PHP and PEAR manuals. To make writing
+    documentation as easy as possible, some own tags have been added to the
+    DTD.</para>
+
+    <para>All extensions live in their own XML namespace
+    "<literal>phd:</literal>" which resolves to
+    <uri>http://www.php.net/ns/phd</uri>. When using one of the attributes or
+    tags described here, remember to set the namespace:</para>
+
+    <programlisting>xmlns:phd="http://www.php.net/ns/phd"</programlisting>
+
+    <section xml:id="ext-general">
+      <title>General DocBook extensions</title>
+
+      <para>The extensions listed here are available in all PhD themes and
+      formats.</para>
+
+      <section xml:id="ext-phd-chunk">
+        <title>Manual chunking with "phd:chunk" (Attribute)</title>
+
+        <para>PhD automatically chooses which sections, chapters or other tags
+        get their own file (chunk) when using a chunked theme. Sometimes the
+        result of this automatism is not optimal and you want to fine-tune it.
+        The attribute "phd:chunk" is offered as solution by PhD.</para>
+
+        <section>
+          <title>Allowed values</title>
+
+          <para><literal>phd:chunk</literal> may have values
+          <literal>true</literal> and <literal>false</literal>. They force the
+          element to be chunked or not.</para>
+        </section>
+
+        <section>
+          <title>Allowed in</title>
+
+          <para><literal>phd:chunk</literal> may be used in every tag that
+          accepts <link
+          xlink:href="http://www.docbook.org/tdg5/en/html/ref-elements.html#common.attributes">db.common.attributes</link>.</para>
+        </section>
+
+        <section>
+          <title>Example</title>
+
+          <programlisting role="xml">
+<![CDATA[
+<?xml version="1.0" encoding="utf-8"?>
+<preface xmlns="http://docbook.org/ns/docbook"
+ xmlns:phd="http://www.php.net/ns/phd"
+ xml:id="preface"
+ phd:chunk="false"
+>
+ <info>
+  <title>Preface</title>
+ ..
+ </info>
+ ..
+</preface>
+]]>
+          </programlisting>
+        </section>
+      </section>
+
+      <section xml:id="ext-phd-toc">
+        <title>Generating Table Of Contents: &lt;phd:toc&gt; (Tag)</title>
+
+        <para>To manually insert a Table Of Contents (TOC) that creates a list
+        of links to children elements of a specified tag.</para>
+
+        <para>phd:toc-depth</para>
+
+        <section>
+          <title>Allowed in</title>
+
+          <para><literal>&lt;phd:toc&gt;</literal> is can be used everywhere
+          <literal>&lt;para&gt;</literal> is allowed.</para>
+        </section>
+
+        <section>
+          <title>Children</title>
+
+          <para>You can add a title with
+          <literal>&lt;title&gt;</literal>.</para>
+        </section>
+
+        <section>
+          <title>Attributes</title>
+
+          <table>
+            <title>Attributes for &lt;phd:toc&gt;</title>
+
+            <tgroup cols="3">
+              <thead>
+                <row>
+                  <entry>Attribute name</entry>
+
+                  <entry>Description</entry>
+
+                  <entry>Default value</entry>
+                </row>
+              </thead>
+
+              <tbody>
+                <row>
+                  <entry>phd:element</entry>
+
+                  <entry>ID of the element whose children shall be
+                  linked</entry>
+
+                  <entry><emphasis>none</emphasis></entry>
+                </row>
+
+                <row>
+                  <entry>phd:toc-depth</entry>
+
+                  <entry>Depth of the TOC/Number of levels</entry>
+
+                  <entry><literal>1</literal></entry>
+                </row>
+              </tbody>
+            </tgroup>
+          </table>
+        </section>
+      </section>
+    </section>
+
+    <section xml:id="ext-pear">
+      <title>PEAR specific DocBook extensions</title>
+
+      <para>The DocBook extensions listed here are only available when using a
+      PEAR theme.</para>
+
+      <section xml:id="ext-phd-pearapi" xml:lang="">
+        <title>Linking to PEAR API documentation: &lt;phd:pearapi&gt;
+        (Tag)</title>
+
+        <para>A large part of the PEAR manual is about packages and how to use
+        them. Package authors often find they need to link to the API
+        documentation of a specific method, variable or class of their
+        package. To ease the linking process, the
+        <literal>&lt;phd:pearapi&gt;</literal> tag was introduced.</para>
+
+        <para>You can let PhD automatically create the link text by just
+        closing the tag, or specify the tag text via the tag's content.</para>
+
+        <section>
+          <title>Package links</title>
+
+          <para><literal>phd:package</literal> name is put into the attribute,
+          any text:</para>
+
+          <programlisting role="xml">
+<![CDATA[
+<phd:pearapi phd:package="HTML_QuickForm"/>
+<phd:pearapi phd:package="HTML_QuickForm">some text</phd:pearapi>
+]]>
+          </programlisting>
+
+          <screen><link
+              xlink:href="http://pear.php.net/package/HTML_QuickForm/docs/latest/li_HTML_QuickForm.html">HTML_QuickForm</link>
+<link xlink:href="http://pear.php.net/package/HTML_QuickForm/docs/latest/li_HTML_QuickForm.html">some text</link></screen>
+        </section>
+
+        <section>
+          <title>Class links</title>
+
+          <para>Class name as <literal>phd:linkend</literal> attribute
+          value.</para>
+
+          <programlisting role="xml">
+<![CDATA[
+<phd:pearapi phd:package="HTML_QuickForm" phd:linkend="HTML_QuickForm_element"/>
+<phd:pearapi phd:package="HTML_QuickForm" phd:linkend="HTML_QuickForm_element">some text</phd:pearapi>
+]]>
+          </programlisting>
+
+          <screen><link
+              xlink:href="http://pear.php.net/package/HTML_QuickForm/docs/latest/HTML_QuickForm/HTML_QuickForm_element.html">HTML_QuickForm_element</link>
+<link xlink:href="http://pear.php.net/package/HTML_QuickForm/docs/latest/HTML_QuickForm/HTML_QuickForm_element.html">some text</link></screen>
+        </section>
+
+        <section>
+          <title>Class method links</title>
+
+          <para>Class and method name as <literal>phd:linkend</literal> text,
+          separated by a double colon.</para>
+
+          <programlisting role="xml">
+<![CDATA[
+<phd:pearapi phd:package="HTML_QuickForm" phd:linkend="HTML_QuickForm_element::setName"/>
+<phd:pearapi phd:package="HTML_QuickForm" phd:linkend="HTML_QuickForm_element::setName">some text</phd:pearapi>
+]]>
+          </programlisting>
+
+          <screen><link
+              xlink:href="http://pear.php.net/package/HTML_QuickForm/docs/latest/HTML_QuickForm/HTML_QuickForm_element.html#methodsetName">HTML_QuickForm_element::setName()</link>
+<link xlink:href="http://pear.php.net/package/HTML_QuickForm/docs/latest/HTML_QuickForm/HTML_QuickForm_element.html#methodsetName">some text</link></screen>
+        </section>
+
+        <section>
+          <title>Class variable links</title>
+
+          <para>Class and variable name as <literal>phd:linkend</literal>
+          text, separated by a double colon and a dollar sign before the
+          variable name.</para>
+
+          <programlisting role="xml">
+<![CDATA[
+<phd:pearapi phd:package="Net_Geo" phd:linkend="Net_Geo::$cache_ttl"/>
+<phd:pearapi phd:package="Net_Geo" phd:linkend="Net_Geo::$cache_ttl">some text</phd:pearapi>
+]]>
+          </programlisting>
+
+          <screen><link
+              xlink:href="http://pear.php.net/package/Net_Geo/docs/latest/Net_Geo/Net_Geo.html#var$cache_ttl">Net_Geo::$cache_ttl</link>
+<link xlink:href="http://pear.php.net/package/Net_Geo/docs/latest/Net_Geo/Net_Geo.html#var$cache_ttl">some text</link></screen>
+        </section>
+      </section>
+    </section>
+  </chapter>
+
+
+
+  <chapter xml:id="phd-extension">
+    <title>Extending PhD</title>
+
+    <para>Written in PHP, PhD is easy to hack on and easy to extend.
+    It provides command line parameters to use custom code
+    without changing PhD internals, like source code highlighters.</para>
+
+    <section xml:id="phd-extension-highlighter">
+      <title>Writing an own syntax highlighter</title>
+
+      <para>A syntax highlighter for PhD is nothing more than a simple
+      PHP class that has two methods, a <literal>factory</literal>
+      and <literal>highlight</literal>.</para>
+
+      <para><literal>factory</literal> is static and takes the format name
+      (i.e. <literal>pdf</literal>, <literal>xhtml</literal>,
+      <literal>troff</literal>) as only parameter. It returns
+      the highlighter instance object for the given format.
+      The method is called for each output format the documentation
+      is rendered to.</para>
+
+      <para><literal>highlight</literal> takes three parameters,
+      <literal>text</literal>, <literal>role</literal> and
+      <literal>format</literal>.
+      It is called whenever a piece of source code needs to be highlighted
+      and expects the highlighted source code to be returned in whatever
+      format the current rendering format is expected to be.</para>
+
+      <para>Take a look at the provided highlighters,
+      <literal>phpdotnet\phd\Highlighter</literal>,
+      <literal>phpdotnet\phd\Highlighter_GeSHi</literal> and
+      <literal>phpdotnet\phd\Highlighter_GeSHi11x</literal>.
+      They will serve as good examples how to implement your own
+      highlighter.</para>
+
+      <para>Once you wrote your custom source code highlighting
+      class, it's time to
+      <link linkend="render-custom-highlighter">try it out</link>.</para>
+    </section>
+  </chapter>
+
+
+
+  <appendix xml:id="links">
+    <title>Links</title>
+
+    <para>Some other articles for further reading. Latest are on top.</para>
+
+    <itemizedlist>
+      <listitem>
+        <para><link
+        xlink:href="http://elizabethmariesmith.com/2009/02/setting-up-phd-on-windows/">Setting
+        up PhD on Windows</link> by Elizabeth Marie Smith (PhD 0.4.5)</para>
+      </listitem>
+
+      <listitem>
+        <para><link
+        xlink:href="http://bjori.blogspot.com/2007/10/phd-php-based-docbook-renderer-rc1.html">PhD
+        0.1RC1 released</link> by Hannes Magnusson (PhD 0.1RC1)</para>
+      </listitem>
+    </itemizedlist>
+  </appendix>
+</book>

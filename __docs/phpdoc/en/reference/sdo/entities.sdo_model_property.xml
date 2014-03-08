@@ -1,0 +1,6 @@
+&reference.sdo.sdo-model-property.getContainingType;
+&reference.sdo.sdo-model-property.getDefault;
+&reference.sdo.sdo-model-property.getName;
+&reference.sdo.sdo-model-property.getType;
+&reference.sdo.sdo-model-property.isContainment;
+&reference.sdo.sdo-model-property.isMany;

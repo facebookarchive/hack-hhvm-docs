@@ -1,0 +1,12 @@
+&reference.apache.functions.apache-child-terminate;
+&reference.apache.functions.apache-get-modules;
+&reference.apache.functions.apache-get-version;
+&reference.apache.functions.apache-getenv;
+&reference.apache.functions.apache-lookup-uri;
+&reference.apache.functions.apache-note;
+&reference.apache.functions.apache-request-headers;
+&reference.apache.functions.apache-reset-timeout;
+&reference.apache.functions.apache-response-headers;
+&reference.apache.functions.apache-setenv;
+&reference.apache.functions.getallheaders;
+&reference.apache.functions.virtual;

@@ -1,0 +1,6 @@
+&reference.sqlite3.sqlite3result.columnname;
+&reference.sqlite3.sqlite3result.columntype;
+&reference.sqlite3.sqlite3result.fetcharray;
+&reference.sqlite3.sqlite3result.finalize;
+&reference.sqlite3.sqlite3result.numcolumns;
+&reference.sqlite3.sqlite3result.reset;

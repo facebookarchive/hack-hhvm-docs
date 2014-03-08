@@ -1,0 +1,3 @@
+&reference.mongo.mongopool.getsize;
+&reference.mongo.mongopool.info;
+&reference.mongo.mongopool.setsize;

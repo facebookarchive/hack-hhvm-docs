@@ -1,0 +1,15 @@
+&reference.pdo.pdo.begintransaction;
+&reference.pdo.pdo.commit;
+&reference.pdo.pdo.construct;
+&reference.pdo.pdo.errorcode;
+&reference.pdo.pdo.errorinfo;
+&reference.pdo.pdo.exec;
+&reference.pdo.pdo.getattribute;
+&reference.pdo.pdo.getavailabledrivers;
+&reference.pdo.pdo.intransaction;
+&reference.pdo.pdo.lastinsertid;
+&reference.pdo.pdo.prepare;
+&reference.pdo.pdo.query;
+&reference.pdo.pdo.quote;
+&reference.pdo.pdo.rollback;
+&reference.pdo.pdo.setattribute;

@@ -1,0 +1,10 @@
+&reference.sdo.sdo-model-type.getBaseType;
+&reference.sdo.sdo-model-type.getName;
+&reference.sdo.sdo-model-type.getNamespaceURI;
+&reference.sdo.sdo-model-type.getProperties;
+&reference.sdo.sdo-model-type.getProperty;
+&reference.sdo.sdo-model-type.isAbstractType;
+&reference.sdo.sdo-model-type.isDataType;
+&reference.sdo.sdo-model-type.isInstance;
+&reference.sdo.sdo-model-type.isOpenType;
+&reference.sdo.sdo-model-type.isSequencedType;

@@ -1,0 +1,11 @@
+&reference.swish.book;
+&reference.swish.classes;
+&reference.swish.constants;
+&reference.swish.entities.Swish;
+&reference.swish.entities.SwishResult;
+&reference.swish.entities.SwishResults;
+&reference.swish.entities.SwishSearch;
+&reference.swish.examples;
+&reference.swish.reference;
+&reference.swish.setup;
+&reference.swish.versions;

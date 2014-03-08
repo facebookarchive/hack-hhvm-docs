@@ -1,0 +1,1103 @@
+<?xml version="1.0" encoding="utf-8"?>
+<chapter xml:id="hack.nullable">
+  <title>Nullable</title>
+  <para>
+    Hack introduces a safer way to deal with nulls through a concept known as the &quot;Nullable&quot; type (sometimes called &quot;maybe&quot; or &quot;option&quot;). Nullable allows any type to have <literal>null</literal> assigned and checked on it. Nullable is very useful for primitive types that don't generally allow <literal>null</literal> as one of their values, such as <literal>bool</literal> and <literal>int</literal>, but it can be also be useful for user-defined classes. Below is an example. Note the <literal>?</literal> operand used to represent nullable.
+    <informalexample>
+      <programlisting role="php">
+<![CDATA[
+<?hh
+function check_not_null(?int $x): int {
+if ($x === null) {
+  return -1;
+}
+else {
+  return $x;
+}
+}
+]]>
+      </programlisting>
+    </informalexample>
+  </para>
+  <para>
+    <literal>check_not_null()</literal> takes a nullable <literal>int</literal> as a parameter. This <literal>int</literal> can now be checked for <literal>null</literal> within the code, and appropriate action can be taken.
+  </para>
+  <para>
+    Nullables are useful when a possible invalid state for a primitive (value) type is required. A <literal>bool</literal> could be a common scenario where <literal>true</literal> or <literal>false</literal> has possibly not been determined yet. Or when null may be returned from a database that maps a column to a primitive type.
+  </para>
+
+  <sect1 xml:id="hack.nullable.why">
+    <title>Why Nullable?</title>
+    <para>
+      It is true that in vanilla PHP <literal>null</literal> can currently be assigned to any variable. For example:
+      <informalexample>
+        <programlisting role="php">
+<![CDATA[
+class Foo {
+  $x = null;
+}
+]]>
+        </programlisting>
+        <para>
+          <literal>$x</literal> is assigned to <literal>null</literal>. And, of course, checks can be made programmatically to see if <literal>$x</literal> is <literal>null</literal>
+        </para>
+        <programlisting role="php">
+<![CDATA[
+<?php
+class Foo {
+  protected $x = null;
+ 
+  public function bar() {
+    if ($this->x === null) {
+      echo "Null 1";
+    }
+ 
+    if (is_null($this->x)) {
+      echo "Null 2";
+    }
+  }
+}
+]]>
+        </programlisting>
+      </informalexample>
+    </para>
+    <para>
+      So what exactly is the Hack nullable feature trying to solve? In a statically-typed language such as C#, <literal>null</literal> cannot be assigned to a primitive like an <literal>int</literal>. Hack's primary purpose is to check type annotated PHP code, bringing a statically-typed feel to PHP. Taking the above example and &quot;hackifying&quot; it, the Hack type checker will complain, as it should since <literal>null</literal> is not in the range of values for <literal>int</literal>.
+      <informalexample>
+        <programlisting role="php">
+<![CDATA[
+<?hh
+ 
+class Foo {
+  int $x = null;
+ 
+  public function bar() {
+    if ($this->x === null) {
+      echo "Null 1";
+    }
+ 
+    if (is_null($this->x)) {
+      echo "Null 2";
+    }
+  }
+}
+]]>
+        </programlisting>
+        &example.outputs;
+        <screen>
+<![CDATA[
+File "NullableDoc.php", line 5, characters 13-15:
+Wrong type hint
+File "NullableDoc.php", line 5, characters 13-15:
+This is an int
+File "NullableDoc.php", line 5, characters 22-25:
+It is incompatible with a nullable type
+]]>
+        </screen>
+      </informalexample>
+    </para>
+    <para>
+      Nullables are useful when a possible invalid state for a primitive (value) type is required. For example, a <literal>bool</literal> could be a common scenario where <literal>true</literal> or <literal>false</literal> has possibly not been determined yet. Here is an example: 
+      <informalexample>
+        <programlisting role="php">
+<![CDATA[
+<?hh
+ 
+class NullableBool {
+  public function boolMayBeNull(?bool $b): string {
+    if ($b === null) {
+      return "Null";
+    }
+    else if ($b === true) {
+      return "True";
+    }
+    else {
+      return "False";
+    }
+  }
+}
+ 
+function main_nt() {
+  $nb = new NullableBool();
+  $x = $nb->boolMayBeNull(true);
+  $y = $nb->boolMayBeNull(false);
+  $z = $nb->boolMayBeNull(null);
+  var_dump($x);
+  var_dump($y);
+  var_dump($z);
+}
+ 
+main_nt();
+]]>
+        </programlisting>
+        &example.outputs;
+        <screen>
+<![CDATA[
+string(4) "True"
+string(5) "False"
+string(4) "Null"
+]]>
+        </screen>
+      </informalexample>
+    </para>
+    <para>
+      A real-world scenario when a primitive type may not have a defined state is in a database. For example, if there is a database column that is defined as an <literal>int</literal>, there could be times when values in that column may not have been set yet. Nullable allows code to handle those cases.
+    </para>
+  </sect1>
+
+  <sect1 xml:id="hack.nullable.whynotalwaysuse">
+    <title>Why Not Always Use Nullable?</title>
+    <para>
+      It may seem like using nullable should just be the default for primitives, just in case there is some sort of null state. However, many times it is reasonable to guarantee that a variable will be initialized, and, if somehow the variable is <literal>null</literal>, a serious problem has occurred. For example:
+      <informalexample>
+        <programlisting role="php">
+<![CDATA[
+<?hh
+ 
+class NullableNotAppropriate {
+  public function noNullableNeeded(): ?int {
+    $vec = Vector{3};
+    return $vec->count();
+  }
+}
+ 
+function main_nt() {
+  $nna = new NullableNotAppropriate();
+  $y = $nna->noNullableNeeded();
+  var_dump($y);
+}
+ 
+main_nt();
+]]>
+        </programlisting>
+        <para>
+          There is certainly nothing technically wrong with the above code. <literal>?int</literal> can be used as the return type annotation and Hack (nor HHVM) will not complain. However, the <literal>?int</literal> is too relaxed. While this example is contrived, there is no way that <literal>$vec->count()</literal> will ever be <literal>null</literal>. And if it ever is, then something is wrong with the <literal>Vector</literal> implementation or the runtime. </para>
+      </informalexample>
+    </para>
+  </sect1>
+  <sect1 xml:id="hack.nullable.casestudy">
+    <title>Case Study</title>
+    <para>
+      Do not use nullable solely for convenience or to just get rid of those "annoying" Hack errors. Be judicious, particularly in core code. Here is a real world case study:
+      <blockquote>
+        <para>
+          I've seen several core functions that have been typed to accept and return nullable types that handle <literal>null</literal> solely for convenience (<literal>array_invert</literal> was the most recent). This effectively taints all values going through these functions as nullable even though the caller may have had a stronger guarantee.
+        </para>
+        <para>
+          For example, if I take care to have a non-null array and pass it to <literal>array_invert</literal> (whose signature is <literal>function array_invert(?array $a): ?array</literal>), Hack now has to deal with nullability of the return value. In practice, this leads to <literal>nullthrows</literal>/<literal>invariant</literal> calls in the callers of <literal>array_invert</literal>, spreading the $&amp;*% everywhere as we've come to affectionally call it. In this particular case it also places extra burden on callers that are working with (statically) non-null values and leveraging Hack's powerful analysis.
+        </para>
+        <para>
+          Sometimes it is appropriate to allow <literal>null</literal>. If a healthy majority of the callers expect to pass in and receive back nullable values, that is a good case to make for allowing <literal>null</literal>. That's where the judgement call comes in. Otherwise, pruning out nullability helps us write more cohesive functions and reduces the state space complexity of our programs. 
+        </para>
+      </blockquote>
+    </para>
+  </sect1>
+
+  <sect1 xml:id="hack.nullable.examples">
+    <title>Examples</title>
+    <para>
+      The following show some examples of using nullables, including showing what happens when <literal>null</literal> is passed to or returned from a method where <literal>null</literal> is not an expected value.
+    </para>
+    <sect2 xml:id="hack.nullable.examples.returningnullable">
+      <title>Returning a Nullable</title>
+      <para>
+        Here is a quick example that type checks correctly in Hack and produces valid output with HHVM: </para>
+      <informalexample>
+        <programlisting role="php">
+<![CDATA[
+<?hh
+ 
+class NullableTest {
+  public function mayReturnNull(int $x): ?int {
+    if ($x > 5) {
+      return 5;
+    }
+    else {
+      return null;
+    }
+  }
+}
+ 
+function main_nt() {
+  $nt = new NullableTest();
+  $y = $nt->mayReturnNull(10);
+  var_dump($y);
+  $y = $nt->mayReturnNull(4);
+  var_dump($y);
+}
+ 
+main_nt();
+]]>
+        </programlisting>
+        &example.outputs;
+        <screen>
+<![CDATA[
+int(5)
+NULL
+]]>
+        </screen>
+        <para>
+          Without nullable, the Hack type checker would balk. For example, if <literal>?</literal> was left out of the annotated return type, Hack would give an invalid return type error. Here is the incorrect code and the Hack error output: 
+        </para>
+        <programlisting role="php">
+<![CDATA[
+<?hh
+class NullableTest {
+  public function mayReturnNull(int $x): int {
+    if ($x > 5) {
+      return 5;
+    }
+    else {
+      return null;
+    }
+  }
+}
+ 
+function main_nt() {
+  $nt = new NullableTest();
+  $y = $nt->mayReturnNull(10);
+  var_dump($y);
+  $y = $nt->mayReturnNull(4);
+  var_dump($y);
+}
+ 
+main_nt();
+]]>
+        </programlisting>
+        &example.outputs;
+        <screen>
+<![CDATA[
+File "NullableTest.php", line 9, characters 14-17:
+Invalid return type
+File "NullableTest.php", line 4, characters 42-44:
+This is an int
+File "NullableTest.php", line 9, characters 14-17:
+It is incompatible with a nullable type
+]]>
+        </screen>
+        <para>
+          However, the above example will still run correctly since HHVM drops the return type annotations at runtime. So, the runtime output would be the same as the example that correctly uses nullable. 
+        </para>
+        &example.outputs;
+        <screen>
+<![CDATA[
+int(5)
+NULL
+]]>         
+        </screen>
+      </informalexample>
+    </sect2>
+    <sect2 xml:id="hack.nullable.examples.xhp">
+      <title>Nullable and XHP</title>
+      <para>
+        Nullable works with XHP elements as well.
+        <informalexample>
+          <programlisting role="php">
+<![CDATA[
+<?hh
+class NullableTest {
+  public function mayReturnNull(int $x): ?Xhp {
+    if ($x > 5) {
+      return <ui:div> Hello World </ui:div>;
+    }
+    else {
+      return null;
+    }
+  }
+}
+ 
+function main_nt() {
+  $nt = new NullableTest();
+  $y = $nt->mayReturnNull(10);
+  var_dump($y);
+  $y = $nt->mayReturnNull(4);
+  var_dump($y);
+}
+ 
+main_nt();
+]]>
+          </programlisting>
+        </informalexample>
+      </para>
+    </sect2>
+    <sect2 xml:id="hack.nullable.examples.methodparameter">
+      <title>Nullable Method Parameter</title>
+      <para>
+        Here is the example above enhanced with a new function that takes a nullable as a parameter:
+        <informalexample>
+          <programlisting role="php">
+<![CDATA[
+<?hh
+class NullableTest {
+  public function mayReturnNull(int $x): ?int {
+    if ($x > 5) {
+      return 5;
+    }
+    else {
+      return null;
+    }
+  }
+ 
+  public function nullableParameter(?int $x): int {
+    if (is_null($x)) {
+      return 100;
+    }
+    else {
+      return -1;
+    }
+  }
+}
+ 
+function main_nt() {
+  $nt = new NullableTest();
+  $y = $nt->mayReturnNull(10);
+  var_dump($y);
+  $y = $nt->mayReturnNull(4);
+  var_dump($y);
+ 
+  $z = $nt->nullableParameter(10);
+  var_dump($z);
+  $z = $nt->nullableParameter(null);
+  var_dump($z);
+}
+ 
+main_nt();
+]]>
+          </programlisting>
+          &example.outputs;
+          <screen>
+<![CDATA[
+int(5)
+NULL
+int(-1)
+int(100)
+]]>
+          </screen>
+          <para>
+            Now, if the nullable is taken away from the parameter in <literal>nullableParameter()</literal>, Hack will balk. 
+          </para>
+          <programlisting role="php">
+<![CDATA[
+<?hh
+class NullableTest {
+  public function mayReturnNull(int $x): ?int {
+    if ($x > 5) {
+      return 5;
+    }
+    else {
+      return null;
+    }
+  }
+ 
+  public function nullableParameter(int $x): int {
+    if (is_null($x)) {
+      return 100;
+    }
+    else {
+      return -1;
+    }
+  }
+}
+ 
+function main_nt() {
+  $nt = new NullableTest();
+  $y = $nt->mayReturnNull(10);
+  var_dump($y);
+  $y = $nt->mayReturnNull(4);
+  var_dump($y);
+ 
+  $z = $nt->nullableParameter(10);
+  var_dump($z);
+  $z = $nt->nullableParameter(null);
+  var_dump($z);
+}
+ 
+main_nt();
+]]>
+          </programlisting>
+          &example.outputs;
+          <screen>
+<![CDATA[
+File "NullableTest.php", line 32, characters 31-34:
+Invalid argument
+File "NullableTest.php", line 13, characters 37-39:
+This is an int
+File "NullableTest.php", line 32, characters 31-34:
+It is incompatible with a nullable type
+]]>
+          </screen>
+          <para>
+            In fact, HHVM will also balk when trying to run the above code without nullable in the parameter of <literal>nullableParameter()</literal>.
+          </para>
+          &example.outputs;
+          <screen>
+<![CDATA[
+int(5)
+NULL
+int(-1)
+HipHop Fatal error: Argument 1 passed to NullableTest::nullableParameter() must be an instance of int, null given in NullableTest.php on line 20
+]]>
+          </screen>
+          <para>
+            The reason that HHVM throws an error is due to the scalar type annotating capability on function parameters that is built into the runtime. An interesting &quot;fix&quot; to this particular issue is to provide <literal>null</literal> as the default value to the parameter <literal>$x</literal>. However, doing this will very appropriately cause Hack to balk.
+          </para>
+          <programlisting role="php">
+<![CDATA[
+<?hh
+class NullableTest {
+  public function mayReturnNull(int $x): ?int {
+    if ($x > 5) {
+      return 5;
+    }
+    else {
+      return null;
+    }
+  }
+ 
+  public function nullableParameter(int $x = null): int {
+    if (is_null($x)) {
+      return 100;
+    }
+    else {
+      return -1;
+    }
+  }
+}
+ 
+function main_nt() {
+  $nt = new NullableTest();
+  $y = $nt->mayReturnNull(10);
+  var_dump($y);
+  $y = $nt->mayReturnNull(4);
+  var_dump($y);
+ 
+  $z = $nt->nullableParameter(10);
+  var_dump($z);
+  $z = $nt->nullableParameter(null);
+  var_dump($z);
+}
+ 
+main_nt();
+]]>
+          </programlisting>
+          &example.outputs;
+          <screen>
+<![CDATA[
+File "NullableTest.php", line 13, characters 37-39:
+Please add a ?, this argument can be null
+]]>
+          </screen>
+          <para>
+            However, running this code will actually work just fine with HHVM.
+          </para>
+          &example.outputs;
+          <screen>
+<![CDATA[
+int(5)
+NULL
+int(-1)
+int(100)
+]]>
+          </screen>
+          <para>
+            This &quot;fix&quot; should be used with extreme caution since it is not <emphasis>type correct</emphasis> to assign <literal>null</literal> to a variable that is expecting an <literal>int</literal>. The PHP language allows this; that does not mean it is the right thing to do.
+          </para>
+        </informalexample>
+      </para>
+    </sect2>
+    <sect2 xml:id="hack.nullable.examples.userdefinedtypes">
+      <title>User-defined Types</title>
+      <para>
+        It is worth noting that nullable can be used on user-defined types. Take this example: 
+        <informalexample>
+          <programlisting role="php">
+<![CDATA[
+<?hh
+ 
+class UserDefinedType {}
+class NullableUserDefinedType {
+  public function userDefinedTypeMayBeNull(?UserDefinedType $udt): string {
+    if ($udt === null) {
+      return "Null";
+    }
+    else {
+      return "I'm Set";
+    }
+  }
+}
+ 
+function main_nt() {
+  $nb = new NullableUserDefinedType();
+  $x = $nb->userDefinedTypeMayBeNull(null);
+  $y = $nb->userDefinedTypeMayBeNull(new UserDefinedType());
+  var_dump($x);
+  var_dump($y);
+}
+ 
+main_nt();
+]]>
+          </programlisting>
+          &example.outputs;
+          <screen>
+<![CDATA[
+string(4) "Null"
+string(7) "I'm Set"
+]]>
+          </screen>
+          <para>
+            There are no complaints by Hack nor HHVM with the above code. However, remove the <literal>?</literal> from the <literal>UserDefinedType $udt</literal> method parameter, HHVM will then balk as it did in the nullable parameter example above.
+          </para>
+        </informalexample>
+      </para>
+    </sect2>
+    <sect2 xml:id="hack.nullable.examples.realworld">
+      <title>Real world code</title>
+      <para>
+        There was an example at a company where nullable came into play (there are probably many examples, but this is a specific one that can demonstrate the use of nullable quite well). The original code looked like this:
+        <informalexample>
+          <para><emphasis>Caller</emphasis></para>
+          <programlisting role="php">
+<![CDATA[
+function updateA($key,
+                 $value,
+                 $reviewer_unixname = null,
+                 $comments = null,
+                 $value_check = null,
+                 $set_reviewer_required = false,
+                 $diff = null,
+                 $diff_id = null,
+                 $author_unixname = null) {
+ 
+// Assume, after a bunch of code above this statement, that $comments is still null
+create_updateA($key, $comments);
+]]>
+          </programlisting>
+          <para><emphasis>Callee</emphasis></para>
+          <programlisting role="php">
+<![CDATA[
+function create_updateA(string $key, string $comments) {
+  $comments = ($comments === '')
+    ? 'Updated without comments.'
+    : 'Updated with the following comments: ' . $comments;
+ 
+  $vc = VC();
+  $ua = get_update_array($key, $comments);
+ 
+  regsiter(array('A', 'B'), $vc, $ua, 'update');
+}
+]]>
+          </programlisting>
+          <para>
+            Hack complained about this code with the following message (line numbers may not be accurate): 
+          </para>
+          &example.outputs;
+          <screen>
+<![CDATA[
+File "RealWorldNullable.php", line 13, characters 43-51:
+Invalid argument
+File "RealWorldNullable.php", line 23, characters 57-62:
+This is a string
+File "RealWorldNullable.php", line 7, characters 38-41:
+It is incompatible with a nullable type
+]]>
+          </screen>
+          <para>
+            And, in fact, HHVM would complain about this code as well, since passing <literal>null</literal> to a function with a <literal>string</literal> type annotated parameter will cause an exception. 
+          </para>
+          &example.outputs;
+          <screen>
+<![CDATA[
+HipHop Fatal error: Argument 2 passed to create_updateA() must be an instance of string, null given in RealWorldNullable.php on line 37
+]]>
+          </screen>
+          <para>
+            The <literal>$comments</literal> parameter in <literal>create_updateA()</literal> has been type annotated with a <literal>string</literal>. However, the caller <literal>function updateA()</literal> had set the <literal>string</literal> to be passed to <literal>create_updateA()</literal> as <literal>null</literal>. There were two ways to solve this problem. The good way and the bad way. The &quot;good&quot; way to solve this problem (and the one that was actually implemented and accepted at this company) is to use nullable.
+          </para>
+          <programlisting role="php">
+<![CDATA[
+function create_updateA(string $key, ?string $comments) {
+  $comments = ($comments === '')
+    ? 'Updated without comments.'
+    : 'Updated with the following comments: ' . $comments;
+ 
+  $vc = VC();
+  $ua = get_update_array($key, $comments);
+ 
+  regsiter(array('A', 'B'), $vc, $ua, 'update');
+}
+]]>
+          </programlisting>
+          <para>
+            The above solution solves both the Hack and HHVM complaints that was seen without nullable. The &quot;bad&quot; way would solve the HHVM problem, but not the Hack problem. Basically, provide <literal>$comments</literal> in <literal>create_updateA()</literal> a default value of <literal>null</literal>. </para>
+          <programlisting role="php">
+<![CDATA[
+function create_updateA(string $key, string $comments = null) {
+  $comments = ($comments === '')
+    ? 'Updated without comments.'
+    : 'Updated with the following comments: ' . $comments;
+ 
+  $vc = VC();
+  $ua = get_update_array($key, $comments);
+ 
+  regsiter(array('A', 'B'), $vc, $ua, 'update');
+}
+]]>
+          </programlisting>
+          <para>
+            Again, as shown in the example above on nullable method parameters, using a default value of <literal>null</literal> in this case is not type correct and should not be done under normal circumstances. 
+          </para>
+        </informalexample>
+      </para>
+    </sect2>
+  </sect1>
+
+  <sect1 xml:id="hack.nullable.scenarios">
+    <title>Various Null Handling Scenarios</title>
+    <para>
+      This section will discuss various use-cases and scenarios that one
+      may come across using nullables.
+    </para>
+    <sect2 xml:id="hack.nullable.scenarios.nullmembervariables">
+      <title>Null Member Variables</title>
+      <para>
+        These can be common Hack typing errors, and actually quite frustrating.
+        <informalexample>
+          &example.outputs;
+          <screen>
+<![CDATA[
+File "null_member_variable.php", line 15, characters 17-19:
+You are trying to access the member get but this object can be null.
+File "null_member_variable.php", line 11, characters 11-18:
+This is what makes me believe it can be null
+]]>
+          </screen>
+          &example.outputs;
+          <screen>
+<![CDATA[
+File "null_member_variable.php", line 16, characters 14-21:
+Invalid return type
+File "null_member_variable.php", line 12, characters 26-28:
+This is an int
+File "null_member_variable.php", line 11, characters 11-18:
+It is incompatible with a nullable type
+File "null_member_variable.php", line 15, characters 7-21:
+All the local information about the member x has been invalidated during this call.
+This is a limitation of the type-checker, use a local if that's the problem.
+]]>
+          </screen>
+        </informalexample>
+      </para>
+      <para>
+        Take this example:
+        <informalexample>
+          <programlisting role="php">
+<![CDATA[
+<?hh
+ 
+class BizBang {
+  public function get(): int {
+    return time();
+  }
+}
+ 
+class NullMemVar {
+  private ?BizBang $x;
+  public function foo(): BizBang {
+    if ($this->x !== null) {
+      $a = $this->x->get();
+      $b = $this->x->get();
+      if ($b - $a < 1) {
+        return $this->x;
+      }
+    }
+    return new BizBang();
+  }
+}
+ 
+function main_nmv() {
+  $c = new NullMemVar();
+  var_dump($c->foo());
+}
+ 
+main_nmv();
+]]>
+          </programlisting>
+          <para>
+            When the Hack type checker is run on the above code, the first error above is thrown. Wait?!? The <literal>if</literal> statement in <literal>foo()</literal> checks if <literal>$this->x</literal> is <literal>null</literal>. Why does Hack think this member variable might be <literal>null</literal> now on the call to <literal>get()</literal>?         Even though there was an explicit check to see if <literal>$this->x</literal> is <literal>null</literal>, the Hack type checker cannot provably guarantee that the first call to <literal></literal> did not <emphasis>reset</emphasis> <literal>$this->x</literal> back to <literal>null</literal>. Thus the second call to <literal></literal> could, theoretically, be done with <literal>$this->x</literal> being <literal>null</literal>. Even if practically the function call will not set the member variable to <literal>null</literal>, the Hack type checker is very restrictive in this case.         To get around this "limitation" in the type checker with respect to nullable types, use one or a combination of:
+            <itemizedlist>
+              <listitem>
+                <para>
+                  a local variable
+                </para>
+              </listitem>
+              <listitem>
+                <para>
+                  <literal>nullthrows()</literal>
+                </para>
+              </listitem>
+              <listitem>
+                <para>
+                  <literal>invariant()</literal>
+                </para>
+              </listitem>
+            </itemizedlist>
+          </para>
+          <para>
+            Here is how to write the above code to make sure the Hack type checker is happy:
+          </para>
+          <programlisting role="php">
+<![CDATA[
+<?hh
+ 
+class BizBang {
+  public function get(): int {
+    return time();
+  }
+}
+ 
+class NullMemVar {
+  private ?BizBang $x;
+  public function foo(): BizBang {
+    $local_for_x = $this->x;
+    if ($local_for_x !== null) {
+      $a = $local_for_x->get();
+      $b = $local_for_x->get();
+      if ($b - $a < 1) {
+        return $local_for_x;
+      }
+    }
+    return new BizBang();
+  }
+}
+ 
+function main_nmv() {
+  $c = new NullMemVar();
+  var_dump($c->foo());
+}
+ 
+main_nmv();
+]]>
+          </programlisting>
+          <para>
+            Notice how a local variable to <literal>foo()</literal> called <literal>$local_for_x</literal> is assigned to the class member variable. Now, it is provable that <literal>$local_for_x</literal> will not be set to <literal>null</literal> by <literal>get()</literal> since <literal>get()</literal> can have no effect on <literal>$local_for_x</literal> (i.e., <literal>$local_for_x</literal> is never on the RHS of an assignment statement). 
+          </para>
+        </informalexample>
+      </para>
+    </sect2>
+    <sect2 xml:id="hack.nullable.scenarios.nonnullableinteraction">
+      <title>Nullable and Non-Nullable Interaction</title>
+      <para>
+        Sometimes a nullable type needs to be passed to a method that takes the non-nullable variant of that same type. For example, assume the following piece of code and the output from the Hack type checker: 
+        <informalexample>
+          <programlisting role="php">
+<![CDATA[
+<?hh
+ 
+class NullableNullThrows {
+  public function foo(int $y): ?int {
+    if ($y > 4) {
+      return $y + 5;
+    }
+    else {
+      return null;
+    }
+  }
+}
+ 
+class NullableNullThrowsTest {
+  protected int $x;
+ 
+  public function __construct() {
+    $nnt = new NullableNullThrows();
+    $nullable_value = $nnt->foo(2);
+    $this->x = $nullable_value;
+  }
+}
+ 
+function main_nnt() {
+  $nntt = new NullableNullThrowsTest();
+}
+ 
+main_nnt();
+]]>
+          </programlisting>
+          &example.outputs;
+          <screen>
+<![CDATA[
+File "NullableNullThrows.php", line 25, characters 5-30:
+Invalid assignment
+File "NullableNullThrows.php", line 20, characters 13-15:
+This is an int
+File "NullableNullThrows.php", line 9, characters 32-35:
+It is incompatible with a nullable type
+]]>
+          </screen>
+          <para>
+            In this particular case calling <literal>NullableNullThrows::foo()</literal>, could actually return a <literal>null</literal> value instead of an <literal>int</literal> (given that the return type has been annotated has nullable). The member variable <literal>$x</literal> in <literal>NullableNullThrowsTest</literal> is not a nullable type. Thus, trying to assign a nullable <literal>int</literal> to a non-nullable <literal>int</literal> will produce the above Hack type error. 
+          </para>
+        </informalexample>
+      </para>
+      <para>
+        There are legitimate times when there is an expectation that a variable will not be <literal>null</literal>, and, if that variable is <literal>null</literal>, a runtime exception should be thrown. For these cases, use <literal>nullthrows()</literal> The <literal>nullthrows()</literal> signature is:
+        <informalexample>
+          <programlisting role="php">
+<![CDATA[
+function nullthrows<T>(?T $x, ?string $message = null, ...): T {...}
+]]>
+          </programlisting>
+        </informalexample>
+      </para>
+      <para>
+        <literal>nullthrows()</literal> checks if the value associated with a type <literal>T</literal> is <literal>null</literal>. If the value is <literal>null</literal>, an exception is thrown. If not, the value is returned unmodified. An optional exception message can be supplied to <literal>nullthrows()</literal> as well. The code above can be rewritten to use <literal>nullthrows()</literal>, making the Hack type checker happy:
+        <informalexample>
+          <programlisting role="php">
+<![CDATA[
+<?hh
+ 
+class NullableNullThrows {
+  public function foo(int $y): ?int {
+    if ($y > 4) {
+      return $y + 5;
+    }
+    else {
+      return null;
+    }
+  }
+}
+ 
+class NullableNullThrowsTest {
+  protected int $x;
+ 
+  public function __construct() {
+    $nnt = new NullableNullThrows();
+    $nullable_value = $nnt->foo(2);
+    $this->x = nullthrows($nullable_value);
+  }
+}
+ 
+function main_nnt() {
+  $nntt = new NullableNullThrowsTest();
+}
+ 
+main_nnt();
+]]>
+          </programlisting>
+        </informalexample>
+      </para>
+    </sect2>
+    <sect2 xml:id="hack.nullable.scenarios.uninitializedmembervariables">
+      <title>Uninitialized Member Variables</title>
+      <para>
+        Take this piece of code and associated Hack error message:
+        <informalexample>
+          <programlisting role="php">
+<![CDATA[
+<?hh
+ 
+class PettingZoo {
+  private BunnyRabbit $fluffy;
+ 
+  public function pet(): void {
+    $this->fluffy = get_bunny();
+    pet_bunny($this->fluffy);
+  }
+}
+]]>
+          </programlisting>
+          &example.outputs;
+          <screen>
+<![CDATA[
+File "PettingZoo.php", line 4, characters 7-16:
+The class member fluffy is not always properly initialized
+Make sure you systematically set $this->fluffy when the method __construct is called
+Alternatively, you can define the type as optional (?...)
+]]>
+          </screen>
+          <para>
+            Hack would like developers to systematically initialize member variables. By doing so, it can be proven that these member variables are not <literal>null</literal>. It is fine for member variables to sometimes be <literal>null</literal>, but this must be explicitly stated by using a nullable type. Then Hack can be aware that <literal>null</literal> checks should be done on the member variable. Thus, there are two ways to suppress the above Hack error: 
+            <itemizedlist>
+              <listitem>
+                <para>
+                  Always initialize member variables: Make sure the member
+                  variable is always set when the class is created. This can be
+                  done with a constructor or with inline values for primitives
+                  (e.g., <literal>private int $myInt =
+                  123</literal>). Why? It is safe to assume that the constructor is
+                  always called when the object is created; therefore Hack can
+                  always assume that the member variable has been set.
+                </para>
+              </listitem>
+              <listitem>
+                <para>
+                  Use Nullable: Make the member variable nullable and explicitly
+                  deal with what should happen if it turns out to be
+                  <literal>null</literal>. Why? Since the member
+                  variable is nullable, there is no need to make sure it is
+                  always initialized. Instead, logic will be added to deal with
+                  when it is <literal>null</literal>.
+                </para>
+              </listitem>
+            </itemizedlist>
+          </para>
+          <programlisting role="php">
+<![CDATA[
+<?hh
+ 
+class PettingZoo {
+  private BunnyRabbit $fluffy;
+ 
+  public function __construct() {
+    $this->fluffy = get_bunny();
+  }
+ 
+  public function pet(): void {
+    pet_bunny($this->fluffy);
+  }
+}
+]]>
+          </programlisting>
+          <programlisting role="php">
+<![CDATA[
+<?hh
+ 
+class PettingZoo {
+  private ?BunnyRabbit $fluffy;
+ 
+  public function getFluffy(): BunnyRabbit {
+    // A local variable is being used due to the
+    // nullable member variables issue
+    $fluffy = $this->fluffy;
+    if (!$fluffy) {
+      $fluffy = $this->fluffy = get_bunny();
+    }
+    return $fluffy;
+  }
+ 
+  public function pet(): void {
+    pet_bunny($this->getFluffy());
+  }
+}
+]]>
+          </programlisting>
+        </informalexample>
+      </para>
+    </sect2>
+    <sect2 xml:id="hack.nullable.scenarios.noconstructor">
+      <title>Uninitialized Member Variables and No Constructor</title>
+      <para>
+        Take this scenario:
+        <informalexample>
+          <para><emphasis>File1.php</emphasis></para>
+          <programlisting role="php">
+<![CDATA[
+<?php
+ 
+class InitializeMemberVariables {
+ 
+  // Parent class constructor. Uses setup() implemented in children to
+  // initialize member variables.
+  public final function __construct() {
+    var_dump(func_get_args());
+    var_dump($this);
+    call_user_func_array(array($this, 'setup'), func_get_args());
+  }
+ 
+  // Children override this method
+  protected function setup() {}
+}
+]]>
+          </programlisting>
+          <para><emphasis>File2.php</emphasis></para>
+          <programlisting role="php">
+<![CDATA[
+<?hh
+ 
+class IMVChild extends InitializeMemberVariables {
+  protected ?int $i;
+ 
+  // Parent constructor called, setup called from there and dispatched to here
+  // to initialize member variables
+  protected function setup(int $i) {
+    $this->i = $i;
+    var_dump($this);
+  }
+}
+ 
+class IMVChild2 extends InitializeMemberVariables {
+ 
+  protected string $s;
+  protected bool $b;
+  protected int $i;
+ 
+  // Parent constructor called, setup called from there and dispatched to here
+  // to initialize member variables
+  protected function setup(string $s, bool $b, int $i) {
+    $this->s = $s;
+    $this->b = $b;
+    $this->i = $i;
+    var_dump($this);
+  }
+ 
+}
+ 
+$imvc = new IMVChild(4);
+$imvc2 = new IMVChild2("Hi", true, 3);
+]]>
+          </programlisting>
+          &example.outputs;
+          <screen>
+<![CDATA[
+File "IMVChild.php", line 31, characters 7-15:
+The class member b is not always properly initialized
+Make sure you systematically set $this->b when the method __construct is called
+Alternatively, you can define the type as optional (?...)
+]]>
+          </screen>
+        </informalexample>
+      </para>
+      <para>
+        By a reading of the code, the class member variables are indeed being initialized. However, Hack doesn't support this initialization paradigm in the type checker. As it stands, there is no way for the Hack type checker to infer that the class members are being initialized through a forwarded call to <literal>setup()</literal> from <literal>call_user_func_array()</literal> in the <literal>__construct()</literal>. What are the options to avoid these Hack errors (noting that something like <literal>// UNSAFE</literal> will not work in this situation)? Here are the possible options:
+        <orderedlist>
+          <listitem>
+            <para>
+              Redesign/Refactor the code.
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              Make all member variables nullable.
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              This is a Hack problem that needs fixing. The type of pattern is not recognized by the Hack type checker. </para>
+          </listitem>
+        </orderedlist>
+      </para>
+      <para>
+        Without understanding fully the prevalence of this type of design pattern and the side effects supporting it in Hack might have, options (1) and (2) should be examined before jumping in to assume option (3) must be the answer. Is there any way to redesign or refactor the code to avoid calling late-bound methods from the parent constructor? With this current structure, there are two possible problems. One is that even if Hack supported the paradigm, there is another Hack error looming regarding overriding <literal>setup()</literal> with a different number of parameters than the parent. This error will occur when the parent code is converted to <literal>&lt;?hh</literal>. Secondly, using call_user_func_array to initialize variables may not necessarily be supported in Hack moving forward. Even if this design had to be maintained for legacy reasons, finding another way to call <literal>setup()</literal> might be preferred. Is there any way to use nullable on the class members (i.e. <literal>?</literal>)? This may not be ideal when it is known that a member variable may never be <literal>null</literal>, but the consideration should at least be made whether it is a nice stopgap solution until a better design can be found. 
+      </para>
+    </sect2>
+  </sect1>
+</chapter>
+
+<!-- Keep this comment at the end of the file
+Local variables:
+mode: sgml
+sgml-omittag:t
+sgml-shorttag:t
+sgml-minimize-attributes:nil
+sgml-always-quote-attributes:t
+sgml-indent-step:1
+sgml-indent-data:t
+indent-tabs-mode:nil
+sgml-parent-document:nil
+sgml-default-dtd-file:"~/.phpdoc/manual.ced"
+sgml-exposed-tags:nil
+sgml-local-catalogs:nil
+sgml-local-ecat-files:nil
+End:
+vim600: syn=xml fen fdm=syntax fdl=2 si
+vim: et tw=78 syn=sgml
+vi: ts=1 sw=1
+-->

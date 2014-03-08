@@ -1,0 +1,38 @@
+Rendering the documentations for the first time:
+	WINDOWS:
+		#1) cd c:\
+		#2) svn checkout http://svn.php.net/repository/phpdoc/modules/doc-en
+		#3) cd doc-en\doc-base
+		#4) php configure.php
+    #5) phd --docbook c:\doc-en\doc-base\.manual.xml
+
+	*NIX:
+		#1) cd ~
+		#2) svn checkout http://svn.php.net/repository/phpdoc/modules/doc-en
+		#3) cd doc-en/doc-base
+		#4) php configure.php
+    #5) phd --docbook ~/doc-en/doc-base/.manual.xml
+
+
+This will create
+	"php" directory containing the "phpweb" files
+		NOTE: You CANNOT view these files without a phpweb mirror running.
+			  See https://doc.php.net/wiki/phd/view#viewing_the_phpfolder
+	"html" directory containing the "downloadable chunked html" files
+		NOTE: Do NOT move these files onto your webserver. Just double click
+			  them and your browser will open and show you the content
+	"bightml.html" file, which is the "downloadable bightml" file
+
+Now edit the XML files as you wish in the doc-en/en directory.
+To build the documentation again follow the instructions above, skipping step#2.
+
+NOTE: To work on translations, you should replace the 'en' in all
+of the above examples with the appropriate ISO 639-1 Code of the desired language.
+(see http://www.sil.org/iso639-3/codes.asp for a list of codes)
+e.g. 'pt' for Portuguese, or pt_BR for Brazillian Portuguese. Step two in the
+example above would change to:
+	svn checkout http://svn.php.net/repository/phpdoc/modules/doc-pt
+or
+	svn checkout http://svn.php.net/repository/phpdoc/modules/doc-pt_BR
+The XML files to edit will be in doc-pt/pt or doc-pt_BR/pt_BR directories.
+

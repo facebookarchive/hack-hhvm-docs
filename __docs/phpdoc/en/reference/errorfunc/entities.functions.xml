@@ -1,0 +1,11 @@
+&reference.errorfunc.functions.debug-backtrace;
+&reference.errorfunc.functions.debug-print-backtrace;
+&reference.errorfunc.functions.error-get-last;
+&reference.errorfunc.functions.error-log;
+&reference.errorfunc.functions.error-reporting;
+&reference.errorfunc.functions.restore-error-handler;
+&reference.errorfunc.functions.restore-exception-handler;
+&reference.errorfunc.functions.set-error-handler;
+&reference.errorfunc.functions.set-exception-handler;
+&reference.errorfunc.functions.trigger-error;
+&reference.errorfunc.functions.user-error;

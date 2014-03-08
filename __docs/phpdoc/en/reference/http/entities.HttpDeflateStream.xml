@@ -1,0 +1,5 @@
+&reference.http.HttpDeflateStream.construct;
+&reference.http.HttpDeflateStream.factory;
+&reference.http.HttpDeflateStream.finish;
+&reference.http.HttpDeflateStream.flush;
+&reference.http.HttpDeflateStream.update;

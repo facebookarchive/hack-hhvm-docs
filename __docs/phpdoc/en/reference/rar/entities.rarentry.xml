@@ -1,0 +1,14 @@
+&reference.rar.rarentry.extract;
+&reference.rar.rarentry.getattr;
+&reference.rar.rarentry.getcrc;
+&reference.rar.rarentry.getfiletime;
+&reference.rar.rarentry.gethostos;
+&reference.rar.rarentry.getmethod;
+&reference.rar.rarentry.getname;
+&reference.rar.rarentry.getpackedsize;
+&reference.rar.rarentry.getstream;
+&reference.rar.rarentry.getunpackedsize;
+&reference.rar.rarentry.getversion;
+&reference.rar.rarentry.isdirectory;
+&reference.rar.rarentry.isencrypted;
+&reference.rar.rarentry.tostring;

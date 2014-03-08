@@ -1,0 +1,4 @@
+&reference.mongo.mongogridfscursor.construct;
+&reference.mongo.mongogridfscursor.current;
+&reference.mongo.mongogridfscursor.getnext;
+&reference.mongo.mongogridfscursor.key;

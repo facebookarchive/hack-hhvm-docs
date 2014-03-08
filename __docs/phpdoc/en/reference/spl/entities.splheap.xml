@@ -1,0 +1,13 @@
+&reference.spl.splheap.compare;
+&reference.spl.splheap.construct;
+&reference.spl.splheap.count;
+&reference.spl.splheap.current;
+&reference.spl.splheap.extract;
+&reference.spl.splheap.insert;
+&reference.spl.splheap.isempty;
+&reference.spl.splheap.key;
+&reference.spl.splheap.next;
+&reference.spl.splheap.recoverfromcorruption;
+&reference.spl.splheap.rewind;
+&reference.spl.splheap.top;
+&reference.spl.splheap.valid;

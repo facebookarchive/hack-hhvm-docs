@@ -1,0 +1,9 @@
+&reference.id3.functions.id3-get-frame-long-name;
+&reference.id3.functions.id3-get-frame-short-name;
+&reference.id3.functions.id3-get-genre-id;
+&reference.id3.functions.id3-get-genre-list;
+&reference.id3.functions.id3-get-genre-name;
+&reference.id3.functions.id3-get-tag;
+&reference.id3.functions.id3-get-version;
+&reference.id3.functions.id3-remove-tag;
+&reference.id3.functions.id3-set-tag;

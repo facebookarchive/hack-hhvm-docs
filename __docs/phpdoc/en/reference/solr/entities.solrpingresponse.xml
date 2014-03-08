@@ -1,0 +1,3 @@
+&reference.solr.solrpingresponse.construct;
+&reference.solr.solrpingresponse.destruct;
+&reference.solr.solrpingresponse.getresponse;

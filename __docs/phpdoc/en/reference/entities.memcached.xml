@@ -1,0 +1,12 @@
+&reference.memcached.book;
+&reference.memcached.callbacks;
+&reference.memcached.configure;
+&reference.memcached.constants;
+&reference.memcached.entities.memcached;
+&reference.memcached.expiration;
+&reference.memcached.ini;
+&reference.memcached.memcached;
+&reference.memcached.memcachedexception;
+&reference.memcached.sessions;
+&reference.memcached.setup;
+&reference.memcached.versions;

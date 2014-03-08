@@ -1,0 +1,9 @@
+&reference.spl.limititerator.construct;
+&reference.spl.limititerator.current;
+&reference.spl.limititerator.getinneriterator;
+&reference.spl.limititerator.getposition;
+&reference.spl.limititerator.key;
+&reference.spl.limititerator.next;
+&reference.spl.limititerator.rewind;
+&reference.spl.limititerator.seek;
+&reference.spl.limititerator.valid;

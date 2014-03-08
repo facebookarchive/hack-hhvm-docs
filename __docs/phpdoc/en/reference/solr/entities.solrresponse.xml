@@ -1,0 +1,11 @@
+&reference.solr.solrresponse.getdigestedresponse;
+&reference.solr.solrresponse.gethttpstatus;
+&reference.solr.solrresponse.gethttpstatusmessage;
+&reference.solr.solrresponse.getrawrequest;
+&reference.solr.solrresponse.getrawrequestheaders;
+&reference.solr.solrresponse.getrawresponse;
+&reference.solr.solrresponse.getrawresponseheaders;
+&reference.solr.solrresponse.getrequesturl;
+&reference.solr.solrresponse.getresponse;
+&reference.solr.solrresponse.setparsemode;
+&reference.solr.solrresponse.success;

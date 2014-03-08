@@ -1,0 +1,8 @@
+&reference.http.HttpQueryString.construct;
+&reference.http.HttpQueryString.get;
+&reference.http.HttpQueryString.mod;
+&reference.http.HttpQueryString.set;
+&reference.http.HttpQueryString.singleton;
+&reference.http.HttpQueryString.toArray;
+&reference.http.HttpQueryString.toString;
+&reference.http.HttpQueryString.xlate;

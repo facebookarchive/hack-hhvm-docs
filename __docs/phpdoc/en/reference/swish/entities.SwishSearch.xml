@@ -1,0 +1,6 @@
+&reference.swish.SwishSearch.execute;
+&reference.swish.SwishSearch.resetLimit;
+&reference.swish.SwishSearch.setLimit;
+&reference.swish.SwishSearch.setPhraseDelimiter;
+&reference.swish.SwishSearch.setSort;
+&reference.swish.SwishSearch.setStructure;

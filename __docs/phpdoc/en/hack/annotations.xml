@@ -1,0 +1,1712 @@
+<?xml version="1.0" encoding="utf-8"?>
+<chapter xml:id="hack.annotations">
+  <title>Type Annotations</title>
+  <para>
+    Type annotations allow for PHP code to be explicitly typed on parameters, class member variables and return values (types are inferred for locals). These annotated types are checked via a type checker. Here are examples of the same code without and with type annotations:
+    <informalexample>
+      <programlisting role="php">
+<![CDATA[
+<?php
+class MyClass {
+const MyConst = 0;
+
+private $x;
+
+public function increment($x) {
+  $y = $x + 1;
+  return $y;
+}
+}
+]]>
+      </programlisting>
+    </informalexample>
+    <informalexample>
+      <programlisting role="php">
+<![CDATA[
+<?hh
+class MyClass {
+const int MyConst = 0;
+
+private string $x;
+
+function increment(int $x): int {
+  $y = $x + 1;
+  return $y;
+}
+}
+]]>
+      </programlisting>
+    </informalexample>
+  </para>
+  <para>
+    It is clear that the second example provides more description and insight into the intention of the code. Type annotations provides three primary code improvements:
+    <itemizedlist>
+      <listitem>
+        <para>
+          Readability by helping other developers understand the purpose and intention of the code. Many use comments to express such annotations. Hack formalizes such annotations.
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          Correctness by forbidding unsafe coding practices (e.g., sketchy null checks) as well as allowing tools to check type annotations before runtime.
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          Refactorability by allowing PHP to inherit the reliable and automatic refactoring of a statically typed language. It is quite difficult to refactor a dynamically typed language such as  PHP. Renaming or changing the number of parameters to a function require a manual search of the code base to find all call sites. A type checker, however, will throw and display a list of errors when a
+          &quot;breaking&quot; change is made that can then be fixed one-by-one (or automatically with tooling).
+        </para>
+      </listitem>
+    </itemizedlist>
+  </para>
+
+  <sect1 xml:id="hack.annotations.introexample">
+    <title>Introductory Example</title>
+    <informalexample>
+      <programlisting role="php">
+<![CDATA[
+<?hh
+class AnnotatedClass {
+  public int $x;
+  private string $s;
+  protected array $arr;
+  public AnotherClass $ac;
+
+  function bar(string $str, bool $b): float {
+    if ($b and $str === "Hi") {
+       return 3.2;
+    }
+    return 0.3;
+  }
+}
+]]>    
+      </programlisting>
+      <para>
+        What should be noticeably different from vanilla PHP is that <literal>AnnotatedClass</literal> has type information on all member variables (whether public, private or protected), as well as its function parameters and return types. The annotated types in this example are:        
+        <itemizedlist>
+          <listitem>
+            <para>
+              <literal>int</literal> for
+              <literal>$x</literal>.
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              <literal>string</literal> for
+              <literal>$s</literal>.
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              <literal>array</literal> for
+              <literal>$arr</literal>.
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              <literal>AnotherClass</literal> for
+              <literal>$ac</literal>.
+            </para>
+          </listitem>
+        </itemizedlist>
+        <itemizedlist>
+          <listitem>
+            <para>
+              <literal>string</literal> for
+              <literal>$str</literal> in
+              <literal> bar()</literal>.
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              <literal>bool</literal> for
+              <literal>$b</literal> in
+              <literal> bar()</literal>.
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              <literal>float</literal> as the return type of
+              <literal> bar()</literal>.
+            </para>
+          </listitem>
+        </itemizedlist>
+      </para>
+    </informalexample>
+  </sect1>
+
+  <sect1 xml:id="hack.annotations.why">
+    <title>Why?</title>
+    <para>
+      Normally dynamically typed languages allow variables to take on any type representation and allow this type representation to be changed on-the-fly. So, in vanilla PHP, a variable <literal>$x</literal> can be assigned to an <literal>int</literal> and then, down the line, be assigned to a <literal>string</literal> ... all in the same local scope. In other words, not only is the value of a variable mutable, the type of a variable is mutable. This ability allows for rapid prototyping, more concise code, and a lot of flexibility. Dynamic typing also comes with a cost. Errors are only caught at runtime. There is no compile-time analysis for code optimization (Virtual machines like HHVM can mitigate the optimization disadvantage of a dynamically typed language by providing an intermediate translation step before runtime, the time which can be used for optimizations.). Bugs can go undetected for years and rear their ugly head when, for example, a call to a method with an unexpected parameter type is made. 
+    </para>
+    <para>
+      &quot;<emphasis>Wait a second! Facebook.com, with its billion+ users, is written with tens of millions of lines of vanilla PHP! A dynamic language worked well for Facebook.</emphasis>&quot; 
+    </para>
+    <para>
+      Yes, Facebook has done quite well with dynamically typed PHP. And there is no attempt to try to rewrite Facebook.com in another language. However, it is possible to bring some statically typed language features to PHP without affecting functionality and performance. With statically typed languages, errors can be caught before runtime. Code becomes more readable and self-explaining. The likelihood of the rogue &quot;calling a method with an unexpected parameter type&quot; bug becomes very small as these are caught before execution. 
+    </para>
+    <para>
+      Hack help bridges the gap between a dynamically and statically typed language by providing features normally seen in statically type languages to PHP. A primary goal of Hack was to bring these features but remain as compatible as possible with current PHP codebases. Type annotations is a big step toward accomplishing this goal. 
+    </para>
+  </sect1>
+
+  <sect1 xml:id="hack.annotations.types">
+    <title>What types can be used?</title>
+    <para>
+      With Hack, most every PHP type can be used for type annotations. These types can be used to annotate function arguments, return types or member variables. 
+      <itemizedlist>
+        <listitem>
+          <para>
+            Primitive, basic types: <literal>int</literal>, <literal>float</literal>, <literal>string</literal>, <literal>bool</literal>, <literal>array</literal> (<emphasis role="strong">However</emphasis>, do not use the aliases <literal>double</literal>, <literal>integer</literal>, <literal>boolean</literal>, <literal>real</literal>) 
+          </para>
+        </listitem>
+        <listitem>
+          <para>
+            User-defined classes: <literal>Foo</literal>, <literal>Vector&lt;some type&gt;</literal>
+          </para>
+        </listitem>
+        <listitem>
+          <para>
+            Mixed: <literal>mixed</literal>
+          </para>
+        </listitem>
+        <listitem>
+          <para>
+            Void: <literal>void</literal>
+          </para>
+        </listitem>
+        <listitem>
+          <para>
+             Nullable or optional: <literal>?someType</literal> (e.g., <literal>?int</literal>, <literal>?bool</literal>)
+          </para>
+        </listitem>
+        <listitem>
+          <para>
+            Typed arrays: <literal>array&lt;Foo&gt;</literal>, <literal>array&lt;string, array&lt;string, Foo&gt;&gt;</literal>
+          </para>
+        </listitem>
+        <listitem>
+          <para>
+            Tuples: <literal>tuple(type1, type2, ....)</literal> (e.g., <literal>tuple(string, int)</literal> )
+          </para>
+        </listitem>
+        <listitem>
+          <para>
+            XHP elements <literal>:x:frag</literal>, <literal>:x:base</literal>, <literal>:div</literal>, and the catch-all <literal>:xhp</literal>. 
+          </para>
+        </listitem>
+        <listitem>
+          <para>
+            The &quot;magic&quot; <literal>Xhp</literal> type that maps to any xhp element -- but don't use this in new code, <literal>:xhp</literal> addresses this case. 
+          </para>
+        </listitem>
+        <listitem>
+          <para>
+            generics: <literal>Foo&lt;T&gt;</literal>
+          </para>
+        </listitem>
+        <listitem>
+          <para>
+            closures: <literal>(function(type1, type2, ...): return_type)</literal> 
+          </para>
+        </listitem>
+        <listitem>
+          <para>
+            resources: <literal>resource</literal>
+          </para>
+        </listitem>
+      </itemizedlist>
+    </para>
+    <para>
+      The <literal>array</literal> type may only be used in the Hack default (i.e., <literal>// partial</literal>) or <literal>// decl</literal> modes. When using arrays in <literal>// strict</literal> mode, Hack will throw an error about using a collection class such as a <literal>Vector</literal> or <literal>Map</literal>. 
+    </para>
+  </sect1>
+
+  <sect1 xml:id="hack.annotations.usingtypes">
+    <title>How to type annotate</title>
+    <para>
+      Hack decided to annotate the return types at the end of a function/method declaration instead of near the beginning found in languages like C#. This was done mainly for readability purposes. But there are other reasons to have them positioned the way they are because of closures and searchability. With respect to closures, if the return type is annotated at the beginning of a function, PHP could interpret the return type to be a constant string, thus ignoring the return type altogether. With respect to searchability, searching for &quot;function foo&quot; will produce more useable results than having to use wildcards or some other mechanism to find all the functions named <literal>foo()</literal>, regardless of return type. 
+    </para>
+    <para>
+      Here is a matrix of many of the types available for Hack. This matrix shows how the types are defined and used in a class member, parameter and return type scenario. 
+      <informaltable>
+        <tgroup cols="5">
+          <colspec align="center" />
+          <colspec align="center" />
+          <colspec align="center" />
+          <colspec align="center" />
+          <colspec align="center" />
+          <tbody>
+            <row>
+              <entry>
+                <para>
+                  <emphasis role="strong">Type</emphasis>
+                </para>
+              </entry>
+              <entry>
+                <para>
+                  <emphasis role="strong">Definition</emphasis>
+                </para>
+              </entry>
+              <entry>
+                <para>
+                  <emphasis role="strong">Example Class Member Usage</emphasis>
+                </para>
+              </entry>
+              <entry>
+                <para>
+                  <emphasis role="strong">Example Parameter Usage</emphasis>
+                </para>
+              </entry>
+              <entry>
+                <para>
+                  <emphasis role="strong">Example Return Usage</emphasis>
+                </para>
+              </entry>
+            </row>
+            <row>
+              <entry>
+                <para>
+                  Boolean
+                </para>
+              </entry>
+              <entry>
+                <para>
+                  <literal>bool</literal>
+                </para>
+              </entry>
+              <entry>
+                <para>
+                  <literal>bool $b = false;</literal>
+                </para>
+              </entry>
+              <entry>
+                <para>
+                  <literal>function foo(bool
+                  $b)</literal>
+                </para>
+              </entry>
+              <entry>
+                <para>
+                  <literal>: bool</literal>
+                </para>
+              </entry>
+            </row>
+            <row>
+              <entry>
+                <para>
+                  Integer
+                </para>
+              </entry>
+              <entry>
+                <para>
+                  <literal>int</literal>
+                </para>
+              </entry>
+              <entry>
+                <para>
+                  <literal>int $i = 3;</literal>
+                </para>
+              </entry>
+              <entry>
+                <para>
+                  <literal>function foo(int
+                  $i)</literal>
+                </para>
+              </entry>
+              <entry>
+                <para>
+                  <literal>: int</literal>
+                </para>
+              </entry>
+            </row>
+            <row>
+              <entry>
+                <para>
+                  Float
+                </para>
+              </entry>
+              <entry>
+                <para>
+                  <literal>float</literal>
+                </para>
+              </entry>
+              <entry>
+                <para>
+                  <literal>float $f = 3.14;</literal>
+                </para>
+              </entry>
+              <entry>
+                <para>
+                  <literal>function foo(float
+                  $f)</literal>
+                </para>
+              </entry>
+              <entry>
+                <para>
+                  <literal>: float</literal>
+                </para>
+              </entry>
+            </row>
+            <row>
+              <entry>
+                <para>
+                  String
+                </para>
+              </entry>
+              <entry>
+                <para>
+                  <literal>string</literal>
+                </para>
+              </entry>
+              <entry>
+                <para>
+                  <literal>string $s = &quot;Hello&quot;;</literal>
+                </para>
+              </entry>
+              <entry>
+                <para>
+                  <literal>function foo(string
+                  $s)</literal>
+                </para>
+              </entry>
+              <entry>
+                <para>
+                  <literal>: string</literal>
+                </para>
+              </entry>
+            </row>
+            <row>
+              <entry>
+                <para>
+                  <literal>Array</literal>
+                </para>
+              </entry>
+              <entry>
+                <para>
+                  <literal>array, array&lt;T&gt;,array&lt;string/int, Tv&gt;</literal>
+                </para>
+              </entry>
+              <entry>
+                <para>
+                  <literal>array&lt;T&gt; $arr = array();</literal>
+                </para>
+              </entry>
+              <entry>
+                <para>
+                  <literal>function foo(array&lt;T&gt; $arr)</literal>
+                </para>
+              </entry>
+              <entry>
+                <para>
+                  <literal>: array&lt;T&gt;</literal>
+                </para>
+              </entry>
+            </row>
+            <row>
+              <entry>
+                <para>
+                  Typed Array                
+                </para>
+              </entry>
+              <entry>
+                <para>
+                  <literal>array&lt;someType&gt;</literal>
+                </para>
+              </entry>
+              <entry>
+                <para>
+                  <literal>array&lt;string&gt; $arrs = array(&quot;hi&quot;, &quot;bye&quot;);</literal>
+                </para>
+              </entry>
+              <entry>
+                <para>
+                  <literal>function foo(array&lt;string&gt; $arrs)</literal>
+                </para>
+              </entry>
+              <entry>
+                <para>
+                  <literal>: array&lt;string&gt;</literal>
+                </para>
+              </entry>
+            </row>
+            <row>
+              <entry>
+                <para>
+                  Generic Type
+                </para>
+              </entry>
+              <entry>
+                <para>
+                  <literal>NonPrimitiveType&lt;T&gt;</literal>
+                </para>
+              </entry>
+              <entry>
+                <para>
+                  <literal>T $t;</literal>
+                </para>
+              </entry>
+              <entry>
+                <para>
+                  <literal>function foo(T $t)</literal> or <literal>function foo&lt;T&gt;(T $t)</literal>
+                </para>
+              </entry>
+              <entry>
+                <para>
+                  <literal>: T</literal>
+                </para>
+              </entry>
+            </row>
+            <row>
+              <entry>
+                <para>
+                  Vector
+                </para>
+              </entry>
+              <entry>
+                <para>
+                  <literal>Vector&lt;T&gt;</literal>
+                </para>
+              </entry>
+              <entry>
+                <para>
+                  <literal>protected $vec = Vector {3, 4};</literal>
+                </para>
+              </entry>
+              <entry>
+                <para>
+                  <literal>function foo(Vector&lt;int&gt; $vec)</literal>
+                </para>
+              </entry>
+              <entry>
+                <para>
+                  <literal>: Vector&lt;int&gt;</literal>
+                </para>
+              </entry>
+            </row>
+            <row>
+              <entry>
+                <para>
+                  Map
+                </para>
+              </entry>
+              <entry>
+                <para>
+                  <literal>Map&lt;Tk, Tv&gt;</literal>
+                </para>
+              </entry>
+              <entry>
+                <para>
+                  <literal>$map = Map {&quot;A&quot; =&gt; 1, &quot;B&quot; =&gt; 2};</literal>
+                </para>
+              </entry>
+              <entry>
+                <para>
+                  <literal>function foo(Map&lt;string, int&gt; $map)</literal>
+                </para>
+              </entry>
+              <entry>
+                <para>
+                  <literal>: Map&lt;string, int&gt;</literal>
+                </para>
+              </entry>
+            </row>
+            <row>
+              <entry>
+                <para>
+                  StableMap
+                </para>
+              </entry>
+              <entry>
+                <para>
+                  <literal>StableMap&lt;Tk, Tv&gt;</literal>
+                </para>
+              </entry>
+              <entry>
+                <para>
+                  <literal>$smap = StableMap {&quot;A&quot; =&gt; 1, &quot;B&quot; =&gt; 2};</literal>
+                </para>
+              </entry>
+              <entry>
+                <para>
+                  <literal>function foo(StableMap&lt;string, int&gt; $smap)</literal>
+                </para>
+              </entry>
+              <entry>
+                <para>
+                  <literal>: StableMap&lt;string, int&gt;</literal>
+                </para>
+              </entry>
+            </row>
+            <row>
+              <entry>
+                <para>
+                  Set
+                </para>
+              </entry>
+              <entry>
+                <para>
+                  <literal>Set&lt;Tv&gt;</literal>
+                </para>
+              </entry>
+              <entry>
+                <para>
+                  <literal>$set = Set{1,2};</literal>
+                </para>
+              </entry>
+              <entry>
+                <para>
+                  <literal>function foo(Set&lt;int&gt; $set)</literal>
+                </para>
+              </entry>
+              <entry>
+                <para>
+                  <literal>: Set&lt;int&gt;</literal>
+                </para>
+              </entry>
+            </row>
+            <row>
+              <entry>
+                <para>
+                  Pair
+                </para>
+              </entry>
+              <entry>
+                <para>
+                  <literal>Pair&lt;Tv1, Tv2&gt;</literal>
+                </para>
+              </entry>
+              <entry>
+                <para>
+                  <literal>$pair = Pair {7, 'a'};</literal>
+                </para>
+              </entry>
+              <entry>
+                <para>
+                  <literal>function foo(Pair&lt;int, string&gt; $pair)</literal>
+                </para>
+              </entry>
+              <entry>
+                <para>
+                  <literal>: Pair&lt;int, string&gt;</literal>
+                </para>
+              </entry>
+            </row>
+            <row>
+              <entry>
+                <para>
+                  User Object
+                </para>
+              </entry>
+              <entry>
+                <para>
+                  <literal>FooClass()</literal>
+                </para>
+              </entry>
+              <entry>
+                <para>
+                  <literal>FooClass $a;</literal>
+                </para>
+              </entry>
+              <entry>
+                <para>
+                  <literal>function foo(FooClass $a)</literal>
+                </para>
+              </entry>
+              <entry>
+                <para>
+                  <literal>: FooClass</literal>
+                </para>
+              </entry>
+            </row>
+            <row>
+              <entry>
+                <para>
+                  Void
+                </para>
+              </entry>
+              <entry>
+                <para>
+                  <literal>void</literal>
+                </para>
+              </entry>
+              <entry>
+                <para>
+                  N/A
+                </para>
+              </entry>
+              <entry>
+                <para>
+                  N/A
+                </para>
+              </entry>
+              <entry>
+                <para>
+                  <literal>: void</literal>
+                </para>
+              </entry>
+            </row>
+            <row>
+              <entry>
+                <para>
+                  Mixed Type
+                </para>
+              </entry>
+              <entry>
+                <para>
+                  <literal>mixed</literal>
+                </para>
+              </entry>
+              <entry>
+                <para>
+                  <literal>mixed $m = 3;</literal>
+                </para>
+              </entry>
+              <entry>
+                <para>
+                  <literal>function foo(mixed $m)</literal>
+                </para>
+              </entry>
+              <entry>
+                <para>
+                  <literal>: mixed</literal>
+                </para>
+              </entry>
+            </row>
+            <row>
+              <entry>
+                <para>
+                  Nullable
+                </para>
+              </entry>
+              <entry>
+                <para>
+                  <literal>?someType</literal>
+                </para>
+              </entry>
+              <entry>
+                <para>
+                  <literal>?int $ni;</literal>
+                </para>
+              </entry>
+              <entry>
+                <para>
+                  <literal>function foo(?int $ni)</literal>
+                </para>
+              </entry>
+              <entry>
+                <para>
+                  <literal>: ?int</literal>
+                </para>
+              </entry>
+            </row>
+            <row>
+              <entry>
+                <para>
+                  Tuple
+                </para>
+              </entry>
+              <entry>
+                <para>
+                  <literal>tuple(type1, type2)</literal>
+                </para>
+              </entry>
+              <entry>
+                <para>
+                  <literal>$tup = tuple(&quot;4&quot;, 4);</literal>
+                </para>
+              </entry>
+              <entry>
+                <para>
+                  <literal>function foo((string, int) $tup)</literal>
+                </para>
+              </entry>
+              <entry>
+                <para>
+                  <literal>: (string, int)</literal>
+                </para>
+              </entry>
+            </row>
+            <row>
+              <entry>
+                <para>
+                  Closure
+                </para>
+              </entry>
+              <entry>
+                <para>
+                  <literal>(function(type1, type2, …): returnType)</literal>
+                </para>
+              </entry>
+              <entry>
+                <para>
+                  <literal>(function(int, int): string) $x;</literal>
+                </para>
+              </entry>
+              <entry>
+                <para>
+                  <literal>function foo((function(int, int): string) $x)</literal>
+                </para>
+              </entry>
+              <entry>
+                <para>
+                  <literal>: (function(int, int): string)</literal>
+                </para>
+              </entry>
+            </row>
+            <row>
+              <entry>
+                <para>
+                  Resource
+                </para>
+              </entry>
+              <entry>
+                <para>
+                  <literal>resource</literal>
+                </para>
+              </entry>
+              <entry>
+                <para>
+                  <literal>$r = fopen('/dev/null', 'r');</literal>
+                </para>
+              </entry>
+              <entry>
+                <para>
+                  <literal>function foo(resource $r)</literal>
+                </para>
+              </entry>
+              <entry>
+                <para>
+                  <literal>: resource</literal>
+                </para>
+              </entry>
+            </row>
+          </tbody>
+        </tgroup>
+      </informaltable>
+    </para>
+    <para>
+      Most of the time, initialization of the class members will be done in a constructor (i.e., <literal>__construct()</literal>). For brevity, most of the initialization in the table above was done inline. However, sometimes brevity doesn't work very well. For the generic type, user object, nullable and closure class members, here are example initializations in the constructor: 
+      <informalexample>
+        <programlisting role="php">
+<![CDATA[
+<?hh
+class FooClass{}
+
+class MyClass {
+  T $t;
+  FooClass $a
+  ?int $ni;
+  (function(int, int): string) $x;
+
+  public function __construct() {
+    $this->t = $val;
+    $this->a = new FooClass();
+    $this->ni = $val === 3 ? null : 4;
+    $this->x = function(int $n, int $m): string {
+      $r = '';
+      for ($i=0; $i < $n+$m; $i++) {
+        $r .= "hi";
+      }
+      return $r;
+    };
+  }
+}
+]]>
+        </programlisting>
+      </informalexample>
+    </para>
+  </sect1>
+
+  <sect1 xml:id="hack.annotations.examples">
+    <title>Examples</title>
+    <para>
+      Below are some basic, contrived examples using some of the above types within the context of the Hack type annotation framework:
+      <informalexample>
+        <para> Annotating With Basic Types </para>
+        <programlisting role="php">
+<![CDATA[
+<?hh
+function increment(int $x): int {
+return $x + 1;
+}
+
+function average(float $x, float $y): float {
+return ($x + $y) / 2;
+}
+
+function say_hello(string $name): string {
+return &quot;Hello &quot;.$name;
+}
+
+function invert(bool $b): bool {
+if ($b) {
+  return false;
+} else {
+    return true;
+}
+}
+
+function sort(array $arr): array {
+sort($arr);
+return $arr;
+}
+
+// A piece of code that computes the average of three numbers
+function avg(int $n1, int $n2, int $n3): float {
+$s = $n1 + $n2 + $n3;
+return $s / 3.0;
+}
+]]>
+        </programlisting>
+      </informalexample>
+      <informalexample>
+        <para>Annotating with <literal>void</literal></para>
+        <programlisting role="php">
+<![CDATA[
+<?hh
+
+// void is used to indicate that a function does not return anything.
+function say_hello(): void {
+echo "hello world";
+}
+]]>
+        </programlisting>
+      </informalexample>
+      <informalexample>
+        <para>Annoting with Nullable</para>
+        <programlisting role="php">
+<![CDATA[
+<?hh
+
+// The nullable type is used to indicate that a parameter can be null.
+// It is also useful as a return type, where the error case returns null.
+// The type checker will force you to handle the null case explicitly.
+
+function f1(int $x): ?string {
+if ($x == 0) {
+  return null;
+}
+return "hi";
+}
+
+function f2(int $x): void {
+$y = f1($x);
+// $y here has a type of ?string
+if ($y !== null) {
+  // $y can be used as an string. No casts required.
+}
+}
+]]>
+        </programlisting>
+      </informalexample>
+      <informalexample>
+        <para>Annotating with <literal>mixed</literal></para>
+        <programlisting role="php">
+<![CDATA[
+<?hh
+
+// The mixed type should be used for function parameters where the behavior depends on the type.
+// The code is forced to check the type of the parameter before using it
+function encode(mixed $x): string {
+if (is_int($x)) {
+  return "i:".$x;
+} else if (is_string($x)) {
+  return "s:".$x;
+} else {
+  ...
+}
+}
+]]>
+        </programlisting>
+      </informalexample>
+      <informalexample>
+        <para> Annotating Classes </para>
+        <programlisting role="php">
+<![CDATA[
+<?hh
+
+class A {}
+
+function foo(A $x): void {
+  ...
+}
+
+function sum(Vector<int> $arr): int {
+  $s = 0;
+  foreach ($arr as $v) {
+    $s += $v;
+  }
+  return $s;
+}
+]]>
+        </programlisting>
+      </informalexample>
+      <informalexample>
+        <para> Annotating Tuples </para>
+        <programlisting role="php">
+<![CDATA[
+<?hh
+class TupleTest {
+  // This is a Vector of tuples. Notice how the &quot;tuple&quot; reserved
+  // word is not used when annotating.
+  private Vector<(string, string)> $test = Vector {};
+  // The return type is a tuple. Again, the &quot;tuple&quot; reserved
+  // word is not used.
+  public function bar(): (string, string) {
+    return $this->test[0];
+  }
+  public function foo() {
+    // But to use an actual tuple, use the &quot;tuple&quot; reserved word
+    $this->test->add(tuple('hello', 'world'));
+  }
+}
+]]>
+        </programlisting>
+      </informalexample>
+      <informalexample>
+        <para> Annotating Resources </para>
+        <programlisting role="php">
+<![CDATA[
+<?hh
+function f1(): ?resource {
+  // UNSAFE
+  return fopen('/dev/null', 'r');
+}
+
+function f2(resource $x): void {
+}
+
+function f3(): void {
+  $x = f1();
+  if (is_resource($x)) {
+    f2($x);
+  }
+}
+]]>
+        </programlisting>
+      </informalexample>
+    </para>
+  </sect1>
+
+  <sect1 xml:id="hack.annotations.typejuggling">
+    <title>Type Juggling</title>
+    <para>
+      PHP allows what is called &quot;type juggling&quot;, basically allowing for types to be used synonymously for other types (e.g., <literal>double</literal> for <literal>float</literal>). Hack generally disallows this. For consistency purposes, Hack allows one type for one meaning:
+      <informaltable>
+        <tgroup cols="2">
+          <colspec align="center" />
+          <colspec align="center" />
+          <tbody>
+            <row>
+              <entry>
+                <para>
+                  <emphasis role="strong">Allowed</emphasis>
+                </para>
+              </entry>
+              <entry>
+                <para>
+                  <emphasis role="strong">Not Allowed</emphasis>
+                </para>
+              </entry>
+            </row>
+            <row>
+              <entry>
+                <para>
+                  <literal>float</literal>
+                </para>
+              </entry>
+              <entry>
+                <para>
+                  <literal>double</literal>, <literal>real</literal>
+                </para>
+              </entry>
+            </row>
+            <row>
+              <entry>
+                <para>
+                  <literal>bool</literal>
+                </para>
+              </entry>
+              <entry>
+                <para>
+                  <literal>boolean</literal>
+                </para>
+              </entry>
+            </row>
+            <row>
+              <entry>
+                <para>
+                  <literal>int</literal>
+                </para>
+              </entry>
+              <entry>
+                <para>
+                  <literal>integer</literal>
+                </para>
+              </entry>
+            </row>
+            <row>
+              <entry>
+                <para>
+                </para>
+              </entry>
+              <entry>
+                <para>
+                  <literal>binary</literal>
+                </para>
+              </entry>
+            </row>
+          </tbody>
+        </tgroup>
+      </informaltable>
+    </para>
+  </sect1>
+
+  <sect1 xml:id="hack.annotations.arrays">
+    <title>Annotating Arrays</title>
+    <para>
+      Annotating arrays deserves a bit more of a mention. Arrays in Hack can take the following forms:
+      <itemizedlist>
+        <listitem>
+          <para>
+            Normal array: <literal>array</literal>
+          </para>
+        </listitem>
+        <listitem>
+          <para>
+            Explicitly typed array with integer keys: <literal>array&lt;someType&gt;</literal>
+          </para>
+        </listitem>
+        <listitem>
+          <para>
+            Explicitly typed array with string or integer keys: <literal>array&lt;int, someType&gt;</literal> or <literal>array&lt;string, someType&gt;</literal>
+          </para>
+        </listitem>
+        <listitem>
+          <para>
+            Generically typed array with integer keys: <literal>array&lt;T&lt;</literal>
+          </para>
+        </listitem>
+        <listitem>
+          <para>
+            Generically typed array with string or integer keys: <literal>array&lt;int, Tv&gt;</literal> or <literal>array&lt;string, Tv&gt;</literal>
+          </para>
+        </listitem>
+      </itemizedlist>
+    </para>
+    <para>
+      Here is an example of how various arrays are annotated. Remember that, in Hack, the use of arrays are more restricted in <literal>// strict</literal> mode. 
+      <informalexample>
+        <programlisting role="php">
+<![CDATA[
+<?hh
+
+class FooFoo{}
+class HackArrayAnnotations {
+  private array<FooFoo> $arr;
+  private array<string, FooFoo> $arr2;
+
+  public function __construct() {
+    $this->arr = null;
+    $this->arr2 = null;
+  }
+
+  public function bar<T>(T $val): array {
+    return array($val);
+  }
+
+  public function sort(array<int, float> $a): array<int, float> {
+    sort($a);
+    return $a;
+  }
+
+  public function baz(FooFoo $val): array<FooFoo> {
+    $this->arr[] = $val;
+    return $this->;arr;
+  }
+}
+
+function main_aa() {
+  $haa = new HackArrayAnnotations();
+  var_dump($haa->bar(3));
+  var_dump($haa->bar(new FooFoo()));
+  var_dump($haa->sort(array(1.3, 5.6, 2.3, 0.2, 1.4)));
+  var_dump($haa->baz(new FooFoo()));
+}
+
+main_aa();
+]]>
+        </programlisting>
+        &example.outputs;
+        <screen>
+<![CDATA[
+array(1) {
+  [0]=>
+  int(3)
+}
+array(1) {
+  [0]=>
+  object(FooFoo)#2 (0) {
+  }
+}
+array(5) {
+  [0]=>
+  float(0.2)
+  [1]=>
+  float(1.3)
+  [2]=>
+  float(1.4)
+  [3]=>
+  float(2.3)
+  [4]=>
+  float(5.6)
+}
+array(1) {
+  [0]=>
+  object(FooFoo)#2 (0) {
+  }
+}
+]]>
+        </screen>
+      </informalexample>
+    </para>
+    <para>
+      Examining a typed array a bit more....
+      <informalexample>
+        <programlisting role="php">
+<![CDATA[
+<?hh
+
+class BarBar{}
+
+class ABCD {
+  private array<BarBar> $arr;
+  private int $i;
+
+  public function __construct() {
+    $this->arr = array(new BarBar());
+    $this->i = 4;
+  }
+  public function getBars(): array<BarBar> {
+    if (i < 5) {
+      return array();
+    }
+    else if (i < 10) {
+      return $this->arr;
+    }
+    else {
+      return array(null); // Type Error
+    }
+  }
+}
+]]>
+        </programlisting>
+        <para>
+          An empty array can be returned from a method that is annotated to return a typed array. However, an array with the first element <literal>null</literal> is not compatible. In order to make that work, a nullable typed array must be used as the annotation (e.g., <literal>: array&lt;?BarBar&gt;</literal>). 
+        </para>
+      </informalexample>
+    </para>
+  </sect1>
+  
+  <sect1 xml:id="hack.annotations.closures">
+    <title>Annotating Closures</title>
+    <para>
+      Annotating closures and callables require their own callout beyond the brief summary above about using PHP types with Hack. Take this unannotated, non-Hack PHP code that uses a closure:
+      <informalexample>
+        <programlisting role="php">
+<![CDATA[
+<?php
+
+function foo_closure($adder_str) {
+  return function($to_str) use ($adder_str) {
+    return strlen($to_str) + strlen($adder_str);
+  };
+}
+
+function main_closure_example() {
+  $hello = foo_closure("Hello");
+  $facebook = foo_closure("Facebook");
+  $fox = foo_closure("Fox");
+
+  echo $hello("World") . "\n";
+  echo $facebook("World") . "\n";
+  echo $fox("World") . "\n";
+}
+
+main_closure_example();
+]]>
+        </programlisting>
+        <para>
+          How is the function <literal>foo_closure()</literal> and the closure function actually annotated? Here is the proper Hack type annotation for such a function: 
+          <programlisting role="php">
+<![CDATA[
+<?hh
+
+function foo_closure(string $adder_str): (function (string): int) {
+  return function($to_str) use ($adder_str) {
+    return strlen($to_str) + strlen($adder_str);
+  };
+}
+
+function main_closure_example() {
+  $hello = foo_closure("Hello");
+  $facebook = foo_closure("Facebook");
+  $fox = foo_closure("Fox");
+
+  echo $hello("World") . "\n";
+  echo $facebook("World") . "\n";
+  echo $fox("World") . "\n";
+}
+
+main_closure_example();
+]]>
+          </programlisting>
+          <note>
+            <para>
+              The return type annotation of <literal>foo_closure()</literal> is actually a skeleton signature of the actual closure being returned. Thus, for example, trying to return <literal>true</literal> from the closure will throw a Hack error since the return type annotation clearly specifies that the closure returns an <literal>int</literal>. Note that the actual closure is not type annotated, nor are any <literal>use</literal> parameters part of the type annotation for a closure.
+            </para>
+          </note>
+        </para>
+      </informalexample>
+    </para>
+    <para>
+      The same style of annotating closures are used in function/method parameters (if the function/method takes a closure as a parameter), as well as class member variables. Here is a final example:
+      <informalexample>
+        <programlisting role="php">
+<![CDATA[
+<?hh
+
+// Completely contrived
+
+function f1((function(int, int): string) $x): string {
+  return $x(2,3);
+}
+
+function f2(): string {
+  $c = function(int $n, int $m): string {
+    $r = '';
+    for ($i=0; $i<$n+$m; $i++) {
+      $r .= "hi";
+    }
+    return $r;
+  };
+  return f1($c);
+}
+]]>
+        </programlisting>
+      </informalexample>
+    </para>
+  </sect1>
+  
+  <sect1 xml:id="hack.annotations.constructors">
+    <title>Annotating Constructors</title>
+    <para>
+      With constructors, parameters are annotated as normal. It may also be tempting to annotate the return type of <literal>__construct()</literal> with <literal>: void</literal>. However, this is misleading (and technically incorrect). While there is no explicit <literal>return</literal> statement in <literal>__construct</literal> (a general hint that <literal>void</literal> is correct), the constructor actually does implicitly return the instantiated type for which <literal>__construct</literal> was called. 
+    </para>
+    <para>
+      Therefore, to avoid any confusion, do not annotate the return type of <literal>__construct</literal>. The Hack type checker will throw an error if there is an annotation present. 
+    </para>
+  </sect1>
+
+  <sect1 xml:id="hack.annotations.this">
+    <title>Annoting with <literal>this</literal></title>
+    <para>
+      The <literal>this</literal> type is a pretty useful type, which you'll usually see as a return type. Here are some examples of it being used: 
+      <informalexample>
+        <programlisting role="php">
+<![CDATA[
+<?hh
+
+class Base {
+  private int $x = 0;
+  public function setX(int $new_x): this {
+    $this->x = $new_x;
+    // $this has type "this"
+    return $this;
+  }
+  public static function newInstance(): this {
+    // new static() has type "this"
+    return new static();
+  }
+  public function newCopy(): this {
+    // This would not typecheck with self::, but static:: is ok
+    return static::newInstance();
+  }
+  // You can also say Awaitable<this>;
+  public async function genThis(): Awaitable<this> {
+    return $this;
+  }
+}
+
+final class Child {
+  public function newChild(): this {
+    // This is OK because Child is final.
+    // However, if Grandchild extends Child, then this would be wrong, since
+    // $grandchild->newChild() should returns a Child instead of a Grandchild
+    return new Child();
+  }
+    }
+]]>
+        </programlisting>
+        <para>
+          <literal>this</literal> is the type of <literal>$this</literal> and <literal>new static()</literal>. If <literal>Base::setX()</literal> returns <literal>this</literal>, that means that <literal>$child-&gt;setX()</literal> should return an instance of <literal>Child</literal>. 
+        </para>
+      </informalexample>
+    </para>
+    <para>
+      Here are some invalid uses of <literal>this</literal>:
+      <informalexample>
+        <para><emphasis role="strong">COUNTER EXAMPLES</emphasis></para>
+        <programlisting role="php">
+<![CDATA[
+<?hh
+
+class Base {
+  public static function newBase(): this {
+    // ERROR! The "this" return type means that $child->newBase()
+    // should return a Child, but it always returns a Base!
+    return new Base();
+  }
+  public static function newBase2(): this {
+    // ERROR! This is wrong for the same reason that new Base() is wrong
+    return new self();
+  }
+  // This function is fine
+  abstract public static function goodNewInstance(): this;
+  public static function badNewInstance(): this {
+    // ERROR! Child::badNewInstance() would call Base::goodNewInstance() which is wrong
+    return self::goodNewInstance();
+  }
+}
+]]>
+        </programlisting>
+      </informalexample>
+    </para>  
+    <para>  
+      <literal>this</literal> can only be used in covariant locations, which means you cannot use <literal>this</literal> in as a function parameter typehint or as a member variable typehint. When Hack has proper covariance support, you will be able to use <literal>this</literal> to instantiate any covariant type variable, like <literal>Awaitable&lt;this&gt;</literal> and <literal>FrozenVector&lt;this&gt;</literal>. Until then, you can only use <literal>this</literal> with <literal>Awaitable</literal>. 
+    </para>
+    <para>
+      At the moment, there is no return type that means <literal>$this</literal> and only <literal>$this</literal>. The <literal>this</literal> can be satisfied with any object with the same type as <literal>$this</literal>. 
+    </para>
+  </sect1>
+
+  <sect1 xml:id="hack.annotations.mixedtypes">
+    <title>Mixed Types</title>
+    <para>
+      Sometimes the type of a function parameter or a return type can be &quot;various&quot;. And this could be quite intentional. When confronted with this situation, there are two choices. One is to leave the type blank and let the Hack type checker assume the engineer knows what he/she is doing. The other is to use the PHP provided mechanism called <literal>mixed</literal> in order to have the type checker force the engineer to check the type before using it. The following example shows <literal>mixed</literal> being used as the parameter type and the subsequent needed <literal>if</literal> check.
+      <informalexample>
+        <programlisting role="php">
+<![CDATA[
+<?hh
+function sum(mixed $x): void {
+  if (is_array($x) || $x instanceof Vector) {
+    $s = 0;
+    foreach ($x as $v) {
+      $s += $v;
+    }
+    return $s;
+  }
+  //... do something else or throw an exception...
+}
+]]>
+        </programlisting>
+      </informalexample>
+    </para>
+  </sect1>
+
+  <sect1 xml:id="hack.annotations.passingbyreference">
+    <title>Passing By Reference</title>
+    <para>
+      Primitives passed by reference do not get typed check by Hack. So, the following code will pass the Hack type checker: 
+            <informalexample>
+        <programlisting role="php">
+<![CDATA[
+<?hh
+
+function swap(int &$a, int &$b) {
+  $temp = $a;
+  $a = $b;
+  $b = $a;
+}
+
+function main_ref() {
+  $y = 3;
+  $z = "Hi";
+
+  swap($y, $z);
+  echo $y." ".$z;
+}
+
+main_ref();
+]]>
+        </programlisting>
+        <para>
+          It seems pretty clear that this shouldn't be done (trying to swap an <literal>int</literal> and <literal>string</literal>, when the <literal>swap()</literal> method takes two <literal>int</literal>s.). In fact, HHVM will balk at runtime when trying to execute this code. But getting an error at runtime defeats the whole purpose of the benefits of Hack. 
+        </para>
+      </informalexample>
+    </para>
+    <para>
+      Hack allows passing primitives by reference in <literal>// partial</literal> mode only. Hack will not allow this in <literal>// strict</literal> mode. The only reason this is even allowed by Hack in <literal>// partial</literal> mode is to allow for easier migration of various PHP codebases. 
+    </para>
+    <para>
+      Why are these type of references bad? Consider the following PHP code snippet:
+      <informalexample>
+        <programlisting role="php">
+<![CDATA[
+<?php
+function foo() {
+  $arr = array(1,2,3,4);
+  foreach ($arr as &$k) {
+    echo $k;
+  }
+  echo "\n";
+  $k = 'foo';
+  var_dump($arr);
+}
+
+foo();
+]]>
+        </programlisting>
+        <para>
+         After the <literal>foreach</literal> completes, there will still be a dangling reference to the last element in the array. So, if a developer then writes<literal>$k = 'foo';</literal>, the array will be mutated ... behavior probably not desired. 
+       </para>
+        &example.outputs;
+        <screen>
+<![CDATA[
+1234
+array(4) {
+  [0]=>
+  int(1)
+  [1]=>
+  int(2)
+  [2]=>
+  int(3)
+  [3]=>
+  &amp;string(3) "foo"
+}
+]]>
+        </screen>
+      </informalexample>
+    </para>
+  </sect1>
+
+  <sect1 xml:id="hack.annotations.generators">
+    <title>Typing Generators</title>
+    <para>
+      Generators can be somewhat tricky to type check. For example:
+            <informalexample>
+        <programlisting role="php">
+<![CDATA[
+<?hh
+function gen() {
+  yield 1;
+  yield &quot;a&quot;;
+}
+]]>
+        </programlisting>
+      </informalexample>
+    </para>
+    <para>
+    Code using <literal>gen()</literal> must match the right type, in the right order. Static checking of this is not possible. Therefore, Hack implements two kinds of generators: 
+    <informaltable>
+      <tgroup cols="4">
+        <colspec align="center" />
+        <colspec align="center" />
+        <colspec align="center" />
+        <colspec align="center" />
+        <tbody>
+          <row>
+            <entry>
+              <para>
+                <emphasis role="strong">Type</emphasis>
+              </para>
+            </entry>
+            <entry>
+              <para>
+                <emphasis role="strong">Definition</emphasis>
+              </para>
+            </entry>
+            <entry>
+              <para>
+                <emphasis role="strong">How to Yield</emphasis>
+              </para>
+            </entry>
+            <entry>
+              <para>
+                <emphasis role="strong">Notes</emphasis>
+              </para>
+            </entry>
+          </row>
+          <row>
+            <entry>
+              <para>
+                <emphasis role="strong"><literal>Continuation&lt;T&gt;</literal></emphasis>
+              </para>
+            </entry>
+            <entry>
+              <para>
+                The interface for items that are generators. They can be looped over.
+              </para>
+            </entry>
+            <entry>
+              <para>
+                <literal>yield</literal> directly (e.g., <literal>yield $foo;</literal>)
+              </para>
+            </entry>
+            <entry>
+              <para>
+                Generators must always yield the same type. Continuations yield items of a type <literal>T</literal>. Continuations are used only with <literal>yield</literal>, not <literal>async</literal>/<literal>await</literal>, etc.
+            </para>
+            </entry>
+          </row>
+          <row>
+            <entry>
+              <para>
+                <emphasis role="strong"><literal>Awaitable&lt;T&gt;</literal></emphasis>
+              </para>
+            </entry>
+            <entry>
+              <para>
+                The interface for items that can be prepared.
+              </para>
+            </entry>
+            <entry>
+              <para>
+                In an <literal>async</literal> function, return or <literal>await</literal> directly 
+              </para>
+            </entry>
+            <entry>
+              <para>
+                Preparables, <literal>gen_void()</literal> and <literal>cached_result()</literal> are all Awaitables. They can all be prepared using <literal>prep()</literal> and <literal>await</literal>. In this example, <literal>$foo</literal> is of type <literal>T</literal> for every expression <literal>yield result($foo);</literal>. Not all Awaitables are Continuations. 
+              </para>
+            </entry>
+          </row>
+        </tbody>
+      </tgroup>
+    </informaltable>
+    </para>
+    <para>
+      The following two examples are correctly typed:
+      <informalexample>
+        <programlisting role="php">
+<![CDATA[
+<?hh
+function gen(): Continuation<int> {
+  yield 1;
+  yield 2;
+  yield 3;
+}
+
+function foo(): void {
+  foreach (gen() as $x) {
+    echo $x, "\n";
+  }
+}
+]]>
+        </programlisting>
+        <programlisting role="php">
+<![CDATA[
+<?hh
+class MultiplyByTwo extends Preparable<MultiplyByTwo> implements IUseGeneratorInLegacyPreparable {
+  private int $n;
+  private ?int $result = null;
+
+  public function __construct(int $n) {
+    $this->n = $n;
+  }
+
+  public function gen(): Awaitable<void> {
+    $this->result = $this->n * 2;
+    return gen_void();  // Return a wait handle that does nothing
+  }
+
+  public function getResult(): int {
+    return nullthrows($this->result);
+  }
+}
+
+class MultiplyByThree extends Preparable<MultiplyByThree> implements IUseGeneratorInLegacyPreparable {
+  private int $n;
+  private ?int $result = null;
+
+  public function __construct(int $n) {
+    $this->n = $n;
+  }
+
+  public function gen(): Awaitable<void> {
+    $this->result = $this->n * 3;
+    return gen_void();  // Return a wait handle that does nothing
+  }
+
+  public function getResult(): int {
+    return nullthrows($this->result);
+  }
+}
+
+/**
+ * Computes 6*n^2 using Preparables.
+ * A preparable is used to compute 3*n, another one for 2*n and the results are combined into 6*n^2.
+ */
+class MultiplyAndSquare extends Preparable<MultiplyAndSquare> implements IUseGeneratorInLegacyPreparable {
+  private int $n;
+  private ?int $result = null;
+
+  public function __construct(int $n) {
+    $this->n = $n;
+  }
+
+  public function gen(): Awaitable<void> {
+    list(
+      $by_two,
+      $by_three,
+    ) = yield wait_forva(
+      new MultiplyByTwo($this->n),
+      new MultiplyByThree($this->n),
+   );
+    $this->result = $by_two->getResult() * $by_three->getResult();
+  }
+
+  public function getResult(): int {
+    return nullthrows($this->result);
+  }
+}
+]]>
+        </programlisting>
+      </informalexample>
+    </para>
+  </sect1>
+
+  <sect1 xml:id="hack.annotations.summary">
+    <title>Summary</title>
+    <para>
+      Changing vanilla PHP code to Hack code has been purposely made simple. As possibly gleaned from the examples above, first change
+      <literal>&lt;?php</literal> to <literal>&lt;?hh</literal>. Then annotate types or use other Hack features. Then run the type checker.
+    </para>
+    <para>
+      Of course, developers must not be unnecessarily stymied when it comes to pushing out code. Hack implements type annotations in a way to not only be PHP compatible, but also to provide engineers ways to bypass the type checker. Some code might just be inherently dynamic in nature, code needs to be tested quickly, or the type checker could have a bug. In these cases there are options to have &quot;unsafe&quot; and other types of Hack code to get around the type checker's grip. These options shouldn't be used often as they defeat the overall purpose of having a reliable codebase, but they are there as needed.
+    </para>
+  </sect1>
+</chapter>
+
+<!-- Keep this comment at the end of the file
+Local variables:
+mode: sgml
+sgml-omittag:t
+sgml-shorttag:t
+sgml-minimize-attributes:nil
+sgml-always-quote-attributes:t
+sgml-indent-step:1
+sgml-indent-data:t
+indent-tabs-mode:nil
+sgml-parent-document:nil
+sgml-default-dtd-file:"~/.phpdoc/manual.ced"
+sgml-exposed-tags:nil
+sgml-local-catalogs:nil
+sgml-local-ecat-files:nil
+End:
+vim600: syn=xml fen fdm=syntax fdl=2 si
+vim: et tw=78 syn=sgml
+vi: ts=1 sw=1
+-->

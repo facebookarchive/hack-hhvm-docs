@@ -1,0 +1,11 @@
+&reference.mongo.mongogridfs.construct;
+&reference.mongo.mongogridfs.delete;
+&reference.mongo.mongogridfs.drop;
+&reference.mongo.mongogridfs.find;
+&reference.mongo.mongogridfs.findone;
+&reference.mongo.mongogridfs.get;
+&reference.mongo.mongogridfs.put;
+&reference.mongo.mongogridfs.remove;
+&reference.mongo.mongogridfs.storebytes;
+&reference.mongo.mongogridfs.storefile;
+&reference.mongo.mongogridfs.storeupload;

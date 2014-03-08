@@ -1,0 +1,559 @@
+<?xml version="1.0" encoding="utf-8"?>
+<chapter xml:id="hack.typealiasing">
+  <title>Type Aliasing</title>
+  <para>
+    Many programming languages allow existing types to be redefined as as new type names. The C language has typedefs. Ocaml has type abbreviations. PHP even has rudimentary mechanism with its <literal>class_alias()</literal> function. 
+  </para>
+  <para>
+    Hack and HHVM are offering two ways to redefine type names: type aliasing and opaque type aliasing. Here is the syntax for each. 
+    <informalexample>
+      <para><emphasis>Type Aliasing</emphasis></para>
+      <programlisting role="php">
+<![CDATA[
+<?hh
+type MyInt = int;
+function foo(MyInt $mi): void {}
+]]>
+      </programlisting>
+      <para><emphasis>Opaque Type Aliasing</emphasis></para>
+      <programlisting role="php">
+<![CDATA[
+<?hh
+newtype MyInt = int;
+function foo(MyInt $mi): void {}
+]]>
+      </programlisting>
+    </informalexample>
+  </para>
+  <para>
+    Type name redefinitions are declared outside of classes at the top-level. Also, the grammar on the RHS of the declaration is the same as would be put for type anotations on a parameter or return type. For example, take this function signature: 
+    <informalexample>
+      <programlisting role="php">
+<![CDATA[
+<?hh
+function foo((int, int) $x): void {}
+]]>
+      </programlisting>
+    </informalexample>
+  </para>
+  <para>
+    A type name redefinition that would replace <literal>(int, int)</literal> in <literal>foo()</literal> would look like: 
+    <informalexample>
+      <programlisting role="php">
+<![CDATA[
+<?hh
+newtype Point = (int, int);
+function foo(Point $x): void {}
+
+]]>
+      </programlisting>
+    </informalexample>
+  </para>
+  <para>
+    While type aliasing and opaque type aliases are somewhat similar, there is a key difference is around assignment compatibility to the original type. 
+  </para>
+
+  <sect1 xml:id="hack.typealiasing.typealiasing">
+    <title>Type Aliasing</title>
+    <para>
+      Type aliasing allows the redefining of an existing type name, but still refers to the existing type's underlying implementation. For example: 
+      <informalexample>
+        <para><emphasis>File1.php</emphasis></para>
+        <programlisting role="php">
+<![CDATA[
+<?hh 
+type NotSoSecret = int;
+]]>
+        </programlisting>
+        <para><emphasis>File2.php</emphasis></para>
+        <programlisting role="php">
+<![CDATA[
+<?hh
+require_once "File1.php";
+ 
+function not_so_secrets_are_ints(NotSoSecret $x, NotSoSecret $y): NotSoSecret {
+  return $x + $y;
+}
+ 
+function main_ta(): void {
+  echo not_so_secrets_are_ints(4, 5);
+}
+ 
+main_ta();
+]]>
+        </programlisting>
+        &example.outputs;
+        <screen>
+<![CDATA[
+9
+]]>
+        </screen>
+        <para>
+          <literal>NotSoSecret</literal> is a pure alias for an <literal>int</literal> and has the all the underlying capability of an <literal>int</literal>. 
+        </para>
+      </informalexample>
+    </para>
+  </sect1> 
+
+  <sect1 xml:id="hack.typealiasing.opaquetypealiasing">
+    <title>Opaque Type Aliasing</title>
+    <para>
+      Opaque type aliasing bear some similarity to normal type aliases. There is a key difference, however. Unlike type aliases, Hack restricts opaque type aliases such in a manner that only the file that defined the distinct type is allowed to access the underlying implementation. For example: 
+      <informalexample>
+        <para><emphasis>File1.php</emphasis></para>
+        <programlisting role="php">
+<![CDATA[
+<?hh
+ 
+newtype SecretID = int;
+ 
+function modify_secret_id(SecretID $sid): SecretID {
+  return $sid - time() - 2042;
+}
+ 
+function main_ot1(): void {
+  echo modify_secret_id(44596);
+}
+ 
+main_ot1();
+]]>
+        </programlisting>
+        <para><emphasis>File2.php</emphasis></para>
+        <programlisting role="php">
+<![CDATA[
+<?hh
+ 
+require_once "File1.php";
+ 
+function try_modify_secret_id(SecretID $sid): SecretID {
+    return $sid + time() + 2000;
+}
+ 
+function main_ot2(): void {
+  try_modify_secret_id(44596);
+}
+ 
+main_ot2();
+]]>
+        </programlisting>
+        <para>
+          The file where <literal>SecretID</literal> is defined allows <literal>int</literal> operations such as add and subtract to be performed. However, in any other file Hack will throw an error when trying to use <literal>int</literal> operations on something declared as a <literal>SecretID</literal>
+        </para>
+        &example.outputs;
+        <screen>
+<![CDATA[
+intro_ot_example_2.php:11:24,28: Invalid argument
+intro_ot_example_2.php:6:31,38: This is an object of type SecretID
+intro_ot_example_2.php:11:24,28: It is incompatible with an int
+]]>
+        </screen>
+        <para>
+          Note, however, the above code in <literal>File2.php</literal> will run fine in HHVM since at runtime <literal>SecretID</literal> is indeed just an <literal>int</literal>.
+        </para>
+      </informalexample>
+    </para>
+  </sect1>
+
+  <sect1 xml:id="hack.typealiasing.opaquewithconstraints">
+    <title>Opaque Type Aliases with Constraints</title>
+    <para>
+      Normally, an opaque type alias does not allow the underlying representation of its type to be accessed (modulo the file in which the opaque type alias is defined). This is still true in principle. However, Hack has added the ability to add type constraints to opaque type aliases. Opaque type aliases with constraints still don't allow access to the underlying representation of the type alias, but they do allow access to the representation represented by the constraint. This is best illustrated with an example.
+      <informalexample>
+        <para><emphasis>ot_constaints_transaction_1.php</emphasis></para>
+        <programlisting role="php">
+<![CDATA[
+<?hh // strict
+ 
+newtype TransactionActive<T as Transactable> as T = T;
+ 
+abstract class Transactable {
+  /*
+   * Begin a Transaction.  You must do this before you can commit or
+   * rollback a transaction.
+   */
+  public static function begin<T as Transactable>(T $t): TransactionActive<T> {
+    $t->implBeginTransaction();
+    return $t;
+  }
+ 
+  /*
+   * Rollback, or commit.  These two functions require that the type
+   * system has added a `TransactionActive' annotation in the form of
+   * a newtype---it is a statically-verifiable precondition (to the
+   * degree that the code using this class is in strict mode).
+   */
+  public static function rollback<T as Transactable>(
+    TransactionActive<T> $t
+  ): void {
+    $t->implRollback();
+  }
+  public static function commit<T as Transactable>(
+    TransactionActive<T> $t
+  ): void {
+    $t->implCommit();
+  }
+ 
+  // Subclass for this transaction-oriented class must implement
+  // these.
+  protected abstract function implBeginTransaction(): void;
+  protected abstract function implRollback(): void;
+  protected abstract function implCommit(): void;
+}
+]]>
+        </programlisting>
+        <para><emphasis>ot_constraints_transaction_2.php</emphasis></para>
+        <programlisting role="php">
+<![CDATA[
+<?hh
+// Copyright 2004-present Facebook. All Rights Reserved.
+ 
+// Comment out if testing outside a normal environment
+// where the files are autoloaded.
+// require_once "ot_constraints_transaction_1.php";
+ 
+class MySqlDB extends Transactable {
+  protected function implBeginTransaction(): void {}
+  protected function implRollback(): void {}
+  protected function implCommit(): void {}
+}
+ 
+function open_mysql(): MySqlDB {
+  return new MySqlDB();
+}
+ 
+function ot_transact_main(): void {
+  $db = open_mysql();  // Returns MySqlDB which extends Transactable
+ 
+  $db = Transactable::begin($db);
+  // $db now has type TransactionActive<MySqlDB>.
+ 
+  /* Other code here */
+ 
+  Transactable::rollback($db); // If anyone removes the
+                               // begin() call, Hack will
+                               // throw an error.
+}
+]]>
+        </programlisting>
+        <para>
+          The code above should look relatively familiar in the context of opaque type aliasing. Using <literal>newtype</literal>, an opaque type alias is declared called <literal>TransactionActive</literal>. However, this time the alias has a <literal>T</literal> constraint on it. In the <literal>ot_transact_main()</literal> function in <emphasis>ot_constraints_transaction_2.php</emphasis>, <literal>$db</literal> is first set to an instance of <literal>MySqlDB</literal> (which, in turn, sets <literal>T</literal> to be <literal>MySqlDB</literal>). Then, <literal>$db</literal> is set to the <literal>TransactionActive</literal> type alias via the call to <literal>Transactable::begin()</literal>. Only at this point are the calls to <literal>rollback()</literal> and <literal>commit</literal> allowed by Hack. Even though <literal>$db</literal> is technically a <literal>Transactable</literal> (by being an instance <literal>MySqlDB</literal>), and, at runtime, could successfully call a method such as <literal>rollback()</literal>, Hack will disallow this. Calling <literal>begin()</literal> with a <literal>Transactable</literal> such as <literal>$db</literal> type alias forces all instances of <literal>T</literal> (in this case, <literal>MySqlDB</literal>) to be a <literal>TransactionActive</literal> in order to call those methods and use the underlying representation of <literal>T</literal>. Note here that the underlying representation of the type alias and the constraint are both the same, <literal>T</literal>.
+        </para>
+      </informalexample>
+    </para>
+  </sect1> 
+
+  <sect1 xml:id="hack.typealiasing.examples">
+    <title>Examples</title>
+    <para>
+      Here are some further examples on using type aliases and opaque type aliases.
+    </para>
+    <sect2 xml:id="hack.typealiasing.examples.opaqueconstruction">
+      <title>Opaque Type Aliases and Construction</title>
+      <para>
+        Here is an example of using a opaque type aliases that defines the representation of a point on the (x,y) plane. 
+        <informalexample>
+          <para><emphasis>File1.php</emphasis></para>
+          <programlisting role="php">
+<![CDATA[
+<?hh // strict
+ 
+newtype Point = (int, int);
+ 
+function create_point(int $x, int $y): Point {
+  return tuple($x, $y);
+}
+ 
+function distance(Point $p1, Point $p2): float {
+  $dx = $p1[0] - $p2[0];
+  $dy = $p1[1] - $p2[1];
+  return sqrt($dx*$dx + $dy*$dy);
+}
+]]>
+          </programlisting>
+          <para>
+            Here is the test code:
+          </para>
+          <para><emphasis>Test.php</emphasis></para>
+          <programlisting role="php">
+<![CDATA[
+<?hh
+ 
+require_once "File1.php";
+ 
+function main_tap(): void {
+  $p1 = create_point(3, 4);
+  $p2 = create_point(5, 6);
+  echo distance($p1, $p2);
+}
+ 
+main_tap();
+]]>
+          </programlisting>
+          <para>
+            Since a opaque type alias was used, the underlying implementation of <literal>Point</literal> (i.e., <literal>tuple</literal>) cannot be accessed outside of the file it was defined. Thus, it is important that mechanisms are added to be able to construct a representation of the distinct type. In this case, <literal>createPoint()</literal> was defined to be able to do this construction. This is the HHVM output from running the above test code:
+          </para>
+          &example.outputs;
+          <screen>
+<![CDATA[
+2.8284271247462
+]]>
+          </screen>
+        </informalexample>
+      </para>
+    </sect2>
+    <sect2 xml:id="hack.typealiasing.examples.reducingconversionerrors">
+      <title>Reducing Conversion Errors</title>
+      <para>
+        This example demonstrates how opaque type aliases can help reduce conversion errors. Taking a class that deals with seconds, minutes and hours, the "old" way of creating such a class may have been: 
+        <informalexample>
+          <programlisting role="php">
+<![CDATA[
+<?hh
+ 
+class TypeDefsConv {
+  public static function funcForSeconds(int $s): void {}
+  public static function funcForMinutes(int $m): void {}
+  public static function funcForHours(int $h): void {}
+ 
+  public static function convertSecondsToMinutes(int $s): int {
+    return $s/60;
+  }
+  public static function convertMinutesToHours(int $m): int {
+    return $m/60;
+  }
+}
+]]>
+          </programlisting>
+          <para>
+            While a careful reading and understanding of the code is pretty clear what values should be passed to each method, and the developer may be able to create some internal checks to rule out bad values, anything can be passed to these functions. They are just <literal>int</literal>s after all. Minutes may be passed to <literal>funcForSeconds()</literal>, for example. Now look at the same class implemented using opaque type aliases: 
+          </para>
+          <para><emphasis>File1.php</emphasis></para>
+          <programlisting role="php">
+<![CDATA[
+<?hh
+ 
+newtype Seconds = int;
+newtype Minutes = int;
+newtype Hours = int;
+ 
+class TypeDefsConv {
+  public static function funcForSeconds(Seconds $s): void {}
+  public static function funcForMinutes(Minutes $m): void {}
+  public static function funcForHours(Hours $h): void {}
+ 
+  public static function convertSecondsToMinutes(Seconds $s): Minutes {
+    return (int)($s/60);
+  }
+  public static function convertMinutesToHours(Minutes $m): Hours {
+    return (int)($m/60);
+  }
+}
+]]>
+          </programlisting>
+          <para>
+            Any file outside of the one where the opaque type alias is declared and defined will not be able use the underlying representation to pass in errant values to the methods. Thus, to the outside world, <literal>Seconds</literal> are actually seconds and not <literal>int</literal>s. Here is test code for the above that should produce a type error:
+          </para>
+          <para><emphasis>Test.php</emphasis></para>
+          <programlisting role="php">
+<![CDATA[
+<?hh
+ 
+require_once "File1.php";
+ 
+class UseTypeDefsConv {
+  protected Seconds $s = 0;
+ 
+  public function foo(): void {
+    $this->s = 464;
+    $m = TypeDefsConv::convertSecondsToMinutes($this->s);
+    echo $m;
+    TypeDefsConv::funcForMinutes($m);
+  }
+}
+ 
+function main_tdc(): void {
+  $utdc = new UseTypeDefsConv();
+  $utdc->foo();
+}
+ 
+main_tdc();
+]]>
+          </programlisting>
+          &example.outputs;
+          <screen>
+<![CDATA[
+ot_conversion_errors_2.php:7:13,19: Wrong type hint
+ot_conversion_errors_2.php:7:13,19: This is an object of type Seconds
+ot_conversion_errors_2.php:7:26,26: It is incompatible with an int
+]]>
+          </screen>
+          <para>
+            Again, the above code will run correctly in HHVM. It just won't type check correctly through Hack.
+          </para>
+        </informalexample>
+      </para>
+    </sect2>
+
+    <sect2 xml:id="hack.typealiasing.examples.generics">
+      <title>Generics</title>
+      <para>
+        Type aliases and opaque type aliases can be used successfully with generic types. Suppose a <literal>Vector&lt;Vector&lt;T&gt;&gt;</literal>. That looks like a matrix. And it makes perfect sense to redefine the name of <literal>Vector&lt;Vector&lt;T&gt;&gt;</literal> as a <literal>Matrix&lt;T&gt;</literal>.
+        <informalexample>
+          <para><emphasis>File1.php</emphasis></para>
+          <programlisting role="php">
+<![CDATA[
+<?hh
+
+type Matrix<T> = Vector<Vector<T>>;
+ 
+function bar_ta_gen<T>(Matrix<T> $x): void {
+  var_dump($x);
+}
+]]>
+          </programlisting>
+          <para><emphasis>File2.php</emphasis></para>
+          <programlisting role="php">
+<![CDATA[
+<?hh
+ 
+require_once "File1.php";
+ 
+function foo_ta_gen(Vector<Vector<float>> $x): void {
+  bar_ta_gen($x); // Vector<Vector<float>> is identical to Matrix<float>
+}
+ 
+function foo_ta_gen_main(): void {
+  $vecvec = Vector {Vector {1.0, 2.0}, Vector {3.0, 4.0}};
+  foo_ta_gen($vecvec);
+}
+ 
+foo_ta_gen_main();
+]]>
+          </programlisting>
+        </informalexample>
+      </para>
+    </sect2>
+
+    <sect2 xml:id="hack.typealiasing.examples.phantomtypes">
+      <title>Phantom Types</title>
+      <para>
+        Take this piece of code that includes a type alias:
+        <informalexample>
+          <programlisting role="php">
+<![CDATA[
+<?hh
+ 
+// A simplified serialization api:
+type Serialized<T> = string;
+ 
+class FooPhantom {}
+function serialize_phantom<T>(T $t): Serialized<T> {
+  return serialize($t);
+}
+function unserialize_phantom<T>(Serialized<T> $s): T {
+  return unserialize($s);
+}
+ 
+// Using the api:
+function main_phantom(): void {
+  $x = new FooPhantom();
+  var_dump($x);
+  // $serialized is a Serialized<Foo>, aka "string"
+  $serialized = serialize_phantom($x);
+  var_dump($serialized);
+  // we now know the type of $y must be Foo
+  $y = unserialize_phantom($serialized);
+  var_dump($y);
+}
+ 
+main_phantom();
+]]>
+          </programlisting>
+          &example.outputs;
+          <screen>
+<![CDATA[
+object(FooPhantom)#1 (0) {
+}
+string(22) "O:10:"FooPhantom":0:{}"
+object(FooPhantom)#2 (0) {
+}
+]]>
+          </screen>
+          <para>
+            This example shows what is called a &quot;phantom&quot; type. The reason for this is that the right hand side of the typedef does not explicitly mention the type parameter <literal>T</literal> used on the left hand side of the typedef. In reality, <literal>Serialized&lt;T&gt;</literal> is just a string. However, HHVM carries around the information about what type a use of the typedef had originally. For example, calling <literal>serialize_phantom()</literal> with a <literal>FooPhantom</literal> allows HHVM to remember that a <literal>FooPhantom</literal> was the original type. Thus a call to <literal>unserialize_phantom()</literal> will return a <literal>FooPhantom()</literal>.
+          </para>
+        </informalexample>
+      </para>
+    </sect2>
+
+    <sect2 xml:id="hack.typealiasing.examples.enums">
+      <title>Enums</title>
+      <para>
+        Opaque type aliases can be used to mimic C++ style enumerations.
+        <informalexample>
+          <para><emphasis>File1.php</emphasis></para>
+          <programlisting role="php">
+<![CDATA[
+<?hh
+ 
+newtype Color = int;
+class ColorEnum extends Enum<Color> {
+  const Color BLUE = 1;
+  const Color RED = 2;
+  const Color GREEN = 3;
+ 
+  public static function getColor(Color $color) {
+    switch ($color) {
+      case 1: return "0000ff";
+      case 2: return "ff0000";
+      case 3: return "00ff00";
+  }
+}
+]]>
+          </programlisting>
+          <para><emphasis>File1.php</emphasis></para>
+          <programlisting role="php">
+<![CDATA[
+<?hh
+ 
+require_once "File1.php";
+ 
+function give_me_a_box(Color $color): :ui:box {
+  return <ui:box color={ColorEnum::getColor($color)}>
+    This is really a silly example. I hope you won't actually write code like this...
+  </ui:box>;
+}
+]]>
+          </programlisting>
+        </informalexample>
+      </para>
+    </sect2>
+  </sect1>
+
+  <sect1 xml:id="hack.typealiasing.summary">
+    <title>Summary</title>
+    <para>
+      Type aliasing and opaque type aliasing provide PHP developers a clean way to redefine type names (a la C typedefs). Type aliases are just that, aliases. There are no restrictions to the access of the existing type on which the alias was created. Opaque type aliases have more restrictions. As far as Hack is concerned, access to the existing type can only occur in the file where the opaque type alias is defined. However, at runtime, HHVM will still consider an opaque type alias to be the underlying type at run time as far as operations, etc. are concerned. 
+    </para>
+  </sect1>
+</chapter>
+<!-- Keep this comment at the end of the file
+Local variables:
+mode: sgml
+sgml-omittag:t
+sgml-shorttag:t
+sgml-minimize-attributes:nil
+sgml-always-quote-attributes:t
+sgml-indent-step:1
+sgml-indent-data:t
+indent-tabs-mode:nil
+sgml-parent-document:nil
+sgml-default-dtd-file:"~/.phpdoc/manual.ced"
+sgml-exposed-tags:nil
+sgml-local-catalogs:nil
+sgml-local-ecat-files:nil
+End:
+vim600: syn=xml fen fdm=syntax fdl=2 si
+vim: et tw=78 syn=sgml
+vi: ts=1 sw=1
+-->

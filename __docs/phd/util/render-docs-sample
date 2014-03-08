@@ -1,0 +1,1 @@
+cd ~/local/hhvm-web/__docs/phd && php render.php -d ../phpdoc/doc-base/.manual.xml -f php -P PHP -o ~/local/hhvm-web/manual/en

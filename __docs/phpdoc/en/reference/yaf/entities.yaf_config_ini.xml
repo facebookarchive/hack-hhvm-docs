@@ -1,0 +1,16 @@
+&reference.yaf.yaf-config-ini.construct;
+&reference.yaf.yaf-config-ini.count;
+&reference.yaf.yaf-config-ini.current;
+&reference.yaf.yaf-config-ini.get;
+&reference.yaf.yaf-config-ini.isset;
+&reference.yaf.yaf-config-ini.key;
+&reference.yaf.yaf-config-ini.next;
+&reference.yaf.yaf-config-ini.offsetexists;
+&reference.yaf.yaf-config-ini.offsetget;
+&reference.yaf.yaf-config-ini.offsetset;
+&reference.yaf.yaf-config-ini.offsetunset;
+&reference.yaf.yaf-config-ini.readonly;
+&reference.yaf.yaf-config-ini.rewind;
+&reference.yaf.yaf-config-ini.set;
+&reference.yaf.yaf-config-ini.toarray;
+&reference.yaf.yaf-config-ini.valid;

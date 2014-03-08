@@ -1,0 +1,17 @@
+&reference.spl.recursivetreeiterator.beginchildren;
+&reference.spl.recursivetreeiterator.beginiteration;
+&reference.spl.recursivetreeiterator.callgetchildren;
+&reference.spl.recursivetreeiterator.callhaschildren;
+&reference.spl.recursivetreeiterator.construct;
+&reference.spl.recursivetreeiterator.current;
+&reference.spl.recursivetreeiterator.endchildren;
+&reference.spl.recursivetreeiterator.enditeration;
+&reference.spl.recursivetreeiterator.getentry;
+&reference.spl.recursivetreeiterator.getpostfix;
+&reference.spl.recursivetreeiterator.getprefix;
+&reference.spl.recursivetreeiterator.key;
+&reference.spl.recursivetreeiterator.next;
+&reference.spl.recursivetreeiterator.nextelement;
+&reference.spl.recursivetreeiterator.rewind;
+&reference.spl.recursivetreeiterator.setprefixpart;
+&reference.spl.recursivetreeiterator.valid;

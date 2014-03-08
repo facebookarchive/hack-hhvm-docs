@@ -1,0 +1,16 @@
+&reference.sam.SAMConnection.commit;
+&reference.sam.SAMConnection.connect;
+&reference.sam.SAMConnection.construct;
+&reference.sam.SAMConnection.disconnect;
+&reference.sam.SAMConnection.errno;
+&reference.sam.SAMConnection.error;
+&reference.sam.SAMConnection.isConnected;
+&reference.sam.SAMConnection.peek;
+&reference.sam.SAMConnection.peekAll;
+&reference.sam.SAMConnection.receive;
+&reference.sam.SAMConnection.remove;
+&reference.sam.SAMConnection.rollback;
+&reference.sam.SAMConnection.send;
+&reference.sam.SAMConnection.setDebug;
+&reference.sam.SAMConnection.subscribe;
+&reference.sam.SAMConnection.unsubscribe;

@@ -1,0 +1,16 @@
+&reference.yaf.yaf-config-simple.construct;
+&reference.yaf.yaf-config-simple.count;
+&reference.yaf.yaf-config-simple.current;
+&reference.yaf.yaf-config-simple.get;
+&reference.yaf.yaf-config-simple.isset;
+&reference.yaf.yaf-config-simple.key;
+&reference.yaf.yaf-config-simple.next;
+&reference.yaf.yaf-config-simple.offsetexists;
+&reference.yaf.yaf-config-simple.offsetget;
+&reference.yaf.yaf-config-simple.offsetset;
+&reference.yaf.yaf-config-simple.offsetunset;
+&reference.yaf.yaf-config-simple.readonly;
+&reference.yaf.yaf-config-simple.rewind;
+&reference.yaf.yaf-config-simple.set;
+&reference.yaf.yaf-config-simple.toarray;
+&reference.yaf.yaf-config-simple.valid;

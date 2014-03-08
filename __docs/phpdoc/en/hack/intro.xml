@@ -1,0 +1,194 @@
+<?xml version="1.0" encoding="utf-8"?>
+ <chapter xml:id="hack.intro" xmlns="http://docbook.org/ns/docbook">
+	<title>The Hack Language</title>
+
+	<sect1 xml:id="hack.intro.whatis">
+    <title>What is Hack?</title>
+    <para>
+      Hack is a set of extensions for HHVM developed at Facebook. The barrier to entry for Hack is low. To get started, all that is needed is to generally understand the features that Hack provides andhow to call the Hack type checker (<literal>hh_client</literal> invokes the type checker at the command line)
+    </para>
+    <para>
+      The goal of Hack to offer PHP developers a way to write cleaner, safer and refactorable code while trying to maintain a level of compatibility with current PHP codebases. The primary way that this goal is achieved is to provide developers a way to annotate PHP functions and
+      classes with type information, providing a type checking tool to validate those annotations. In addition, Hack also provides specific PHP language feature additions such as:
+      <itemizedlist>
+        <listitem><para>generics</para></listitem>
+        <listitem><para>collections</para></listitem>
+        <listitem><para>nullable</para></listitem>
+      </itemizedlist>
+    </para>
+    <para>
+      Each of the Hack features, and more, is discussed in great detail in this documentation.
+    </para>
+    <para>
+      Hack code is indicated through the <literal>&lt;?hh</literal> marker at the top of a PHP
+      file, as opposed to the canonical <literal>&lt;?php</literal> marker.
+    </para>
+    <para>
+      <emphasis role="strong">Very important note</emphasis>: The type checker is invoked before runtime to determine whether code is typesafe. While HHVM knows about and understands the Hack extensions, it does not necessarily strictly enforce them. This is different from a true statically-typed language like C# where code is type checked at compile time and enforced (usually via some sort of exception mechanism) at runtime.
+    </para>
+  </sect1>
+
+  <sect1 xml:id="hack.intro.background">
+	<title> Hack Background </title>
+		<para>
+			Facebook was initially built with vanilla PHP. Parameters and return types were specified
+		  in comments. Parsers could use this to create documentation. But type-checking was non existant.
+			<informalexample>
+				<programlisting role="php">
+<![CDATA[
+<?php
+/**
+ * Wraps a name in a box
+ *
+ * @param raw-str $name
+ * @return html-str
+ */
+function say_hello($name) {
+  return "<div class=\"box\"<hello ".htmlize($name)."</div>";
+}
+]]>
+				</programlisting>
+			</informalexample>
+		</para>
+		<para>
+			In 2009, the HPHP team released a PHP compiler called HipHop. This compiler outperformed and
+	    replaced Zend's PHP engine at Facebook. In 2010, minor changes tothe PHP language were introduced by the HPHP team to improve development time and provide basic type safety. The changes were XHP and parameter type constraints.
+			<informalexample>
+				<programlisting role="php">
+<![CDATA[
+<?php
+/**
+ * Wraps a name in a box
+ *
+ * @return xhp
+ */
+function say_hello(string $name) {
+  return <div class="box"<Hello {$name}>/div>;
+}
+]]>					
+				</programlisting>
+			</informalexample>
+		</para>
+		<para>
+		  In 2012, engineers from various Facebook teams started exploring the idea of annotating return types. And the Hack language was born.....
+		</para>
+	</sect1>
+	
+	<sect1 xml:id="hack.intro.summary">
+	  <title>Summary</title>
+	  <para>
+	    Hack provides the following, non-exhaustive list of features:
+		  <itemizedlist>
+		    <listitem>
+		      <para>
+		        Ability to annotate function and method return types.
+		      </para>
+		    </listitem>
+		    <listitem>
+		      <para>
+		        Ability to annotate the type of member variables.
+		      </para>
+		    </listitem>
+		    <listitem>
+		      <para>
+		        Protection against common unsafe coding patterns (e.g. sketchy
+		        null checks).
+		      </para>
+		    </listitem>
+		    <listitem>
+		      <para>
+		        Type-safe collections (<literal>Vector</literal>, <literal>Map</literal>, <literal>Set</literal>).
+		      </para>
+		    </listitem>
+		    <listitem>
+		      <para>
+		        A tool to check the types (the Hack type checker).
+		      </para>
+		    </listitem>
+		  </itemizedlist>
+		</para>
+	  <para>
+	    Hack has been designed with vanilla PHP compatibility in mind. The type checker enforces checks on typed code and assumes calls to/from PHP are correct. This means the amount of type checking will gradually increase as more and more code is written in Hack. Hack's approach to incrementally introduce new features is a safe one: the HHVM runtime was minimally modified. The changes we made were limited to HHVM's parser, where the new types either get converted to PHP types or get stripped out.
+	  </para>
+	  <para>
+	    Hack is unlike many other statically typed languages:
+		  <itemizedlist>
+		    <listitem>
+		      <para>
+		        The type checking phase is instant.
+		      </para>
+		    </listitem>
+		    <listitem>
+		      <para>
+		        Local types are inferred.
+		      </para>
+		    </listitem>
+		    <listitem>
+		      <para>
+		        There is a minimal need for casting.
+		      </para>
+		    </listitem>
+		    <listitem>
+		      <para>
+		        The type related error messages are designed to make it easy to fix the core issue.
+		      </para>
+		    </listitem>
+		    <listitem>
+		      <para>
+		        The type checking model is a best effort model. Hack code can call PHP code and vice versa.
+		      </para>
+		    </listitem>
+		  </itemizedlist>
+		</para>
+	  <para>
+	    Hack comes with the following benefits (and possible benefits):
+		  <itemizedlist>
+		    <listitem>
+		      <para>
+		        Return types makes the code more readable.
+		      </para>
+		    </listitem>
+		    <listitem>
+		      <para>
+		        Some typing mistakes will be caught by the type checker.
+		      </para>
+		    </listitem>
+		    <listitem>
+		      <para>
+		        Better emacs/vim/etc. integration.
+		      </para>
+		    </listitem>
+		    <listitem>
+		      <para>
+		      	<emphasis>Future</emphasis>: Reliable refactoring tools.
+		      </para>
+		    </listitem>
+		    <listitem>
+		      <para>
+		        <emphasis>Future</emphasis>: Most typing mistakes will be caught statically.
+		      </para>
+		    </listitem>
+		  </itemizedlist>
+		</para>
+	</sect1>
+</chapter>
+ <!-- Keep this comment at the end of the file
+ Local variables:
+ mode: sgml
+ sgml-omittag:t
+ sgml-shorttag:t
+ sgml-minimize-attributes:nil
+ sgml-always-quote-attributes:t
+ sgml-indent-step:1
+ sgml-indent-data:t
+ indent-tabs-mode:nil
+ sgml-parent-document:nil
+ sgml-default-dtd-file:"~/.phpdoc/manual.ced"
+ sgml-exposed-tags:nil
+ sgml-local-catalogs:nil
+ sgml-local-ecat-files:nil
+ End:
+ vim600: syn=xml fen fdm=syntax fdl=2 si
+ vim: et tw=78 syn=sgml
+ vi: ts=1 sw=1
+ -->

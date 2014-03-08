@@ -1,0 +1,11 @@
+&reference.tidy.functions.ob-tidyhandler;
+&reference.tidy.functions.tidy-access-count;
+&reference.tidy.functions.tidy-config-count;
+&reference.tidy.functions.tidy-error-count;
+&reference.tidy.functions.tidy-get-output;
+&reference.tidy.functions.tidy-load-config;
+&reference.tidy.functions.tidy-reset-config;
+&reference.tidy.functions.tidy-save-config;
+&reference.tidy.functions.tidy-set-encoding;
+&reference.tidy.functions.tidy-setopt;
+&reference.tidy.functions.tidy-warning-count;

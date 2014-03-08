@@ -1,0 +1,6 @@
+&reference.mongo.mongolog.getcallback;
+&reference.mongo.mongolog.getlevel;
+&reference.mongo.mongolog.getmodule;
+&reference.mongo.mongolog.setcallback;
+&reference.mongo.mongolog.setlevel;
+&reference.mongo.mongolog.setmodule;

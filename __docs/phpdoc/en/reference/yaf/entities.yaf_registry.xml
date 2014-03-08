@@ -1,0 +1,6 @@
+&reference.yaf.yaf-registry.clone;
+&reference.yaf.yaf-registry.construct;
+&reference.yaf.yaf-registry.del;
+&reference.yaf.yaf-registry.get;
+&reference.yaf.yaf-registry.has;
+&reference.yaf.yaf-registry.set;

@@ -1,0 +1,7 @@
+&reference.sqlite3.sqlite3stmt.bindparam;
+&reference.sqlite3.sqlite3stmt.bindvalue;
+&reference.sqlite3.sqlite3stmt.clear;
+&reference.sqlite3.sqlite3stmt.close;
+&reference.sqlite3.sqlite3stmt.execute;
+&reference.sqlite3.sqlite3stmt.paramcount;
+&reference.sqlite3.sqlite3stmt.reset;

@@ -1,0 +1,9 @@
+&reference.ktaglib.audioproperties.getBitrate;
+&reference.ktaglib.audioproperties.getChannels;
+&reference.ktaglib.audioproperties.getLayer;
+&reference.ktaglib.audioproperties.getLength;
+&reference.ktaglib.audioproperties.getSampleBitrate;
+&reference.ktaglib.audioproperties.getVersion;
+&reference.ktaglib.audioproperties.isCopyrighted;
+&reference.ktaglib.audioproperties.isOriginal;
+&reference.ktaglib.audioproperties.isProtectionEnabled;

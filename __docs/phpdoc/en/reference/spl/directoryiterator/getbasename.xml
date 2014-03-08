@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- $Revision: 315005 $ -->
+<refentry xml:id="directoryiterator.getbasename" xmlns="http://docbook.org/ns/docbook">
+ <refnamediv>
+  <refname>DirectoryIterator::getBasename</refname>
+  <refpurpose>Get base name of current DirectoryIterator item.</refpurpose>
+ </refnamediv>
+
+ <refsect1 role="description">
+  &reftitle.description;
+  <methodsynopsis>
+   <modifier>public</modifier>
+   <type>string</type>
+   <methodname>DirectoryIterator::getBasename</methodname>
+   <methodparam choice="opt">
+    <type>string</type>
+    <parameter>suffix</parameter>
+   </methodparam>
+  </methodsynopsis>
+  <para>
+   Get the base name of the current <classname>DirectoryIterator</classname> item.
+  </para>
+ </refsect1>
+
+ <refsect1 role="parameters">
+  &reftitle.parameters;
+  <para>
+   <variablelist>
+    <varlistentry>
+     <term><parameter>suffix</parameter></term>
+     <listitem>
+      <para>
+       If the base name ends in <parameter>suffix</parameter>, 
+       this will be cut.
+      </para>
+     </listitem>
+    </varlistentry>
+   </variablelist>
+  </para>
+ </refsect1>
+
+ <refsect1 role="returnvalues">
+  &reftitle.returnvalues;
+  <para>
+   The base name of the current <classname>DirectoryIterator</classname> item.
+  </para>
+ </refsect1>
+
+ <refsect1 role="examples">
+  &reftitle.examples;
+  <para>
+   <example>
+    <title>A <methodname>DirectoryIterator::getBasename</methodname> example</title>
+    <para>
+     This example will list the full base name and the base name with 
+     suffix <literal>.jpg</literal> removed for the files in the directory
+     containing the script.
+    </para>
+    <programlisting role="php">
+<![CDATA[
+<?php
+$dir = new DirectoryIterator(dirname(__FILE__));
+foreach ($dir as $fileinfo) {
+    if ($fileinfo->isFile()) {
+        echo $fileinfo->getBasename() . "\n";
+        echo $fileinfo->getBasename('.jpg') . "\n";
+    }
+}
+?>
+]]>
+    </programlisting>
+    &example.outputs.similar;
+    <screen>
+<![CDATA[
+apple.jpg
+apple
+banana.jpg
+banana
+index.php
+index.php
+pear.jpg
+pear
+]]>
+    </screen>
+   </example>
+  </para>
+ </refsect1>
+
+ <refsect1 role="seealso">
+  &reftitle.seealso;
+  <para>
+   <simplelist>
+    <member><methodname>DirectoryIterator::getFilename</methodname></member>
+    <member><methodname>DirectoryIterator::getPath</methodname></member>
+    <member><methodname>DirectoryIterator::getPathname</methodname></member>
+    <member><function>basename</function></member>
+    <member><function>pathinfo</function></member>
+   </simplelist>
+  </para>
+ </refsect1>
+
+</refentry>
+<!-- Keep this comment at the end of the file
+Local variables:
+mode: sgml
+sgml-omittag:t
+sgml-shorttag:t
+sgml-minimize-attributes:nil
+sgml-always-quote-attributes:t
+sgml-indent-step:1
+sgml-indent-data:t
+indent-tabs-mode:nil
+sgml-parent-document:nil
+sgml-default-dtd-file:"~/.phpdoc/manual.ced"
+sgml-exposed-tags:nil
+sgml-local-catalogs:nil
+sgml-local-ecat-files:nil
+End:
+vim600: syn=xml fen fdm=syntax fdl=2 si
+vim: et tw=78 syn=sgml
+vi: ts=1 sw=1
+-->

@@ -1,0 +1,3 @@
+&reference.pdo-pgsql.configure;
+&reference.pdo-pgsql.entities.PDO;
+&reference.pdo-pgsql.reference;

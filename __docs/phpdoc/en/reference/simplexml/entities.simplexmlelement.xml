@@ -1,0 +1,14 @@
+&reference.simplexml.simplexmlelement.addAttribute;
+&reference.simplexml.simplexmlelement.addChild;
+&reference.simplexml.simplexmlelement.asXML;
+&reference.simplexml.simplexmlelement.attributes;
+&reference.simplexml.simplexmlelement.children;
+&reference.simplexml.simplexmlelement.construct;
+&reference.simplexml.simplexmlelement.count;
+&reference.simplexml.simplexmlelement.getDocNamespaces;
+&reference.simplexml.simplexmlelement.getName;
+&reference.simplexml.simplexmlelement.getNamespaces;
+&reference.simplexml.simplexmlelement.registerXPathNamespace;
+&reference.simplexml.simplexmlelement.savexml;
+&reference.simplexml.simplexmlelement.toString;
+&reference.simplexml.simplexmlelement.xpath;

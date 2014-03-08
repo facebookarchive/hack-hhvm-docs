@@ -1,0 +1,9 @@
+&reference.apc.apciterator.construct;
+&reference.apc.apciterator.current;
+&reference.apc.apciterator.gettotalcount;
+&reference.apc.apciterator.gettotalhits;
+&reference.apc.apciterator.gettotalsize;
+&reference.apc.apciterator.key;
+&reference.apc.apciterator.next;
+&reference.apc.apciterator.rewind;
+&reference.apc.apciterator.valid;

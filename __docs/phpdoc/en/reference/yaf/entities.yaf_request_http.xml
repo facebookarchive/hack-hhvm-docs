@@ -1,0 +1,9 @@
+&reference.yaf.yaf-request-http.clone;
+&reference.yaf.yaf-request-http.construct;
+&reference.yaf.yaf-request-http.get;
+&reference.yaf.yaf-request-http.getcookie;
+&reference.yaf.yaf-request-http.getfiles;
+&reference.yaf.yaf-request-http.getpost;
+&reference.yaf.yaf-request-http.getquery;
+&reference.yaf.yaf-request-http.getrequest;
+&reference.yaf.yaf-request-http.isxmlhttprequest;

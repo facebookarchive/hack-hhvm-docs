@@ -1,0 +1,15 @@
+&reference.ming.swftextfield.addchars;
+&reference.ming.swftextfield.addstring;
+&reference.ming.swftextfield.align;
+&reference.ming.swftextfield.construct;
+&reference.ming.swftextfield.setbounds;
+&reference.ming.swftextfield.setcolor;
+&reference.ming.swftextfield.setfont;
+&reference.ming.swftextfield.setheight;
+&reference.ming.swftextfield.setindentation;
+&reference.ming.swftextfield.setleftmargin;
+&reference.ming.swftextfield.setlinespacing;
+&reference.ming.swftextfield.setmargins;
+&reference.ming.swftextfield.setname;
+&reference.ming.swftextfield.setpadding;
+&reference.ming.swftextfield.setrightmargin;

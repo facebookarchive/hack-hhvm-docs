@@ -1,0 +1,289 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- $Revision: 331842 $ -->
+<refentry xmlns="http://docbook.org/ns/docbook" xml:id="function.oci-set-prefetch">
+ <refnamediv>
+  <refname>oci_set_prefetch</refname>
+  <refpurpose>Sets number of rows to be prefetched by queries</refpurpose>
+ </refnamediv>
+ 
+ <refsect1 role="description">
+  &reftitle.description;
+  <methodsynopsis>
+   <type>bool</type><methodname>oci_set_prefetch</methodname>
+   <methodparam><type>resource</type><parameter>statement</parameter></methodparam>
+   <methodparam><type>int</type><parameter>rows</parameter></methodparam>
+  </methodsynopsis>
+  <para>
+   Sets the number of rows to be buffered by the Oracle Client
+   libraries after a successful query call
+   to <function>oci_execute</function> and for each subsequent
+   internal fetch request to the database.  For queries returning a
+   large number of rows, performance can be significantly improved by
+   increasing the prefetch count above the
+   default <link linkend="ini.oci8.default-prefetch">oci8.default_prefetch</link>
+   value.
+  </para>
+  <para>
+   Prefetching is Oracle's efficient way of returning more than one
+   data row from the database in each network request.  This can
+   result in better network and CPU utilization.  The buffering of
+   rows is internal to OCI8 and the behavior of OCI8 fetching
+   functions is unchanged regardless of the prefetch count. For
+   example, <function>oci_fetch_row</function> will always return one
+   row.  The prefetch buffer is per-statement and is not used by
+   re-executed statements or by other connections.
+  </para>
+  <para>
+   Call <function>oci_set_prefetch</function> before
+   calling <function>oci_execute</function>.
+  </para>
+  <para>
+   A tuning goal is to set the prefetch value to a reasonable size for
+   the network and database to handle.  For queries returning a very
+   large number of rows, overall system efficiency might be better if
+   rows are retrieved from the database in several chunks (i.e set the
+   prefetch value smaller than the number of rows).  This allows the
+   database to handle other users' statements while the PHP script is
+   processing the current set of rows.
+  </para>
+  <para>
+   Query prefetching was introduced in Oracle 8<emphasis>i</emphasis>.  REF CURSOR
+   prefetching was introduced in Oracle 11<emphasis>g</emphasis>R2 and occurs when PHP is
+   linked with Oracle 11<emphasis>g</emphasis>R2 (or later) Client libraries.
+   Nested cursor prefetching was
+   introduced in Oracle 11<emphasis>g</emphasis>R2 and requires both the Oracle Client
+   libraries and the database to be version 11<emphasis>g</emphasis>R2 or greater.  
+  </para>
+  <para>
+   Prefetching is not supported when queries contain LONG or LOB
+   columns.  The prefetch value is ignored and single-row fetches will
+   be used in all the situations when prefetching is not supported.
+  </para>
+  <para>
+   When using Oracle Database 12<emphasis>c</emphasis>, the prefetch
+   value set by PHP can be overridden by Oracle's
+   client <literal>oraaccess.xml</literal> configuration file.  Refer
+   to Oracle documentation for more detail.
+  </para>
+ </refsect1>
+
+ <refsect1 role="parameters">
+  &reftitle.parameters;
+  <para>
+   <variablelist>
+    <varlistentry>
+     <term><parameter>statement</parameter></term>
+     <listitem>
+       &oci.arg.statement.id;
+     </listitem>
+    </varlistentry>
+    <varlistentry>
+     <term><parameter>rows</parameter></term>
+     <listitem>
+      <para>
+       The number of rows to be prefetched, &gt;= 0
+      </para>
+     </listitem>
+    </varlistentry>
+   </variablelist>
+  </para>
+ </refsect1>
+
+ <refsect1 role="returnvalues">
+  &reftitle.returnvalues;
+  <para>
+   &return.success;
+  </para>
+ </refsect1>
+
+ <refsect1 role="changelog">
+  &reftitle.changelog;
+  <para>
+   <informaltable>
+    <tgroup cols="2">
+     <thead>
+      <row>
+       <entry>&Version;</entry>
+       <entry>&Description;</entry>
+      </row>
+     </thead>
+     <tbody>
+      <row>
+       <entry>5.3.2 (PECL OCI8 1.4)</entry>
+       <entry>
+         Before this release, <parameter>rows</parameter> must be &gt;= 1.
+       </entry>
+      </row>
+      <row>
+        <entry>5.3.0 (PECL OCI8 1.3.4)</entry>
+        <entry>
+         Before this release, prefetching was limited to the lesser
+         of <parameter>rows</parameter> rows and 1024
+         * <parameter>rows</parameter> bytes.  The byte size
+         restriction has now been removed.
+        </entry>
+      </row>
+     </tbody>
+    </tgroup>
+   </informaltable>
+  </para>
+ </refsect1>
+
+ <refsect1 role="examples">
+  &reftitle.examples;
+  <para>
+   <example>
+    <title>Changing the default prefetch value for a query</title>
+    <programlisting role="php">
+<![CDATA[
+<?php
+
+$conn = oci_connect('hr', 'welcome', 'localhost/XE');
+
+$stid = oci_parse($conn, 'SELECT * FROM myverybigtable');
+oci_set_prefetch($stid, 300);  // Set before calling oci_execute()
+oci_execute($stid);
+
+echo "<table border='1'>\n";
+while ($row = oci_fetch_array($stid, OCI_ASSOC+OCI_RETURN_NULLS)) {
+    echo "<tr>\n";
+    foreach ($row as $item) {
+        echo "    <td>".($item !== null ? htmlentities($item, ENT_QUOTES) : "&nbsp;")."</td>\n";
+    }
+    echo "</tr>\n";
+}
+echo "</table>\n";
+
+oci_free_statement($stid);
+oci_close($conn);
+
+?>
+]]>
+    </programlisting>
+   </example>
+  </para>
+  <para>
+   <example>
+    <title>Changing the default prefetch for a REF CURSOR fetch</title>
+    <programlisting role="php">
+<![CDATA[
+<?php
+/*
+  Create the PL/SQL stored procedure as:
+
+  CREATE OR REPLACE PROCEDURE myproc(p1 OUT SYS_REFCURSOR) AS
+  BEGIN
+    OPEN p1 FOR SELECT * FROM all_objects WHERE ROWNUM < 5000;
+  END;
+*/
+
+$conn = oci_connect('hr', 'welcome', 'localhost/XE');
+
+$stid = oci_parse($conn, 'BEGIN myproc(:rc); END;');
+$refcur = oci_new_cursor($conn);
+oci_bind_by_name($stid, ':rc', $refcur, -1, OCI_B_CURSOR);
+oci_execute($stid);
+
+// Change the prefetch before executing the cursor.
+// REF CURSOR prefetching works when PHP is linked with Oracle 11gR2 or later Client libraries
+oci_set_prefetch($refcur, 200);
+oci_execute($refcur);
+
+echo "<table border='1'>\n";
+while ($row = oci_fetch_array($refcur, OCI_ASSOC+OCI_RETURN_NULLS)) {
+    echo "<tr>\n";
+    foreach ($row as $item) {
+        echo "    <td>".($item !== null ? htmlentities($item, ENT_QUOTES) : "&nbsp;")."</td>\n";
+    }
+    echo "</tr>\n";
+}
+echo "</table>\n";
+
+oci_free_statement($refcur);
+oci_free_statement($stid);
+oci_close($conn);
+
+?> 
+]]>
+    </programlisting>
+   </example>
+  </para>
+  <para>
+   If PHP OCI8 fetches from a REF CURSOR and then passes the REF
+   CURSOR back to a second PL/SQL procedure for further processing,
+   then set the REF CURSOR prefetch count to <constant>0</constant> to
+   avoid rows being "lost" from the result set.  The prefetch value is
+   the number of extra rows fetched in each OCI8 internal request to
+   the database, so setting it to <constant>0</constant> means only
+   fetch one row at a time.
+   <example>
+    <title>Setting the prefetch value when passing a REF CURSOR back to Oracle</title>
+    <programlisting role="php">
+<![CDATA[
+<?php
+
+$conn = oci_connect('hr', 'welcome', 'localhost/orcl');
+
+// get the REF CURSOR
+$stid = oci_parse($conn, 'BEGIN myproc(:rc_out); END;');
+$refcur = oci_new_cursor($conn);
+oci_bind_by_name($stid, ':rc_out', $refcur, -1, OCI_B_CURSOR);
+oci_execute($stid);
+
+// Display two rows, but don't prefetch any extra rows otherwise
+// those extra rows would not be passed back to myproc_use_rc().
+// A prefetch value of 0 is allowed in PHP 5.3.2 and PECL OCI8 1.4
+oci_set_prefetch($refcur, 0);
+oci_execute($refcur);
+$row = oci_fetch_array($refcur);
+var_dump($row);
+$row = oci_fetch_array($refcur);
+var_dump($row);
+
+// pass the REF CURSOR to myproc_use_rc() to do more data processing
+// with the result set
+$stid = oci_parse($conn, 'begin myproc_use_rc(:rc_in); end;'); 
+oci_bind_by_name($stid, ':rc_in', $refcur, -1, OCI_B_CURSOR);
+oci_execute($stid);
+
+?>
+]]>
+    </programlisting>
+   </example>
+  </para>
+ </refsect1>
+
+ <refsect1 role="seealso">
+  &reftitle.seealso;
+  <para>
+   <simplelist>
+    <member>
+     <link linkend="ini.oci8.default-prefetch">oci8.default_prefetch</link>
+     ini option
+    </member>
+   </simplelist>
+  </para>
+ </refsect1>
+
+</refentry>
+
+<!-- Keep this comment at the end of the file
+Local variables:
+mode: sgml
+sgml-omittag:t
+sgml-shorttag:t
+sgml-minimize-attributes:nil
+sgml-always-quote-attributes:t
+sgml-indent-step:1
+sgml-indent-data:t
+indent-tabs-mode:nil
+sgml-parent-document:nil
+sgml-default-dtd-file:"~/.phpdoc/manual.ced"
+sgml-exposed-tags:nil
+sgml-local-catalogs:nil
+sgml-local-ecat-files:nil
+End:
+vim600: syn=xml fen fdm=syntax fdl=2 si
+vim: et tw=78 syn=sgml
+vi: ts=1 sw=1
+-->

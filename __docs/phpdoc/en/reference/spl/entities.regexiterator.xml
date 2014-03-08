@@ -1,0 +1,9 @@
+&reference.spl.regexiterator.accept;
+&reference.spl.regexiterator.construct;
+&reference.spl.regexiterator.getflags;
+&reference.spl.regexiterator.getmode;
+&reference.spl.regexiterator.getpregflags;
+&reference.spl.regexiterator.getregex;
+&reference.spl.regexiterator.setflags;
+&reference.spl.regexiterator.setmode;
+&reference.spl.regexiterator.setpregflags;

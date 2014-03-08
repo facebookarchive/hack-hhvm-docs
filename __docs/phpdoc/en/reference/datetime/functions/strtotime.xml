@@ -1,0 +1,275 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- $Revision: 329158 $ -->
+<!-- splitted from ./en/functions/datetime.xml, last change in rev 1.8 -->
+<refentry xml:id="function.strtotime" xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink">
+ <refnamediv>
+  <refname>strtotime</refname>
+  <refpurpose>Parse about any English textual datetime description into a Unix timestamp</refpurpose>
+ </refnamediv>
+ <refsect1 role="description">
+  &reftitle.description;
+  <methodsynopsis>
+   <type>int</type><methodname>strtotime</methodname>
+   <methodparam><type>string</type><parameter>time</parameter></methodparam>
+   <methodparam choice="opt"><type>int</type><parameter>now</parameter><initializer>time()</initializer></methodparam>
+  </methodsynopsis>
+  <simpara>
+   The function expects to be given a string containing an English date format
+   and will try to parse that format into a Unix timestamp (the number of
+   seconds since January 1 1970 00:00:00 UTC), relative to the timestamp given
+   in <parameter>now</parameter>, or the current time if
+   <parameter>now</parameter> is not supplied.
+  </simpara>
+  <para>
+   Each parameter of this function uses the default time zone unless a
+   time zone is specified in that parameter.  Be careful not to use
+   different time zones in each parameter unless that is intended.
+   See <function>date_default_timezone_get</function> on the various
+   ways to define the default time zone.
+  </para>
+ </refsect1>
+
+ <refsect1 role="parameters">
+  &reftitle.parameters;
+  <para>
+   <variablelist>
+    <varlistentry>
+     <term><parameter>time</parameter></term>
+     <listitem>
+      <para>&date.formats.parameter;</para>
+     </listitem>
+    </varlistentry>
+    <varlistentry>
+     <term><parameter>now</parameter></term>
+     <listitem>
+      <para>
+       The timestamp which is used as a base for the calculation of relative
+       dates.
+      </para>
+     </listitem>
+    </varlistentry>
+   </variablelist>
+  </para>
+ </refsect1>
+
+ <refsect1 role="returnvalues">
+  &reftitle.returnvalues;
+  <para>
+   Returns a timestamp on success, &false; otherwise. Previous to PHP 5.1.0,
+   this function would return <literal>-1</literal> on failure.
+  </para>
+ </refsect1>
+
+ <refsect1 role="errors">
+  &reftitle.errors;
+   
+   &date.timezone.errors.description;
+ 
+ </refsect1>
+
+ <refsect1 role="changelog">
+  &reftitle.changelog;
+  <para>
+   <informaltable>
+    <tgroup cols="2">
+     <thead>
+      <row>
+       <entry>&Version;</entry>
+       <entry>&Description;</entry>
+      </row>
+     </thead>
+     <tbody>
+      <row>
+       <entry>5.3.0</entry>
+       <entry>
+        Prior to PHP 5.3.0, relative time formats supplied to the
+        <parameter>time</parameter> argument of <function>strtotime</function>
+        such as <literal>this week</literal>, <literal>previous week</literal>,
+        <literal>last week</literal>, and <literal>next week</literal> were
+        interpreted to mean a 7 day period relative to the current date/time, rather
+        than a week period of <literal>Monday</literal> through <literal>Sunday</literal>.
+       </entry>
+      </row>
+      <row>
+       <entry>5.3.0</entry>
+       <entry>
+        Prior to PHP 5.3.0, <literal>24:00</literal> was not a valid format and
+        <function>strtotime</function> returned &false;.
+       </entry>
+      </row>
+      <row>
+       <entry>5.2.7</entry>
+       <entry>
+        In PHP 5 prior to 5.2.7, requesting a given occurrence of a
+        given weekday in a month where that weekday was the first day
+        of the month would incorrectly add one week to the returned
+        timestamp. This has been corrected in 5.2.7 and later
+        versions.
+       </entry>
+      </row>
+      <row>
+       <entry>5.1.0</entry>
+       <entry>
+        Now returns &false; on failure, instead
+        of <literal>-1</literal>.
+       </entry>
+      </row>
+
+      &date.timezone.errors.changelog;
+
+      <row>
+       <entry>5.0.2</entry>
+       <entry>
+        In PHP 5 up to 5.0.2, <literal>"now"</literal> and other
+        relative times are wrongly computed from today's
+        midnight. This differs from other versions where it is
+        correctly computed from current time.
+       </entry>
+      </row>
+      <row>
+       <entry>5.0.0</entry>
+       <entry>
+        Microseconds began to be allowed, but they are ignored.
+       </entry>
+      </row>
+      <row>
+       <entry>4.4.0</entry>
+       <entry>
+        In PHP versions prior to 4.4.0, <literal>"next"</literal> is incorrectly
+        computed as +2. A typical solution to this is to use
+        <literal>"+1"</literal>.
+       </entry>
+      </row>
+     </tbody>
+    </tgroup>
+   </informaltable>
+  </para>
+ </refsect1>
+
+ <refsect1 role="examples">
+  &reftitle.examples;
+  <para>
+   <example>
+    <title>A <function>strtotime</function> example</title>
+    <programlisting role="php">
+<![CDATA[
+<?php
+echo strtotime("now"), "\n";
+echo strtotime("10 September 2000"), "\n";
+echo strtotime("+1 day"), "\n";
+echo strtotime("+1 week"), "\n";
+echo strtotime("+1 week 2 days 4 hours 2 seconds"), "\n";
+echo strtotime("next Thursday"), "\n";
+echo strtotime("last Monday"), "\n";
+?>
+]]>
+    </programlisting>
+   </example>
+  </para>
+  <para>
+   <example>
+    <title>Checking for failure</title>
+    <programlisting role="php">
+<![CDATA[
+<?php
+$str = 'Not Good';
+
+// previous to PHP 5.1.0 you would compare with -1, instead of false
+if (($timestamp = strtotime($str)) === false) {
+    echo "The string ($str) is bogus";
+} else {
+    echo "$str == " . date('l dS \o\f F Y h:i:s A', $timestamp);
+}
+?>
+]]>
+    </programlisting>
+   </example>
+  </para>
+ </refsect1>
+
+ <refsect1 role="notes">
+  &reftitle.notes;
+  <note>
+   <para>
+    If the number of the year is specified in a two digit format, the values
+    between 00-69 are mapped to 2000-2069 and 70-99 to 1970-1999. See the notes
+    below for possible differences on 32bit systems (possible dates might end on 
+    2038-01-19 03:14:07).
+   </para>
+  </note>
+  <note>
+   <para>
+    The valid range of a timestamp is typically from Fri, 13 Dec
+    1901 20:45:54 UTC to Tue, 19 Jan 2038 03:14:07 UTC. (These are
+    the dates that correspond to the minimum and maximum values for
+    a 32-bit signed integer.)
+    Additionally, not all platforms support negative timestamps, therefore
+    your date range may be limited to no earlier than the Unix epoch. This
+    means that e.g. dates prior to Jan 1, 1970 will not work on Windows,
+    some Linux distributions, and a few other operating systems. PHP 5.1.0 and
+    newer versions overcome this limitation though.
+   </para>
+   <para>
+    For 64-bit versions of PHP, the valid range of a timestamp is effectively
+    infinite, as 64 bits can represent approximately 293 billion years in either
+    direction.
+   </para>
+  </note>
+  <note>
+   <para>
+    Dates in the <literal>m/d/y</literal> or <literal>d-m-y</literal> formats
+    are disambiguated by looking at the separator between the various
+    components: if the separator is a slash (<literal>/</literal>), then the
+    American <literal>m/d/y</literal> is assumed; whereas if the separator is a
+    dash (<literal>-</literal>) or a dot (<literal>.</literal>), then the
+    European <literal>d-m-y</literal> format is assumed.
+   </para>
+   <para>
+    To avoid potential ambiguity, it's best to use ISO 8601
+    (<literal>YYYY-MM-DD</literal>) dates or
+    <methodname>DateTime::createFromFormat</methodname> when possible.
+   </para>
+  </note>
+  <note>
+   <para>
+    Using this function for mathematical operations is not advisable.
+    It is better to use <methodname>DateTime::add</methodname> and
+    <methodname>DateTime::sub</methodname> in PHP 5.3 and later, or
+    <methodname>DateTime::modify</methodname> in PHP 5.2.
+   </para>
+  </note>
+ </refsect1>
+
+ <refsect1 role="seealso">
+  &reftitle.seealso;
+  <para>
+   <simplelist>
+    <member><link linkend="datetime.formats">Date and Time Formats</link></member>
+    <member><methodname>DateTime::createFromFormat</methodname></member>
+    <member><function>checkdate</function></member>
+    <member><function>strptime</function></member>
+   </simplelist>
+  </para>
+ </refsect1>
+</refentry>
+
+<!-- Keep this comment at the end of the file
+Local variables:
+mode: sgml
+sgml-omittag:t
+sgml-shorttag:t
+sgml-minimize-attributes:nil
+sgml-always-quote-attributes:t
+sgml-indent-step:1
+sgml-indent-data:t
+indent-tabs-mode:nil
+sgml-parent-document:nil
+sgml-default-dtd-file:"~/.phpdoc/manual.ced"
+sgml-exposed-tags:nil
+sgml-local-catalogs:nil
+sgml-local-ecat-files:nil
+End:
+vim600: syn=xml fen fdm=syntax fdl=2 si
+vim: et tw=78 syn=sgml
+vi: ts=1 sw=1
+-->

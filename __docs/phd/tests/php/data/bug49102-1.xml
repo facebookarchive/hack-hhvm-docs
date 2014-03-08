@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<phpdoc:classref xmlns:phpdoc="http://php.net/ns/phpdoc" xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:xi="http://www.w3.org/2001/XInclude" xml:id="class.splstack">
+ <title>The SplStack class</title>
+ <titleabbrev>SplStack</titleabbrev>
+
+ <partintro>
+
+    <section xml:id="splstack.synopsis">
+        <title>Class synopsis</title>
+
+    <classsynopsis>
+        <ooclass><classname>SplStack</classname></ooclass>
+
+        <classsynopsisinfo>
+            <ooclass>
+                <classname>SplStack</classname>
+            </ooclass>
+
+             <ooclass>
+                <modifier>extends</modifier>
+                <classname>SplDoublyLinkedList</classname>
+            </ooclass>
+
+            <oointerface>
+                <interfacename>Iterator</interfacename>
+            </oointerface>
+
+            <oointerface>
+                <interfacename>ArrayAccess</interfacename>
+            </oointerface>
+
+            <oointerface>
+                <interfacename>Countable</interfacename>
+            </oointerface>
+        </classsynopsisinfo>
+
+        <classsynopsisinfo role="comment">Methods</classsynopsisinfo>
+        <constructorsynopsis xmlns="http://docbook.org/ns/docbook">
+            <methodname>SplStack::__construct</methodname>
+            <void/>
+        </constructorsynopsis>
+        <methodsynopsis xmlns="http://docbook.org/ns/docbook">
+            <type>void</type><methodname>SplStack::setIteratorMode</methodname>
+            <methodparam><type>int</type><parameter>mode</parameter></methodparam>
+        </methodsynopsis>
+
+        <classsynopsisinfo role="comment">Inherited methods</classsynopsisinfo>
+        <methodsynopsis xmlns="http://docbook.org/ns/docbook">
+            <type>mixed</type><methodname>SplDoublyLinkedList::bottom</methodname>
+            <void/>
+        </methodsynopsis>
+        <methodsynopsis xmlns="http://docbook.org/ns/docbook">
+            <type>int</type><methodname>SplDoublyLinkedList::count</methodname>
+            <void/>
+        </methodsynopsis>
+        <methodsynopsis xmlns="http://docbook.org/ns/docbook">
+            <type>mixed</type><methodname>SplDoublyLinkedList::current</methodname>
+            <void/>
+        </methodsynopsis>
+        <methodsynopsis xmlns="http://docbook.org/ns/docbook">
+            <type>int</type><methodname>SplDoublyLinkedList::getIteratorMode</methodname>
+            <void/>
+        </methodsynopsis>
+        <methodsynopsis xmlns="http://docbook.org/ns/docbook">
+            <type>bool</type><methodname>SplDoublyLinkedList::offsetExists</methodname>
+            <methodparam><type>mixed</type><parameter>index</parameter></methodparam>
+        </methodsynopsis>
+        <methodsynopsis xmlns="http://docbook.org/ns/docbook">
+            <type>mixed</type><methodname>SplDoublyLinkedList::offsetGet</methodname>
+            <methodparam><type>mixed</type><parameter>index</parameter></methodparam>
+        </methodsynopsis>
+    </classsynopsis>
+
+    </section>
+    </partintro>
+</phpdoc:classref>

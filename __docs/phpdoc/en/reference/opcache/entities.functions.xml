@@ -1,0 +1,5 @@
+&reference.opcache.functions.opcache-compile-file;
+&reference.opcache.functions.opcache-get-configuration;
+&reference.opcache.functions.opcache-get-status;
+&reference.opcache.functions.opcache-invalidate;
+&reference.opcache.functions.opcache-reset;

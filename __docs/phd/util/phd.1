@@ -1,0 +1,53 @@
+.TH PHD 1 "2011" "The PHP Documentation Team" "Docbook Rendering Engine"
+.\" Please adjust this date whenever revising the manpage.
+.\" for manpage-specific macros, see man(7)
+.SH NAME
+phd \- The (PH)P Based (D)ocbook Renderer
+.SH SYNOPSIS
+.B phd
+.RI [ options ]\ [ \fI\-d\fP| \fI\-\-docbook\fP]\ xmlfilename
+
+.SH DESCRIPTION
+.B PhD
+is a Docbook rendering engine, aiming to replace Docbook-XSL and various
+other requirements needed to build the PHP.net documentation.
+The goal of PhD is to become a general purpose Docbook rendering engine,
+just much much faster the other Docbook toolchains.
+
+.PP
+.B phd
+bundles several output format in different packages, where the \fIGeneric\fP
+package offers standard output without customization.
+The \fiPHP\fP package for example is highly customized for the PHP.net
+documentations and is not intended to be used outside of PHP.net.
+
+.SH OPTIONS
+A summary of options is included below.
+.TP
+.B \-h, \-\-help
+Show summary of options.
+.TP
+.B \-V, \-\-version
+Show version of program.
+.TP
+.B \-v, \-\-verbose \fIint\fP
+Adjusts the verbosity level.
+.TP
+.B \-P, \-\-package \fIpackagename\fP
+Specifies the package which should be used by the rendering process (i.e.
+customization strategy).
+.TP
+.B \-f, \-\-format \fIformatname\fP
+Specifies the output format to create.
+.TP
+.B \-d, \-\-docbook \fIxmlfilename\fP
+The XML file (DocBook) to render from.
+.TP
+.B \-l, \-\-list
+Lists all available packages and output formats.
+
+.\" .SH SEE ALSO
+.\".BR pman (1),
+.SH AUTHOR
+phd was written by <The PHP Documentation Team>
+

@@ -1,0 +1,2 @@
+&reference.mongo.mongoint64.construct;
+&reference.mongo.mongoint64.tostring;

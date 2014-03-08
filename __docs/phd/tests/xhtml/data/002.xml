@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!-- $Revision: 1.1 $ -->
+<article xmlns="http://docbook.org/ns/docbook" xml:id="function.db2-set-option">
+ <table>
+   <title>Resource-Parameter Matrix</title>
+   <tgroup cols="5">
+     <colspec colnum="1" colname="col1" align="center" />
+     <colspec colnum="2" colname="col2" align="center" />
+     <colspec colnum="3" colname="col3" align="center" />
+     <colspec colnum="4" colname="col4" align="center" />
+     <colspec colnum="5" colname="col5" align="center" />
+     <thead>
+       <row>
+         <entry morerows="1">Key</entry>
+         <entry morerows="1">Value</entry>
+         <entry namest="col3" nameend="col5">Resource Type</entry>
+       </row>
+     </thead>
+
+     <tbody>
+       <row>
+         <entry colname="col3">Connection</entry>
+         <entry colname="col4">Statement</entry>
+         <entry colname="col5">Result Set</entry>
+       </row>
+       <row>
+         <entry>autocommit</entry>
+         <entry><literal>DB2_AUTOCOMMIT_ON</literal></entry>
+         <entry colname="col3">X</entry>
+         <entry colname="col4">-</entry>
+         <entry colname="col5">-</entry>
+       </row>
+       <row>
+         <entry>autocommit</entry>
+         <entry><literal>DB2_AUTOCOMMIT_OFF</literal></entry>
+         <entry colname="col3">X</entry>
+         <entry colname="col4">-</entry>
+         <entry colname="col5">-</entry>
+       </row>
+       <row>
+         <entry>cursor</entry>
+         <entry><literal>DB2_SCROLLABLE</literal></entry>
+         <entry colname="col3">-</entry>
+         <entry colname="col4">X</entry>
+         <entry colname="col5">-</entry>
+       </row>
+       <row>
+         <entry>cursor</entry>
+         <entry><literal>DB2_FORWARD_ONLY</literal></entry>
+         <entry colname="col3">-</entry>
+         <entry colname="col4">X</entry>
+         <entry colname="col5">-</entry>
+       </row>
+       <row>
+         <entry>binmode</entry>
+         <entry><literal>DB2_BINARY</literal></entry>
+         <entry colname="col3">X</entry>
+         <entry colname="col4">X</entry>
+         <entry colname="col5">-</entry>
+       </row>
+       <row>
+         <entry>binmode</entry>
+         <entry><literal>DB2_CONVERT</literal></entry>
+         <entry colname="col3">X</entry>
+         <entry colname="col4">X</entry>
+         <entry colname="col5">-</entry>
+       </row>
+       <row>
+         <entry>binmode</entry>
+         <entry><literal>DB2_PASSTHRU</literal></entry>
+         <entry colname="col3">X</entry>
+         <entry colname="col4">X</entry>
+         <entry colname="col5">-</entry>
+       </row>
+       <row>
+         <entry>db2_attr_case</entry>
+         <entry><literal>DB2_CASE_LOWER</literal></entry>
+         <entry colname="col3">X</entry>
+         <entry colname="col4">X</entry>
+         <entry colname="col5">-</entry>
+       </row>
+       <row>
+         <entry>db2_attr_case</entry>
+         <entry><literal>DB2_CASE_UPPER</literal></entry>
+         <entry colname="col3">X</entry>
+         <entry colname="col4">X</entry>
+         <entry colname="col5">-</entry>
+       </row>
+       <row>
+         <entry>db2_attr_case</entry>
+         <entry><literal>DB2_CASE_NATURAL</literal></entry>
+         <entry colname="col3">X</entry>
+         <entry colname="col4">X</entry>
+         <entry colname="col5">-</entry>
+       </row>
+       <row>
+         <entry>deferred_prepare</entry>
+         <entry><literal>DB2_DEFERRED_PREPARE_ON</literal></entry>
+         <entry colname="col3">-</entry>
+         <entry colname="col4">X</entry>
+         <entry colname="col5">-</entry>
+       </row>
+       <row>
+         <entry>deferred_prepare</entry>
+         <entry><literal>DB2_DEFERRED_PREPARE_OFF</literal></entry>
+         <entry colname="col3">-</entry>
+         <entry colname="col4">X</entry>
+         <entry colname="col5">-</entry>
+       </row>
+       <row>
+         <entry>i5_fetch_only</entry>
+         <entry><literal>DB2_I5_FETCH_ON</literal></entry>
+         <entry colname="col3">-</entry>
+         <entry colname="col4">X</entry>
+         <entry colname="col5">-</entry>
+       </row>
+       <row>
+         <entry>i5_fetch_only</entry>
+         <entry><literal>DB2_I5_FETCH_OFF</literal></entry>
+         <entry colname="col3">-</entry>
+         <entry colname="col4">X</entry>
+         <entry colname="col5">-</entry>
+       </row>
+       <row>
+         <entry>userid</entry>
+         <entry><literal>SQL_ATTR_INFO_USERID</literal></entry>
+         <entry colname="col3">X</entry>
+         <entry colname="col4">X</entry>
+         <entry colname="col5">-</entry>
+       </row>
+       <row>
+         <entry>acctstr</entry>
+         <entry><literal>SQL_ATTR_INFO_ACCTSTR</literal></entry>
+         <entry colname="col3">X</entry>
+         <entry colname="col4">X</entry>
+         <entry colname="col5">-</entry>
+       </row>
+       <row>
+         <entry>applname</entry>
+         <entry><literal>SQL_ATTR_INFO_APPLNAME</literal></entry>
+         <entry colname="col3">X</entry>
+         <entry colname="col4">X</entry>
+         <entry colname="col5">-</entry>
+       </row>
+       <row>
+         <entry>wrkstnname</entry>
+         <entry><literal>SQL_ATTR_INFO_WRKSTNNAME</literal></entry>
+         <entry colname="col3">X</entry>
+         <entry colname="col4">X</entry>
+         <entry colname="col5">-</entry>
+       </row>
+     </tbody>
+   </tgroup>
+ </table>
+</article>

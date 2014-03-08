@@ -1,0 +1,17 @@
+&reference.domxml.DomDocument.add-root;
+&reference.domxml.DomDocument.create-attribute;
+&reference.domxml.DomDocument.create-cdata-section;
+&reference.domxml.DomDocument.create-comment;
+&reference.domxml.DomDocument.create-element-ns;
+&reference.domxml.DomDocument.create-element;
+&reference.domxml.DomDocument.create-entity-reference;
+&reference.domxml.DomDocument.create-processing-instruction;
+&reference.domxml.DomDocument.create-text-node;
+&reference.domxml.DomDocument.doctype;
+&reference.domxml.DomDocument.document-element;
+&reference.domxml.DomDocument.dump-file;
+&reference.domxml.DomDocument.dump-mem;
+&reference.domxml.DomDocument.get-element-by-id;
+&reference.domxml.DomDocument.get-elements-by-tagname;
+&reference.domxml.DomDocument.html-dump-mem;
+&reference.domxml.DomDocument.xinclude;

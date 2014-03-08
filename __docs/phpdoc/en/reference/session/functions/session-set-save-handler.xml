@@ -1,0 +1,399 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- $Revision: 324122 $ -->
+<refentry xmlns="http://docbook.org/ns/docbook" xml:id="function.session-set-save-handler">
+ <refnamediv>
+  <refname>session_set_save_handler</refname>
+  <refpurpose>Sets user-level session storage functions</refpurpose>
+ </refnamediv>
+
+ <refsect1 role="description">
+  &reftitle.description;
+  <methodsynopsis>
+   <type>bool</type><methodname>session_set_save_handler</methodname>
+   <methodparam><type>callable</type><parameter>open</parameter></methodparam>
+   <methodparam><type>callable</type><parameter>close</parameter></methodparam>
+   <methodparam><type>callable</type><parameter>read</parameter></methodparam>
+   <methodparam><type>callable</type><parameter>write</parameter></methodparam>
+   <methodparam><type>callable</type><parameter>destroy</parameter></methodparam>
+   <methodparam><type>callable</type><parameter>gc</parameter></methodparam>
+  </methodsynopsis>
+  <para>
+   Since PHP 5.4 it is possible to register the following prototype:
+  </para>
+  <methodsynopsis>
+   <type>bool</type><methodname>session_set_save_handler</methodname>
+   <methodparam><type>SessionHandlerInterface</type><parameter>sessionhandler</parameter></methodparam>
+   <methodparam choice="opt"><type>bool</type><parameter>register_shutdown</parameter><initializer>true</initializer></methodparam>
+  </methodsynopsis>
+  <para>
+   <function>session_set_save_handler</function> sets the user-level
+   session storage functions which are used for storing and
+   retrieving data associated with a session.  This is most useful
+   when a storage method other than those supplied by PHP sessions
+   is preferred.  i.e. Storing the session data in a local database.
+  </para>
+ </refsect1>
+
+ <refsect1 role="parameters">
+  &reftitle.parameters;
+  <para>
+   This function has two prototypes.
+   <variablelist>
+    <varlistentry>
+     <term><parameter>sessionhandler</parameter></term>
+     <listitem>
+      <para>
+       An instance of a class implementing
+       <interfacename>SessionHandlerInterface</interfacename>, such as
+       <classname>SessionHandler</classname>, to register as the session
+       handler. Since PHP 5.4 only.
+      </para>
+     </listitem>
+    </varlistentry>
+    <varlistentry>
+     <term><parameter>register_shutdown</parameter></term>
+     <listitem>
+      <para>
+       Register <function>session_write_close</function> as a
+       <function>register_shutdown_function</function> function.
+      </para>
+     </listitem>
+    </varlistentry>
+   </variablelist>
+
+   or
+
+   <variablelist>
+    <varlistentry>
+     <term><parameter>open(string $savePath, string $sessionName)</parameter></term>
+     <listitem>
+      <para>
+       The open callback works like a constructor in classes and is
+       executed when the session is being opened.  It is the first callback
+       function executed when the session is started automatically or
+       manually with <function>session_start</function>.
+       Return value is &true; for success, &false; for failure.
+      </para>
+     </listitem>
+    </varlistentry>
+    <varlistentry>
+     <term><parameter>close()</parameter></term>
+     <listitem>
+      <para>
+       The close callback works like a destructor in classes and is
+       executed after the session write callback has been called. It is also invoked when
+       <function>session_write_close</function> is called.
+       Return value should be &true; for success, &false; for failure.
+      </para>
+     </listitem>
+    </varlistentry>
+    <varlistentry>
+     <term><parameter>read(string $sessionId)</parameter></term>
+     <listitem>
+      <para>
+       The <parameter>read</parameter> callback must always return a session encoded (serialized)
+       string, or an empty string if there is no data to read.
+      </para>
+      <para>
+       This callback is called internally by PHP when the session starts or
+       when <function>session_start</function> is called.  Before this callback is invoked
+       PHP will invoke the <parameter>open</parameter> callback.
+      </para>
+      <para>
+       The value this callback returns must be in exactly the same serialized format that was originally
+       passed for storage to the <parameter>write</parameter> callback.  The value returned will be
+       unserialized automatically by PHP and used to populate the <varname>$_SESSION</varname> superglobal.
+       While the data looks similar to <function>serialize</function> please note it is a different format
+       which is speficied in the <link linkend="ini.session.serialize-handler">session.serialize_handler</link> ini setting.
+      </para>
+     </listitem>
+    </varlistentry>
+    <varlistentry>
+     <term><parameter>write(string $sessionId, string $data)</parameter></term>
+     <listitem>
+      <para>
+       The <parameter>write</parameter> callback is called when the session needs to be saved and closed. This
+       callback receives the current session ID a serialized version the <varname>$_SESSION</varname> superglobal.  The serialization
+       method used internally by PHP is specified in the <link linkend="ini.session.serialize-handler">session.serialize_handler</link> ini setting.
+      </para>
+      <para>
+       The serialized session data passed to this callback should be stored against the passed session ID. When retrieving
+       this data, the <parameter>read</parameter> callback must return the exact value that was originally passed to
+       the <parameter>write</parameter> callback.
+      </para>
+      <para>
+       This callback is invoked when PHP shuts down or explicitly when <function>session_write_close</function>
+       is called.  Note that after executing this function PHP will internally execute the <parameter>close</parameter> callback.
+       <note>
+        <para>
+         The "write" handler is not executed until after the output stream is
+         closed.  Thus, output from debugging statements in the "write"
+         handler will never be seen in the browser.  If debugging output is
+         necessary, it is suggested that the debug output be written to a
+         file instead.
+        </para>
+       </note>
+      </para>
+     </listitem>
+    </varlistentry>
+    <varlistentry>
+     <term><parameter>destroy($sessionId)</parameter></term>
+     <listitem>
+      <para>
+       This callback is executed when a session is destroyed with <function>session_destroy</function> or with
+       <function>session_regenerate_id</function> with the destroy parameter set to &true;.
+       Return value should be &true; for success, &false; for failure.
+      </para>
+     </listitem>
+    </varlistentry>
+    <varlistentry>
+     <term><parameter>gc($lifetime)</parameter></term>
+     <listitem>
+      <para>
+       The garbage collector callback is invoked internally by PHP periodically in order to
+       purge old session data.  The frequency is controlled by
+       <link linkend="ini.session.gc-probability">session.gc_probability</link> and <link linkend="ini.session.gc-divisor">session.gc_divisor</link>.
+       The value of lifetime which is passed to this callback can be set in <link linkend="ini.session.gc-maxlifetime">session.gc_maxlifetime</link>.
+       Return value should be &true; for success, &false; for failure.
+      </para>
+     </listitem>
+    </varlistentry>   </variablelist>
+  </para>
+ </refsect1>
+
+ <refsect1 role="returnvalues">
+  &reftitle.returnvalues;
+  <para>
+   &return.success;
+  </para>
+ </refsect1>
+
+ <refsect1 role="examples">
+  &reftitle.examples;
+  <para>
+   <example>
+    <title>
+     Custom session handler: see full code in <classname>SessionHandlerInterface</classname> synposis.
+    </title>
+    <para>
+     The following code is for PHP version 5.4.0 and above.  We just show the invokation here, the full example can be
+     seen in the <classname>SessionHandlerInterface</classname> synposis linked above.
+    </para>
+    <para>
+     Note we use the OOP prototype with <function>session_set_save_handler</function> and
+     register the shutdown function using the function's parameter flag.  This is generally
+     advised when registering objects as session save handlers.
+    </para>
+    <programlisting role="php">
+<![CDATA[
+<?php
+class MySessionHandler implements SessionHandlerInterface
+{
+    // implement interfaces here
+}
+
+$handler = new MySessionHandler();
+session_set_save_handler($handler, true);
+session_start();
+
+// proceed to set and retrieve values by key from $_SESSION
+]]>
+    </programlisting>
+   </example>
+   <example>
+    <title>Custom session save handler using objects</title>
+    <para>
+     The following code is for PHP versions less than 5.4.0.
+    </para>
+    <para>
+     The following example provides file based session storage similar to the
+     PHP sessions default save handler <parameter>files</parameter>.  This
+     example could easily be extended to cover database storage using your
+     favorite PHP supported database engine.
+    </para>
+    <para>
+     Note we additionally register the shutdown function <function>session_write_close</function>
+     using <function>register_shutdown_function</function> under PHP less than 5.4.0.
+     This is generally advised when registering objects as session save handlers under PHP less
+     than 5.4.0.
+    </para>
+    <programlisting role="php">
+<![CDATA[
+<?php
+class FileSessionHandler
+{
+    private $savePath;
+
+    function open($savePath, $sessionName)
+    {
+        $this->savePath = $savePath;
+        if (!is_dir($this->savePath)) {
+            mkdir($this->savePath, 0777);
+        }
+
+        return true;
+    }
+
+    function close()
+    {
+        return true;
+    }
+
+    function read($id)
+    {
+        return (string)@file_get_contents("$this->savePath/sess_$id");
+    }
+
+    function write($id, $data)
+    {
+        return file_put_contents("$this->savePath/sess_$id", $data) === false ? false : true;
+    }
+
+    function destroy($id)
+    {
+        $file = "$this->savePath/sess_$id";
+        if (file_exists($file)) {
+            unlink($file);
+        }
+
+        return true;
+    }
+
+    function gc($maxlifetime)
+    {
+        foreach (glob("$this->savePath/sess_*") as $file) {
+            if (filemtime($file) + $maxlifetime < time() && file_exists($file)) {
+                unlink($file);
+            }
+        }
+
+        return true;
+    }
+}
+
+$handler = new FileSessionHandler();
+session_set_save_handler(
+    array($handler, 'open'),
+    array($handler, 'close'),
+    array($handler, 'read'),
+    array($handler, 'write'),
+    array($handler, 'destroy'),
+    array($handler, 'gc')
+    );
+
+// the following prevents unexpected effects when using objects as save handlers
+register_shutdown_function('session_write_close');
+
+session_start();
+// proceed to set and retrieve values by key from $_SESSION
+]]>
+    </programlisting>
+   </example>
+  </para>
+ </refsect1>
+
+ <refsect1 role="notes">
+  &reftitle.notes;
+  <warning>
+   <para>
+    When using objects as session save handlers, it is important to register the
+    shutdown function with PHP to avoid unexpected side-effects from the way
+    PHP internally destroys objects on shutdown and may prevent the
+    <parameter>write</parameter> and <parameter>close</parameter> from being called.
+    Typically you should register <parameter>'session_write_close'</parameter> using the
+    <function>register_shutdown_function</function> function.
+   </para>
+   <para>
+    As of PHP 5.4.0 you can use <function>session_register_shutdown</function> or
+    simply use the 'register shutdown' flag when invoking
+    <function>session_set_save_handler</function> using the OOP method and passing an
+    instance that implements <classname>SessionHandlerInterface</classname>.
+   </para>
+  </warning>
+  <warning>
+   <para>
+    As of PHP 5.0.5 the <parameter>write</parameter> and
+    <parameter>close</parameter> handlers are called after object
+    destruction and therefore cannot use objects or throw exceptions.
+    Exceptions are not able to be caught since will not be caught nor will
+    any exception trace be displayed and the execution will just cease unexpectedly.
+    The object destructors can however use sessions.
+   </para>
+   <para>
+    It is possible to call <function>session_write_close</function> from the
+    destructor to solve this chicken and egg problem but the most reliable way is
+    to register the shutdown function as described above.
+   </para>
+  </warning>
+  <warning>
+   <para>
+    Current working directory is changed with some SAPIs if session is
+    closed in the script termination. It is possible to close the session
+    earlier with <function>session_write_close</function>.
+   </para>
+  </warning>
+ </refsect1>
+
+ <refsect1 role="changelog">
+  &reftitle.changelog;
+  <informaltable>
+   <tgroup cols="2">
+    <thead>
+     <row>
+      <entry>&Version;</entry>
+      <entry>&Description;</entry>
+     </row>
+    </thead>
+    <tbody>
+     <row>
+      <entry>5.4.0</entry>
+      <entry>
+       Added <interfacename>SessionHandlerInterface</interfacename> for implementing session handlers and
+       <classname>SessionHandler</classname> to expose internal PHP session handlers.
+      </entry>
+     </row>
+    </tbody>
+   </tgroup>
+  </informaltable>
+ </refsect1>
+
+ <refsect1 role="seealso">
+  &reftitle.seealso;
+  <para>
+   <simplelist>
+    <member>
+     The <link linkend="ini.session.save-handler">session.save_handler</link>
+     configuration directive
+    </member>
+    <member>
+     The <link linkend="ini.session.serialize-handler">session.serialize_handler</link>
+     configuration directive.
+    </member>
+    <member>The <function>register_shutdown_function</function></member>
+    <member>The <function>session_register_shutdown</function> for PHP 5.4.0+</member>
+   </simplelist>
+  </para>
+ </refsect1>
+
+</refentry>
+
+<!-- Keep this comment at the end of the file
+Local variables:
+mode: sgml
+sgml-omittag:t
+sgml-shorttag:t
+sgml-minimize-attributes:nil
+sgml-always-quote-attributes:t
+sgml-indent-step:1
+sgml-indent-data:t
+indent-tabs-mode:nil
+sgml-parent-document:nil
+sgml-default-dtd-file:"~/.phpdoc/manual.ced"
+sgml-exposed-tags:nil
+sgml-local-catalogs:nil
+sgml-local-ecat-files:nil
+End:
+vim600: syn=xml fen fdm=syntax fdl=2 si
+vim: et tw=78 syn=sgml
+vi: ts=1 sw=1
+-->

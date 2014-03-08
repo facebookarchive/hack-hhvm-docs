@@ -1,0 +1,8 @@
+&reference.lapack.book;
+&reference.lapack.configure;
+&reference.lapack.constants;
+&reference.lapack.entities.lapack;
+&reference.lapack.lapack;
+&reference.lapack.lapackexception;
+&reference.lapack.setup;
+&reference.lapack.versions;

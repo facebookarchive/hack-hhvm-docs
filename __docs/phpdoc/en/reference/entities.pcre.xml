@@ -1,0 +1,14 @@
+&reference.pcre.book;
+&reference.pcre.configure;
+&reference.pcre.constants;
+&reference.pcre.entities.functions;
+&reference.pcre.examples;
+&reference.pcre.ini;
+&reference.pcre.pattern.differences;
+&reference.pcre.pattern.modifiers;
+&reference.pcre.pattern.posix;
+&reference.pcre.pattern.syntax;
+&reference.pcre.pattern;
+&reference.pcre.reference;
+&reference.pcre.setup;
+&reference.pcre.versions;

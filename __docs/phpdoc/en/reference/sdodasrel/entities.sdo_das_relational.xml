@@ -1,0 +1,5 @@
+&reference.sdodasrel.sdo-das-relational.applyChanges;
+&reference.sdodasrel.sdo-das-relational.construct;
+&reference.sdodasrel.sdo-das-relational.createRootDataObject;
+&reference.sdodasrel.sdo-das-relational.executePreparedQuery;
+&reference.sdodasrel.sdo-das-relational.executeQuery;

@@ -1,0 +1,224 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- $Revision: 331342 $ -->
+
+<refentry xml:id="wrappers.http" xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink" role="noversion">
+ <refnamediv>
+  <refname>http://</refname>
+  <refname>https://</refname>
+  <refpurpose>Accessing HTTP(s) URLs</refpurpose>
+ </refnamediv>
+
+ <refsect1 role="description"><!-- {{{ -->
+  &reftitle.description;
+  <para>
+   Allows read-only access to files/resources via HTTP 1.0,
+   using the HTTP GET method. A <literal>Host:</literal> header is sent with the request
+   to handle name-based virtual hosts.  If you have configured
+   a <link linkend="ini.user-agent">user_agent</link> string using
+   your &php.ini; file or the stream context, it will also be included
+   in the request.
+  </para>
+  <simpara>
+   The stream allows access to the <emphasis>body</emphasis> of
+   the resource; the headers are stored in the
+   <varname>$http_response_header</varname> variable.
+  </simpara>
+  <simpara>
+   If it's important to know the URL of the resource where
+   your document came from (after all redirects have been processed),
+   you'll need to process the series of response headers returned by the
+   stream.
+  </simpara>
+  <simpara>
+   The <link linkend="ini.from">from</link> directive will be used for the
+   <literal>From:</literal> header if set and not overwritten by the
+   <xref linkend="context" />.
+  </simpara>
+ </refsect1><!-- }}} -->
+
+ <refsect1 role="usage"> <!-- {{{ -->
+  &reftitle.usage;
+  <itemizedlist>
+   <listitem><simpara><filename>http://example.com</filename></simpara></listitem>
+   <listitem><simpara><filename>http://example.com/file.php?var1=val1&amp;var2=val2</filename></simpara></listitem>
+   <listitem><simpara><filename>http://user:password@example.com</filename></simpara></listitem>
+   <listitem><simpara><filename>https://example.com</filename></simpara></listitem>
+   <listitem><simpara><filename>https://example.com/file.php?var1=val1&amp;var2=val2</filename></simpara></listitem>
+   <listitem><simpara><filename>https://user:password@example.com</filename></simpara></listitem>
+  </itemizedlist>
+ </refsect1> <!-- }}} -->
+
+ <refsect1 role="options"><!-- {{{ -->
+  &reftitle.options;
+  <para>
+   <table>
+    <title>Wrapper Summary</title>
+    <tgroup cols="2">
+     <thead>
+      <row>
+       <entry>Attribute</entry>
+       <entry>Supported</entry>
+      </row>
+     </thead>
+     <tbody>
+      <row>
+       <entry>Restricted by <link linkend="ini.allow-url-fopen">allow_url_fopen</link></entry>
+       <entry>Yes</entry>
+      </row>
+      <row>
+       <entry>Allows Reading</entry>
+       <entry>Yes</entry>
+      </row>
+      <row>
+       <entry>Allows Writing</entry>
+       <entry>No</entry>
+      </row>
+      <row>
+       <entry>Allows Appending</entry>
+       <entry>No</entry>
+      </row>
+      <row>
+       <entry>Allows Simultaneous Reading and Writing</entry>
+       <entry>N/A</entry>
+      </row>
+      <row>
+       <entry>Supports <function>stat</function></entry>
+       <entry>No</entry>
+      </row>
+      <row>
+       <entry>Supports <function>unlink</function></entry>
+       <entry>No</entry>
+      </row>
+      <row>
+       <entry>Supports <function>rename</function></entry>
+       <entry>No</entry>
+      </row>
+      <row>
+       <entry>Supports <function>mkdir</function></entry>
+       <entry>No</entry>
+      </row>
+      <row>
+       <entry>Supports <function>rmdir</function></entry>
+       <entry>No</entry>
+      </row>
+     </tbody>
+    </tgroup>
+   </table>
+  </para>
+ </refsect1> <!-- }}} -->
+
+ <refsect1 role="changelog"><!-- {{{ -->
+  &reftitle.changelog;
+  <para>
+   <informaltable>
+    <tgroup cols="2">
+     <thead>
+      <row>
+       <entry>&Version;</entry>
+       <entry>&Description;</entry>
+      </row>
+     </thead>
+     <tbody>
+      <row>
+       <entry>4.3.7</entry>
+       <entry>
+        Detect buggy IIS servers to avoid <literal>"SSL: Fatal Protocol Error"</literal> errors.
+       </entry>
+      </row>
+      <row>
+       <entry>4.3.0</entry>
+       <entry>
+        Added <literal>https://</literal>.
+       </entry>
+      </row>
+      <row>
+       <entry>4.0.5</entry>
+       <entry>
+        Added support for redirects.
+       </entry>
+      </row>
+     </tbody>
+    </tgroup>
+   </informaltable>
+  </para>
+ </refsect1><!-- }}} -->
+
+ <refsect1 role="examples"><!-- {{{ -->
+  &reftitle.examples;
+  <example xml:id="wrappers.http.example.basic"><!-- {{{ -->
+   <title>Detecting which URL we ended up on after redirects</title>
+   <programlisting role="php">
+<![CDATA[
+<?php
+$url = 'http://www.example.com/redirecting_page.php';
+
+$fp = fopen($url, 'r');
+
+$meta_data = stream_get_meta_data($fp);
+foreach ($meta_data['wrapper_data'] as $response) {
+
+    /* Were we redirected? */
+    if (strtolower(substr($response, 0, 10)) == 'location: ') {
+
+        /* update $url with where we were redirected to */
+        $url = substr($response, 10);
+    }
+
+}
+
+?>
+]]>
+   </programlisting>
+  </example><!-- }}} -->
+ </refsect1><!-- }}} -->
+
+ <refsect1 role="notes"><!-- {{{ -->
+  &reftitle.notes;
+  <note>
+   <simpara>
+    HTTPS is only supported when the <link linkend="book.openssl">openssl</link>
+    extension is enabled.
+   </simpara>
+  </note>
+  <simpara>
+   HTTP connections are read-only; writing data or copying
+   files to an HTTP resource is not supported.
+  </simpara>
+  <simpara>
+   Sending <emphasis>POST</emphasis> and <emphasis>PUT</emphasis> requests, for example,
+   can be done with the help of <link linkend="context.http">HTTP Contexts</link>.
+  </simpara>
+ </refsect1><!-- }}} -->
+
+ <refsect1 role="seealso"><!-- {{{ -->
+  &reftitle.seealso;
+  <simplelist>
+   <member><xref linkend="context.http" /></member>
+   <member><varname>$http_response_header</varname></member>
+   <member><function>stream_get_meta_data</function></member>
+  </simplelist>
+ </refsect1><!-- }}} -->
+
+</refentry>
+
+<!-- Keep this comment at the end of the file
+Local variables:
+mode: sgml
+sgml-omittag:t
+sgml-shorttag:t
+sgml-minimize-attributes:nil
+sgml-always-quote-attributes:t
+sgml-indent-step:1
+sgml-indent-data:t
+indent-tabs-mode:nil
+sgml-parent-document:nil
+sgml-default-dtd-file:"~/.phpdoc/manual.ced"
+sgml-exposed-tags:nil
+sgml-local-catalogs:nil
+sgml-local-ecat-files:nil
+End:
+vim600: syn=xml fen fdm=syntax fdl=2 si
+vim: et tw=78 syn=sgml
+vi: ts=1 sw=1
+-->
+

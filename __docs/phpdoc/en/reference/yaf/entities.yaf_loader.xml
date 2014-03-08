@@ -1,0 +1,13 @@
+&reference.yaf.yaf-loader.autoload;
+&reference.yaf.yaf-loader.clearlocalnamespace;
+&reference.yaf.yaf-loader.clone;
+&reference.yaf.yaf-loader.construct;
+&reference.yaf.yaf-loader.getinstance;
+&reference.yaf.yaf-loader.getlibrarypath;
+&reference.yaf.yaf-loader.getlocalnamespace;
+&reference.yaf.yaf-loader.import;
+&reference.yaf.yaf-loader.islocalname;
+&reference.yaf.yaf-loader.registerlocalnamespace;
+&reference.yaf.yaf-loader.setlibrarypath;
+&reference.yaf.yaf-loader.sleep;
+&reference.yaf.yaf-loader.wakeup;

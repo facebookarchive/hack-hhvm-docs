@@ -1,0 +1,10 @@
+&reference.http.HttpRequestPool.attach;
+&reference.http.HttpRequestPool.construct;
+&reference.http.HttpRequestPool.destruct;
+&reference.http.HttpRequestPool.detach;
+&reference.http.HttpRequestPool.getAttachedRequests;
+&reference.http.HttpRequestPool.getFinishedRequests;
+&reference.http.HttpRequestPool.reset;
+&reference.http.HttpRequestPool.send;
+&reference.http.HttpRequestPool.socketPerform;
+&reference.http.HttpRequestPool.socketSelect;

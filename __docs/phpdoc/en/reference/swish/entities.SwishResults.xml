@@ -1,0 +1,4 @@
+&reference.swish.SwishResults.getParsedWords;
+&reference.swish.SwishResults.getRemovedStopwords;
+&reference.swish.SwishResults.nextResult;
+&reference.swish.SwishResults.seekResult;

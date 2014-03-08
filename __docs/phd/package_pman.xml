@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<package packagerversion="1.9.2" version="2.0" xmlns="http://pear.php.net/dtd/package-2.0" xmlns:tasks="http://pear.php.net/dtd/tasks-1.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://pear.php.net/dtd/tasks-1.0
+    http://pear.php.net/dtd/tasks-1.0.xsd
+    http://pear.php.net/dtd/package-2.0
+    http://pear.php.net/dtd/package-2.0.xsd">
+ <name>pman</name>
+ <channel>doc.php.net</channel>
+ <summary>PHP Unix manual pages</summary>
+ <description>Unix manual pages of the PHP documentations from php.net.</description>
+ <lead>
+  <name>The PHP Documentation team</name>
+  <user>phpdoc</user>
+  <email>phpdoc@lists.php.net</email>
+  <active>yes</active>
+ </lead>
+ <date>2014-01-01</date>
+ <time>15:18:40</time>
+ <version>
+  <release>2014.01.01</release>
+  <api>1.0.0</api>
+ </version>
+ <stability>
+  <release>stable</release>
+  <api>stable</api>
+ </stability>
+ <license uri="http://creativecommons.org/licenses/by/3.0/">Creative Commons Attribution 3.0</license>
+ <notes>
+New release \o/
+ </notes>
+ <contents>
+  <dir baseinstalldir="php.net/" name="/">
+   <dir name="man3">
+    <file baseinstalldir="php.net/" name="abs.3.gz" role="doc" />
+    <!-- [...] -->
+    <file baseinstalldir="php.net/" name="__halt_compiler.3.gz" role="doc" />
+   </dir> <!-- //man3 -->
+   <file baseinstalldir="" name="pman.sh" role="script">
+    <tasks:replace from="@doc_dir@" to="doc_dir" type="pear-config" />
+   </file>
+  </dir> <!-- / -->
+ </contents>
+ <dependencies>
+  <required>
+   <php>
+    <min>5.0.0</min>
+   </php>
+   <pearinstaller>
+    <min>1.9.0</min>
+   </pearinstaller>
+   <extension>
+    <name>zlib</name>
+   </extension>
+  </required>
+ </dependencies>
+ <phprelease>
+  <filelist>
+   <install as="pman" name="pman.sh" />
+  </filelist>
+ </phprelease>
+ <changelog>
+  <release>
+   <version>
+    <release>2011.04.16</release>
+    <api>1.0.0</api>
+   </version>
+   <stability>
+    <release>stable</release>
+    <api>stable</api>
+   </stability>
+   <date>2011-04-16</date>
+   <license uri="http://creativecommons.org/licenses/by/3.0/">Creative Commons Attribution 3.0</license>
+   <notes>
+New release \o/
+   </notes>
+  </release>
+ </changelog>
+</package>

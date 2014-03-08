@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- $Revision: 321375 $ -->
+<refentry xml:id="function.eval" xmlns="http://docbook.org/ns/docbook">
+ <refnamediv>
+  <refname>eval</refname>
+  <refpurpose>Evaluate a string as PHP code</refpurpose>
+ </refnamediv>
+ 
+ <refsect1 role="description">
+  &reftitle.description;
+  <methodsynopsis>
+   <type>mixed</type><methodname>eval</methodname>
+   <methodparam><type>string</type><parameter>code</parameter></methodparam>
+  </methodsynopsis>
+  <para>
+   Evaluates the given <parameter>code</parameter> as PHP.
+  </para>
+  <caution>
+   <para>
+    The <function>eval</function> language construct is <emphasis>very dangerous</emphasis>
+    because it allows execution of arbitrary PHP code. <emphasis>Its use thus is
+    discouraged.</emphasis> If you have carefully verified that there is no other option
+    than to use this construct, pay special attention <emphasis>not to pass any user
+    provided data</emphasis> into it without properly validating it beforehand.
+   </para>
+  </caution>
+ </refsect1>
+
+ <refsect1 role="parameters">
+  &reftitle.parameters;
+  <para>
+   <variablelist>
+    <varlistentry>
+     <term><parameter>code</parameter></term>
+     <listitem>
+      <para>
+       Valid PHP code to be evaluated.
+      </para>
+      <para>
+       The code mustn't be wrapped in opening and closing
+       <link linkend="language.basic-syntax.phpmode">PHP tags</link>, i.e.
+       <literal>'echo "Hi!";'</literal> must be passed instead of
+       <literal>'&lt;? echo "Hi!"; &gt;'</literal>. It is still possible to leave and
+       reenter PHP mode though using the appropriate PHP tags, e.g.
+       <literal>'echo "In PHP mode!"; ?&gt;In HTML mode!&lt;? echo "Back in PHP mode!";'</literal>.
+      </para>
+      <para>
+       Apart from that the passed code must be valid PHP. This includes that all statements
+       must be properly terminated using a semicolon.
+       <literal>'echo "Hi!"'</literal> for example will cause a parse error, whereas
+       <literal>'echo "Hi!";'</literal> will work.
+      </para>
+      <para>
+       A <literal>return</literal> statement will immediately terminate the
+       evaluation of the code. 
+      </para>
+      <para>
+       The code will be executed in the scope of the code calling <function>eval</function>. Thus any
+       variables defined or changed in the <function>eval</function> call will remain visible after
+       it terminates.
+      </para>
+     </listitem>
+    </varlistentry>
+   </variablelist>
+  </para>
+ </refsect1>
+
+ <refsect1 role="returnvalues">
+  &reftitle.returnvalues;
+  <para>
+   <function>eval</function> returns &null; unless 
+   <literal>return</literal> is called in the evaluated code, in which case
+   the value passed to <literal>return</literal> is returned. If there is a
+   parse error in the evaluated code, <function>eval</function> returns
+   &false; and execution of the following code continues normally. It is
+   not possible to catch a parse error in <function>eval</function>
+   using <function>set_error_handler</function>.
+  </para>
+ </refsect1>
+
+ <refsect1 role="examples">
+  &reftitle.examples;
+  <para>
+   <example>
+    <title><function>eval</function> example - simple text merge</title>
+    <programlisting role="php">
+<![CDATA[
+<?php
+$string = 'cup';
+$name = 'coffee';
+$str = 'This is a $string with my $name in it.';
+echo $str. "\n";
+eval("\$str = \"$str\";");
+echo $str. "\n";
+?>
+]]>
+    </programlisting>
+    &example.outputs;
+    <screen>
+<![CDATA[
+This is a $string with my $name in it.
+This is a cup with my coffee in it.
+]]>
+    </screen>
+   </example>
+  </para>
+ </refsect1>
+
+ <refsect1 role="notes">
+  &reftitle.notes;
+
+  &note.language-construct;
+
+  &tip.ob-capture;
+  <note>
+   <para>
+    In case of a fatal error in the evaluated code, the whole script exits.
+   </para>
+  </note>
+ </refsect1>
+
+ <refsect1 role="seealso">
+  &reftitle.seealso;
+  <para>
+   <simplelist>
+    <member><function>call_user_func</function></member>
+   </simplelist>
+  </para>
+ </refsect1>
+</refentry>
+
+<!-- Keep this comment at the end of the file
+Local variables:
+mode: sgml
+sgml-omittag:t
+sgml-shorttag:t
+sgml-minimize-attributes:nil
+sgml-always-quote-attributes:t
+sgml-indent-step:1
+sgml-indent-data:t
+indent-tabs-mode:nil
+sgml-parent-document:nil
+sgml-default-dtd-file:"~/.phpdoc/manual.ced"
+sgml-exposed-tags:nil
+sgml-local-catalogs:nil
+sgml-local-ecat-files:nil
+End:
+vim600: syn=xml fen fdm=syntax fdl=2 si
+vim: et tw=78 syn=sgml
+vi: ts=1 sw=1
+-->

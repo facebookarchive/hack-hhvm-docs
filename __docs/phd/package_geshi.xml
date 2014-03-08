@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<package xmlns="http://pear.php.net/dtd/package-2.0"
+  xmlns:tasks="http://pear.php.net/dtd/tasks-1.0"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  packagerversion="1.5.4"
+  version="2.0"
+  xsi:schemaLocation="
+    http://pear.php.net/dtd/tasks-1.0   http://pear.php.net/dtd/tasks-1.0.xsd
+    http://pear.php.net/dtd/package-2.0 http://pear.php.net/dtd/package-2.0.xsd"
+>
+  <name>PhD_GeSHi</name>
+  <channel>doc.php.net</channel>
+  <summary>GeSHi code highlighter for PhD</summary>
+  <description>
+   Provides a GeSHi based syntax highlighter for PhD.
+   It uses the geshi package from mediawiki.googlecode.com,
+   which provides GeSHi 1.0.x (the stable version).
+   It highlights XHTML only.
+  </description>
+
+  <lead>
+    <name>Christian Weiske</name>
+    <user>cweiske</user>
+    <email>cweiske@php.net</email>
+    <active>yes</active>
+  </lead>
+
+  <date>2010-03-11</date>
+  <version>
+    <release>1.0.1</release>
+    <api>1.0.0</api>
+  </version>
+  <stability>
+    <release>snapshot</release>
+    <api>stable</api>
+  </stability>
+  <license uri="http://www.opensource.org/licenses/bsd-license.php">BSD Style</license>
+  <notes>
+   - notes
+  </notes>
+
+  <contents>
+    <dir name="/">
+      <dir name="phpdotnet">
+	<dir name="phd">
+	  <dir name="Highlighter">
+            <file name="GeSHi.php" role="php"/>
+	  </dir>
+	</dir>
+      </dir>
+    </dir>
+  </contents>
+
+  <dependencies>
+    <required>
+      <php>
+        <min>5.3.0</min>
+      </php>
+      <pearinstaller>
+        <min>1.8.0</min>
+      </pearinstaller>
+      <package>
+        <name>PhD</name>
+        <channel>doc.php.net</channel>
+        <min>0.9.0</min>
+      </package>
+      <package>
+        <name>geshi</name>
+        <channel>mediawiki.googlecode.com/svn</channel>
+        <min>1.0.0</min>
+        <recommended>1.0.0</recommended>
+      </package>
+    </required>
+  </dependencies>
+
+  <phprelease>
+  </phprelease>
+
+  <changelog>
+    <release>
+      <version>
+        <release>0.9.1</release>
+        <api>0.9.1</api>
+      </version>
+      <stability>
+        <release>beta</release>
+        <api>beta</api>
+      </stability>
+      <date>2009-12-21</date>
+      <license uri="http://www.opensource.org/licenses/bsd-license.php">BSD Style</license>
+      <notes>
+        - Initial release
+      </notes>
+    </release>
+    <release>
+      <version>
+        <release>1.0.0</release>
+        <api>1.0.0</api>
+      </version>
+      <stability>
+        <release>stable</release>
+        <api>stable</api>
+      </stability>
+      <date>2010-03-11</date>
+      <license uri="http://www.opensource.org/licenses/bsd-license.php">BSD Style</license>
+      <notes>
+       - Release 1.0.0
+      </notes>
+    </release>
+  </changelog>
+
+</package>
+<!--
+vim: et sw=2 ts=2
+-->

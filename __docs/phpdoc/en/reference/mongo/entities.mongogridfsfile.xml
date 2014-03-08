@@ -1,0 +1,6 @@
+&reference.mongo.mongogridfsfile.construct;
+&reference.mongo.mongogridfsfile.getbytes;
+&reference.mongo.mongogridfsfile.getfilename;
+&reference.mongo.mongogridfsfile.getresource;
+&reference.mongo.mongogridfsfile.getsize;
+&reference.mongo.mongogridfsfile.write;

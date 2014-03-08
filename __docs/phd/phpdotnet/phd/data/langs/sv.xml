@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+
+<!-- $Revision$ -->
+<!--  EN-Revision: 288053 Maintainer: Kalle Status: ready -->
+
+<section xml:id="autogen" xml:lang="sv">
+ <title>Auto-genererad text</title>
+ <variablelist>
+  <varlistentry>
+   <term>toc</term>
+   <listitem>
+    <simpara>Innehålls Förteckning</simpara>
+   </listitem>
+  </varlistentry>
+  <varlistentry>
+   <term>warning</term>
+   <listitem>
+    <simpara>Varsel</simpara>
+   </listitem>
+  </varlistentry>
+  <varlistentry>
+   <term>note</term>
+   <listitem>
+    <simpara>Notera</simpara>
+   </listitem>
+  </varlistentry>
+  <varlistentry>
+   <term>caution</term>
+   <listitem>
+    <simpara>Varsel</simpara>
+   </listitem>
+  </varlistentry>
+  <varlistentry>
+   <term>tip</term>
+   <listitem>
+    <simpara>Tipp</simpara>
+   </listitem>
+  </varlistentry>
+  <varlistentry>
+   <term>important</term>
+   <listitem>
+    <simpara>Viktigt</simpara>
+   </listitem>
+  </varlistentry>
+  <varlistentry>
+   <term>by</term>
+   <listitem>
+    <simpara>af</simpara>
+   </listitem>
+  </varlistentry>
+  <varlistentry>
+   <term>editedby</term>
+   <listitem>
+    <simpara>Redigerat av</simpara>
+   </listitem>
+  </varlistentry>
+  <varlistentry>
+   <term>example</term>
+   <listitem>
+    <simpara>Exempel #</simpara>
+   </listitem>
+  </varlistentry>
+  <varlistentry>
+   <term>unknownversion</term>
+   <listitem>
+    <simpara>Ingen version information, det kan finnas bara i SVN</simpara>
+   </listitem>
+  </varlistentry>
+  <varlistentry>
+   <term>refname</term>
+   <listitem>
+    <simpara>NAMN</simpara>
+   </listitem>
+  </varlistentry>
+  <varlistentry>
+   <term>refsynopsis</term>
+   <listitem>
+    <simpara>SYNOPSIS</simpara>
+   </listitem>
+  </varlistentry>
+  <varlistentry>
+   <term>mediaobject</term>
+   <listitem>
+    <simpara>[INTE VISNINGSBART MEDIA]</simpara>
+   </listitem>
+  </varlistentry>
+ </variablelist>
+</section>

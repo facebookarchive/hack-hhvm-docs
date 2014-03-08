@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- $Revision: 331081 $ -->
+
+<refentry xml:id="intldateformatter.gettimezone" xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink">
+ <refnamediv>
+  <refname>IntlDateFormatter::getTimeZone</refname>
+  <refname>datefmt_get_timezone</refname>
+  <refpurpose>Get formatterʼs timezone</refpurpose>
+ </refnamediv>
+ 
+ <refsect1 role="description">
+  &reftitle.description;
+  <para>
+   &style.oop;
+  </para>
+  <methodsynopsis>
+   <modifier>public</modifier> <type>IntlTimeZone</type><methodname>IntlDateFormatter::getTimeZone</methodname>
+   <void />
+  </methodsynopsis>
+  <para>
+   &style.procedural;
+  </para>
+  <methodsynopsis>
+   <type>IntlTimeZone</type>
+   <methodname>datefmt_get_timezone</methodname>
+   <void />
+  </methodsynopsis>
+  
+  <para>
+   Returns an <classname>IntlTimeZone</classname> object representing the
+   timezone that will be used by this object to format dates and times. When
+   formatting <classname>IntlCalendar</classname> and
+   <classname>DateTime</classname> objects with this
+   <classname>IntlDateFormatter</classname>, the timezone used will be the one
+   returned by this method, not the one associated with the objects being
+   formatted.
+  </para>
+  
+ </refsect1>
+ 
+ <refsect1 role="parameters">
+  &reftitle.parameters;
+  &no.function.parameters;
+ </refsect1>
+ 
+ <refsect1 role="returnvalues">
+  &reftitle.returnvalues;
+  <para>
+   The associated <classname>IntlTimeZone</classname>
+   object&return.falseforfailure;.
+  </para>
+ </refsect1>
+ 
+ <refsect1 role="examples">
+  &reftitle.examples;
+  <para>
+   <example>
+    <title><function>IntlDateFormatter::getTimeZone</function> examples</title>
+    <programlisting role="php">
+<![CDATA[
+<?php
+
+$madrid = IntlDateFormatter::create(NULL, NULL, NULL, 'Europe/Madrid');
+$lisbon = IntlDateFormatter::create(NULL, NULL, NULL, 'Europe/Lisbon');
+
+var_dump($madrid->getTimezone());
+echo $madrid->getTimezone()->getDisplayName(
+        false, IntlTimeZone::DISPLAY_GENERIC_LOCATION, "en_US"), "\n";
+echo $lisbon->getTimeZone()->getId(), "\n";
+//The id can also be retrieved with ->getTimezoneId()
+echo $lisbon->getTimeZoneId(), "\n";
+
+]]>
+    </programlisting>
+    &example.outputs;
+    <screen>
+<![CDATA[
+object(IntlTimeZone)#4 (4) {
+  ["valid"]=>
+  bool(true)
+  ["id"]=>
+  string(13) "Europe/Madrid"
+  ["rawOffset"]=>
+  int(3600000)
+  ["currentOffset"]=>
+  int(7200000)
+}
+Spain Time
+Europe/Lisbon
+Europe/Lisbon
+
+]]>
+    </screen>
+   </example>
+  </para>
+ </refsect1>
+ 
+ <refsect1 role="seealso">
+  &reftitle.seealso;
+  <para>
+   <simplelist>
+    <member><function>IntlDateFormatter::getTimeZoneId</function></member>
+    <member><function>IntlDateFormatter::setTimeZone</function></member>
+    <member><classname>IntlTimeZone</classname></member>
+   </simplelist>
+  </para>
+ </refsect1>
+ 
+</refentry>
+
+<!-- Keep this comment at the end of the file
+Local variables:
+mode: sgml
+sgml-omittag:t
+sgml-shorttag:t
+sgml-minimize-attributes:nil
+sgml-always-quote-attributes:t
+sgml-indent-step:1
+sgml-indent-data:t
+indent-tabs-mode:nil
+sgml-parent-document:nil
+sgml-default-dtd-file:"~/.phpdoc/manual.ced"
+sgml-exposed-tags:nil
+sgml-local-catalogs:nil
+sgml-local-ecat-files:nil
+End:
+vim600: syn=xml fen fdm=syntax fdl=2 si
+vim: et tw=78 syn=sgml
+vi: ts=1 sw=1
+-->

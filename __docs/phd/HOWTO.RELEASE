@@ -1,0 +1,91 @@
+How to release a new version of PhD
+-----------------------------------
+
+Releases are currently made from the PHD_1_1 branch.
+
+1. Check if all changes in PHD_1_1  have been merged upwards to master
+   (and the other way around if people committed to the wrong branch).
+
+2. Check if all changes have an entry in package.xml's <notes>
+   Update the <stability> to stable!, and modify the <date>.
+
+3. Check if the api version needs to be increased to match the release
+   version. (This is the case when the API has changed. Normally the
+   committer has done that already when merging from trunk, but you
+   never know).
+
+4. Make sure all files are listed in package.xml's <content>.
+
+5. $ pear package
+   $ pear install PhD-*.tgz
+   .. try phd on phpdoc and peardoc ..
+
+6. Download Simple Channel Server in the docweb/www/ dir. 
+   - See Appendix A and D below
+
+7. Generate the appropriate xml entries using the Simple Channel Server packages. You need to be running PHP 5.3 (make sure you have ext/phar and
+ext/zlib enabled):
+   $ for i in /path/to/phd/PhD{_PHP,_PEAR,_Generic,}-*.tgz; do php -dphar.readonly=0 pearscs.phar release $i bjori; done
+   $ git add -A
+   $ git diff --staged # Scan through the changes
+   $ git commit
+
+8. Update the file in path/to/docweb/templates/all/phd/home.tpl.php and add a new <li></li> with info from package.xml.
+
+9. Commit the changes. 
+   $ git commit templates/all/phd/home.tpl.php -m "Release PhD *"
+   $ git push # Push the release upstream
+
+10. Create a GIT tag.
+   $ cd /path/to/phd
+   $ git tag RELEASE_1_1_X
+   $ git push --tags
+
+11. Test by installing from the channel:
+   $ pear upgrade -f doc.php.net/phd-$previousversion
+   $ pear upgrade doc.php.net/phd-$thisstability
+   .. try phd on phpdoc and peardoc ..
+
+12. Send release mail to phpdoc@ and pear-doc@lists.php.net
+
+A. Remove all contents from <notes> and increase version/release.
+   Change stability back to "snapshot". Revert PHD_VERSION in
+   config.php (VERSION in phpdotnet/phd/Config) back to "phd-from-svn".
+
+B. Hack on.
+
+
+How to release a new version of pman
+------------------------------------
+- Note: This requires several external resources currently
+- Requirements: See Appendix A, B, C, D
+
+$ mkdir ~/tmp && cd ~/tmp
+$ php /path/to/phpdoc/doc-base/configure.php --output=pman.xml
+$ phd -d pman.xml -P PHP -f manpage
+$ php /path/to/phd/package-pman.php
+$ cd /path/to/docweb/www # NOTE: www/ is important. Random errors otherwise
+$ php -dphar.readonly=0 pearscs.phar release ~/tmp/pman-YYYY.MM.DD.tgz phpdoc
+$ git status
+$ git add -A
+$ git commit -m "New pman release"
+$ git push
+
+
+Appendix
+------------------------------------
+A. Downloading Simple Channel Server into the docweb/www/ dir. 
+   $ cd /path/to/docweb/www
+   $ wget -O pearscs.phar "https://github.com/pyrus/Pyrus_SimpleChannelServer/blob/master/pearscs.phar?raw=true" 
+
+B. Installing PEAR_PackageFileManager2
+   $ pear install PEAR_PackageFileManager2
+
+C. Using package-pman.php
+   - It's located in GIT, and not within the installed phd package
+   - Running it from GIT works, so:
+   $ php /path/to/phd/package-pman.php
+
+D. Docweb is in GIT here, so to checkout:
+    $ git clone git@git.php.net:/web/doc.git
+

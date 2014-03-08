@@ -1,0 +1,9 @@
+&reference.haru.harufont.getascent;
+&reference.haru.harufont.getcapheight;
+&reference.haru.harufont.getdescent;
+&reference.haru.harufont.getencodingname;
+&reference.haru.harufont.getfontname;
+&reference.haru.harufont.gettextwidth;
+&reference.haru.harufont.getunicodewidth;
+&reference.haru.harufont.getxheight;
+&reference.haru.harufont.measuretext;

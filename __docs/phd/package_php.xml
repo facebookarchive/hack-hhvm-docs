@@ -1,0 +1,334 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<package xmlns="http://pear.php.net/dtd/package-2.0"
+  xmlns:tasks="http://pear.php.net/dtd/tasks-1.0"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  packagerversion="1.5.4"
+  version="2.0"
+  xsi:schemaLocation="
+    http://pear.php.net/dtd/tasks-1.0   http://pear.php.net/dtd/tasks-1.0.xsd
+    http://pear.php.net/dtd/package-2.0 http://pear.php.net/dtd/package-2.0.xsd"
+>
+
+  <name>PhD_PHP</name>
+  <channel>doc.php.net</channel>
+  <summary>PHP documentation rendering package for PhD</summary>
+  <description>
+    A package for PhD to render the php.net (phpdoc) documentation
+  </description>
+
+  <lead>
+    <name>Hannes Magnusson</name>
+    <user>bjori</user>
+    <email>bjori@php.net</email>
+    <active>yes</active>
+  </lead>
+  <lead>
+    <name>Moacir de Oliveira</name>
+    <user>moacir</user>
+    <email>moacir@php.net</email>
+    <active>yes</active>
+  </lead>
+
+  <date>2014-01-21</date>
+  <version>
+    <release>1.1.9</release>
+    <api>1.1.0</api>
+  </version>
+  <stability>
+    <release>snapshot</release>
+    <api>stable</api>
+  </stability>
+  <license uri="http://www.opensource.org/licenses/bsd-license.php">BSD Style</license>
+  <notes>
+    - ...
+  </notes>
+
+  <contents>
+    <dir name="/">
+      <dir name="phpdotnet">
+        <dir name="phd">
+          <dir name="Package">
+            <dir name="PHP">
+              <file name="Factory.php" role="php">
+                <tasks:replace from="@phd_php_version@" to="version" type="package-info" />
+              </file>
+              <file name="CHM.php" role="php"/>
+              <file name="Web.php" role="php"/>
+              <file name="PDF.php" role="php"/>
+              <file name="BigXHTML.php" role="php"/>
+              <file name="Manpage.php" role="php"/>
+              <file name="BigPDF.php" role="php"/>
+              <file name="KDevelop.php" role="php"/>
+              <file name="ChunkedXHTML.php" role="php"/>
+              <file name="HowTo.php" role="php"/>
+              <file name="XHTML.php" role="php"/>
+              <file name="TocFeed.php" role="php"/>
+              <file name="Epub.php" role="php"/>
+              <file name="README" role="doc"/>
+              <file name="HOWTO.GENERATE_CHM" role="doc"/>
+              <file name="EnhancedCHM.php" role="php"/>
+            </dir>
+          </dir>
+        </dir>
+      </dir>
+    </dir>
+  </contents>
+
+  <dependencies>
+    <required>
+      <php>
+        <min>5.3.0</min>
+      </php>
+      <pearinstaller>
+        <min>1.8.0</min>
+      </pearinstaller>
+      <package>
+        <name>PhD</name>
+        <channel>doc.php.net</channel>
+        <min>0.9.0</min>
+      </package>
+      <extension>
+        <name>libxml</name>
+      </extension>
+      <extension>
+        <name>xmlreader</name>
+      </extension>
+      <extension>
+        <name>dom</name>
+      </extension>
+    </required>
+    <optional>
+      <extension>
+        <name>haru</name>
+      </extension>
+      <extension>
+        <name>iconv</name>
+      </extension>
+      <extension>
+        <name>bz2</name>
+      </extension>
+    </optional>
+  </dependencies>
+
+  <phprelease>
+  </phprelease>
+
+  <changelog>
+    <release>
+      <version>
+        <release>0.9.0</release>
+        <api>0.9.0</api>
+      </version>
+      <stability>
+        <release>beta</release>
+        <api>beta</api>
+      </stability>
+      <date>2009-09-09</date>
+      <license uri="http://www.opensource.org/licenses/bsd-license.php">BSD Style</license>
+      <notes>
+        - Initial release
+      </notes>
+    </release>
+
+    <release>
+      <version>
+        <release>0.9.1</release>
+        <api>0.9.1</api>
+      </version>
+      <stability>
+        <release>beta</release>
+        <api>beta</api>
+      </stability>
+      <date>2009-12-21</date>
+      <license uri="http://www.opensource.org/licenses/bsd-license.php">BSD Style</license>
+      <notes>
+        - Added new format TocFeed (Moacir).
+      </notes>
+    </release>
+    <release>
+      <version>
+        <release>1.0.0</release>
+        <api>1.0.0</api>
+      </version>
+      <stability>
+        <release>stable</release>
+        <api>stable</api>
+      </stability>
+      <date>2010-03-11</date>
+      <license uri="http://www.opensource.org/licenses/bsd-license.php">BSD Style</license>
+      <notes>
+        - Stopped double encoding of entities in CHM TOC, Index and keyword lists (Richard Quadling)
+      </notes>
+    </release>
+    <release>
+      <version>
+        <release>1.0.1</release>
+        <api>1.0.0</api>
+      </version>
+      <stability>
+        <release>stable</release>
+        <api>stable</api>
+      </stability>
+      <date>2010-08-10</date>
+      <license uri="http://www.opensource.org/licenses/bsd-license.php">BSD Style</license>
+      <notes>
+        - Added the Persian language for CHM builds (Philip)
+        - Made all &gt;refentry&lt; create a new Unix Manual Page (Hannes)
+        - Create Unix Manual Page for the predefined variables too (Hannes)
+        - Fixed bug#51750 Add ()'s when rendering methodname elements (Hannes)
+      </notes>
+    </release>
+    <release>
+      <version>
+        <release>1.1.0</release>
+        <api>1.1.0</api>
+      </version>
+      <stability>
+        <release>stable</release>
+        <api>stable</api>
+      </stability>
+      <date>2011-03-07</date>
+      <license uri="http://www.opensource.org/licenses/bsd-license.php">BSD Style</license>
+      <notes>
+        - New output format Epub (Moacir)
+        - Prepare CHM rendering to use the new CSS rules (Richard Quadling)
+        - Display a message when loading an external stylesheet (Richard Quadling)
+        - Incorporate stylesheet names supplied at the command line into the CHM file (Richard Quadling)
+        - New output format EnhancedCHM - the same as CHM but with the User Notes (Requires ext/bz2) (Richard Quadling)
+      </notes>
+    </release>
+    <release>
+      <version>
+        <release>1.1.1</release>
+        <api>1.1.0</api>
+      </version>
+      <stability>
+        <release>stable</release>
+        <api>stable</api>
+      </stability>
+      <date>2011-06-21</date>
+      <license uri="http://www.opensource.org/licenses/bsd-license.php">BSD Style</license>
+      <notes>
+        - Fixed Bug #54436 - gzip issues with -P PHP -f manpage (Moacir)
+        - Fixed bug #53536 - Small display bug in attribute description for mysqli-&gt;insert_id. (Hannes)
+        - Added support for local CSS files (Richard Quadling)
+      </notes>
+    </release>
+    <release>
+      <version>
+        <release>1.1.2</release>
+        <api>1.1.0</api>
+      </version>
+      <stability>
+        <release>stable</release>
+        <api>stable</api>
+      </stability>
+      <date>2011-06-21</date>
+      <license uri="http://www.opensource.org/licenses/bsd-license.php">BSD Style</license>
+      <notes>
+        - Use transliteration for the Windows CHM TOC and Index - Romanian only - (Richard Q)
+        - Allow Windows CHM files to use the url() loaded content defined in the CSS files (Richard Q)
+      </notes>
+    </release>
+    <release>
+      <version>
+        <release>1.1.3</release>
+        <api>1.1.0</api>
+      </version>
+      <stability>
+        <release>stable</release>
+        <api>stable</api>
+      </stability>
+      <date>2012-03-01</date>
+      <license uri="http://www.opensource.org/licenses/bsd-license.php">BSD Style</license>
+      <notes>
+        - Changed &lt;b&gt; tag to &lt;strong&gt; (Alexey Borzov)
+      </notes>
+    </release>
+    <release>
+      <version>
+        <release>1.1.4</release>
+        <api>1.1.0</api>
+      </version>
+      <stability>
+        <release>stable</release>
+        <api>stable</api>
+      </stability>
+      <date>2012-03-01</date>
+      <license uri="http://www.opensource.org/licenses/bsd-license.php">BSD Style</license>
+      <notes>
+        - Link callable types (Jakub)
+        - Link langauge constructs from &lt;function&gt; (Jakub)
+        - Show "next" link on the frontpage (Moacir)
+      </notes>
+    </release>
+    <release>
+      <version>
+        <release>1.1.5</release>
+        <api>1.1.0</api>
+      </version>
+      <stability>
+        <release>stable</release>
+        <api>stable</api>
+      </stability>
+      <date>2012-06-07</date>
+      <license uri="http://www.opensource.org/licenses/bsd-license.php">BSD Style</license>
+      <notes>
+        - Fixed bug#46772 Add class reference pages to the man files. (Hannes)
+        - Fixed bug#47650 Overwrite the TOC on changes. (Hannes)
+        - Fix invalid ID on multiple unknown refsect roles. (Hannes)
+        - Added support for "soft-deprecation-notice" attribute on refsynopsisdiv to collect alternate suggestions into the $setup phpweb array. (Hannes)
+      </notes>
+    </release>
+    <release>
+      <version>
+        <release>1.1.6</release>
+        <api>1.1.0</api>
+      </version>
+      <stability>
+        <release>stable</release>
+        <api>stable</api>
+      </stability>
+      <date>2012-06-16</date>
+      <license uri="http://www.opensource.org/licenses/bsd-license.php">BSD Style</license>
+      <notes>
+        - Added phd:args support for &lt;function;&gt; and &lt;methodname&gt;. (Hannes)
+      </notes>
+    </release>
+    <release>
+      <version>
+        <release>1.1.7</release>
+        <api>1.1.0</api>
+      </version>
+      <stability>
+        <release>stable</release>
+        <api>stable</api>
+      </stability>
+      <date>2014-01-01</date>
+      <license uri="http://www.opensource.org/licenses/bsd-license.php">BSD Style</license>
+      <notes>
+        - Added phd:args support for &lt;function;&gt; and &lt;methodname&gt;. (Hannes)
+      </notes>
+    </release>
+    <release>
+      <version>
+        <release>1.1.8</release>
+        <api>1.1.0</api>
+      </version>
+      <stability>
+        <release>stable</release>
+        <api>stable</api>
+      </stability>
+      <date>2014-01-21</date>
+      <license uri="http://www.opensource.org/licenses/bsd-license.php">BSD Style</license>
+      <notes>
+        - Fixed bug#66400 (Class synopsis missing space between type and method name) (Peter)
+      </notes>
+    </release>
+
+  </changelog>
+
+</package>
+<!--
+vim: et sw=2 ts=2
+-->

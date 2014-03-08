@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- $Revision: 331331 $ -->
+
+<refentry xml:id="intlcalendar.geterrorcode" xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink">
+ <refnamediv>
+  <refname>IntlCalendar::getErrorCode</refname>
+  <refname>intlcal_get_error_code</refname>
+  <refpurpose>Get last error code on the object</refpurpose>
+ </refnamediv>
+
+ <refsect1 role="description">
+  &reftitle.description;
+  <para>&style.oop; (method):</para>
+   <methodsynopsis>
+   <modifier>public</modifier> <type>int</type><methodname>IntlCalendar::getErrorCode</methodname>
+   <void />
+   </methodsynopsis>
+  <para>&style.procedural;:</para>
+  <methodsynopsis role="procedural">
+   <type>int</type><methodname>intlcal_get_error_code</methodname>
+   <methodparam><type>IntlCalendar</type><parameter>calendar</parameter></methodparam>
+  </methodsynopsis>
+  <para>
+   Returns the numeric ICU error code for the last call on this object
+   (including cloning) or the <classname>IntlCalendar</classname> given for
+   the <parameter>calendar</parameter> parameter (in the procedural‒style
+   version). This may indicate only a warning (negative error code) or no
+   error at all (<constant>U_ZERO_ERROR</constant>). The actual presence of an
+   error can be tested with <function>intl_is_failure</function>.
+  </para>
+  <para>
+   Invalid arguments detected on the PHP side (before invoking functions of the
+   ICU library) are not recorded for the purposes of this function.
+  </para>
+  <para>
+   The last error that occurred in any call to a function of the intl
+   extension, including early argument errors, can be obtained with
+   <function>intl_get_error_code</function>. This function resets the global
+   error code, but not the objectʼs error code.
+  </para>
+ </refsect1>
+
+ <refsect1 role="parameters">
+  &reftitle.parameters;
+  <variablelist>
+   <varlistentry>
+    <term><parameter>calendar</parameter></term>
+    <listitem>
+     <para>
+      The calendar object, on the procedural style interface.
+     </para>
+    </listitem>
+   </varlistentry>
+  </variablelist>
+ </refsect1>
+
+ <refsect1 role="returnvalues">
+  &reftitle.returnvalues;
+  <para>
+   An ICU error code indicating either success, failure or a warning. 
+  </para>
+ </refsect1>
+
+
+ <refsect1 role="examples">
+  &reftitle.examples;
+  <para>
+   <example>
+   <title><function>IntlCalendar::getErrorCode</function> and
+   <function>IntlCalendar::getErrorMessage</function></title>
+    <programlisting role="php">
+<![CDATA[
+<?php
+ini_set("intl.error_level", E_WARNING);
+ini_set("intl.default_locale", "nl");
+
+$intlcal = new IntlGregorianCalendar(2012, 1, 29);
+var_dump(
+    $intlcal->getErrorCode(),
+    $intlcal->getErrorMessage()
+);
+$intlcal->fieldDifference(-1e100, IntlCalendar::FIELD_SECOND);
+
+var_dump(
+    $intlcal->getErrorCode(),
+    $intlcal->getErrorMessage()
+);
+
+]]>
+    </programlisting>
+    &example.outputs;
+    <screen>
+<![CDATA[
+int(0)
+string(12) "U_ZERO_ERROR"
+
+Warning: IntlCalendar::fieldDifference(): intlcal_field_difference: Call to ICU method has failed in /home/glopes/php/ws/example.php on line 10
+int(1)
+string(81) "intlcal_field_difference: Call to ICU method has failed: U_ILLEGAL_ARGUMENT_ERROR"
+]]>
+    </screen>
+   </example>
+  </para>
+ </refsect1>
+
+ <refsect1 role="seealso">
+  &reftitle.seealso;
+  <para>
+   <simplelist>
+    <member><methodname>IntlCalendar::getErrorMessage</methodname></member>
+    <member><methodname>intl_is_failure</methodname></member>
+    <member><methodname>intl_error_name</methodname></member>
+    <member><methodname>intl_get_error_code</methodname></member>
+    <member><methodname>intl_get_error_message</methodname></member>
+   </simplelist>
+  </para>
+ </refsect1>
+
+</refentry>
+
+<!-- Keep this comment at the end of the file
+Local variables:
+mode: sgml
+sgml-omittag:t
+sgml-shorttag:t
+sgml-minimize-attributes:nil
+sgml-always-quote-attributes:t
+sgml-indent-step:1
+sgml-indent-data:t
+indent-tabs-mode:nil
+sgml-parent-document:nil
+sgml-default-dtd-file:"~/.phpdoc/manual.ced"
+sgml-exposed-tags:nil
+sgml-local-catalogs:nil
+sgml-local-ecat-files:nil
+End:
+vim600: syn=xml fen fdm=syntax fdl=2 si
+vim: et tw=78 syn=sgml
+vi: ts=1 sw=1
+-->

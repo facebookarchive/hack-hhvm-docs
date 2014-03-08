@@ -1,0 +1,13 @@
+&reference.xsl.xsltprocessor.construct;
+&reference.xsl.xsltprocessor.getparameter;
+&reference.xsl.xsltprocessor.getsecurityprefs;
+&reference.xsl.xsltprocessor.hasexsltsupport;
+&reference.xsl.xsltprocessor.importstylesheet;
+&reference.xsl.xsltprocessor.registerphpfunctions;
+&reference.xsl.xsltprocessor.removeparameter;
+&reference.xsl.xsltprocessor.setparameter;
+&reference.xsl.xsltprocessor.setprofiling;
+&reference.xsl.xsltprocessor.setsecurityprefs;
+&reference.xsl.xsltprocessor.transformtodoc;
+&reference.xsl.xsltprocessor.transformtouri;
+&reference.xsl.xsltprocessor.transformtoxml;

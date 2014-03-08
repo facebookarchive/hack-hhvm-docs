@@ -1,0 +1,6 @@
+&reference.session-pgsql.functions.session-pgsql-add-error;
+&reference.session-pgsql.functions.session-pgsql-get-error;
+&reference.session-pgsql.functions.session-pgsql-get-field;
+&reference.session-pgsql.functions.session-pgsql-reset;
+&reference.session-pgsql.functions.session-pgsql-set-field;
+&reference.session-pgsql.functions.session-pgsql-status;

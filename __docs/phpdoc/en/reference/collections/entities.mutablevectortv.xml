@@ -1,0 +1,6 @@
+&reference.collections.mutablevectortv.filter;
+&reference.collections.mutablevectortv.filterwithkey;
+&reference.collections.mutablevectortv.keys;
+&reference.collections.mutablevectortv.map;
+&reference.collections.mutablevectortv.mapwithkey;
+&reference.collections.mutablevectortv.zip;

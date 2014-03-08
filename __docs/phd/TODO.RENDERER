@@ -1,0 +1,19 @@
+
+TODO:
+	- Learn the alphabet
+	- Sort the elementmaps after purpose and then alphabetically
+	- Sort the methods like the elementmaps
+	- Implement method to generate markup for the default attributes
+	- Implement the remaining elements and attributes of the Docbook format
+    - The abstract formats should be traits
+    - Each Package should define a trait abstracting the general format
+    inspecific customization, f.e. the version info in the PHP package
+
+Features:
+    - Auto generate ids for chunks, without requiring xml:id
+    - Create a generic and customizable indexer
+    - Automatically create "lists" (i.e. figures, tables, etc)
+
+
+- The PHP Documentation team
+

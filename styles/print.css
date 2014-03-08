@@ -1,0 +1,22 @@
+#headmenu, #headsearch, #leftbar, #rightbar, #footnav, #thismirror,
+.manualnavbar .next, .manualnavbar .prev, .manualnavbar .langchooser,
+.manualnavbar hr, .manualnavbar_bottom, #usernotes .action, #usernotes .foot {
+  display: none;
+}
+
+#layout_2 #content, #layout_3 #content {
+  width: 100%;
+  margin: 0;
+}
+
+#headnav, #layout_2, #layout_3, #layout_3_helper, div.manualnavbar {
+  background: none;
+}
+
+#headnav  {
+  float: right;
+}
+
+#usernotes .note, #usernotes {
+  border-top: 1px solid black;
+}

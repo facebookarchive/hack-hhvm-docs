@@ -1,0 +1,3 @@
+&reference.http.functions.persistenthandles.http-persistent-handles-clean;
+&reference.http.functions.persistenthandles.http-persistent-handles-count;
+&reference.http.functions.persistenthandles.http-persistent-handles-ident;

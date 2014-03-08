@@ -1,0 +1,291 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- $Revision: 331082 $ -->
+<refentry xml:id="intldateformatter.format" xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink">
+ <refnamediv>
+  <refname>IntlDateFormatter::format</refname>
+  <refname>datefmt_format</refname>
+  <refpurpose>Format the date/time value as a string</refpurpose>
+ </refnamediv>
+ <refsect1 role="description">
+  &reftitle.description;
+  <para>
+   &style.oop;
+  </para>
+   <methodsynopsis>
+    <modifier>public</modifier> <type>string</type><methodname>IntlDateFormatter::format</methodname>
+    <methodparam><type>mixed</type><parameter>value</parameter></methodparam>
+   </methodsynopsis>
+  <para>
+   &style.procedural;
+  </para>
+  <methodsynopsis>
+   <type>string</type><methodname>datefmt_format</methodname>
+  <methodparam><type>IntlDateFormatter</type><parameter>fmt</parameter></methodparam>
+  <methodparam><type>mixed</type><parameter>value</parameter></methodparam>
+  </methodsynopsis>
+  <para>
+   Formats the time value as a string.
+  </para> 
+  </refsect1>
+
+ <refsect1 role="parameters">
+  &reftitle.parameters;
+  <para>
+   <variablelist>
+    <varlistentry>
+     <term><parameter>fmt</parameter></term>
+     <listitem>
+      <para>
+       The date formatter resource.
+      </para>
+     </listitem>
+    </varlistentry>
+    <varlistentry>
+     <term><parameter>value</parameter></term>
+     <listitem>
+      <para>
+       Value to format. This may be a <classname>DateTime</classname> object, an
+       <classname>IntlCalendar</classname> object, a <type>numeric</type> type
+       representing a (possibly fractional) number of seconds since epoch or an
+       <type>array</type> in the format output by
+       <function>localtime</function>.
+      </para>
+      <para>
+       If a <classname>DateTime</classname> or an
+       <classname>IntlCalendar</classname> object is passed, its timezone is not
+       considered. The object will be formatted using the formaterʼs configured
+       timezone. If one wants to use the timezone of the object to be formatted,
+       <function>IntlDateFormatter::setTimeZone</function> must be called before
+       with the objectʼs timezone. Alternatively, the static function
+       <function>IntlDateFormatter::formatObject</function> may be used instead.
+      </para>
+     </listitem>
+    </varlistentry>
+   </variablelist>
+  </para>
+ </refsect1>
+   
+ 
+ <refsect1 role="returnvalues">
+  &reftitle.returnvalues;
+  <para>
+   The formatted string or, if an error occurred, &false;.   
+  </para>
+ </refsect1>
+ 
+ <refsect1 role="changelog">
+  &reftitle.changelog;
+  <para>
+   <informaltable>
+    <tgroup cols="2">
+     <thead>
+      <row>
+       <entry>&Version;</entry>
+       <entry>&Description;</entry>
+      </row>
+     </thead>
+     <tbody>
+      <row>
+       <entry>5.5.0/PECL 3.0.0</entry>
+       <entry>
+        Support for providing <classname>IntlCalendar</classname> objects to the
+        <parameter>value</parameter> parameter was added.
+       </entry>
+      </row>
+      <row>
+       <entry>5.3.4</entry>
+       <entry>
+        Support for providing <classname>DateTime</classname> objects to the
+        <parameter>value</parameter> parameter was added.
+       </entry>
+      </row>
+     </tbody>
+    </tgroup>
+   </informaltable>
+  </para>
+ </refsect1>
+
+ <refsect1 role="examples">
+  &reftitle.examples;
+   <example>
+    <title><function>datefmt_format</function> example</title>
+    <programlisting role="php">
+<![CDATA[
+<?php
+$fmt = datefmt_create(
+    'en_US',
+    IntlDateFormatter::FULL,
+    IntlDateFormatter::FULL,
+    'America/Los_Angeles',
+    IntlDateFormatter::GREGORIAN
+);
+echo 'First Formatted output is ' . datefmt_format($fmt, 0);
+
+$fmt = datefmt_create(
+    'de-DE',
+    IntlDateFormatter::FULL,
+    IntlDateFormatter::FULL,
+    'America/Los_Angeles',
+    IntlDateFormatter::GREGORIAN
+);
+echo 'Second Formatted output is ' . datefmt_format($fmt, 0);
+
+$fmt = datefmt_create(
+    'en_US',
+    IntlDateFormatter::FULL,
+    IntlDateFormatter::FULL,
+    'America/Los_Angeles',
+    IntlDateFormatter::GREGORIAN,
+    'MM/dd/yyyy'
+);
+echo 'First Formatted output with pattern is ' . datefmt_format($fmt, 0);
+
+$fmt = datefmt_create(
+    'de-DE',
+    IntlDateFormatter::FULL,
+    IntlDateFormatter::FULL,
+    'America/Los_Angeles',
+    IntlDateFormatter::GREGORIAN,
+    'MM/dd/yyyy'
+);
+echo "Second Formatted output with pattern is " . datefmt_format($fmt, 0);
+?>
+]]>
+    </programlisting>
+   </example>
+   <example>
+    <title>OO example</title>
+    <programlisting role="php">
+<![CDATA[
+<?php
+$fmt = new IntlDateFormatter(
+    'en_US',
+    IntlDateFormatter::FULL,
+    IntlDateFormatter::FULL,
+    'America/Los_Angeles',
+    IntlDateFormatter::GREGORIAN
+);
+echo 'First Formatted output is ' . $fmt->format(0);
+
+$fmt = new IntlDateFormatter(
+    'de-DE',
+    IntlDateFormatter::FULL,
+    IntlDateFormatter::FULL,
+    'America/Los_Angeles',
+    IntlDateFormatter::GREGORIAN
+);
+echo 'Second Formatted output is ' . $fmt->format(0);
+
+$fmt = new IntlDateFormatter(
+    'en_US',
+    IntlDateFormatter::FULL,
+    IntlDateFormatter::FULL,
+    'America/Los_Angeles',
+    IntlDateFormatter::GREGORIAN,
+    'MM/dd/yyyy'
+);
+echo 'First Formatted output with pattern is ' . $fmt->format(0);
+
+$fmt = new IntlDateFormatter(
+    'de-DE',
+    IntlDateFormatter::FULL,
+    IntlDateFormatter::FULL,
+    'America/Los_Angeles',
+    IntlDateFormatter::GREGORIAN,
+    'MM/dd/yyyy'
+);
+echo 'Second Formatted output with pattern is ' . $fmt->format(0);
+?>
+]]>
+    </programlisting>
+   </example>
+     &example.outputs;
+     <screen>
+         <![CDATA[
+First Formatted output is Wednesday, December 31, 1969 4:00:00 PM PT
+Second Formatted output is Mittwoch, 31. Dezember 1969 16:00 Uhr GMT-08:00
+First Formatted output with pattern is 12/31/1969
+Second Formatted output with pattern is 12/31/1969
+]]>
+     </screen>
+
+   <example>
+   <title>With <classname>IntlCalendar</classname> object</title>
+    <programlisting role="php">
+<![CDATA[
+<?php
+$tz = reset(iterator_to_array(IntlTimeZone::createEnumeration('FR')));
+$formatter = IntlDateFormatter::create(
+    'fr_FR',
+    IntlDateFormatter::FULL,
+    IntlDateFormatter::FULL,
+    $tz,
+    IntlDateFormatter::GREGORIAN
+);
+
+$cal = IntlCalendar::createInstance($tz, '@calendar=islamic-civil');
+$cal->set(IntlCalendar::FIELD_MONTH, 8); //9th month, Ramadan
+$cal->set(IntlCalendar::FIELD_DAY_OF_MONTH, 1); //1st day
+$cal->clear(IntlCalendar::FIELD_HOUR_OF_DAY);
+$cal->clear(IntlCalendar::FIELD_MINUTE);
+$cal->clear(IntlCalendar::FIELD_SECOND);
+$cal->clear(IntlCalendar::FIELD_MILLISECOND);
+
+echo "In this islamic year, Ramadan started/will start on:\n\t",
+        $formatter->format($cal), "\n";
+
+//Itʼs the formatterʼs timezone that is used:
+$formatter->setTimeZone('Asia/Tokyo');
+echo "After changing timezone:\n\t",
+        $formatter->format($cal), "\n";
+
+]]>
+    </programlisting>
+    &example.outputs;
+    <screen>
+<![CDATA[
+In this islamic year, Ramadan started/will start on:
+    mardi 9 juillet 2013 19:00:00 heure avancée d’Europe centrale
+After changing timezone:
+    mercredi 10 juillet 2013 02:00:00 heure normale du Japon
+
+]]>
+    </screen>
+   </example>
+
+ </refsect1>
+
+ <refsect1 role="seealso">
+  &reftitle.seealso;
+  <para>
+   <simplelist>
+    <member><function>datefmt_create</function></member>
+    <member><function>datefmt_parse</function></member>
+    <member><function>datefmt_get_error_code</function></member>
+    <member><function>datefmt_get_error_message</function></member>
+    <member><function>datefmt_format_object</function></member>
+   </simplelist>
+  </para>
+ </refsect1>
+</refentry>
+
+<!-- Keep this comment at the end of the file
+Local variables:
+mode: sgml
+sgml-omittag:t
+sgml-shorttag:t
+sgml-minimize-attributes:nil
+sgml-always-quote-attributes:t
+sgml-indent-step:1
+sgml-indent-data:t
+indent-tabs-mode:nil
+sgml-parent-document:nil
+sgml-default-dtd-file:"~/.phpdoc/manual.ced"
+sgml-exposed-tags:nil
+sgml-local-catalogs:nil
+sgml-local-ecat-files:nil
+End:
+vim600: syn=xml fen fdm=syntax fdl=2 si
+vim: et tw=78 syn=sgml
+vi: ts=1 sw=1
+-->

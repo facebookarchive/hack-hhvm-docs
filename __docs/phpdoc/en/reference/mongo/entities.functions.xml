@@ -1,0 +1,2 @@
+&reference.mongo.functions.bson-decode;
+&reference.mongo.functions.bson-encode;

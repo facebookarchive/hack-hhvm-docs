@@ -1,0 +1,7 @@
+&reference.curl.curlfile.construct;
+&reference.curl.curlfile.getfilename;
+&reference.curl.curlfile.getmimetype;
+&reference.curl.curlfile.getpostfilename;
+&reference.curl.curlfile.setmimetype;
+&reference.curl.curlfile.setpostfilename;
+&reference.curl.curlfile.wakeup;

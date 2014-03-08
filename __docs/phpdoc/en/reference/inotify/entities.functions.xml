@@ -1,0 +1,5 @@
+&reference.inotify.functions.inotify-add-watch;
+&reference.inotify.functions.inotify-init;
+&reference.inotify.functions.inotify-queue-len;
+&reference.inotify.functions.inotify-read;
+&reference.inotify.functions.inotify-rm-watch;

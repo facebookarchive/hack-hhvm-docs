@@ -1,0 +1,7 @@
+&reference.yaf.yaf-plugin-abstract.dispatchloopshutdown;
+&reference.yaf.yaf-plugin-abstract.dispatchloopstartup;
+&reference.yaf.yaf-plugin-abstract.postdispatch;
+&reference.yaf.yaf-plugin-abstract.predispatch;
+&reference.yaf.yaf-plugin-abstract.preresponse;
+&reference.yaf.yaf-plugin-abstract.routershutdown;
+&reference.yaf.yaf-plugin-abstract.routerstartup;

@@ -1,0 +1,14 @@
+&reference.spl.functions.class-implements;
+&reference.spl.functions.class-parents;
+&reference.spl.functions.class-uses;
+&reference.spl.functions.iterator-apply;
+&reference.spl.functions.iterator-count;
+&reference.spl.functions.iterator-to-array;
+&reference.spl.functions.spl-autoload-call;
+&reference.spl.functions.spl-autoload-extensions;
+&reference.spl.functions.spl-autoload-functions;
+&reference.spl.functions.spl-autoload-register;
+&reference.spl.functions.spl-autoload-unregister;
+&reference.spl.functions.spl-autoload;
+&reference.spl.functions.spl-classes;
+&reference.spl.functions.spl-object-hash;

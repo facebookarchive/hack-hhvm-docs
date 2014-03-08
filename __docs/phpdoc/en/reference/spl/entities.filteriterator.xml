@@ -1,0 +1,8 @@
+&reference.spl.filteriterator.accept;
+&reference.spl.filteriterator.construct;
+&reference.spl.filteriterator.current;
+&reference.spl.filteriterator.getinneriterator;
+&reference.spl.filteriterator.key;
+&reference.spl.filteriterator.next;
+&reference.spl.filteriterator.rewind;
+&reference.spl.filteriterator.valid;

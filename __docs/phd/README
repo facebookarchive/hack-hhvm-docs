@@ -1,0 +1,41 @@
+PhD - PHP DocBook
+Copyright(c) 2007-2012 The PHP Documentation Team
+$Revision$
+
+Installing the PhD renderer:
+    From a PEAR channel:
+        pear install doc.php.net/phd
+
+        To install the PHP Package:
+            pear install doc.php.net/phd_php
+        
+        To install the PEAR Package:
+            pear install doc.php.net/phd_pear
+
+        To see all available packages:
+            pear remote-list -c doc.php.net
+
+    From GIT:
+        Note: Do not install anything from PEAR above.
+
+        git clone https://git.php.net/repository/phd.git
+        cd phd
+        pear install package.xml package_generic.xml
+
+        To install the standalone Packages:
+            for i in package_*.xml; do pear install $i; done
+
+Requirements:
+    - PHP 5.3
+    - DOM, libXML2, XMLReader and SQLite3.
+
+After installing PhD you can use the `phd` command
+to render the documentations. To see a list of available packages/formats
+use the `phd -l` command. By default `phd` use ./output for the rendered files.
+
+The `phd` command optionally takes more arguments.
+For information about those arguments please type `phd -h`
+
+
+- The PHP Documentation team
+

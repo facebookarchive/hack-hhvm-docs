@@ -1,0 +1,3 @@
+&reference.soap.soapfault.construct;
+&reference.soap.soapfault.soapfault;
+&reference.soap.soapfault.tostring;

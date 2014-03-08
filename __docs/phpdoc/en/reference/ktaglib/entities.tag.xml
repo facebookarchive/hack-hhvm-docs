@@ -1,0 +1,8 @@
+&reference.ktaglib.tag.getAlbum;
+&reference.ktaglib.tag.getArtist;
+&reference.ktaglib.tag.getComment;
+&reference.ktaglib.tag.getGenre;
+&reference.ktaglib.tag.getTitle;
+&reference.ktaglib.tag.getTrack;
+&reference.ktaglib.tag.getYear;
+&reference.ktaglib.tag.isEmpty;

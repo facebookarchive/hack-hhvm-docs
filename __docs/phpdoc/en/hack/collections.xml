@@ -1,0 +1,2183 @@
+<?xml version="1.0" encoding="utf-8"?>
+<chapter xml:id="hack.collections">
+  <title>Collections</title>
+  <para>
+    The PHP language provides one primary mechanism for expressing containers of elements: the PHP array. Traditionally, the term &quot;array&quot; in programming languages is thought of as a collection of elements, indexed using consecutive integers (starting at 0 or 1), and possibly of a fixed size (e.g., Java). PHP arrays are significantly different than the traditional concept of arrays. A PHP array is essentially a dictionary-style collection associating keys with values that maintains insertion order. The keys can be either integers or strings; the values can be of any type. PHP arrays are dynamically-sized and grow as needed without requiring a function call to increase their size/capacity. In all Hack documentation, the term "array" will be considered to refer to a PHP array unless explicitly noted otherwise. Arrays in PHP are created using the <literal>array()</literal> language construct. Here are a few examples:
+    <informalexample>
+      <programlisting role="php">
+<![CDATA[
+<?php
+ 
+// Simple array with the values 1, 2, 3 and default
+// indexed by integers, starting with 0
+$arr1 = array(1, 2, 3);
+ 
+// Another simple array with the values "a", "b", "c"
+// and again default indexed by integers
+$arr2 = array("a", "b", "c");
+ 
+// Array with strings as both keys and values
+$arr3 = array("a" => "aaa", "b" => "bbb", "c" => "ccc");
+ 
+// Array containing the values 1, 2, 3 but now indexed
+// by a mix of integer keys and string keys
+$arr4 = array("foo" => 1, 73 => 2, "bar" => 3);
+ 
+// Array having mixed-typed values, default indexed by 
+// integers.
+$arr5 = array(1, "hello", array(2, 3), "goodbye");
+ 
+// Dynamically grow arrays by just adding new values. The
+// keys do not have to be sequential or of the same type.
+$arr1[] = 4; // The key will be 3
+$arr1[4] = 5;
+$arr2["bap"] = 6;
+$arr3["d"] = "ddd";
+$arr4[] = "blah"; // The key will be 74
+$arr5[9] = 3;
+]]>
+      </programlisting>
+      <para>
+        Even with the relatively simple examples above, it is easy to see that PHP arrays are different than the &quot;arrays&quot; in other popular programming languages. In addition to offering dictionary-like operations, PHP arrays also offer stack-like operations. For example, values on PHP arrays can be pushed, popped or shifted. 
+      </para>
+    </informalexample>
+  </para>
+  <para>
+    Hack adds container types and interfaces to PHP. Building on Hack's support for generics, Hack adds first class, built-in parameterized collections such as vectors and maps. Collections are specialized for data storage and retrieval. Collections implement many of the same interfaces and are extendable to create even more specialized collections. Currently, Hack implements the following concrete collection types:
+  </para>
+  <itemizedlist>
+    <listitem>
+      <para>
+        <literal>Vector</literal>: An ordered, index-based list collection.
+      </para>
+    </listitem>
+    <listitem>
+      <para>
+        <literal>Map</literal>: An unordered dictionary-style collection.
+      </para>
+    </listitem>
+    <listitem>
+      <para>
+        <literal>StableMap</literal>: An ordered dictionary-style collection.
+      </para>
+    </listitem>
+    <listitem>
+      <para>
+        <literal>Set</literal>: A list-based collection that stores unique values.
+      </para>
+    </listitem>
+    <listitem>
+      <para>
+        <literal>Pair</literal>: An index-based collection that can hold exactly two elements.
+      </para>
+    </listitem>
+  </itemizedlist>
+  <para>
+    The primary interfaces implemented by these collections (except <literal>Pair</literal>) have two incarnations: the normal, read-write interface implemented by the classes above and a read-only interface. The read-write interface is prefixed by <literal>Mutable</literal> and the read-only interface is prefixed by <literal>Const</literal>.
+  </para>
+  <para>
+    Here is an example of using Hack collections:
+    <informalexample>
+      <programlisting role="php">
+<![CDATA[
+<?hh
+
+function main_col() {
+
+$vector = Vector {5, 10};
+
+$vector->add(15);
+$vector->add(20);
+
+$vector[] = 25;
+
+$vector->removeKey(2);
+
+foreach ($vector as $item) {
+  echo $item . "\n";
+}
+}
+
+main_col();
+]]>
+      </programlisting>
+      &example.outputs;
+      <screen>
+<![CDATA[
+5
+10
+20
+25
+]]>
+      </screen>
+    </informalexample>
+  </para>
+
+  <sect1 xml:id="hack.collections.goals">
+    <title>Goals</title>
+    <para>
+      Given the wide range of functionality offered by PHP arrays, they can be used to mimic common specialized collection types such as vectors, dictionaries, and sets. So why extend HHVM with its own collection classes and functionality? One key reason is code clarity. It's not always clear in PHP how an array is being used, or what the types of the keys and values are. This makes it harder to confidently make changes to a larger codebase without introducing subtle bugs. Another key reason is PHP array performance. Generally speaking, it is impossible to know with certainty if a PHP array is going to be used as a vector, as a map, as a set, etc., and as such the code generated by HHVM and associated data structures are more complex. Also, PHP arrays are copy-on-write. This means that programmers must use PHP references when they don't want the array to be copied, and using PHP references generally degrades code performance. Enter the Hack collection classes.
+    </para>
+    <para>
+      The goals of HipHop collections are four-fold: 
+      <orderedlist>
+        <listitem>
+          <para>
+            Provide a unified collections framework that is simple and intuitive. 
+          </para>
+        </listitem>
+        <listitem>
+          <para>
+            Provide equal or better performance than the equivalent PHP array pattern.
+          </para>
+        </listitem>
+        <listitem>
+          <para>
+            Provide a collection implementation that allows for optional static typing, integrating seamlessly with Hack.
+          </para>
+        </listitem>
+        <listitem>
+          <para>
+            Provide an easy migration path to this framework by building on top of standard functionality from Zend PHP.
+          </para>
+        </listitem>
+      </orderedlist>  
+    </para>
+    <para>
+      Like PHP arrays, Hack collections support foreach syntax for enumerating elements, and most collections support bracket syntax (e.g. <literal>$c[$k]</literal>) for accessing elements. Unlike PHP arrays, however, Hack collections are considered to be objects. Like all objects, Hack collections have reference-like semantics for assignment, parameter passing, and foreach. In other words, the collection is not copied when it is assigned to a variable, passed as a parameter, or returned as a return value (i.e., no copy-on-write semantics). 
+    </para>
+    <para>
+      Hack collections were designed to work with Hack and integrate with Hack's generics. Generics allow for the parameterization of a type. Why is this useful? It allows for the creation of a collection type that is type-safe at compile time. In other words, instead of assuming one starts with a top-level object and then performs <literal>instanceof</literal> checks and casting at runtime to retrieve the appropriate type, the correct type can be determined at compile time. And while at present Hack collections do not perform type-checking on elements at run time (i.e., type information will be dropped at runtime), using generics allows Hack to catch typing errors involving collection elements in near real time. Generics are not available with Zend PHP 5.4. 
+    </para>
+    <para>
+      Note that Hack generic type annotations are not strictly required for Hack collections. The Hack collection interfaces and APIs may be used in regular, untyped PHP code. Like all generics in Hack, the generics used with Hack collections will be &quot;erased&quot; (either fully or partially) at run time. 
+    </para>
+  </sect1>
+
+
+  <sect1 xml:id="hack.collections.vector">
+    <title>Vector</title>
+    <para>
+      Vectors are an integer-indexed (zero-based) collection with similar semantics to a C++ <literal>vector</literal> or a C#/Java <literal>ArrayList</literal>. Random access to elements happen in O(1) time. Inserts occur at O(1) when added to the end, but could hit O(n) with inserts elsewhere. Removal has similar time semantics. Iteration over the entire vector occurs at O(n) time. Inserting n elements into an empty Vector will take O(n) time in the average case (amortized). Here is the programmer accessible interface of a Hack <literal>Vector</literal>.
+      <informalexample>
+        <programlisting role="php">
+<![CDATA[
+class Vector<Tv> implements MutableVector<Tv>, Indexish<int, Tv>
+
+  __construct(Traversable<Tv>)
+
+  // The following implement KeyedIterable<int, Tv>
+  getIterator(): KeyedIterator<int, Tv>
+  toArray(): array
+  toValuesArray(): array
+  toKeysArray(): array
+  toVector(): Vector<Tv>
+  toMap(): Map<int, Tv>
+  toSet(): Set<Tv>
+  lazy(): KeyedIterable<int, Tv>
+  keys(): Vector<int>
+  map<Tu>((function(Tv): Tu)): Vector<Tu>
+  mapWithKey<Tu>((function(int, Tv): Tu)): Vector<Tu>
+  filter((function(Tv): bool)): Vector<Tv>
+  filterWithKey((function(int, Tv): bool)): Vector<Tv>
+  zip<Tu>(Traversable<Tu>): Vector<Pair<Tv, Tu>>
+
+  // The following implement Collection<Tv>
+  isEmpty(): bool
+  count(): int
+  items(): Iterable<Tv>
+  static fromItems(Traversable<Tv>): Vector<Tv>
+  add(Tv): this
+  addAll(?Traversable<Tv>): this
+  erase(Iterator): this // not implemented yet
+  clear(): void
+
+  // The following implement IndexAccess<int, Tv>
+  at(int): Tv
+  get(int): ?Tv
+  containsKey(int): bool
+  set(int, Tv): this
+  setAll(?KeyedTraversable<int, Tv>): this
+  removeKey(int): void
+
+  // The following are implemented in Vector
+  static slice(Vector<Tv>, int, int): Vector<Tv>
+]]>
+        </programlisting>
+      </informalexample>
+    </para>
+    <para>
+      Here are some basic examples that show how <literal>Vector</literal> can be used:
+      <informalexample>
+        <programlisting role="php">
+<![CDATA[
+<?hh
+
+function main() {
+  // Create a Vector using collection literal syntax
+  $vector = Vector {5, 10, 15};
+
+  // Add elements using "$c[]=$v" syntax
+  $vector[] = 20;
+  $vector[] = 25;
+
+  // Access value by key using "$c[$k]" syntax; note that "$c[$k]"
+  // syntax will throw if the key is out of bounds
+  echo $vector[0] . "\n";
+
+  // Access value by key using get(); null will be returned if the key is
+  // out of bounds
+  echo $vector->get(1) . "\n\n";
+
+  // Set value by key using "$c[$k]=$v" syntax, overwriting the previous
+  // value; note that "$c[$k]=$v" syntax for Vectors will throw if the key
+  // is out of bounds
+  $vector[0] = 999;
+
+  // Remove an element by key
+  $vector->removeKey(2);
+
+  // Iterate over the values using "foreach ($c as $v)" syntax
+  foreach ($vector as $v) {
+    echo $v . "\n";
+  }
+  echo "\n";
+
+  // Iterate over the values using "for" and "$c[$x]" syntax
+  for ($i = 0; $i < count($vector); ++$i) {
+    echo $vector[$i] . "\n";
+  }
+
+  // Iterate over the keys and values using "foreach ($c as $k=>$v)"
+  // syntax
+  foreach ($vector as $k => $v) {
+    echo $k . ": " . $v . "\n";
+  }
+  echo "\n";
+}
+
+main();
+]]>
+        </programlisting>
+        &example.outputs;
+        <screen>
+<![CDATA[
+999
+10
+
+999
+10
+20
+25
+
+999
+10
+20
+25
+
+0: 999
+1: 10
+2: 20
+3: 25
+]]>
+        </screen>
+      </informalexample>
+      <informalexample>
+        <programlisting role="php">
+<![CDATA[
+<?hh
+
+function main() {
+  $v = Vector {40, 80, 20, 60};
+  $it = $v->filter(function($x) { return $x >= 50; });
+  foreach ($it as $key => $val) {
+    echo $key . " " . $val . "\n";
+  }
+}
+
+main();
+]]>
+        </programlisting>
+        &example.outputs;
+        <screen>
+<![CDATA[
+0 80
+
+1 60
+]]>
+        </screen>
+      </informalexample>
+    </para>
+  </sect1>
+
+  <sect1 xml:id="hack.collections.map">
+    <title>Map</title>
+    <para>
+      Maps are an ordered dictionary-style collection. Elements are stored as key/value pairs. <emphasis>Maps retain element insertion order</emphasis>, meaning that iterating over a Map will visit the elements in the same order that they were inserted. Insert, remove and search operations are performed in O(lg n) time or better (amortized). <emphasis>Note: <literal>Map</literal> only supports <literal>int</literal> and <literal>string</literal> keys at present. Support for other types may come in the future. Here is the programmer accessible interface for <literal>Map</literal>.</emphasis> 
+      <informalexample>
+        <programlisting role="php">
+  <![CDATA[
+  class Map<Tk, Tv> implements MutableMap<Tk, Tv>, Indexish<Tk, Tv>
+
+    __construct(KeyedTraversable<Tk, Tv>)
+
+    // The following implement KeyedIterable<Tk, Tv>
+    getIterator(): KeyedIterator<Tk, Tv>
+    toArray(): array
+    toValuesArray(): array
+    toKeysArray(): array
+    toVector(): Vector<Tv>
+    toMap(): Map<Tk, Tv>
+    toSet(): Set<Tv>
+    lazy(): KeyedIterable<Tk, Tv>
+    keys(): Vector<Tk>
+    map<Tu>((function(Tv): Tu)): Map<Tk, Tu>
+    mapWithKey<Tu>((function(Tk, Tv): Tu)): Map<Tk, Tu>
+    filter((function(Tv): bool)): Map<Tk, Tv>
+    filterWithKey((function(Tk, Tv): bool)): Map<Tk, Tv>
+    zip<Tu>(Traversable<Tu>): Map<Tk, Pair<Tv, Tu>>
+
+    // The following implement Collection<Pair<Tk, Tv>>
+    isEmpty(): bool
+    count(): int
+    items(): Iterable<Pair<Tk, Tv>>
+    static fromItems(Traversable<Pair<Tk, Tv>>): Map<Tk, Tv>
+    add(Pair<Tk, Tv>): this
+    addAll(?Traversable<Pair<Tk, Tv>>): this
+    erase(Iterator): this // not implemented yet
+    clear(): void
+
+    // The following implements SetAccess<Tk>
+    contains(Tk): bool 
+    remove(Tk): this
+
+    // The following implement IndexAccess<Tk, Tv>
+    at(Tk): Tv
+    get(Tk): ?Tv
+    containsKey(Tk): bool 
+    set(Tk, Tv): this
+    setAll(?KeyedTraversable<Tk, Tv>): this
+    removeKey(Tk): void
+  ]]>
+        </programlisting>
+      </informalexample>
+    </para>
+    <para>
+      Here are some basic examples showing how <literal>Map</literal> can be used:
+      <informalexample>
+        <programlisting role="php">
+<![CDATA[
+<?hh
+ 
+function main() {
+  // Create a Map using collection literal syntax
+  $map = Map {"A" => 1, "B" => 2, "C" => 3};
+ 
+  // Add elements using "$c[$k]=$v" syntax; note that if $k is
+  // already present, "$c[$k]=$v" syntax will overwrite the previous
+  // value
+  $map["D"] = 4;
+  $map["E"] = 5;
+ 
+  // Access value by key using "$c[$k]" syntax; note that "$c[$k]"
+  // syntax will throw if the key is not present
+  echo $map["A"] . "\n";
+ 
+  // Access value by key via get(); null will be returned if the key is
+  // not present
+  echo $map->get("B") . "\n\n";
+ 
+  // Remove element by key; if the key is not present the remove()
+  // method will do nothing and return
+  $map->remove("B");
+ 
+  // Testing if a key is present
+  echo ($map->contains("A") ? "true" : "false") . "\n\n";
+ 
+  // Iterate over the values using "foreach ($c as $v)" syntax
+  foreach ($map as $v) {
+    echo $v . "\n";
+  }
+ 
+  // Iterate over the keys and values using "foreach ($c as $k=>$v)"
+  // syntax
+  foreach ($map as $k => $v) {
+    echo $k . ": " . $v . "\n";
+  }
+}
+ 
+main(); // REMEMBER, insertion order is maintained.
+]]>
+        </programlisting>
+        &example.outputs;
+        <screen>
+<![CDATA[
+1
+2
+
+true
+
+1
+3
+4
+5
+
+A: 1
+C: 3
+D: 4
+E: 5
+]]>
+        </screen>
+      </informalexample>
+            <informalexample>
+        <programlisting role="php">
+<![CDATA[
+<?hh
+ 
+function main() {
+  $m = Map {1 => 'a', 2 => 'b', 3 => 'c', 4 => 'd'};
+  var_dump($m->filterWithKey(function($k, $v) { return $k >= 3; }));
+}
+ 
+main();
+]]>
+        </programlisting>
+        &example.outputs;
+        <screen>
+<![CDATA[
+object(Map)#1 (2) {
+  [3]=>
+  string(1) "c"
+  [4]=>
+  string(1) "d"
+}
+]]>
+        </screen>
+      </informalexample>
+    </para>
+  </sect1>
+
+<sect1 xml:id="hack.collections.set">
+    <title>Set</title>
+    <para>
+      Sets are an unordered associative collection that stores unique values. Unlike vectors and maps, sets do not have keys, and thus cannot be iterated on keys (i.e., <literal>Set</literal> does not implement <literal>KeyedIterable</literal>). Likewise, sets do not support <literal>$c[$k]</literal> or <literal>$c[$k]=$v</literal> syntax (though <literal>$c[]=$v</literal> syntax is supported for adding elements). Insert, remove, and search operations for <literal>Set</literal> are performed in O(lg N) time or better. Intersect and some other operations are available in the Sets class. <emphasis>Note: <literal>Set</literal> only supports <literal>int</literal> and <literal>string</literal> values at present. Support for other types may come in the future.</emphasis> Here is the programmer accessible interface of a Hack
+      implemented <literal>Set</literal>:
+      <informalexample>
+        <programlisting role="php">
+<![CDATA[
+class Set<Tv> implements MutableSet<Tv>
+ 
+  __construct(Traversable<Tv>)
+ 
+  // The following implement Iterable<Tv>.
+  getIterator(): Iterator<Tv>
+  toArray(): array
+  toValuesArray(): array
+  toVector(): Vector<Tv>
+  toSet(): Set<Tv>
+  lazy(): Iterable<Tv>
+  map<Tu>((function(Tv): Tu)): Set<Tu>
+  filter((function(Tv): bool)): Set<Tv>
+  zip<Tu>(Traversable<Tu>): Set<Pair<Tv, Tu>> // not implemented yet
+ 
+  // The following implement Collection<Tv>
+  isEmpty(): bool
+  count(): int
+  items(): Iterable<Tv>
+  static fromItems(Traversable<Tv>): Set<Tv>
+  add(Tv): this
+  addAll(?Traversable<Tv>): this
+  removeAll(Traversable<Tv> $other): Set<Tv> // takes difference
+  erase(Iterator): this // not implemented yet
+  clear(): void
+ 
+  // The following implements SetAccess<Tv>
+  contains(Tv): bool
+  remove(Tv): this
+]]>
+        </programlisting>
+      </informalexample>
+    </para>
+    <para>
+      Here is a basic example showing how <literal>Set</literal> can be used:
+            <informalexample>
+        <programlisting role="php">
+<![CDATA[
+<?hh
+ 
+function main() {
+  // Create a Set using collection literal syntax
+  $set = Set {"A", "B"};
+ 
+  // Add elements using "$c[]=$v" syntax
+  $set[] = "C";
+ 
+  // Add elements using the add() method
+  $set->add("D")->add("E");
+ 
+  // Remove element by value
+  $set->remove("B");
+ 
+  // Testing if a value is present
+  echo ($set->contains("A") ? "true" : "false") . "\n\n";
+ 
+  // Iterate over the values using "foreach ($c as $v)" syntax
+  foreach ($set as $item) {
+    echo $item . "\n";
+  }
+}
+ 
+main();
+]]>
+        </programlisting>
+        &example.outputs;
+        <screen>
+<![CDATA[
+true
+
+D
+A
+E
+C
+]]>
+        </screen>
+      </informalexample>
+    </para>
+    <para>
+      Here is an example of taking the difference between two sets using <literal>removeAll</literal>
+      <informalexample>
+        <programlisting role="php">
+<![CDATA[
+<?hh
+function foo(): void {
+  $s = Set {2, 3, 4};
+  $v = Set {2, 3, 5};
+  $s->add(6);
+  $z = $s->RemoveAll($v); //difference between $v and $s
+  var_dump($s, $v, $z);
+}
+ 
+foo();
+]]>
+        </programlisting>
+        &example.outputs;
+        <screen>
+<![CDATA[
+object(Set)#1 (2) {
+  int(4)
+  int(6)
+}
+object(Set)#2 (3) {
+  int(2)
+  int(3)
+  int(5)
+}
+object(Set)#1 (2) {
+  int(4)
+  int(6)
+}
+]]>
+        </screen>
+      </informalexample>
+    </para>
+  </sect1>
+
+  <sect1 xml:id="hack.collections.pair">
+    <title>Pair</title>
+    <para>
+      An indexed container restricted to containing exactly two elements. <literal>Pair</literal> has integer keys; key 0 refers to the first element and key 1 refers to the second element (all other integer keys are out of bounds). The first type parameter specifies the type constraint for the first element, and the second type parameter specifies the type constraint for the second element. <literal>Pair</literal>s are immutable, meaning that the elements of a <literal>Pair</literal> cannot be assigned to or removed. Note however that <literal>Pair</literal>s may contain mutable objects. <literal>Pair</literal>s allow for covariance on both type parameters (as indicated by the "out" keyword in the class declaration ). <emphasis role="strong">Note, however, that Hack DOES NOT currently support covariance on type parameters</emphasis>. Here is the programmer accessible interface for Hack sets: 
+      <informalexample>
+        <programlisting role="php">
+<![CDATA[
+class Pair<out Tv1, out Tv2> implements ConstVector<mixed>
+
+  // The following implement KeyedIterable<int, mixed>
+  getIterator(): KeyedIterator<int, mixed>
+  toArray(): array
+  toValuesArray(): array
+  toKeysArray(): array
+  toVector(): Vector<Tv>
+  toMap(): Map<int, Tv>
+  toSet(): Set<Tv>
+  lazy(): KeyedIterable<int, Tv>
+  map<Tu>((function(mixed): Tu)): Vector<Tu>
+  mapWithKey<Tu>((function(int, mixed): Tu)): Vector<Tu>
+  filter((function(mixed): bool)): Vector<mixed>
+  filterWithKey((function(int, mixed): bool)): Vector<mixed>
+  zip<Tu>(Traversable<Tu>): Vector<Pair<mixed, Tu>>
+  keys(): Vector<int>
+
+  // The following implement ConstCollection<mixed>
+  isEmpty(): bool
+  count(): int
+  items(): Iterable<mixed>
+  static fromItems(Traversable<mixed>): Pair<Tv1, Tv2> // not implemented yet
+
+  // The following implement ConstIndexAccess<int, mixed>
+  at(int): mixed
+  get(int): mixed
+  containsKey(int): bool
+]]>
+        </programlisting>
+      </informalexample>
+    </para>
+    <para>
+      Here is a simple example showing how <literal>Pair</literal> can be used:
+      <informalexample>
+        <programlisting role="php">
+<![CDATA[
+<?hh
+ 
+function main() {
+  $p = Pair {7, 'a'};
+  echo $p[0] . "\n";
+  echo $p[1] . "\n";
+  echo "\n";
+  foreach ($p as $val) {
+    echo $val . "\n";
+  }
+}
+ 
+main();
+]]>
+        </programlisting>
+        &example.outputs;
+        <screen>
+<![CDATA[
+7
+a
+
+7
+a
+]]>
+        </screen>
+      </informalexample>
+    </para>
+  </sect1>
+
+  <sect1 xml:id="hack.collections.squarebracketsyntax">
+    <title>Square Bracket Syntax</title>
+    <para>
+      The Hack collection classes provides two primary mechanisms for accessing elements: square bracket syntax (e.g. <literal>[]</literal>) and explicit <literal>get</literal>/<literal>set</literal> methods. Both are obviously completely valid for use. However, it is recommended that square bracket syntax be used. Square bracket syntax should be familiar to PHP developers via arrays, as well as developers in other languages like C#. <literal>[]</literal> is the preferred for several reasons:
+      <itemizedlist>
+        <listitem>
+          <para>
+            It is currently faster to use at runtime.
+          </para>
+        </listitem>
+        <listitem>
+          <para>
+            It is more readable to people who read PHP code since <literal>[]</literal> is used with arrays.
+          </para>
+        </listitem>
+        <listitem>
+          <para>
+            Code that is required to support both collections and arrays will require <literal>[]</literal>, along with the <literal>KeyedTraversable</literal> and/or <literal>Indexish</literal>interfaces, to be interoperable. 
+          </para>
+        </listitem>
+      </itemizedlist>
+    </para>
+  </sect1>
+
+  <sect1 xml:id="hack.collections.literalsyntax">
+    <title>Literal Syntax</title>
+    <para>
+      Hack collections has introduced a literal syntax in order to make it easy to create a new collection without the need for temporary arrays or helper functions. HHVM natively understands collection literals. Here is an example: 
+      <informalexample>
+        <programlisting role="php">
+  <![CDATA[
+  <?hh
+  $vec = Vector {1, 2, 3};
+  ]]>
+        </programlisting>
+        <para>
+            The code above requires no hidden arrays or helper functions to build a Vector containing 1, 2, and 3. 
+        </para>
+      </informalexample>
+    </para>
+    <para>
+      Here are some basic examples showing how collection literal syntax can be used: 
+      <informalexample>
+        <programlisting role="php">
+  <![CDATA[
+  <?hh
+   
+  // This example creates collections using literal syntax and
+  // stores these collections in normal local variables
+  function f() {
+    $vec = Vector {1, 2, 3};
+    var_dump($vec);
+    $map = Map {42 => 'foo', 73 => 'bar', 144 => 'baz'};
+    var_dump($map);
+  }
+   
+  f();
+  ]]>
+        </programlisting>
+        &example.outputs;
+        <screen>
+  <![CDATA[
+  object(Vector)#1 (3) {
+    [0]=>
+    int(1)
+    [1]=>
+    int(2)
+    [2]=>
+    int(3)
+  }
+  object(Map)#1 (3) {
+    [42]=>
+    string(3) "foo"
+    [73]=>
+    string(3) "bar"
+    [144]=>
+    string(3) "baz"
+  }
+  ]]>
+        </screen>
+      </informalexample>
+      <informalexample>
+        <programlisting role="php">
+  <![CDATA[
+  <?hh
+  class C {
+    public static $bar = Map {'a' => 1, 'b' => 2};
+   
+    // Each instance of class C will get its own copy
+    // of Vector {1, 2, 3} in property $foo
+    public $foo = Vector {1, 2, 3};
+   
+    // Each invocation of h() with no parameters will
+    // return a distinct empty Vector
+    function h($x = Vector {}) {
+      return $x;
+    }
+   
+    function j() {
+      static $y = Map {1 => 'a', 2 => 'b'};
+      return $y;
+    }
+  }
+  ]]>
+        </programlisting>
+      </informalexample>
+    </para>
+    <para>
+      There are several reasons why this mechanism of literal syntax was chosen over other candidates (e.g., Python-style or using parenthesis instead of curly braces): 
+      <itemizedlist>
+        <listitem>
+          <para>
+            &quot;<literal>[..]</literal>&quot; syntax has already been taken by PHP 5.4 for 'short array syntax'. </para>
+        </listitem>
+        <listitem>
+          <para>
+            The current collection literal syntax is clearly distinct from function call syntax, which makes it easier for HipHop to treat it differently than a function call and deliver performance that is competitive with PHP arrays. This also means that new keywords don't need to be added or the HipHop runtime hacked to allow &quot;=>&quot; inside <literal>map(..)</literal> but not inside other function calls. 
+          </para>
+        </listitem>
+        <listitem>
+          <para>
+            This literal syntax scales better for adding future built-in collection types. This syntax also leaves the possibility open for allowing some user-defined classes to use this syntax down the road. 
+          </para>
+        </listitem>
+        <listitem>
+          <para>
+            It leaves the possibility open for specifying the extended type of a collection (e.g.,. <literal>Vector&lt;Foo&gt; {f(), g()}</literal>), which may come in handy for some use cases, and it may be useful down the road when generics are integrated into HipHop's type system. 
+          </para>
+        </listitem>
+        <listitem>
+          <para>
+            This literal syntax is reasonably concise when compared with the classic array literal syntax (e.g., <literal>array(..)</literal>), and it doesn't preclude the possibility of having a more concise syntax in the future for vectors and maps.
+          </para>
+        </listitem>
+        <listitem>
+          <para>
+            This syntax has similarities with various initialization constructs in several popular languages that are syntactically similar to PHP (ex. C, C++, Java, C#), giving it a familiar feel for PHP developers. 
+          </para>
+        </listitem>
+      </itemizedlist>
+    </para>
+  </sect1>
+
+  <sect1 xml:id="hack.collections.phpoperators">
+    <title>Basic PHP operators and Collections</title>
+    <para>
+      For the most part, collections behave like regular PHP objects, though there are some places where collections behave differently than regular PHP objects: 
+      <itemizedlist>
+        <listitem>
+          <para>
+            list assignment with a collection on the right hand side works as you would expect. </para>
+        </listitem>
+        <listitem>
+          <para>
+            Comparing collections using <literal>===</literal> returns true only iff they are the same object (reference equality). 
+          </para>
+        </listitem>
+        <listitem>
+          <para>
+            Comparing collections using <literal>==</literal>literal> will compare collections for &quot;structural equality&quot;. <literal>==</literal>literal> will always return <literal>false</literal> if dealing with different kinds of collections. <literal>==</literal>literal> takes order into account for <literal>Vector</literal>literal> and <literal>Pair</literal>literal>, but does not care about order for <literal>Map</literal> and <literal>Set</literal>. 
+          </para>
+        </listitem>
+        <listitem>
+          <para>
+            Casting a collection to array (<literal>(array)$c</literal>) will produce an array containing the keys and values from the collection (same as <literal>$c->toArray()</literal>). </para>
+        </listitem>
+        <listitem>
+          <para>
+            Casting a collection to boolean (<literal>(bool)$c</literal>) will produce true if the collection is non-empty, false otherwise (same as <literal>!$c->isEmpty()</literal>). 
+          </para>
+        </listitem>
+        <listitem>
+          <para>
+            Other kinds of casts behave the same way for collections as they do for regular PHP objects. 
+          </para>
+        </listitem>
+      </itemizedlist>
+    </para>
+  </sect1>
+
+  <sect1 xml:id="hack.collections.phpbuiltins">
+    <title>PHP Builtin Support</title>
+    <para>
+      In large PHP codebases, data flow can be very complex, and so it's important to make collections work together with common PHP builtins so that migration is as easy as possible. Below is a summary of what PHP builtin functions currently work with collections:
+      <itemizedlist>
+        <listitem>
+          <para>
+            <literal> * apc_store(string,mixed,int)</literal>
+          </para>
+        </listitem>
+        <listitem>
+          <para>
+            <literal>array_combine()</literal>
+          </para>
+        </listitem>
+        <listitem>
+          <para>
+            <literal>array_diff()</literal>
+          </para>
+        </listitem>
+        <listitem>
+          <para>
+            <literal>array_diff_key()</literal>
+          </para>
+        </listitem>
+        <listitem>
+          <para>
+            <literal>array_filter()</literal>
+          </para>
+        </listitem>
+        <listitem>
+          <para>
+            <literal>array_intersect()</literal>
+          </para>
+        </listitem>
+        <listitem>
+          <para>
+            <literal>array_intersect_key()</literal>
+          </para>
+        </listitem>
+        <listitem>
+          <para>
+            <literal>array_keys()</literal>
+          </para>
+        </listitem>
+        <listitem>
+          <para>
+            <literal>array_map()</literal>
+          </para>
+        </listitem>
+        <listitem>
+          <para>
+            <literal>array_push()</literal>
+          </para>
+        </listitem>
+        <listitem>
+          <para>
+            <literal>array_values()</literal>
+          </para>
+        </listitem>
+        <listitem>
+          <para>
+            <literal></literal>
+          </para>
+        </listitem>
+        <listitem>
+          <para>
+            <literal>count()</literal>
+          </para>
+        </listitem>
+        <listitem>
+          <para>
+            <literal>debug_zval_dump()</literal>
+          </para>
+        </listitem>
+        <listitem>
+          <para>
+            <literal>implode()</literal>
+          </para>
+        </listitem>
+        <listitem>
+          <para>
+            <literal>join()</literal> (alias of <literal>implode()</literal>)
+          </para>
+        </listitem>
+        <listitem>
+          <para>
+            <literal>print_r()</literal>
+          </para>
+        </listitem>
+        <listitem>
+          <para>
+            <literal>serialize()</literal>
+          </para>
+        </listitem>
+        <listitem>
+          <para>
+            <literal>sizeof()</literal> (alias for <literal>count()</literal>)
+          </para>
+        </listitem>
+        <listitem>
+          <para>
+            <literal>unserialize()</literal>
+          </para>
+        </listitem>
+        <listitem>
+          <para>
+            <literal>var_dump()</literal>
+          </para>
+        </listitem>
+        <listitem>
+          <para>
+            <literal>var_export()</literal>
+          </para>
+        </listitem>
+        <listitem>
+          <para>
+            <literal>array_key_exists()</literal> - for <literal>Vector</literal> and <literal>Map</literal> only
+          </para>
+        </listitem>
+        <listitem>
+          <para>
+            <literal>idx()</literal> - for <literal>Vector</literal> and <literal>Map</literal> only
+          </para>
+        </listitem>
+        <listitem>
+          <para>
+            <literal>sort()</literal> - for <literal>Vector</literal> only
+          </para>
+        </listitem>
+        <listitem>
+          <para>
+            <literal>rsort()</literal> - for <literal>Vector</literal> only
+          </para>
+        </listitem>
+        <listitem>
+          <para>
+            <literal>usort()</literal> - for <literal>Vector</literal> only
+          </para>
+        </listitem>
+        <listitem>
+          <para>
+            <literal>arsort()</literal> - for <literal>Map</literal> only
+          </para>
+        </listitem>
+        <listitem>
+          <para>
+            <literal>uasort()</literal> - for <literal>Map</literal> only
+          </para>
+        </listitem>
+        <listitem>
+          <para>
+            <literal>ksort()</literal> - for <literal>Map</literal> only
+          </para>
+        </listitem>
+        <listitem>
+          <para>
+            <literal>krsort()</literal> - for <literal>Map</literal> only
+          </para>
+        </listitem>
+        <listitem>
+          <para>
+            <literal>uksort()</literal> - for <literal>Map</literal> only
+          </para>
+        </listitem> 
+        <listitem>
+          <para>
+            <literal>natsort()</literal> - for <literal>Map</literal> only
+          </para>
+        </listitem> 
+        <listitem>
+          <para>
+            <literal>natcasesort()</literal> - for <literal>Map</literal> only
+          </para>
+        </listitem> 
+      </itemizedlist>
+    </para>
+    <para>
+      At present, most other standard PHP builtins that accept arrays as parameters either (1) do not support collections or (2) silently copy the collection to an array. 
+    </para>
+  </sect1>
+
+  <sect1 xml:id="hack.collections.interfaces">
+    <title>Collection Interfaces</title>
+    <para>
+      The following diagram shows at a high level how Hack collection interfaces are structured.
+      <figure>
+        <title>Collections Implementation</title>
+        <mediaobject>
+          <alt>Collection implementation diagram</alt>
+          <imageobject>
+            <imagedata fileref="en/hack/figures/collectionsimpl.png" />
+          </imageobject>
+        </mediaobject>
+      </figure>
+    </para>
+    <para>
+      In the design of HipHop collections, these general design patterns were followed:
+      <orderedlist>
+        <listitem>
+          <para>
+            Used patterns that PHP developers are accustomed to within various codebases (e.g., <literal>foreach</literal> both key/value and just value iteration). 
+          </para>
+        </listitem>
+        <listitem>
+          <para>
+            Allowed use of <literal>foreach</literal>, brackets syntax (e.g., <literal>$a[$b]</literal>) and higher order functions (e.g., <literal>filter</literal>) instead of manually operating on iterators. 
+          </para>
+        </listitem>
+        <listitem>
+          <para>
+            Allowed for supporting covariance and contravariance in the future to provide maximum power and flexibility while maintaining type safety. 
+          </para>
+        </listitem>
+        <listitem>
+          <para>
+            Followed design patterns from other popular collections frameworks where appropriate (e.g, C++, C#, Java, Python, Scala) for maximum developer appeal. 
+          </para>
+        </listitem>
+      </orderedlist>
+    </para>
+    <para>
+      <emphasis>Potential</emphasis> support for covariance and contravariance is indicated by the &quot;out&quot; keyword and &quot;in&quot; keyword respectively , though at present Hack does not support &quot;out&quot; and &quot;in&quot;. 
+    </para>
+    <sect2 xml:id="hack.collections.interfaces.specific">
+      <title>Specific Collection Interfaces</title>
+      <para>
+        The concrete collection classes (<literal>Vector</literal>, <literal>Map</literal>, etc.) use the collection interfaces as building blocks. Before diving into the lower layers of interfaces, it's worth covering the specific collection interfaces first. 
+      <informalexample>
+        <programlisting role="php">
+<![CDATA[
+interface ConstVector<out Tv> extends ConstCollection<Tv>, ConstIndexAccess<int, Tv>, KeyedIterable<int, Tv>
+ 
+interface MutableVector<Tv> extends ConstVector<Tv>, Collection<Tv>, IndexAccess<int, Tv>
+ 
+interface ConstMap<Tk, out Tv> extends ConstCollection<Pair<Tk, Tv>>, ConstMapAccess<Tk, Tv>, KeyedIterable<Tk, Tv>
+ 
+interface MutableMap<Tk, Tv> extends ConstMap<Tk, Tv>, Collection<Pair<Tk, Tv>>, MapAccess<Tk, Tv>
+ 
+interface ConstSet<Tv> extends ConstCollection<Tv>, ConstSetAccess<Tv>, Iterable<Tv>
+ 
+interface MutableSet<Tv> extends ConstSet<Tv>, Collection<Tv>, SetAccess<Tv>
+]]>
+        </programlisting>
+      </informalexample>
+      </para>
+      <para>
+        The "const" interfaces (<literal>ConstVector</literal>, <literal>ConstMap</literal>, and <literal>ConstSet</literal>) can be used in parameter type constraints to indicate that a given function will not mutate the collection. This can be important for larger codebases since collections have "reference-like"semantics and do not have "copy-on-write" behavior like PHP arrays. The "const" interfaces also provides a good foundation for adding "frozen" versions of collections (<literal>FrozenVector</literal>, <literal>FrozenMap</literal>, etc.) and for potentially supporting covariance in the future. The <literal>ConstMap</literal> interface can be used in a parameter type constraint to indicate that a given function will accept both Maps and FrozenMaps. The collection specific interfaces also lay the foundation for adding more types of collections or user-defined collections down the road.
+      </para>
+    </sect2>
+    <sect2 xml:id="hack.collections.interfaces.iteration">
+      <title>Iteration Interfaces</title>
+      <para>
+        The <literal>Iterable</literal>, <literal>Traversable</literal>, and associated interfaces allow for the traversal of values or keys/values coming from some source, whether it be a collection or a generator or some other kind of object. 
+      </para>
+      <para>
+        The <literal>Traversable</literal> style interfaces provide a continuous feeding of elements with <literal>foreach</literal>. <literal>Traversable</literal> also provides the capability for code to be compatible with both arrays and collections, while allowing for the typing of keys and values. A function that takes an <literal>Indexish</literal>, for example, can be passed an <literal>array&lt;int&gt;</literal> or a <literal>Vector&lt;int&gt;</literal>. 
+      </para>
+      <para>
+        <literal>Indexish</literal> is another interface that works with both arrays and collections, and it is intended to help ease the migration from arrays to typed collections for certain use cases. <literal>Indexish</literal> supports the array-like, square bracket (e.g. <literal>$x[$k]</literal>) syntax while also supporting the iteration via <literal>foreach</literal> (by extending the <literal>Traversable</literal> interface). The <literal>Indexish</literal> interface does not include functionality for mutating the underlying array or collection; this includes appending, removing, changing element types and changing the values of elements. While the <literal>Indexish</literal> does offer functionality for mutation, it is still possible to mutate the underlying array or collection if the programmer uses <literal>is_array()</literal> or <literal>instanceof</literal> to cast the container to its concrete type, or if the container is passed to "untyped" code. It is important to note that the copy semantics do remain the same for arrays and collections when using <literal>Indexish</literal>. Arrays are still copy-on-write, while collections are passed by reference. 
+      </para>
+      <para>
+        Given that <literal>Indexish</literal> supports keyed collections, <literal>Vector</literal> and <literal>Map</literal> implement <literal>Indexish</literal>. <literal>Set</literal> (which doesn't have a key) and <literal>Pair</literal> do not. 
+      </para>
+      <para>
+        The <literal>Iterable</literal> style interfaces allow for retrieving values using <literal>foreach</literal> at chosen times through the use of iterators (e.g.. <literal>next</literal>), while also providing various helper functions that can be used during iteration. 
+      </para>
+      <informalexample>
+        <programlisting role="php">
+<![CDATA[
+// The Traversable interface is part of standard PHP.
+// In HHVM/Hack, it is a generic (parameterized) interface that
+// provides foreach support of the form: foreach($c as $v)
+interface Traversable<out Tv>
+ 
+ 
+// The IteratorAggregate interface is part of standard PHP
+// In HHVM/Hack, it is parameterized and allows for the
+// creation of an external iterator.
+interface IteratorAggregate<Tv> extends Traversable<Tv>
+  getIterator(): Iterator<Tv>
+ 
+ 
+// A generic (parameterized) interface that provides foreach
+// support of the form: foreach($c => $k as $v)
+interface KeyedTraversable<out Tk, out Tv> extends Traversable<Tv>
+ 
+ 
+// A generic (parameterized) interface that, in addition to
+// providing foreach support, provides array-like bracket syntax
+// for collections. Indexish is immutable (e.g., appending via
+// $c[] = $v is not supported) without explicit programmer guarantees.
+interface Indexish<out Tk, out Tv> extends KeyedTraversable<Tk, Tv>
+ 
+ 
+// Any class that implements Iterable<Tv> will
+// "magically" work with foreach($c as $v) 
+interface Iterable<out Tv> extends IteratorAggregate<Tv>
+ 
+  getIterator(): Iterator<Tv>
+  toArray(): array
+  toValuesArray(): array
+  toVector(): Vector<Tv>
+  toSet(): Set<Tv>
+  lazy(): Iterable<Tv>
+ 
+  // return an Iterable based on the return 
+  // results of calling a provided function 
+  // on every value of a given Iterable. 
+  map<Tu>((function(Tv): Tu)): Iterable<Tu> 
+ 
+  // return an Iterable containing the values 
+  // of a given Iterable that cause the provided 
+  // function to return true.
+  filter((function(Tv): bool)): Iterable<Tv>
+ 
+  // return an Iterable that combines the elements
+  // this Iterable and another Iterable pair-wise
+  zip<Tu>(Traversable<Tu>): Iterable<Pair<Tv,Tu>>
+ 
+ 
+// Any class that implements KeyedIterable<Tk, Tv> 
+// will "magically" work with foreach($c as $v) and
+// foreach ($c as $k => $v). Note that if a 
+// given object $c implements Iterable<Tv> but 
+// does not implement KeyedIterable<Tk, Tv> 
+// (e.g., if $c is a Set), doing 
+// "foreach ($c as $k => $v) { .. }" may cause
+// an error at typecheck time or at run time.
+interface KeyedIterable<out Tk, out Tv> extends KeyedTraversable<Tk, Tv>, Iterable<Tv>
+ 
+  getIterator(): KeyedIterable<Tk, Tv>
+  toArray(): array
+  toValuesArray(): array
+  toKeysArray(): array
+  toVector(): Vector<Tv>
+  toMap(): Map<Tk, Tv>
+  toSet(): Set<Tv>
+  lazy(): KeyedIterable<Tk, Tv>
+  keys(): Iterable<Tk>
+  map<Tu>((function(Tv): Tu)): KeyedIterable<Tk, Tu>
+  mapWithKey<Tu>((function(Tk, Tv): Tu) $callback): KeyedIterable<Tk, Tu>
+  filter((function(Tv): bool)): KeyedIterable<Tk, Tv>
+  filterWithKey((function(Tk, Tv): bool)): KeyedIterable<Tk, Tv>
+  zip<Tu>(Traversable<Tu>): KeyedIterable<Tk, Pair<Tv, Tu>>
+ 
+ 
+// The Iterator<Tv> interface is intended to
+// facilitate iteration for all collections. To
+// improve compatibility and reduce friction
+// for adopted, we've co-opted PHP's Iterator
+// interface and made it generic.
+ 
+// For Iterators that don't support rewind, calling 
+// rewind() must do nothing if the Iterator is in 
+// the "initial" position (i.e., it has not been 
+// advanced forward), otherwise it should throw.
+ 
+// Iterator<Tv>::key() has a mixed return type and
+// should return null.
+interface Iterator<out Tv> extends Traversable<Tv>
+ 
+  next(): void
+  valid(): bool
+  rewind(): void
+  current(): Tv
+  key(): mixed
+ 
+ 
+// The KeyedIterator<Tk, Tv> interface facilitates 
+// iteration for collections that have indices or 
+// keys (e.g., Vector, Map). 
+ 
+// Classes implementing KeyedIterator<Tk, Tv> are required 
+// to provide an implementation of key(). For valid 
+// iterators, KeyedIterator<Tk, Tv>::key() should return 
+// some value of type Tk and should not throw an exception.
+interface KeyedIterator<out Tk, out Tv> extends KeyedTraversable<Tk, Tv>,  Iterator<Tv>
+ 
+  next(): void
+  valid(): bool
+  rewind(): void
+  current(): Tv
+  key(): Tk
+ 
+ 
+// These interfaces serve as the base class for all 
+// generators that yields values or key/value pairs.
+interface Continuation<Tv> extends KeyedIterator<int, Tv>, Awaitable<Tv>
+ 
+  getOrigFuncName(): string;
+  send($v): void;
+  raise(Exception $e): void;
+  getLabel(): int;
+  update(int $label, Tv $value): void;
+  num_args(): int;
+  get_arg(int $index): mixed;
+]]>
+        </programlisting>
+      </informalexample>
+    </sect2>
+    <sect2 xml:id="hack.collections.interfaces.general">
+      <title>General Collection Interfaces</title>
+      <para>
+        The <literal>Collection</literal> interface provides basic functionality for adding and erasing elements, as well as iterating over elements in a uniform manner. 
+        <informalexample>
+          <programlisting role="php">
+  <![CDATA[
+  interface ConstCollection<out Ti> extends Countable
+ 
+  isEmpty(): bool
+  count(): int
+ 
+  // items() provides a generic form of enumeration
+  // that gives each element in the form compatible
+  // with the ConstCollection::fromItems() method
+  // and the OutputCollection::add() method.
+  items(): Iterable<Ti>
+ 
+  // not implemented yet
+  static fromItems(Traversable<Ti>): ConstCollection<Ti>
+ 
+ 
+interface OutputCollection<in Ti>
+ 
+  // add() and is fast for all collections. For some collections
+  // such as Map and Set, add() will throw if the new element
+  // conflicts with an existing element (e.g., a Map may have
+  // an existing key/value pair with the same key as the new
+  // key/value pair). For order-preserving collections, add()
+  // will insert the new element at the end. Generally, add() 
+  // may invalidate iterators pointing to the collection.
+  add(Ti): this
+ 
+  // addAll() is provided for convenience to allow bulk
+  // add operations
+  addAll(?Traversable<Ti>): this
+ 
+ 
+interface Collection<Ti> extends ConstCollection<Ti>, OutputCollection<Ti>
+ 
+  // clear() removes all elements from a collection 
+  // and invalidates all iterators
+  clear(): void
+ 
+  // erase() erases an element from a collection
+  // that a given Iterator points to. erase() may be
+  // slow for some collections. Generally, erase() will
+  // invalidate iterators pointing to the collection unless
+  // stated otherwise. Also, erase() may cause the keys 
+  // of other items to change for some collections 
+  // (e.g., Vector). The Iterator object passed into 
+  // erase() can be an Iterator or iterator that was 
+  // created via getIterator() or items()->getIterator().
+  erase(Iterator): this 
+  ]]>
+          </programlisting>
+      </informalexample>
+      </para>
+    </sect2>
+    <sect2 xml:id="hack.collections.interfaces.access">
+      <title>Access Interfaces</title>
+      <para>
+        Depending on the type of collection type implemented, one of the following interfaces (<literal>IndexAccess</literal>, <literal>SetAccess</literal> or <literal>MapAccess</literal>) will be implemented. These interfaces provide the functionality for checking values in a collection by index/key, removing items from a collection by index/key, as well as providing <literal>[]</literal> syntax for accessing values by index/key. All three of these interface types have a "const" companion for cases where the programmer wants to enforce a "read-only" contract. 
+       <informalexample>
+         <programlisting role="php">
+<![CDATA[
+interface ConstSetAccess<in Tm>
+ 
+  // contains() is fast for all collections that
+  // implement this interface. contains() provides
+  // semantics equivalent to the array_key_exists()
+  // builtin function
+  contains(Tm): bool
+ 
+ 
+interface SetAccess<in Tm> extends ConstSetAccess<Tm>
+ 
+  // remove() is fast for all collections that
+  // implement this interface. Generally, remove() 
+  // will invalidate iterators pointing to the
+  // collection.
+  remove(Tm): this
+ 
+ 
+// The methods in ConstIndexAccess are fast for all 
+// collections.
+interface ConstIndexAccess<in Tk, out Tv>
+ 
+  // at() throws if the index/key is not present.
+  at(Tk): Tv
+ 
+  // get() never throws, and will return null if the
+  // index/key is not present.
+  get(Tk): ?Tv
+ 
+  // containsKey() never throws and is fast for all
+  // collections.
+  containsKey(Tk): bool
+ 
+ 
+interface IndexAccess<in Tk, Tv> extends ConstIndexAccess<Tk, Tv>
+ 
+  // set() is fast for all collections. set() may 
+  // throw if the index/key is out of range for 
+  // some collections (e.g., Vector). In the case 
+  // where a new element is created, these 
+  // methods may invalidate iterators that point 
+  // to the collection.
+  set(Tk, Tv): this
+ 
+  // setAll() is provided for convenience to allow
+  // bulk set operations.
+  setAll(?KeyedIterable<Tk, Tv>): this
+ 
+  // removeKey() may be slow for some collections. 
+  // removeKey() may cause the indices/keys of other 
+  // items to change for some collections 
+  // (e.g., Vector). Also, removeKey() may
+  // invalidate iterators that point to the 
+  // collection.
+  removeKey(Tk): this
+ 
+ 
+interface ConstMapAccess<in Tk, out Tv> extends ConstSetAccess<Tk>, ConstIndexAccess<Tk, Tv>
+ 
+ 
+interface MapAccess<in Tk, Tv> extends ConstMapAccess<Tk, Tv>, IndexAccess<Tk, Tv>, SetAccess<Tk>
+]]>
+          </programlisting>
+        </informalexample>
+      </para>
+    </sect2>
+  </sect1>
+
+  <sect1 xml:id="hack.collections.examples">
+    <title>Examples</title>
+    <para>
+      Here are some more examples that showcase much of the functionality of the Hack collection interfaces and classes. 
+    </para> 
+    <sect2 xml:id="hack.collections.examples.collectionsareobjects">
+      <title>Collections are objects</title>
+            <informalexample>
+        <programlisting role="php">
+<![CDATA[
+<?hh
+ 
+function main() {
+  // Collections are objects.
+  $v = Vector {1, 2, 3};
+  echo is_array($v) ? '$v is an array' : '$v is not an array';
+  echo "\n";
+  echo is_object($v) ? '$v is an object' : '$v is not an object';
+  echo "\n";
+  var_dump($v);
+}
+ 
+main();
+]]>
+        </programlisting>
+        &example.outputs;
+        <screen>
+<![CDATA[
+$v is not an array
+$v is an object
+object(Vector)#1 (3) {
+  [0]=>
+  int(1)
+  [1]=>
+  int(2)
+  [2]=>
+  int(3)
+}
+]]>
+        </screen>
+      </informalexample>
+    </sect2>
+    <sect2 xml:id="hack.collections.examples.referencesemantics">
+      <title>Reference-like Semantics</title>
+      <informalexample>
+        <programlisting role="php">
+<![CDATA[
+<?hh
+// Like all objects, collections has "reference-like"
+// semantics for assignment, parameter passing, and
+// foreach.
+function foo($v) {
+  $v[1] = 7;
+}
+ 
+function main() {
+  $v1 = Vector {1, 2, 3};
+  $v2 = $v1;
+  foo($v2);
+  var_dump($v1);
+  echo "\n";
+  foreach ($v1 as $key => $value) {
+    echo $key . " => " . $value . "\n";
+    if ($key == 0) {
+      $v1[2] = 9;
+    }
+  }
+}
+ 
+main();
+]]>
+        </programlisting>
+        &example.outputs;
+        <screen>
+<![CDATA[
+object(Vector)#1 (3) {
+  [0]=>
+  int(1)
+  [1]=>
+  int(7)
+  [2]=>
+  int(3)
+}
+
+0 => 1
+1 => 7
+2 => 9
+]]>
+        </screen>
+      </informalexample>
+    </sect2>
+    <sect2 xml:id="hack.collections.examples.iterator">
+      <title>Iterator Invalidation</title>
+      <informalexample>
+        <programlisting role="php">
+<![CDATA[
+<?hh
+// Certain kinds of modification, such as 
+// removing an element, will cause iterators to 
+// be invalidated (including foreach loops).
+function main() {
+  $m = Map {'a' => 1, 'b' => 2, 'c' => 3, 'd' => 4};
+  foreach ($m as $key => $value) { 
+    echo $key . " => " . $value . "\n";
+    if ($key == 'a') {
+      $m->remove('d');
+    }
+  }
+}
+ 
+main();
+]]>
+        </programlisting>
+        &example.outputs;
+        <screen>
+<![CDATA[
+a => 1
+HipHop Fatal error: Uncaught exception 'InvalidOperationException' with message 'Collection was modified during iteration'
+]]>
+        </screen>
+      </informalexample>
+    </sect2>
+    <sect2 xml:id="hack.collections.examples.keynotpresent">
+      <title>Key Not Present</title>
+      <informalexample>
+        <programlisting role="php">
+<![CDATA[
+<?hh
+// Using "$c[$k]" syntax or using the at() method
+// will throw an exception if the specified key is 
+// not present. Using the get() method will return 
+// NULL if the specified key is not present.
+function main() {
+  $m = Vector {};
+  try {
+    var_dump($m[0]);
+  } catch (OutOfBoundsException $e) {
+    echo "Caught exception 1\n";
+  }
+ 
+  try {
+    var_dump($m->at(0));
+  } catch (OutOfBoundsException $e) {
+    echo "Caught exception 2\n";
+  }
+ 
+  try {
+    var_dump($m->get(0));
+  } catch (OutOfBoundsException $e) {
+    echo "Caught exception 3\n";
+  }
+}
+ 
+main();
+]]>
+        </programlisting>
+        &example.outputs;
+        <screen>
+<![CDATA[
+Caught exception 1
+Caught exception 2
+NULL
+]]>
+        </screen>
+      </informalexample>
+    </sect2>
+    <sect2 xml:id="hack.collections.examples.const">
+      <title>Const Interfaces</title>
+            <informalexample>
+        <programlisting role="php">
+<![CDATA[
+<?hh
+// The "read-only" style interfaces (such as ConstMap)
+// can be used to indicate that a function will not 
+// modify the collection.
+function foo(ConstMap<string,int> $m, string $k): int {
+  echo $m[$k] . "\n";
+}
+ 
+function main() {
+  $m = Map {'a' => 1, 'b' => 2, 'c' => 3, 'd' => 4};
+  foo($m, 'c');
+}
+]]>
+        </programlisting>
+        &example.outputs;
+        <screen>
+<![CDATA[
+3
+]]>
+        </screen>
+      </informalexample>
+    </sect2>
+    <sect2 xml:id="hack.collections.examples.keys">
+      <title><literal>keys()</literal> method</title>
+      <informalexample>
+        <programlisting role="php">
+<![CDATA[
+<?hh
+// The keys() method can be used on Vector and Map
+// to get a Vector of the keys.
+function main() {
+  $m = Map {'a' => 1, 'b' => 2, 'c' => 3, 'd' => 4};
+  $v = $m->keys();
+  var_dump($v);
+}
+ 
+main();
+]]>
+        </programlisting>
+        &example.outputs;
+        <screen>
+<![CDATA[
+object(Vector)#2 (4) {
+  [0]=>
+  string(1) "a"
+  [1]=>
+  string(1) "b"
+  [2]=>
+  string(1) "c"
+  [3]=>
+  string(1) "d"
+}
+]]>
+        </screen>
+      </informalexample>
+    </sect2>
+    <sect2 xml:id="hack.collections.examples.mapmethod">
+      <title><literal>map()</literal> method</title>
+      <informalexample>
+        <programlisting role="php">
+<![CDATA[
+<?hh
+// The map() method can be used on any collection to 
+// get a concrete collection (usually the same type as
+// the original) containing each value with some 
+// operation applied.
+function main() {
+  $m = Map {'a' => 1, 'b' => 2, 'c' => 3, 'd' => 4};
+  $m2 = $m->map(function(int $x):int { return $x + 10; });
+  var_dump($m2);
+}
+ 
+main();
+]]>
+        </programlisting>
+        &example.outputs;
+        <screen>
+<![CDATA[
+object(Map)#2 (4) {
+  ["a"]=>
+  int(11)
+  ["b"]=>
+  int(12)
+  ["c"]=>
+  int(13)
+  ["d"]=>
+  int(14)
+}
+]]>
+        </screen>
+      </informalexample>
+    </sect2>
+    <sect2 xml:id="hack.collections.examples.filter">
+      <title><literal>filter()</literal> method</title>
+      <informalexample>
+        <programlisting role="php">
+<![CDATA[
+// The filter() method can be used on any collection to 
+// get a concrete collection (usually the same type as
+// the original) containing the values that meet some
+// condition.
+function main() {
+  $m = Map {'a' => 1, 'b' => 2, 'c' => 3, 'd' => 4};
+  $m2 = $m->filter(function(int $x):bool { return $x % 2 == 0; });
+  var_dump($m2);
+}
+ 
+main();
+]]>
+        </programlisting>
+        &example.outputs;
+        <screen>
+<![CDATA[
+object(Map)#2 (2) {
+  ["b"]=>
+  int(2)
+  ["d"]=>
+  int(4)
+}
+]]>
+        </screen>
+      </informalexample>
+    </sect2>
+    <sect2 xml:id="hack.collections.examples.iterables">
+      <title>Iterables</title>
+      <informalexample>
+        <programlisting role="php">
+<![CDATA[
+<?hh
+// All Iterables support map() and filter() to support 
+// chaining.
+ 
+function main() {
+  $m = Map {'a' => 1, 'b' => 2, 'c' => 3, 'd' => 4};
+  $result = $m->filter(function(int $x):bool { return $x % 2 == 0; })
+              ->map(function(int $x):int { return $x + 1; });
+  foreach ($result as $key => $value) {
+    echo $key . " => " . $value . "\n";
+  }
+}
+ 
+main();
+]]>
+        </programlisting>
+        &example.outputs;
+        <screen>
+<![CDATA[
+b => 3
+d => 5
+]]>
+        </screen>
+      </informalexample>
+    </sect2>
+    <sect2 xml:id="hack.collections.examples.lazyviews">
+      <title>Lazy Views</title>
+      <informalexample>
+        <programlisting role="php">
+<![CDATA[
+<?hh
+// The Iterable objects returned by view() and
+// items() are 'lazy' views of the original 
+// collection; this means that if a value in the 
+// underlying collection is changed, the lazy view
+// will reflect this change. Also, certain kinds 
+// of modifications that invalidate iterators 
+// (such as removing an element) will also
+// invalidate lazy views.
+function main() {
+  $m = Map {'a' => 1, 'b' => 2, 'c' => 3, 'd' => 4};
+  $iterable = $m->items();
+  $m['a'] = 100;
+  $i = 0;
+  foreach ($iterable as $t) {
+    echo $t[0] . " => " . $t[1] . "\n";
+    if ($i == 2) {
+      echo "Removing key 'a'\n";
+      $m->remove('a');
+    }
+    ++$i;
+  }
+}
+main();
+
+]]>
+        </programlisting>
+        &example.outputs;
+        <screen>
+<![CDATA[
+a => 100
+b => 2
+c => 3
+Removing key 'a'
+HipHop Fatal error: Uncaught exception 'InvalidOperationException' with message 'Collection was modified during iteration'
+]]>
+        </screen>
+      </informalexample>
+    </sect2>
+    <sect2 xml:id="hack.collections.examples.vector">
+      <title><literal>Vector</literal></title>
+      <informalexample>
+        <programlisting role="php">
+<![CDATA[
+<?hh
+function main() {
+  $vec = Vector {11};
+  $vec->addAll(Vector {22, 33, 44});
+  var_dump($vec);
+}
+ 
+main();
+]]>
+        </programlisting>
+        &example.outputs;
+        <screen>
+<![CDATA[
+object(Vector)#1 (4) {
+  [0]=>
+  int(11)
+  [1]=>
+  int(22)
+  [2]=>
+  int(33)
+  [3]=>
+  int(44)
+}
+]]>
+        </screen>
+      </informalexample>
+    </sect2>
+    <sect2 xml:id="hack.collections.examples.map">
+      <title><literal>Map</literal></title>
+      <informalexample>
+        <programlisting role="php">
+<![CDATA[
+function main() {
+  $map = Map {'a' => 11};
+  $map->setAll(Map {'b' => 22, 'c' => 33});
+  var_dump($map);
+}
+ 
+main();
+]]>
+        </programlisting>
+        &example.outputs;
+        <screen>
+<![CDATA[
+object(Map)#1 (3) {
+  ["a"]=>
+  int(11)
+  ["b"]=>
+  int(22)
+  ["c"]=>
+  int(33)
+}
+]]>
+        </screen>
+      </informalexample>
+    </sect2>
+    <sect2 xml:id="hack.collections.examples.buildingconcretecollection">
+      <title>Building a Concrete Collection</title>
+      <informalexample>
+        <programlisting role="php">
+<![CDATA[
+<?hh
+// A concrete collection can be built from an 
+// Iterable or KeyedIterable by passing it to a 
+// collection constructor.
+function main() {
+  $m = Map {'a' => 11, 'b' => 22, 'c' => 33};
+  $v = new Vector($m);
+  var_dump($v);
+}
+ 
+main();
+]]>
+        </programlisting>
+        &example.outputs;
+        <screen>
+<![CDATA[
+object(Vector)#1 (3) {
+  [0]=>
+  int(11)
+  [1]=>
+  int(22)
+  [2]=>
+  int(33)
+}
+]]>
+        </screen>
+      </informalexample>
+    </sect2>
+    <sect2 xml:id="hack.collections.examples.generalinterface">
+      <title>General Collection Interfaces</title>
+      <informalexample>
+        <programlisting role="php">
+<![CDATA[
+<?hh
+// Example showing add(), items(), and the general collection interfaces
+function process_elements<T>(ConstCollection<T> $in): OutputCollection<T> {
+  $out = Vector {};
+  if (!($in instanceof ConstVector)) {
+   return null;
+  }
+  foreach ($in->items() as $elm) {
+    if ($elm > 1) {
+      $out->add($elm);
+    }
+  }
+  return $out;
+}
+
+function main(): void {
+  $x = Vector {1, 2, 3};
+  var_dump(process_elements($x));
+}
+
+main();
+]]>
+        </programlisting>
+        &example.outputs;
+        <screen>
+<![CDATA[
+object(HH\Vector)#2 (2) {
+  [0]=>
+  int(2)
+  [1]=>
+  int(3)
+}
+]]>
+        </screen>
+      </informalexample>
+    </sect2>
+    <sect2 xml:id="hack.collections.examples.generators">
+      <title>Generators</title>
+      <informalexample>
+        <programlisting role="php">
+<![CDATA[
+<?hh
+// Generators implement the Iterator interface; 
+// a generator can be passed anywhere where an
+// Iterator is expected.
+function foo(Iterator<int> $it) { .. }
+function g() { yield 1; yield 2; }
+ 
+function main() {
+  $gen = g();
+  foo($gen);
+}
+ 
+main();
+]]>
+        </programlisting>
+      </informalexample>
+    </sect2>
+    <sect2 xml:id="hack.collections.examples.indexish">
+      <title>Converting to <literal>Indexish</literal></title>
+      <para>
+        <emphasis>Real-world, existing code</emphasis>
+        <informalexample>
+          <programlisting role="php">
+<![CDATA[
+<?hh
+// This function does a relational join on two mappish style arrays into one
+// mappish style array
+function array_compose($f, $g): array {
+  $ret = array();
+  foreach ($f as $x => $y) {
+    if (array_key_exists($y, $g)) {
+      $ret[$x] = $g[$y];
+    }
+  }
+  return $ret;
+}
+]]>
+          </programlisting>
+        </informalexample>
+      </para>
+      <para>
+        <emphasis>Possible <literal>Indexish</literal> modification #1</emphasis>
+        <informalexample>
+          <programlisting role="php">
+  <![CDATA[
+<?hh
+// Use Indexish to be able to pass Map or Vector, in addition
+// to arrays, to this function and return an array like before. Notice how
+// foreach and bracket syntax is being used.
+function array_compose<T1, T2, T3>(
+  Indexish<T1, T2> $f,
+  Indexish<T2, T3> $g
+): array<T1, T3> {
+  $ret = array();
+  foreach ($f as $x => $y) {
+    if (array_key_exists($y, $g)) {
+      $ret[$x] = $g[$y];
+    }
+  }
+  return $ret;
+}
+  ]]>
+          </programlisting>
+        </informalexample>
+      </para>
+      <para>
+        <emphasis>Possible <literal>Indexish</literal> modification #2</emphasis>
+        <informalexample>
+          <programlisting role="php">
+<![CDATA[
+<?hh
+// Use Indexish to be able to pass Map or Vector in addition
+// to arrays, to this function and return a Map, which is what this
+// function is actually returning in practice. Notice how
+// foreach and bracket syntax is being used.
+function map_compose<T1, T2, T3>(
+  Indexish<T1, T2> $f,
+  Indexish<T2, T3> $g
+): Map<T1, T3> {
+  $ret = Map {};
+  foreach ($f as $x => $y) {
+    if (array_key_exists($y, $g)) {
+      $ret[$x] = $g[$y];
+    }
+  }
+  return $ret;
+}
+]]>
+          </programlisting>
+        </informalexample>
+      </para>
+      <para>
+        <emphasis>Test Code</emphasis>
+        <informalexample>
+          <programlisting role="php">
+<![CDATA[
+<?hh
+// Copyright 2004-present Facebook. All Rights Reserved.
+ 
+function main_indexish(): void {
+  $arr1 = array(1, 2, 3, 4, 5);
+  $arr2 = array(6, 7, 8, 9, 10);
+  var_dump(array_compose($arr1, $arr2)); // original
+  var_dump(array_compose($arr1, $arr2)); // modified
+  var_dump(map_compose($arr1, $arr2));
+ 
+  $map1 = Map {0 => 1, 1 => 2, 2 => 3, 3 => 4, 4 => 5};
+  $map2 = Map {0 => 6, 1 => 7, 2 => 8, 3 => 9, 4 => 10};
+  var_dump(array_compose($map1, $map2)); // original
+  var_dump(array_compose($map1, $map2)); // modified
+  var_dump(map_compose($map1, $map2));
+}
+ 
+main_indexish()
+]]>
+          </programlisting>
+          &example.outputs;
+          <screen>
+<![CDATA[
+array(4) {
+  [0]=>
+  int(7)
+  [1]=>
+  int(8)
+  [2]=>
+  int(9)
+  [3]=>
+  int(10)
+}
+array(4) {
+  [0]=>
+  int(7)
+  [1]=>
+  int(8)
+  [2]=>
+  int(9)
+  [3]=>
+  int(10)
+}
+object(Map)#1 (4) {
+  [0]=>
+  int(7)
+  [1]=>
+  int(8)
+  [2]=>
+  int(9)
+  [3]=>
+  int(10)
+}
+array(4) {
+  [0]=>
+  int(7)
+  [1]=>
+  int(8)
+  [2]=>
+  int(9)
+  [3]=>
+  int(10)
+}
+array(4) {
+  [0]=>
+  int(7)
+  [1]=>
+  int(8)
+  [2]=>
+  int(9)
+  [3]=>
+  int(10)
+}
+object(Map)#3 (4) {
+  [0]=>
+  int(7)
+  [1]=>
+  int(8)
+  [2]=>
+  int(9)
+  [3]=>
+  int(10)
+}
+]]>
+          </screen>
+        </informalexample>
+      </para>
+    </sect2>
+  </sect1>
+
+  <sect1 xml:id="hack.collections.limitations">
+    <title>Limitations</title>
+    <orderedlist>
+      <listitem>
+        <para>
+          Collections do not support taking elements by reference for performance and type safety reasons.
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          Collections do not support dynamic properties.
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          &lt;, &lt;=, &gt;, and &gt;= are not currently supported for collections (these will raise an error at runtime), though these will likely be supported in the future.
+        </para>
+      </listitem>
+    </orderedlist>
+  </sect1>
+
+  <sect1 xml:id="hack.collections.futurework">
+    <title>Future work on collections</title>
+    <para>
+      For this first version of HipHop collections, there are features
+      that did not make the cut. 
+      <orderedlist>
+        <listitem>
+          <para>
+            &quot;Frozen&quot; versions of collections (<literal>FrozenVector</literal>, <literal>FrozenMap</literal>, etc.)
+          </para>
+        </listitem>
+        <listitem>
+          <para>
+            Better support for iterators:
+          </para>
+          <itemizedlist>
+            <listitem>
+              <para>
+                Bidirectional iterators (ability to move both forward and backward) </para>
+            </listitem>
+            <listitem>
+              <para>
+                Ability to quickly get an iterator pointing to the last element </para>
+            </listitem>
+            <listitem>
+              <para>
+                <literal>find()</literal> method for quickly getting an iterator for a given key (<literal>Map</literal>) or for a given value (<literal>Set</literal>)
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                <literal>findKey()</literal> method for quickly getting an iterator for a given index (<literal>Vector</literal>)
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                Swapping items via iterators
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                Comparing two iterators for equality (i.e., check if they point to the same element in the same collection)
+              </para>
+            </listitem>
+          </itemizedlist>
+        </listitem>
+        <listitem>
+          <para>
+            Supporting object keys for <literal>Map</literal>, and supporting object values for <literal>Set</literal>.
+          </para>
+        </listitem>
+        <listitem>
+          <para>
+            Methods for finding or removing elements by value in O(n) time.
+          </para>
+        </listitem>
+        <listitem>
+          <para>
+            Generic support for erasing multiple items cleanly and efficiently (ex. an idiom for erasing elements during iteration)
+          </para>
+        </listitem>
+        <listitem>
+          <para>
+            Other possible data structure types such as <literal>LinkedList</literal>, <literal>SortedMap</literal>, <literal>MultiSet</literal>, <literal>MultiMap</literal>, etc.. 
+          </para>
+        </listitem>
+        <listitem>
+          <para>
+            <literal>insert()</literal> method for quickly inserting an element at an arbitrary position in an order-preserving collection (this would be useful if we later support <literal>LinkedList</literal>).
+          </para>
+        </listitem>
+      </orderedlist>
+    </para>
+  </sect1>
+</chapter>
+  
+<!-- Keep this comment at the end of the file
+Local variables:
+mode: sgml
+sgml-omittag:t
+sgml-shorttag:t
+sgml-minimize-attributes:nil
+sgml-always-quote-attributes:t
+sgml-indent-step:1
+sgml-indent-data:t
+indent-tabs-mode:nil
+sgml-parent-document:nil
+sgml-default-dtd-file:"~/.phpdoc/manual.ced"
+sgml-exposed-tags:nil
+sgml-local-catalogs:nil
+sgml-local-ecat-files:nil
+End:
+vim600: syn=xml fen fdm=syntax fdl=2 si
+vim: et tw=78 syn=sgml
+vi: ts=1 sw=1
+-->

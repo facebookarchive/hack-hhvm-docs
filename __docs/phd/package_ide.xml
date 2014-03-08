@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<package xmlns="http://pear.php.net/dtd/package-2.0"
+  xmlns:tasks="http://pear.php.net/dtd/tasks-1.0"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  packagerversion="1.5.4"
+  version="2.0"
+  xsi:schemaLocation="
+    http://pear.php.net/dtd/tasks-1.0   http://pear.php.net/dtd/tasks-1.0.xsd
+    http://pear.php.net/dtd/package-2.0 http://pear.php.net/dtd/package-2.0.xsd"
+>
+  <name>PhD_IDE</name>
+  <channel>doc.php.net</channel>
+  <summary>Render docbook for IDEs</summary>
+  <description>
+    An IDE specific rendering package for PhD
+  </description>
+
+  <lead>
+    <name>Moacir de Oliveira</name>
+    <user>moacir</user>
+    <email>moacir@php.net</email>
+    <active>yes</active>
+  </lead>
+
+  <date>2011-06-21</date>
+  <version>
+    <release>1.1.2</release>
+    <api>1.1.0</api>
+  </version>
+  <stability>
+    <release>snapshot</release>
+    <api>beta</api>
+  </stability>
+  <license uri="http://www.opensource.org/licenses/bsd-license.php">BSD Style</license>
+  <notes>
+    -notes
+  </notes>
+
+  <contents>
+    <dir name="/">
+      <dir name="phpdotnet">
+        <dir name="phd">
+          <dir name="Package">
+            <dir name="IDE">
+              <file name="Factory.php" role="php">
+               <tasks:replace from="@phd_ide_version@" to="version" type="package-info" />
+              </file>
+              <file name="Funclist.php" role="php"/>
+              <file name="XML.php" role="php"/>
+              <file name="PHP.php" role="php"/>
+              <file name="PHPStub.php" role="php"/>
+              <file name="JSON.php" role="php"/>
+              <file name="Base.php" role="php"/>
+              <file name="API.php" role="php"/>
+              <dir name="API">
+                <file name="Function.php" role="php"/>
+                <file name="Param.php" role="php"/>
+              </dir>
+              <file name="demo.php" role="script">
+                <tasks:replace from="@php_bin@" to="php_bin" type="pear-config"/>
+                <tasks:replace from="@php_dir@" to="php_dir" type="pear-config"/>
+              </file>
+            </dir>
+          </dir>
+        </dir>
+      </dir>
+    </dir>
+  </contents>
+
+  <dependencies>
+    <required>
+      <php>
+        <min>5.3.0</min>
+      </php>
+      <pearinstaller>
+        <min>1.8.0</min>
+      </pearinstaller>
+      <package>
+        <name>PhD</name>
+        <channel>doc.php.net</channel>
+        <min>0.9.0</min>
+      </package>
+      <extension>
+        <name>simplexml</name>
+      </extension>
+      <extension>
+        <name>libxml</name>
+      </extension>
+      <extension>
+        <name>xmlreader</name>
+      </extension>
+      <extension>
+        <name>dom</name>
+      </extension>
+    </required>
+  </dependencies>
+
+  <phprelease>
+    <filelist>
+      <install name="phpdotnet/phd/Package/IDE/demo.php" as="phd-ide"/>
+    </filelist>
+  </phprelease>
+
+  <changelog>
+    <release>
+      <version>
+        <release>1.0.0</release>
+        <api>1.0.0</api>
+      </version>
+      <stability>
+        <release>alpha</release>
+        <api>alpha</api>
+      </stability>
+      <date>2010-03-11</date>
+      <license uri="http://www.opensource.org/licenses/bsd-license.php">BSD Style</license>
+      <notes>
+        - Initial release
+      </notes>
+    </release>
+    <release>
+      <version>
+        <release>1.1.0</release>
+        <api>1.0.0</api>
+      </version>
+      <stability>
+        <release>beta</release>
+        <api>beta</api>
+      </stability>
+      <date>2010-05-07</date>
+      <license uri="http://www.opensource.org/licenses/bsd-license.php">BSD Style</license>
+      <notes>
+        - New Formats Available:
+            * json
+            * php
+        - functions format is now called xml
+        - New Base class
+        - Added IDE demo
+        - Fixed Bug #51482 - PhD_IDE generates invalid XML
+      </notes>
+    </release>
+    <release>
+      <version>
+        <release>1.1.1</release>
+        <api>1.1.0</api>
+      </version>
+      <stability>
+        <release>beta</release>
+        <api>beta</api>
+      </stability>
+      <date>2011-06-21</date>
+      <license uri="http://www.opensource.org/licenses/bsd-license.php">BSD Style</license>
+      <notes>
+        - Added first version of PHPStub package format (Alexey Shein)
+        - Added changelog information (Philip)
+        - Added the description of parameters (Moacir)
+      </notes>
+    </release>
+
+  </changelog>
+
+</package>
+<!--
+vim: et sw=2 ts=2
+-->

@@ -1,0 +1,8 @@
+&reference.oci8.OCI-Collection.append;
+&reference.oci8.OCI-Collection.assign;
+&reference.oci8.OCI-Collection.assignElem;
+&reference.oci8.OCI-Collection.free;
+&reference.oci8.OCI-Collection.getElem;
+&reference.oci8.OCI-Collection.max;
+&reference.oci8.OCI-Collection.size;
+&reference.oci8.OCI-Collection.trim;

@@ -1,0 +1,7 @@
+&reference.ming.swffont.construct;
+&reference.ming.swffont.getascent;
+&reference.ming.swffont.getdescent;
+&reference.ming.swffont.getleading;
+&reference.ming.swffont.getshape;
+&reference.ming.swffont.getutf8width;
+&reference.ming.swffont.getwidth;

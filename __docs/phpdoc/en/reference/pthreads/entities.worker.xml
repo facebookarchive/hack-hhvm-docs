@@ -1,0 +1,14 @@
+&reference.pthreads.worker.chunk;
+&reference.pthreads.worker.getcreatorid;
+&reference.pthreads.worker.getstacked;
+&reference.pthreads.worker.getthreadid;
+&reference.pthreads.worker.isshutdown;
+&reference.pthreads.worker.isworking;
+&reference.pthreads.worker.merge;
+&reference.pthreads.worker.pop;
+&reference.pthreads.worker.run;
+&reference.pthreads.worker.shift;
+&reference.pthreads.worker.shutdown;
+&reference.pthreads.worker.stack;
+&reference.pthreads.worker.start;
+&reference.pthreads.worker.unstack;

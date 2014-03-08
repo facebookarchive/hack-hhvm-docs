@@ -1,0 +1,11 @@
+&reference.iconv.functions.iconv-get-encoding;
+&reference.iconv.functions.iconv-mime-decode-headers;
+&reference.iconv.functions.iconv-mime-decode;
+&reference.iconv.functions.iconv-mime-encode;
+&reference.iconv.functions.iconv-set-encoding;
+&reference.iconv.functions.iconv-strlen;
+&reference.iconv.functions.iconv-strpos;
+&reference.iconv.functions.iconv-strrpos;
+&reference.iconv.functions.iconv-substr;
+&reference.iconv.functions.iconv;
+&reference.iconv.functions.ob-iconv-handler;

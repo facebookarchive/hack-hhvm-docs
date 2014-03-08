@@ -1,0 +1,3 @@
+&reference.win32ps.functions.win32-ps-list-procs;
+&reference.win32ps.functions.win32-ps-stat-mem;
+&reference.win32ps.functions.win32-ps-stat-proc;
