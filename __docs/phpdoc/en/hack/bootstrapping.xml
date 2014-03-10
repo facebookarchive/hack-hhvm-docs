@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <chapter xml:id="hack.bootstrapping">
   <title>Bootstrapping a Project</title>
-  <para>The static type system of Hack is enforced by a typechecker external to the HHVM runtime itself. It runs in the background, watching for file modifications and updating its state.</para>
+  <para>The static type system of Hack is enforced by a typechecker external to the HHVM runtime itself. It runs in the background, watching for file modifications and updating its state. Getting this static typechecker running requires a little bit of additional setup.</para>
   <sect1 xml:id="hack.bootstrapping.hhvm">
     <title>Running your project under HHVM</title>
     <para>The first step is to get HHVM running your project. You should have the latest version of HHVM installed, have a <literal>php.ini</literal> or <literal>config.hdf</literal> set up if necessary, and HHVM running as a webserver serving your project. In simple cases, running <literal>hhvm -m server -p 8080</literal> in your project root may be enough. More information on this is available elsewhere, notably https://github.com/facebook/hhvm/wiki/Running-PHP-programs-with-HHVM. TODO: should we port those docs over here? Better place to point at? How to linkify, ulink doesn't work?</para>
@@ -28,9 +28,8 @@ function f(): int {
   </sect1>
   <sect1 xml:id="hack.bootstrapping.stdlib">
     <title>Library functions</title>
-    <para>HHVM ships with two sets of files that you should add to your Hack project: <literal>hhi</literal> and <literal>lib</literal>. You can find these directories in (TODO: where?).</para>
-    <para>The <literal>lib</literal> directory contains executable code that you should add to your project's autoloader, or otherwise ensure gets loaded as needed. Many of these functions are treated specially by the typechecker. For example, if you write <literal>invariant($x instanceof SomeClass, 'Error')</literal>, we know that after that <literal>$x</literal> is a <literal>SomeClass</literal> and can typecheck it as such. The <literal>lib</literal> directory contains necessary code such that an actual function called "invariant" exists at runtime.</para>
-    <para>The <literal>hhi</literal> directory contains information about the PHP standard library for the typechecker to consume. It should be in a location visible to the typechecker, but should <emphasis>not</emphasis> be ever executed at runtime or included in the autoloader. These files are effectively "interface" files that define types for parts of the standard library so the typechecker can verify they are used correctly. The runtime will produce an error if an hhi file is ever loaded at runtime, since it will redefine a function or class already built in to the runtime.</para>
+    <para><literal>hh_server</literal> does not ship with any innate knowledge about the PHP and Hack standard libraries, but instead imports this information from <literal>hhi</literal> files that describe the type structure of the standard library. HHVM ships with a default set of such files, available at <literal>/usr/share/hhvm/hack/hhi</literal> in the default binary distribution or at <literal>hphp/hack/hhi</literal> in the source distribution.</para>
+    <para>This directory contains information about the PHP standard library for the typechecker to consume. It should be copied into a location visible to the typechecker, but should <emphasis>not</emphasis> be ever executed at runtime or included in the autoloader. These files are effectively "interface" files that define types for parts of the standard library so the typechecker can verify they are used correctly. The runtime will produce an error if an hhi file is ever loaded at runtime, since it will redefine a function or class already built in to the runtime.</para>
   </sect1>
   <sect1 xml:id="hack.bootstrapping.vim">
     <title>Installing the vim bindings</title>
