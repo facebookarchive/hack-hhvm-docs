@@ -91,6 +91,7 @@
   <title>&HackLanguageReference;</title>
   &hack.intro;
   &hack.bootstrapping;
+  &hack.conversion;
   &hack.annotations;
   &hack.modes;
   &hack.generics;
