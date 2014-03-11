@@ -1,24 +1,28 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- $Revision: 330333 $ -->
 
-<part xml:id="reserved.interfaces" xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink">
+<part xml:id="hack.predefined.interfaces" xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink">
  <title>Predefined Interfaces and Classes</title>
 
  <partintro>
   <para>
-   See also the <link linkend="spl.interfaces">SPL Interfaces</link> and <link
-   linkend="reserved.classes">reserved classes</link>.
+    These are Hack specific interfaces, many of which are the parameterized version of their PHP counterpart.
   </para>
  </partintro>
 
 <!-- tv, tk, etc. at the end of a named reference is for generic version -->
- &language.predefined.traversable;
- &language.predefined.iterator;
- &language.predefined.iteratoraggregate;
- &language.predefined.arrayaccess;
- &language.predefined.serializable;
- &language.predefined.closure;
- &language.predefined.generator;
+ &hack.predefined.traversabletv;
+ &hack.predefined.indexishtktv;
+ &hack.predefined.keyedtraversabletktv;
+ &hack.predefined.iteratortv;
+ &hack.predefined.keyediteratortktv;
+ &hack.predefined.iteratoraggregatetv;
+ &hack.predefined.iterabletv;
+ &hack.predefined.keyediterabletktv;
+ &hack.predefined.arrayaccesstktv;
+ &hack.predefined.awaitablet;
+ &hack.predefined.continuationtv;
+ &hack.predefined.xhpchild;
 </part>
 
 <!-- Keep this comment at the end of the file

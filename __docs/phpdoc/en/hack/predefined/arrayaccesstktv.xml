@@ -114,10 +114,10 @@ obj Object
 
  </partintro>
 
- &language.predefined.arrayaccesstktv.offsetexists;
- &language.predefined.arrayaccesstktv.offsetget;
- &language.predefined.arrayaccesstktv.offsetset;
- &language.predefined.arrayaccesstktv.offsetunset;
+ &hack.predefined.arrayaccesstktv.offsetexists;
+ &hack.predefined.arrayaccesstktv.offsetget;
+ &hack.predefined.arrayaccesstktv.offsetset;
+ &hack.predefined.arrayaccesstktv.offsetunset;
 
 </phpdoc:classref>
 

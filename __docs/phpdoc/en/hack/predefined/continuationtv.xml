@@ -57,13 +57,13 @@
 
  </partintro>
 
- &language.predefined.continuationtv.getorigfuncname;
- &language.predefined.continuationtv.send;
- &language.predefined.continuationtv.raise;
- &language.predefined.continuationtv.getlabel;
- &language.predefined.continuationtv.update;
- &language.predefined.continuationtv.numargs;
- &language.predefined.continuationtv.getarg;
+ &hack.predefined.continuationtv.getorigfuncname;
+ &hack.predefined.continuationtv.send;
+ &hack.predefined.continuationtv.raise;
+ &hack.predefined.continuationtv.getlabel;
+ &hack.predefined.continuationtv.update;
+ &hack.predefined.continuationtv.numargs;
+ &hack.predefined.continuationtv.getarg;
 
 </phpdoc:classref>
 

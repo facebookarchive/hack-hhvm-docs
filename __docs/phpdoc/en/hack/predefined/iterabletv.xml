@@ -51,16 +51,16 @@
 
  </partintro>
 
- &language.predefined.iterabletv.getiterator;
- &language.predefined.iterabletv.toarray;
- &language.predefined.iterabletv.tovaluesarray;
- &language.predefined.iterabletv.tovector;
- &language.predefined.iterabletv.toset;
- &language.predefined.iterabletv.values;
- &language.predefined.iterabletv.lazy;
- &language.predefined.iterabletv.map;
- &language.predefined.iterabletv.filter;
- &language.predefined.iterabletv.zip;
+ &hack.predefined.iterabletv.getiterator;
+ &hack.predefined.iterabletv.toarray;
+ &hack.predefined.iterabletv.tovaluesarray;
+ &hack.predefined.iterabletv.tovector;
+ &hack.predefined.iterabletv.toset;
+ &hack.predefined.iterabletv.values;
+ &hack.predefined.iterabletv.lazy;
+ &hack.predefined.iterabletv.map;
+ &hack.predefined.iterabletv.filter;
+ &hack.predefined.iterabletv.zip;
 
 </phpdoc:classref>
 

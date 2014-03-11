@@ -128,11 +128,11 @@ string(17) "myIterator::valid"
 
  </partintro>
 
- &language.predefined.iteratortv.current;
- &language.predefined.iteratortv.key;
- &language.predefined.iteratortv.next;
- &language.predefined.iteratortv.rewind;
- &language.predefined.iteratortv.valid;
+ &hack.predefined.iteratortv.current;
+ &hack.predefined.iteratortv.key;
+ &hack.predefined.iteratortv.next;
+ &hack.predefined.iteratortv.rewind;
+ &hack.predefined.iteratortv.valid;
 
 </phpdoc:classref>
 

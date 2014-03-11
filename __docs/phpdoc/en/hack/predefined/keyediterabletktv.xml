@@ -57,16 +57,16 @@
 
  </partintro>
 
- &language.predefined.keyediterabletktv.getiterator;
- &language.predefined.keyediterabletktv.tokeysarray;
- &language.predefined.keyediterabletktv.tomap;
- &language.predefined.keyediterabletktv.keys;
- &language.predefined.keyediterabletktv.lazy;
- &language.predefined.keyediterabletktv.map;
- &language.predefined.keyediterabletktv.mapwithkey;
- &language.predefined.keyediterabletktv.filter;
- &language.predefined.keyediterabletktv.filterwithkey;
- &language.predefined.keyediterabletktv.zip;
+ &hack.predefined.keyediterabletktv.getiterator;
+ &hack.predefined.keyediterabletktv.tokeysarray;
+ &hack.predefined.keyediterabletktv.tomap;
+ &hack.predefined.keyediterabletktv.keys;
+ &hack.predefined.keyediterabletktv.lazy;
+ &hack.predefined.keyediterabletktv.map;
+ &hack.predefined.keyediterabletktv.mapwithkey;
+ &hack.predefined.keyediterabletktv.filter;
+ &hack.predefined.keyediterabletktv.filterwithkey;
+ &hack.predefined.keyediterabletktv.zip;
 
 </phpdoc:classref>
 

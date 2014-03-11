@@ -110,6 +110,7 @@
   &hack.xhp;
   &hack.otherrulesandfeatures;
   &hack.unsupported;
+  &hack.predefined.interfaces;
  </book>
 
  <book xml:id="security">
