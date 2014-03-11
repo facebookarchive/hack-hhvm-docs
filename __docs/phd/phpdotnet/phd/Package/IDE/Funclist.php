@@ -49,7 +49,7 @@ class Package_IDE_Funclist extends Format {
     }
 
     public function format_set($open, $name, $attrs, $props) {
-        if (isset($attrs[Reader::XMLNS_XML]["id"]) && $attrs[Reader::XMLNS_XML]["id"] == "funcref") {
+        if (isset($attrs[Reader::XMLNS_XML]["id"]) && $attrs[Reader::XMLNS_XML]["id"] == "phpfuncref") {
             $this->isFunctionRefSet = $open;
         }
         return "";

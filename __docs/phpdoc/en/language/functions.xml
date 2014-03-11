@@ -621,7 +621,7 @@ Foo::$variable();  // This calls $foo->Variable() reading $variable in this scop
    </note>
    <para>
     See also <function>function_exists</function>, 
-    <link linkend="funcref">the function reference</link>,
+    <link linkend="phpfuncref">the function reference</link>,
     <function>get_extension_funcs</function>, and 
     <function>dl</function>.
    </para>

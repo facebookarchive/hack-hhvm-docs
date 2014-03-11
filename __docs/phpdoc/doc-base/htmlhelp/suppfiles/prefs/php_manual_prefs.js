@@ -12,7 +12,7 @@ prefs_context_names = Array(
 );
 prefs_context_values = Array(
     "index.html",
-    "funcref.html",
+    "phpfuncref.html",
     "indexes.html",
     "_Separator_",
     "copySelection()",

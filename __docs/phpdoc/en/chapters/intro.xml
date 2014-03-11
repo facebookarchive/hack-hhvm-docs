@@ -182,7 +182,7 @@
    </para>
    <para>
     And many other interesting extensions exist, which are categorized both
-    <link linkend="extensions">alphabetically</link> and by <link linkend="funcref">category</link>.
+    <link linkend="extensions">alphabetically</link> and by <link linkend="phpfuncref">category</link>.
     And there are additional PECL extensions that may or may not be documented
     within the PHP manual itself, like <link xlink:href="&url.xdebug;">XDebug</link>.
    </para>
@@ -190,7 +190,7 @@
     As you can see this page is not enough to list all
     the features and benefits PHP can offer. Read on in
     the sections about <link linkend="install">installing
-    PHP</link>, and see the <link linkend="funcref">function
+    PHP</link>, and see the <link linkend="phpfuncref">function
     reference</link> part for explanation of the extensions
     mentioned here.
    </para>

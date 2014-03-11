@@ -1,0 +1,6 @@
+&hackref.collections.mutablevectortv.filter;
+&hackref.collections.mutablevectortv.filterwithkey;
+&hackref.collections.mutablevectortv.keys;
+&hackref.collections.mutablevectortv.map;
+&hackref.collections.mutablevectortv.mapwithkey;
+&hackref.collections.mutablevectortv.zip;

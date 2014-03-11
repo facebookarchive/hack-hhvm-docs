@@ -78,7 +78,7 @@ function goToc() {
 
 // navigates to the function ref
 function goToFunctionRef() {
-	document.location = 'funcref.html';
+	document.location = 'phpfuncref.html';
 }
 
 // gets the number of user contributed notes available

@@ -17,8 +17,8 @@
 </info>
 
  <para>
-  This manual consists primarily of a <link linkend="funcref">
-  function reference</link>, but also contains a 
+  This manual consists primarily of a <link linkend="phpfuncref">
+  PHP function reference</link> and <link linkend="hackfuncref">Hack function reference</link>, but also contains a 
   <link linkend="phplangref">PHP language reference</link>, a 
   <link linkend="hacklangref">Hack language reference</link>, explanations
   of some of PHP's major <link linkend="features">features</link>, 

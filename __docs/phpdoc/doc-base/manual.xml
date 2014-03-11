@@ -113,6 +113,31 @@
   &hack.predefined.interfaces;
  </book>
 
+ <set xml:id="hackfuncref">
+  <title>&HackFunctionReference;</title>
+  <info xmlns="http://docbook.org/ns/docbook" xml:id="hackfuncrefinfo">
+   <abstract>
+    <para>
+     <tip>
+      <simpara>
+       &Seealso; <xref linkend="phpfuncref" />.
+      </simpara>
+     </tip>
+    </para>
+   </abstract>
+  </info>
+  <set xml:id="hack.refs.collections">
+   <title>&HackCollections;</title>
+   &hackref.collections.book;
+  </set>
+  <!--
+  <set xml:id="refs.hack.other">
+   <title>&HackOther;</title>
+   &hackreference.other.book;
+  </set>
+  -->
+ </set>
+
  <book xml:id="security">
   <title>&Security;</title>
   &security.intro;
@@ -145,9 +170,9 @@
   &features.dtrace;
  </book>
 
- <set xml:id="funcref">
+ <set xml:id="phpfuncref">
   <title>&FunctionReference;</title>
-  <info xmlns="http://docbook.org/ns/docbook" xml:id="funcrefinfo">
+  <info xmlns="http://docbook.org/ns/docbook" xml:id="phpfuncrefinfo">
    <abstract>
     <para>
      <tip>
@@ -453,7 +478,6 @@
    &reference.array.book;
    &reference.classobj.book;
    &reference.classkit.book;
-   &reference.collections.book;
    &reference.ctype.book;
    &reference.filter.book;
    &reference.funchand.book;

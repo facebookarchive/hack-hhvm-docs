@@ -230,7 +230,7 @@ abstract class Package_IDE_Base extends Format {
     }
 
     public function format_set($open, $name, $attrs, $props) {
-        if (isset($attrs[Reader::XMLNS_XML]['id']) && $attrs[Reader::XMLNS_XML]['id'] == 'funcref') {
+        if (isset($attrs[Reader::XMLNS_XML]['id']) && $attrs[Reader::XMLNS_XML]['id'] == 'phpfuncref') {
             $this->isFunctionRefSet = $open;
         }
     }
