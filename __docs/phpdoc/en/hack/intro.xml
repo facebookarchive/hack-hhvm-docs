@@ -5,7 +5,7 @@
 	<sect1 xml:id="hack.intro.whatis">
     <title>What is Hack?</title>
     <para>
-      Hack is a set of extensions for HHVM developed at Facebook. The barrier to entry for Hack is low. To get started, all that is needed is to generally understand the features that Hack provides and <link linkend="hack.bootstrapping">how to call the Hack type checker</link> (<literal>hh_client</literal> invokes the type checker at the command line)
+      Hack is a set of extensions for HHVM developed at Facebook. The barrier to entry for Hack is low. To get started, all that is needed is to generally understand the features that Hack provides and <link linkend="install.hack.bootstrapping">how to call the Hack type checker</link> (<literal>hh_client</literal> invokes the type checker at the command line)
     </para>
     <para>
       The goal of Hack to offer PHP developers a way to write cleaner, safer and refactorable code while trying to maintain a level of compatibility with current PHP codebases. The primary way that this goal is achieved is to provide developers a way to annotate PHP functions and
