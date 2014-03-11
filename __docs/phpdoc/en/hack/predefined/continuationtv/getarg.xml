@@ -4,7 +4,7 @@
 <refentry xml:id="continuationtv.getarg" xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink">
  <refnamediv>
   <refname>Continuation&lt;Tv&gt;::get_arg</refname>
-  <refpurpose>????????</refpurpose>
+  <refpurpose>Coming soon</refpurpose>
  </refnamediv>
 
  <refsect1 role="description">
@@ -27,7 +27,7 @@
      <term><parameter>index</parameter></term>
      <listitem>
       <para>
-       ????????
+       Coming soon
       </para>
      </listitem>
     </varlistentry>
@@ -38,7 +38,7 @@
  <refsect1 role="returnvalues">
   &reftitle.returnvalues;
   <para>
-   ??????????
+   Coming soon
   </para>
  </refsect1>
 

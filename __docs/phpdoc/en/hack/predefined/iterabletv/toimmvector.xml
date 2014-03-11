@@ -1,43 +1,41 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- $Revision: 330333 $ -->
+<!-- $Revision: 288721 $ -->
 
-<refentry xml:id="constsetaccesstm.contains" xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink">
+<refentry xml:id="iterabletv.toimmvector" xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink">
  <refnamediv>
-  <refname>ConstSetAccess&lt;Tm&gt;::contains</refname>
-  <refpurpose>Documentation Coming Soon</refpurpose>
+  <refname>Iterable&lt;Tv&gt;::toImmVector</refname>
+  <refpurpose>Convert an iterable to an immutable vector</refpurpose>
  </refnamediv>
 
  <refsect1 role="description">
   &reftitle.description;
   <methodsynopsis>
-   <modifier>abstract</modifier><modifier>public</modifier> <type>bool</type><methodname>ConstSetAccess&lt;Tm&gt;::contains</methodname>
-   <methodparam><type>Tm</type><parameter>m</parameter></methodparam>
+   <modifier>abstract</modifier> <modifier>public</modifier> <type>Vector&lt;Tv&gt;</type><methodname>Iterable&lt;Tv&gt;::toImmVector</methodname>
+   <void />
   </methodsynopsis>
+  <para>
+   Converts an iterable to an immutable vector.
+  </para>
  </refsect1>
 
  <refsect1 role="parameters">
   &reftitle.parameters;
-  <para>
-   <variablelist>
-    <varlistentry>
-     <term><parameter>m</parameter></term>
-     <listitem>
-      <para>
-       Documentation Coming Soon
-      </para>
-     </listitem>
-    </varlistentry>
-   </variablelist>
-  </para>
+  &no.function.parameters;
  </refsect1>
 
  <refsect1 role="returnvalues">
   &reftitle.returnvalues;
   <para>
-   Documentation Coming Soon
+   A ImmVector&lt;Tv&gt;
   </para>
  </refsect1>
 
+ <refsect1 role="errors"><!-- {{{ -->
+  &reftitle.errors;
+  <para>
+   Throws an <classname>Exception</classname> on failure.
+  </para>
+ </refsect1><!-- }}} -->
 
 </refentry>
 

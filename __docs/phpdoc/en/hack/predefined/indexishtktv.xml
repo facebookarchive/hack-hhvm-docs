@@ -12,7 +12,7 @@
   <section xml:id="indexishtktv.intro">
    &reftitle.intro;
    <para>
-    ?????????
+    Indexish is an interface that works with both arrays and collections, and it is intended to help ease the migration from arrays to typed collections for certain use cases. Indexish supports the array-like, square bracket (e.g. <literal>$x[$k]</literal>) syntax while also supporting the iteration via foreach. 
    </para>
   </section>
 <!-- }}} -->
