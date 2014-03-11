@@ -18,25 +18,25 @@
 
 // Everything is annotated and type checked
 class StrictClass {
-private string $str;
+  private string $str;
 
-// Need this constructor or the type checker
-// will complain about uninitialized member
-// variables
-public function __construct() {
-  $this->str = "Hello";
-}
-
-public function foo(int $x, int $y): int {
-  if ($x &gt; $y) {
-    return 27;
+  // Need this constructor or the type checker
+  // will complain about uninitialized member
+  // variables
+  public function __construct() {
+    $this->str = "Hello";
   }
-  return 34;
-}
 
-public function bar(string $a, string $b): string {
-  return $a . $b;
-}
+  public function foo(int $x, int $y): int {
+    if ($x < $y) {
+      return 27;
+    }
+    return 34;
+  }
+
+  public function bar(string $a, string $b): string {
+    return $a . $b;
+  }
 }
 ]]>
 
@@ -75,15 +75,15 @@ public function bar(string $a, string $b): string {
 
 // Annotated and type checked.
 function foo_partial(int $x, int $y): int {
-if ($x > $y) {
-  return 27;
-}
-return 34;
+  if ($x > $y) {
+    return 27;
+  }
+  return 34;
 }
 
 // Not annotated. Not type checked.
 function bar_partial($a, $b) {
-return $a + $b;
+  return $a + $b;
 }
 ]]>
         </programlisting>
@@ -98,15 +98,15 @@ return $a + $b;
 
 // Annotated and type checked.
 function foo_partial(int $x, int $y): int {
-if ($x > $y) {
-  return 27;
-}
-return 34;
+  if ($x > $y) {
+    return 27;
+  }
+  return 34;
 }
 
 // Not annotated. Not type checked.
 function bar_partial($a, $b) {
-return $a + $b;
+  return $a + $b;
 }
 ]]>
         </programlisting>
@@ -133,7 +133,7 @@ return $a + $b;
 // Partial mode would catch this. Decl, though, allows // strict
 // to call into this.
 function bar_partial($a, $b): int {
-return "Hello";
+  return "Hello";
 }
 ]]>
         </programlisting>
@@ -142,15 +142,14 @@ return "Hello";
         </para>
         <programlisting role="php">
 <![CDATA[
-&lt;?hh // strict
+<?hh // strict
 
 function foo_strict(bool $b): int {
-if ($b) {
-  return 4;
-}
-else {
-  return bar_partial(3, 4);
-}
+  if ($b) {
+    return 4;
+  } else {
+    return bar_partial(3, 4);
+  }
 }
 ]]>
         </programlisting>
@@ -171,11 +170,11 @@ else {
 <![CDATA[
 <?hh
 function unsafe_foo(int $x, int $y): int {
-if ($x > $y) {
-  // UNSAFE we want to showcase the unsafe notation
-  return "I am not checked by the type checker";
-}
-return 34;
+  if ($x > $y) {
+    // UNSAFE we want to showcase the unsafe notation
+    return "I am not checked by the type checker";
+  }
+  return 34;
 }
 ]]>
         </programlisting>

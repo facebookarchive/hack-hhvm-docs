@@ -824,34 +824,34 @@ class MyClass {
 <![CDATA[
 <?hh
 function increment(int $x): int {
-return $x + 1;
+  return $x + 1;
 }
 
 function average(float $x, float $y): float {
-return ($x + $y) / 2;
+  return ($x + $y) / 2;
 }
 
 function say_hello(string $name): string {
-return &quot;Hello &quot;.$name;
+  return &quot;Hello &quot;.$name;
 }
 
 function invert(bool $b): bool {
-if ($b) {
-  return false;
-} else {
-    return true;
-}
+  if ($b) {
+    return false;
+  } else {
+      return true;
+  }
 }
 
 function sort(array $arr): array {
-sort($arr);
-return $arr;
+  sort($arr);
+  return $arr;
 }
 
 // A piece of code that computes the average of three numbers
 function avg(int $n1, int $n2, int $n3): float {
-$s = $n1 + $n2 + $n3;
-return $s / 3.0;
+  $s = $n1 + $n2 + $n3;
+  return $s / 3.0;
 }
 ]]>
         </programlisting>
@@ -864,7 +864,7 @@ return $s / 3.0;
 
 // void is used to indicate that a function does not return anything.
 function say_hello(): void {
-echo "hello world";
+  echo "hello world";
 }
 ]]>
         </programlisting>
@@ -880,18 +880,18 @@ echo "hello world";
 // The type checker will force you to handle the null case explicitly.
 
 function f1(int $x): ?string {
-if ($x == 0) {
-  return null;
-}
-return "hi";
+  if ($x == 0) {
+    return null;
+  }
+  return "hi";
 }
 
 function f2(int $x): void {
-$y = f1($x);
-// $y here has a type of ?string
-if ($y !== null) {
-  // $y can be used as an string. No casts required.
-}
+  $y = f1($x);
+  // $y here has a type of ?string
+  if ($y !== null) {
+    // $y can be used as an string. No casts required.
+  }
 }
 ]]>
         </programlisting>
@@ -905,13 +905,13 @@ if ($y !== null) {
 // The mixed type should be used for function parameters where the behavior depends on the type.
 // The code is forced to check the type of the parameter before using it
 function encode(mixed $x): string {
-if (is_int($x)) {
-  return "i:".$x;
-} else if (is_string($x)) {
-  return "s:".$x;
-} else {
-  ...
-}
+  if (is_int($x)) {
+    return "i:".($x + 1);
+  } else if (is_string($x)) {
+    return "s:".$x;
+  } else {
+    ...
+  }
 }
 ]]>
         </programlisting>
@@ -1066,7 +1066,7 @@ function f3(): void {
       <itemizedlist>
         <listitem>
           <para>
-            Normal array: <literal>array</literal>
+            Untyped array (partial mode only): <literal>array</literal>
           </para>
         </listitem>
         <listitem>
@@ -1077,16 +1077,6 @@ function f3(): void {
         <listitem>
           <para>
             Explicitly typed array with string or integer keys: <literal>array&lt;int, someType&gt;</literal> or <literal>array&lt;string, someType&gt;</literal>
-          </para>
-        </listitem>
-        <listitem>
-          <para>
-            Generically typed array with integer keys: <literal>array&lt;T&lt;</literal>
-          </para>
-        </listitem>
-        <listitem>
-          <para>
-            Generically typed array with string or integer keys: <literal>array&lt;int, Tv&gt;</literal> or <literal>array&lt;string, Tv&gt;</literal>
           </para>
         </listitem>
       </itemizedlist>
@@ -1104,11 +1094,11 @@ class HackArrayAnnotations {
   private array<string, FooFoo> $arr2;
 
   public function __construct() {
-    $this->arr = null;
-    $this->arr2 = null;
+    $this->arr = array();
+    $this->arr2 = array();
   }
 
-  public function bar<T>(T $val): array {
+  public function bar<T>(T $val): array<T> {
     return array($val);
   }
 
@@ -1168,13 +1158,13 @@ array(1) {
       </informalexample>
     </para>
     <para>
-      Examining a typed array a bit more....
+      Examining a typed array a bit more...
       <informalexample>
         <programlisting role="php">
 <![CDATA[
 <?hh
 
-class BarBar{}
+class BarBar {}
 
 class ABCD {
   private array<BarBar> $arr;
@@ -1187,11 +1177,9 @@ class ABCD {
   public function getBars(): array<BarBar> {
     if (i < 5) {
       return array();
-    }
-    else if (i < 10) {
+    } else if (i < 10) {
       return $this->arr;
-    }
-    else {
+    } else {
       return array(null); // Type Error
     }
   }
@@ -1342,11 +1330,11 @@ final class Child {
     // $grandchild->newChild() should returns a Child instead of a Grandchild
     return new Child();
   }
-    }
+}
 ]]>
         </programlisting>
         <para>
-          <literal>this</literal> is the type of <literal>$this</literal> and <literal>new static()</literal>. If <literal>Base::setX()</literal> returns <literal>this</literal>, that means that <literal>$child-&gt;setX()</literal> should return an instance of <literal>Child</literal>. 
+          <literal>this</literal> is the type of <literal>$this</literal> and <literal>new static()</literal>. If <literal>Base::setX()</literal> returns <literal>this</literal>, that means that at callsites, <literal>$child-&gt;setX()</literal> is known to return an instance of <literal>Child</literal>. 
         </para>
       </informalexample>
     </para>
@@ -1364,12 +1352,15 @@ class Base {
     // should return a Child, but it always returns a Base!
     return new Base();
   }
+
   public static function newBase2(): this {
     // ERROR! This is wrong for the same reason that new Base() is wrong
     return new self();
   }
+
   // This function is fine
   abstract public static function goodNewInstance(): this;
+
   public static function badNewInstance(): this {
     // ERROR! Child::badNewInstance() would call Base::goodNewInstance() which is wrong
     return self::goodNewInstance();
@@ -1414,31 +1405,34 @@ function sum(mixed $x): void {
   <sect1 xml:id="hack.annotations.passingbyreference">
     <title>Passing By Reference</title>
     <para>
-      Primitives passed by reference do not get typed check by Hack. So, the following code will pass the Hack type checker: 
+      The Hack typechecker largely does not understand references and pretends that they do not exist. For example, the following code passes the typechecker:
             <informalexample>
         <programlisting role="php">
 <![CDATA[
 <?hh
 
-function swap(int &$a, int &$b) {
-  $temp = $a;
-  $a = $b;
-  $b = $a;
+function swap(int &$x, int &$y): void {
+  $x = $y; 
+  $y = 'boom';
 }
 
-function main_ref() {
-  $y = 3;
-  $z = "Hi";
+function main(): void {
+  $x = 1;
+  $y = 1;
 
-  swap($y, $z);
-  echo $y." ".$z;
+  swap($x, $y);
+
+  var_dump($x);
+  var_dump($y);
+
+  swap($x, $y);
 }
 
-main_ref();
+main();
 ]]>
         </programlisting>
         <para>
-          It seems pretty clear that this shouldn't be done (trying to swap an <literal>int</literal> and <literal>string</literal>, when the <literal>swap()</literal> method takes two <literal>int</literal>s.). In fact, HHVM will balk at runtime when trying to execute this code. But getting an error at runtime defeats the whole purpose of the benefits of Hack. 
+          It seems pretty clear that this shouldn't be done (trying to swap an <literal>int</literal> but writing in a <literal>string</literal>, when the <literal>swap()</literal> method takes two <literal>int</literal>s.). In fact, HHVM will balk at runtime when trying to execute this code. But getting an error at runtime defeats the whole purpose of the benefits of Hack. 
         </para>
       </informalexample>
     </para>
@@ -1479,12 +1473,13 @@ array(4) {
   [2]=>
   int(3)
   [3]=>
-  &amp;string(3) "foo"
+  &string(3) "foo"
 }
 ]]>
         </screen>
       </informalexample>
     </para>
+    <para>Furthermore, references are just incredibly difficult to typecheck. They can arbitrarily change the types of the parameters passed into them at-a-distance. Being sound would require either looking into the called function (too expensive perf-wise) or completely forgetting the type of any reference parameters (too restrictive). Thus this compromise was reached.</para>
   </sect1>
 
   <sect1 xml:id="hack.annotations.generators">
@@ -1497,7 +1492,7 @@ array(4) {
 <?hh
 function gen() {
   yield 1;
-  yield &quot;a&quot;;
+  yield "a";
 }
 ]]>
         </programlisting>
@@ -1574,7 +1569,7 @@ function gen() {
             </entry>
             <entry>
               <para>
-                Preparables, <literal>gen_void()</literal> and <literal>cached_result()</literal> are all Awaitables. They can all be prepared using <literal>prep()</literal> and <literal>await</literal>. In this example, <literal>$foo</literal> is of type <literal>T</literal> for every expression <literal>yield result($foo);</literal>. Not all Awaitables are Continuations. 
+                The return type of <literal>async</literal> functions are all Awaitables. They can all be prepared using <literal>prep()</literal> and <literal>await</literal>. In this example, <literal>$foo</literal> is of type <literal>T</literal> for every expression <literal>yield result($foo);</literal>. Not all Awaitables are Continuations. 
               </para>
             </entry>
           </row>
@@ -1604,68 +1599,14 @@ function foo(): void {
         <programlisting role="php">
 <![CDATA[
 <?hh
-class MultiplyByTwo extends Preparable<MultiplyByTwo> implements IUseGeneratorInLegacyPreparable {
-  private int $n;
-  private ?int $result = null;
-
-  public function __construct(int $n) {
-    $this->n = $n;
-  }
-
-  public function gen(): Awaitable<void> {
-    $this->result = $this->n * 2;
-    return gen_void();  // Return a wait handle that does nothing
-  }
-
-  public function getResult(): int {
-    return nullthrows($this->result);
-  }
+async function f(): Awaitable<int> {
+  return 42;
 }
 
-class MultiplyByThree extends Preparable<MultiplyByThree> implements IUseGeneratorInLegacyPreparable {
-  private int $n;
-  private ?int $result = null;
-
-  public function __construct(int $n) {
-    $this->n = $n;
-  }
-
-  public function gen(): Awaitable<void> {
-    $this->result = $this->n * 3;
-    return gen_void();  // Return a wait handle that does nothing
-  }
-
-  public function getResult(): int {
-    return nullthrows($this->result);
-  }
-}
-
-/**
- * Computes 6*n^2 using Preparables.
- * A preparable is used to compute 3*n, another one for 2*n and the results are combined into 6*n^2.
- */
-class MultiplyAndSquare extends Preparable<MultiplyAndSquare> implements IUseGeneratorInLegacyPreparable {
-  private int $n;
-  private ?int $result = null;
-
-  public function __construct(int $n) {
-    $this->n = $n;
-  }
-
-  public function gen(): Awaitable<void> {
-    list(
-      $by_two,
-      $by_three,
-    ) = yield wait_forva(
-      new MultiplyByTwo($this->n),
-      new MultiplyByThree($this->n),
-   );
-    $this->result = $by_two->getResult() * $by_three->getResult();
-  }
-
-  public function getResult(): int {
-    return nullthrows($this->result);
-  }
+async function g(): Awaitable<string> {
+  $f = await f();
+  $f++;
+  return 'hi test ' . $f;
 }
 ]]>
         </programlisting>

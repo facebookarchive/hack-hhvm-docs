@@ -5,15 +5,15 @@
 	<sect1 xml:id="hack.intro.whatis">
     <title>What is Hack?</title>
     <para>
-      Hack is a set of extensions for HHVM developed at Facebook. The barrier to entry for Hack is low. To get started, all that is needed is to generally understand the features that Hack provides andhow to call the Hack type checker (<literal>hh_client</literal> invokes the type checker at the command line)
+      Hack is a set of extensions for HHVM developed at Facebook. The barrier to entry for Hack is low. To get started, all that is needed is to generally understand the features that Hack provides and <link linkend="hack.bootstrapping">how to call the Hack type checker</link> (<literal>hh_client</literal> invokes the type checker at the command line)
     </para>
     <para>
       The goal of Hack to offer PHP developers a way to write cleaner, safer and refactorable code while trying to maintain a level of compatibility with current PHP codebases. The primary way that this goal is achieved is to provide developers a way to annotate PHP functions and
       classes with type information, providing a type checking tool to validate those annotations. In addition, Hack also provides specific PHP language feature additions such as:
       <itemizedlist>
-        <listitem><para>generics</para></listitem>
-        <listitem><para>collections</para></listitem>
-        <listitem><para>nullable</para></listitem>
+        <listitem><para><link linkend="hack.generics">generics</link></para></listitem>
+        <listitem><para><link linkend="hack.collections">collections</link></para></listitem>
+        <listitem><para><link linkend="hack.nullable">nullable</link></para></listitem>
       </itemizedlist>
     </para>
     <para>
@@ -32,7 +32,7 @@
 	<title> Hack Background </title>
 		<para>
 			Facebook was initially built with vanilla PHP. Parameters and return types were specified
-		  in comments. Parsers could use this to create documentation. But type-checking was non existant.
+		  in comments. Parsers could use this to create documentation. But type-checking was non existent.
 			<informalexample>
 				<programlisting role="php">
 <![CDATA[
@@ -52,7 +52,7 @@ function say_hello($name) {
 		</para>
 		<para>
 			In 2009, the HPHP team released a PHP compiler called HipHop. This compiler outperformed and
-	    replaced Zend's PHP engine at Facebook. In 2010, minor changes tothe PHP language were introduced by the HPHP team to improve development time and provide basic type safety. The changes were XHP and parameter type constraints.
+	    replaced Zend's PHP engine at Facebook. In 2010, minor changes to the PHP language were introduced by the HPHP team to improve development time and provide basic type safety. The changes were XHP and parameter type constraints.
 			<informalexample>
 				<programlisting role="php">
 <![CDATA[
@@ -70,7 +70,7 @@ function say_hello(string $name) {
 			</informalexample>
 		</para>
 		<para>
-		  In 2012, engineers from various Facebook teams started exploring the idea of annotating return types. And the Hack language was born.....
+		  In 2012, engineers from various Facebook teams started exploring the idea of annotating return types. And the Hack language was born...
 		</para>
 	</sect1>
 	
@@ -108,7 +108,7 @@ function say_hello(string $name) {
 		  </itemizedlist>
 		</para>
 	  <para>
-	    Hack has been designed with vanilla PHP compatibility in mind. The type checker enforces checks on typed code and assumes calls to/from PHP are correct. This means the amount of type checking will gradually increase as more and more code is written in Hack. Hack's approach to incrementally introduce new features is a safe one: the HHVM runtime was minimally modified. The changes we made were limited to HHVM's parser, where the new types either get converted to PHP types or get stripped out.
+	    Hack has been designed with vanilla PHP compatibility in mind. The type checker enforces checks on typed code and assumes calls to/from PHP and other untyped code are correct. This means the amount of type checking will gradually increase as more and more code is written in Hack.
 	  </para>
 	  <para>
 	    Hack is unlike many other statically typed languages:
