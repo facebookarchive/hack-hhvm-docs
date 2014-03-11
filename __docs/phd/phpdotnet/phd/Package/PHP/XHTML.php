@@ -541,8 +541,12 @@ abstract class Package_PHP_XHTML extends Package_Generic_XHTML {
     public function format_classname_text($value, $tag) {
         if (($filename = $this->getClassnameLink(strtolower($value))) !== null && $this->cchunk["phpdoc:classref"] !== strtolower($value)) {
             $href = $this->chunked ? $filename.$this->ext : "#$filename";
+            // For HHVM - Handle Generics
+            $value = $this->TEXT($value);
             return '<a href="'.$href. '" class="' .$tag. '">' .$value. '</a>';
         }
+        // For HHVM - Handle Generics
+        $value = $this->TEXT($value);
         return '<strong class="' .$tag. '">' .$value. '</strong>';
     }
 
