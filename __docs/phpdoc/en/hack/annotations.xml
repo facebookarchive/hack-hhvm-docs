@@ -8,14 +8,14 @@
 <![CDATA[
 <?php
 class MyClass {
-const MyConst = 0;
+  const MyConst = 0;
 
-private $x;
+  private $x;
 
-public function increment($x) {
-  $y = $x + 1;
-  return $y;
-}
+  public function increment($x) {
+    $y = $x + 1;
+    return $y;
+  }
 }
 ]]>
       </programlisting>
@@ -25,14 +25,14 @@ public function increment($x) {
 <![CDATA[
 <?hh
 class MyClass {
-const int MyConst = 0;
+  const int MyConst = 0;
 
-private string $x;
+  private string $x;
 
-function increment(int $x): int {
-  $y = $x + 1;
-  return $y;
-}
+  function increment(int $x): int {
+    $y = $x + 1;
+    return $y;
+  }
 }
 ]]>
       </programlisting>
@@ -53,7 +53,7 @@ function increment(int $x): int {
       </listitem>
       <listitem>
         <para>
-          Refactorability by allowing PHP to inherit the reliable and automatic refactoring of a statically typed language. It is quite difficult to refactor a dynamically typed language such as  PHP. Renaming or changing the number of parameters to a function require a manual search of the code base to find all call sites. A type checker, however, will throw and display a list of errors when a
+          Refactorability by allowing Hack to inherit the reliable and automatic refactoring of a statically typed language. It is quite difficult to refactor a dynamically typed language such as  PHP. Renaming or changing the number of parameters to a function require a manual search of the code base to find all call sites. A type checker, however, will throw and display a list of errors when a
           &quot;breaking&quot; change is made that can then be fixed one-by-one (or automatically with tooling).
         </para>
       </listitem>
@@ -138,7 +138,7 @@ class AnnotatedClass {
   <sect1 xml:id="hack.annotations.why">
     <title>Why?</title>
     <para>
-      Normally dynamically typed languages allow variables to take on any type representation and allow this type representation to be changed on-the-fly. So, in vanilla PHP, a variable <literal>$x</literal> can be assigned to an <literal>int</literal> and then, down the line, be assigned to a <literal>string</literal> ... all in the same local scope. In other words, not only is the value of a variable mutable, the type of a variable is mutable. This ability allows for rapid prototyping, more concise code, and a lot of flexibility. Dynamic typing also comes with a cost. Errors are only caught at runtime. There is no compile-time analysis for code optimization (Virtual machines like HHVM can mitigate the optimization disadvantage of a dynamically typed language by providing an intermediate translation step before runtime, the time which can be used for optimizations.). Bugs can go undetected for years and rear their ugly head when, for example, a call to a method with an unexpected parameter type is made. 
+      Normally dynamically typed languages allow variables to take on any type representation and allow this type representation to be changed on-the-fly. So, in vanilla PHP, a variable <literal>$x</literal> can be assigned to an <literal>int</literal> and then, down the line, be assigned to a <literal>string</literal> ... all in the same local scope. In other words, not only is the value of a variable mutable, the type of a variable is mutable. This ability allows for rapid prototyping, more concise code, and a lot of flexibility. Dynamic typing also comes with a cost. Errors are only caught at runtime. There is no compile-time analysis for code optimization. (Virtual machines like HHVM can mitigate the optimization disadvantage of a dynamically typed language by providing an intermediate translation step before runtime, the time which can be used for optimizations.) Bugs can go undetected for years and rear their ugly head when, for example, a call to a method with an unexpected parameter type is made. 
     </para>
     <para>
       &quot;<emphasis>Wait a second! Facebook.com, with its billion+ users, is written with tens of millions of lines of vanilla PHP! A dynamic language worked well for Facebook.</emphasis>&quot; 
@@ -194,11 +194,6 @@ class AnnotatedClass {
         <listitem>
           <para>
             XHP elements <literal>:x:frag</literal>, <literal>:x:base</literal>, <literal>:div</literal>, and the catch-all <literal>:xhp</literal>. 
-          </para>
-        </listitem>
-        <listitem>
-          <para>
-            The &quot;magic&quot; <literal>Xhp</literal> type that maps to any xhp element -- but don't use this in new code, <literal>:xhp</literal> addresses this case. 
           </para>
         </listitem>
         <listitem>
@@ -380,34 +375,34 @@ class AnnotatedClass {
             <row>
               <entry>
                 <para>
-                  <literal>Array</literal>
+                  Untyped Array (partial mode only)
                 </para>
               </entry>
               <entry>
                 <para>
-                  <literal>array, array&lt;T&gt;,array&lt;string/int, Tv&gt;</literal>
+                  <literal>array</literal>
                 </para>
               </entry>
               <entry>
                 <para>
-                  <literal>array&lt;T&gt; $arr = array();</literal>
+                  <literal>array $x = array();</literal>
                 </para>
               </entry>
               <entry>
                 <para>
-                  <literal>function foo(array&lt;T&gt; $arr)</literal>
+                  <literal>function foo(array $arr)</literal>
                 </para>
               </entry>
               <entry>
                 <para>
-                  <literal>: array&lt;T&gt;</literal>
+                  <literal>: array</literal>
                 </para>
               </entry>
             </row>
             <row>
               <entry>
                 <para>
-                  Typed Array                
+                  Array-as-vector
                 </para>
               </entry>
               <entry>
@@ -428,6 +423,33 @@ class AnnotatedClass {
               <entry>
                 <para>
                   <literal>: array&lt;string&gt;</literal>
+                </para>
+              </entry>
+            </row>
+            <row>
+              <entry>
+                <para>
+                  Array-as-map
+                </para>
+              </entry>
+              <entry>
+                <para>
+                  <literal>array&lt;keyType, valueType&gt;</literal>
+                </para>
+              </entry>
+              <entry>
+                <para>
+                  <literal>array&lt;int, string&gt; $arrs = array(42 =&gt; &quot;answer&quot;);</literal>
+                </para>
+              </entry>
+              <entry>
+                <para>
+                  <literal>function foo(array&lt;int, string&gt; $arrs)</literal>
+                </para>
+              </entry>
+              <entry>
+                <para>
+                  <literal>: array&lt;int, string&gt;</literal>
                 </para>
               </entry>
             </row>
@@ -471,7 +493,7 @@ class AnnotatedClass {
               </entry>
               <entry>
                 <para>
-                  <literal>protected $vec = Vector {3, 4};</literal>
+                  <literal>protected Vector&lt;int&gt; $vec = Vector {3, 4};</literal>
                 </para>
               </entry>
               <entry>
@@ -498,7 +520,7 @@ class AnnotatedClass {
               </entry>
               <entry>
                 <para>
-                  <literal>$map = Map {&quot;A&quot; =&gt; 1, &quot;B&quot; =&gt; 2};</literal>
+                  <literal>protected Map&lt;string, int&gt; $map = Map {&quot;A&quot; =&gt; 1, &quot;B&quot; =&gt; 2};</literal>
                 </para>
               </entry>
               <entry>
@@ -515,33 +537,6 @@ class AnnotatedClass {
             <row>
               <entry>
                 <para>
-                  StableMap
-                </para>
-              </entry>
-              <entry>
-                <para>
-                  <literal>StableMap&lt;Tk, Tv&gt;</literal>
-                </para>
-              </entry>
-              <entry>
-                <para>
-                  <literal>$smap = StableMap {&quot;A&quot; =&gt; 1, &quot;B&quot; =&gt; 2};</literal>
-                </para>
-              </entry>
-              <entry>
-                <para>
-                  <literal>function foo(StableMap&lt;string, int&gt; $smap)</literal>
-                </para>
-              </entry>
-              <entry>
-                <para>
-                  <literal>: StableMap&lt;string, int&gt;</literal>
-                </para>
-              </entry>
-            </row>
-            <row>
-              <entry>
-                <para>
                   Set
                 </para>
               </entry>
@@ -552,7 +547,7 @@ class AnnotatedClass {
               </entry>
               <entry>
                 <para>
-                  <literal>$set = Set{1,2};</literal>
+                  <literal>protected Set&lt;int&gt; $set = Set{1,2};</literal>
                 </para>
               </entry>
               <entry>
@@ -579,7 +574,7 @@ class AnnotatedClass {
               </entry>
               <entry>
                 <para>
-                  <literal>$pair = Pair {7, 'a'};</literal>
+                  <literal>protected Pair&lt;int, string&gt; $pair = Pair {7, 'a'};</literal>
                 </para>
               </entry>
               <entry>
@@ -601,12 +596,12 @@ class AnnotatedClass {
               </entry>
               <entry>
                 <para>
-                  <literal>FooClass()</literal>
+                  <literal>FooClass</literal>
                 </para>
               </entry>
               <entry>
                 <para>
-                  <literal>FooClass $a;</literal>
+                  <literal>protected FooClass $a;</literal>
                 </para>
               </entry>
               <entry>
@@ -660,7 +655,7 @@ class AnnotatedClass {
               </entry>
               <entry>
                 <para>
-                  <literal>mixed $m = 3;</literal>
+                  <literal>protected mixed $m = 3;</literal>
                 </para>
               </entry>
               <entry>
@@ -687,7 +682,7 @@ class AnnotatedClass {
               </entry>
               <entry>
                 <para>
-                  <literal>?int $ni;</literal>
+                  <literal>protected ?int $ni = null;</literal>
                 </para>
               </entry>
               <entry>
@@ -714,7 +709,7 @@ class AnnotatedClass {
               </entry>
               <entry>
                 <para>
-                  <literal>$tup = tuple(&quot;4&quot;, 4);</literal>
+                  <literal>protected (string, int) $tup = tuple(&quot;4&quot;, 4);</literal>
                 </para>
               </entry>
               <entry>
@@ -741,7 +736,7 @@ class AnnotatedClass {
               </entry>
               <entry>
                 <para>
-                  <literal>(function(int, int): string) $x;</literal>
+                  <literal>protected (function(int, int): string) $x;</literal>
                 </para>
               </entry>
               <entry>
