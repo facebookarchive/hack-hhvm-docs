@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- $Revision: 330333 $ -->
 
-<refentry xml:id="constindexaccesstktv.get" xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink">
+<refentry xml:id="hack.constindexaccesstktv.get" xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink">
  <refnamediv>
   <refname>ConstIndexAccess&lt;Tk, Tv&gt;::get</refname>
   <refpurpose>Documentation Coming Soon</refpurpose>

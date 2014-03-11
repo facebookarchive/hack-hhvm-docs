@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- $Revision: 330333 $ -->
 
-<phpdoc:classref xml:id="class.awaitablet" xmlns:phpdoc="http://php.net/ns/phpdoc" xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:xi="http://www.w3.org/2001/XInclude">
+<phpdoc:classref xml:id="class.hack.awaitablet" xmlns:phpdoc="http://php.net/ns/phpdoc" xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:xi="http://www.w3.org/2001/XInclude">
 
  <title>The Awaitable&lt;T&gt; class</title>
  <titleabbrev>Awaitable&lt;T&gt;</titleabbrev>
@@ -9,7 +9,7 @@
  <partintro>
 
 <!-- {{{ Generator intro -->
-  <section xml:id="awaitablet.intro">
+  <section xml:id="hack.awaitablet.intro">
    &reftitle.intro;
    <para>
     <classname>Awaitable&lt;T&gt;</classname> objects are returned from <link
@@ -26,7 +26,7 @@
   </section>
 <!-- }}} -->
 
-  <section xml:id="awaitablet.synopsis">
+  <section xml:id="hack.awaitablet.synopsis">
    &reftitle.classsynopsis;
 
 <!-- {{{ Synopsis -->
@@ -42,7 +42,7 @@
 <!-- }}} -->
     
     <classsynopsisinfo role="comment">&Methods;</classsynopsisinfo>
-    <xi:include xpointer="xmlns(db=http://docbook.org/ns/docbook) xpointer(id('class.awaitablet')/db:refentry/db:refsect1[@role='description']/descendant::db:methodsynopsis[not(@role='procedural')])" />
+    <xi:include xpointer="xmlns(db=http://docbook.org/ns/docbook) xpointer(id('class.hack.awaitablet')/db:refentry/db:refsect1[@role='description']/descendant::db:methodsynopsis[not(@role='procedural')])" />
    </classsynopsis>
 <!-- }}} -->
 

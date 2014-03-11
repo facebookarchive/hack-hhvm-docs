@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- $Revision: 292734 $ -->
 
-<phpdoc:classref xml:id="class.mutablevectortv" xmlns:phpdoc="http://php.net/ns/phpdoc" xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:xi="http://www.w3.org/2001/XInclude">
+<phpdoc:classref xml:id="class.hack.mutablevectortv" xmlns:phpdoc="http://php.net/ns/phpdoc" xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:xi="http://www.w3.org/2001/XInclude">
 
  <title>The MutableVector&lt;Tv&gt; interface</title>
  <titleabbrev>MutableVector&lt;Tv&gt;</titleabbrev>
@@ -49,16 +49,16 @@
 <!-- }}} -->
     
     <classsynopsisinfo role="comment">&Methods;</classsynopsisinfo>
-    <xi:include xpointer="xmlns(db=http://docbook.org/ns/docbook) xpointer(id('class.mutablevectortv')/db:refentry/db:refsect1[@role='description']/descendant::db:methodsynopsis[1])" />
+    <xi:include xpointer="xmlns(db=http://docbook.org/ns/docbook) xpointer(id('class.hack.mutablevectortv')/db:refentry/db:refsect1[@role='description']/descendant::db:methodsynopsis[1])" />
 
     <classsynopsisinfo role="comment">&InheritedMethods;</classsynopsisinfo>
-    <xi:include xpointer="xmlns(db=http://docbook.org/ns/docbook) xpointer(id('class.constvectortv')/db:refentry/db:refsect1[@role='description']/descendant::db:methodsynopsis[1])" />
+    <xi:include xpointer="xmlns(db=http://docbook.org/ns/docbook) xpointer(id('class.hack.constvectortv')/db:refentry/db:refsect1[@role='description']/descendant::db:methodsynopsis[1])" />
    
     <classsynopsisinfo role="comment">&InheritedMethods;</classsynopsisinfo>
-    <xi:include xpointer="xmlns(db=http://docbook.org/ns/docbook) xpointer(id('class.collectionte')/db:refentry/db:refsect1[@role='description']/descendant::db:methodsynopsis[1])" />
+    <xi:include xpointer="xmlns(db=http://docbook.org/ns/docbook) xpointer(id('class.hack.collectionte')/db:refentry/db:refsect1[@role='description']/descendant::db:methodsynopsis[1])" />
 
     <classsynopsisinfo role="comment">&InheritedMethods;</classsynopsisinfo>
-    <xi:include xpointer="xmlns(db=http://docbook.org/ns/docbook) xpointer(id('class.indexaccesstktv')/db:refentry/db:refsect1[@role='description']/descendant::db:methodsynopsis[1])" />
+    <xi:include xpointer="xmlns(db=http://docbook.org/ns/docbook) xpointer(id('class.hack.indexaccesstktv')/db:refentry/db:refsect1[@role='description']/descendant::db:methodsynopsis[1])" />
 
    </classsynopsis>
 <!-- }}} -->

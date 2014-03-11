@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- $Revision: 295890 $ -->
 
-<refentry xml:id="iteratortv.key" xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink">
+<refentry xml:id="hack.iteratortv.key" xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink">
  <refnamediv>
   <refname>Iterator&lt;Tv&gt;::key</refname>
   <refpurpose>Return the key of the current element</refpurpose>

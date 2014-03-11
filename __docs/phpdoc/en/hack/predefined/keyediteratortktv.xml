@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- $Revision: 323150 $ -->
 
-<phpdoc:classref xml:id="class.keyediteratortktv" xmlns:phpdoc="http://php.net/ns/phpdoc" xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:xi="http://www.w3.org/2001/XInclude">
+<phpdoc:classref xml:id="class.hack.keyediteratortktv" xmlns:phpdoc="http://php.net/ns/phpdoc" xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:xi="http://www.w3.org/2001/XInclude">
 
  <title>The Iterator interface</title>
  <titleabbrev>Iterator</titleabbrev>
@@ -9,7 +9,7 @@
  <partintro>
 
 <!-- {{{ Iterator intro -->
-  <section xml:id="keyediteratortktv.intro">
+  <section xml:id="hack.keyediteratortktv.intro">
    &reftitle.intro;
    <para>
     Interface for external iterators or objects that can be iterated
@@ -18,7 +18,7 @@
   </section>
 <!-- }}} -->
 
-  <section xml:id="keyediteratortktv.synopsis">
+  <section xml:id="hack.keyediteratortktv.synopsis">
    &reftitle.interfacesynopsis;
 
 <!-- {{{ Synopsis -->
@@ -39,16 +39,16 @@
 <!-- }}} -->
     
     <classsynopsisinfo role="comment">&Methods;</classsynopsisinfo>
-    <xi:include xpointer="xmlns(db=http://docbook.org/ns/docbook) xpointer(id('class.keyediteratortktv')/db:refentry/db:refsect1[@role='description']/descendant::db:methodsynopsis[1])" />
+    <xi:include xpointer="xmlns(db=http://docbook.org/ns/docbook) xpointer(id('class.hack.keyediteratortktv')/db:refentry/db:refsect1[@role='description']/descendant::db:methodsynopsis[1])" />
 
     <classsynopsisinfo role="comment">&InheritedMethods;</classsynopsisinfo>
-    <xi:include xpointer="xmlns(db=http://docbook.org/ns/docbook) xpointer(id('class.iteratortv')/db:refentry/db:refsect1[@role='description']/descendant::db:methodsynopsis[1])" />
+    <xi:include xpointer="xmlns(db=http://docbook.org/ns/docbook) xpointer(id('class.hack.iteratortv')/db:refentry/db:refsect1[@role='description']/descendant::db:methodsynopsis[1])" />
    </classsynopsis>
 <!-- }}} -->
 
   </section>
 
-  <section xml:id="keyediteratortktv.examples">
+  <section xml:id="hack.keyediteratortktv.examples">
    &reftitle.examples;
    <example xml:id="keyediteratortktv.example.basic"><!-- {{{ -->
     <title>Basic usage</title>

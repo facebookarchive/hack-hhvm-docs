@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- $Revision: 327738 $ -->
 
-<phpdoc:classref xml:id="class.xhpchild" xmlns:phpdoc="http://php.net/ns/phpdoc" xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:xi="http://www.w3.org/2001/XInclude">
+<phpdoc:classref xml:id="class.hack.xhpchild" xmlns:phpdoc="http://php.net/ns/phpdoc" xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:xi="http://www.w3.org/2001/XInclude">
 
  <title>The XHPChild interface</title>
  <titleabbrev>XHPChild</titleabbrev>
@@ -9,7 +9,7 @@
  <partintro>
 
 <!-- {{{ Traversable intro -->
-  <section xml:id="xhpchild.intro">
+  <section xml:id="hack.xhpchild.intro">
    &reftitle.intro;
    <para>
     XHPChild is the base type of values that can be children of XHP elements.
@@ -25,7 +25,7 @@
   </section>
 <!-- }}} -->
 
-  <section xml:id="xhpchild.synopsis">
+  <section xml:id="hack.xhpchild.synopsis">
    &reftitle.interfacesynopsis;
 
 <!-- {{{ Synopsis -->

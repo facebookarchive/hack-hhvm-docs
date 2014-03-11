@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- $Revision: 327738 $ -->
 
-<phpdoc:classref xml:id="class.keyedtraversabletktv" xmlns:phpdoc="http://php.net/ns/phpdoc" xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:xi="http://www.w3.org/2001/XInclude">
+<phpdoc:classref xml:id="class.hack.keyedtraversabletktv" xmlns:phpdoc="http://php.net/ns/phpdoc" xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:xi="http://www.w3.org/2001/XInclude">
 
  <title>The KeyedTraversable&lt;Tk, Tv&gt; interface</title>
  <titleabbrev>KeyedTraversable&lt;Tk,Tv&gt;</titleabbrev>
@@ -9,7 +9,7 @@
  <partintro>
 
 <!-- {{{ KeyedTraversableTkTv intro -->
-  <section xml:id="keyedtraversabletktv.intro">
+  <section xml:id="hack.keyedtraversabletktv.intro">
    &reftitle.intro;
    <para>
     Interface to detect if a class is traversable using &foreach;, of the form <literal>foreach($c => $k as $v)</literal>.
@@ -39,7 +39,7 @@
   </section>
 <!-- }}} -->
 
-  <section xml:id="keyedtraversabletktv.synopsis">
+  <section xml:id="hack.keyedtraversabletktv.synopsis">
    &reftitle.interfacesynopsis;
 
 <!-- {{{ Synopsis -->

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- $Revision: 305489 $ -->
 
-<refentry xml:id="arrayaccesstktv.offsetset" xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink">
+<refentry xml:id="hack.arrayaccesstktv.offsetset" xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink">
  <refnamediv>
   <refname>ArrayAccess&lt;Tk, Tv&gt;::offsetSet</refname>
   <refpurpose>Offset to set</refpurpose>

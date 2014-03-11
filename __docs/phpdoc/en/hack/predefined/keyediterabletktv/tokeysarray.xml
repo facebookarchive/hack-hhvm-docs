@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- $Revision: 288721 $ -->
 
-<refentry xml:id="keyediterabletktv.toKeysArray" xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink">
+<refentry xml:id="hack.keyediterabletktv.toKeysArray" xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink">
  <refnamediv>
   <refname>KeyedIterable&lt;Tk, TV&gt;::toKeysArray</refname>
   <refpurpose>Convert an iterable to an array of the keys of the iterable, keyed by integers.</refpurpose>

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- $Revision: 288721 $ -->
 
-<refentry xml:id="constvectortv.mapwithkey" xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink">
+<refentry xml:id="hack.constvectortv.mapwithkey" xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink">
  <refnamediv>
   <refname>ConstVector&lt;Tv&gt;::mapWithKey&lt;Tu&gt;</refname>
   <refpurpose>Return an ConstVector based on the return results of calling a provided function on every value of this ConstVector.</refpurpose>

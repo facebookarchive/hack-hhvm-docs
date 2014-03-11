@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- $Revision:$ -->
-<refentry xml:id="frozensettv.containskey" xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink">
+<refentry xml:id="hack.frozensettv.containskey" xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink">
  <refnamediv>
   <refname>FrozenSet&lt;Tv&gt;::containsKey</refname>
   <refpurpose>Documentation Coming Soon</refpurpose>

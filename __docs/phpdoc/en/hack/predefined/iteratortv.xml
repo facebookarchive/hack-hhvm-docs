@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- $Revision: 323150 $ -->
 
-<phpdoc:classref xml:id="class.iteratortv" xmlns:phpdoc="http://php.net/ns/phpdoc" xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:xi="http://www.w3.org/2001/XInclude">
+<phpdoc:classref xml:id="class.hack.iteratortv" xmlns:phpdoc="http://php.net/ns/phpdoc" xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:xi="http://www.w3.org/2001/XInclude">
 
  <title>The Iterator&lt;Tv&gt; interface</title>
  <titleabbrev>Iterator&lt;Tv&gt;</titleabbrev>
@@ -9,7 +9,7 @@
  <partintro>
 
 <!-- {{{ Iterator intro -->
-  <section xml:id="iteratortv.intro">
+  <section xml:id="hack.iteratortv.intro">
    &reftitle.intro;
    <para>
     Interface for external iterators or objects that can be iterated
@@ -18,7 +18,7 @@
   </section>
 <!-- }}} -->
 
-  <section xml:id="iteratortv.synopsis">
+  <section xml:id="hack.iteratortv.synopsis">
    &reftitle.interfacesynopsis;
 
 <!-- {{{ Synopsis -->
@@ -39,13 +39,13 @@
 <!-- }}} -->
     
     <classsynopsisinfo role="comment">&Methods;</classsynopsisinfo>
-    <xi:include xpointer="xmlns(db=http://docbook.org/ns/docbook) xpointer(id('class.iteratortv')/db:refentry/db:refsect1[@role='description']/descendant::db:methodsynopsis[1])" />
+    <xi:include xpointer="xmlns(db=http://docbook.org/ns/docbook) xpointer(id('class.hack.iteratortv')/db:refentry/db:refsect1[@role='description']/descendant::db:methodsynopsis[1])" />
    </classsynopsis>
 <!-- }}} -->
 
   </section>
 
-  <section xml:id="iteratortv.examples">
+  <section xml:id="hack.iteratortv.examples">
    &reftitle.examples;
    <example xml:id="iteratortv.example.basic"><!-- {{{ -->
     <title>Basic usage</title>

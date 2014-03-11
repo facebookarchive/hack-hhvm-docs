@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- $Revision: 327738 $ -->
 
-<phpdoc:classref xml:id="class.indexishtktv" xmlns:phpdoc="http://php.net/ns/phpdoc" xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:xi="http://www.w3.org/2001/XInclude">
+<phpdoc:classref xml:id="class.hack.indexishtktv" xmlns:phpdoc="http://php.net/ns/phpdoc" xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:xi="http://www.w3.org/2001/XInclude">
 
  <title>The Indexish&lt;Tk, Tv&gt; interface</title>
  <titleabbrev>Indexish&lt;Tk,Tv&gt;</titleabbrev>
@@ -9,7 +9,7 @@
  <partintro>
 
 <!-- {{{ intro -->
-  <section xml:id="indexishtktv.intro">
+  <section xml:id="hack.indexishtktv.intro">
    &reftitle.intro;
    <para>
     Indexish is an interface that works with both arrays and collections, and it is intended to help ease the migration from arrays to typed collections for certain use cases. Indexish supports the array-like, square bracket (e.g. <literal>$x[$k]</literal>) syntax while also supporting the iteration via foreach. 
@@ -17,7 +17,7 @@
   </section>
 <!-- }}} -->
 
-  <section xml:id="indexishtktv.synopsis">
+  <section xml:id="hack.indexishtktv.synopsis">
    &reftitle.interfacesynopsis;
 
 <!-- {{{ Synopsis -->

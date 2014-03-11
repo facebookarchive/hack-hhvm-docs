@@ -431,6 +431,12 @@ abstract class Package_PHP_XHTML extends Package_Generic_XHTML {
     }
 
     public function versionInfo($funcname) {
+        // For HHVM
+        // A hack to get us reasonable version numbers without having to manually enter them in a
+        // versions.xml file at this time.
+        if (strpos($this->CURRENT_ID, "hack.") !== false) {
+            return "HHVM >= 2.5, Hack >= 0.1";
+        }
         $funcname = str_replace(
                 array("::", "-&gt;", "->", "__", "_", '$', '()'),
                 array("-",  "-",     "-",  "-",  "-", "",  ''),

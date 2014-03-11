@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- $Revision: 288721 $ -->
 
-<refentry xml:id="iterabletv.filter" xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink">
+<refentry xml:id="hack.iterabletv.filter" xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink">
  <refnamediv>
   <refname>Iterable&lt;Tv&gt;::filter</refname>
   <refpurpose>Return an iterable containing the values of this iterable that cause the provided function to return true.</refpurpose>

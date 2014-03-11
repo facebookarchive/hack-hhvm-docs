@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- $Revision: 288721 $ -->
 
-<refentry xml:id="mutablevectortv.zip" xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink">
+<refentry xml:id="hack.mutablevectortv.zip" xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink">
  <refnamediv>
   <refname>MutableVector&lt;Tv&gt;::zip&lt;Tu&gt;</refname>
   <refpurpose>Return a MutableVector that combines the elements of this MutableVector and another provided iterable, pair-wise.</refpurpose>

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- $Revision: 292734 $ -->
 
-<phpdoc:classref xml:id="class.keyediterabletktv" xmlns:phpdoc="http://php.net/ns/phpdoc" xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:xi="http://www.w3.org/2001/XInclude">
+<phpdoc:classref xml:id="class.hack.keyediterabletktv" xmlns:phpdoc="http://php.net/ns/phpdoc" xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:xi="http://www.w3.org/2001/XInclude">
 
  <title>The KeyedIterable&lt;Tk, Tv&gt; interface</title>
  <titleabbrev>KeyedIterable&lt;Tk, Tv&gt;</titleabbrev>
@@ -9,7 +9,7 @@
  <partintro>
 
 <!-- {{{ intro -->
-  <section xml:id="keyediterabletktv.intro">
+  <section xml:id="hack.keyediterabletktv.intro">
    &reftitle.intro;
    <para>
     Interface to create an an iterable object that will work with mechanisms like foreach (e.g., <literal>foreach($c as $k => $v</literal>).
@@ -17,7 +17,7 @@
   </section>
 <!-- }}} -->
 
-  <section xml:id="keyediterabletktv.synopsis">
+  <section xml:id="hack.keyediterabletktv.synopsis">
    &reftitle.interfacesynopsis;
 
 <!-- {{{ Synopsis -->
@@ -44,10 +44,10 @@
 <!-- }}} -->
     
     <classsynopsisinfo role="comment">&Methods;</classsynopsisinfo>
-    <xi:include xpointer="xmlns(db=http://docbook.org/ns/docbook) xpointer(id('class.keyediterabletktv')/db:refentry/db:refsect1[@role='description']/descendant::db:methodsynopsis[1])" />
+    <xi:include xpointer="xmlns(db=http://docbook.org/ns/docbook) xpointer(id('class.hack.keyediterabletktv')/db:refentry/db:refsect1[@role='description']/descendant::db:methodsynopsis[1])" />
    
     <classsynopsisinfo role="comment">&InheritedMethods;</classsynopsisinfo>
-    <xi:include xpointer="xmlns(db=http://docbook.org/ns/docbook) xpointer(id('class.iterabletv')/db:refentry/db:refsect1[@role='description']/descendant::db:methodsynopsis[1])" />
+    <xi:include xpointer="xmlns(db=http://docbook.org/ns/docbook) xpointer(id('class.hack.iterabletv')/db:refentry/db:refsect1[@role='description']/descendant::db:methodsynopsis[1])" />
 
    </classsynopsis>
 <!-- }}} -->

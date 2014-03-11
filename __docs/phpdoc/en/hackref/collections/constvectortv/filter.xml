@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- $Revision: 288721 $ -->
 
-<refentry xml:id="constvectortv.filter" xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink">
+<refentry xml:id="hack.constvectortv.filter" xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink">
  <refnamediv>
   <refname>ConstVector&lt;Tv&gt;::filter</refname>
   <refpurpose>Return a ConstVector containing the values of this ConstVector that cause the provided function to return true.</refpurpose>
