@@ -63,6 +63,7 @@
   &install.pecl;
   &install.problems;
   &install.ini;
+  &install.hack.index;
  </book>
 
  <book xml:id="phplangref">
@@ -90,8 +91,6 @@
  <book xml:id="hacklangref">
   <title>&HackLanguageReference;</title>
   &hack.intro;
-  &hack.bootstrapping;
-  &hack.conversion;
   &hack.annotations;
   &hack.modes;
   &hack.generics;

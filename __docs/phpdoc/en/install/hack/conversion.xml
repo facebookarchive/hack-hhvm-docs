@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<chapter xml:id="hack.conversion">
+<sect1 xml:id="install.hack.conversion">
   <title>Converting an Existing Project to Hack</title>
   <para>Once you have a project running under HHVM and the typechecker, we have several automated conversion tools to help with different aspects of fully converting a project to Hack &#8212; especially the static type system. The suggested workflow is:
     <orderedlist>
@@ -9,14 +9,14 @@
       <listitem><para>Make the remaining annotations fail hard at runtime.</para></listitem>
     </orderedlist>
   </para>
-  <sect1 xml:id="hack.conversion.hackificator">
+  <sect2 xml:id="install.hack.conversion.hackificator">
     <title>Moving individual files over to Hack</title>
     <para>HHVM ships with a tool called the <literal>hackificator</literal> that attempts to move as many files as possible into Hack. It does not change the code in the file itself over to use any new features of Hack; it just changes the file headers from <literal>&lt;?php</literal> to <literal>&lt;?hh</literal> in places where such a conversion can happen cleanly. (With one exception: it marks as nullable typehinted function parameters with a null default value.)</para>
-    <sect2 xml:id="hack.conversion.hackificator.running">
+    <sect3 xml:id="install.hack.conversion.hackificator.running">
       <title>Running the hackificator</title>
-      <para>To use the hackificator, first make sure you have properly <link linkend="hack.bootstrapping.hh_server">gotten the typechecker running on your code</link> and that it reports no errors. Then, run <literal>hackificator /path/to/your/project</literal>. The tool will attempt to convert your code, file by file, to the strictest <link linkend="hack.modes">mode</link> that still produces no errors. This can take a while for projects with lots of files.</para>
-    </sect2>
-    <sect2 xml:id="hack.conversion.hackificator.notes">
+      <para>To use the hackificator, first make sure you have properly <link linkend="install.hack.bootstrapping.hh_server">gotten the typechecker running on your code</link> and that it reports no errors. Then, run <literal>hackificator /path/to/your/project</literal>. The tool will attempt to convert your code, file by file, to the strictest <link linkend="hack.modes">mode</link> that still produces no errors. This can take a while for projects with lots of files.</para>
+    </sect3>
+    <sect3 xml:id="install.hack.conversion.hackificator.notes">
       <title>Thoughts on conversion process</title>
       <para>For simple projects, this automated conversion may get good converage. For projects making use of PHP's more dynamic features that are <link linkend="hack.unsupported">unsupported in Hack</link>, the coverage of the automated tool may not be good enough. Now is a good time to see what did and did not convert cleanly, and to see why the remaining files still in PHP mode did not convert cleanly. Facebook has found that it's often easier to address conversion problems right at the start; errors that are simple now have a way of propogating into inconsistencies that are more gnarly to untangle in the future.</para>
       <para>In particular, you should consider the difference between a <emphasis>wide</emphasis> conversion and a <emphasis>deep</emphasis> conversion. To see the difference, consider the following three files:</para>
@@ -85,17 +85,17 @@ final class WorkItemB extends WorkItem {
       <para>Facebook did a wide conversion instead of a deep one. In our experience, having many classes "converted" but not fully checked due to a single key superclass remaining in a PHP file is a big deal. The <literal>WorkItem</literal> example above is actually a (dramatically) simplified example of this in our codebase. Our central "batched work item" superclass has over 25000 recursive subclasses, <emphasis>none</emphasis> of which can be fully checked until <emphasis>all</emphasis> of them are fully converted and the superclass moved into a Hack file &#8212; a herculean effort. We did many one-off hacks in order to get around this. For example, we defined a <literal>CrippleTypechecking</literal> trait that does nothing except live in a PHP file; this way we can move superclasses into Hack files and just include this trait in subclasses where errors are exposed.</para>
        <para>Of course, since we <emphasis>didn't</emphasis> do a deep conversion, we don't know what the pitfalls of doing one would have been. Notably, even in the classes that aren't fully checked for things like undefined methods and undefined instance variables, the typechecker still can make many other classes of useful checks, so there is massive benefit even in a wide conversion.</para>
        <para>Thus this is something each individual project should be aware of and consider whether a deep conversion, a wide conversion, or some hybrid is appropriate.</para>
-    </sect2>
-  </sect1>
-  <sect1 xml:id="hack.conversion.annotations">
+    </sect3>
+  </sect2>
+  <sect2 xml:id="install.hack.conversion.annotations">
     <title>Inferring type annotations</title>
     <para>TODO</para>
-  </sect1>
-  <sect1 xml:id="hack.conversion.cleanup">
+  </sect2>
+  <sect2 xml:id="install.hack.conversion.cleanup">
     <title>Hardening type annotations</title>
     <para>TODO</para>
-  </sect1>
-</chapter>
+  </sect2>
+</sect1>
 
 <!-- Keep this comment at the end of the file
 Local variables:
