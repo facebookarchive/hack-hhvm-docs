@@ -24,7 +24,7 @@ function f(): int {
       </informalexample>
     </para>
     <para>The exact details of the Hack language and its type annotations are discussed in detail in later sections, but hopefully you see that this function contains a type error &#8212; it is annotated to return an int, but actually returns a string. If you re-run <literal>hh_client</literal>, it should report this type error. The typechecker updated its state in the background, and <literal>hh_client</literal> retrieves that state.</para>
-    <para>At this point, you can start changing your <literal>&lt;?php</literal> code into <literal>&lt;?hh</literal> code, adding annotations, and the typechecker will verify more and more of your codebase as you convert!</para>
+    <para>At this point, you can start changing your <literal>&lt;?php</literal> code into <literal>&lt;?hh</literal> code, adding annotations, and the typechecker will verify more and more of your codebase as you convert! Some <link linkend="hack.conversion">automated conversion tools</link> are also available to help with the mechanical parts of this process.</para>
   </sect1>
   <sect1 xml:id="hack.bootstrapping.stdlib">
     <title>Library functions</title>
