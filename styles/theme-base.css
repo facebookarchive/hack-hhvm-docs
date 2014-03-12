@@ -474,6 +474,25 @@ hr {
 }
 
 /**
+ * File a bug
+ */
+#filebug {
+    position: relative;
+    margin-top:1.5em;  
+}
+#filebug .action {
+    display: block;
+    top: 8px;
+    right: 12px;
+    position: absolute;
+    text-align: right;
+}
+#filebug .foot {
+    text-align: right;
+    margin-bottom: 1em;
+}
+
+/**
  * User notes
  */
 #usernotes {

@@ -452,11 +452,29 @@ CHANGE_LANG;*/
     return trim($r);
 }
 
+function manual_bug() {
+    // Get needed values
+    list($filename, $title) = $GLOBALS['PGI']['this'];
+    // Doc bugs will become Github issues in our doc repo.
+    $addbuglink = 'https://github.com/facebook/hack-hhvm-docs/issues/new?title=Bug in ' . $title;
+    $addbugsnippet = make_link(
+        $addbuglink,
+        "<img src='/images/notes-add@2x.png' alt='File a doc bug' width='12' height='12' /> <small>Doc Bug</small>"
+    );
+
+    echo <<<END_BUG_HEADER
+
+<section id="filebug">
+ <div class="head"> 
+  <span class="action">{$addbugsnippet}</span>
+  <h3 class="title">File a documentation bug</h3>
+ </div>
+END_BUG_HEADER;
+}
+
 function manual_header(){}
 function manual_footer() {
-    global $USERNOTES;
-
-    manual_notes($USERNOTES);
+    manual_bug();
     echo "</section>";
     $config = array();
     site_footer($config);
