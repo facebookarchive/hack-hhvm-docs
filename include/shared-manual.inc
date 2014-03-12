@@ -452,50 +452,72 @@ CHANGE_LANG;*/
     return trim($r);
 }
 
-function manual_bug() {
+function manual_bugs_and_notes() {
     // Get needed values
     list($filename, $title) = $GLOBALS['PGI']['this'];
     // Doc bugs will become Github issues in our doc repo.
-    $addbuglink = 'https://github.com/facebook/hack-hhvm-docs/issues/new?title=Bug in ' . $title;
-    $addbugsnippet = make_link(
-        $addbuglink,
-        "<img src='/images/notes-add@2x.png' alt='File a doc bug' width='12' height='12' /> <small>Doc Bug</small>"
+    $filebuglink = 'https://github.com/facebook/hack-hhvm-docs/issues/new?title=Bug in ' . $title;
+    $filebugsnippet = make_link(
+        $filebuglink,
+        "File A Bug"
     );
-
-    echo <<<END_BUG_HEADER
-
-<section id="filebug">
+    $noteslink = "http://www.php.net/manual/en/". $filename . "#usernotes";
+    $noteslinksnippet = make_link(
+        $noteslink,
+        "View PHP.net Topic Notes"
+    );
+    $bug_notes_header = <<<BUG_NOTES_HEADER
+<section id="bugnotes">
  <div class="head"> 
-  <span class="action">{$addbugsnippet}</span>
-  <h3 class="title">File a documentation bug</h3>
+  <h3 class="title">Links</h3>
+  <ul>
+    <li>{$filebugsnippet}</li>
+    <li>{$noteslinksnippet}</li>
+  </ul>
  </div>
-END_BUG_HEADER;
+BUG_NOTES_HEADER;
+    $bug_header = <<<NOTES_HEADER
+<section id="onlynotes">
+ <div class="head">
+  <h3 class="title">Links</h3>
+  <ul>
+   <li>{$filebugsnippet}</li>
+  </ul>
+ </div> 
+NOTES_HEADER;
+    if (url_exists($noteslink)) {
+        echo $bug_notes_header;
+    } else {
+        echo $bug_header;  
+    }
 }
 
-function manual_link_to_php_notes() {
-   // Get needed values
-    list($filename, $title) = $GLOBALS['PGI']['this'];
-    // Doc bugs will become Github issues in our doc repo.
-    $addphpnetnoteslink = "http://www.php.net/manual/en/". $filename . "#usernotes";
-    $addphpnetnotessnippet = make_link(
-        $addphpnetnoteslink,
-        "<img src='/images/notes-add@2x.png' alt='See notes' width='12' height='12' /> <small>See topic notes</small>"
-    );
+function url_exists($link)
+{
+  $ch = curl_init($link);
 
-    echo <<<LINK_TO_NOTES_HEADER
-<section id="phpnetnotes">
- <div class="head"> 
-  <span class="action">{$addphpnetnotessnippet}</span>
-  <h3 class="title">See the PHP.net user notes</h3>
- </div>
-LINK_TO_NOTES_HEADER;
+  curl_setopt($ch, CURLOPT_NOBODY, true);
+  // Set a reasonable timeout so we aren't waiting forever for a problem
+  curl_setopt($ch, CURLOPT_CONNECTTIMEOUT_MS, 500);
+  // Follow redirects to ensure link existance
+  curl_setopt($ch, CURLOPT_FOLLOWLOCATION, true);
+  // Facebook specifc
+  if (strpos(gethostname(), "facebook.com") !== false) {
+    curl_setopt($ch, CURLOPT_PROXY, "fwdproxy.any.facebook.com:8080");
+  }
+  curl_exec($ch);
+  $retcode = curl_getinfo($ch, CURLINFO_HTTP_CODE);
+  // $retcode >= 400 -> not found, $retcode = 200, found. $retcode = 0, error.
+  curl_close($ch);
+  if ($retcode >= 400 || $retcode === 0) {
+    return false;
+  }
+  return true;
 }
 
 function manual_header(){}
 function manual_footer() {
-    manual_bug();
-    echo "</section>";
-    manual_link_to_php_notes();
+    manual_bugs_and_notes();
     echo "</section>";
     $config = array();
     site_footer($config);
