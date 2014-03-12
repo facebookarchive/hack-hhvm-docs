@@ -2,7 +2,7 @@
 <!-- $Revision: 331319 $ -->
 
 <!-- Part titles used mostly in manual.xml itself -->
-<!ENTITY HHVMManual                               "HHVM Manual">
+<!ENTITY HHVMManual                               "HHVM and Hack Manual">
 <!ENTITY Seealso                                  "See also">
 <!ENTITY Date                                     "Date:">
 <!ENTITY GettingStarted                           "Getting Started">

@@ -10,14 +10,14 @@
   </copyright>
   <copyright>
    <year>2014</year>
-   <holder>HHVM Team</holder>
+   <holder>HHVM and Hack Team</holder>
   </copyright>
 
   <legalnotice xml:id="copyright" xmlns:xlink="http://www.w3.org/1999/xlink">
    <title>Copyright</title>
    <simpara>
     Copyright © 1997 - <?dbtimestamp format="Y"?> by the PHP Documentation Group.
-    Copyright © 2014 by the HHVM Team.
+    Copyright © 2014 by the HHVM and Hack Team.
     This material may be distributed only subject to the terms and
     conditions set forth in the Creative Commons Attribution 3.0
     License or later. A copy of the <link linkend="cc.license">Creative
