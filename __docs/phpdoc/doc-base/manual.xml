@@ -50,6 +50,7 @@
   <title>&GettingStarted;</title>
   &chapters.intro;
   &chapters.tutorial;
+  &chapters.hack-hhvm-tutorial;
  </book>
 
  <book xml:id="install">
