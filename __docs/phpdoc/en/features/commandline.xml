@@ -1288,13 +1288,6 @@ This is a command line PHP script with one option.
    documentation for more functions which can be used to enhance command line
    applications in PHP.
   </para>
-  
-  <para>
-   On Windows, PHP can be configured to run without the need to
-   supply the <filename>C:\php\php.exe</filename> or the <literal>.php</literal>
-   extension, as described in <link linkend="install.windows.commandline">Command
-   Line PHP on Microsoft Windows</link>.
-  </para>
  </section>
  <!--}}}-->
  

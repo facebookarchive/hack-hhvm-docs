@@ -5,7 +5,7 @@
  <para>
   The behaviour of the Apache PHP module is affected by settings in &php.ini;.
   Configuration settings from &php.ini; may be overridden by
-  <link linkend="configuration.changes.apache">php_flag</link> settings
+  php_flag settings
   in the server configuration file or local &htaccess; files.
  </para>
  <example>

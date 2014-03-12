@@ -2317,7 +2317,7 @@ try {
     <simpara>
      <literal>user_ini.filename</literal> and
      <literal>user_ini.cache_ttl</literal> have been added to control the use
-     of <link linkend="configuration.file.per-user">user INI files</link>.
+     of user INI files.
     </simpara>
    </listitem>
    <listitem>

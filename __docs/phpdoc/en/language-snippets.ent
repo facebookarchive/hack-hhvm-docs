@@ -970,7 +970,7 @@ is not bundled with PHP.'>
 is bundled with PHP.'>
 
 <!ENTITY pecl.info 'Information for installing this PECL extension may be
-found in the manual chapter titled <link xmlns="http://docbook.org/ns/docbook" linkend="install.pecl">Installation
+found in the manual chapter titled <link xmlns="http://docbook.org/ns/docbook" linkend="install.extensions">Installation
 of PECL extensions</link>. Additional information such as new releases,
 downloads, source files, maintainer information, and a CHANGELOG, can be
 located here: '>
@@ -988,9 +988,7 @@ the <filename xmlns="http://docbook.org/ns/docbook">extensions/</filename> direc
 binaries download.'>
 
 <!ENTITY pecl.windows.download 'A <acronym xmlns="http://docbook.org/ns/docbook">DLL</acronym> for this
-<acronym xmlns="http://docbook.org/ns/docbook">PECL</acronym> extension is currently unavailable. See also the
-<link xmlns="http://docbook.org/ns/docbook" linkend="install.windows.building">building on Windows</link>
-section.'>
+<acronym xmlns="http://docbook.org/ns/docbook">PECL</acronym> extension is currently unavailable.'>
 
 <!ENTITY pecl.windows.download.unbundled '&pecl.windows.download;'>
 

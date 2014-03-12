@@ -1,15 +1,27 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- $Revision: 304566 $ -->
-<chapter xml:id="install.macosx" xmlns="http://docbook.org/ns/docbook">
- <title>Installation on Mac OS X</title>
- <para>
-  This section contains notes and hints specific to installing PHP on Mac OS X.
-  PHP is bundled with Macs, and compiling is similar to the
-  <link linkend="install.unix">Unix installation guide</link>.
- </para>
- &install.macos.packages;
- &install.macos.bundled;
- &install.macos.compile;
+<chapter xml:id="install.macosx" xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink">
+  <title>Installation on Mac OS X</title>
+  <para>
+    This section contains notes and hints specific to installing HHVM on Mac OS X. Currently Mac OS X has only interpreted support for HHVM (i.e., the JIT is not available). However, there is active development on getting full support for HHVM on Mac OS X. 
+  </para>
+  <para>
+    There is no current prebuilt package. Only a compilation method to get HHVM working on Mac OS X. Compiling is similar to the <link linkend="install.linux">Linux installation guide</link>. 
+  </para>
+  <note>
+    <para>
+      Mac OS X installation is currently EXPERIMENTAL and UNSUPPORTED.
+    </para>
+  </note>
+  <para>
+    <itemizedlist>
+      <listitem>
+        <simpara>
+          <link xlink:href="&url.hhvm.install.compile.macos;">Mac OS X</link>
+        </simpara>
+      </listitem>
+    </itemizedlist>
+  </para>
 </chapter>
 
 <!-- Keep this comment at the end of the file

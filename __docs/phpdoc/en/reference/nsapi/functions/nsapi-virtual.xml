@@ -35,12 +35,6 @@
     In the Unix environment it should always work, in Windows it depends on the name of
     a <filename>ns-httpdXX.dll</filename> file.
    </para>
-   <para>
-    Read the note about subrequests in the NSAPI section (<link 
-    linkend="install.unix.sun.notes">UNIX</link>, <link 
-    linkend="install.windows.sun.notes">Windows</link>) if you experience
-    this problem.
-   </para>
   </note>
  </refsect1>
  <refsect1 role="parameters">

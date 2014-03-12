@@ -11559,28 +11559,6 @@
   <function name="win32-start-service-ctrl-dispatcher" from="PECL win32service SVN"/>
   <function name="win32-start-service" from="PECL win32service SVN"/>
   <function name="win32-stop-service" from="PECL win32service SVN"/>
-  <function name="wincache_fcache_fileinfo" from="PECL wincache &gt;= 1.0.0"/>
-  <function name="wincache_fcache_meminfo" from="PECL wincache &gt;= 1.0.0"/>
-  <function name="wincache_ocache_fileinfo" from="PECL wincache &gt;= 1.0.0"/>
-  <function name="wincache_ocache_meminfo" from="PECL wincache &gt;= 1.0.0"/>
-  <function name="wincache_rplist_fileinfo" from="PECL wincache &gt;= 1.0.0"/>
-  <function name="wincache_rplist_meminfo" from="PECL wincache &gt;= 1.0.0"/>
-  <function name="wincache_refresh_if_changed" from="PECL wincache &gt;= 1.0.0"/>
-  <function name="wincache_ucache_add" from="PECL wincache &gt;= 1.1.0"/>
-  <function name="wincache_ucache_set" from="PECL wincache &gt;= 1.1.0"/>
-  <function name="wincache_ucache_get" from="PECL wincache &gt;= 1.1.0"/>
-  <function name="wincache_ucache_clear" from="PECL wincache &gt;= 1.1.0"/>
-  <function name="wincache_ucache_delete" from="PECL wincache &gt;= 1.1.0"/>
-  <function name="wincache_ucache_exists" from="PECL wincache &gt;= 1.1.0"/>
-  <function name="wincache_ucache_inc" from="PECL wincache &gt;= 1.1.0"/>
-  <function name="wincache_ucache_dec" from="PECL wincache &gt;= 1.1.0"/>
-  <function name="wincache_ucache_cas" from="PECL wincache &gt;= 1.1.0"/>
-  <function name="wincache_ucache_info" from="PECL wincache &gt;= 1.1.0"/>
-  <function name="wincache_ucache_meminfo" from="PECL wincache &gt;= 1.1.0"/>
-  <function name="wincache_scache_info" from="PECL wincache &gt;= 1.1.0"/>
-  <function name="wincache_scache_meminfo" from="PECL wincache &gt;= 1.1.0"/>
-  <function name="wincache_lock" from="PECL wincache &gt;= 1.1.0"/>
-  <function name="wincache_unlock" from="PECL wincache &gt;= 1.1.0"/>
   <function name="xcom" from="PECL xcommerce &gt;= 1.0.0"/>
   <function name="xcom::__construct" from="PECL xcommerce &gt;= 1.0.0"/>
   <function name="xcom::__destruct" from="PECL xcommerce &gt;= 1.0.0"/>

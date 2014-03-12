@@ -229,7 +229,6 @@
    <listitem><simpara><xref linkend="book.weakref"/></simpara></listitem>
    <listitem><simpara><xref linkend="book.win32ps"/></simpara></listitem>
    <listitem><simpara><xref linkend="book.win32service"/></simpara></listitem>
-   <listitem><simpara><xref linkend="book.wincache"/></simpara></listitem>
    <listitem><simpara><xref linkend="book.xattr"/></simpara></listitem>
    <listitem><simpara><xref linkend="book.xdiff"/></simpara></listitem>
    <listitem><simpara><xref linkend="book.xhprof"/></simpara></listitem>
@@ -499,7 +498,6 @@
     <listitem><para><xref linkend="book.weakref"/></para></listitem>
     <listitem><para><xref linkend="book.win32ps"/></para></listitem>
     <listitem><para><xref linkend="book.win32service"/></para></listitem>
-    <listitem><para><xref linkend="book.wincache"/></para></listitem>
     <listitem><para><xref linkend="book.xattr"/></para></listitem>
     <listitem><para><xref linkend="book.xdiff"/></para></listitem>
     <listitem><para><xref linkend="book.xhprof"/></para></listitem>

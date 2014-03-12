@@ -52,7 +52,7 @@ extension=oci8.so
   </para>
 
   <para>
-   See <link linkend="install.pecl">Installation of PECL
+   See <link linkend="install.extensions">Installation of PECL
    extensions</link> for general PECL installation instructions.
   </para>
  </section>

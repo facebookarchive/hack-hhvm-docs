@@ -56,13 +56,12 @@
  <book xml:id="install">
   <title>&InstallAndConfigure;</title>
   &install.intro;
-  &install.unix.index;
+  &install.linux.index;
   &install.macos.index;
   &install.windows.index;
   &install.cloud.index;
-  &install.fpm.index;
-  &install.pecl;
-  &install.problems;
+  &install.fastcgi.index;
+  &install.extensions;
   &install.ini;
   &install.hack.index;
  </book>
@@ -201,7 +200,6 @@
    &reference.runkit.book;
    &reference.scream.book;
    &reference.weakref.book;
-   &reference.wincache.book;
    &reference.xhprof.book;
   </set>
 

@@ -67,7 +67,7 @@
     </question>
     <answer>
      <para>
-      Be sure to read the <link linkend="install.unix">installation</link>
+      Be sure to read the <link linkend="install.linux">installation</link>
       instructions carefully and note that you need both flex and bison
       installed to compile PHP.  Depending on your setup you will install 
       bison and flex from either source or a package, such as a RPM.

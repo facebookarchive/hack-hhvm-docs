@@ -5,8 +5,7 @@
  <para>
   PHP installs on the cloud. To the PHP cloud!
  </para>
- &install.cloud.azure;
- &install.cloud.ec2;
+ &install.cloud.heroku;
 </chapter>
 
 <!-- Keep this comment at the end of the file

@@ -72,7 +72,7 @@ extension=sdo.so
     </para>
     <para>
      For more information about building PECL packages, consult the
-     <link linkend="install.pecl">PECL installation</link>
+     <link linkend="install.extensions">PECL installation</link>
      section of the manual.
     </para>
    </step>

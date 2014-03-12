@@ -1,16 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- $Revision: 331257 $ -->
-
-<chapter xml:id="fpm.setup">
- &reftitle.setup;
-
- <para>
-  Information on installing and configuring FPM can be found in the
-  installation and configuration section of
-  the PHP manual.
- </para>
-
-</chapter>
+<!-- $Revision: 312448 $ -->
+ <sect1 xml:id="install.cloud.heroku" xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink">
+  <title>Heroku</title>
+  <para>
+   HHVM installs on the <link xlink:href="&url.hhvm.install.cloud.heroku;">Heroku cloud platform</link>.
+  </para>
+ </sect1>
 
 <!-- Keep this comment at the end of the file
 Local variables:

@@ -38,8 +38,4 @@
  </preface>
   &install.intro;
   &install.windows.index;
-  &install.pecl;
-  &install.problems;
-  &install.ini;
-  &faq.installation;
 </book>

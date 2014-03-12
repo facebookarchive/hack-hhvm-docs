@@ -4,7 +4,7 @@
  <title>Installation/Configuration</title>
  <titleabbrev>Installing the HTTP extension</titleabbrev>
 
- <section xml:id="http.install.pecl">
+ <section xml:id="http.install.extensions">
   &reftitle.install;
   <para>
    &pecl.moved;
