@@ -2,19 +2,22 @@
 <!-- $Revision: 312969 $ -->
 
  <info xmlns="http://docbook.org/ns/docbook" xml:id="bookinfo">
-  &frontpage.authors;
-  <pubdate><?dbtimestamp format="Y-m-d"?></pubdate>
-  &frontpage.editors;
+  <pubdate>Last updated: <?dbtimestamp format="Y-m-d"?></pubdate>
 
   <copyright>
    <year>1997-<?dbtimestamp format="Y"?></year>
    <holder>the PHP Documentation Group</holder>
+  </copyright>
+  <copyright>
+   <year>2014</year>
+   <holder>HHVM Team</holder>
   </copyright>
 
   <legalnotice xml:id="copyright" xmlns:xlink="http://www.w3.org/1999/xlink">
    <title>Copyright</title>
    <simpara>
     Copyright © 1997 - <?dbtimestamp format="Y"?> by the PHP Documentation Group.
+    Copyright © 2014 by the HHVM Team.
     This material may be distributed only subject to the terms and
     conditions set forth in the Creative Commons Attribution 3.0
     License or later. A copy of the <link linkend="cc.license">Creative
