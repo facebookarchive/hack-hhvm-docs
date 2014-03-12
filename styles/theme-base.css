@@ -493,6 +493,25 @@ hr {
 }
 
 /**
+ * Links to php.net notes
+ */
+#phpnetnotes {
+    position: relative;
+    margin-top:1.5em;  
+}
+#phpnetnotes .action {
+    display: block;
+    top: 8px;
+    right: 12px;
+    position: absolute;
+    text-align: right;
+}
+#phpnetnotes .foot {
+    text-align: right;
+    margin-bottom: 1em;
+}
+
+/**
  * User notes
  */
 #usernotes {

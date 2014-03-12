@@ -472,9 +472,30 @@ function manual_bug() {
 END_BUG_HEADER;
 }
 
+function manual_link_to_php_notes() {
+   // Get needed values
+    list($filename, $title) = $GLOBALS['PGI']['this'];
+    // Doc bugs will become Github issues in our doc repo.
+    $addphpnetnoteslink = "http://www.php.net/manual/en/". $filename . "#usernotes";
+    $addphpnetnotessnippet = make_link(
+        $addphpnetnoteslink,
+        "<img src='/images/notes-add@2x.png' alt='See notes' width='12' height='12' /> <small>See topic notes</small>"
+    );
+
+    echo <<<LINK_TO_NOTES_HEADER
+<section id="phpnetnotes">
+ <div class="head"> 
+  <span class="action">{$addphpnetnotessnippet}</span>
+  <h3 class="title">See the PHP.net user notes</h3>
+ </div>
+LINK_TO_NOTES_HEADER;
+}
+
 function manual_header(){}
 function manual_footer() {
     manual_bug();
+    echo "</section>";
+    manual_link_to_php_notes();
     echo "</section>";
     $config = array();
     site_footer($config);
