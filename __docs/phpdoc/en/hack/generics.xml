@@ -8,15 +8,15 @@
 <![CDATA[
 <?hh
 class Box<T> {
-protected T $data;
+  protected T $data;
 
-public function __construct(T $data) {
-  $this->data = $data;
-}
+  public function __construct(T $data) {
+    $this->data = $data;
+  }
 
-public function getData(): T {
-  return $this->data;
-}
+  public function getData(): T {
+    return $this->data;
+  }
 }
 ]]>
       </programlisting>
@@ -26,19 +26,19 @@ public function getData(): T {
     The <literal>Box</literal> class has a generic type parameter, <literal>T</literal>, associated with it.
     For any instance of <literal>Box</literal>, <literal>T</literal> can be given any available type. In addition, the method <literal>getData()</literal> returns a <literal>T</literal>, meaning that the
     method will return the same type as associated with <literal>Box</literal> at instantiation. Note, though,
-    that the <literal>getData()</literal> method is not generic; it is just accessing the top-level type parameter of <literal>Box</literal>. A client use of <literal>Box</literal> would look like the following:
+    that the <literal>getData()</literal> method is not itself generic; it is just accessing the top-level type parameter of <literal>Box</literal>. A client use of <literal>Box</literal> would look like the following:
     <informalexample>
       <programlisting role="php">
 <![CDATA[
 <?hh
 
 function main_gen() {
-$gi = new Box(3);
-$gs = new Box("Hi");
-$ga = new Box(array());
-echo $gi->getData()."\n";
-echo $gs->getData()."\n";
-echo $ga->getData()."\n";
+  $gi = new Box(3);
+  $gs = new Box("Hi");
+  $ga = new Box(array());
+  echo $gi->getData()."\n";
+  echo $gs->getData()."\n";
+  echo $ga->getData()."\n";
 }
 
 main_gen();
@@ -100,7 +100,7 @@ main_vec();
 ]]>
         </programlisting>
         <para>
-          <literal>$x</literal> is a <literal>Vector&quot;int&quot;</literal>, while <literal>$y</literal> is a <literal>Vector&quot;string&quot;</literal>. A <literal>Vector&lt;int&gt;</literal> and <literal>Vector&lt;string&gt;</literal> are not the same type. Methods can also be generic, even when the class is not. Normally, the situation is to have a generic class with non-generic methods or a non-generic class with generic methods. While it is possible, having a generic class with generic methods is usually the exception more than the rule. Having both a generic class and a generic method in that class might be useful when the method is something like a compare method and the generic type parameter to the method is thus different than the class. Here is a contrived example of a generic method in a non-generic class: 
+          <literal>$x</literal> is a <literal>Vector&lt;int&gt;</literal>, while <literal>$y</literal> is a <literal>Vector&lt;string&gt;</literal>. A <literal>Vector&lt;int&gt;</literal> and <literal>Vector&lt;string&gt;</literal> are not the same type. Methods can also be generic, even when the class is not. Normally, the situation is to have a generic class with non-generic methods or a non-generic class with generic methods. While it is possible, having a generic class with generic methods is usually the exception more than the rule. Having both a generic class and a generic method in that class might be useful when the method is something like a compare method and the generic type parameter to the method is thus different than the class. Here is a contrived example of a generic method in a non-generic class: 
         </para>
         <programlisting role="php">
 <![CDATA[
@@ -136,11 +136,11 @@ main_genmeth();
 ]]>
         </programlisting>
         <para>
-          The above example shows a generic method <literal>Swap&quot;T&quot;()</literal> in a non-generic class <literal>FooGenMethod</literal>. 
+          The above example shows a generic method <literal>swap&lt;T&gt;()</literal> in a non-generic class <literal>FooGenMethod</literal>. 
         </para>
         <note>
           <para>
-            Notice that in the <literal>Swap&lt;T&gt;()</literal> method, an object was used instead of a primitive for the parameter. This is because references to primitives are not typed (e.g., <literal>int &amp;a</literal>)
+            Notice that in the <literal>swap&lt;T&gt;()</literal> method, an object was used instead of a primitive for the parameter. This is because <link linkend="hack.annotations.passingbyreference">references to primitives are not typed</link> (e.g., <literal>int &amp;a</literal>).
           </para>
         </note>
       </informalexample>
@@ -175,7 +175,7 @@ main_genmeth();
         </listitem>
         <listitem>
           <para>
-            Hack does not currently support for casting to <literal>T</literal> or creating new instances of <literal>T</literal>. 
+            Hack does not currently support casting to <literal>T</literal> or creating new instances of <literal>T</literal>. 
           </para>
         </listitem>
       </itemizedlist>
@@ -195,6 +195,7 @@ class Mailbox<T> {
   public function __construct() {
     $this->data = null;
   }
+
   public function put(T $mail): void {
     $this->data = $mail;
   }
@@ -381,7 +382,7 @@ function foo_gi6(Vector<mixed> $vec): void {}
 ]]>
         </programlisting>
         <para>
-          As probably expected, Hack allows an element of type <literal>Z</literal> to be added to a <literal>Vector&lt;A&gt;</literal>. Possibly surprisingly, the reverse is also true --- to a point.             Some programming languages require the type of the associated with the generic class be known at instantiation time. Hack, on the other hand, can begin determining the type of the generic upon first usage. 
+          As probably expected, Hack allows an element of type <literal>Z</literal> to be added to a <literal>Vector&lt;A&gt;</literal>. Possibly surprisingly, the reverse is also true &#8212; to a point. Some programming languages require the type of the associated with the generic class be known at instantiation time. Hack, on the other hand, can begin determining the type of the generic upon first usage. 
         </para>
         <para>
           In function <literal>foo_gi2()</literal>, a new, empty <literal>Vector</literal> is assigned to <literal>$x</literal>. However, since the <literal>Vector</literal> was empty, the type associated with <literal>$x</literal> was not declared. After the first call to <literal>$x->add()</literal>, the type association for <literal>$x</literal> begins. Now the type associated with <literal>$x</literal> is still unresolved, but allows a <literal>Z</literal>. After the second call to <literal>$x->add()</literal>, the type association is still unresolved, but allows a <literal>Z</literal> or an <literal>A</literal>. For all intents and purposes, at this point <literal>$x</literal> is a <literal>Vector&lt;Unresolved[Z, A]&gt;</literal>. 
@@ -415,7 +416,7 @@ class AA {
 }
  
 class BB extends AA {
-  protected function bar(): FooChild {return new FooChild(); }
+  protected function bar(): FooChild { return new FooChild(); }
 }
 ]]>
         </programlisting>
@@ -444,10 +445,11 @@ class BBG extends AAG {
     $x->add(new FooGChild());
     return $x;
   }
+}
 ]]>
         </programlisting>
         <para>
-          On the surface, it may seem like the above should be accepted by the Hack type checker. However, a closer look indicates otherwise. The parent, <literal>AAG</literal> has a <literal>bar()</literal> that returns a vector containing <literal>FooG</literal>. The child, <literal>BBG</literal>, has a <literal>bar()</literal> that returns a vector containing <literal>FooGChild</literal>. In other words, both return <literal>Vector</literal>, not individual instances of <literal>FooG</literal> or <literal>FooGChild</literal>. Thus, since the return type is a <literal>Vector</literal>, it is impossible to guarantee that the returned vector from <literal>BBB:bar()</literal> won't contain, for example, a mix of <literal>FooChild</literal> and <literal>FooG</literal>. 
+          On the surface, it may seem like the above should be accepted by the Hack type checker. However, a closer look indicates otherwise. The parent, <literal>AAG</literal> has a <literal>bar()</literal> that returns a vector containing <literal>FooG</literal>. The child, <literal>BBG</literal>, has a <literal>bar()</literal> that returns a vector containing <literal>FooGChild</literal>. In other words, both return <literal>Vector</literal>, not individual instances of <literal>FooG</literal> or <literal>FooGChild</literal>. Thus, since the return type is a <literal>Vector</literal>, it is impossible to guarantee that the returned vector from <literal>BBG:bar()</literal> won't contain, for example, a mix of <literal>FooChild</literal> and <literal>FooG</literal> &#8212; even to a caller which called it as <literal>AAG::bar()</literal>.
         </para>
         &example.outputs;
         <screen>
@@ -520,8 +522,7 @@ function main() {
         <programlisting role="php">
 <![CDATA[
 <?hh
-// Copyright 2004-present Facebook. All Rights Reserved.
- 
+
 // The mailbox can contain any type, but, per instantiation, once associated
 // with a type, it cannot change. Mailbox<int>, Mailbox<string>, Mailbox<mixed>
 class Mailbox<T> {
@@ -565,7 +566,7 @@ main();
 ]]>
         </programlisting>
         <para>
-          Since generic objects are passed by reference, adding a <literal>string</literal> to the <literal>Mailbox&lt;mixed&gt;</literal> in <literal>mbmixed()</literal> actually transforms the <literal>Mailbox&lt;int&gt;</literal> in <literal>main()</literal> to one that can now take a <literal>string</literal>. This is probably not expected behavior and should not be able to pass the type checker. And, in fact, this code does not pass the Hack type checker: 
+          Since generic objects are passed by reference, adding a <literal>string</literal> to the <literal>Mailbox&lt;mixed&gt;</literal> in <literal>mbmixed()</literal> actually transforms the <literal>Mailbox&lt;int&gt;</literal> in <literal>main()</literal> to one that can now take a <literal>string</literal>. This is probably not expected behavior and should not be able to pass the type checker. And, in fact, this code does not pass the Hack type checker!
         </para>
         &example.outputs;
         <screen>
@@ -812,7 +813,7 @@ Considering the constraint on the type 'T'
       </informalexample>
     </para>
     <para>
-      A possible question that one may have when reading about constraints is &quot;Why have a constraint? Why not just have the class in question extend the class that is being used as the constraint?&quot;. Here is an example that addresses that question: 
+      A possible question that one may have when reading about constraints is, &quot;Why have a constraint? Why not just have the class in question extend the class that is being used as the constraint?&quot; Here is an example that addresses that question: 
       <informalexample>
         <programlisting role="php">
 <![CDATA[
@@ -1085,7 +1086,7 @@ It is incompatible with of type T
         </listitem>
         <listitem>
           <para>
-            <emphasis role="strong"><literal>// UNSAFE</literal></emphasis>: Use Hack's <literal></literal> mode to get around the type checker. Use with extreme caution.
+            <emphasis role="strong"><literal>// UNSAFE</literal></emphasis>: Use Hack's <literal>UNSAFE</literal> annotation to get around the type checker. Use with extreme caution.
           </para>
         </listitem>
         <listitem>

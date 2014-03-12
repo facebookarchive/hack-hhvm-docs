@@ -8,12 +8,11 @@
 <![CDATA[
 <?hh
 function check_not_null(?int $x): int {
-if ($x === null) {
-  return -1;
-}
-else {
-  return $x;
-}
+  if ($x === null) {
+    return -1;
+  } else {
+    return $x;
+  }
 }
 ]]>
       </programlisting>
@@ -33,13 +32,14 @@ else {
       <informalexample>
         <programlisting role="php">
 <![CDATA[
+<?php
 class Foo {
-  $x = null;
+  protected $x = null;
 }
 ]]>
         </programlisting>
         <para>
-          <literal>$x</literal> is assigned to <literal>null</literal>. And, of course, checks can be made programmatically to see if <literal>$x</literal> is <literal>null</literal>
+          <literal>$x</literal> is assigned to <literal>null</literal>. And, of course, checks can be made programmatically to see if <literal>$x</literal> is <literal>null</literal>:
         </para>
         <programlisting role="php">
 <![CDATA[
@@ -107,11 +107,9 @@ class NullableBool {
   public function boolMayBeNull(?bool $b): string {
     if ($b === null) {
       return "Null";
-    }
-    else if ($b === true) {
+    } else if ($b === true) {
       return "True";
-    }
-    else {
+    } else {
       return "False";
     }
   }
@@ -211,8 +209,7 @@ class NullableTest {
   public function mayReturnNull(int $x): ?int {
     if ($x > 5) {
       return 5;
-    }
-    else {
+    } else {
       return null;
     }
   }
@@ -246,8 +243,7 @@ class NullableTest {
   public function mayReturnNull(int $x): int {
     if ($x > 5) {
       return 5;
-    }
-    else {
+    } else {
       return null;
     }
   }
@@ -296,11 +292,10 @@ NULL
 <![CDATA[
 <?hh
 class NullableTest {
-  public function mayReturnNull(int $x): ?Xhp {
+  public function mayReturnNull(int $x): ?:xhp {
     if ($x > 5) {
-      return <ui:div> Hello World </ui:div>;
-    }
-    else {
+      return <div> Hello World </div>;
+    } else {
       return null;
     }
   }
@@ -332,8 +327,7 @@ class NullableTest {
   public function mayReturnNull(int $x): ?int {
     if ($x > 5) {
       return 5;
-    }
-    else {
+    } else {
       return null;
     }
   }
@@ -341,8 +335,7 @@ class NullableTest {
   public function nullableParameter(?int $x): int {
     if (is_null($x)) {
       return 100;
-    }
-    else {
+    } else {
       return -1;
     }
   }
@@ -383,8 +376,7 @@ class NullableTest {
   public function mayReturnNull(int $x): ?int {
     if ($x > 5) {
       return 5;
-    }
-    else {
+    } else {
       return null;
     }
   }
@@ -392,8 +384,7 @@ class NullableTest {
   public function nullableParameter(int $x): int {
     if (is_null($x)) {
       return 100;
-    }
-    else {
+    } else {
       return -1;
     }
   }
@@ -515,12 +506,12 @@ int(100)
 <?hh
  
 class UserDefinedType {}
+
 class NullableUserDefinedType {
   public function userDefinedTypeMayBeNull(?UserDefinedType $udt): string {
     if ($udt === null) {
       return "Null";
-    }
-    else {
+    } else {
       return "I'm Set";
     }
   }
@@ -558,6 +549,8 @@ string(7) "I'm Set"
           <para><emphasis>Caller</emphasis></para>
           <programlisting role="php">
 <![CDATA[
+<?hh
+
 function updateA($key,
                  $value,
                  $reviewer_unixname = null,
@@ -575,6 +568,8 @@ create_updateA($key, $comments);
           <para><emphasis>Callee</emphasis></para>
           <programlisting role="php">
 <![CDATA[
+<?hh
+
 function create_updateA(string $key, string $comments) {
   $comments = ($comments === '')
     ? 'Updated without comments.'
@@ -615,6 +610,8 @@ HipHop Fatal error: Argument 2 passed to create_updateA() must be an instance of
           </para>
           <programlisting role="php">
 <![CDATA[
+<?hh
+
 function create_updateA(string $key, ?string $comments) {
   $comments = ($comments === '')
     ? 'Updated without comments.'
@@ -631,6 +628,8 @@ function create_updateA(string $key, ?string $comments) {
             The above solution solves both the Hack and HHVM complaints that was seen without nullable. The &quot;bad&quot; way would solve the HHVM problem, but not the Hack problem. Basically, provide <literal>$comments</literal> in <literal>create_updateA()</literal> a default value of <literal>null</literal>. </para>
           <programlisting role="php">
 <![CDATA[
+<?hh
+
 function create_updateA(string $key, string $comments = null) {
   $comments = ($comments === '')
     ? 'Updated without comments.'
@@ -723,7 +722,7 @@ main_nmv();
 ]]>
           </programlisting>
           <para>
-            When the Hack type checker is run on the above code, the first error above is thrown. Wait?!? The <literal>if</literal> statement in <literal>foo()</literal> checks if <literal>$this->x</literal> is <literal>null</literal>. Why does Hack think this member variable might be <literal>null</literal> now on the call to <literal>get()</literal>?         Even though there was an explicit check to see if <literal>$this->x</literal> is <literal>null</literal>, the Hack type checker cannot provably guarantee that the first call to <literal></literal> did not <emphasis>reset</emphasis> <literal>$this->x</literal> back to <literal>null</literal>. Thus the second call to <literal></literal> could, theoretically, be done with <literal>$this->x</literal> being <literal>null</literal>. Even if practically the function call will not set the member variable to <literal>null</literal>, the Hack type checker is very restrictive in this case.         To get around this "limitation" in the type checker with respect to nullable types, use one or a combination of:
+            When the Hack type checker is run on the above code, the first error above is thrown. Wait?!? The <literal>if</literal> statement in <literal>foo()</literal> checks if <literal>$this->x</literal> is <literal>null</literal>. Why does Hack think this member variable might be <literal>null</literal> now on the call to <literal>get()</literal>?         Even though there was an explicit check to see if <literal>$this->x</literal> is <literal>null</literal>, the Hack type checker cannot provably guarantee that the first call to <literal>$this->x->get()</literal> did not <emphasis>reset</emphasis> <literal>$this->x</literal> back to <literal>null</literal>. Thus the second call to <literal>$this->x->get()</literal> could, theoretically, be done with <literal>$this->x</literal> being <literal>null</literal>. Even if practically the function call will not set the member variable to <literal>null</literal>, the Hack type checker is very restrictive in this case.         To get around this "limitation" in the type checker with respect to nullable types, use one or a combination of:
             <itemizedlist>
               <listitem>
                 <para>
@@ -732,12 +731,12 @@ main_nmv();
               </listitem>
               <listitem>
                 <para>
-                  <literal>nullthrows()</literal>
+                  <literal>invariant()</literal>
                 </para>
               </listitem>
               <listitem>
                 <para>
-                  <literal>invariant()</literal>
+                  Some library function that throws if its input is null and returns the non-nullable output, such as <literal>nullthrows()</literal> defined below
                 </para>
               </listitem>
             </itemizedlist>
@@ -797,8 +796,7 @@ class NullableNullThrows {
   public function foo(int $y): ?int {
     if ($y > 4) {
       return $y + 5;
-    }
-    else {
+    } else {
       return null;
     }
   }
@@ -833,16 +831,23 @@ It is incompatible with a nullable type
 ]]>
           </screen>
           <para>
-            In this particular case calling <literal>NullableNullThrows::foo()</literal>, could actually return a <literal>null</literal> value instead of an <literal>int</literal> (given that the return type has been annotated has nullable). The member variable <literal>$x</literal> in <literal>NullableNullThrowsTest</literal> is not a nullable type. Thus, trying to assign a nullable <literal>int</literal> to a non-nullable <literal>int</literal> will produce the above Hack type error. 
+            In this particular case calling <literal>NullableNullThrows::foo()</literal> could actually return a <literal>null</literal> value instead of an <literal>int</literal> (given that the return type has been annotated has nullable). The member variable <literal>$x</literal> in <literal>NullableNullThrowsTest</literal> is not a nullable type. Thus, trying to assign a nullable <literal>int</literal> to a non-nullable <literal>int</literal> will produce the above Hack type error. 
           </para>
         </informalexample>
       </para>
       <para>
-        There are legitimate times when there is an expectation that a variable will not be <literal>null</literal>, and, if that variable is <literal>null</literal>, a runtime exception should be thrown. For these cases, use <literal>nullthrows()</literal> The <literal>nullthrows()</literal> signature is:
+        There are legitimate times when there is an expectation that a variable will not be <literal>null</literal>, and, if that variable is <literal>null</literal>, a runtime exception should be thrown. For these cases, use a library function such as <literal>nullthrows()</literal>. The <literal>nullthrows()</literal> definition is something like:
         <informalexample>
           <programlisting role="php">
 <![CDATA[
-function nullthrows<T>(?T $x, ?string $message = null, ...): T {...}
+<?hh
+function nullthrows<T>(?T $x, ?string $message = null): T {
+  if ($x === null) {
+    throw new Exception($message ?: 'Unexpected null');
+  }
+
+  return $x;
+}
 ]]>
           </programlisting>
         </informalexample>
@@ -858,8 +863,7 @@ class NullableNullThrows {
   public function foo(int $y): ?int {
     if ($y > 4) {
       return $y + 5;
-    }
-    else {
+    } else {
       return null;
     }
   }
