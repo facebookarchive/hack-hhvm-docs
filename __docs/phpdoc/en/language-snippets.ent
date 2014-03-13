@@ -119,8 +119,7 @@ from one file system to another.</para></note>'>
 <!ENTITY note.passwordhashing '<note xmlns="http://docbook.org/ns/docbook">
  <title>Secure password hashing</title>
  <para>
-  It is not recommended to use this function to secure passwords, due to the fast nature of this hashing algorithm. See
-  <link linkend="faq.passwords.fasthash">here</link> for details.
+  It is not recommended to use this function to secure passwords, due to the fast nature of this hashing algorithm.
  </para>
 </note>
 '>
@@ -315,8 +314,7 @@ arrays may be disabled with the
 directive.'>
 
 <!ENTITY ini.shorthandbytes '<simpara xmlns="http://docbook.org/ns/docbook">When an <type>integer</type> is used, the
-value is measured in bytes. Shorthand notation, as described
-in <link linkend="faq.using.shorthandbytes">this FAQ</link>, may also be used.
+value is measured in bytes. Shorthand notation may also be used.
 </simpara>'>
 
 <!ENTITY info.deprecated.alias 'For backward compatibility, the following
@@ -330,18 +328,6 @@ deprecated alias may be used: '>
 deprecated and only exists for backwards compatibility reasons. The use of this
 function is not recommended, as it may be removed from PHP in the future.
 </simpara>'>
-
-<!ENTITY ext.windows.path.dll 'In order for this extension to work, there are
-<acronym xmlns="http://docbook.org/ns/docbook">DLL</acronym> files that must be available to the Windows
-system <literal xmlns="http://docbook.org/ns/docbook">PATH</literal>. For information on how to do this, see the
-<acronym xmlns="http://docbook.org/ns/docbook">FAQ</acronym> entitled "<link
- xmlns="http://docbook.org/ns/docbook" linkend="faq.installation.addtopath">How do I add my PHP directory to the PATH
-on Windows</link>". Although copying DLL
-files from the PHP folder into the Windows system directory also works
-(because the system directory is by default in the system&apos;s
-<literal xmlns="http://docbook.org/ns/docbook">PATH</literal>), this is not recommended.
-<emphasis xmlns="http://docbook.org/ns/docbook">This extension requires the following files to be in the
-<literal>PATH</literal>:</emphasis> '>
 
 <!ENTITY manual.migration.seealso 'See also the migration guides for PHP versions'>
 
@@ -1176,9 +1162,8 @@ field_offset</parameter></term><listitem><para>The numerical field offset. The
 <constant>E_WARNING</constant> is also issued.</para></listitem></varlistentry>'>
 
 <!ENTITY mysql.alternative.note '<para xmlns="http://docbook.org/ns/docbook">This extension is deprecated as of PHP 5.5.0, and will be removed in the future.
-Instead, the <link linkend="book.mysqli">MySQLi</link> or <link linkend="ref.pdo-mysql">PDO_MySQL</link> extension should be used.
-See also <link linkend="mysqlinfo.api.choosing">MySQL: choosing an API</link> guide and
-<link linkend="faq.databases.mysql.deprecated">related FAQ</link> for more information. 
+Instead, the <link linkend="book.mysqli">MySQLi</link> or <link linkend="ref.pdo-mysql">PDO_MySQL</link> extension should be used.>
+See also <link linkend="mysqlinfo.api.choosing">MySQL: choosing an API</link> guide for more information. 
 Alternatives to this function include:</para>'>
 
 <!-- Sybase Notes -->

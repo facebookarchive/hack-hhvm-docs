@@ -915,8 +915,7 @@ I am B.
     </note>
     
     <simpara>
-     PHP also understands arrays in the context of form variables 
-     (see the <link linkend="faq.html">related faq</link>).  You may, 
+     PHP also understands arrays in the context of form variables.  You may, 
      for example, group related variables together, or use this 
      feature to retrieve values from a multiple select input.  For 
      example, let's post a form to itself and upon submission display 

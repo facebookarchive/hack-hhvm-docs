@@ -7,18 +7,6 @@
   <option role="configure">--with-pspell[=dir]</option> option
   when compiling PHP.
  </para>
- <note>
-  <title>Note to Win32 Users</title>
-  <para>
-   &ext.windows.path.dll;
-   <filename>aspell-15.dll</filename> from the 
-   <filename>bin</filename> folder of the aspell installation.
-  </para>
-  <para>
-   Win32 support is available only in PHP 4.3.3 and later versions. Also, at
-   least aspell version 0.50 is required.
-  </para>
- </note>
 </section>
 
 <!-- Keep this comment at the end of the file

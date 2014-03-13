@@ -8,20 +8,6 @@
   Firebird/InterBase base install directory, which defaults to
   <filename>/usr</filename>.
  </para>
- <note>
-  <title>Note to Win32/Win64 Users</title>
-  <para>
-   &ext.windows.path.dll;
-   <filename>fbclient.dll,gds32.dll</filename>
-  </para>
-  <para>
-   If you installed the Firebird/InterBase database server on the
-   same machine PHP is running on, you will have this DLL already and
-   <filename>fbclient.dll,gds32.dll</filename> (gds32.dll is generated from the installer for legacy applications) will already be in 
-   the <literal>PATH</literal>.
-   
-  </para>
- </note>
 </section>
 
 <!-- Keep this comment at the end of the file

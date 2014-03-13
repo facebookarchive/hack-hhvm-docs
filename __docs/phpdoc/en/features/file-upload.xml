@@ -216,7 +216,7 @@ print "</pre>";
     <example>
      <title>Uploading array of files</title>
      <para>
-      PHP supports <link linkend="faq.html.arrays">HTML array feature</link>
+      PHP supports HTML array feature
       even with files.
      </para>
      <programlisting role="html">

@@ -8,13 +8,6 @@
   <option role="configure">--with-msql[=DIR]</option> option. DIR is the mSQL
   base install directory, defaults to <filename>/usr/local/msql3</filename>.
  </para>
- <note>
-  <title>Note to Win32 Users</title>
-  <para>
-   &ext.windows.path.dll;
-   <filename>msql.dll</filename>
-  </para>
- </note>
 </section>
 
 <!-- Keep this comment at the end of the file

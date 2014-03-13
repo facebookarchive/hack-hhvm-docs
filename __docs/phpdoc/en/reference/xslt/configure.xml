@@ -34,19 +34,6 @@
    <option role="configure">--with-sablot-js=DIR</option>.
   </simpara>
  </note>
- <note>
-  <title>Note to Win32 Users</title>
-  <para>
-  &ext.windows.path.dll;
-  <filename>sablot.dll</filename>, 
-  <filename>expat.dll</filename>, and 
-  <filename>iconv.dll</filename>
-  </para>
-  <para>
-   For PHP &lt;= 4.2.0, the file <filename>iconv.dll</filename> is 
-   not required.
-  </para>
- </note>
 </section>
 
 <!-- Keep this comment at the end of the file

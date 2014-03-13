@@ -871,8 +871,7 @@ Action application/x-httpd-php "/php/php-cgi.exe"
    </para>
    <para>
     In PHP 5 the MySQL client libraries are not bundled, because of license
-    problems and some others. For more information, read the <link
-     linkend="faq.databases.mysql.php5">FAQ entry</link>.
+    problems and some others.
    </para>
    <para>
     There is also a new extension, <link linkend="ref.mysqli">MySQLi (Improved

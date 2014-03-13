@@ -74,10 +74,6 @@
     also be made available in the global scope of the script. For example,
     <varname>$_POST['foo']</varname> would also exist as <varname>$foo</varname>.
    </para>
-   <para>
-    For related information, see the FAQ titled 
-    "<link linkend="faq.register-globals">How does register_globals affect me?</link>"
-   </para>
   </note>
   <note>
    <title>Variable variables</title>

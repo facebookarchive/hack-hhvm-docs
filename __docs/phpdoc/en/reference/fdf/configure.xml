@@ -24,13 +24,6 @@
    <option role="configure">--with-fdftk=/usr/local</option>.
   </simpara>
  </note>
- <note>
-  <title>Note to Win32 Users</title>
-  <para>
-   &ext.windows.path.dll;
-   <filename>fdftk.dll</filename>
-  </para>
- </note>
 </section>
 
 <!-- Keep this comment at the end of the file

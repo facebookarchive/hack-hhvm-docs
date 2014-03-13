@@ -544,23 +544,6 @@
   &internals2.ze1.index;
  </book>
 
- <book xml:id="faq">
-  <title>&FAQ;</title>
-  <titleabbrev>&FAQabbrev;</titleabbrev>
-  &faq.general;
-  &faq.mailinglist;
-  &faq.obtaining;
-  &faq.databases;
-  &faq.installation;
-  &faq.build;
-  &faq.using;
-  &faq.passwords;
-  &faq.html;
-  &faq.com;
-  &faq.migration5;
-  &faq.misc;
- </book>
-
  <book xml:id="appendices">
   <title>&Appendices;</title>
   &appendices.history;

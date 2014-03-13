@@ -75,13 +75,6 @@
    Please see the <link linkend="pdf.examples">examples</link> below for
    more information.
   </para>
-  <note>
-   <para>
-    If you're interested in alternative free PDF generators that do not 
-    utilize external PDF libraries, see <link linkend="faq.using.freepdf">
-    this related FAQ</link>.
-   </para>
-  </note>
  </preface>
  <!-- }}} -->
  

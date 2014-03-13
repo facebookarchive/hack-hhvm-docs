@@ -10,17 +10,6 @@
   be sure <option role="configure">--with-ldap-sasl[=DIR]</option> is
   used, and that <filename>sasl.h</filename> exists on the system.
  </para>
- <note>
-  <title>Note to Win32 Users</title>
-  <para>
-   &ext.windows.path.dll;
-   <filename>libeay32.dll</filename> and 
-   <filename>ssleay32.dll</filename>
-  </para>
-  <simpara>
-   Versions before PHP 4.3.0 additionally require <filename>libsasl.dll</filename>.
-  </simpara>
- </note>
  <para>
   In order to use Oracle LDAP libraries, proper <link
   linkend="oci8.requirements">Oracle environment</link> has to be set.
