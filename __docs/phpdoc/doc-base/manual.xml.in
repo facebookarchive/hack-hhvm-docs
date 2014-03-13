@@ -130,6 +130,7 @@
    <title>&HackCollections;</title>
    &hackref.collections.book;
   </set>
+  &hackref.hackmagic.book;
   <!--
   <set xml:id="refs.hack.other">
    <title>&HackOther;</title>
