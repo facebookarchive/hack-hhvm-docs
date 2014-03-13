@@ -114,7 +114,7 @@ function bar_partial($a, $b) {
     </para>
     <note>
       <para>
-        In Hack's partial mode, it is still possible to misspell a function name in a call to <literal>fun()</literal>. As usual, Hack will just assume everything is correct and the HHVM runtime will catch the error. In strict mode, however, an unbound name error will be thrown by Hack.
+        In Hack's partial mode, it is still possible to misspell a function name in a call to <function>fun</function>. As usual, Hack will just assume everything is correct and the HHVM runtime will catch the error. In strict mode, however, an unbound name error will be thrown by Hack.
       </para>
     </note>
   </sect1>

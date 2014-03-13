@@ -452,9 +452,9 @@
   </sect1>
 
   <sect1 xml:id="hack.callbacks">
-    <title>Callbacks and <literal>fun()</literal></title>
+    <title>Callbacks and <function>fun</function></title>
     <para>
-      A standard way to call a function is by using a callback. There are two primary PHP functions for calling callbacks: <literal>call_user_func()</literal> and <literal>call_user_func_array()</literal>.
+      A standard way to call a function is by using a callback. There are two primary PHP functions for calling callbacks: <function>call_user_func</function> and <function>call_user_func_array</function>.
      </para>
      <note>
         <para>
@@ -527,7 +527,7 @@
       </informalexample>
     </para>
     <para>
-      In order to make these type of callbacks type-checkable and type-safe, Hack has introduced <literal>fun()</literal>. <literal>fun()</literal> is a special function used to create a &quot;pointer&quot; to a function in a type-safe way. <literal>fun()</literal> takes a <literal>string</literal> corresponding to the name of the function to be called. It returns a &quot;type-safe&quot; <literal>string</literal> that can be used in, for example, <literal>call_user_func()</literal>. Building upon the example above to use <literal>fun()</literal>:
+     In order to make these type of callbacks type-checkable and type-safe, Hack has introduced <function>fun</function>. <function>fun</function> is a special function used to create a &quot;pointer&quot; to a function in a type-safe way. <function>fun</function> takes a <literal>string</literal> corresponding to the name of the function to be called. It returns a &quot;type-safe&quot; <literal>string</literal> that can be used in, for example, <literal>call_user_func()</literal>. Building upon the example above to use <function>fun</function>:
       <informalexample>
         <programlisting role="php">
   <![CDATA[
@@ -563,7 +563,7 @@
   ]]>
         </programlisting>
         <para>
-          Before calling <literal>call_user_func()</literal>, <literal>fun()</literal> is called. Returned from <literal>fun()</literal> is a <literal>string()</literal> that can be used and analyzed by the Hack type checker. This code runs exactly the same in HHVM as the first example, but, now the Hack type checker can catch typing errors. In <literal>testFun1()</literal>, imagine passing an <literal>int</literal> instead of a <literal>string</literal>. Hack will throw an error.
+         Before calling <literal>call_user_func()</literal>, <function>fun</function> is called. Returned from <function>fun</function> is a <literal>string()</literal> that can be used and analyzed by the Hack type checker. This code runs exactly the same in HHVM as the first example, but, now the Hack type checker can catch typing errors. In <literal>testFun1()</literal>, imagine passing an <literal>int</literal> instead of a <literal>string</literal>. Hack will throw an error.
         </para>
         <programlisting role="php">
   <![CDATA[
@@ -584,7 +584,7 @@
       </informalexample>
     </para>
     <para>
-      <emphasis>It is important to note</emphasis> that the argument to <literal>fun()</literal> must be a single-quoted, constant literal string representing a valid function name. For example:
+     <emphasis>It is important to note</emphasis> that the argument to <function>fun</function> must be a single-quoted, constant literal string representing a valid function name. For example:
       <informalexample>
         <programlisting role="php">
   <![CDATA[
@@ -600,7 +600,7 @@
       </informalexample>
     </para>
     <para>
-      The bottom line is to use <literal>fun()</literal> before using <literal>call_user_func()</literal> for these type of function calls.
+     The bottom line is to use <function>fun</function> before using <literal>call_user_func()</literal> for these type of function calls.
     </para>
   </sect1>
 

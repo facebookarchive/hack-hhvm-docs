@@ -76,7 +76,7 @@
       </listitem>
       <listitem>
         <para>
-          Using a string directly as a function is not supported (e.g., <literal>$func = 'myFunc'; $func(1,2);</literal>). Instead wrap the string around <literal>fun()</literal> (e.g., <literal>$func = fun('myFunc'); $func(1, 2);</literal>).
+         Using a string directly as a function is not supported (e.g., <literal>$func = 'myFunc'; $func(1,2);</literal>). Instead wrap the string around <function>fun</function> (e.g., <literal>$func = fun('myFunc'); $func(1, 2);</literal>).
         </para>
       </listitem>
       <listitem>
