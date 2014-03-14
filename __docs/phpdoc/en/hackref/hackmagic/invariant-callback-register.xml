@@ -19,7 +19,7 @@
    Subsequent calls to <function>invariant_callback_register</function> will replace the previously registered callback, if any. Setting a value of <literal>null</literal> will unregister a previously registered callback.
   </para>
   <para>
-   This function isn't actually treated specially by the typechecker. TODO we should probably move it out of this section.
+   This function isn't actually special-cased by the typechecker, but is included here due to its inextricably close relationship with <function>invariant</function> and <function>invariant_violation</function>, which are.
   </para>
  </refsect1>
 
