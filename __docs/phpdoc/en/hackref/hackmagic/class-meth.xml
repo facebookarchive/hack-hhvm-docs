@@ -1,23 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<refentry xmlns="http://docbook.org/ns/docbook" xml:id="function.hack.meth_caller">
+<refentry xmlns="http://docbook.org/ns/docbook" xml:id="function.hack.class_meth">
  <refnamediv>
-  <refname>meth_caller</refname>
-  <refpurpose>Creates a callable to call an instance method on any object</refpurpose>
+  <refname>class_meth</refname>
+  <refpurpose>Creates a callable to call a static method</refpurpose>
  </refnamediv>
  
  <refsect1 role="description">
   &reftitle.description;
   <methodsynopsis>
-   <type>callable</type><methodname>meth_caller</methodname>
+   <type>callable</type><methodname>class_meth</methodname>
    <methodparam><type>string</type><parameter>class_name</parameter></methodparam>
    <methodparam><type>string</type><parameter>method_name</parameter></methodparam>
   </methodsynopsis>
   <para>
-   <function>meth_caller</function> takes a class name and a method name, and returns a callable which will invoke that method on any object of that class passed to the callable. (This is hard to explain, see examples below.) Like <function>fun</function>, this is in order to aide the typechecker in statically analyzing callbacks passed into and out of functions.
-  </para>
-  <para>
-   Unlike <function>inst_meth</function>, this returns a callable which calls a specific method on an object to be provided later.
+   <function>class_meth</function> takes a class name and a method name, and returns a callable which will invoke that static method of that class. Like <function>fun</function>, this is in order to aide the typechecker in statically analyzing callbacks passed into and out of functions.
   </para>
  </refsect1>
 
@@ -29,7 +26,7 @@
      <term><parameter>class_name</parameter></term>
      <listitem>
       <para>
-       Class name representing the type of objects we are calling a method on.
+       Class on which the static method exists. Must be a constant, single-quoted string.
       </para>
      </listitem>
     </varlistentry>
@@ -37,7 +34,7 @@
      <term><parameter>method_name</parameter></term>
      <listitem>
       <para>
-       Method to call.
+       Static method to call. Must be a constant, single-quoted string.
       </para>
      </listitem>
     </varlistentry>
@@ -48,7 +45,7 @@
  <refsect1 role="returnvalues">
   &reftitle.returnvalues;
   <para>
-   Callable which will call <parameter>method_name</parameter> when passed an object of type <parameter>class_name</parameter>.
+   Callable which will call <parameter>class_name</parameter><literal>::</literal><parameter>method_name</parameter>.
   </para>
  </refsect1>
 
@@ -56,23 +53,26 @@
   &reftitle.examples;
   <para>
    <example>
-    <title>Simple <function>meth_caller</function> usage</title>
+    <title>Simple <function>class_meth</function> usage</title>
     <programlisting role="php">
 <![CDATA[
 <?hh
 
 class C {
-  function f(): string {
-    return 'hi test';
-  }
+  public static function f(string $s) {}
 }
 
 function test(): void {
-  $c = new C();
+  // The typechecker cannot determine what function $f refers to. It will reject
+  // this in strict mode, but in partial mode will admit it, even though it
+  // fails at runtime.
+  $f = array('C', 's');
+  $f(1);
 
-  // meth_caller will invoke method 'f' on objects of type 'C'.
-  $f = meth_caller('C', 'f');
-  echo $f($c); // Prints "hi test"
+  // But, with a call to class_meth(), we can know what function $f refers to,
+  // and check its arguments statically. This will produce a type error.
+  $f = class_meth('C', 's');
+  $f(1);
 }
 ]]>
     </programlisting>
@@ -80,22 +80,22 @@ function test(): void {
   </para>
   <para>
    <example>
-    <title>More realistic callback usage</title>
+    <title><function>class_meth</function> is most useful for callbacks</title>
     <programlisting role="php">
 <![CDATA[
 <?hh
 
-function run_callback((function (C): string) $f, C $c) {
-  return $f($c);
+function run_callback((function (string): void) $f, string $s) {
+  $f($s);
 }
 
 function test2(): void {
-  $c = new C();
+  // Although this works at runtime, the typechecker will reject this, since an
+  // array is not a function.
+  run_callback(array('C', 'f'), 'test');
 
-  // A more realistic example, where meth_caller can be used to generate a
-  // callback that can be passed around with full type information.
-  $f = meth_caller('C', 'f');
-  echo run_callback($f, $c); // Prints "hi test"
+  // But this is acceptable:
+  run_callback(class_meth('C', 'f'), 'test');
 }
 ]]>
     </programlisting>
@@ -103,17 +103,19 @@ function test2(): void {
   </para>
   <para>
    <example>
-    <title><function>meth_caller</function> used as callback for a map</title>
+    <title><function>class_meth</function> used as callback for a filter</title>
     <programlisting role="php">
 <![CDATA[
 <?hh
 
-$v = Vector {
-  Vector {42, 42, 42},
-  Vector {42}
-};
+class C {
+  public static function isOdd(int $i): bool {
+    return $i % 2 == 1;
+  }
+}
 
-$v->map(meth_caller('Vector', 'count')); // returns Vector {3, 1}
+$v = Vector { 1, 2, 3 };
+$v->filter(class_meth('C', 'isOdd')); // returns Vector { 1, 3 }
 ]]>
     </programlisting>
    </example>
@@ -125,8 +127,8 @@ $v->map(meth_caller('Vector', 'count')); // returns Vector {3, 1}
   <para>
    <simplelist>
     <member><function>fun</function></member>
-    <member><function>class_meth</function></member>
     <member><function>inst_meth</function></member>
+    <member><function>meth_caller</function></member>
    </simplelist>
   </para>
  </refsect1>

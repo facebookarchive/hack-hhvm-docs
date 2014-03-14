@@ -44,7 +44,7 @@
   &reftitle.examples;
   <para>
    <example>
-    <title><function>fun</function> gives the typechecker visibility into a callback and function call:</title>
+    <title><function>fun</function> gives the typechecker visibility into a callback and function call</title>
     <programlisting role="php">
 <![CDATA[
 <?hh
@@ -59,7 +59,7 @@ function test(): void {
   $f(1);
 
   // But, with a call to fun(), we can know what function $f refers to, and
-  // check its arguments statically.
+  // check its arguments statically. This will produce a type error.
   $f = fun('f');
   $f(1);
 }
@@ -69,7 +69,7 @@ function test(): void {
   </para>
   <para>
    <example>
-    <title><function>fun</function> is most useful for callbacks:</title>
+    <title><function>fun</function> is most useful for callbacks</title>
     <programlisting role="php">
 <![CDATA[
 <?hh
@@ -96,9 +96,9 @@ function test2(): void {
   &reftitle.seealso;
   <para>
    <simplelist>
-    <member><function>meth_caller</function></member>
     <member><function>class_meth</function></member>
     <member><function>inst_meth</function></member>
+    <member><function>meth_caller</function></member>
    </simplelist>
   </para>
  </refsect1>

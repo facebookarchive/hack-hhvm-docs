@@ -21,6 +21,8 @@
   &hackref.hackmagic.invariant-violation;
   &hackref.hackmagic.invariant-callback-register;
   &hackref.hackmagic.fun;
+  &hackref.hackmagic.class-meth;
+  &hackref.hackmagic.inst-meth;
   &hackref.hackmagic.meth-caller;
 </reference>
 
