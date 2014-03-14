@@ -398,15 +398,6 @@
     </term>
     <listitem>
      <para>
-      In PHP &lt; 5.3, OPcache stores the places where
-      <link linkend="internals2.opcodes.declare-class">DECLARE_CLASS</link>
-      opcodes used inheritance; when the file is loaded, OPcache then tries to
-      bind the inherited classes using the current environment. The problem is
-      that while the DECLARE_CLASS opcode may not be needed for the current
-      script, if the script requires that the opcode be defined, it may not
-      run.
-     </para>
-     <para>
       This configuration directive is ignored in PHP 5.3 and later.
      </para>
     </listitem>
