@@ -22,6 +22,9 @@
      <listitem><para>Pair: An index-based collection that can hold exactly two elements.</para></listitem>
    </itemizedlist>
   </para>
+  <para>
+   These classes are provided by default by the runtime in Hack code without any special imports. In PHP code, these classes are available in the <literal>HH</literal> namespace.
+  </para>
  </preface>
 
  &hackref.collections.setup;
