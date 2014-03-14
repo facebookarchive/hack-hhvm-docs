@@ -528,7 +528,6 @@
   <title>&Appendices;</title>
   &appendices.history;
   &appendices.migrationhhvm;
-  &appendices.oop;
   &appendices.debugger;
   &appendices.ini;
   &appendices.extensions;

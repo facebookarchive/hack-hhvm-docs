@@ -56,7 +56,7 @@
         <link linkend="language.exceptions">catch</link>
        </entry>
        <entry>
-        <link linkend="keyword.class">class</link>
+        <link linkend="language.oop5.basic.class">class</link>
        </entry>
       </row>
       <row>
@@ -124,7 +124,7 @@
         <function>exit</function>
        </entry>
        <entry>
-        <link linkend="keyword.class">extends</link>
+        <link linkend="language.oop5.basic.class">extends</link>
        </entry>
       </row>
       <row>
@@ -186,7 +186,7 @@
         <link linkend="language.namespaces">namespace</link>
        </entry>
        <entry>
-        <link linkend="keyword.class">new</link>
+        <link linkend="language.oop5.basic.class">new</link>
        </entry>
        <entry>
         <link linkend="language.operators.logical">or</link>
@@ -240,7 +240,7 @@
         <link linkend="language.namespaces">use</link>
        </entry>
        <entry>
-        <link linkend="keyword.class">var</link>
+        <link linkend="language.oop5.basic.class">var</link>
        </entry>
        <entry>
         <link linkend="control-structures.while">while</link>
