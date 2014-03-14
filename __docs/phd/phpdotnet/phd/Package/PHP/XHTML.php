@@ -269,7 +269,11 @@ abstract class Package_PHP_XHTML extends Package_Generic_XHTML {
             $retval .= '<p class="refpurpose"><span class="refname">'. $refnames. '</span> &mdash; <span class="dc-title">';
             return $retval;
         }
-        return "</span></p>\n";
+        $ret = "</span></p>\n";
+        if (array_key_exists("hhvmsupport", $this->cchunk) && !$this->cchunk["hhvmsupport"]) {
+            $ret .= "<br><h1> NOT SUPPORTED IN HHVM</h1>";
+        }
+        return $ret;
     }
     public function format_refsynopsisdiv($open, $tag, $attrs, $props) {
         if ($open) {
@@ -305,6 +309,17 @@ abstract class Package_PHP_XHTML extends Package_Generic_XHTML {
         // for generics. In Render.php::execute (near line 143), $data ends up being false and the
         // raw value is used instead.
         $ret = $this->TEXT($value);
+
+        // Only check existance of a function if we are not looking 
+        // at a hack function. And only check if we are running 
+        // the renderer with hhvm. checking hhvm support would not make 
+        // sense if running PHP5, obviously
+        if (strpos($this->CURRENT_ID, "hack.") === false &&  
+            (strpos(phpversion(), "hiphop") !== false || 
+            strpos(phpversion(), "hhvm") !== false)) { 
+          $this->cchunk["hhvmsupport"] = $this->check_hhvm_function_support($value);
+        }
+        
         $this->cchunk["refname"][] = $ret;
         return $ret;
     }
@@ -708,6 +723,17 @@ abstract class Package_PHP_XHTML extends Package_Generic_XHTML {
         return $this->format_container_chunk($open, "reference", $attrs, $props);
     }
 
+    // For HHVM
+    private function check_hhvm_function_support($function_or_method_name) {
+      if (strpos($function_or_method_name, "::") === false) {
+        return function_exists($function_or_method_name);
+      } else {
+        // If we have a ::, it is a class name
+        $cm_split = explode("::", $function_or_method_name);
+        return method_exists($cm_split[0], 
+                           $cm_split[1]);
+      }
+    }
 }
 
 /*

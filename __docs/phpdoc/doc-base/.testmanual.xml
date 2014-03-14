@@ -174,7 +174,7 @@ vim600: syn=xml fen fdm=syntax fdl=2 si
 vim: et tw=78 syn=sgml
 vi: ts=1 sw=1
 -->
- <phpdoc:classref xmlns:phpdoc="http://php.net/ns/phpdoc" xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:xi="http://www.w3.org/2001/XInclude" xml:id="class.vectortv">
+ <phpdoc:classref xmlns:phpdoc="http://php.net/ns/phpdoc" xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:xi="http://www.w3.org/2001/XInclude" xml:id="class.hack.vectortv">
  <title>The Vector&lt;Tv&gt; class</title>
  <titleabbrev>Vector&lt;Tv&gt;</titleabbrev>
 
@@ -228,7 +228,7 @@ vi: ts=1 sw=1
 </classsynopsis>
  </section>
 </partintro>
-<refentry xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="vectortv.add">
+<refentry xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="hack.vectortv.add">
  <refnamediv>
   <refname>Vector&lt;Tv&gt;::add</refname>
   <refpurpose>???????????</refpurpose>
