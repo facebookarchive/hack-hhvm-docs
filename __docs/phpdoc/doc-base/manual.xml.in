@@ -125,10 +125,7 @@
     </para>
    </abstract>
   </info>
-  <set xml:id="hack.refs.collections">
-   <title>&HackCollections;</title>
-   &hackref.collections.book;
-  </set>
+  &hackref.collections.book;
   &hackref.hackmagic.book;
   <!--
   <set xml:id="refs.hack.other">
