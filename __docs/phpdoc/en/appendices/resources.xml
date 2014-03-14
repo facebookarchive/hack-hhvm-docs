@@ -4,7 +4,7 @@
  <title>List of Resource Types</title>
  <para>
   The following is a list of functions which create, use or destroy
-  PHP resources.  The function <function>is_resource</function> can be
+  HHVM resources.  The function <function>is_resource</function> can be
   used to determine if a variable is a resource and
   <function>get_resource_type</function> will return the type of
   resource it is.

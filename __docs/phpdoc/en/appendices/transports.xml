@@ -4,7 +4,7 @@
  <title>List of Supported Socket Transports</title>
  <para>
   The following is a list of the various URL style socket transports
-  that PHP has built-in for use with the streams based socket
+  that HHVM has built-in for use with the streams based socket
   functions such as <function>fsockopen</function>, and
   <function>stream_socket_client</function>.  These transports do
   <emphasis>not</emphasis> apply to the 
@@ -13,16 +13,15 @@
 
  <para>
   For a list of transports installed in your version of
-  PHP use <function>stream_get_transports</function>.
+  HHVM use <function>stream_get_transports</function>.
  </para>
 
  <!-- FIXME PHP_6 Mentioned PHP 6, but let's explore not hard coding PHP versions like this -->
  <section xml:id="transports.inet">
   <title>Internet Domain: TCP, UDP, SSL, and TLS</title>
   <simpara>
-   PHP 4, PHP 5.
-   <literal>ssl://</literal> &amp; <literal>tls://</literal> since PHP 4.3.0
-   <literal>sslv2://</literal> &amp; <literal>sslv3://</literal> since PHP 5.0.2
+   <literal>ssl://</literal> &amp; <literal>tls://</literal>
+   <literal>sslv2://</literal> &amp; <literal>sslv3://</literal> 
   </simpara>
 
   <note>
@@ -77,9 +76,6 @@
    The <literal>ssl://</literal> and <literal>tls://</literal> transports 
    (available only when openssl support is compiled into PHP) are extensions 
    of the <literal>tcp://</literal> transport which include SSL encryption.
-   Since PHP 4.3.0 OpenSSL support must be statically 
-   compiled into PHP, since PHP 5.0.0
-   it may be compiled as a module or statically.
   </simpara>
 
   <simpara>

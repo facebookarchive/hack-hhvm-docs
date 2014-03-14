@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- $Revision: 331317 $ -->
 <appendix xml:id="types.comparisons" xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink">
- <title>PHP type comparison tables</title>
+ <title>HHVM type comparison tables</title>
  <para>
-  The following tables demonstrate behaviors of PHP 
+  The following tables demonstrate behaviors of HHVM 
   <link linkend="language.types">types</link> and 
   <link linkend="language.operators.comparison">comparison 
   operators</link>, for both loose and strict comparisons.  This 
@@ -47,7 +47,7 @@
  </note>
  <para>
   <table>
-   <title>Comparisons of <varname>$x</varname> with PHP functions</title>
+   <title>Comparisons of <varname>$x</varname> with HHVM functions</title>
    <tgroup cols="6">
     <thead>
      <row>

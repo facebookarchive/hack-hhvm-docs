@@ -4,9 +4,9 @@
  <title>Userland Naming Guide</title>
  <para>
   The following is a guide for how to best choose names for identifiers
-  in userland PHP code. When choosing names for any code that creates symbols
+  in userland HHVM code. When choosing names for any code that creates symbols
   in the global namespace, it is important to take into account the following
-  guidelines to prevent future versions of PHP from clashing with your
+  guidelines to prevent future versions of HHVM from clashing with your
   symbols.
  </para>
 
@@ -30,10 +30,8 @@
  <section xml:id="userlandnaming.rules">
   <title>Rules</title>
   <para>
-   The following list gives an overview of which rights the PHP project
+   The following list gives an overview of which rights the HHVM project
    reserves for itself, when choosing names for new internal identifiers.
-   The definitive guide is the official
-   <link xlink:href="&url.userlandnaming.cs;">CODING STANDARDS</link>:
   </para>
 
   <itemizedlist>
@@ -52,7 +50,7 @@
    </listitem>
    <listitem>
     <para>
-     PHP will prefix any global symbols of an extension with the name of
+     HHVM will prefix any global symbols of an extension with the name of
      the extension. (In the past, there have been numerous
      exceptions to this rule.) Examples:
     </para>
@@ -83,9 +81,9 @@
    </listitem>
    <listitem>
     <para>
-     PHP reserves all symbols starting with <literal>__</literal>
+     HHVM reserves all symbols starting with <literal>__</literal>
      as magical. It is recommended that you do not create symbols starting
-     with <literal>__</literal> in PHP unless
+     with <literal>__</literal> in HHVM unless
      you want to use documented magical functionality. Examples:
     </para>
     <itemizedlist>

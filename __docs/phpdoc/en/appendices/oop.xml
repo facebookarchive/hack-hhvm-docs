@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- $Revision: 324459 $ -->
- <appendix xml:id="oop4" xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink">
-  <title>Classes and Objects (PHP 4)</title>
+ <appendix xml:id="oop" xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink">
+  <title>Classes and Objects</title>
 
   <sect1 xml:id="keyword.class">
    <title><literal>class</literal></title>
@@ -55,7 +55,7 @@ class Cart {
     <simpara>
      You can <emphasis>NOT</emphasis> break up a class definition into
      multiple files. You also can <emphasis>NOT</emphasis> break a class
-     definition into multiple PHP blocks, unless the break is within a method
+     definition into multiple HHVM blocks, unless the break is within a method
      declaration. The following will not work:
     </simpara>
     <para>
@@ -104,15 +104,15 @@ class test {
    <caution>
     <simpara>
      The name <literal>stdClass</literal> is used internally by
-     Zend and is reserved. You cannot have a class named
-     <literal>stdClass</literal> in PHP.
+     HHVM and is reserved. You cannot have a class named
+     <literal>stdClass</literal> in HHVM.
     </simpara>
    </caution>
     
    <caution>
     <simpara>
       The function names <literal>__sleep</literal> and
-      <literal>__wakeup</literal> are magical in PHP classes. You
+      <literal>__wakeup</literal> are magical in HHVM classes. You
       cannot have functions with these names in any of your
       classes unless you want the magic functionality associated
       with them. See below for more information.
@@ -121,25 +121,16 @@ class test {
     
    <caution>
     <simpara>
-      PHP reserves all function names starting with <literal>__</literal> as magical.
+      HHVM reserves all function names starting with <literal>__</literal> as magical.
       It is recommended that you do not use function names with
-      <literal>__</literal> in PHP unless you want some documented magic functionality.
+      <literal>__</literal> in HHVM unless you want some documented magic functionality.
     </simpara>
    </caution>
-
-   <simpara>
-    In PHP 4, only constant initializers for <literal>var</literal>
-    variables are allowed. To initialize variables with non-constant
-    values, you need an initialization function which is called
-    automatically when an object is being constructed from the
-    class. Such a function is called a constructor (see below).
-   </simpara>
    <informalexample>
     <programlisting role="php">
 <![CDATA[
 <?php
 class Cart {
-    /* None of these will work in PHP 4. */
     var $todays_date = date("Y-m-d");
     var $name = $firstname;
     var $owner = 'Fred ' . 'Jones';
@@ -202,13 +193,13 @@ $another_cart->add_item("0815", 3);
     <filename>README.TXT</filename>, as long as they are in different directories.
     Just like with directories where you'll have to type the full pathname in
     order to reach each file from the toplevel directory, you have to specify
-    the complete name of the function you want to call: in PHP terms, the
+    the complete name of the function you want to call: in HHVM terms, the
     toplevel directory would be the global namespace, and the pathname separator
     would be <literal>-&gt;</literal>.  Thus, the
     names <varname>$cart-&gt;items</varname> and
     <varname>$another_cart-&gt;items</varname> name two different variables.
     Note that the variable is named <varname>$cart-&gt;items</varname>, not
-    <varname>$cart-&gt;$items</varname>, that is, a variable name in PHP has
+    <varname>$cart-&gt;$items</varname>, that is, a variable name in HHVM has
     only a single dollar sign (<literal>$</literal>).
    </para>
 
@@ -390,7 +381,7 @@ $ncart->add_item("10", 1);  // (inherited functionality from cart)
    </note>
   </sect1>
 
-  <sect1 xml:id="oop4.constructor">
+  <sect1 xml:id="oop.constructor">
    <title>Constructors</title>
 
    <para>
@@ -484,13 +475,11 @@ $b = new B;
    <para>
     The function B() in class A will suddenly become a
     constructor in class B, although it was never intended to be.
-    PHP 4 does not care if the function is
-    being defined in class B, or if it has been inherited.
    </para>
    
    <caution>
     <simpara>
-     PHP doesn't call constructors of the base class 
+     HHVM doesn't call constructors of the base class 
      automatically from a constructor of a derived class. It is
      your responsibility to propagate the call to constructors
      upstream where appropriate.
@@ -501,19 +490,13 @@ $b = new B;
     Destructors are functions that are called automatically
     when an object is destroyed, either with <function>unset</function>
     or by simply going out of scope. There are no destructors
-    in PHP. You may use <function>register_shutdown_function</function>
+    in HHVM. You may use <function>register_shutdown_function</function>
     instead to simulate most effects of destructors.
    </para>
   </sect1>
 
  <sect1 xml:id="keyword.paamayim-nekudotayim"><!-- :-) -->
    <title>Scope Resolution Operator (<literal>::</literal>)</title>
-
-   <caution>
-    <simpara>
-     The following is valid for PHP 4 and later only.
-    </simpara>
-   </caution>
 
    <para>
     Sometimes it is useful to refer to functions and variables
@@ -640,13 +623,13 @@ $b->example();
   </informalexample>
  </sect1>
 
- <sect1 xml:id="oop4.serialization">
+ <sect1 xml:id="oop.serialization">
   <title>Serializing objects - objects in sessions</title>
 
   <para>
    <function>serialize</function> returns a string containing a
    byte-stream representation of any value that can be stored in
-   PHP. <function>unserialize</function> can use this string to
+   HHVM. <function>unserialize</function> can use this string to
    recreate the original variable values. Using serialize to
    save an object will save all variables in an object.  The
    functions in an object will not be saved, only the name of
@@ -709,7 +692,7 @@ $b->example();
   <para>
    If you are using sessions and use <function>session_register</function>
    to register objects, these objects are serialized automatically
-   at the end of each PHP page, and are unserialized automatically on
+   at the end of each HHVM page, and are unserialized automatically on
    each of the following pages. This basically means that these objects
    can show up on any of your pages once they become part of your
    session.
@@ -722,7 +705,7 @@ $b->example();
    of your pages. If you don't and an object is being
    unserialized without its class definition being present, it
    will lose its class association and become an object of class
-   <classname>__PHP_Incomplete_Class_Name</classname> without any functions available
+   <classname>__HHVM_Incomplete_Class_Name</classname> without any functions available
    at all, that is, it will become quite useless.
   </para>
   
@@ -734,7 +717,7 @@ $b->example();
   </para>
  </sect1>
 
- <sect1 xml:id="oop4.magic-functions">
+ <sect1 xml:id="oop.magic-functions">
   <title>The magic functions <literal>__sleep</literal> and <literal>__wakeup</literal></title>
 
   <para>
@@ -769,7 +752,7 @@ $b->example();
   </para>
  </sect1>
   
- <sect1 xml:id="oop4.newref">
+ <sect1 xml:id="oop.newref">
    <title>References inside the constructor</title>
    <para>
     Creating references within the constructor can lead to confusing
@@ -845,8 +828,7 @@ set in constructor */
     return a reference by default, instead it returns a copy.
     <note>
      <simpara>
-      There is no performance loss (since PHP 4 and up use reference
-      counting) returning copies instead of references. On the
+      There is no performance loss returning copies instead of references. On the
       contrary it is most often better to simply work with copies
       instead of references, because creating references takes some
       time where creating copies virtually takes no time (unless none
@@ -956,18 +938,12 @@ class B: 11
    </para>
   </sect1>
 
-  <sect1 xml:id="oop4.object-comparison">
+  <sect1 xml:id="oop.object-comparison">
    <title>Comparing objects</title>
-  <para>
-   In PHP 4, objects are compared in a very simple manner, namely: Two object
-   instances are equal if they have the same attributes and values, and are
-   instances of the same class. Similar rules are applied when comparing two
-   objects using the identity operator (<literal>===</literal>).
-  </para>
   <para>
    If we were to execute the code in the example below:
    <example>
-    <title>Example of object comparison in PHP 4</title>
+    <title>Example of object comparison</title>
     <programlisting role="php">
 <![CDATA[
 <?php
@@ -1054,7 +1030,7 @@ o1 !== o2 : TRUE
    rules apply. In the example below we create a container class that stores
    an associative array of <classname>Flag</classname> objects.
    <example>
-    <title>Compound object comparisons in PHP 4</title>
+    <title>Compound object comparisons</title>
     <programlisting role="php">
 <![CDATA[
 <?php

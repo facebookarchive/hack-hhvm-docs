@@ -5,8 +5,6 @@
  <para>
   The following is a list of a few built-in stream filters for
   use with <function>stream_filter_append</function>.
-  Your version of PHP may have more filters (or fewer) than those
-  listed here.
  </para>
 
  <para>
@@ -47,7 +45,6 @@
 
   <simpara>
    <literal>string.rot13</literal>
-   (since PHP 4.3.0)
    Use of this filter is equivalent to processing all stream data through
    the <function>str_rot13</function> function.
   </simpara>
@@ -67,7 +64,6 @@ fwrite($fp, "This is a test.\n");
 
   <simpara>
    <literal>string.toupper</literal>
-   (since PHP 5.0.0)
    Use of this filter is equivalent to processing all stream data through
    the <function>strtoupper</function> function.
   </simpara>
@@ -87,7 +83,6 @@ fwrite($fp, "This is a test.\n");
 
   <simpara>
    <literal>string.tolower</literal>
-   (since PHP 5.0.0)
    Use of this filter is equivalent to processing all stream data through
    the <function>strtolower</function> function.
   </simpara>
@@ -107,7 +102,6 @@ fwrite($fp, "This is a test.\n");
 
   <simpara>
    <literal>string.strip_tags</literal>
-   (since PHP 5.0.0)
    Use of this filter is equivalent to processing all stream data through
    the <function>strip_tags</function> function.
    It accepts parameters in one of two forms:
@@ -143,8 +137,7 @@ fclose($fp);
 
   <simpara>
    Like the string.* filters, the convert.* filters perform actions
-   similar to their names.  The convert filters were added with
-   PHP 5.0.0.
+   similar to their names. 
    For more information on a given filter, refer to the manual page for
    the corresponding function.
   </simpara>

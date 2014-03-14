@@ -527,18 +527,11 @@
  <book xml:id="appendices">
   <title>&Appendices;</title>
   &appendices.history;
-  &appendices.migration55;
-  &appendices.migration54;
-  &appendices.migration53;
-  &appendices.migration52;
-  &appendices.migration51;
-  &appendices.migration5;
-  &appendices.oop4;
+  &appendices.migrationhhvm;
+  &appendices.oop;
   &appendices.debugger;
-  &appendices.configure.index;
   &appendices.ini;
   &appendices.extensions;
-  &appendices.aliases;
   &appendices.reserved;
   &appendices.resources;
   &appendices.filters;
@@ -549,23 +542,7 @@
   &appendices.about;
   &appendices.license;
   &global.function-index;
-  <appendix xmlns="http://docbook.org/ns/docbook" xml:id="doc.changelog">
-   <title>&ChangelogListingTitle;</title>
-    <para>&ChangelogListingBundledDescription;</para>
-    <?phpdoc changelog-config-since="5.0.0" ?>
-    <?phpdoc generate-changelog-for-membership="core bundled bundledexternal" ?>
-   </appendix>
  </book>
-
- <!--
- <book xml:id="chmonly">
-  <title>&CHMEdition;</title>
-  &chmonly.aboutchm;
-  &chmonly.usingchm;
-  &chmonly.search;
-  &chmonly.integration;
- </book>
- -->
 
 </set>
 

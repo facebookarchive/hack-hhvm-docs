@@ -3,9 +3,14 @@
 
  <section xml:id="ini.list" xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:xi="http://www.w3.org/2001/XInclude">
   <title>List of &php.ini; directives</title>
+  <note>
+   <para>
+      HHVM does not currently support all the listed HHVM directives. This is being actively worked on and should be coming very soon.
+   </para>
+  </note>  
   <para>
    This list includes the &php.ini; directives you can set to configure your
-   PHP setup.
+   HHVM setup.
   </para>
   <para>
    The "Changeable" column shows the modes determining when and where a directive may be set.  

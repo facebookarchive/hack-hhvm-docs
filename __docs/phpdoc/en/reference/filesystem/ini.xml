@@ -83,9 +83,8 @@
       <para>
        This option was introduced immediately after the release of version 
        4.0.3. For versions up to and including 4.0.3 you can only disable this 
-       feature at compile time by using the configuration switch 
-       <link linkend="configure.disable-url-fopen-wrapper"><parameter>
-       --disable-url-fopen-wrapper</parameter></link>.
+       feature at compile time by using the configuration switch <parameter>
+       --disable-url-fopen-wrapper</parameter>.
       </para>
      </note>
      <warning>

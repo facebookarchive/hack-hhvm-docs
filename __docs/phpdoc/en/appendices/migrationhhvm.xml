@@ -1,11 +1,16 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<!-- $Revision: 332080 $ -->
+<?xml version="1.0" encoding="utf-8"?>
+<appendix xml:id="migrationhhvm" xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink">
+ <title>Migrating from PHP 5.5.x to HHVM</title>
+ <simpara>
+Coming Soon
+ </simpara>
 
-<appendix xml:id="history" xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink">
- <title>History of HHVM</title>
- <para>
-  A good history of HHVM can be found at the <link xlink:href="&url.hhvm.wikipedia;">HHVM wikipedia page</link>.
- </para>
+ <sect1 xml:id="migrationhhvm.differences">
+  <title>Differences between PHP 5.5.x and HHVM</title>
+  <simpara>
+  Coming Soon
+  </simpara>
+ </sect1>
 </appendix>
 
 <!-- Keep this comment at the end of the file

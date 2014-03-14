@@ -7,100 +7,22 @@
  <sect1 xml:id="about.formats">
   <title>Formats</title>
   <para>
-   The PHP manual is provided in several formats. These formats can be divided
-   into two groups: online readable formats, and downloadable packages.
-  </para>
-  <note>
-   <para>
-    Some publishers have made available printed versions of this manual. We
-    cannot recommend any of those, as they tend to become out-of-date very
-    quickly.
-   </para>
-  </note>
-  <para>
-   The manual can be read online at the <link xlink:href="&url.php;">PHP.net website</link>,
-   and on the numerous mirror sites. For best performance, choose
-   the closest mirror. The online version of the PHP manual has currently two
-   <acronym>CSS</acronym> stylesheets, web friendly and a printer-friendly stylesheet.
+   The HHVM manual is currently in an English-only, online format.
   </para>
   <para>
-   Two notable advantages of the online manual over most of the offline formats is the
-   integration of <link linkend="about.notes">user-contributed
-   notes</link> and the <link xlink:href="&url.php.urlhowto;">URL shortcuts</link> that
-   may be used to get to the desired manual parts quickly. An obvious disadvantage is
-   the requirement to be online to view this edition of the manual.
-  </para>
-  <para>
-   There are several offline formats of the manual, and the most appropriate
-   format for depends on the operating system, and personal
-   reading style. For information on how the manual is generated in so many
-   formats, read the <link linkend="about.generate">'How we generate the
-   formats'</link> section of this appendix.
-  </para>
-  <para>
-   The most cross-platform format of the manual is the HTML version. This
-   is provided both as a single HTML file and as a package of individual files
-   for each section (which results in a collection of several thousand files).
-   We provide these versions compressed, so a decompression utility is 
-   required to retrieve the files contained within the archives.
-  </para>
-  <!--
-   The PDF version of the PHP Manual is "currently" unavailable. Perhaps
-   one day it will exist.
-  <para>
-   Another popular cross-platform format, and the format most suited to
-   printing, is PDF (also known as Adobe Acrobat). But beware that the manual
-   is over 2000 pages in length, and constantly being revised.
-  </para>
-  <note>
-   <para>
-    Many programs exist to view <acronym>PDF</acronym> files, such as the
-    <link xlink:href="&url.adobe.acrobat;">Adobe Acrobat Reader</link>.
-   </para>
-  </note>
-  -->
-  <para>
-   For Windows platforms, the <productname>Windows HTML Help</productname> 
-   version of the manual enhances the HTML format for use with the 
-   <productname>Windows HTML Help</productname> application. This
-   version provides full-text search, a full index, and bookmarking. Many
-   popular Windows PHP development environments also integrate with this
-   version of the documentation to provide easy access. CHM viewers for
-   Linux desktops are also available. Check out
-   <link xlink:href="&url.xchm;">xCHM</link> or
-   <link xlink:href="&url.gnochm;">GnoCHM</link>.
-  </para>
-  
-  <para>
-   There is also an <link xlink:href="&url.php.echm;">extended CHM version</link>
-   available, which is updated less frequently, but provides many additional
-   features. It will only work on <productname>Microsoft Windows</productname>
-   though, because of the technologies used to build the help pages.
+   The manual can be read online at the <link xlink:href="&url.hhvm.manual;">hhvm.com website</link>
   </para>
  </sect1>
  
  <sect1 xml:id="about.notes">
   <title>About user notes</title>
   <para>
-   The user-contributed notes play an important role in the development of
-   this manual. By allowing readers of the manual to contribute examples,
-   caveats, and further clarifications from their browser, we are able to
-   incorporate that feedback into the main text of the manual. And until the
-   notes have been incorporated, they may be viewed in their submitted form
-   online, and in some of the offline formats.
+    Currently, each topic links to the <link xlink:href="&url.hhvm.manual;">php.net</link> version of the user notes. Discussions are ongoing on how best to handle user notes moving forward.
   </para>
   <note>
    <para>
-    The user-contributed notes are not moderated before they appear online, so
-    the quality of the writing or code examples, and even the veracity of the
-    contribution, cannot be guaranteed. (Not that there is any guarantee of
-    the quality or accuracy of the manual text itself.)
-   </para>
-  </note>
-  <note>
-   <para>
     For the purposes of license coverage the user-contributed notes are
-    considered part of the PHP manual, and are therefore covered by the
+    considered part of the HHVM manual, and are therefore covered by the
     same license that covers this documentation (Creative Commons Attribution
     at the moment). For
     more details see the <link linkend="copyright">Manual's Copyright</link>
@@ -113,7 +35,7 @@
    <title>How to read a function definition (prototype)</title>
    <para>
     Each function in the manual is documented for quick reference. Knowing how 
-    to read and understand the text will make learning PHP 
+    to read and understand the text will make learning HHVM and Hack 
     much easier.  Rather than relying on examples or cut/paste, everyone should 
     know how to read function definitions (prototypes).  Let's begin:
    </para>
@@ -122,7 +44,7 @@
      Prerequisite: Basic understanding of <link linkend="language.types">types</link>
     </title>
     <para>
-     Although PHP is a loosely typed language, it's important to have 
+     Hack provides a static-typing option. It's important to have 
      a basic understanding of <link linkend="language.types">types</link> as 
      they have important meaning.
     </para>
@@ -256,109 +178,24 @@ Returns the length of given string.
      available in a released version since PHP 4.3.0. 
     </para>
  </sect1>
- 
- <sect1 xml:id="about.phpversions">
-  <title>PHP versions documented in this manual</title>
-  <para>
-   <!-- FIXME PHP_6 What is the latest? -->
-   The manual contains information about past, current, and future versions
-   of PHP. Changes in behaviour are documented as notes, changelogs, and 
-   inline text within the manual pages. 
-   The earliest documented version is PHP 4.1.0, 
-   whereas the latest is PHP 5.x.x.
-  </para>
-  <para>
-   When documentation exists for the latest (unreleased) developmental versions
-   of PHP, it will be labeled as either "available in Git" or "development
-   version." And while these changes should be planned for, in rare cases they
-   may change.
-  </para>
-  <para>
-   All development takes place in Git and may be checked out
-   as described within the <link xlink:href="&url.php.anongit;">anonymous Git
-   access</link> page. Or, these same sources may be downloaded as
-   <link xlink:href="&url.php.snapshots;">PHP snapshots</link>, which are available
-   for every active PHP branch.
-  </para>
-  <para>
-   And to clarify, the manual will refer to major, minor and point PHP releases.
-   Using PHP <literal>5.3.1</literal> as an example, the <emphasis>5</emphasis>
-   refers to the major version, <emphasis>3</emphasis> to minor, and
-   <emphasis>1</emphasis> is the point release. Typically PHP only adds new features
-   to major and minor releases, and fixes bugs in point releases. However, this
-   convention is not always true.
-  </para>
-  <para>
-   Also note that the PHP manual is written in present tense, not future tense,
-   even for documented features that are not yet available. The reason for this
-   is so the manual can stand the test of time, thus not require tedious grammar
-   updates with every PHP release.
-  </para>
-  <para>
-   Many times the PHP manual lists "Default Values" for PHP directives. These 
-   values are based on how PHP behaves without a &php.ini; configuration file,
-   so this may differ from values found in the distributed
-   <filename>php.ini-development</filename> and <filename>php.ini-production</filename>
-   files. They also refer to the latest version of PHP, although changelog entries
-   do mention past values. See the <link linkend="ini.list">PHP directive 
-   appendix</link> for details regarding these values and changes.
-  </para>
- </sect1>
-   
- <sect1 xml:id="about.more">
-  <title>How to find more information about PHP</title>
-  <para>
-   This manual does not attempt to provide instruction about general
-   programming practices. First-time - or even just beginning -
-   programmers may find it difficult to learn how to program in PHP using
-   this manual exclusively. Instead, seek out a text more oriented towards
-   beginners.
-  </para>
-  <para>
-   There are a number of active mailing lists for discussion on all aspects of
-   programming with PHP. If stuck with a problem, consider using these lists.
-   For support options, including mailing lists, view <link
-   xlink:href="&url.php.support;">the PHP.net support page</link>.
-  </para>
- </sect1>
 
  <sect1 xml:id="about.howtohelp">
   <title>How to help improve the documentation</title>
   <para>
-   There are three ways everyone can help improve this documentation.
+   There are two ways everyone can help improve this documentation.
   </para>
   <para>
    If an error is found in this manual, in any language, please report them
-   using the bug system at <link xlink:href="&url.php.bugs;">&url.php.bugs;</link>.
-   Classify the bug as <literal>"Documentation Problem"</literal>. All documentation related
-   problems, including those about manual formats, should be submitted as bug 
-   reports.
+   using the bug link at the bottom of every topic.
   </para>
   <note>
    <para>
     Please don't abuse the bug system by submitting requests for help. 
-    Instead, use one of the many 
-    <link xlink:href="&url.php.support;">support options</link>.
+    Instead, use a support option like the <link xlink:href="&url.hhvm.irc;">IRC channel</link>.
    </para>
   </note>
   <para>
-   By contributing notes, users may provide additional examples, caveats, and
-   clarifications for other readers. But please do not submit bug reports using the
-   annotation system. For details, see the section titled <link
-   linkend="about.notes">'About user notes'</link>.
-  </para>
-  <para>
-   The PHP manual is translated into many languages. Knowing English and a
-   foreign language allows for another way to help improve the PHP manual by
-   working with a translation team. For information about starting a new 
-   translation, or helping a currently translated version, please read
-   <link xlink:href="&url.php.dochowto;">&url.php.dochowto;</link>.
-  </para>
-  <para>
-   The PHP Documentation Project also has an IRC channel where many manual
-   authors hang out. Stop by <literal>#php.doc</literal> on
-   <literal>irc.efnet.org</literal> and discuss ways to improve
-   the PHP documentation.
+   The HHVM and Hack manual is <link xlink:href="&url.hack.hhvm.docs;">open source on Github</link>. Please feel free to submit a pull request for any additions or modifcations.
   </para>
  </sect1>
  
@@ -376,57 +213,7 @@ Returns the length of given string.
    files, while only maintaining one source document for all formats.
    The tool used for formatting the online manual is <link
    xlink:href="&url.phd;">PhD</link>.
-   We use <link xlink:href="&url.winhelp;">Microsoft HTML Help
-   Workshop</link> to generate the <productname>Windows HTML Help</productname> format
-   of the manual, and of course PHP itself to do some
-   additional conversions and formatting.
-  </para>
-  <para>
-   The PHP manual is generated in various languages and formats, see 
-   <link xlink:href="&url.php.docs;">&url.php.docs;</link> for additional details.
-   The <acronym>XML</acronym> source code may be downloaded from SVN and
-   viewed at <link xlink:href="&url.php.svn;">&url.php.svn;</link>. The
-   documentation is stored in the <literal>phpdoc</literal> module.
-  </para>
- </sect1>
-
- <sect1 xml:id="about.translations">
-  <title>Translations</title>
-  <para>
-   The PHP manual is available not only in various formats, but
-   also in various languages. The text of the 
-   manual is first written in English, then teams of people across 
-   the world take care of translating it to their native languages.
-   If a translation for a specified function or chapter has not yet
-   been made, the manual's build system falls back to the 
-   English version of it.
-  </para>
-  <para>
-   People involved in the translations start from the <acronym>XML</acronym>
-   source code available from <link xlink:href="&url.php.svn;">&url.php.svn;</link>
-   and from it they translate to their mother language. They do 
-   <emphasis>not use</emphasis> the generated versions (like 
-   <acronym>HTML</acronym> or plain text) as it's the build system that takes 
-   care of the conversions from <acronym>XML</acronym> to human readable 
-   formats.
-  </para>
-  <note>
-   <para>
-    To help translate the documentation, 
-    please get in touch with the translation/documentation team by
-    subscribing to the phpdoc mailing list: send an empty mail to <link
-    xlink:href="mailto:&email.php.doc.subscribe;">&email.php.doc.subscribe;</link>.
-    The mailing list address is <literal>&email.php.doc;</literal>. State in the
-    message an interest in translating the manual and someone will reply with
-    feedback on moving forward by helping start a new language translation, or 
-    by contacting the existing team for the desired language.
-   </para>
-  </note>
-  <para>
-   At the moment the manual is available, partly or not, in over 10 languages.
-  </para>
-  <para>
-   They may all be downloaded here: <link xlink:href="&url.php.docs;">&url.php.docs;</link>.
+   We use PHP itself to do some additional conversions and formatting.
   </para>
  </sect1>
 

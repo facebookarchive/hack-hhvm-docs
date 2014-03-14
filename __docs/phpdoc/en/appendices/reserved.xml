@@ -4,7 +4,7 @@
  <appendix xml:id="reserved" xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink">
   <title>List of Reserved Words</title>
   <para>
-   The following is a listing of predefined identifiers in PHP. None
+   The following is a listing of predefined identifiers in HHVM. None
    of the identifiers listed here should be used as identifiers in any of
    your scripts. These lists include keywords and predefined variable,
    constant, and class names. These lists are neither exhaustive or
@@ -14,7 +14,7 @@
   <sect1 xml:id="reserved.keywords">
   <title>List of Keywords</title>
    <simpara>
-    These words have special meaning in PHP. Some of them represent things 
+    These words have special meaning in HHVM. Some of them represent things 
     which look like functions, some look like constants, and so on - but 
     they're not, really: they are language constructs. You cannot use any
     of the following words as constants, class names, function or method names. 
@@ -22,7 +22,7 @@
    </simpara>
 
    <table>
-    <title>PHP Keywords</title>
+    <title>HHVM Keywords</title>
     <tgroup cols="5">
      <tbody>
       <row>
@@ -47,7 +47,7 @@
         <link linkend="control-structures.break">break</link>
        </entry>
        <entry>
-        <link linkend="language.types.callable">callable</link> (as of PHP 5.4)
+        <link linkend="language.types.callable">callable</link>
        </entry>
        <entry>
         <link linkend="control-structures.switch">case</link>
@@ -132,7 +132,7 @@
         <link linkend="language.oop5.final">final</link>
        </entry>
        <entry>
-        <link linkend="language.exceptions">finally</link> (as of PHP 5.5)
+        <link linkend="language.exceptions">finally</link>
        </entry>
        <entry>
         <link linkend="control-structures.for">for</link>
@@ -149,7 +149,7 @@
         <link linkend="language.variables.scope">global</link>
        </entry>
        <entry>
-        <link linkend="control-structures.goto">goto</link> (as of PHP 5.3)
+        <link linkend="control-structures.goto">goto</link>
        </entry>
        <entry>
         <link linkend="control-structures.if">if</link>
@@ -169,7 +169,7 @@
         <link linkend="language.operators.type">instanceof</link>
        </entry>
        <entry>
-        <link linkend="language.oop5.traits.conflict">insteadof</link> (as of PHP 5.4)
+        <link linkend="language.oop5.traits.conflict">insteadof</link>
        </entry>
        <entry>
         <link linkend="language.oop5.interfaces">interface</link>
@@ -183,7 +183,7 @@
         <function>list</function>
        </entry>
        <entry>
-        <link linkend="language.namespaces">namespace</link> (as of PHP 5.3)
+        <link linkend="language.namespaces">namespace</link>
        </entry>
        <entry>
         <link linkend="keyword.class">new</link>
@@ -226,7 +226,7 @@
         <link linkend="language.exceptions">throw</link>
        </entry>
        <entry>
-        <link linkend="language.oop5.traits">trait</link> (as of PHP 5.4)
+        <link linkend="language.oop5.traits">trait</link>
        </entry>
       </row>
       <row>
@@ -251,7 +251,7 @@
         <link linkend="language.operators.logical">xor</link>
        </entry>
        <entry>
-        <link linkend="language.generators">yield</link> (as of PHP 5.5)
+        <link linkend="language.generators">yield</link>
        </entry>
        <entry>
        </entry>
@@ -273,7 +273,7 @@
         <link linkend="language.constants.predefined">__CLASS__</link>
        </entry>
        <entry> 
-        <link linkend="language.constants.predefined">__DIR__</link> (as of PHP 5.3)
+        <link linkend="language.constants.predefined">__DIR__</link>
        </entry>
        <entry>
         <link linkend="language.constants.predefined">__FILE__</link>
@@ -290,10 +290,10 @@
       </row>
       <row>
        <entry>
-        <link linkend="language.namespaces.nsconstants">__NAMESPACE__</link> (as of PHP 5.3)
+        <link linkend="language.namespaces.nsconstants">__NAMESPACE__</link>
        </entry>
        <entry>
-        <link linkend="language.constants.predefined">__TRAIT__</link> (as of PHP 5.4)
+        <link linkend="language.constants.predefined">__TRAIT__</link>
        </entry>
        <entry>
        </entry>
@@ -321,7 +321,7 @@
 
     <simpara>
      These classes are defined in the standard set of functions included
-     in the PHP build.
+     in the HHVM build.
     </simpara>
 
     <variablelist>
@@ -353,35 +353,25 @@
     </variablelist>
    </sect2>
    
-   <sect2 xml:id="reserved.classes.php5">
-    <title>Predefined classes as of PHP 5</title>
-    
-    <simpara>
-     These additional predefined classes were introduced in 
-     PHP 5.0.0.
-    </simpara>
-    
+   <sect2 xml:id="reserved.classes.predefined">
+    <title>Predefined classes</title>
     <variablelist>
      <varlistentry>
       <term><classname>Exception</classname></term>
       <listitem>
-       <simpara>
-       </simpara>
+       <simpara></simpara>
       </listitem>
      </varlistentry>
      <varlistentry>
       <term><classname>ErrorException</classname></term>
       <listitem>
-       <simpara>
-        Available since PHP 5.1.0.
-       </simpara>
+      <simpara></simpara>
       </listitem>
      </varlistentry>
      <varlistentry>
       <term><classname>php_user_filter</classname></term>
       <listitem>
-       <simpara>
-       </simpara>
+      <simpara></simpara>
       </listitem>
      </varlistentry>
     </variablelist>
@@ -391,11 +381,6 @@
     <title>Closure</title>
     
     <simpara>
-     The predefined final class <classname>Closure</classname> was introduced
-     in PHP 5.3.0. It is used for representing <link
-     linkend="functions.anonymous">anonymous functions</link>.
-    </simpara>
-    <simpara>
      For more information, see its <link linkend="class.closure">class
      page</link>.
     </simpara>
@@ -404,11 +389,6 @@
    <sect2 xml:id="reserved.classes.generator">
     <title>Generator</title>
     
-    <simpara>
-     The predefined final class <classname>Generator</classname> was introduced
-     in PHP 5.5.0. It is used for representing <link
-     linkend="language.generators">generators</link>.
-    </simpara>
     <simpara>
      For more information, see its <link linkend="class.generator">class
      page</link>.
