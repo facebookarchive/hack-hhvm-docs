@@ -459,7 +459,7 @@ function manual_bugs_and_notes() {
     $filebuglink = 'https://github.com/facebook/hack-hhvm-docs/issues/new?title=Bug in ' . $title;
     $filebugsnippet = make_link(
         $filebuglink,
-        "File A Bug"
+        "File A Documentation Bug"
     );
     $noteslink = "http://www.php.net/manual/en/". $filename . "#usernotes";
     $noteslinksnippet = make_link(
