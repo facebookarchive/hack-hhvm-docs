@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<refentry xmlns="http://docbook.org/ns/docbook" xml:id="function.invariant">
+<refentry xmlns="http://docbook.org/ns/docbook" xml:id="function.hack.invariant">
  <refnamediv>
   <refname>invariant</refname>
   <refpurpose>Enforces a given condition is true</refpurpose>
