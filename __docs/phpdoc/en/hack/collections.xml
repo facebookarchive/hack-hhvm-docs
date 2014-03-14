@@ -138,7 +138,7 @@ main_col();
         </listitem>
         <listitem>
           <para>
-            Provide an easy migration path to this framework by building on top of standard functionality from Zend PHP.
+            Provide an easy migration path to this framework by building on top of standard functionality from PHP5.
           </para>
         </listitem>
       </orderedlist>  
@@ -147,7 +147,7 @@ main_col();
       Like PHP arrays, Hack collections support foreach syntax for enumerating elements, and most collections support bracket syntax (e.g. <literal>$c[$k]</literal>) for accessing elements. Unlike PHP arrays, however, Hack collections are considered to be objects. Like all objects, Hack collections have reference-like semantics for assignment, parameter passing, and foreach. In other words, the collection is not copied when it is assigned to a variable, passed as a parameter, or returned as a return value (i.e., no copy-on-write semantics). 
     </para>
     <para>
-      Hack collections were designed to work with Hack and integrate with Hack's generics. Generics allow for the parameterization of a type. Why is this useful? It allows for the creation of a collection type that is type-safe at compile time. In other words, instead of assuming one starts with a top-level object and then performs <literal>instanceof</literal> checks and casting at runtime to retrieve the appropriate type, the correct type can be determined at compile time. And while at present Hack collections do not perform type-checking on elements at run time (i.e., type information will be dropped at runtime), using generics allows Hack to catch typing errors involving collection elements in near real time. Generics are not available with Zend PHP 5.4. 
+      Hack collections were designed to work with Hack and integrate with Hack's generics. Generics allow for the parameterization of a type. Why is this useful? It allows for the creation of a collection type that is type-safe at compile time. In other words, instead of assuming one starts with a top-level object and then performs <literal>instanceof</literal> checks and casting at runtime to retrieve the appropriate type, the correct type can be determined at compile time. And while at present Hack collections do not perform type-checking on elements at run time (i.e., type information will be dropped at runtime), using generics allows Hack to catch typing errors involving collection elements in near real time. Generics are not available with PHP5. 
     </para>
     <para>
       Note that Hack generic type annotations are not strictly required for Hack collections. The Hack collection interfaces and APIs may be used in regular, untyped PHP code. Like all generics in Hack, the generics used with Hack collections will be &quot;erased&quot; (either fully or partially) at run time. 
