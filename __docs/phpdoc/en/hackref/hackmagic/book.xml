@@ -20,6 +20,8 @@
   &hackref.hackmagic.invariant;
   &hackref.hackmagic.invariant-violation;
   &hackref.hackmagic.invariant-callback-register;
+  &hackref.hackmagic.fun;
+  &hackref.hackmagic.meth-caller;
 </reference>
 
 </book>
