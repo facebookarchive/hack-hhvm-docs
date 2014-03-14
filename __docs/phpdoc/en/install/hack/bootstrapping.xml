@@ -4,7 +4,7 @@
   <para>The static type system of Hack is enforced by a typechecker external to the HHVM runtime itself. It runs in the background, watching for file modifications and updating its state. Getting this static typechecker running requires a little bit of additional setup.</para>
   <sect2 xml:id="install.hack.bootstrapping.hhvm">
     <title>Running your project under HHVM</title>
-    <para>The first step is to get HHVM running your project. You should have the latest version of HHVM installed, have a <literal>php.ini</literal> or <literal>config.hdf</literal> set up if necessary, and HHVM running as a webserver serving your project. In simple cases, running <literal>hhvm -m server -p 8080</literal> in your project root may be enough. More information on this is available elsewhere, notably https://github.com/facebook/hhvm/wiki/Running-PHP-programs-with-HHVM. TODO: should we port those docs over here? Better place to point at? How to linkify, ulink doesn't work?</para>
+    <para>The first step is to <link linkend="install">get HHVM running your project</link>. You should have the latest version of HHVM installed, have a <literal>php.ini</literal> or <literal>config.hdf</literal> set up if necessary, and HHVM running as a webserver serving your project.</para>
   </sect2>
   <sect2 xml:id="install.hack.bootstrapping.hh_server">
     <title>Getting the typechecker running</title>
@@ -31,13 +31,10 @@ function f(): int {
     <para><literal>hh_server</literal> does not ship with any innate knowledge about the PHP and Hack standard libraries, but instead imports this information from <literal>hhi</literal> files that describe the type structure of the standard library. HHVM ships with a default set of such files, available at <literal>/usr/share/hhvm/hack/hhi</literal> in the default binary distribution or at <literal>hphp/hack/hhi</literal> in the source distribution.</para>
     <para>This directory contains information about the PHP standard library for the typechecker to consume. It should be copied into a location visible to the typechecker, but should <emphasis>not</emphasis> be ever executed at runtime or included in the autoloader. These files are effectively "interface" files that define types for parts of the standard library so the typechecker can verify they are used correctly. The runtime will produce an error if an hhi file is ever loaded at runtime, since it will redefine a function or class already built in to the runtime.</para>
   </sect2>
-  <sect2 xml:id="install.hack.bootstrapping.vim">
-    <title>Installing the vim bindings</title>
-    <para>TODO</para>
-  </sect2>
-  <sect2 xml:id="install.hack.bootstrapping.emacs">
-    <title>Installing the emacs bindings</title>
-    <para>TODO</para>
+  <sect2 xml:id="install.hack.bootstrapping.editors">
+    <title>Included editor extensions</title>
+    <para>The HHVM and Hack installation ships with bindings for common editors. vim users will find a pathogen package at <literal>/usr/share/hhvm/hack/vim</literal> with installation instructions in the <literal>README</literal> contained therein. emacs users will find a plugin inside <literal>/usr/share/hhvm/hack/emacs</literal>.</para>
+    <para>Although <literal>hh_client</literal> can be used directly on the command line, having the immediate feedback directly in an editor can be an amazing productivity boost. If your preferred editor or IDE is unsupported, contributions of additional plugins are very welcome; the existing plugins are decent examples of how to script the <literal>hh_client</literal> interface.</para>
   </sect2>
   <sect2 xml:id="install.hack.bootstrapping.structure">
     <title>Notes on suggested project structure</title>
