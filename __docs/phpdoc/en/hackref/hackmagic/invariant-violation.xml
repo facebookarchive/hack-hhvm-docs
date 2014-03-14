@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<refentry xmlns="http://docbook.org/ns/docbook" xml:id="function.invariant_violation">
+<refentry xmlns="http://docbook.org/ns/docbook" xml:id="function.hack.invariant_violation">
  <refnamediv>
   <refname>invariant_violation</refname>
   <refpurpose>Throws an exception when a program invariant is violated</refpurpose>
