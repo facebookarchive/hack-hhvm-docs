@@ -83,13 +83,13 @@ class Highlighter
     }
 
     private function highlight_string($data, $return = false) {
-      $colors = [
+      $colors = array(
         'html' => '#000000',
         'comment' => '#FF8000',
         'default' => '#0000BB',
         'string' => '#DD0000',
         'keyword' => '#007700',
-      ];
+      );
 
       $output = '';
       $last_color = $colors['html'];
@@ -99,7 +99,7 @@ class Highlighter
       $hh_replace = false;
       if (strpos($data, "<?hh") !== false) {
         $data = str_replace("<?hh", "<?php", $data);
-        $hh_replace = true;  
+        $hh_replace = true;
       }
       foreach (token_get_all($data) as $token) {
         if (is_array($token)) {

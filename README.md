@@ -1,4 +1,4 @@
-The repo for hhvm.com. This contains the website, blog and HHVM/Hack documentation.
+The repo for hhvm.com. This contains the website, blog and HHVM/Hack documentation. You'll need PHP v5.3 or greater, and have SQLite installed.
 
 # To update or add documentation
 
@@ -19,12 +19,12 @@ To run it:
 
 If successful, this will update the `__docs/phpdoc/doc-base/.manual.xml` file that is basically all of the `.xml` files squashed together. This file will be used to render the `.php` files that will actually serve the site.
 
-If unsuccesful, you will see errors. You can run `php configure.php --enable-xml-details` for more detailed XML information.
+If unsuccessful, you will see errors. You can run `php configure.php --enable-xml-details` for more detailed XML information.
 
 
 # To render into PHP files
 
-After validation, it is now time to render the docs to be served.
+After validation, it is now time to render the docs to be served. Note that even if you have not made any changes to the documents, you must run the validation step above to generate the `.manual.xml` file.
 
 In `__docs/phd`:
 
@@ -40,7 +40,7 @@ The `.php` files will outputted to the `manual/en` directory.
 
 # Server up the files locally.
 
-Run a local HHVM server in the root directory. Navigate to `http://<your local sandbox>/manual/en`.
+Run a local HHVM server in the root directory, so that `/manual` is a top level path. Navigate to `http://<your local sandbox>/manual/en`.
 
 
 # Scripts to help.
