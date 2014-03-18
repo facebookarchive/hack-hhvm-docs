@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<chapter xml:id="hack.otherrulesandfeatures">
+<chapter xml:id="hack.otherrulesandfeatures" xmlns:xlink="http://www.w3.org/1999/xlink">
   <title>Other Hack Rules and Features</title>
   <para>
     There are some other Hack rules and features that are worth noting and knowing.
   </para>
-  <sect1 xml:id="hack.varargs">
+  <sect1 xml:id="hack.otherrulesandfeatures.varargs">
     <title>Variable Number of Arguments</title>
     <para>
       Hack provides the capability to indicate that a function takes a variable number of arguments. This is done using <literal>...</literal> (three dots).
@@ -73,7 +73,7 @@
     </note>
   </sect1>
 
-  <sect1 xml:id="hack.numberhandling">
+  <sect1 xml:id="hack.otherrulesandfeatures.numberhandling">
     <title>Number Handling</title>
     <para>
       In PHP, <literal>float</literal> and <literal>int</literal> are incompatible at the type hint level:
@@ -169,7 +169,7 @@
         </programlisting>
       </informalexample>
     </para>
-    <sect2 xml:id="hack.numberhandling.equivalenttypes">
+    <sect2 xml:id="hack.otherrulesandfeatures.numberhandling.equivalenttypes">
       <title>Using Equivalent Types</title>
       <para>
         It is important to note that Hack does not support the use of certain types that are equivalent to other types:
@@ -206,7 +206,7 @@
     </sect2>
   </sect1>
 
-  <sect1 xml:id="hack.typeinference">
+  <sect1 xml:id="hack.otherrulesandfeatures.typeinference">
     <title>Type Inference</title>
     <para>
       Most people are familiar with statically typed languages (like C or Java). Having a type inference system may, however, be a new concept. A type inference system brings many pros (e.g., write less and more readable code), but there are also a few gotchas.
@@ -262,7 +262,7 @@
         </informalexample>
       </para>
     </sect2>
-    <sect2 xml:id="hack.typeinference.localvsmembervars">
+    <sect2 xml:id="hack.otherrulesandfeatures.typeinference.localvsmembervars">
       <title> Local vs. member variables </title>
       <para>
         <literal>protected</literal>, <literal>private</literal> and <literal>public</literal> member variables are not typed in the same way as local variables. The reason is that <literal>protected</literal> and <literal>private</literal> variables might change when calling other functions.
@@ -340,7 +340,7 @@
     </sect2>
   </sect1>
 
-  <sect1 xml:id="hack.classinitialization">
+  <sect1 xml:id="hack.otherrulesandfeatures.classinitialization">
     <title>Class Initialization</title>
     <para>
       Hack enforces strict rules regarding class initialization. The following piece of code is correct:
@@ -451,7 +451,7 @@
     </para>
   </sect1>
 
-  <sect1 xml:id="hack.callbacks">
+  <sect1 xml:id="hack.otherrulesandfeatures.callbacks">
     <title>Callbacks and <function>fun</function></title>
     <para>
       A standard way to call a function is by using a callback. There are two primary PHP functions for calling callbacks: <function>call_user_func</function> and <function>call_user_func_array</function>.
@@ -604,7 +604,7 @@
     </para>
   </sect1>
 
-  <sect1 xml:id="hack.overridereturntype">
+  <sect1 xml:id="hack.otherrulesandfeatures.overridereturntype">
     <title>Overriding on Return Type</title>
     <para>
       Hack provides the ability to annotate return types on functions. This brings with it another added feature. Under a specific circumstance, Hack provides the ability to override functions based on just return type. That circumstance is a subclass overriding a method in a parent class with a return type compatible with the return type of the parent class. For example:
@@ -692,7 +692,7 @@
     </note>
   </sect1>
 
-  <sect1 xml:id="hack.invariant">
+  <sect1 xml:id="hack.otherrulesandfeatures.invariant">
     <title><literal>invariant()</literal></title>
     <para>
       There are times when it is desirable to have an object be type-checked as a more specific type than it is currently declared. For example, an interface needs to be type-checked as one of its implementing classes. <literal>invariant()</literal> is used to help the Hack type-checker make this more specific type determination.
@@ -856,6 +856,7 @@ public static function foo() {}
       </informalexample>
     </para>
   </sect1>
+
   <sect1 xml:id="hack.otherrulesandfeatures.initialization">
     <title>Calling Non-Private Methods During Initialization</title>
     <para>
@@ -928,6 +929,7 @@ private function doOtherInit(): void { }
       </informalexample>
     </para>
   </sect1>
+
   <sect1 xml:id="hack.otherrulesandfeatures.uniontypes">
     <title>Union Types</title>
     <para>
@@ -1038,6 +1040,7 @@ main_ut();
       </informalexample>
     </para>
   </sect1>
+
   <sect1 xml:id="hack.otherrulesandfeatures.heredocs">
     <title>Heredocs</title>
     <para>
@@ -1143,10 +1146,38 @@ This should not print a capital 'A': \x41
       </informalexample>
     </para>
   </sect1>
-  <sect1 xml:id="langauge.hack.otherrulesandfeatures.casting">
+
+  <sect1 xml:id="hack.otherrulesandfeatures.casting">
     <title>Casting</title>
     <para>
       Hack currently follows the PHP rules for casting, with a few minor exceptions. Hack does not allow the use of certain primitives where there is an equivalent primitive type (e.g. <literal>float</literal> instead of <literal>double</literal> or <literal>real</literal>). There is discussion about providing the capability to cast to non-primitive types, but that is not implemented as of yet.
+    </para>
+  </sect1>
+
+  <sect1 xml:id="hack.otherrulesandfeatures.classnameresolution">
+    <title>Class Name Resolution</title>
+    <para>
+      Class name resolution provides a way of accesing the name of a class, interface or trait.
+    </para>
+    <note>
+      <para>
+        This is compatible to the PHP5 RFC around class name resolution. <link xlink:href="https://wiki.php.net/rfc/class_name_scalars">PHP: rfc:class_name_scalars</link>
+      </para>
+    </note>
+    <para>
+      Here is an example:
+      <informalexample>
+        <programlisting role="php">
+<![CDATA[
+<?hh
+$obj = newv(FooClass::class, $constructor_args); 
+BaseFacebookTestCase::assertInstanceOf(FooClass::class, $obj, 'I hope that constructor worked');
+]]>
+        </programlisting>
+      </informalexample>
+    </para>
+    <para>
+      As you might imagine, <literal>Foo::class</literal> is significantly easier to statically typecheck than <literal>'Foo'</literal>; we know that <literal>Foo::class</literal> is a class name, but interpreting the literal string <literal>'Foo'</literal> requires divining that it is in fact a class name “pointer” based on how that string is used several hops away. As such, there’s now a better way than using string literals like <literal>'ClassName'</literal> or <literal>'InterfaceName'</literal> in your code.
     </para>
   </sect1>
 </chapter>
