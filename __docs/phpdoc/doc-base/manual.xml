@@ -107,6 +107,7 @@
   &hack.overrideattribute;
   &hack.methoddispatch;
   &hack.xhp;
+  &hack.constructorargumentpromotion;
   &hack.otherrulesandfeatures;
   &hack.unsupported;
   &hack.predefined.interfaces;
