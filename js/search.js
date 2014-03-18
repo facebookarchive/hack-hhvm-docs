@@ -290,7 +290,16 @@
             $(element).typeahead(typeaheadOptions).on("typeahead:selected", function (_, item) {
                 /* If the user has selected an autocomplete item and hits
                  * enter, we should take them straight to the page. */
-                window.location = "/manual/" + options.language + "/" + item.id;
+                // Probably could just fix the web server to make a redirect 
+                // happen to a .php file if this occurs, but belts and suspenders
+                // at this point.
+                var check = String(item.id);
+                if (!check.match(/\.php$/)) {
+                    window.location = "/manual/" + options.language + "/" + item.id + ".php";
+                } else {
+                     window.location = "/manual/" + options.language + "/" + item.id;
+                }
+                
             }).on("keyup", (function () {
                 /* typeahead.js doesn't give us a reliable event for the
                  * dropdown entries having been updated, so we'll hook into the

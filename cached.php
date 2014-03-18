@@ -3,7 +3,7 @@ $_SERVER['BASE_PAGE'] = 'cached.php';
 include_once 'include/prepend.inc';
 
 if (!isset($_GET["f"])) {
-    header("Location: http://php.net/");
+    header("Location: http://hhvm.com/");
     exit;
 }
 $pwd = realpath($_SERVER["DOCUMENT_ROOT"]);
@@ -11,7 +11,7 @@ $abs = $pwd. "/" .(string)$_GET["f"];
 $abs = realpath($abs);
 
 if (strncmp($abs, $pwd, strlen($pwd)) != 0) {
-    header("Location: http://php.net/" . $_GET["f"]);
+    header("Location: http://hhvm.com/" . $_GET["f"]);
     exit;
 }
 
