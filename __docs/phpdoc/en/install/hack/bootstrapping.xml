@@ -40,7 +40,7 @@ function f(): int {
     <title>Notes on suggested project structure</title>
     <para>Hack and the Hack typechecker were designed with certain assumptions and best practices in mind, and may not work well for projects that significantly diverge from this.</para>
     <para>The typechecker assumes that there is a global autoloader that can load any class on demand. This means that it insists that all class and function names are unique, and has no notion of checking imports or anything of that nature. Futhermore, it does not support conditional definitions of functions or classes &#8212; it must be able to statically know what is and what is not defined. It is of course perfectly possible to have a project that meets these requirements without a global autoloader, and the typechecker will work fine on such a project, but a project using an autoloader was the intended use case.</para>
-    <para>Mixing HTML and Hack code are not supported by the typechecker. Following and statically analyzing these complicated mode switches is unsupported, particularly since much modern code doesn't make use of this functionality. Hack code can output markup to the browser in a simple way via <literal>echo</literal>, or using a templating engine or XHP for more complex scenarios. TODO: link to XHP docs.</para>
+    <para>Mixing HTML and Hack code are not supported by the typechecker. Following and statically analyzing these complicated mode switches is unsupported, particularly since much modern code doesn't make use of this functionality. Hack code can output markup to the browser in a simple way via <literal>echo</literal>, or using a templating engine or <link linkend="hack.xhp">XHP</link> for more complex scenarios.</para>
   </sect2>
 </sect1>
 
