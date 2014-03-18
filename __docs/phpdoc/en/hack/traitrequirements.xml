@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="utf-8"?>
+<chapter xml:id="hack.traitrequirements">
+  <title>Trait Requirements</title>
+  <para>
+    The Hack typechecker is effective because it is able to take annotated facts sprinkled across a codebase (function entry and exit points, class definitions, etc), reconcile them, and detect any mismatches. Traits are a sizeable wrench in the works. The nature of traits in PHP is to "declare a bunch of stuff to be thrown into another scope at a later time, then check if it works at runtime"; the Hack typechecker is only happy if it can take a piece of code and statically verify it independently of its usage sites. A syntactic way of having traits state that they only apply inside a particular type hierarchy allows their declarations to be both more explicit and more amenable to static analysis.
+    <informalexample>
+      <programlisting role="php">
+  <![CDATA[
+  <?hh
+
+  // Definitions of class C and interface I
+  class C { .. }
+  interface I {
+    public function foo();
+  }
+
+  // Trait T requires that any using class is a descendent of class C and implements
+  // interface I
+  trait T {
+    require extends C;
+    require implements I;
+    // ... trait functionality that potentially relies on $this extending C and implementing I ...
+    // ... this functionality can be safely typechecked even if there are no classes that use T !
+  }
+  ]]>
+      </programlisting>
+    </informalexample>
+  </para>
+  <para>
+    When enforcing trait requirements, all <literal>T</literal> cares about is that <literal>X</literal> instanceof <literal>C</literal> is true and <literal>X</literal> instanceof <literal>I</literal> is true for any using class <literal>X</literal>. It doesn't care about how exactly compliance with <literal>X</literal>'s declared interfaces is achieved, or how many layers of inheritance there might be between <literal>X</literal> and <literal>C</literal>.
+    <informalexample>
+      <programlisting role="php">
+<![CDATA[
+// Classes X1, X2, X3, and X4 all satisfy T's requirements:
+class X1 extends C implements I {
+  use T;
+  public function foo() { .. } // I satisfied via inline implementation
+}
+ 
+trait U {
+  public function foo() { .. }
+}
+class X2 extends C implements I {
+  use T;
+  use U; // I satisfied via another trait
+}
+ 
+interface J extends I {}
+class X3 extends C implements J { // interface inheritance is fine
+  use T;
+  public function foo() { .. } // with an inline implementation in this case
+}
+ 
+class D extends C implements I {
+  public function foo() { .. }
+}
+class X4 extends D { // number of inheritance hops wouldn't matter to instanceof ...
+  use T; // ... so they don't matter to trait requirements
+}
+ 
+// Classes X5, X6, and X7 do not satisfy all of T's requirements
+class X5 { // neither extends C nor implements I
+  use T;
+}
+ 
+class X6 extends C { // doesn't implement I
+  use T;
+}
+ 
+class X7 implements I { // doesn't extend C
+  use T;
+  public function foo() { .. }
+}
+ 
+// While class X8 provides a compatible implementation for all of interface I's methods,
+// it is not considered to satisfy T's requirements because it does not formally implement
+// interface I
+class X8 extends C {
+  use T;
+  use U;
+}
+ 
+// Class X9 would technically satisfy T's requirements if it were a valid declaration
+// ... but it's not! It will fail to load at run time because it doesn't provide an
+// implementation for I::foo()
+class X9 extends C implements I {
+  use T;
+}
+]]>
+      </programlisting>
+    </informalexample>
+  </para>
+
+  <sect1 xml:id="hack.traitrequirements.rationale">
+    <title>Rationale for Trait Requirements</title>
+    <para>
+      While traits can theoretically be used for aspect oriented programming to add functionality to a class that is entirely orthogonal to the rest of the class definition, in practice it seems that a major, if not the dominant, use case for traits is to provide an implementation of functionality that applies only within the context of a particular class hierarchy. For example, if there are 50 subclasses of <literal>X</literal>, and <literal>X::foo()</literal> has 3 different recommended implementations, the 3 traits that make those implementations possible are meaningless outside of the class hierarchy and over time may start to justifiably use the functionality of <literal>X</literal>.
+    </para>
+    <para>
+      Trait requirement declarations serve to tie traits to class hierarchies and move the issues of assumptions about the using class from being discoverable only at run time to being easily discoverable in static analysis. In the example above, <literal>T</literal>'s trait requirements indicate that <literal>I</literal> is something that classes using <literal>T</literal> are required to implement.
+    </para>
+    <para>
+      For the purposes of the Hack typechecker, trait requirements now mean that any functions inside <literal>T</literal> above now know that <literal>$this</literal> instanceof <literal>C</literal> and <literal>$this</literal> instanceof <literal>I</literal> are true, and duplicating the implementations of <literal>C</literal> and <literal>I</literal> using redundant abstract function declarations is no longer necessary.
+    </para>
+  </sect1>
+</chapter>
+<!-- Keep this comment at the end of the file
+Local variables:
+mode: sgml
+sgml-omittag:t
+sgml-shorttag:t
+sgml-minimize-attributes:nil
+sgml-always-quote-attributes:t
+sgml-indent-step:1
+sgml-indent-data:t
+indent-tabs-mode:nil
+sgml-parent-document:nil
+sgml-default-dtd-file:"~/.phpdoc/manual.ced"
+sgml-exposed-tags:nil
+sgml-local-catalogs:nil
+sgml-local-ecat-files:nil
+End:
+vim600: syn=xml fen fdm=syntax fdl=2 si
+vim: et tw=78 syn=sgml
+vi: ts=1 sw=1
+-->

@@ -102,6 +102,7 @@
   &hack.async;
   &hack.continuations;
   &hack.traits;
+  &hack.traitrequirements;
   &hack.lambda;
   &hack.tuples;
   &hack.overrideattribute;
