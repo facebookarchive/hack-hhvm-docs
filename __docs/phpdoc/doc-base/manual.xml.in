@@ -65,29 +65,6 @@
   &install.ini;
   &install.hack.index;
  </book>
-
- <book xml:id="phplangref">
-  <title>&PHPLanguageReference;</title>
-  &language.basic-syntax;
-  &language.types;
-  &language.variables;
-  &language.constants;
-  &language.expressions;
-  &language.operators;
-  &language.control-structures;
-  &language.functions;
-  &language.oop5;
-  &language.namespaces;
-  &language.exceptions;
-  &language.generators;
-  &language.references;
-  &language.predefined.variables;
-  &language.predefined.exceptions;
-  &language.predefined.interfaces;
-  &language.context;
-  &language.wrappers;
- </book>
-
  <book xml:id="hacklangref">
   <title>&HackLanguageReference;</title>
   &hack.intro;
@@ -137,40 +114,30 @@
   -->
  </set>
 
- <book xml:id="security">
-  <title>&Security;</title>
-  &security.intro;
-  &security.general;
-  &security.cgi-bin;
-  &security.apache;
-  &security.filesystem;
-  &security.database;
-  &security.errors;
-  &security.globals;
-  &security.variables;
-  &security.magicquotes;
-  &security.hiding;
-  &security.current;
- </book>
-
- <book xml:id="features">
-  <title>&Features;</title>
-  &features.http-auth;
-  &features.cookies;
-  &features.sessions;
-  &features.xforms;
-  &features.file-upload;
-  &features.remote-files;
-  &features.connection-handling;
-  &features.persistent-connections;
-  &features.safe-mode;
-  &features.commandline;
-  &features.gc;
-  &features.dtrace;
+ <book xml:id="phplangref">
+  <title>&PHPLanguageReference;</title>
+  &language.basic-syntax;
+  &language.types;
+  &language.variables;
+  &language.constants;
+  &language.expressions;
+  &language.operators;
+  &language.control-structures;
+  &language.functions;
+  &language.oop5;
+  &language.namespaces;
+  &language.exceptions;
+  &language.generators;
+  &language.references;
+  &language.predefined.variables;
+  &language.predefined.exceptions;
+  &language.predefined.interfaces;
+  &language.context;
+  &language.wrappers;
  </book>
 
  <set xml:id="phpfuncref">
-  <title>&FunctionReference;</title>
+  <title>&PHPFunctionReference;</title>
   <info xmlns="http://docbook.org/ns/docbook" xml:id="phpfuncrefinfo">
    <abstract>
     <para>
@@ -522,6 +489,38 @@
    &reference.xslt.book;
   </set>
  </set>
+
+ <book xml:id="security">
+  <title>&Security;</title>
+  &security.intro;
+  &security.general;
+  &security.cgi-bin;
+  &security.apache;
+  &security.filesystem;
+  &security.database;
+  &security.errors;
+  &security.globals;
+  &security.variables;
+  &security.magicquotes;
+  &security.hiding;
+  &security.current;
+ </book>
+
+ <book xml:id="features">
+  <title>&Features;</title>
+  &features.http-auth;
+  &features.cookies;
+  &features.sessions;
+  &features.xforms;
+  &features.file-upload;
+  &features.remote-files;
+  &features.connection-handling;
+  &features.persistent-connections;
+  &features.safe-mode;
+  &features.commandline;
+  &features.gc;
+  &features.dtrace;
+ </book>
 
  <book xml:id="appendices">
   <title>&Appendices;</title>

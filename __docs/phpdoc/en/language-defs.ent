@@ -14,7 +14,7 @@
 <!ENTITY HackOther                                "Other Hack Functions">
 <!ENTITY Features                                 "Features">
 <!ENTITY Security                                 "Security">
-<!ENTITY FunctionReference                        "Function Reference">
+<!ENTITY PHPFunctionReference                        "PHP Function Reference">
 <!ENTITY VariableandTypeRelatedExtensions         "Variable and Type Related Extensions">
 <!ENTITY TextProcessing                           "Text Processing">
 <!ENTITY AffectingPHPsBehaviour                   "Affecting PHP's Behaviour">
