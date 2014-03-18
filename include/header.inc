@@ -1,6 +1,6 @@
 <?php
 /* $Id$ */
-$cssfiles = array(200 => "theme-base.css", "theme-medium.css");
+$cssfiles = array(200 => "theme-base.css", "theme-medium.css", "hack-hhvm.css");
 if (isset($config['css'])) {
     $cssfiles += (array) $config['css'];
 }
@@ -35,7 +35,7 @@ if ($config["cache"]) {
 
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
   <title>PHP: <?php echo $title ?></title>
 
@@ -82,17 +82,8 @@ if ($config["cache"]) {
 
 <nav id="head-nav" class="navbar navbar-fixed-top">
   <div class="navbar-inner clearfix">
-    <a href="/" class="brand"><img src="/images/logo.php" width="48" height="24" alt="php"></a>
-    <div id="mainmenu-toggle-overlay"></div>
-    <input type="checkbox" id="mainmenu-toggle" />
- <!-- 
- FOR HHVM   <ul class="nav">
-      <li class="<?php echo $curr == "downloads" ? "active" : ""?>"><a href="/downloads">Downloads</a></li>
-      <li class="<?php echo $curr == "docs" ? "active" : ""?>"><a href="/docs.php">Documentation</a></li>
-      <li class="<?php echo $curr == "community" ? "active" : ""?>"><a href="/get-involved" >Get Involved</a></li>
-      <li class="<?php echo $curr == "help" ? "active" : ""?>"><a href="/support">Help</a></li>
-    </ul>
--->
+    <a href='/'><h1>Hack &amp; HHVM docs</h1></a>
+
     <form class="navbar-search" id="topsearch" action="/search.php">
       <input type="hidden" name="show" value="quickref">
       <input type="search" name="pattern" class="search-query" placeholder="Search" accesskey="s">
@@ -155,15 +146,15 @@ if ($config["cache"]) {
 
 <?php if (!empty($config["leftmenu"])): ?>
     <aside class='layout-menu'>
-        
+
         <ul class='parent-menu-list'>
             <?php foreach($config['leftmenu'] as $section): ?>
             <li>
                 <a href="<?php echo $section['link']; ?>"><?php echo $section['title']; ?></a>
-                
+
                 <?php if ($section['children']): ?>
                     <ul class='child-menu-list'>
-                        
+
                         <?php
                         foreach($section['children'] as $item):
                             $cleanTitle = $item['title'];
@@ -172,10 +163,10 @@ if ($config["cache"]) {
                             <a href="<?php echo $item['link']; ?>" title="<?php echo $cleanTitle; ?>"><?php echo $cleanTitle; ?></a>
                         </li>
                         <?php endforeach; ?>
-                        
+
                     </ul>
                 <?php endif; ?>
-                
+
             </li>
             <?php endforeach; ?>
         </ul>

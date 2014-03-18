@@ -1,0 +1,144 @@
+/*
+Theme name: fbos
+*/
+
+/* mobile first */
+
+* {
+  border-radius:0!important;
+  box-shadow:none!important;
+}
+
+html {
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizelegibility;
+  background-color: #000;
+}
+
+body {
+  font-family: 'Helvetica Neue', Helvetica, Arial, 'lucida grande', tahoma, verdana, arial, sans-serif;
+  color: #4e5665;
+  line-height: 1.5em;
+  background-color: #afafaf;
+  background-image: url(/images/back.png);
+  background-size: 1310px 530px;
+  margin-top: 84px;
+}
+
+h1, h2, h3, h4 {
+  color: #374665;
+  font-weight: normal;
+  margin: 1.5em 0 0.5em;
+}
+
+h1:first-child, h2:first-child, h3:first-child, h4:first-child {
+  margin-top: 0;
+}
+
+h1 {
+  font-size: 1.5em;
+}
+
+h2 {
+  font-size: 1.4em;
+}
+
+h3 {
+  font-size: 1.3em;
+}
+
+h4 {
+  font-size: 1.2em;
+}
+
+pre {
+  color: #000;
+  font: normal 14px / 1.46 "Source Code Pro", monospace;
+}
+
+ul {
+  list-style-position: inside;
+  line-height: 2em;
+}
+
+a {
+  color: #3b5998;
+}
+
+.navbar {
+  border-color: #fd8724;
+}
+
+.navbar, .navbar .navbar-inner {
+  background-color: #000;
+}
+
+.navbar .navbar-inner {
+  padding: 10px 0;
+  line-height: 0px;
+}
+
+.navbar-search .search-query {
+  margin-top: 4px;
+  line-height: 18px;
+}
+
+.navbar h1 {
+  background-size: 300px 75px;
+  background-image: url(/images/logos/hhvmhack.png);
+  background-position: 0 50%;
+  background-repeat: no-repeat;
+  line-height: 60px;
+  margin: 0 10px 0 0;
+  padding: 0;
+  overflow: hidden;
+  text-indent: 100%;
+  white-space: nowrap;
+  width: 300px;
+}
+
+.title {
+  border-width: 1px 0;
+  background-color: #f2f2f2;
+  border-color: #ccc;
+  color: inherit;
+}
+
+h1.refname {
+  color: inherit;
+}
+
+.layout-menu a {
+  color: #4e5665 !important;
+  line-height: 2em!important;
+}
+.doctable th {
+  background-color: #f2f2f2;
+}
+.doctable thead tr {
+  border-color: #ccc;
+}
+.doctable tbody tr:nth-child(even) {
+  background-color: #fafafa;
+}
+
+footer {
+  background: #000;
+  padding: 6px 0;
+  color: #fff;
+  border-color: #fd8724;
+}
+
+@media (max-width:767px) {
+  body {
+    margin-top: 0px;
+  }
+  .navbar a {
+    display: block;
+    width: 100%;
+  }
+  .navbar a h1 {
+    margin: 0 auto;
+  }
+
+}
