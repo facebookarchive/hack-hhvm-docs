@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- $Revision:$ -->
-<refentry xml:id="hack.frozensettv.toset" xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink">
+<refentry xml:id="hack.immsettv.lazy" xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink">
  <refnamediv>
-  <refname>FrozenSet&lt;Tv&gt;::toSet</refname>
+  <refname>ImmSet&lt;Tv&gt;::lazy</refname>
   <refpurpose>Documentation Coming Soon</refpurpose>
  </refnamediv>
 
@@ -10,8 +10,8 @@
   &reftitle.description;
   <methodsynopsis>
    <modifier>public</modifier>
-   <type>Set&lt;Tv&gt;</type>
-   <methodname>FrozenSet&lt;Tv&gt;::toSet</methodname>
+   <type>KeyedIterable&lt;int, Tv&gt;</type>
+   <methodname>ImmSet&lt;Tv&gt;::lazy</methodname>
    <void />
   </methodsynopsis>
 

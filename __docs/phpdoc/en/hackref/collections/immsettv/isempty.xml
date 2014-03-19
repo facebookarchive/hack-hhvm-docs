@@ -1,23 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- $Revision:$ -->
-<refentry xml:id="hack.frozensettv.tofrozenvector" xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink">
+<refentry xml:id="hack.immsettv.isempty" xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink">
  <refnamediv>
-  <refname>FrozenSet&lt;Tv&gt;::toFrozenVector</refname>
-  <refpurpose>Documentation Coming Soon</refpurpose>
+  <refname>ImmSet&lt;Tv&gt;::isEmpty</refname>
+  <refpurpose>Check whether the ImmSet is empty</refpurpose>
  </refnamediv>
 
  <refsect1 role="description">
   &reftitle.description;
   <methodsynopsis>
    <modifier>public</modifier>
-   <type>FrozenVector&lt;Tv&gt;</type>
-   <methodname>FrozenSet&lt;Tv&gt;::toFrozenVector</methodname>
+   <type>bool</type>
+   <methodname>ImmSet&lt;Tv&gt;::isEmpty</methodname>
    <void />
   </methodsynopsis>
 
 <!-- Note: If this method/property as an alternate procedural mapping then the method/property synopsis MUST be listed BEFORE the function synopsis -->
   <para>
-   The method description goes here.
+    Checks whether the ImmSet is empty. If so, return <literal>true</literal>; otherwise <literal>false</literal>.
   </para>
  </refsect1>
 </refentry>

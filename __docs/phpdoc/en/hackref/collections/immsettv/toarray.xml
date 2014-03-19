@@ -1,23 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- $Revision:$ -->
-<refentry xml:id="hack.frozensettv.fromarrays" xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink">
+<refentry xml:id="hack.immsettv.toarray" xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink">
  <refnamediv>
-  <refname>FrozenSet&lt;Tv&gt;::fromArray</refname>
-  <refpurpose>Documentation Coming Soon</refpurpose>
+  <refname>ImmSet&lt;Tv&gt;::toArray</refname>
+  <refpurpose>Return an array containing the values from this ImmSet</refpurpose>
  </refnamediv>
 
  <refsect1 role="description">
   &reftitle.description;
   <methodsynopsis>
    <modifier>public</modifier>
-   <type>FrozenSet&lt;Tv&gt;</type>
-   <methodname>FrozenSet&lt;Tv&gt;::fromArray</methodname>
-   <methodparam><type>array</type><parameter>arr</parameter></methodparam>
+   <type>array</type>
+   <methodname>ImmSet&lt;Tv&gt;::toArray</methodname>
+   <void />
   </methodsynopsis>
 
 <!-- Note: If this method/property as an alternate procedural mapping then the method/property synopsis MUST be listed BEFORE the function synopsis -->
   <para>
-   The method description goes here.
+   Returns an array containing the values from this ImmSet.
   </para>
  </refsect1>
 </refentry>

@@ -33,7 +33,7 @@
  &hackref.collections.immvectortv;
  &hackref.collections.maptktv;
  &hackref.collections.settv;
- &hackref.collections.frozensettv;
+ &hackref.collections.immsettv;
  &hackref.collections.pairtv1tv2;
  &hackref.collections.constvectortv;
  &hackref.collections.mutablevectortv;

@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- $Revision:$ -->
-<refentry xml:id="hack.frozensettv.values" xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink">
+<refentry xml:id="hack.frozenimmsettv.fromitems" xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink">
  <refnamediv>
-  <refname>FrozenSet&lt;Tv&gt;::values</refname>
+  <refname>FrozenImmSet&lt;Tv&gt;::fromItems</refname>
   <refpurpose>Documentation Coming Soon</refpurpose>
  </refnamediv>
 
@@ -10,9 +10,9 @@
   &reftitle.description;
   <methodsynopsis>
    <modifier>public</modifier>
-   <type>FrozenSet&lt;Tv&gt;</type>
-   <methodname>FrozenSet&lt;Tv&gt;::values</methodname>
-   <void />
+   <type>FrozenImmSet&lt;Tv&gt;</type>
+   <methodname>FrozenImmSet&lt;Tv&gt;::fromItems</methodname>
+   <methodparam><type>?Traversable&lt;Tv&gt;</type><parameter>items</parameter></methodparam>
   </methodsynopsis>
 
 <!-- Note: If this method/property as an alternate procedural mapping then the method/property synopsis MUST be listed BEFORE the function synopsis -->

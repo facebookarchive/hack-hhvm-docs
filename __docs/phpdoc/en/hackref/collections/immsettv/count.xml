@@ -1,23 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- $Revision:$ -->
-<refentry xml:id="hack.frozensettv.tostring" xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink">
+<refentry xml:id="hack.immsettv.count" xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink">
  <refnamediv>
-  <refname>FrozenSet&lt;Tv&gt;::__toString</refname>
-  <refpurpose>Documentation Coming Soon</refpurpose>
+  <refname>ImmSet&lt;Tv&gt;::count</refname>
+  <refpurpose>Return the number of elements in the ImmSet</refpurpose>
  </refnamediv>
 
  <refsect1 role="description">
   &reftitle.description;
   <methodsynopsis>
    <modifier>public</modifier>
-   <type>string</type>
-   <methodname>FrozenSet&lt;Tv&gt;::__toString</methodname>
-   <void/>
+   <type>int</type>
+   <methodname>ImmSet&lt;Tv&gt;::count</methodname>
+   <void />
   </methodsynopsis>
 
 <!-- Note: If this method/property as an alternate procedural mapping then the method/property synopsis MUST be listed BEFORE the function synopsis -->
   <para>
-   The method description goes here.
+   Returns the number of elements in this ImmSet.
   </para>
  </refsect1>
 </refentry>

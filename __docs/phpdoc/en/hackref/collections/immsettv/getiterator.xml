@@ -1,23 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- $Revision:$ -->
-<refentry xml:id="hack.frozensettv.tofrozenset" xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink">
+<refentry xml:id="hack.immsettv.getiterator" xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink">
  <refnamediv>
-  <refname>FrozenSet&lt;Tv&gt;::toFrozenSet</refname>
-  <refpurpose>Documentation Coming Soon</refpurpose>
+  <refname>ImmSet&lt;Tv&gt;::getIterator</refname>
+  <refpurpose>Return an Iterator that points to beginning of this ImmSet.</refpurpose>
  </refnamediv>
 
  <refsect1 role="description">
   &reftitle.description;
   <methodsynopsis>
    <modifier>public</modifier>
-   <type>FrozenSet&lt;Tv&gt;</type>
-   <methodname>FrozenSet&lt;Tv&gt;::toFrozenSet</methodname>
+   <type>KeyedIterator&lt;int, Tv&gt;</type>
+   <methodname>ImmSet&lt;Tv&gt;::getIterator</methodname>
    <void />
   </methodsynopsis>
 
 <!-- Note: If this method/property as an alternate procedural mapping then the method/property synopsis MUST be listed BEFORE the function synopsis -->
   <para>
-   The method description goes here.
+   Returns an Iterator that points to beginning of this ImmSet.
   </para>
  </refsect1>
 </refentry>

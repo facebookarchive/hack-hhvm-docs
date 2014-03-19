@@ -1,23 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- $Revision:$ -->
-<refentry xml:id="hack.frozensettv.keys" xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink">
+<refentry xml:id="hack.immsettv.ziptu" xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink">
  <refnamediv>
-  <refname>FrozenSet&lt;Tv&gt;::keys</refname>
-  <refpurpose>Documentation Coming Soon</refpurpose>
+  <refname>ImmSet&lt;Tv&gt;::zip&lt;Tu&gt;</refname>
+  <refpurpose>Return a ImmSet that combines the elements of this ImmSet and another provided iterable, pair-wise.</refpurpose>
  </refnamediv>
 
  <refsect1 role="description">
   &reftitle.description;
   <methodsynopsis>
    <modifier>public</modifier>
-   <type>FrozenSet&lt;int&gt;</type>
-   <methodname>FrozenSet&lt;Tv&gt;::keys</methodname>
-   <void />
+   <type>ImmSet&lt;Pair&lt;Tv, Tu&gt;&gt;</type>
+   <methodname>ImmSet&lt;Tv&gt;::zip&lt;Tu&gt;</methodname>
+   <methodparam><type>Traversable&lt;Tu&gt;</type><parameter>iterable</parameter></methodparam>
   </methodsynopsis>
 
 <!-- Note: If this method/property as an alternate procedural mapping then the method/property synopsis MUST be listed BEFORE the function synopsis -->
   <para>
-   The method description goes here.
+   Returns a ImmSet that combines the elements of this ImmSet and another provided iterable, pair-wise.
   </para>
  </refsect1>
 </refentry>

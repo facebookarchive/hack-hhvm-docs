@@ -1,23 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- $Revision:$ -->
-<refentry xml:id="hack.frozensettv.maptu" xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink">
+<refentry xml:id="hack.frozenimmsettv.tofrozenvector" xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink">
  <refnamediv>
-  <refname>FrozenSet&lt;Tv&gt;::map&lt;Tu&gt;</refname>
-  <refpurpose>Documentation Coming Soon</refpurpose>
+  <refname>ImmSet&lt;Tv&gt;::toImmVector</refname>
+  <refpurpose>Return an ImmVector with the values of this ImmSet</refpurpose>
  </refnamediv>
 
  <refsect1 role="description">
   &reftitle.description;
   <methodsynopsis>
    <modifier>public</modifier>
-   <type>FrozenSet&lt;Tu&gt;</type>
-   <methodname>FrozenSet&lt;Tv&gt;::map&lt;Tu&gt;</methodname>
-   <methodparam><type>(function(Tv): Tu)</type><parameter>callback</parameter></methodparam>
+   <type>ImmVector&lt;Tv&gt;</type>
+   <methodname>ImmSet&lt;Tv&gt;::toImmVector</methodname>
+   <void />
   </methodsynopsis>
 
 <!-- Note: If this method/property as an alternate procedural mapping then the method/property synopsis MUST be listed BEFORE the function synopsis -->
   <para>
-   The method description goes here.
+   Returns an ImmVector with the values of this ImmSet.
   </para>
  </refsect1>
 </refentry>

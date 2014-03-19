@@ -1,22 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- $Revision:$ -->
-<refentry xml:id="hack.frozensettv.construct" xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink">
+<refentry xml:id="hack.immsettv.values" xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink">
  <refnamediv>
-  <refname>FrozenSet&lt;Tv&gt;::__construct</refname>
-  <refpurpose>Documentation Coming Soon</refpurpose>
+  <refname>ImmSet&lt;Tv&gt;::values</refname>
+  <refpurpose>Return a Vector of the values of this ImmSet</refpurpose>
  </refnamediv>
 
  <refsect1 role="description">
   &reftitle.description;
-  <constructorsynopsis>
+  <methodsynopsis>
    <modifier>public</modifier>
-   <methodname>FrozenSet&lt;Tv&gt;::__construct</methodname>
-   <methodparam><type>?Traversable&lt;Tv&gt;</type><parameter>it</parameter></methodparam>
-  </constructorsynopsis>
+   <type>Vector&lt;Tv&gt;</type>
+   <methodname>ImmSet&lt;Tv&gt;::values</methodname>
+   <void />
+  </methodsynopsis>
 
 <!-- Note: If this method/property as an alternate procedural mapping then the method/property synopsis MUST be listed BEFORE the function synopsis -->
   <para>
-   The method description goes here.
+   Returns a Vector of the values of this ImmSet
   </para>
  </refsect1>
 </refentry>
