@@ -3,7 +3,7 @@
 <refentry xml:id="hack.vectortv.setall" xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink">
  <refnamediv>
   <refname>Vector&lt;Tv&gt;::setAll</refname>
-  <refpurpose>Documentation Coming Soon</refpurpose>
+  <refpurpose>Store values into the Vector from the specified KeyedTraversable, overwriting previous values</refpurpose>
  </refnamediv>
 
  <refsect1 role="description">
@@ -17,7 +17,7 @@
 
 <!-- Note: If this method/property as an alternate procedural mapping then the method/property synopsis MUST be listed BEFORE the function synopsis -->
   <para>
-   The method description goes here.
+    Stores values into the Vector from the specified KeyedTraversable, overwriting previous values. If any key in the <literal>KeyedTraversable&lt;int, Tv&gt;</literal> is not present, an exception is thrown.
   </para>
  </refsect1>
 </refentry>

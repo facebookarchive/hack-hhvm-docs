@@ -3,7 +3,7 @@
 <refentry xml:id="hack.vectortv.toset" xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink">
  <refnamediv>
   <refname>Vector&lt;Tv&gt;::toSet</refname>
-  <refpurpose>Documentation Coming Soon</refpurpose>
+  <refpurpose>Return a Set of the Vector</refpurpose>
  </refnamediv>
 
  <refsect1 role="description">
@@ -17,7 +17,7 @@
 
 <!-- Note: If this method/property as an alternate procedural mapping then the method/property synopsis MUST be listed BEFORE the function synopsis -->
   <para>
-   The method description goes here.
+   Convers the Vector to a Set of just the values of the Vector.
   </para>
  </refsect1>
 </refentry>

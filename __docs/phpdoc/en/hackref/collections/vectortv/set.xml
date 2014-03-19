@@ -3,7 +3,7 @@
 <refentry xml:id="hack.vectortv.set" xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink">
  <refnamediv>
   <refname>Vector&lt;Tv&gt;::set</refname>
-  <refpurpose>Documentation Coming Soon</refpurpose>
+  <refpurpose>Store a value into the Vector with the specified key, overwriting the previous value</refpurpose>
  </refnamediv>
 
  <refsect1 role="description">
@@ -18,8 +18,8 @@
 
 <!-- Note: If this method/property as an alternate procedural mapping then the method/property synopsis MUST be listed BEFORE the function synopsis -->
   <para>
-   The method description goes here.
-  </para>
+    Stores a value into the Vector with the specified key, overwriting the previous value associated with the key. If the key is not present, an an exception is thrown. <literal>$vec-&gt;set($k,$v)</literal> is semantically equivalent to <literal>$vec[$k] = $v</literal> (except that <literal>set()</literal> returns the Vector). 
+ </para>
  </refsect1>
 </refentry>
 <!-- Keep this comment at the end of the file

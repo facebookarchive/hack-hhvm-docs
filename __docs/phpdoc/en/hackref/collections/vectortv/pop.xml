@@ -3,7 +3,7 @@
 <refentry xml:id="hack.vectortv.pop" xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink">
  <refnamediv>
   <refname>Vector&lt;Tv&gt;::pop</refname>
-  <refpurpose>Documentation Coming Soon</refpurpose>
+  <refpurpose>Remove the last element of this Vector and return it.</refpurpose>
  </refnamediv>
 
  <refsect1 role="description">
@@ -17,7 +17,7 @@
 
 <!-- Note: If this method/property as an alternate procedural mapping then the method/property synopsis MUST be listed BEFORE the function synopsis -->
   <para>
-   The method description goes here.
+   Remove the last element of this Vector and return it. This function throws an exception if the Vector is empty.
   </para>
  </refsect1>
 </refentry>

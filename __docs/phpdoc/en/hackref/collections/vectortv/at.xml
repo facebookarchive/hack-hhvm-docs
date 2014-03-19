@@ -3,7 +3,7 @@
 <refentry xml:id="hack.vectortv.at" xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink">
  <refnamediv>
   <refname>Vector&lt;Tv&gt;::at</refname>
-  <refpurpose>Documentation Coming Soon</refpurpose>
+  <refpurpose>Returns the value at the specified key</refpurpose>
  </refnamediv>
 
  <refsect1 role="description">
@@ -14,11 +14,14 @@
    <methodname>Vector&lt;Tv&gt;::at</methodname>
    <methodparam><type>int</type><parameter>k</parameter></methodparam>
   </methodsynopsis>
-
-<!-- Note: If this method/property as an alternate procedural mapping then the method/property synopsis MUST be listed BEFORE the function synopsis -->
   <para>
-   The method description goes here.
+   Returns the value at the specified key. If the key is not present, an exception is thrown.
   </para>
+  <note>
+    <para>
+      <literal>$v = $vec-&gt;at($k)</literal> is semantically equivalent to <literal>$v = $vec[$k]</literal>
+    </para>
+  </note>
  </refsect1>
 </refentry>
 <!-- Keep this comment at the end of the file
