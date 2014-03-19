@@ -165,8 +165,8 @@
 <!ENTITY url.hhvm.downloads "https://github.com/facebook/hhvm">
 <!ENTITY url.hhvm.irc "http://webchat.freenode.net/?channels=hhvm">
 <!ENTITY url.hhvm.install.prebuilt.debian7 "https://github.com/facebook/hhvm/wiki/Prebuilt-Packages-on-Debian-7">
-<!ENTITY url.hhvm.install.compile.debian6 "">
-<!ENTITY url.hhvm.install.compile.debian7 "">
+<!ENTITY url.hhvm.install.compile.debian6 "https://github.com/facebook/hhvm/wiki/Building-and-installing-HHVM-on-Debian-6">
+<!ENTITY url.hhvm.install.compile.debian7 "https://github.com/facebook/hhvm/wiki/Building-and-installing-HHVM-on-Debian-7">
 <!ENTITY url.hhvm.install.prebuilt.ubuntu12_04 "https://github.com/facebook/hhvm/wiki/Prebuilt-Packages-on-Ubuntu-12.04">
 <!ENTITY url.hhvm.install.prebuilt.ubuntu13_10 "https://github.com/facebook/hhvm/wiki/Prebuilt-Packages-on-Ubuntu-13.10">
 <!ENTITY url.hhvm.install.compile.ubuntu12_04 "https://github.com/facebook/hhvm/wiki/Building-and-installing-HHVM-on-Ubuntu-12.04">
