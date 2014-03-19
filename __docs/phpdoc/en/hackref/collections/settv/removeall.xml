@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- $Revision:$ -->
-<refentry xml:id="hack.settv.removekey" xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink">
+<refentry xml:id="hack.settv.removeall" xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink">
  <refnamediv>
   <refname>Set&lt;Tv&gt;::removeKey</refname>
-  <refpurpose>Documentation Coming Soon</refpurpose>
+  <refpurpose>Remove all the values contained in a Traversable from the Set</refpurpose>
  </refnamediv>
 
  <refsect1 role="description">
@@ -11,13 +11,13 @@
   <methodsynopsis>
    <modifier>public</modifier>
    <type>Set&lt;Tv&gt;</type>
-   <methodname>Set&lt;Tv&gt;::removeKey</methodname>
-   <methodparam><type>int</type><parameter>k</parameter></methodparam>
+   <methodname>Set&lt;Tv&gt;::removeAll</methodname>
+   <methodparam><type>?Traversable&lt;Tv&gt;</type><parameter>other</parameter></methodparam>
   </methodsynopsis>
 
 <!-- Note: If this method/property as an alternate procedural mapping then the method/property synopsis MUST be listed BEFORE the function synopsis -->
   <para>
-   The method description goes here.
+   Removes all the values contained in a Traversable from the Set.
   </para>
  </refsect1>
 </refentry>

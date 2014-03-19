@@ -11,7 +11,6 @@
 &hackref.collections.settv.getiterator;
 &hackref.collections.settv.isempty;
 &hackref.collections.settv.items;
-&hackref.collections.settv.keys;
 &hackref.collections.settv.lazy;
 &hackref.collections.settv.maptu;
 &hackref.collections.settv.remove;

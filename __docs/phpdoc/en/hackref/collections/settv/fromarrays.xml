@@ -2,8 +2,8 @@
 <!-- $Revision:$ -->
 <refentry xml:id="hack.settv.fromarrays" xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink">
  <refnamediv>
-  <refname>Set&lt;Tv&gt;::fromArray</refname>
-  <refpurpose>Documentation Coming Soon</refpurpose>
+  <refname>Set&lt;Tv&gt;::fromArrays</refname>
+  <refpurpose>Take a variable number of arrays and create a set of their values</refpurpose>
  </refnamediv>
 
  <refsect1 role="description">
@@ -17,7 +17,7 @@
 
 <!-- Note: If this method/property as an alternate procedural mapping then the method/property synopsis MUST be listed BEFORE the function synopsis -->
   <para>
-   The method description goes here.
+   Takes a variable number of arrays and creates a set of their values.
   </para>
  </refsect1>
 </refentry>

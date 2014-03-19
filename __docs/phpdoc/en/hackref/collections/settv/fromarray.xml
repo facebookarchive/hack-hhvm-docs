@@ -3,7 +3,7 @@
 <refentry xml:id="hack.settv.fromarray" xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink">
  <refnamediv>
   <refname>Set&lt;Tv&gt;::fromArray</refname>
-  <refpurpose>Documentation Coming Soon</refpurpose>
+  <refpurpose>Returns a Set containing the values from the specified array.</refpurpose>
  </refnamediv>
 
  <refsect1 role="description">
@@ -17,7 +17,7 @@
 
 <!-- Note: If this method/property as an alternate procedural mapping then the method/property synopsis MUST be listed BEFORE the function synopsis -->
   <para>
-   The method description goes here.
+   Returns a Set containing the values from the specified array.
   </para>
  </refsect1>
 </refentry>

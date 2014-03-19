@@ -3,7 +3,7 @@
 <refentry xml:id="hack.settv.addall" xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink">
  <refnamediv>
   <refname>Set&lt;Tv&gt;::addAll</refname>
-  <refpurpose>Documentation Coming Soon</refpurpose>
+  <refpurpose>Append all the values of the traversable to the end of the set</refpurpose>
  </refnamediv>
 
  <refsect1 role="description">
@@ -14,10 +14,8 @@
    <methodname>Set&lt;Tv&gt;::addAll</methodname>
    <methodparam><type>?Traversable&lt;Tv&gt;</type><parameter>it</parameter></methodparam>
   </methodsynopsis>
-
-<!-- Note: If this method/property as an alternate procedural mapping then the method/property synopsis MUST be listed BEFORE the function synopsis -->
   <para>
-   The method description goes here.
+    Append all the values of contained in the <literal>Traversable&lt;Tv&gt;</literal> to the end of the set.
   </para>
  </refsect1>
 </refentry>

@@ -2,8 +2,8 @@
 <!-- $Revision:$ -->
 <refentry xml:id="hack.settv.contains" xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink">
  <refnamediv>
-  <refname>Set&lt;Tv&gt;::containsKey</refname>
-  <refpurpose>Documentation Coming Soon</refpurpose>
+  <refname>Set&lt;Tv&gt;::contains</refname>
+  <refpurpose>Checks if the specified key is present in the Set</refpurpose>
  </refnamediv>
 
  <refsect1 role="description">
@@ -12,12 +12,12 @@
    <modifier>public</modifier>
    <type>bool</type>
    <methodname>Set&lt;Tv&gt;::contains</methodname>
-   <methodparam><type>Tv</type><parameter>v</parameter></methodparam>
+   <methodparam><type>int</type><parameter>k</parameter></methodparam>
   </methodsynopsis>
 
 <!-- Note: If this method/property as an alternate procedural mapping then the method/property synopsis MUST be listed BEFORE the function synopsis -->
   <para>
-   The method description goes here.
+   Returns true if the specified key is present in the Set; false otherwise.
   </para>
  </refsect1>
 </refentry>

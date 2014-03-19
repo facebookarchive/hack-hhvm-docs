@@ -3,21 +3,21 @@
 <refentry xml:id="hack.settv.getiterator" xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink">
  <refnamediv>
   <refname>Set&lt;Tv&gt;::getIterator</refname>
-  <refpurpose>Documentation Coming Soon</refpurpose>
+  <refpurpose>Return an Iterator that points to beginning of this Set.</refpurpose>
  </refnamediv>
 
  <refsect1 role="description">
   &reftitle.description;
   <methodsynopsis>
    <modifier>public</modifier>
-   <type>Iterator&lt;Tv&gt;</type>
+   <type>KeyedIterator&lt;int, Tv&gt;</type>
    <methodname>Set&lt;Tv&gt;::getIterator</methodname>
    <void />
   </methodsynopsis>
 
 <!-- Note: If this method/property as an alternate procedural mapping then the method/property synopsis MUST be listed BEFORE the function synopsis -->
   <para>
-   The method description goes here.
+   Returns an Iterator that points to beginning of this Set.
   </para>
  </refsect1>
 </refentry>
