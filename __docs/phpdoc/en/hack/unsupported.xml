@@ -86,7 +86,12 @@
       </listitem>
       <listitem>
         <para>
-          Also everything with Hack is case-sensitive.
+          Case-insensitive function calls (the Hack typechecker is case-sensitive).
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          Mixed HTML and Hack code. Use a templating engine or <link linkend="hack.xhp">XHP</link>.
         </para>
       </listitem>
     </itemizedlist>
