@@ -1,23 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- $Revision:$ -->
-<refentry xml:id="hack.frozenvectortv.maptu" xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink">
+<refentry xml:id="hack.immvectortv.items" xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink">
  <refnamediv>
-  <refname>FrozenVector&lt;Tv&gt;::map&lt;Tu&gt;</refname>
-  <refpurpose>Documentation Coming Soon</refpurpose>
+  <refname>ImmVector&lt;Tv&gt;::items</refname>
+  <refpurpose>Return the items contained in this ImmVector</refpurpose>
  </refnamediv>
 
  <refsect1 role="description">
   &reftitle.description;
   <methodsynopsis>
    <modifier>public</modifier>
-   <type>FrozenVector&lt;Tu&gt;</type>
-   <methodname>FrozenVector&lt;Tv&gt;::map&lt;Tu&gt;</methodname>
-   <methodparam><type>(function(Tv): Tu)</type><parameter>callback</parameter></methodparam>
+   <type>Iterable&lt;Tv&gt;</type>
+   <methodname>ImmVector&lt;Tv&gt;::items</methodname>
+   <void />
   </methodsynopsis>
 
 <!-- Note: If this method/property as an alternate procedural mapping then the method/property synopsis MUST be listed BEFORE the function synopsis -->
   <para>
-   The method description goes here.
+   Returns an <literal>Iterable&lt;Tv&gt;</literal> containing the items of the ImmVector.
   </para>
  </refsect1>
 </refentry>

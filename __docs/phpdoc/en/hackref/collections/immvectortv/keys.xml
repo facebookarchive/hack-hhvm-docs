@@ -1,25 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- $Revision:$ -->
-<refentry xml:id="hack.frozenvectortv.slice" xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink">
+<refentry xml:id="hack.immvectortv.keys" xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink">
  <refnamediv>
-  <refname>FrozenVector&lt;Tv&gt;::slice</refname>
-  <refpurpose>Documentation Coming Soon</refpurpose>
+  <refname>ImmVector&lt;Tv&gt;::keys</refname>
+  <refpurpose>Return a ImmVector of this ImmVector's keys.</refpurpose>
  </refnamediv>
 
  <refsect1 role="description">
   &reftitle.description;
   <methodsynopsis>
    <modifier>public</modifier>
-   <type>FrozenVector&lt;Tv&gt;</type>
-   <methodname>FrozenVector&lt;Tv&gt;::slice</methodname>
-   <methodparam><type>FrozenVector&lt;Tv&gt;</type><parameter>v</parameter></methodparam>
-   <methodparam><type>int</type><parameter>offset</parameter></methodparam>
-   <methodparam><type>?int</type><parameter>len</parameter><initializer>&null;</initializer></methodparam>
+   <type>ImmVector&lt;int&gt;</type>
+   <methodname>ImmVector&lt;Tv&gt;::keys</methodname>
+   <void />
   </methodsynopsis>
 
 <!-- Note: If this method/property as an alternate procedural mapping then the method/property synopsis MUST be listed BEFORE the function synopsis -->
   <para>
-   The method description goes here.
+   Returns a ImmVector of this ImmVector's keys.
   </para>
  </refsect1>
 </refentry>

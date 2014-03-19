@@ -1371,7 +1371,7 @@ class Base {
       </informalexample>
     </para>  
     <para>  
-      <literal>this</literal> can only be used in covariant locations, which means you cannot use <literal>this</literal> in as a function parameter typehint or as a member variable typehint. When Hack has proper covariance support, you will be able to use <literal>this</literal> to instantiate any covariant type variable, like <literal>Awaitable&lt;this&gt;</literal> and <literal>FrozenVector&lt;this&gt;</literal>. Until then, you can only use <literal>this</literal> with <literal>Awaitable</literal>. 
+      <literal>this</literal> can only be used in covariant locations, which means you cannot use <literal>this</literal> in as a function parameter typehint or as a member variable typehint. When Hack has proper covariance support, you will be able to use <literal>this</literal> to instantiate any covariant type variable, like <literal>Awaitable&lt;this&gt;</literal> and <literal>ImmVector&lt;this&gt;</literal>. Until then, you can only use <literal>this</literal> with <literal>Awaitable</literal>. 
     </para>
     <para>
       At the moment, there is no return type that means <literal>$this</literal> and only <literal>$this</literal>. The <literal>this</literal> can be satisfied with any object with the same type as <literal>$this</literal>. 

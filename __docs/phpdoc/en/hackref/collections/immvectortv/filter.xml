@@ -1,23 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- $Revision:$ -->
-<refentry xml:id="hack.frozenvectortv.tovector" xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink">
+<refentry xml:id="hack.immvectortv.filter" xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink">
  <refnamediv>
-  <refname>FrozenVector&lt;Tv&gt;::toVector</refname>
-  <refpurpose>Documentation Coming Soon</refpurpose>
+  <refname>ImmVector&lt;Tv&gt;::filter</refname>
+  <refpurpose>Return a ImmVector containing the values of this ImmVector that cause the provided function to return true.</refpurpose>
  </refnamediv>
 
  <refsect1 role="description">
   &reftitle.description;
   <methodsynopsis>
    <modifier>public</modifier>
-   <type>Vector&lt;Tv&gt;</type>
-   <methodname>FrozenVector&lt;Tv&gt;::toVector</methodname>
-   <void />
+   <type>ImmVector&lt;Tv&gt;</type>
+   <methodname>ImmVector&lt;Tv&gt;::filter</methodname>
+   <methodparam><type>(function(Tv): bool)</type><parameter>callback</parameter></methodparam>
   </methodsynopsis>
 
 <!-- Note: If this method/property as an alternate procedural mapping then the method/property synopsis MUST be listed BEFORE the function synopsis -->
   <para>
-   The method description goes here.
+   Returns a ImmVector containing the values of this ImmVector that cause the provided function to return true.
   </para>
  </refsect1>
 </refentry>

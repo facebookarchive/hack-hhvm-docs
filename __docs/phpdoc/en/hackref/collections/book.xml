@@ -15,7 +15,7 @@
    Hack adds container types and interfaces to PHP. Building on Hack's support for generics, Hack adds first class, built-in parameterized collections such as vectors and maps. Collections are specialized for data storage and retrieval. Collections implement many of the same interfaces and are extendable to create even more specialized collections. Currently, Hack implements the following concrete collection types:
    <itemizedlist>
      <listitem><para>Vector: An ordered, index-based list collection.</para></listitem>
-     <listitem><para>FrozenVector: An immutable, ordered, index-based list collection.</para></listitem>
+     <listitem><para>ImmVector: An immutable, ordered, index-based list collection.</para></listitem>
      <listitem><para>Map: An unordered dictionary-style collection.</para></listitem>
      <listitem><para>Set: A list-based collection that stores unique values.</para></listitem>
      <listitem><para>FrozenSet: An immutable, list-based collection that stores unique values.</para></listitem>
@@ -45,7 +45,7 @@
  &hackref.collections.constsettv;
  &hackref.collections.mutablesettv;
  &hackref.collections.vectortv;
- &hackref.collections.frozenvectortv;
+ &hackref.collections.immvectortv;
  &hackref.collections.maptktv;
  &hackref.collections.settv;
  &hackref.collections.frozensettv;

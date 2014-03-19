@@ -1,23 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- $Revision:$ -->
-<refentry xml:id="hack.frozenvectortv.tovaluesarray" xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink">
+<refentry xml:id="hack.frozenvectortv.tofrozenvector" xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink">
  <refnamediv>
-  <refname>FrozenVector&lt;Tv&gt;::toValuesArray</refname>
-  <refpurpose>Documentation Coming Soon</refpurpose>
+  <refname>ImmVector&lt;Tv&gt;::toImmVector</refname>
+  <refpurpose>Return another ImmVector based on this ImmVector</refpurpose>
  </refnamediv>
 
  <refsect1 role="description">
   &reftitle.description;
   <methodsynopsis>
    <modifier>public</modifier>
-   <type>array</type>
-   <methodname>FrozenVector&lt;Tv&gt;::toValuesArray</methodname>
+   <type>ImmVector&lt;Tv&gt;</type>
+   <methodname>ImmVector&lt;Tv&gt;::toImmVector</methodname>
    <void />
   </methodsynopsis>
 
 <!-- Note: If this method/property as an alternate procedural mapping then the method/property synopsis MUST be listed BEFORE the function synopsis -->
   <para>
-   The method description goes here.
+   Returns another ImmVector based on this ImmVector.
   </para>
  </refsect1>
 </refentry>

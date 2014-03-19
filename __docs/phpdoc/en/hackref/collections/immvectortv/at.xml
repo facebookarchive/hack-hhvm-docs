@@ -1,24 +1,27 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- $Revision:$ -->
-<refentry xml:id="hack.frozenvectortv.tofrozenvector" xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink">
+<refentry xml:id="hack.immvectortv.at" xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink">
  <refnamediv>
-  <refname>FrozenVector&lt;Tv&gt;::toFrozenVector</refname>
-  <refpurpose>Documentation Coming Soon</refpurpose>
+  <refname>ImmVector&lt;Tv&gt;::at</refname>
+  <refpurpose>Return the value at the specified key</refpurpose>
  </refnamediv>
 
  <refsect1 role="description">
   &reftitle.description;
   <methodsynopsis>
    <modifier>public</modifier>
-   <type>FrozenVector&lt;Tv&gt;</type>
-   <methodname>FrozenVector&lt;Tv&gt;::toFrozenVector</methodname>
-   <void />
+   <type>ImmVector&lt;Tv&gt;</type>
+   <methodname>ImmVector&lt;Tv&gt;::at</methodname>
+   <methodparam><type>int</type><parameter>k</parameter></methodparam>
   </methodsynopsis>
-
-<!-- Note: If this method/property as an alternate procedural mapping then the method/property synopsis MUST be listed BEFORE the function synopsis -->
   <para>
-   The method description goes here.
+   Returns the value at the specified key. If the key is not present, an exception is thrown.
   </para>
+  <note>
+    <para>
+      <literal>$v = $vec-&gt;at($k)</literal> is semantically equivalent to <literal>$v = $vec[$k]</literal>
+    </para>
+  </note>
  </refsect1>
 </refentry>
 <!-- Keep this comment at the end of the file

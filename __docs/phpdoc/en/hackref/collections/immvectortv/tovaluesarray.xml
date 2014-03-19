@@ -1,23 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- $Revision:$ -->
-<refentry xml:id="hack.frozenvectortv.tomap" xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink">
+<refentry xml:id="hack.immvectortv.tovaluesarray" xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink">
  <refnamediv>
-  <refname>FrozenVector&lt;Tv&gt;::toMap</refname>
-  <refpurpose>Documentation Coming Soon</refpurpose>
+  <refname>ImmVector&lt;Tv&gt;::toValuesArray</refname>
+  <refpurpose>Return an array containing the values from the ImmVector.</refpurpose>
  </refnamediv>
 
  <refsect1 role="description">
   &reftitle.description;
   <methodsynopsis>
    <modifier>public</modifier>
-   <type>Map&lt;tk, Tv&gt;</type>
-   <methodname>FrozenVector&lt;Tv&gt;::toMap</methodname>
+   <type>array</type>
+   <methodname>ImmVector&lt;Tv&gt;::toValuesArray</methodname>
    <void />
   </methodsynopsis>
 
 <!-- Note: If this method/property as an alternate procedural mapping then the method/property synopsis MUST be listed BEFORE the function synopsis -->
   <para>
-   The method description goes here.
+   Returns an array containing the values from the ImmVector.
   </para>
  </refsect1>
 </refentry>

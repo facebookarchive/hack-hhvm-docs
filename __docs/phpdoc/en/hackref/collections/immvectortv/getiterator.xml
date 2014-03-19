@@ -1,23 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- $Revision:$ -->
-<refentry xml:id="hack.frozenvectortv.count" xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink">
+<refentry xml:id="hack.immvectortv.getiterator" xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink">
  <refnamediv>
-  <refname>FrozenVector&lt;Tv&gt;::count</refname>
-  <refpurpose>Documentation Coming Soon</refpurpose>
+  <refname>ImmVector&lt;Tv&gt;::getIterator</refname>
+  <refpurpose>Return a KeyedIterator that points to beginning of this ImmVector.</refpurpose>
  </refnamediv>
 
  <refsect1 role="description">
   &reftitle.description;
   <methodsynopsis>
    <modifier>public</modifier>
-   <type>int</type>
-   <methodname>FrozenVector&lt;Tv&gt;::count</methodname>
+   <type>KeyedIterator&lt;int, Tv&gt;</type>
+   <methodname>ImmVector&lt;Tv&gt;::getIterator</methodname>
    <void />
   </methodsynopsis>
 
 <!-- Note: If this method/property as an alternate procedural mapping then the method/property synopsis MUST be listed BEFORE the function synopsis -->
   <para>
-   The method description goes here.
+   Returns a KeyedIterator that points to beginning of this ImmVector.
   </para>
  </refsect1>
 </refentry>
