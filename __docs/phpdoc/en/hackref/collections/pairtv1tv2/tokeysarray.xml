@@ -3,7 +3,7 @@
 <refentry xml:id="hack.pairtv1tv2.tokeysarray" xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink">
  <refnamediv>
   <refname>Pair&lt;Tv1, Tv2&gt;::toKeysArray</refname>
-  <refpurpose>Documentation Coming Soon</refpurpose>
+  <refpurpose>Return an array with the keys of this Pair</refpurpose>
  </refnamediv>
 
  <refsect1 role="description">
@@ -17,7 +17,7 @@
 
 <!-- Note: If this method/property as an alternate procedural mapping then the method/property synopsis MUST be listed BEFORE the function synopsis -->
   <para>
-   The method description goes here.
+   Returns an array with the keys of this Pair, namely a two-element array with keys 0 and 1, and values 0 and 1.
   </para>
  </refsect1>
 </refentry>

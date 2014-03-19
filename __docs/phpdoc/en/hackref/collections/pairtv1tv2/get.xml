@@ -3,7 +3,7 @@
 <refentry xml:id="hack.pairtv1tv2.get" xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink">
  <refnamediv>
   <refname>Pair&lt;Tv1, Tv2&gt;::get</refname>
-  <refpurpose>Documentation Coming Soon</refpurpose>
+  <refpurpose>Return the value at the specified key.</refpurpose>
  </refnamediv>
 
  <refsect1 role="description">
@@ -17,7 +17,7 @@
 
 <!-- Note: If this method/property as an alternate procedural mapping then the method/property synopsis MUST be listed BEFORE the function synopsis -->
   <para>
-   The method description goes here.
+   Returns the value at the specified key. If the key is not present, null is returned.
   </para>
  </refsect1>
 </refentry>
