@@ -3,7 +3,7 @@
 <refentry xml:id="hack.vectortv.tokeysarray" xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink">
  <refnamediv>
   <refname>Vector&lt;Tv&gt;::toKeysArray</refname>
-  <refpurpose>Return an array whose values are the keys from the Vector.</refpurpose>
+  <refpurpose>Return an array whose values are the keys from the Vector</refpurpose>
  </refnamediv>
 
  <refsect1 role="description">

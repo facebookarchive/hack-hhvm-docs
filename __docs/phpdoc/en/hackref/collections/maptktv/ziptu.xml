@@ -3,7 +3,7 @@
 <refentry xml:id="hack.maptktv.ziptu" xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink">
  <refnamediv>
   <refname>Map&lt;Tk, Tv&gt;::zip&lt;Tu&gt;</refname>
-  <refpurpose>Documentation Coming Soon</refpurpose>
+  <refpurpose>Return a Map that combines the elements of this Map and another provided iterable, pair-wise.</refpurpose>
  </refnamediv>
 
  <refsect1 role="description">
@@ -17,7 +17,7 @@
 
 <!-- Note: If this method/property as an alternate procedural mapping then the method/property synopsis MUST be listed BEFORE the function synopsis -->
   <para>
-   The method description goes here.
+   Returns a Map that combines the elements of this Map and another provided iterable, pair-wise..
   </para>
  </refsect1>
 </refentry>

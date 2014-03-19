@@ -1,23 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- $Revision:$ -->
-<refentry xml:id="hack.maptktv.add" xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink">
+<refentry xml:id="hack.vectortv.contains" xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink">
  <refnamediv>
-  <refname>Map&lt;Tk, Tv&gt;::add</refname>
-  <refpurpose>Add a key/value Pair to this Map</refpurpose>
+  <refname>Vector&lt;Tv&gt;::contains</refname>
+  <refpurpose>Checks if the specified key is present in the Vector</refpurpose>
  </refnamediv>
- 
+
  <refsect1 role="description">
   &reftitle.description;
   <methodsynopsis>
    <modifier>public</modifier>
-   <type>Map&lt;Tk, Tv&gt;</type>
-   <methodname>Map&lt;Tk, Tv&gt;::add</methodname>
-   <methodparam><type>Pair&lt;Tk, Tv&gt;Tv</type><parameter>p</parameter></methodparam>
+   <type>bool</type>
+   <methodname>Vector&lt;Tv&gt;::contains</methodname>
+   <methodparam><type>int</type><parameter>k</parameter></methodparam>
   </methodsynopsis>
- 
+
 <!-- Note: If this method/property as an alternate procedural mapping then the method/property synopsis MUST be listed BEFORE the function synopsis -->
   <para>
-    Add a key/value Pair to this Map. <literal>$mp-&gt;add($p)</literal> is semantically equivalent to <literal>$mp[] = $p</literal> (except that <literal>add()</literal> returns the Map).
+   Returns true if the specified key is present in the Vector; false otherwise.
   </para>
  </refsect1>
 </refentry>

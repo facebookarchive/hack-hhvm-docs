@@ -17,7 +17,7 @@
 
 <!-- Note: If this method/property as an alternate procedural mapping then the method/property synopsis MUST be listed BEFORE the function synopsis -->
   <para>
-   Remove the specified key from the Vector.
+   Removes the specified key from the Vector.
   </para>
   <note>
     <para>

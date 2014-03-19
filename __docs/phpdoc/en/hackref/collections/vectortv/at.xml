@@ -3,7 +3,7 @@
 <refentry xml:id="hack.vectortv.at" xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink">
  <refnamediv>
   <refname>Vector&lt;Tv&gt;::at</refname>
-  <refpurpose>Returns the value at the specified key</refpurpose>
+  <refpurpose>Return the value at the specified key</refpurpose>
  </refnamediv>
 
  <refsect1 role="description">

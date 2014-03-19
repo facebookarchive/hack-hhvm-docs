@@ -3,7 +3,7 @@
 <refentry xml:id="hack.vectortv.count" xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink">
  <refnamediv>
   <refname>Vector&lt;Tv&gt;::count</refname>
-  <refpurpose>Returns the number of elements in the Vector</refpurpose>
+  <refpurpose>Return the number of elements in the Vector</refpurpose>
  </refnamediv>
 
  <refsect1 role="description">
