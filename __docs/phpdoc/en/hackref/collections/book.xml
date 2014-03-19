@@ -27,29 +27,29 @@
   </para>
  </preface>
 
- &hackref.collections.setup;
- &hackref.collections.examples;
- &hackref.collections.constcollectionte;
- &hackref.collections.outputcollectionte;
- &hackref.collections.collectionte;
- &hackref.collections.constsetaccesstm;
- &hackref.collections.setaccesstm;
- &hackref.collections.constindexaccesstktv;
- &hackref.collections.indexaccesstktv;
- &hackref.collections.constmapaccesstktv;
- &hackref.collections.mapaccesstktv;
- &hackref.collections.constvectortv;
- &hackref.collections.mutablevectortv;
- &hackref.collections.constmaptktv;
- &hackref.collections.mutablemaptktv;
- &hackref.collections.constsettv;
- &hackref.collections.mutablesettv;
+ <!--&hackref.collections.setup;-->
+ <!--&hackref.collections.examples;-->
  &hackref.collections.vectortv;
  &hackref.collections.immvectortv;
  &hackref.collections.maptktv;
  &hackref.collections.settv;
  &hackref.collections.frozensettv;
  &hackref.collections.pairtv1tv2;
+ &hackref.collections.constvectortv;
+ &hackref.collections.mutablevectortv;
+ &hackref.collections.constmaptktv;
+ &hackref.collections.mutablemaptktv;
+ &hackref.collections.constsettv;
+ &hackref.collections.mutablesettv;
+ &hackref.collections.constsetaccesstm;
+ &hackref.collections.setaccesstm;
+ &hackref.collections.constindexaccesstktv;
+ &hackref.collections.indexaccesstktv;
+ &hackref.collections.constmapaccesstktv;
+ &hackref.collections.mapaccesstktv;
+ &hackref.collections.constcollectionte;
+ &hackref.collections.outputcollectionte;
+ &hackref.collections.collectionte;
 
 </book>
 
