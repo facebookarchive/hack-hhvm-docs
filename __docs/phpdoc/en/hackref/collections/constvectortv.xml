@@ -12,7 +12,7 @@
   <section xml:id="constvectortv.intro">
    &reftitle.intro;
    <para>
-    Documentation Coming Soon
+    An immutable-style <literal>ConstVector</literal> is the base interface for all Vector implementations. For example, <link linkend="class.hack.mutablevectortv">MutableVector</link> extends this class.
    </para>
   </section>
 <!-- }}} -->

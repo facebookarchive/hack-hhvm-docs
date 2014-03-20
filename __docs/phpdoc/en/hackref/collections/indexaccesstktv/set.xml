@@ -4,13 +4,13 @@
 <refentry xml:id="hack.indexaccesstktv.set" xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink">
  <refnamediv>
   <refname>IndexAccess&lt;Tk, Tv&gt;::set</refname>
-  <refpurpose>Documentation Coming Soon</refpurpose>
+  <refpurpose>Store a value into the collection with the specified key.</refpurpose>
  </refnamediv>
 
  <refsect1 role="description">
   &reftitle.description;
   <methodsynopsis>
-   <modifier>abstract</modifier><modifier>public</modifier> <type>this</type><methodname>IndexAccess&lt;Tk, Tv&gt;::set</methodname>
+   <modifier>abstract</modifier> <modifier>public</modifier> <type>this</type><methodname>IndexAccess&lt;Tk, Tv&gt;::set</methodname>
    <methodparam><type>Tk</type><parameter>k</parameter></methodparam>
    <methodparam><type>Tv</type><parameter>v</parameter></methodparam>
   </methodsynopsis>
@@ -24,7 +24,7 @@
      <term><parameter>k</parameter></term>
      <listitem>
       <para>
-       Documentation Coming Soon
+       The key where the value will be stored.
       </para>
      </listitem>
     </varlistentry>
@@ -36,7 +36,7 @@
      <term><parameter>v</parameter></term>
      <listitem>
       <para>
-       Documentation Coming Soon
+       The value to store.
       </para>
      </listitem>
     </varlistentry>
@@ -47,7 +47,7 @@
  <refsect1 role="returnvalues">
   &reftitle.returnvalues;
   <para>
-   Documentation Coming Soon
+   The updated collection.
   </para>
  </refsect1>
 

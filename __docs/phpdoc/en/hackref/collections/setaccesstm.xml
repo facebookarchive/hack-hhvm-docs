@@ -12,7 +12,7 @@
   <section xml:id="setaccesstm.intro">
    &reftitle.intro;
    <para>
-    Documentation Coming Soon
+    <literal>SetAccess</literal> allows for removal of the elements (via the <link linkend="class.hack.setaccesstm.remove">remove()</link> method) of for mutable sets.
    </para>
   </section>
 <!-- }}} -->

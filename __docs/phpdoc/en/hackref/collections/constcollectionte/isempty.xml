@@ -4,13 +4,13 @@
 <refentry xml:id="hack.constcollectionte.isempty" xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink">
  <refnamediv>
   <refname>ConstCollection&lt;Te&gt;::isEmpty</refname>
-  <refpurpose>Documentation Coming soon</refpurpose>
+  <refpurpose>Determine if the collection is empty.</refpurpose>
  </refnamediv>
 
  <refsect1 role="description">
   &reftitle.description;
   <methodsynopsis>
-   <modifier>abstract</modifier><modifier>public</modifier> <type>bool</type><methodname>ConstCollection&lt;Te&gt;::count</methodname>
+   <modifier>abstract</modifier> <modifier>public</modifier> <type>bool</type><methodname>ConstCollection&lt;Te&gt;::isEmpty</methodname>
    <void />
   </methodsynopsis>
  </refsect1>
@@ -23,7 +23,7 @@
  <refsect1 role="returnvalues">
   &reftitle.returnvalues;
   <para>
-   Documentation Coming soon
+   True if the collection is empty; false otherwise.
   </para>
  </refsect1>
 

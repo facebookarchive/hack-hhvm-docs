@@ -12,7 +12,7 @@
   <section xml:id="mutablemaptktv.intro">
    &reftitle.intro;
    <para>
-    Documentation Coming Soon
+      <literal>MutableMap</literal> is the base interface for all mutable maps. For example, <link linkend="class.hack.maptktv">Map&lt;Tk, Tv&gt;</link> implements this interface.
    </para>
   </section>
 <!-- }}} -->

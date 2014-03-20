@@ -12,7 +12,7 @@
   <section xml:id="mutablevectortv.intro">
    &reftitle.intro;
    <para>
-    Documentation Coming Soon
+    <literal>MutableVector</literal> is the base interface for all mutable vectors. For example, <link linkend="class.hack.vectortv">Vector&lt;Tv&gt;</link> implements this interface.
    </para>
   </section>
 <!-- }}} -->

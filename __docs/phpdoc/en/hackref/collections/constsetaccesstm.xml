@@ -12,7 +12,7 @@
   <section xml:id="constsetaccesstm.intro">
    &reftitle.intro;
    <para>
-    Documentation Coming Soon
+    <literal>ConstSetAccess</literal> allows for access of the elements (via the <link linkend="class.hack.constsetaccesstm.contains">contains()</link> method) of all set styles (mutable and immutable).
    </para>
   </section>
 <!-- }}} -->

@@ -12,7 +12,7 @@
   <section xml:id="constmaptktv.intro">
    &reftitle.intro;
    <para>
-    Documentation Coming Soon
+    An immutable-style <literal>ConstMap</literal> is the base interface for all Map implementations. For example, <link linkend="class.hack.mutablemaptktv">MutableMap</link> extends this class.
    </para>
   </section>
 <!-- }}} -->

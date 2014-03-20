@@ -4,13 +4,13 @@
 <refentry xml:id="hack.setaccesstm.remove" xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink">
  <refnamediv>
   <refname>SetAccess&lt;Tm&gt;::remove</refname>
-  <refpurpose>Documentation Coming Soon</refpurpose>
+  <refpurpose>Remove an element from the Set.</refpurpose>
  </refnamediv>
 
  <refsect1 role="description">
   &reftitle.description;
   <methodsynopsis>
-   <modifier>abstract</modifier><modifier>public</modifier> <type>this</type><methodname>SetAccess&lt;Tm&gt;::remove</methodname>
+   <modifier>abstract</modifier> <modifier>public</modifier> <type>this</type><methodname>SetAccess&lt;Tm&gt;::remove</methodname>
    <methodparam><type>Tm</type><parameter>m</parameter></methodparam>
   </methodsynopsis>
  </refsect1>
@@ -23,7 +23,7 @@
      <term><parameter>m</parameter></term>
      <listitem>
       <para>
-       Documentation Coming Soon
+       The value to remove.
       </para>
      </listitem>
     </varlistentry>
@@ -34,7 +34,7 @@
  <refsect1 role="returnvalues">
   &reftitle.returnvalues;
   <para>
-   Documentation Coming Soon
+   The resulting modified set.
   </para>
  </refsect1>
 

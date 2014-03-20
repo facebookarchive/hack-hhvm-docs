@@ -4,13 +4,13 @@
 <refentry xml:id="hack.constindexaccesstktv.containskey" xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink">
  <refnamediv>
   <refname>ConstIndexAccess&lt;Tk, Tv&gt;::containsKey</refname>
-  <refpurpose>Documentation Coming Soon</refpurpose>
+  <refpurpose>Determine if the key-based collection contains a key</refpurpose>
  </refnamediv>
 
  <refsect1 role="description">
   &reftitle.description;
   <methodsynopsis>
-   <modifier>abstract</modifier><modifier>public</modifier> <type>bool</type><methodname>ConstIndexAccess&lt;Tk, Tv&gt;::containsKey</methodname>
+   <modifier>abstract</modifier> <modifier>public</modifier> <type>bool</type><methodname>ConstIndexAccess&lt;Tk, Tv&gt;::containsKey</methodname>
    <methodparam><type>Tk</type><parameter>k</parameter></methodparam>
   </methodsynopsis>
  </refsect1>
@@ -23,7 +23,7 @@
      <term><parameter>k</parameter></term>
      <listitem>
       <para>
-       Documentation Coming Soon
+       The key to find.
       </para>
      </listitem>
     </varlistentry>
@@ -34,7 +34,7 @@
  <refsect1 role="returnvalues">
   &reftitle.returnvalues;
   <para>
-   Documentation Coming Soon
+   True if the key is found; false otherwise.
   </para>
  </refsect1>
 

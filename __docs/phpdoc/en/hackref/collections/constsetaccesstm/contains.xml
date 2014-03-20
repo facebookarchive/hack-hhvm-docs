@@ -4,13 +4,13 @@
 <refentry xml:id="hack.constsetaccesstm.contains" xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink">
  <refnamediv>
   <refname>ConstSetAccess&lt;Tm&gt;::contains</refname>
-  <refpurpose>Documentation Coming Soon</refpurpose>
+  <refpurpose>Check if a set contains a provided value</refpurpose>
  </refnamediv>
 
  <refsect1 role="description">
   &reftitle.description;
   <methodsynopsis>
-   <modifier>abstract</modifier><modifier>public</modifier> <type>bool</type><methodname>ConstSetAccess&lt;Tm&gt;::contains</methodname>
+   <modifier>abstract</modifier> <modifier>public</modifier> <type>bool</type><methodname>ConstSetAccess&lt;Tm&gt;::contains</methodname>
    <methodparam><type>Tm</type><parameter>m</parameter></methodparam>
   </methodsynopsis>
  </refsect1>
@@ -23,7 +23,7 @@
      <term><parameter>m</parameter></term>
      <listitem>
       <para>
-       Documentation Coming Soon
+       The value for which to check.
       </para>
      </listitem>
     </varlistentry>
@@ -34,7 +34,7 @@
  <refsect1 role="returnvalues">
   &reftitle.returnvalues;
   <para>
-   Documentation Coming Soon
+   True if the value exists; false otherwise
   </para>
  </refsect1>
 

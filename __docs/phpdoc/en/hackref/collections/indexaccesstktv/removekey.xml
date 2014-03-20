@@ -4,13 +4,13 @@
 <refentry xml:id="hack.indexaccesstktv.removekey" xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink">
  <refnamediv>
   <refname>IndexAccess&lt;Tk, Tv&gt;::removeKey</refname>
-  <refpurpose>Documentation Coming Soon</refpurpose>
+  <refpurpose>Remove the key (and associated value) from the collection</refpurpose>
  </refnamediv>
 
  <refsect1 role="description">
   &reftitle.description;
   <methodsynopsis>
-   <modifier>abstract</modifier><modifier>public</modifier> <type>this</type><methodname>IndexAccess&lt;Tk, Tv&gt;::removeKey</methodname>
+   <modifier>abstract</modifier> <modifier>public</modifier> <type>this</type><methodname>IndexAccess&lt;Tk, Tv&gt;::removeKey</methodname>
    <methodparam><type>Tk</type><parameter>k</parameter></methodparam>
   </methodsynopsis>
  </refsect1>
@@ -23,7 +23,7 @@
      <term><parameter>k</parameter></term>
      <listitem>
       <para>
-       Documentation Coming Soon
+       The key to remove.
       </para>
      </listitem>
     </varlistentry>
@@ -34,7 +34,7 @@
  <refsect1 role="returnvalues">
   &reftitle.returnvalues;
   <para>
-   Documentation Coming Soon
+   The updated collection.
   </para>
  </refsect1>
 

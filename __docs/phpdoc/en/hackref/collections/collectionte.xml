@@ -12,7 +12,7 @@
   <section xml:id="collectionte.intro">
    &reftitle.intro;
    <para>
-    Documentation Coming Soon
+    <literal>Collection</literal> is the base collection interface. It provides basic quantity, additive and removal methods. It extends <literal>ConstCollection</literal> and <literal>OutputCollection</literal>.
    </para>
   </section>
 <!-- }}} -->

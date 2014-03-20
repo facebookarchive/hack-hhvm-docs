@@ -4,13 +4,13 @@
 <refentry xml:id="hack.constcollectionte.items" xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink">
  <refnamediv>
   <refname>ConstCollection&lt;Te&gt;::items</refname>
-  <refpurpose>Documentation Coming Soon</refpurpose>
+  <refpurpose>Return an iterable with all the items of the collection</refpurpose>
  </refnamediv>
 
  <refsect1 role="description">
   &reftitle.description;
   <methodsynopsis>
-   <modifier>abstract</modifier><modifier>public</modifier> <type>Iterable&lt;Te&gt;</type><methodname>ConstCollection&lt;Te&gt;::items</methodname>
+   <modifier>abstract</modifier> <modifier>public</modifier> <type>Iterable&lt;Te&gt;</type><methodname>ConstCollection&lt;Te&gt;::items</methodname>
    <void />
   </methodsynopsis>
  </refsect1>
@@ -23,7 +23,7 @@
  <refsect1 role="returnvalues">
   &reftitle.returnvalues;
   <para>
-   Documentation Coming Soon
+   An iterable with all the items of the collection.
   </para>
  </refsect1>
 

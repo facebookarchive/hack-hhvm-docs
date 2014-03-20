@@ -12,7 +12,7 @@
   <section xml:id="constcollectionte.intro">
    &reftitle.intro;
    <para>
-    Coming soon
+    <literal>ConstCollection</literal> is the base interface for accessing collection information, particularly around its count.
    </para>
   </section>
 <!-- }}} -->

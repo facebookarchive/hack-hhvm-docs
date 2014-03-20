@@ -4,13 +4,13 @@
 <refentry xml:id="hack.indexaccesstktv.setall" xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink">
  <refnamediv>
   <refname>IndexAccess&lt;Tk, Tv&gt;::setAll</refname>
-  <refpurpose>Documentation Coming Soon</refpurpose>
+  <refpurpose>Store the key/value pairs of an iterable into the collection</refpurpose>
  </refnamediv>
 
  <refsect1 role="description">
   &reftitle.description;
   <methodsynopsis>
-   <modifier>abstract</modifier><modifier>public</modifier> <type>this</type><methodname>IndexAccess&lt;Tk, Tv&gt;::setAll</methodname>
+   <modifier>abstract</modifier> <modifier>public</modifier> <type>this</type><methodname>IndexAccess&lt;Tk, Tv&gt;::setAll</methodname>
    <methodparam><type>KeyedTraversable&lt;Tk, Tv&gt;</type><parameter>iterable</parameter></methodparam>
   </methodsynopsis>
  </refsect1>
@@ -23,7 +23,7 @@
      <term><parameter>iterable</parameter></term>
      <listitem>
       <para>
-       Documentation Coming Soon
+       The iterable containing the key/value pairs to iterate over.
       </para>
      </listitem>
     </varlistentry>
@@ -34,7 +34,7 @@
  <refsect1 role="returnvalues">
   &reftitle.returnvalues;
   <para>
-   Documentation Coming Soon
+   The upated collection.
   </para>
  </refsect1>
 

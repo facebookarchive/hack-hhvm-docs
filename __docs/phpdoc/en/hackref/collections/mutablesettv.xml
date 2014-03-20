@@ -12,7 +12,7 @@
   <section xml:id="mutablesettv.intro">
    &reftitle.intro;
    <para>
-    Documentation Coming Soon
+    <literal>MutableSet</literal> is the base interface for all mutable sets. For example, <link linkend="class.hack.settv">Set&lt;Tv&gt;</link> implements this interface.
    </para>
   </section>
 <!-- }}} -->
@@ -58,7 +58,7 @@
     <xi:include xpointer="xmlns(db=http://docbook.org/ns/docbook) xpointer(id('class.hack.setaccesstm')/db:refentry/db:refsect1[@role='description']/descendant::db:methodsynopsis[1])" />
 
     <classsynopsisinfo role="comment">&InheritedMethods;</classsynopsisinfo>
-    <xi:include xpointer="xmlns(db=http://docbook.org/ns/docbook) xpointer(id('class.hack.iterabletv')/db:refentry/db:refsect1[@role='description']/descendant::db:methodsynopsis[1])" />
+    <xi:include xpointer="xmlns(db=http://docbook.org/ns/docbook) xpointer(id('class.hack.constsettv')/db:refentry/db:refsect1[@role='description']/descendant::db:methodsynopsis[1])" />
 
    </classsynopsis>
 <!-- }}} -->

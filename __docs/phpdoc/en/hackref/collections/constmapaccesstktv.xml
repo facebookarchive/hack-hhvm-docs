@@ -12,7 +12,7 @@
   <section xml:id="constmapaccesstktv.intro">
    &reftitle.intro;
    <para>
-    Documentation Coming Soon
+    <literal>ConstMapAccess</literal> is an empty interface representing the base interface for all key-based collection access (mutable or immuatble). This interface extends both <literal>ConstSetAccess</literal> and <literal>ConstIndexAccess</literal>.
    </para>
   </section>
 <!-- }}} -->
