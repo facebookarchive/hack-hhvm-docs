@@ -1,23 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- $Revision:$ -->
-<refentry xml:id="hack.frozenimmsettv.fromitems" xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink">
+<refentry xml:id="hack.immsettv.fromitems" xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink">
  <refnamediv>
-  <refname>FrozenImmSet&lt;Tv&gt;::fromItems</refname>
-  <refpurpose>Documentation Coming Soon</refpurpose>
+  <refname>ImmSet&lt;Tv&gt;::fromItems</refname>
+  <refpurpose>Return an ImmSet containing the values from the specified Traversable</refpurpose>
  </refnamediv>
 
  <refsect1 role="description">
   &reftitle.description;
   <methodsynopsis>
    <modifier>public</modifier>
-   <type>FrozenImmSet&lt;Tv&gt;</type>
-   <methodname>FrozenImmSet&lt;Tv&gt;::fromItems</methodname>
+   <type>ImmSet&lt;Tv&gt;</type>
+   <methodname>ImmSet&lt;Tv&gt;::fromItems</methodname>
    <methodparam><type>?Traversable&lt;Tv&gt;</type><parameter>items</parameter></methodparam>
   </methodsynopsis>
 
 <!-- Note: If this method/property as an alternate procedural mapping then the method/property synopsis MUST be listed BEFORE the function synopsis -->
   <para>
-   The method description goes here.
+   Returns an ImmSet containing the values from the specified Traversable.
   </para>
  </refsect1>
 </refentry>

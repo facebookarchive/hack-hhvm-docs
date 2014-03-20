@@ -15,8 +15,8 @@
 &reference.collections.entities.constsetaccesstm;
 &reference.collections.entities.constsettv;
 &reference.collections.entities.constvectortv;
-&reference.collections.entities.frozensettv;
-&reference.collections.entities.frozenvectortv;
+&reference.collections.entities.immsettv;
+&reference.collections.entities.immvectortv;
 &reference.collections.entities.indexaccesstktv;
 &reference.collections.entities.mapaccesstktv;
 &reference.collections.entities.maptktv;
@@ -30,8 +30,8 @@
 &reference.collections.entities.vectortv;
 &reference.collections.examples;
 &reference.collections.extending;
-&reference.collections.frozensettv;
-&reference.collections.frozenvectortv;
+&reference.collections.immsettv;
+&reference.collections.immvectortv;
 &reference.collections.indexaccesstktv;
 &reference.collections.mapaccesstktv;
 &reference.collections.maptktv;

@@ -18,7 +18,7 @@
      <listitem><para>ImmVector: An immutable, ordered, index-based list collection.</para></listitem>
      <listitem><para>Map: An unordered dictionary-style collection.</para></listitem>
      <listitem><para>Set: A list-based collection that stores unique values.</para></listitem>
-     <listitem><para>FrozenSet: An immutable, list-based collection that stores unique values.</para></listitem>
+     <listitem><para>ImmSet: An immutable, list-based collection that stores unique values.</para></listitem>
      <listitem><para>Pair: An index-based collection that can hold exactly two elements.</para></listitem>
    </itemizedlist>
   </para>
