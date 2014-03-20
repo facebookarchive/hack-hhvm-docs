@@ -12,7 +12,7 @@
   <section xml:id="constindexaccesstktv.intro">
    &reftitle.intro;
    <para>
-    <literal>ConstIndexAccess</literal> allows for access key-based collections with methods such as <link linkend="class.hack.constindexaccesstktv.at">at()</link>.
+    <literal>ConstIndexAccess</literal> allows for access key-based collections with methods such as <link linkend="hack.constindexaccesstktv.at">at()</link>.
    </para>
   </section>
 <!-- }}} -->

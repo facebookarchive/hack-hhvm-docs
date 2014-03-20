@@ -4,7 +4,7 @@
 <refentry xml:id="hack.outputcollectionte.addall" xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink">
  <refnamediv>
   <refname>OutputCollection&lt;Te&gt;::addAll</refname>
-  <refpurpose>Add all the items of an traversable to the collection</refpurpose>
+  <refpurpose>Add all the items of a traversable to the collection</refpurpose>
  </refnamediv>
 
  <refsect1 role="description">

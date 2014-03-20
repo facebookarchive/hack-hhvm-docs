@@ -12,7 +12,7 @@
   <section xml:id="indexaccesstktv.intro">
    &reftitle.intro;
    <para>
-    <literal>IndexAccess</literal> allows for the setting and removal of elements in a key-based collections with methods such as <link linkend="class.hack.indexaccesstktv.set">set()</link>.
+    <literal>IndexAccess</literal> allows for the setting and removal of elements in a key-based collections with methods such as <link linkend="hack.indexaccesstktv.set">set()</link>.
    </para>
   </section>
 <!-- }}} -->
