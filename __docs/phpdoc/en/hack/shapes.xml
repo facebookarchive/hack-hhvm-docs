@@ -20,14 +20,13 @@ function why_shapes(array $arr_as_struct): array {
 }
 
 function main_why_shapes() {
-$my_struct = array('id' => null, 'url' => null, 'count' => 0);
-$my_struct['id'] = '573065673A34Y';
-$my_struct['url'] = 'http://facebook.com';
+  $my_struct = array('id' => null, 'url' => null, 'count' => 0);
+  $my_struct['id'] = '573065673A34Y';
+  $my_struct['url'] = 'http://facebook.com';
 
-var_dump($my_struct);
-$my_struct = why_shapes($my_struct);
-var_dump($my_struct);
-
+  var_dump($my_struct);
+  $my_struct = why_shapes($my_struct);
+  var_dump($my_struct);
 }
 
 main_why_shapes();
@@ -87,7 +86,7 @@ function foo(MyShape $x): void {}
     </informalexample>
     <note>
       <para>
-        Notice how shapes are declared with the HHVM keyword <literal>type</literal> or <literal>newtype</literal>. This means shapes follow the same behavior as a type alias or opaque type (e.g. underlying behavior can be accessed and changed across files for a type alias). 
+        Notice how shapes are declared with the HHVM keyword <literal>type</literal> or <literal>newtype</literal>. This means shapes follow the same behavior as a <link linkend="hack.typealiasing">type alias or opaque type</link> (e.g. underlying behavior can be accessed and changed across files for a type alias). 
       </para>
     </note>
   </para>
@@ -239,7 +238,7 @@ array(3) {
   <sect1 xml:id="hack.shapes.generics">
     <title>Shapes and Generics</title>
     <para>
-      Shapes can be used with generics as shown here:
+      Shapes can be used with <link linkend="hack.generics">generics</link> as shown here:
       <informalexample>
         <programlisting role="php">
 <![CDATA[

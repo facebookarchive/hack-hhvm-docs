@@ -2,24 +2,24 @@
 <chapter xml:id="hack.arrays">
   <title>Arrays</title>
   <para>
-    The Hack language guidance is to use collections whenever and wherever possible. However, 100% usage of collections is obviously not realistic given how much arrays are used in various codebases (i.e., arrays were the &quot;collection&quot; type before collections). And there just may be legitimate use cases for an array. Here is how Hack handles arrays:
+    The Hack language guidance is to use <link linkend="hack.collections">collections</link> whenever and wherever possible. However, 100% usage of collections is obviously not realistic given how much arrays are used in various codebases (i.e., arrays were the &quot;collection&quot; type before collections). And there just may be legitimate use cases for an array. Here is how Hack handles arrays:
     <itemizedlist>
       <listitem>
         <para>Use arrays in the normal, PHP way. (e.g., <literal>array</literal>).</para>
       </listitem>
       <listitem>
         <para>
-          Use an explicitly typed array, indexed by integers, where the value of the array has one and only one type. (e.g, <literal>array&lt;someType&gt;</literal>
+          Use an explicitly typed array, indexed by integers, where the value of the array has one and only one type. (e.g, <literal>array&lt;someType&gt;</literal>).
         </para>
       </listitem>
       <listitem>
         <para>
-          Use an explicitly typed array, indexed by an <literal>int</literal> or <literal>string</literal> , where the value of the array has one and only one type. (e.g., <literal>array&lt;string | int, someType&gt;</literal>).
+          Use an explicitly typed array, indexed by an <literal>int</literal> or <literal>string</literal> , where the value of the array has one and only one type. (e.g., <literal>array&lt;string, someType&gt;</literal>).
         </para>
       </listitem>
       <listitem>
         <para>
-          Use a generic array, indexed by integers, where the value of<literal>T</literal> can be of any type. (e.g., <literal>array&lt;T&gt;</literal>).
+          Use a <link linkend="hack.generics">generic</link> array, indexed by integers, where the value of<literal>T</literal> can be of any type. (e.g., <literal>array&lt;T&gt;</literal>).
         </para>
       </listitem>
       <listitem>
