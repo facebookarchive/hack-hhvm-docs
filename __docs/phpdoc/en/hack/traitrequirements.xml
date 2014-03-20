@@ -5,24 +5,24 @@
     The Hack typechecker is effective because it is able to take annotated facts sprinkled across a codebase (function entry and exit points, class definitions, etc), reconcile them, and detect any mismatches. Traits are a sizeable wrench in the works. The nature of traits in PHP is to "declare a bunch of stuff to be thrown into another scope at a later time, then check if it works at runtime"; the Hack typechecker is only happy if it can take a piece of code and statically verify it independently of its usage sites. A syntactic way of having traits state that they only apply inside a particular type hierarchy allows their declarations to be both more explicit and more amenable to static analysis.
     <informalexample>
       <programlisting role="php">
-  <![CDATA[
-  <?hh
+<![CDATA[
+<?hh
 
-  // Definitions of class C and interface I
-  class C { .. }
-  interface I {
-    public function foo();
-  }
+// Definitions of class C and interface I
+class C { ... }
+interface I {
+  public function foo();
+}
 
-  // Trait T requires that any using class is a descendent of class C and implements
-  // interface I
-  trait T {
-    require extends C;
-    require implements I;
-    // ... trait functionality that potentially relies on $this extending C and implementing I ...
-    // ... this functionality can be safely typechecked even if there are no classes that use T !
-  }
-  ]]>
+// Trait T requires that any using class is a descendent of class C and implements
+// interface I
+trait T {
+  require extends C;
+  require implements I;
+  // ... trait functionality that potentially relies on $this extending C and implementing I ...
+  // ... this functionality can be safely typechecked even if there are no classes that use T !
+}
+]]>
       </programlisting>
     </informalexample>
   </para>
@@ -31,6 +31,7 @@
     <informalexample>
       <programlisting role="php">
 <![CDATA[
+<?hh
 // Classes X1, X2, X3, and X4 all satisfy T's requirements:
 class X1 extends C implements I {
   use T;

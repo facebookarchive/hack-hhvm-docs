@@ -10,25 +10,25 @@
       Hack provides the capability to indicate that a function takes a variable number of arguments. This is done using <literal>...</literal> (three dots).
       <informalexample>
         <programlisting role="php">
-  <![CDATA[
-  <?hh
+<![CDATA[
+<?hh
 
-  function var_foo(int $x, ...) : int {
+function var_foo(int $x, ...) : int {
   // use func_get_args() to get the actual arguments returned as an array
   // Remember, in this case, the $x will be counted as an argument too.
   $arg_arr = func_get_args();
   return $x + count($arg_arr);
-  }
+}
 
-  function main_vna() {
+function main_vna() {
   $y = var_foo(3, 2, 'hi', array(), 1.3); // $y = 8 (3+5)
   $z = var_foo(3); // $z = 4 (3+1)
   echo $y."\n";
   echo $z;
-  }
+}
 
-  main_vna();
-  ]]>
+main_vna();
+]]>
         </programlisting>
         <para> 
           The general gotcha here will be that any explicitly defined parameters are counted in the call to <literal>func_get_args()</literal>.
@@ -39,24 +39,24 @@
       Here is another example:
       <informalexample>
         <programlisting role="php">
-  <![CDATA[
-  <?hh
+<![CDATA[
+<?hh
 
-  function sum(...): int {
+function sum(...): int {
   $s = 0;
   foreach (func_get_args() as $e) {
     $s += $e;
   }
   return $s;
-  }
+}
 
-  function main_vna() {
+function main_vna() {
   $x = sum(3, 2, 5, 3, 1.3);
   echo $x; //$x = 14.3
-  }
+}
 
-  main_vna();
-  ]]>
+main_vna();
+]]>
         </programlisting>
         <para>
           With the above example, HHVM will give an error (probably <literal>Invalid Operand Type</literal> if anything &quot;non-summable&quot; (e.g., <literal>array()</literal>) is passed to <literal>sum()</literal> as a variable argument.
@@ -79,18 +79,18 @@
       In PHP, <literal>float</literal> and <literal>int</literal> are incompatible at the type hint level:
       <informalexample>
         <programlisting role="php">
-  <![CDATA[
-  <?php
-  function f1(float $x) {
-  }
-  f1(10);
-  ]]>
+<![CDATA[
+<?php
+function f1(float $x) {
+}
+f1(10);
+]]>
         </programlisting>
         &example.outputs;
         <screen>
-  <![CDATA[
-  HipHop Fatal error: Argument 1 passed to f1() must be an instance of float, int given
-  ]]>
+<![CDATA[
+HipHop Fatal error: Argument 1 passed to f1() must be an instance of float, int given
+]]>
         </screen>
       </informalexample>
     </para>
@@ -98,19 +98,19 @@
       This incompatibility implies that the distinction between <literal>int</literal> and <literal>float</literal> must be tracked. However, some math operators have a return type which depends on their input:
       <informalexample>
         <programlisting role="php">
-  <![CDATA[
-  <?php
-  $x = 10;
-  echo gettype($x/2), "\n";
-  echo gettype($x/3), "\n";
-  ]]>
+<![CDATA[
+<?php
+$x = 10;
+echo gettype($x/2), "\n";
+echo gettype($x/3), "\n";
+]]>
         </programlisting>
         &example.outputs;
         <screen>
-  <![CDATA[
-  integer
-  double
-  ]]>
+<![CDATA[
+integer
+double
+]]>
         </screen>
       </informalexample>
     </para>
@@ -151,21 +151,21 @@
       </orderedlist>
       <informalexample>
         <programlisting role="php">
-  <![CDATA[
-  <?hh
+<![CDATA[
+<?hh
 
-  function f1(float $x) {
-  }
+function f1(float $x) {
+}
 
-  function f2(int $x, float $y): int {
+function f2(int $x, float $y): int {
   $a = 2 * $x; // $a is an int
   $b = 2 * $y; // $b is a float
   $c = $x / $a; // $c is a num
   $d = $c * $y; // $d is a float
   f1($d);  // this is allowed
   return (int) $c;  // $c needs to be cast here
-  }
-  ]]>
+}
+]]>
         </programlisting>
       </informalexample>
     </para>
@@ -220,19 +220,19 @@
         Assume a nullable <literal>?int</literal> variable and a function which takes an <literal>int</literal>. There are two choices for calling this function with a nullable. <literal>?int</literal> can be cast to an <literal>int</literal>, in which case <literal>null</literal> will be converted to 0. Or code can be written like this:
         <informalexample>
           <programlisting role="php">
-  <![CDATA[
-  <?hh
+<![CDATA[
+<?hh
 
-  function foo(int $y): void { }
+function foo(int $y): void { }
 
-  function bar(?int Sx): void {
+function bar(?int Sx): void {
   if (is_int($x)) {
     foo($x);
   } else {
     ...
   }
-  }
-  ]]>
+}
+]]>
           </programlisting>
         </informalexample>
       </para>
@@ -241,13 +241,13 @@
         the <literal>if</literal>/<literal>then</literal> branch, <literal>$x</literal> is an <literal>int</literal>. In the <literal>if</literal>/<literal>else</literal> branch, the type will be <literal>null</literal>. Here is another example:
         <informalexample>
           <programlisting role="php">
-  <![CDATA[
-  <?hh
+<![CDATA[
+<?hh
 
-  class Foo {}
-  class Bar extends Foo { public function blah(): void {}}
+class Foo {}
+class Bar extends Foo { public function blah(): void {} }
 
-  function foo(Foo $x): void {
+function foo(Foo $x): void {
   if ($x instance of Bar) {
     // $x is now a Bar
     $x->blah();
@@ -256,8 +256,8 @@
     // $x is still just a Foo
     ...
   }
-  }
-  ]]>
+}
+]]>
           </programlisting>
         </informalexample>
       </para>
@@ -271,10 +271,10 @@
         This code is fine:
         <informalexample>
           <programlisting role="php">
-  <![CDATA[
-  <<?hh
+<![CDATA[
+<<?hh
 
-  class Foo {
+class Foo {
   public function f1(?int $x): void {
     if (is_int($x)) {
       $this->doSomething();
@@ -283,8 +283,8 @@
   }
 
   public function doSomething(): void {}
-  }
-  ]]>
+}
+]]>
           </programlisting>
         </informalexample>
       </para>
@@ -292,10 +292,10 @@
         This code however is incorrect:
         <informalexample>
           <programlisting role="php">
-  <![CDATA[
-  <?hh
+<![CDATA[
+<?hh
 
-  class Foo {
+class Foo {
   protected ?int $x;
 
   public function f1(): void {
@@ -308,8 +308,8 @@
   }
 
   public function doSomething(): void {}
-  }
-  ]]>
+}
+]]>
           </programlisting>
         </informalexample>
       </para>
@@ -317,10 +317,10 @@
         Here is a possible fix to the above problem:
         <informalexample>
           <programlisting role="php">
-  <![CDATA[
-  <?hh
+<![CDATA[
+<?hh
 
-  class Foo {
+class Foo {
   protected ?int $x;
 
   public function f1(): void {
@@ -333,7 +333,7 @@
 
   public function doSomething(): void {}
   }
-  ]]>
+]]>
           </programlisting>
         </informalexample>
       </para>
@@ -346,19 +346,19 @@
       Hack enforces strict rules regarding class initialization. The following piece of code is correct:
       <informalexample>
         <programlisting role="php">
-  <![CDATA[
-  <?hh
+<![CDATA[
+<?hh
 
-  abstract class A {
+abstract class A {
   protected int $x;
-  }
+}
 
-  class B extends A {
+class B extends A {
   public function __construct() {
     $this->x = 10;
   }
-  }
-  ]]>
+}
+]]>
         </programlisting>
       </informalexample>
     </para>
@@ -370,23 +370,23 @@
           In the non-abstract case, the following piece of code is accepted:
         </para>
         <programlisting role="php">
-  <![CDATA[
-  <?hh
-  class Foo {
+<![CDATA[
+<?hh
+class Foo {
   protected int $x = 10;
-  }
-  ]]>
+}
+]]>
         </programlisting>
         <para>
           However, this piece of code is not accepted:
         </para>
         <programlisting role="php">
-  <![CDATA[
-  <?hh
-  class Foo {
+<![CDATA[
+<?hh
+class Foo {
   protected int $x;
-  }
-  ]]>
+}
+]]>
         </programlisting>
       </informalexample>
     </para>
@@ -394,16 +394,16 @@
       Again, the type checker will complain about the &quot;class member is not always properly initialized&quot;. The solution is to write the accepted case above or use <literal>__construct()</literal>:
       <informalexample>
         <programlisting role="php">
-  <![CDATA[
-  <?hh
-  class Foo {
+<![CDATA[
+<?hh
+class Foo {
   protected int $x;
 
   public function __construct() {
     $this->x = 10;
   }
-  }
-  ]]>
+}
+]]>
         </programlisting>
       </informalexample>
     </para>
@@ -412,9 +412,9 @@
       called before the constructor has finished initializing the member variables. The following piece of code is correct:
       <informalexample>
         <programlisting role="php">
-  <![CDATA[
-  <?hh
-  class Foo {
+<![CDATA[
+<?hh
+class Foo {
   protected int $x;
 
   public function __construct() {
@@ -424,8 +424,8 @@
   protected function foo() {
     ...
   }
-  }
-  ]]>         
+}
+]]>         
         </programlisting>
       </informalexample>
     </para>
@@ -433,19 +433,18 @@
       Finally, note that class initialization does not apply to nullable types. So, the following code is correct and acceptable:
       <informalexample>
         <programlisting role="php">
-  <![CDATA[
-  <?hh
-  class Foo {
+<![CDATA[
+<?hh
+class Foo {
   protected ?int $x;
 
   // no __construct() needed
 
-
   protected function foo() {
     ...
   }
-  }
-  ]]>
+}
+]]>
         </programlisting>
       </informalexample>
     </para>
@@ -465,18 +464,18 @@
       Take the following example:
       <informalexample>
         <programlisting role="php">
-  <![CDATA[
-  <?php
+<![CDATA[
+<?php
 
-  function cufun1(string $x): string {
+function cufun1(string $x): string {
   return $x.$x;
-  }
+}
 
-  function cufun2(): (function(string): string) {
+function cufun2(): (function(string): string) {
   return function($x) { return $x.$x; };
-  }
+}
 
-  class CUFunFunFun {
+class CUFunFunFun {
   public function testFun1() {
     var_dump(call_user_func('cufun1', "blah"));
   }
@@ -485,44 +484,44 @@
     $x = cufun2();
     var_dump($x('blah'));
   }
-  }
+}
 
-  function main_cufff() {
+function main_cufff() {
   $f = new CUFunFunFun();
   $f->testFun1();
   $f->testFun2();
-  }
+}
 
-  main_cufff();
-  ]]>
+main_cufff();
+]]>
         </programlisting>
         <para>
           The above code shows the use of <literal>call_user_func()</literal> to call <literal>cufun1()</literal> from the function <literal>testFun1()</literal>. This code runs perfectly fine in HHVM. But, if <literal>&lt;?hh</literal> was used instead of <literal>&lt;?php</literal>, this code would not pass the Hack type checker:
         </para>
         &example.outputs;
         <screen>
-  <![CDATA[
-  File "cuf.php", line 14, characters 14-45:
-  This call is invalid, this is not a function, it is a string
-  ]]>
+<![CDATA[
+File "cuf.php", line 14, characters 14-45:
+This call is invalid, this is not a function, it is a string
+]]>
         </screen>
         <para>
           Hack throws an error here because it type inference and safety cannot be guaranteed when using a <literal>string</literal>as the function name to <literal>call_user_func()</literal>. For example, imagine changing the <literal>call_user_func()</literal> line to be:
         </para>
         <programlisting role="php">
-  <![CDATA[
-  var_dump(call_user_func('cufun1', 3));
-  ]]>
+<![CDATA[
+var_dump(call_user_func('cufun1', 3));
+]]>
         </programlisting>
         <para>
           Normally Hack would catch such a problem (passing an <literal>int</literal> to a function that takes a <literal>string</literal>), but Hack cannot provide these guarantees with <literal>call_user_func()</literal>. Thus an HHVM fatal error will be thrown *<emphasis>at runtime</emphasis>*.
         </para>
         &example.outputs;
         <screen>
-  <![CDATA[
-  [~/www/tests] php cuf.php
-  HipHop Fatal error: Argument 1 passed to cufun1() must be an instance of string, int given in cuf.php on line 6
-  ]]>
+<![CDATA[
+[~/www/tests] php cuf.php
+HipHop Fatal error: Argument 1 passed to cufun1() must be an instance of string, int given in cuf.php on line 6
+]]>
         </screen>
       </informalexample>
     </para>
@@ -530,18 +529,18 @@
      In order to make these type of callbacks type-checkable and type-safe, Hack has introduced <function>fun</function>. <function>fun</function> is a special function used to create a &quot;pointer&quot; to a function in a type-safe way. <function>fun</function> takes a <literal>string</literal> corresponding to the name of the function to be called. It returns a &quot;type-safe&quot; <literal>string</literal> that can be used in, for example, <literal>call_user_func()</literal>. Building upon the example above to use <function>fun</function>:
       <informalexample>
         <programlisting role="php">
-  <![CDATA[
-  <?hh
+<![CDATA[
+<?hh
 
-  function fun1(string $x): string {
+function fun1(string $x): string {
   return $x.$x;
-  }
+}
 
-  function fun2(): (function(string): string) {
+function fun2(): (function(string): string) {
   return fun('f1');
-  }
+}
 
-  class FunFunFun {
+class FunFunFun {
   public function testFun1() {
     $x = fun('fun1');
     var_dump(call_user_func($x, "blah"));
@@ -551,35 +550,35 @@
     $x = fun2();
     var_dump($x('blah'));
   }
-  }
+}
 
-  function main_fff() {
+function main_fff() {
   $f = new FunFunFun();
   $f->testFun1();
   $f->testFun2();
-  }
+}
 
-  main_fff();
-  ]]>
+main_fff();
+]]>
         </programlisting>
         <para>
          Before calling <literal>call_user_func()</literal>, <function>fun</function> is called. Returned from <function>fun</function> is a <literal>string()</literal> that can be used and analyzed by the Hack type checker. This code runs exactly the same in HHVM as the first example, but, now the Hack type checker can catch typing errors. In <literal>testFun1()</literal>, imagine passing an <literal>int</literal> instead of a <literal>string</literal>. Hack will throw an error.
         </para>
         <programlisting role="php">
-  <![CDATA[
-  var_dump(call_user_func($x, 3));
-  ]]>
+<![CDATA[
+var_dump(call_user_func($x, 3));
+]]>
         </programlisting>
         &example.outputs;
         <screen>
-  <![CDATA[
-  File "fun.php", line 20, characters 17-17:
-  Invalid argument
+<![CDATA[
+File "fun.php", line 20, characters 17-17:
+Invalid argument
   File "fun.php", line 9, characters 15-20:
   This is a string
   File "fun.php", line 20, characters 17-17:
   It is incompatible with an int
-  ]]>
+]]>
         </screen>
       </informalexample>
     </para>
@@ -587,15 +586,16 @@
      <emphasis>It is important to note</emphasis> that the argument to <function>fun</function> must be a single-quoted, constant literal string representing a valid function name. For example:
       <informalexample>
         <programlisting role="php">
-  <![CDATA[
-  <?hh
-  function foo(): void {}
+<![CDATA[
+<?hh
+function foo(): void {}
 
-  function main(): void {
+function main(): void {
   $func = fun('foo');
   $str = "foo";
   // $wontwork = func($str);
-  ]]>
+}
+]]>
         </programlisting>
       </informalexample>
     </para>
@@ -610,19 +610,19 @@
       Hack provides the ability to annotate return types on functions. This brings with it another added feature. Under a specific circumstance, Hack provides the ability to override functions based on just return type. That circumstance is a subclass overriding a method in a parent class with a return type compatible with the return type of the parent class. For example:
       <informalexample>
         <programlisting role="php">
-  <![CDATA[
-  <?hh
-  class Foo {}
-  class FooChild extends Foo {}
+<![CDATA[
+<?hh
+class Foo {}
+class FooChild extends Foo {}
 
-  class AA {
+class AA {
   protected function bar(): Foo { return new Foo(); }
-  }
+}
 
-  class BB extends AA {
+class BB extends AA {
   protected function bar(): FooChild { return new FooChild(); }
-  }
-  ]]>
+}
+]]>
         </programlisting>
       </informalexample>
     </para>
@@ -633,20 +633,20 @@
       Here are some <emphasis>unsupported</emphasis> examples:
       <informalexample>
         <programlisting role="php">
-  <![CDATA[
-  <?hh
+<![CDATA[
+<?hh
 
-  class Foo {}
-  class FooChild extends Foo {}
+class Foo {}
+class FooChild extends Foo {}
 
-  class AA {
+class AA {
   protected function bar(): Foo { return new Foo(); }
-  }
+}
 
-  class BB extends AA {
+class BB extends AA {
   protected function bar(): int { return 1; }
-      }
-  ]]>
+}
+]]>
         </programlisting>
         <para>
           In the above, Hack will balk since <literal>int</literal> and <literal>Foo</literal> are not compatible types.
@@ -654,20 +654,20 @@
       </informalexample>
       <informalexample>
         <programlisting role="php">
-  <![CDATA[
-  <?hh
+<![CDATA[
+<?hh
 
-  class Foo {}
-  class FooChild extends Foo {}
+class Foo {}
+class FooChild extends Foo {}
 
-  class AA {
+class AA {
   protected function bar(): FooChild { return new FooChild(); }
-  }
+}
 
-  class BB extends AA {
+class BB extends AA {
   protected function bar(): Foo { return new Foo(); }
-  }
-  ]]>
+}
+]]>
         </programlisting>
         <para>
           In the above, Hack will again balk since returning <literal>Foo</literal> from <literal>BB:bar()</literal> is not compatible with <literal>AA:bar()</literal> returning <literal>FooChild</literal>. The other way around, as shown above, does, of course, make Hack happy.
@@ -679,13 +679,13 @@
         Overloading on return type within the same class is not supported by Hack (in fact, like PHP, no overloading exists at all; thus, this holds for function arguments as well). For example: 
         <informalexample>
           <programlisting role="php">
-  <![CDATA[
-  <?hh
-  class AA {
+<![CDATA[
+<?hh
+class AA {
   function bar(): string { return 's';}
   function bar(): int { return 1;}
-  }
-  ]]>
+}
+]]>
           </programlisting>
         </informalexample>
       </para>
@@ -698,20 +698,20 @@
       There are times when it is desirable to have an object be type-checked as a more specific type than it is currently declared. For example, an interface needs to be type-checked as one of its implementing classes. <literal>invariant()</literal> is used to help the Hack type-checker make this more specific type determination.
       <informalexample>
         <programlisting role="php">
-  <![CDATA[
-  <?hh
+<![CDATA[
+<?hh
 
-  interface I {
+interface I {
   public function foo();
-  }
+}
 
-  class A implements I {
+class A implements I {
   public function foo(): void {
     echo "A";
   }
-  }
+}
 
-  class B implements I {
+class B implements I {
   public function foo(): void {
     echo "B";
   }
@@ -719,33 +719,33 @@
   public function yay(): void {
     echo "B->yay!";
   }
-  }
+}
 
-  function baz(int $a): I {
+function baz(int $a): I {
   return $a === 1 ? new A() : new B();
-  }
+}
 
-  function bar(): B {
+function bar(): B {
   $iface = baz(2);
   invariant($iface instanceof B, "must be a B");
   $iface->yay();
   return $iface;
-  }
+}
 
-  bar();
-  ]]>
+bar();
+]]>
       </programlisting>
       <para> 
         Without the <literal>invariant()</literal>, Hack will give an error similar to the following:
       </para>
       &example.outputs;
       <screen>
-  <![CDATA[
-  File "in2.php", line 30, characters 11-13:
-  The method yay is undefined in an object of type I
-  File "in2.php", line 23, characters 23-23:
-  Check this out
-  ]]>
+<![CDATA[
+File "in2.php", line 30, characters 11-13:
+The method yay is undefined in an object of type I
+File "in2.php", line 23, characters 23-23:
+Check this out
+]]>
       </screen>
       </informalexample>
     </para>
@@ -753,42 +753,42 @@
       Here is another example where a variable can be <literal>mixed</literal> and <literal>invariant</literal> is used to help Hack understand <literal>$untyped_array</literal>is a typed <literal>array</literal>.
       <informalexample>
         <programlisting role="php">
-  <![CDATA[
-  <?hh
+<![CDATA[
+<?hh
 
-  class Foo {
-    public function foo_method(): void {}
-  }
+class Foo {
+  public function foo_method(): void {}
+}
 
-  function mixed_method(int $x): mixed {
+function mixed_method(int $x): mixed {
   if ($x === 3) {
     $a = array();
     $a[0] = new Foo();
   } else {
     return false;
   }
-  }
+}
 
-  function bar(): bool {
-    $untyped_array = mixed_method(3); // Let's assume that this method can return an array of Foo
-    invariant(is_array($untyped_array), "must be an array of Foo()");
-    $untyped_array[0]->foo_method(); // Hack now understands that $untyped_array is an array
-    return true;
-  }
+function bar(): bool {
+  $untyped_array = mixed_method(3); // Let's assume that this method can return an array of Foo
+  invariant(is_array($untyped_array), "must be an array of Foo()");
+  $untyped_array[0]->foo_method(); // Hack now understands that $untyped_array is an array
+  return true;
+}
 
-  bar();
-  ]]>
+bar();
+]]>
         </programlisting>
         <para> Without the <literal>invariant()</literal>, the Hack type checker would give an error similar to the following:
         </para>
         &example.outputs;
         <screen>
-  <![CDATA[
-  File "h5.php", line 20, characters 5-21:
-  This is not a container, this is a mixed value
+<![CDATA[
+File "h5.php", line 20, characters 5-21:
+This is not a container, this is a mixed value
   File "h5.php", line 7, characters 32-36:
   You might want to check this out
-  ]]>
+]]>
         </screen>
       </informalexample>
     </para>
@@ -807,7 +807,7 @@
 <![CDATA[
 <?php
 class A {
-public static function foo() {}
+  public static function foo() {}
 }
 ]]>
         </programlisting>
@@ -815,7 +815,7 @@ public static function foo() {}
 <![CDATA[
 <?php
 class A {
-static public function foo() {}
+  static public function foo() {}
 }
 ]]>
         </programlisting>
@@ -848,8 +848,8 @@ static public function foo() {}
 <![CDATA[
 <?hh
 class A {
-// (access) [static] function (name) {}
-public static function foo() {}
+  // (access) [static] function (name) {}
+  public static function foo() {}
 }
 ]]>
         </programlisting>
@@ -867,14 +867,14 @@ public static function foo() {}
 <?hh
 
 class PettingZoo {
-private FluffyBunny $fluffy;
+  private FluffyBunny $fluffy;
 
-public function __construct(FluffyBunny $bunny) {
-  $this->doOtherInit();
-  $this->fluffy = new FluffyBunny();
-}
+  public function __construct(FluffyBunny $bunny) {
+    $this->doOtherInit();
+    $this->fluffy = new FluffyBunny();
+  }
 
-protected function doOtherInit(): void { }
+  protected function doOtherInit(): void { }
 }
 ]]>
         </programlisting>
@@ -915,14 +915,14 @@ The initialization is not over because $this->fluffy can still potentially be nu
 <?hh
 
 class PettingZoo {
-private FluffyBunny $fluffy;
+  private FluffyBunny $fluffy;
 
-public function __construct(FluffyBunny $bunny) {
-  $this->doOtherInit();
-  $this->fluffy = new FluffyBunny();
-}
+  public function __construct(FluffyBunny $bunny) {
+    $this->doOtherInit();
+    $this->fluffy = new FluffyBunny();
+  }
 
-private function doOtherInit(): void { }
+  private function doOtherInit(): void { }
 }
 ]]>
         </programlisting>
@@ -940,31 +940,31 @@ private function doOtherInit(): void { }
 <?hh
 
 interface UTI {
-public function utBar();
+  public function utBar();
 }
 
 class UTA {
-public function utFoo(): void {
-  echo "UTA:ut_foo()\n";
-}
+  public function utFoo(): void {
+    echo "UTA:ut_foo()\n";
+  }
 }
 
 class UTB extends UTA implements UTI {
-public function utBar(): void {
-  echo "UTB:utBar()\n";
-}
+  public function utBar(): void {
+    echo "UTB:utBar()\n";
+  }
 }
 
 function ut_xyz(UTA $a) {
-if ($a instanceof UTI) {
-  $a->utBar();
-}
-$a->utFoo();
+  if ($a instanceof UTI) {
+    $a->utBar();
+  }
+  $a->utFoo();
 }
 
 function main_ut() {
-$b = new UTB();
-ut_xyz($b);
+  $b = new UTB();
+  ut_xyz($b);
 }
 
 main_ut();
@@ -1003,32 +1003,32 @@ The method utFoo is undefined in an object of type UTI
 <?hh
 
 interface UTI {
-public function utBar();
+  public function utBar();
 }
 
 class UTA {
-public function utFoo(): void {
-  echo "UTA:ut_foo()\n";
-}
+  public function utFoo(): void {
+    echo "UTA:ut_foo()\n";
+  }
 }
 
 class UTB extends UTA implements UTI {
-public function utBar(): void {
-  echo "UTB:utBar()\n";
-}
+  public function utBar(): void {
+    echo "UTB:utBar()\n";
+  }
 }
 
 function ut_xyz(UTA $a) {
-$a_local = $a;
-if ($a_local instanceof UTI) {
-  $a_local->utBar();
-}
-$a->utFoo();
+  $a_local = $a;
+  if ($a_local instanceof UTI) {
+    $a_local->utBar();
+  }
+  $a->utFoo();
 }
 
 function main_ut() {
-$b = new UTB();
-ut_xyz($b);
+  $b = new UTB();
+  ut_xyz($b);
 }
 
 main_ut();
@@ -1051,7 +1051,7 @@ main_ut();
 <?hh
 
 function heredoc(): void {
-$x = <<<MYHD
+  $x = <<<MYHD
 Hello, I am in here
 }
 
@@ -1073,7 +1073,7 @@ Unterminated heredoc
 <?hh
 
 function heredoc(): void {
-$x = <<<MYHD
+  $x = <<<MYHD
 Hello, I am in here
 MYHD;
 }
@@ -1091,8 +1091,8 @@ echo heredoc();
 <?hh
 
 function heredoc(): void {
-$foo = 3;
-$x = <<<MYHD
+  $foo = 3;
+  $x = <<<MYHD
 {$foo}
 MYHD;
 }
@@ -1103,7 +1103,7 @@ echo heredoc();
         &example.outputs;
         <screen>
 <![CDATA[
-File &quot;heredoc.php&quot;, line 6, characters 7-11:
+File "heredoc.php", line 6, characters 7-11:
 Syntax error
 ]]>
         </screen>
@@ -1120,9 +1120,9 @@ Syntax error
 <?hh
 
 function foo(): void {
-$name = 'MyName';
+  $name = 'MyName';
 
-echo <<<'EOT'
+  echo <<<'EOT'
 My name is &quot;$name&quot;. I am printing some text.
 Now, I am printing some {$foo->bar[1]}.
 This should not print a capital 'A': \x41

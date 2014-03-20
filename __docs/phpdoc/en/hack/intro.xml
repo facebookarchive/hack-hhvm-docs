@@ -52,7 +52,7 @@
  * @return html-str
  */
 function say_hello($name) {
-  return "<div class=\"box\"<hello ".htmlize($name)."</div>";
+  return "<div class=\"box\">Hello ".htmlize($name)."</div>";
 }
 ]]>
         </programlisting>
@@ -70,7 +70,7 @@ function say_hello($name) {
  * @return xhp
  */
 function say_hello(string $name) {
-  return <div class="box"<Hello {$name}>/div>;
+  return <div class="box">Hello {$name}</div>;
 }
 ]]>         
         </programlisting>
