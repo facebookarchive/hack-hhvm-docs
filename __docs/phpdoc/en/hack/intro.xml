@@ -15,11 +15,10 @@
   <sect1 xml:id="hack.intro.whatis">
    <title>What is Hack?</title>
     <para>
-      Hack is a set of extensions for HHVM developed at Facebook. The barrier to entry for Hack is low. To get started, all that is needed is to generally understand the features that Hack provides and <link linkend="install.hack.bootstrapping">how to call the Hack type checker</link> (<literal>hh_client</literal> invokes the type checker at the command line)
+      Hack is a language for HHVM that interopates seamlessly with PHP. The barrier to entry for Hack is low. To get started, all that is needed is to generally understand the features that Hack provides and <link linkend="install.hack.bootstrapping">how to call the Hack type checker</link> (<literal>hh_client</literal> invokes the type checker at the command line)
     </para>
     <para>
-      The goal of Hack to offer PHP developers a way to write cleaner, safer and refactorable code while trying to maintain a level of compatibility with current PHP codebases. The primary way that this goal is achieved is to provide developers a way to annotate PHP functions and
-      classes with type information, providing a type checking tool to validate those annotations. In addition, Hack also provides specific PHP language feature additions such as:
+      The goal of Hack to offer developers a way to write cleaner, safer and refactorable code while trying to maintain a level of compatibility with current PHP codebases. The primary way that this goal is achieved is to provide developers a way to annotate PHP functions and classes with type information, providing a type checking tool to validate those annotations. In addition, Hack also provides specific language feature additions such as:
       <itemizedlist>
         <listitem><para><link linkend="hack.generics">generics</link></para></listitem>
         <listitem><para><link linkend="hack.collections">collections</link></para></listitem>
@@ -30,18 +29,17 @@
       Each of the Hack features, and more, is discussed in great detail in this documentation.
     </para>
     <para>
-      Hack code is indicated through the <literal>&lt;?hh</literal> marker at the top of a PHP
-      file, as opposed to the canonical <literal>&lt;?php</literal> marker.
+      Hack code is indicated through the <literal>&lt;?hh</literal> marker at the top of a file, as opposed to the canonical <literal>&lt;?php</literal> marker. 
     </para>
     <para>
-      <emphasis role="strong">Very important note</emphasis>: The type checker is invoked before runtime to determine whether code is typesafe. While HHVM knows about and understands the Hack extensions, it does not necessarily strictly enforce them. This is different from a true statically-typed language like C# where code is type checked at compile time and enforced (usually via some sort of exception mechanism) at runtime.
+      <emphasis role="strong">Very important note</emphasis>: The type checker is invoked before runtime to determine whether code is typesafe. While HHVM knows about and understands the Hack language, it does not necessarily strictly enforce them. This is different from a true statically-typed language like C# where code is type checked at compile time and enforced (usually via some sort of exception mechanism) at runtime.
     </para>
   </sect1>
 
   <sect1 xml:id="hack.intro.background">
   <title> Hack Background </title>
     <para>
-      Facebook was initially built with vanilla PHP. Parameters and return types were specified
+      Facebook was initially built with PHP. Parameters and return types were specified
       in comments. Parsers could use this to create documentation. But type-checking was non existent.
       <informalexample>
         <programlisting role="php">
@@ -61,8 +59,7 @@ function say_hello($name) {
       </informalexample>
     </para>
     <para>
-      In 2009, the HPHP team released a PHP compiler called HipHop. This compiler outperformed and
-      replaced Zend's PHP engine at Facebook. In 2010, minor changes to the PHP language were introduced by the HPHP team to improve development time and provide basic type safety. The changes were XHP and parameter type constraints.
+      In 2009, a PHP compiler called HipHop was released. In 2010, minor changes to the PHP language were introduced by the HPHP team to improve development time and provide basic type safety. The changes were XHP and parameter type constraints.
       <informalexample>
         <programlisting role="php">
 <![CDATA[
@@ -80,7 +77,7 @@ function say_hello(string $name) {
       </informalexample>
     </para>
     <para>
-      In 2012, engineers from various Facebook teams started exploring the idea of annotating return types. And the Hack language was born...
+      In 2012, Facebook engineering teams started exploring the idea of annotating return types. And the Hack language was born...
     </para>
   </sect1>
   
