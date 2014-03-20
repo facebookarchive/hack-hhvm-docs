@@ -82,7 +82,7 @@ class AnnotatedClass {
 ]]>    
       </programlisting>
       <para>
-        What should be noticeably different from vanilla PHP is that <literal>AnnotatedClass</literal> has type information on all member variables (whether public, private or protected), as well as its function parameters and return types. The annotated types in this example are:        
+        What should be noticeably different from PHP is that <literal>AnnotatedClass</literal> has type information on all member variables (whether public, private or protected), as well as its function parameters and return types. The annotated types in this example are:        
         <itemizedlist>
           <listitem>
             <para>
@@ -138,13 +138,13 @@ class AnnotatedClass {
   <sect1 xml:id="hack.annotations.why">
     <title>Why?</title>
     <para>
-      Normally dynamically typed languages allow variables to take on any type representation and allow this type representation to be changed on-the-fly. So, in vanilla PHP, a variable <literal>$x</literal> can be assigned to an <literal>int</literal> and then, down the line, be assigned to a <literal>string</literal> ... all in the same local scope. In other words, not only is the value of a variable mutable, the type of a variable is mutable. This ability allows for rapid prototyping, more concise code, and a lot of flexibility. Dynamic typing also comes with a cost. Errors are only caught at runtime. There is no compile-time analysis for code optimization. (Virtual machines like HHVM can mitigate the optimization disadvantage of a dynamically typed language by providing an intermediate translation step before runtime, the time which can be used for optimizations.) Bugs can go undetected for years and rear their ugly head when, for example, a call to a method with an unexpected parameter type is made. 
+      Normally dynamically typed languages allow variables to take on any type representation and allow this type representation to be changed on-the-fly. So, in PHP, a variable <literal>$x</literal> can be assigned to an <literal>int</literal> and then, down the line, be assigned to a <literal>string</literal> ... all in the same local scope. In other words, not only is the value of a variable mutable, the type of a variable is mutable. This ability allows for rapid prototyping, more concise code, and a lot of flexibility. Dynamic typing also comes with a cost. Errors are only caught at runtime. There is no compile-time analysis for code optimization. (Virtual machines like HHVM can mitigate the optimization disadvantage of a dynamically typed language by providing an intermediate translation step before runtime, the time which can be used for optimizations.) Bugs can go undetected for years and rear their ugly head when, for example, a call to a method with an unexpected parameter type is made. 
     </para>
     <para>
-      &quot;<emphasis>Wait a second! Facebook.com, with its billion+ users, is written with tens of millions of lines of vanilla PHP! A dynamic language worked well for Facebook.</emphasis>&quot; 
+      &quot;<emphasis>Wait a second! Facebook.com, with its billion+ users, is written with tens of millions of lines of PHP! A dynamic language worked well for Facebook.</emphasis>&quot; 
     </para>
     <para>
-      Yes, Facebook has done quite well with dynamically typed PHP. And there is no attempt to try to rewrite Facebook.com in another language. However, it is possible to bring some statically typed language features to PHP without affecting functionality and performance. With statically typed languages, errors can be caught before runtime. Code becomes more readable and self-explaining. The likelihood of the rogue &quot;calling a method with an unexpected parameter type&quot; bug becomes very small as these are caught before execution. 
+      Yes, Facebook has done quite well with dynamically typed PHP.  However, it is possible to bring some statically typed language features to PHP without affecting functionality and performance. With statically typed languages, errors can be caught before runtime. Code becomes more readable and self-explaining. The likelihood of the rogue &quot;calling a method with an unexpected parameter type&quot; bug becomes very small as these are caught before execution. 
     </para>
     <para>
       Hack help bridges the gap between a dynamically and statically typed language by providing features normally seen in statically type languages to PHP. A primary goal of Hack was to bring these features but remain as compatible as possible with current PHP codebases. Type annotations is a big step toward accomplishing this goal. 
@@ -1617,7 +1617,7 @@ async function g(): Awaitable<string> {
   <sect1 xml:id="hack.annotations.summary">
     <title>Summary</title>
     <para>
-      Changing vanilla PHP code to Hack code has been purposely made simple. As possibly gleaned from the examples above, first change
+      Changing PHP code to Hack code has been purposely made simple. As possibly gleaned from the examples above, first change
       <literal>&lt;?php</literal> to <literal>&lt;?hh</literal>. Then annotate types or use other Hack features. Then run the type checker.
     </para>
     <para>

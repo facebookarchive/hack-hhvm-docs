@@ -133,7 +133,7 @@ No errors!
     </informalexample>
   </para>
   <para>
-    It is important to note that HHVM allows traits to implement interfaces (something not currently available in vanilla PHP), and Hack does support that feature with traits. The following example shows a trait implementing an interface.
+    It is important to note that HHVM allows traits to implement interfaces (something not currently available in PHP), and Hack does support that feature with traits. The following example shows a trait implementing an interface.
     <informalexample>
       <programlisting role="php">
 <![CDATA[

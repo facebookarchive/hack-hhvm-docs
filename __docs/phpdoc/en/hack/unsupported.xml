@@ -120,7 +120,7 @@ echo "The number is " . $i . "\n";
   <sect1 xml:id="hack.unsupportedphpfeatures.collisions">
     <title>Collisions</title>
     <para>
-      Unlike vanilla PHP, Hack does not allow one to define a function on a class that collides with the class name. For example, this is acceptable in PHP:
+      Unlike PHP, Hack does not allow one to define a function on a class that collides with the class name. For example, this is acceptable in PHP:
       <informalexample>
         <programlisting role="php">
 <![CDATA[
@@ -169,7 +169,7 @@ public function foo() {}
   <sect1 xml:id="hack.unsupportedphpfeatures.parentstaticmethods">
     <title>Parent Static Methods</title>
     <para>
-      Vanilla PHP allows children to call static methods in the parent. For example:
+      PHP allows children to call static methods in the parent. For example:
       <informalexample>
         <programlisting role="php">
 <![CDATA[
@@ -205,7 +205,7 @@ The closest thing is staticMethod but it's a static method
   <sect1 xml:id="hack.unsupportedphpfeatures.callingstaticmethods">
     <title>Calling Static Methods</title>
     <para>
-      In Vanilla PHP, static methods can be called at the class level or the instance level. For example, the following two ways to call <literal>bar()</literal> are both acceptable:
+      In PHP, static methods can be called at the class level or the instance level. For example, the following two ways to call <literal>bar()</literal> are both acceptable:
       <informalexample>
         <programlisting role="php">
 <![CDATA[

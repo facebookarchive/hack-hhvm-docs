@@ -28,7 +28,7 @@ function check_not_null(?int $x): int {
   <sect1 xml:id="hack.nullable.why">
     <title>Why Nullable?</title>
     <para>
-      It is true that in vanilla PHP <literal>null</literal> can currently be assigned to any variable. For example:
+      It is true that in PHP <literal>null</literal> can currently be assigned to any variable. For example:
       <informalexample>
         <programlisting role="php">
 <![CDATA[

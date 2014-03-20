@@ -115,7 +115,7 @@ function say_hello(string $name) {
       </itemizedlist>
     </para>
     <para>
-      Hack has been designed with vanilla PHP compatibility in mind. The type checker enforces checks on typed code and assumes calls to/from PHP and other untyped code are correct. This means the amount of type checking will gradually increase as more and more code is written in Hack.
+      Hack has been designed with PHP compatibility in mind. The type checker enforces checks on typed code and assumes calls to/from PHP and other untyped code are correct. This means the amount of type checking will gradually increase as more and more code is written in Hack.
     </para>
     <para>
       Hack is unlike many other statically typed languages:
