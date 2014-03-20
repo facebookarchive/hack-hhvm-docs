@@ -72,7 +72,7 @@ barbaz
 <![CDATA[
 <?hh
 // Example 2
-function foo() {
+function foo(): (function(string): string){
   $x = 'bar';
   return $y ==> $x . $y;
 }
@@ -98,7 +98,7 @@ barbaz
 <![CDATA[
 <?hh
 // Example 3
-function foo() {
+function foo(): (function(string): string) {
   $x = 'bar';
   return ($y) ==> { return $x . $y; };
 }
