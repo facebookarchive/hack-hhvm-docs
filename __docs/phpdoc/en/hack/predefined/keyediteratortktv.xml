@@ -3,8 +3,8 @@
 
 <phpdoc:classref xml:id="class.hack.keyediteratortktv" xmlns:phpdoc="http://php.net/ns/phpdoc" xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:xi="http://www.w3.org/2001/XInclude">
 
- <title>The Iterator interface</title>
- <titleabbrev>Iterator</titleabbrev>
+ <title>The KeyedIterator&lt;Tk, Tv&gt; interface</title>
+ <titleabbrev>KeyedIterator&lt;Tk, Tv&gt;</titleabbrev>
 
  <partintro>
 
@@ -12,8 +12,7 @@
   <section xml:id="hack.keyediteratortktv.intro">
    &reftitle.intro;
    <para>
-    Interface for external iterators or objects that can be iterated
-    themselves internally.
+    Interface for external iterators or objects that can be iterated themselves internally.
    </para>
   </section>
 <!-- }}} -->
@@ -23,17 +22,22 @@
 
 <!-- {{{ Synopsis -->
    <classsynopsis>
-    <ooclass><classname>Iterator</classname></ooclass>
+    <ooclass><classname>KeyedIterator&lt;Tk, Tv&gt;</classname></ooclass>
 
 <!-- {{{ Class synopsis -->
     <classsynopsisinfo>
      <ooclass>
-      <classname>Iterator</classname>
+      <classname>KeyedIterator&lt;Tk, Tv&gt;</classname>
      </ooclass>
      
      <ooclass>
       <modifier>extends</modifier>
-      <classname>Traversable</classname>
+      <classname>KeyedTraversable&lt;Tk, Tv&gt;</classname>
+     </ooclass>
+
+     <ooclass>
+      <modifier>extends</modifier>
+      <classname>Iterator&lt;Tv&gt;</classname>
      </ooclass>
     </classsynopsisinfo>
 <!-- }}} -->

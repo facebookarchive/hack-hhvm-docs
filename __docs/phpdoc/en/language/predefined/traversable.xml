@@ -12,60 +12,9 @@
   <section xml:id="traversable.intro">
    &reftitle.intro;
    <para>
-    Interface to detect if a class is traversable using &foreach;.
-   </para>
-   <para>
-    Abstract base interface that cannot be implemented alone. Instead it must
-    be implemented by either <classname>IteratorAggregate</classname> or
-    <classname>Iterator</classname>.
-   </para>
-   <note>
-    <para>
-     Internal (built-in) classes that implement this interface can be used in
-     a &foreach; construct and do not need to implement
-     <classname>IteratorAggregate</classname> or
-     <classname>Iterator</classname>.
+    See <link linkend="class.hack.traversabletv">Traversable&lt;Tv&gt;</link> for information. This is to avoid duplication of information. They are the same class; the generics version is for Hack type checking purposes only. The generics do not have to be used in PHP code.
     </para>
-   </note>
-   <note>
-    <para>
-     This is an internal engine interface which cannot be implemented in PHP
-     scripts. Either <classname>IteratorAggregate</classname> or
-     <classname>Iterator</classname> must be used instead.
-      When implementing an interface which extends Traversable, make sure to
-      list <classname>IteratorAggregate</classname> or 
-      <classname>Iterator</classname> before its name in the implements
-      clause.
-    </para>
-   </note>
-  </section>
-<!-- }}} -->
-
-  <section xml:id="traversable.synopsis">
-   &reftitle.interfacesynopsis;
-
-<!-- {{{ Synopsis -->
-   <classsynopsis>
-    <ooclass><classname>Traversable</classname></ooclass>
-
-<!-- {{{ Class synopsis -->
-    <classsynopsisinfo>
-     <ooclass>
-      <classname>Traversable</classname>
-     </ooclass>
-    </classsynopsisinfo>
-<!-- }}} -->
-
-   </classsynopsis>
-<!-- }}} -->
-
-   <para>
-    This interface has no methods, its only purpose is to be the base
-    interface for all traversable classes.
-   </para>
-
-  </section>
-
+   </section>
  </partintro>
 
 </phpdoc:classref>

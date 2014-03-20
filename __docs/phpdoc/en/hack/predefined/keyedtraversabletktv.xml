@@ -63,8 +63,7 @@
 <!-- }}} -->
 
    <para>
-    This interface has no methods, its only purpose is to be the base
-    interface for all traversable&lt;Tk, Tv&gt; classes.
+    This interface has no methods, its only purpose is to be the base interface for all traversable&lt;Tk, Tv&gt; classes.
    </para>
 
   </section>

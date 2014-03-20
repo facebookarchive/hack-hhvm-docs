@@ -12,112 +12,13 @@
   <section xml:id="arrayaccess.intro">
    &reftitle.intro;
    <para>
-    Interface to provide accessing objects as arrays.
+    See <link linkend="class.hack.arrayaccesstktv">ArrayAccess&lt;Tk, Tv&gt;</link> for information. This is to avoid duplication of information. They are the same class; the generics version is for Hack type checking purposes only. The generics do not have to be used in PHP code.
    </para>
   </section>
 <!-- }}} -->
 
-  <section xml:id="arrayaccess.synopsis">
-   &reftitle.interfacesynopsis;
-
-<!-- {{{ Synopsis -->
-   <classsynopsis>
-    <ooclass><classname>ArrayAccess</classname></ooclass>
-
-<!-- {{{ Class synopsis -->
-    <classsynopsisinfo>
-     <ooclass>
-      <classname>ArrayAccess</classname>
-     </ooclass>
-    </classsynopsisinfo>
-<!-- }}} -->
-    
-    <classsynopsisinfo role="comment">&Methods;</classsynopsisinfo>
-    <xi:include xpointer="xmlns(db=http://docbook.org/ns/docbook) xpointer(id('class.arrayaccess')/db:refentry/db:refsect1[@role='description']/descendant::db:methodsynopsis[1])" />
-   </classsynopsis>
-<!-- }}} -->
-
-  </section>
-
-  <section xml:id="arrayaccess.examples">
-   <example xml:id="arrayaccess.example.basic"><!-- {{{ -->
-    <title>Basic usage</title>
-    <programlisting role="php">
-<![CDATA[
-<?php
-class obj implements arrayaccess {
-    private $container = array();
-    public function __construct() {
-        $this->container = array(
-            "one"   => 1,
-            "two"   => 2,
-            "three" => 3,
-        );
-    }
-    public function offsetSet($offset, $value) {
-        if (is_null($offset)) {
-            $this->container[] = $value;
-        } else {
-            $this->container[$offset] = $value;
-        }
-    }
-    public function offsetExists($offset) {
-        return isset($this->container[$offset]);
-    }
-    public function offsetUnset($offset) {
-        unset($this->container[$offset]);
-    }
-    public function offsetGet($offset) {
-        return isset($this->container[$offset]) ? $this->container[$offset] : null;
-    }
-}
-
-$obj = new obj;
-
-var_dump(isset($obj["two"]));
-var_dump($obj["two"]);
-unset($obj["two"]);
-var_dump(isset($obj["two"]));
-$obj["two"] = "A value";
-var_dump($obj["two"]);
-$obj[] = 'Append 1';
-$obj[] = 'Append 2';
-$obj[] = 'Append 3';
-print_r($obj);
-?>
-]]>
-    </programlisting>
-    &example.outputs.similar;
-    <screen>
-<![CDATA[
-bool(true)
-int(2)
-bool(false)
-string(7) "A value"
-obj Object
-(
-    [container:obj:private] => Array
-        (
-            [one] => 1
-            [three] => 3
-            [two] => A value
-            [0] => Append 1
-            [1] => Append 2
-            [2] => Append 3
-        )
-
-)
-]]>
-    </screen>
-   </example><!-- }}} -->
-  </section>
 
  </partintro>
-
- &language.predefined.arrayaccess.offsetexists;
- &language.predefined.arrayaccess.offsetget;
- &language.predefined.arrayaccess.offsetset;
- &language.predefined.arrayaccess.offsetunset;
 
 </phpdoc:classref>
 

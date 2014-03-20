@@ -12,8 +12,7 @@
   <section xml:id="hack.iteratortv.intro">
    &reftitle.intro;
    <para>
-    Interface for external iterators or objects that can be iterated
-    themselves internally.
+    Interface for external iterators or objects that can be iterated themselves internally.
    </para>
   </section>
 <!-- }}} -->
