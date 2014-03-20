@@ -153,53 +153,7 @@ main_col();
   <sect1 xml:id="hack.collections.vector">
     <title>Vector</title>
     <para>
-      Vectors are an integer-indexed (zero-based) collection with similar semantics to a C++ <literal>vector</literal> or a C#/Java <literal>ArrayList</literal>. Random access to elements happen in O(1) time. Inserts occur at O(1) when added to the end, but could hit O(n) with inserts elsewhere. Removal has similar time semantics. Iteration over the entire vector occurs at O(n) time. Inserting n elements into an empty Vector will take O(n) time in the average case (amortized). Here is the programmer accessible interface of a Hack <literal>Vector</literal>.
-      <informalexample>
-        <programlisting role="php">
-<![CDATA[
-class Vector<Tv> implements MutableVector<Tv>, Indexish<int, Tv>
-
-  __construct(Traversable<Tv>)
-
-  // The following implement KeyedIterable<int, Tv>
-  getIterator(): KeyedIterator<int, Tv>
-  toArray(): array
-  toValuesArray(): array
-  toKeysArray(): array
-  toVector(): Vector<Tv>
-  toMap(): Map<int, Tv>
-  toSet(): Set<Tv>
-  lazy(): KeyedIterable<int, Tv>
-  keys(): Vector<int>
-  map<Tu>((function(Tv): Tu)): Vector<Tu>
-  mapWithKey<Tu>((function(int, Tv): Tu)): Vector<Tu>
-  filter((function(Tv): bool)): Vector<Tv>
-  filterWithKey((function(int, Tv): bool)): Vector<Tv>
-  zip<Tu>(Traversable<Tu>): Vector<Pair<Tv, Tu>>
-
-  // The following implement Collection<Tv>
-  isEmpty(): bool
-  count(): int
-  items(): Iterable<Tv>
-  static fromItems(Traversable<Tv>): Vector<Tv>
-  add(Tv): this
-  addAll(?Traversable<Tv>): this
-  erase(Iterator): this // not implemented yet
-  clear(): void
-
-  // The following implement IndexAccess<int, Tv>
-  at(int): Tv
-  get(int): ?Tv
-  containsKey(int): bool
-  set(int, Tv): this
-  setAll(?KeyedTraversable<int, Tv>): this
-  removeKey(int): void
-
-  // The following are implemented in Vector
-  static slice(Vector<Tv>, int, int): Vector<Tv>
-]]>
-        </programlisting>
-      </informalexample>
+      Vectors are an integer-indexed (zero-based) collection with similar semantics to a C++ <literal>vector</literal> or a C#/Java <literal>ArrayList</literal>. Random access to elements happen in O(1) time. Inserts occur at O(1) when added to the end, but could hit O(n) with inserts elsewhere. Removal has similar time semantics. Iteration over the entire vector occurs at O(n) time. Inserting n elements into an empty Vector will take O(n) time in the average case (amortized). Here is the <link linkend="class.hack.vectortv">programmer accessible interface</link> of a Hack <literal>Vector</literal>.
     </para>
     <para>
       Here are some basic examples that show how <literal>Vector</literal> can be used:
@@ -308,54 +262,7 @@ main();
   <sect1 xml:id="hack.collections.map">
     <title>Map</title>
     <para>
-      Maps are an ordered dictionary-style collection. Elements are stored as key/value pairs. <emphasis>Maps retain element insertion order</emphasis>, meaning that iterating over a Map will visit the elements in the same order that they were inserted. Insert, remove and search operations are performed in O(lg n) time or better (amortized). <emphasis>Note: <literal>Map</literal> only supports <literal>int</literal> and <literal>string</literal> keys at present. Support for other types may come in the future.</emphasis> Here is the programmer accessible interface for <literal>Map</literal>.
-      <informalexample>
-        <programlisting role="php">
-  <![CDATA[
-  class Map<Tk, Tv> implements MutableMap<Tk, Tv>, Indexish<Tk, Tv>
-
-    __construct(KeyedTraversable<Tk, Tv>)
-
-    // The following implement KeyedIterable<Tk, Tv>
-    getIterator(): KeyedIterator<Tk, Tv>
-    toArray(): array
-    toValuesArray(): array
-    toKeysArray(): array
-    toVector(): Vector<Tv>
-    toMap(): Map<Tk, Tv>
-    toSet(): Set<Tv>
-    lazy(): KeyedIterable<Tk, Tv>
-    keys(): Vector<Tk>
-    map<Tu>((function(Tv): Tu)): Map<Tk, Tu>
-    mapWithKey<Tu>((function(Tk, Tv): Tu)): Map<Tk, Tu>
-    filter((function(Tv): bool)): Map<Tk, Tv>
-    filterWithKey((function(Tk, Tv): bool)): Map<Tk, Tv>
-    zip<Tu>(Traversable<Tu>): Map<Tk, Pair<Tv, Tu>>
-
-    // The following implement Collection<Pair<Tk, Tv>>
-    isEmpty(): bool
-    count(): int
-    items(): Iterable<Pair<Tk, Tv>>
-    static fromItems(Traversable<Pair<Tk, Tv>>): Map<Tk, Tv>
-    add(Pair<Tk, Tv>): this
-    addAll(?Traversable<Pair<Tk, Tv>>): this
-    erase(Iterator): this // not implemented yet
-    clear(): void
-
-    // The following implements SetAccess<Tk>
-    contains(Tk): bool 
-    remove(Tk): this
-
-    // The following implement IndexAccess<Tk, Tv>
-    at(Tk): Tv
-    get(Tk): ?Tv
-    containsKey(Tk): bool 
-    set(Tk, Tv): this
-    setAll(?KeyedTraversable<Tk, Tv>): this
-    removeKey(Tk): void
-  ]]>
-        </programlisting>
-      </informalexample>
+      Maps are an ordered dictionary-style collection. Elements are stored as key/value pairs. <emphasis>Maps retain element insertion order</emphasis>, meaning that iterating over a Map will visit the elements in the same order that they were inserted. Insert, remove and search operations are performed in O(lg n) time or better (amortized). <emphasis>Note: <literal>Map</literal> only supports <literal>int</literal> and <literal>string</literal> keys at present. Support for other types may come in the future.</emphasis> Here is the <link linkend="class.hack.maptktv">programmer accessible interface</link> for <literal>Map</literal>.
     </para>
     <para>
       Here are some basic examples showing how <literal>Map</literal> can be used:
@@ -455,43 +362,7 @@ object(Map)#1 (2) {
 <sect1 xml:id="hack.collections.set">
     <title>Set</title>
     <para>
-      Sets are an unordered associative collection that stores unique values. Unlike vectors and maps, sets do not have keys, and thus cannot be iterated on keys (i.e., <literal>Set</literal> does not implement <literal>KeyedIterable</literal>). Likewise, sets do not support <literal>$c[$k]</literal> or <literal>$c[$k]=$v</literal> syntax (though <literal>$c[]=$v</literal> syntax is supported for adding elements). Insert, remove, and search operations for <literal>Set</literal> are performed in O(lg N) time or better. Intersect and some other operations are available in the Sets class. <emphasis>Note: <literal>Set</literal> only supports <literal>int</literal> and <literal>string</literal> values at present. Support for other types may come in the future.</emphasis> Here is the programmer accessible interface of a Hack
-      implemented <literal>Set</literal>:
-      <informalexample>
-        <programlisting role="php">
-<![CDATA[
-class Set<Tv> implements MutableSet<Tv>
- 
-  __construct(Traversable<Tv>)
- 
-  // The following implement Iterable<Tv>.
-  getIterator(): Iterator<Tv>
-  toArray(): array
-  toValuesArray(): array
-  toVector(): Vector<Tv>
-  toSet(): Set<Tv>
-  lazy(): Iterable<Tv>
-  map<Tu>((function(Tv): Tu)): Set<Tu>
-  filter((function(Tv): bool)): Set<Tv>
-  zip<Tu>(Traversable<Tu>): Set<Pair<Tv, Tu>> // not implemented yet
- 
-  // The following implement Collection<Tv>
-  isEmpty(): bool
-  count(): int
-  items(): Iterable<Tv>
-  static fromItems(Traversable<Tv>): Set<Tv>
-  add(Tv): this
-  addAll(?Traversable<Tv>): this
-  removeAll(Traversable<Tv> $other): Set<Tv> // takes difference
-  erase(Iterator): this // not implemented yet
-  clear(): void
- 
-  // The following implements SetAccess<Tv>
-  contains(Tv): bool
-  remove(Tv): this
-]]>
-        </programlisting>
-      </informalexample>
+      Sets are an unordered associative collection that stores unique values. Unlike vectors and maps, sets do not have keys, and thus cannot be iterated on keys (i.e., <literal>Set</literal> does not implement <literal>KeyedIterable</literal>). Likewise, sets do not support <literal>$c[$k]</literal> or <literal>$c[$k]=$v</literal> syntax (though <literal>$c[]=$v</literal> syntax is supported for adding elements). Insert, remove, and search operations for <literal>Set</literal> are performed in O(lg N) time or better. Intersect and some other operations are available in the Sets class. <emphasis>Note: <literal>Set</literal> only supports <literal>int</literal> and <literal>string</literal> values at present. Support for other types may come in the future.</emphasis> Here is the <link linkend="class.hack.settv">programmer accessible interface</link> of a Hack implemented <literal>Set</literal>.
     </para>
     <para>
       Here is a basic example showing how <literal>Set</literal> can be used:
@@ -580,41 +451,7 @@ object(Set)#1 (2) {
   <sect1 xml:id="hack.collections.pair">
     <title>Pair</title>
     <para>
-      An indexed container restricted to containing exactly two elements. <literal>Pair</literal> has integer keys; key 0 refers to the first element and key 1 refers to the second element (all other integer keys are out of bounds). The first type parameter specifies the type constraint for the first element, and the second type parameter specifies the type constraint for the second element. <literal>Pair</literal>s are immutable, meaning that the elements of a <literal>Pair</literal> cannot be assigned to or removed. Note however that <literal>Pair</literal>s may contain mutable objects. <emphasis>In many cases, a <link linkend="hack.tuples">tuple</link> is a better choice than a Pair.</emphasis> Here is the programmer accessible interface for Hack pairs: 
-      <informalexample>
-        <programlisting role="php">
-<![CDATA[
-class Pair<Tv1, Tv2> implements ConstVector<mixed>
-
-  // The following implement KeyedIterable<int, mixed>
-  getIterator(): KeyedIterator<int, mixed>
-  toArray(): array
-  toValuesArray(): array
-  toKeysArray(): array
-  toVector(): Vector<Tv>
-  toMap(): Map<int, Tv>
-  toSet(): Set<Tv>
-  lazy(): KeyedIterable<int, Tv>
-  map<Tu>((function(mixed): Tu)): Vector<Tu>
-  mapWithKey<Tu>((function(int, mixed): Tu)): Vector<Tu>
-  filter((function(mixed): bool)): Vector<mixed>
-  filterWithKey((function(int, mixed): bool)): Vector<mixed>
-  zip<Tu>(Traversable<Tu>): Vector<Pair<mixed, Tu>>
-  keys(): Vector<int>
-
-  // The following implement ConstCollection<mixed>
-  isEmpty(): bool
-  count(): int
-  items(): Iterable<mixed>
-  static fromItems(Traversable<mixed>): Pair<Tv1, Tv2> // not implemented yet
-
-  // The following implement ConstIndexAccess<int, mixed>
-  at(int): mixed
-  get(int): mixed
-  containsKey(int): bool
-]]>
-        </programlisting>
-      </informalexample>
+      An indexed container restricted to containing exactly two elements. <literal>Pair</literal> has integer keys; key 0 refers to the first element and key 1 refers to the second element (all other integer keys are out of bounds). The first type parameter specifies the type constraint for the first element, and the second type parameter specifies the type constraint for the second element. <literal>Pair</literal>s are immutable, meaning that the elements of a <literal>Pair</literal> cannot be assigned to or removed. Note however that <literal>Pair</literal>s may contain mutable objects. <emphasis>In many cases, a <link linkend="hack.tuples">tuple</link> is a better choice than a Pair.</emphasis> Here is the <link linkend="class.hack.pairtv1tv2">programmer accessible interface</link> for Hack pairs.
     </para>
     <para>
       Here is a simple example showing how <literal>Pair</literal> can be used:
@@ -1052,27 +889,10 @@ class C {
     <sect2 xml:id="hack.collections.interfaces.specific">
       <title>Specific Collection Interfaces</title>
       <para>
-        The concrete collection classes (<literal>Vector</literal>, <literal>Map</literal>, etc.) use the collection interfaces as building blocks. Before diving into the lower layers of interfaces, it's worth covering the specific collection interfaces first. 
-      <informalexample>
-        <programlisting role="php">
-<![CDATA[
-interface ConstVector<out Tv> extends ConstCollection<Tv>, ConstIndexAccess<int, Tv>, KeyedIterable<int, Tv>
- 
-interface MutableVector<Tv> extends ConstVector<Tv>, Collection<Tv>, IndexAccess<int, Tv>
- 
-interface ConstMap<Tk, out Tv> extends ConstCollection<Pair<Tk, Tv>>, ConstMapAccess<Tk, Tv>, KeyedIterable<Tk, Tv>
- 
-interface MutableMap<Tk, Tv> extends ConstMap<Tk, Tv>, Collection<Pair<Tk, Tv>>, MapAccess<Tk, Tv>
- 
-interface ConstSet<Tv> extends ConstCollection<Tv>, ConstSetAccess<Tv>, Iterable<Tv>
- 
-interface MutableSet<Tv> extends ConstSet<Tv>, Collection<Tv>, SetAccess<Tv>
-]]>
-        </programlisting>
-      </informalexample>
+        The concrete collection classes (<literal>Vector</literal>, <literal>Map</literal>, etc.) use the collection interfaces as building blocks. Before diving into the lower layers of interfaces, it's worth covering the specific collection interfaces first.
       </para>
       <para>
-        The "const" interfaces (<literal>ConstVector</literal>, <literal>ConstMap</literal>, and <literal>ConstSet</literal>) can be used in parameter type constraints to indicate that a given function will not mutate the collection. This can be important for larger codebases since collections have "reference-like"semantics and do not have "copy-on-write" behavior like PHP arrays. The "const" interfaces also provides a good foundation for adding "immutable" versions of collections (<literal>ImmVector</literal>, <literal>ImmMap</literal>, etc.) and for potentially supporting covariance in the future. The <literal>ConstMap</literal> interface can be used in a parameter type constraint to indicate that a given function will accept both Maps and ImmMaps. The collection specific interfaces also lay the foundation for adding more types of collections or user-defined collections down the road.
+        The "const" interfaces (<link linkend="class.hack.constvectortv"><literal>ConstVector</literal></link>, <link linkend="class.hack.constmaptktv"><literal>ConstMap</literal></link>, and <link linkend="class.hack.constsettv"><literal>ConstSet</literal></link>) can be used in parameter type constraints to indicate that a given function will not mutate the collection. This can be important for larger codebases since collections have "reference-like"semantics and do not have "copy-on-write" behavior like PHP arrays. The "const" interfaces also provides a good foundation for adding "immutable" versions of collections (<literal>ImmVector</literal>, <literal>ImmMap</literal>, etc.) and for potentially supporting covariance in the future. The <literal>ConstMap</literal> interface can be used in a parameter type constraint to indicate that a given function will accept both Maps and ImmMaps. The collection specific interfaces also lay the foundation for adding more types of collections or user-defined collections down the road. Each of the "const" interfaces has a "mutable" counterpart (e.g. <link linkend="class.hack.mutablevectortv">MutableVector</link>)
       </para>
     </sect2>
     <sect2 xml:id="hack.collections.interfaces.iteration">
@@ -1092,270 +912,17 @@ interface MutableSet<Tv> extends ConstSet<Tv>, Collection<Tv>, SetAccess<Tv>
       <para>
         The <literal>Iterable</literal> style interfaces allow for retrieving values using <literal>foreach</literal> at chosen times through the use of iterators (e.g.. <literal>next</literal>), while also providing various helper functions that can be used during iteration. 
       </para>
-      <informalexample>
-        <programlisting role="php">
-<![CDATA[
-// The Traversable interface is part of standard PHP.
-// In HHVM/Hack, it is a generic (parameterized) interface that
-// provides foreach support of the form: foreach($c as $v)
-interface Traversable<out Tv>
- 
- 
-// The IteratorAggregate interface is part of standard PHP
-// In HHVM/Hack, it is parameterized and allows for the
-// creation of an external iterator.
-interface IteratorAggregate<Tv> extends Traversable<Tv>
-  getIterator(): Iterator<Tv>
- 
- 
-// A generic (parameterized) interface that provides foreach
-// support of the form: foreach($c => $k as $v)
-interface KeyedTraversable<out Tk, out Tv> extends Traversable<Tv>
- 
- 
-// A generic (parameterized) interface that, in addition to
-// providing foreach support, provides array-like bracket syntax
-// for collections. Indexish is immutable (e.g., appending via
-// $c[] = $v is not supported) without explicit programmer guarantees.
-interface Indexish<out Tk, out Tv> extends KeyedTraversable<Tk, Tv>
- 
- 
-// Any class that implements Iterable<Tv> will
-// "magically" work with foreach($c as $v) 
-interface Iterable<out Tv> extends IteratorAggregate<Tv>
- 
-  getIterator(): Iterator<Tv>
-  toArray(): array
-  toValuesArray(): array
-  toVector(): Vector<Tv>
-  toSet(): Set<Tv>
-  lazy(): Iterable<Tv>
- 
-  // return an Iterable based on the return 
-  // results of calling a provided function 
-  // on every value of a given Iterable. 
-  map<Tu>((function(Tv): Tu)): Iterable<Tu> 
- 
-  // return an Iterable containing the values 
-  // of a given Iterable that cause the provided 
-  // function to return true.
-  filter((function(Tv): bool)): Iterable<Tv>
- 
-  // return an Iterable that combines the elements
-  // this Iterable and another Iterable pair-wise
-  zip<Tu>(Traversable<Tu>): Iterable<Pair<Tv,Tu>>
- 
- 
-// Any class that implements KeyedIterable<Tk, Tv> 
-// will "magically" work with foreach($c as $v) and
-// foreach ($c as $k => $v). Note that if a 
-// given object $c implements Iterable<Tv> but 
-// does not implement KeyedIterable<Tk, Tv> 
-// (e.g., if $c is a Set), doing 
-// "foreach ($c as $k => $v) { .. }" may cause
-// an error at typecheck time or at run time.
-interface KeyedIterable<out Tk, out Tv> extends KeyedTraversable<Tk, Tv>, Iterable<Tv>
- 
-  getIterator(): KeyedIterable<Tk, Tv>
-  toArray(): array
-  toValuesArray(): array
-  toKeysArray(): array
-  toVector(): Vector<Tv>
-  toMap(): Map<Tk, Tv>
-  toSet(): Set<Tv>
-  lazy(): KeyedIterable<Tk, Tv>
-  keys(): Iterable<Tk>
-  map<Tu>((function(Tv): Tu)): KeyedIterable<Tk, Tu>
-  mapWithKey<Tu>((function(Tk, Tv): Tu) $callback): KeyedIterable<Tk, Tu>
-  filter((function(Tv): bool)): KeyedIterable<Tk, Tv>
-  filterWithKey((function(Tk, Tv): bool)): KeyedIterable<Tk, Tv>
-  zip<Tu>(Traversable<Tu>): KeyedIterable<Tk, Pair<Tv, Tu>>
- 
- 
-// The Iterator<Tv> interface is intended to
-// facilitate iteration for all collections. To
-// improve compatibility and reduce friction
-// for adopted, we've co-opted PHP's Iterator
-// interface and made it generic.
- 
-// For Iterators that don't support rewind, calling 
-// rewind() must do nothing if the Iterator is in 
-// the "initial" position (i.e., it has not been 
-// advanced forward), otherwise it should throw.
- 
-// Iterator<Tv>::key() has a mixed return type and
-// should return null.
-interface Iterator<out Tv> extends Traversable<Tv>
- 
-  next(): void
-  valid(): bool
-  rewind(): void
-  current(): Tv
-  key(): mixed
- 
- 
-// The KeyedIterator<Tk, Tv> interface facilitates 
-// iteration for collections that have indices or 
-// keys (e.g., Vector, Map). 
- 
-// Classes implementing KeyedIterator<Tk, Tv> are required 
-// to provide an implementation of key(). For valid 
-// iterators, KeyedIterator<Tk, Tv>::key() should return 
-// some value of type Tk and should not throw an exception.
-interface KeyedIterator<out Tk, out Tv> extends KeyedTraversable<Tk, Tv>,  Iterator<Tv>
- 
-  next(): void
-  valid(): bool
-  rewind(): void
-  current(): Tv
-  key(): Tk
- 
- 
-// These interfaces serve as the base class for all 
-// generators that yields values or key/value pairs.
-interface Continuation<Tv> extends KeyedIterator<int, Tv>, Awaitable<Tv>
- 
-  getOrigFuncName(): string;
-  send($v): void;
-  raise(Exception $e): void;
-  getLabel(): int;
-  update(int $label, Tv $value): void;
-  num_args(): int;
-  get_arg(int $index): mixed;
-]]>
-        </programlisting>
-      </informalexample>
     </sect2>
     <sect2 xml:id="hack.collections.interfaces.general">
       <title>General Collection Interfaces</title>
       <para>
         The <literal>Collection</literal> interface provides basic functionality for adding and erasing elements, as well as iterating over elements in a uniform manner. 
-        <informalexample>
-          <programlisting role="php">
-  <![CDATA[
-  interface ConstCollection<out Ti> extends Countable
- 
-  isEmpty(): bool
-  count(): int
- 
-  // items() provides a generic form of enumeration
-  // that gives each element in the form compatible
-  // with the ConstCollection::fromItems() method
-  // and the OutputCollection::add() method.
-  items(): Iterable<Ti>
- 
-  // not implemented yet
-  static fromItems(Traversable<Ti>): ConstCollection<Ti>
- 
- 
-interface OutputCollection<in Ti>
- 
-  // add() and is fast for all collections. For some collections
-  // such as Map and Set, add() will throw if the new element
-  // conflicts with an existing element (e.g., a Map may have
-  // an existing key/value pair with the same key as the new
-  // key/value pair). For order-preserving collections, add()
-  // will insert the new element at the end. Generally, add() 
-  // may invalidate iterators pointing to the collection.
-  add(Ti): this
- 
-  // addAll() is provided for convenience to allow bulk
-  // add operations
-  addAll(?Traversable<Ti>): this
- 
- 
-interface Collection<Ti> extends ConstCollection<Ti>, OutputCollection<Ti>
- 
-  // clear() removes all elements from a collection 
-  // and invalidates all iterators
-  clear(): void
- 
-  // erase() erases an element from a collection
-  // that a given Iterator points to. erase() may be
-  // slow for some collections. Generally, erase() will
-  // invalidate iterators pointing to the collection unless
-  // stated otherwise. Also, erase() may cause the keys 
-  // of other items to change for some collections 
-  // (e.g., Vector). The Iterator object passed into 
-  // erase() can be an Iterator or iterator that was 
-  // created via getIterator() or items()->getIterator().
-  erase(Iterator): this 
-  ]]>
-          </programlisting>
-      </informalexample>
       </para>
     </sect2>
     <sect2 xml:id="hack.collections.interfaces.access">
       <title>Access Interfaces</title>
       <para>
         Depending on the type of collection type implemented, one of the following interfaces (<literal>IndexAccess</literal>, <literal>SetAccess</literal> or <literal>MapAccess</literal>) will be implemented. These interfaces provide the functionality for checking values in a collection by index/key, removing items from a collection by index/key, as well as providing <literal>[]</literal> syntax for accessing values by index/key. All three of these interface types have a "const" companion for cases where the programmer wants to enforce a "read-only" contract. 
-       <informalexample>
-         <programlisting role="php">
-<![CDATA[
-interface ConstSetAccess<in Tm>
- 
-  // contains() is fast for all collections that
-  // implement this interface. contains() provides
-  // semantics equivalent to the array_key_exists()
-  // builtin function
-  contains(Tm): bool
- 
- 
-interface SetAccess<in Tm> extends ConstSetAccess<Tm>
- 
-  // remove() is fast for all collections that
-  // implement this interface. Generally, remove() 
-  // will invalidate iterators pointing to the
-  // collection.
-  remove(Tm): this
- 
- 
-// The methods in ConstIndexAccess are fast for all 
-// collections.
-interface ConstIndexAccess<in Tk, out Tv>
- 
-  // at() throws if the index/key is not present.
-  at(Tk): Tv
- 
-  // get() never throws, and will return null if the
-  // index/key is not present.
-  get(Tk): ?Tv
- 
-  // containsKey() never throws and is fast for all
-  // collections.
-  containsKey(Tk): bool
- 
- 
-interface IndexAccess<in Tk, Tv> extends ConstIndexAccess<Tk, Tv>
- 
-  // set() is fast for all collections. set() may 
-  // throw if the index/key is out of range for 
-  // some collections (e.g., Vector). In the case 
-  // where a new element is created, these 
-  // methods may invalidate iterators that point 
-  // to the collection.
-  set(Tk, Tv): this
- 
-  // setAll() is provided for convenience to allow
-  // bulk set operations.
-  setAll(?KeyedIterable<Tk, Tv>): this
- 
-  // removeKey() may be slow for some collections. 
-  // removeKey() may cause the indices/keys of other 
-  // items to change for some collections 
-  // (e.g., Vector). Also, removeKey() may
-  // invalidate iterators that point to the 
-  // collection.
-  removeKey(Tk): this
- 
- 
-interface ConstMapAccess<in Tk, out Tv> extends ConstSetAccess<Tk>, ConstIndexAccess<Tk, Tv>
- 
- 
-interface MapAccess<in Tk, Tv> extends ConstMapAccess<Tk, Tv>, IndexAccess<Tk, Tv>, SetAccess<Tk>
-]]>
-          </programlisting>
-        </informalexample>
       </para>
     </sect2>
   </sect1>
