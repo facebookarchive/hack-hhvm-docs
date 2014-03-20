@@ -59,7 +59,7 @@
   ]]>
         </programlisting>
         <para>
-          With the above example, HHVM will give an error (probably <literal>Invalid Operand Type</literal> if anything &quot;non-summable&quot; (e.g., <literal>array()</literal>) is passed to <literal>sum()</literal> as a variable argument.
+          With the above example, HHVM will give an error (probably <literal>Invalid Operand Type</literal>) if anything &quot;non-summable&quot; (e.g., <literal>array()</literal>) is passed to <literal>sum()</literal> as a variable argument.
         </para>
       </informalexample>
     </para>
@@ -272,7 +272,7 @@
         <informalexample>
           <programlisting role="php">
   <![CDATA[
-  <<?hh
+  <?hh
 
   class Foo {
   public function f1(?int $x): void {
@@ -507,7 +507,7 @@
   ]]>
         </screen>
         <para>
-          Hack throws an error here because it type inference and safety cannot be guaranteed when using a <literal>string</literal>as the function name to <literal>call_user_func()</literal>. For example, imagine changing the <literal>call_user_func()</literal> line to be:
+          Hack throws an error here because its type inference and safety cannot be guaranteed when using a <literal>string</literal> as the function name to <literal>call_user_func()</literal>. For example, imagine changing the <literal>call_user_func()</literal> line to be:
         </para>
         <programlisting role="php">
   <![CDATA[
@@ -1103,7 +1103,7 @@ echo heredoc();
         &example.outputs;
         <screen>
 <![CDATA[
-File &quot;heredoc.php&quot;, line 6, characters 7-11:
+File "heredoc.php", line 6, characters 7-11:
 Syntax error
 ]]>
         </screen>
@@ -1123,7 +1123,7 @@ function foo(): void {
 $name = 'MyName';
 
 echo <<<'EOT'
-My name is &quot;$name&quot;. I am printing some text.
+My name is "$name". I am printing some text.
 Now, I am printing some {$foo->bar[1]}.
 This should not print a capital 'A': \x41
 EOT;
