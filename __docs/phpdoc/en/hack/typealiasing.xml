@@ -2,7 +2,7 @@
 <chapter xml:id="hack.typealiasing">
   <title>Type Aliasing</title>
   <para>
-    Many programming languages allow existing types to be redefined as as new type names. The C language has typedefs. Ocaml has type abbreviations. PHP even has rudimentary mechanism with its <function>class_alias</function> function. 
+    Many programming languages allow existing types to be redefined as new type names. The C language has typedefs. Ocaml has type abbreviations. PHP even has rudimentary mechanism with its <function>class_alias</function> function. 
   </para>
   <para>
     Hack and HHVM are offering two ways to redefine type names: type aliasing and opaque type aliasing. Here is the syntax for each. 
@@ -50,7 +50,7 @@ function foo(Point $x): void {}
     </informalexample>
   </para>
   <para>
-    While type aliasing and opaque type aliases are somewhat similar, there is a key difference is around assignment compatibility to the original type. 
+    While type aliasing and opaque type aliases are somewhat similar, there is a key difference around assignment compatibility to the original type. 
   </para>
 
   <sect1 xml:id="hack.typealiasing.typealiasing">
