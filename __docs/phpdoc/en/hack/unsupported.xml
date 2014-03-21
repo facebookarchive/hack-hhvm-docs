@@ -26,7 +26,7 @@
       </listitem>
       <listitem>
         <para>
-          <literal>if/then/else</literal> without <literal>{}</literal>
+          <literal>if/else</literal> statements without <literal>{}</literal>. <literal>else if</literal> is allowed (i.e. <literal>if (...) { ... } else if (...) { ... } else { ... }</literal> is ok).
         </para>
       </listitem>
       <listitem>
