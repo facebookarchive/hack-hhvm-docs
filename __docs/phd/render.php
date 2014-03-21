@@ -1,4 +1,3 @@
-#!@php_bin@
 <?php
 namespace phpdotnet\phd;
 /* $Id$ */
