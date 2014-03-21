@@ -181,11 +181,11 @@ $squared = array_map($x ==> $x*$x, array(1,2,3));
         <programlisting role="php">
 <![CDATA[
 <?hh
-$foo = $x ==> $x + 1;
-$foo(12); // returns 13
+$foo = () ==> 73;
+$foo(); // returns 73
  
-$squared = array_map($x ==> $x*$x, array(1,2,3));
-// $squared is array(1,4,9)
+$bar = ($x,$y) ==> $x + $y;
+$bar(3,8); // returns 11
 ]]>
         </programlisting>
       </informalexample>
@@ -196,11 +196,16 @@ $squared = array_map($x ==> $x*$x, array(1,2,3));
         <programlisting role="php">
 <![CDATA[
 <?hh
-$foo = $x ==> $x + 1;
-$foo(12); // returns 13
- 
-$squared = array_map($x ==> $x*$x, array(1,2,3));
-// $squared is array(1,4,9)
+$dump_map = ($name, $x) ==> {
+  echo "Map $name has:\n";
+  foreach ($x as $k => $v) {
+    echo "  $k => $v\n";
+  }
+};
+$dump_map(
+  "My Map",
+  Map {'a' => 'b', 'c' => 'd'},
+);
 ]]>
         </programlisting>
       </informalexample>
@@ -211,11 +216,12 @@ $squared = array_map($x ==> $x*$x, array(1,2,3));
         <programlisting role="php">
 <![CDATA[
 <?hh
-$foo = $x ==> $x + 1;
-$foo(12); // returns 13
- 
-$squared = array_map($x ==> $x*$x, array(1,2,3));
-// $squared is array(1,4,9)
+$y = 11;
+$foo = () ==> {
+  return $x ==> $x + $y; // captures $y
+};
+$bar = $foo();
+$bar(5); // returns 16
 ]]>
         </programlisting>
       </informalexample>
@@ -226,11 +232,8 @@ $squared = array_map($x ==> $x*$x, array(1,2,3));
         <programlisting role="php">
 <![CDATA[
 <?hh
-$foo = $x ==> $x + 1;
-$foo(12); // returns 13
- 
-$squared = array_map($x ==> $x*$x, array(1,2,3));
-// $squared is array(1,4,9)
+$captured = "test: ";
+$bar = (string $k = "foo"): string ==> $captured . $k;
 ]]>
         </programlisting>
       </informalexample>
