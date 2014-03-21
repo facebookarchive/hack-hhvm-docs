@@ -18,7 +18,7 @@ public function getFoo(): Foo {
 }
 }
 
-async function gen_foo(int $a): Awaitable<?Foo>; {
+async function gen_foo(int $a): Awaitable<?Foo> {
 if ($a === 0) {
   return null;
 }
