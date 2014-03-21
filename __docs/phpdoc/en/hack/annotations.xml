@@ -832,7 +832,7 @@ function average(float $x, float $y): float {
 }
 
 function say_hello(string $name): string {
-  return &quot;Hello &quot;.$name;
+  return "Hello ".$name;
 }
 
 function invert(bool $b): bool {
