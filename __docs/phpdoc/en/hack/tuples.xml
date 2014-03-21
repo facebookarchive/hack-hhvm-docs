@@ -9,11 +9,6 @@
       The values inside a tuple are, of course, mutable. It is the &quot;shape&quot; of a tuple that is not mutable ... no removing, adding or changing the types of elements 
     </para>
   </note>
-  <note>
-    <para>
-      Underneath the covers, a Hack tuple is just an array. There is nothing to stop the above code from running in HHVM. The code will run without issue. Expected behavior, on the other hand, is another issue. It is the type checker that will catch the errors before runtime. Choosing to ignore the type checker is allowed, but fraught with peril and not recommended.
-    </para>
-  </note>
   <para>
     Also, while collections and type-annotated arrays are designed to contain elements of one type, tuples allow for the mixing of the type of the elements.
   </para>
@@ -66,7 +61,11 @@ Invalid index
       </screen>
     </informalexample>
   </para>
-
+  <note>
+    <para>
+      Underneath the covers, a Hack tuple is just an array. There is nothing to stop the above code from running in HHVM. The code will run without issue. Expected behavior, on the other hand, is another issue. It is the type checker that will catch the errors before runtime. Choosing to ignore the type checker is allowed, but fraught with peril and not recommended.
+    </para>
+  </note>
   <sect1 xml:id="hack.tuples.usecases">
     <title>Use Cases</title>
     <para>
