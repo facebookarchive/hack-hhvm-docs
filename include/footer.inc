@@ -19,14 +19,8 @@
     <div class="container footer-content">
       <div class="row-fluid">
       <ul class="footmenu">
-        <li><a href="/copyright.php">Copyright &copy; 2001-<?php echo date('Y'); ?> The PHP Group</a></li>
-        <li><a href="/copyright.php">Copyright &copy; 2014-<?php echo date('Y'); ?> HHVM</a></li>
-<!-- FOR HHVM
-        <li><a href="/my.php">My PHP.net</a></li>
-        <li><a href="/contact.php">Contact</a></li>
-        <li><a href="/sites.php">Other PHP.net sites</a></li>
-        <li><a href="/mirrors.php">Mirror sites</a></li>
-        <li><a href="/privacy.php">Privacy policy</a></li>-->
+        <li> Copyright &copy; 2001-<?php echo date('Y'); ?> The PHP Group   |</li>
+        <li>Copyright &copy; 2014-<?php echo date('Y'); ?>   Facebook</li>
       </ul>
       </div>
     </div>
