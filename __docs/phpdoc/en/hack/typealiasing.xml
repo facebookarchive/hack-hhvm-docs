@@ -104,7 +104,8 @@ main_ta();
         <programlisting role="php">
 <![CDATA[
 <?hh
- 
+// File1.php 
+
 newtype SecretID = int;
  
 function modify_secret_id(SecretID $sid): SecretID {
@@ -122,7 +123,8 @@ main_ot1();
         <programlisting role="php">
 <![CDATA[
 <?hh
- 
+// File2.php
+
 require_once "File1.php";
  
 function try_modify_secret_id(SecretID $sid): SecretID {
@@ -142,9 +144,12 @@ main_ot2();
         &example.outputs;
         <screen>
 <![CDATA[
-intro_ot_example_2.php:11:24,28: Invalid argument
-intro_ot_example_2.php:6:31,38: This is an object of type SecretID
-intro_ot_example_2.php:11:24,28: It is incompatible with an int
+File "File2.php", line 7, characters 14-17:
+Typing error
+File "File2.php", line 7, characters 14-17:
+This is an int/float because this is used in an arithmetic operation
+File "File2.php", line 6, characters 31-38:
+It is incompatible with an object of type SecretID
 ]]>
         </screen>
         <para>
