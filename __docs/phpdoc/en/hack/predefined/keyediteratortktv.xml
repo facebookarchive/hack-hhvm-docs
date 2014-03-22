@@ -89,8 +89,8 @@ class DuplicateStrIterator implements KeyedIterator<string, string> {
 $it = new DuplicateStrIterator;
 
 foreach($it as $key => $value) {
-    var_dump($key, $value);
-    echo "\n";
+  var_dump($key, $value);
+  echo "\n";
 }
 ]]>
     </programlisting>

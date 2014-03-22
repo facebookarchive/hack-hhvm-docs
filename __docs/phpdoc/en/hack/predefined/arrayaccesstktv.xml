@@ -46,30 +46,30 @@
 <![CDATA[
 <?hh
 class Obj<string, string> implements ArrayAccess<string, string> {
-    private array $container = array();
-    public function __construct() {
-        $this->container = array(
-            "one"   => 1,
-            "two"   => 2,
-            "three" => 3,
-        );
+  private array $container = array();
+  public function __construct() {
+    $this->container = array(
+      "one"   => 1,
+      "two"   => 2,
+      "three" => 3,
+    );
+  }
+  public function offsetSet(string $key, string $value): this {
+    if (is_null($key)) {
+      $this->container[] = $value;
+    } else {
+      $this->container[$key] = $value;
     }
-    public function offsetSet(string $key, string $value): this {
-        if (is_null($key)) {
-            $this->container[] = $value;
-        } else {
-            $this->container[$key] = $value;
-        }
-    }
-    public function offsetExists(string $offset): bool {
-        return isset($this->container[$offset]);
-    }
-    public function offsetUnset(string $offset): this {
-        unset($this->container[$offset]);
-    }
-    public function offsetGet(string $offset): ?string {
-        return isset($this->container[$offset]) ? $this->container[$offset] : null;
-    }
+  }
+  public function offsetExists(string $offset): bool {
+    return isset($this->container[$offset]);
+  }
+  public function offsetUnset(string $offset): this {
+    unset($this->container[$offset]);
+  }
+  public function offsetGet(string $offset): ?string {
+    return isset($this->container[$offset]) ? $this->container[$offset] : null;
+  }
 }
 
 $obj = new Obj();
@@ -84,7 +84,6 @@ $obj[] = 'Append 1';
 $obj[] = 'Append 2';
 $obj[] = 'Append 3';
 print_r($obj);
-?>
 ]]>
     </programlisting>
     &example.outputs.similar;

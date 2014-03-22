@@ -73,7 +73,7 @@ class AnnotatedClass {
   public AnotherClass $ac;
 
   function bar(string $str, bool $b): float {
-    if ($b and $str === "Hi") {
+    if ($b && $str === "Hi") {
        return 3.2;
     }
     return 0.3;
@@ -832,14 +832,14 @@ function average(float $x, float $y): float {
 }
 
 function say_hello(string $name): string {
-  return &quot;Hello &quot;.$name;
+  return "Hello ".$name;
 }
 
 function invert(bool $b): bool {
   if ($b) {
     return false;
   } else {
-      return true;
+    return true;
   }
 }
 
@@ -947,13 +947,13 @@ class TupleTest {
   // This is a Vector of tuples. Notice how the &quot;tuple&quot; reserved
   // word is not used when annotating.
   private Vector<(string, string)> $test = Vector {};
-  // The return type is a tuple. Again, the &quot;tuple&quot; reserved
+  // The return type is a tuple. Again, the "tuple" reserved
   // word is not used.
   public function bar(): (string, string) {
     return $this->test[0];
   }
   public function foo() {
-    // But to use an actual tuple, use the &quot;tuple&quot; reserved word
+    // But to use an actual tuple, use the "tuple" reserved word
     $this->test->add(tuple('hello', 'world'));
   }
 }
@@ -1088,7 +1088,7 @@ function f3(): void {
 <![CDATA[
 <?hh
 
-class FooFoo{}
+class FooFoo {}
 class HackArrayAnnotations {
   private array<FooFoo> $arr;
   private array<string, FooFoo> $arr2;

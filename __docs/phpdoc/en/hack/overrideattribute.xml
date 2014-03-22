@@ -10,20 +10,20 @@
 <?hh
 
 class CParent {
-   public function doStuff(): void {
-      return $this->implementation();
-   }
-   protected function implementation(): void {
-      echo 'parent implementation', "\n";
-   }
+  public function doStuff(): void {
+    return $this->implementation();
+  }
+  protected function implementation(): void {
+    echo 'parent implementation', "\n";
+  }
 }
 
 // file2.php
 <?hh
 class Child extends CParent {
-   <<Override>> protected function implementation(): void {
-      echo 'child implementation', "\n";
-   }
+  <<Override>> protected function implementation(): void {
+    echo 'child implementation', "\n";
+  }
 }
 ]]>
       </programlisting>
@@ -34,9 +34,9 @@ class Child extends CParent {
 <![CDATA[  // file1.php
 <?hh
 class CParent {
-   public function doStuff(): void {
-      echo 'parent implementation', "\n";
-   }
+  public function doStuff(): void {
+    echo 'parent implementation', "\n";
+  }
 }
 ]]>
       </programlisting>
@@ -53,6 +53,7 @@ class CParent {
       <informalexample>
         <programlisting role="php">
 <![CDATA[
+<?hh
 trait T1 {
   <<Override>> // checked on use classes
   function foo(): void {}

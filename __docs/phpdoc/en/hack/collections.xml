@@ -517,10 +517,10 @@ a
       Hack collections has introduced a literal syntax in order to make it easy to create a new collection without the need for temporary arrays or helper functions. HHVM natively understands collection literals. Here is an example: 
       <informalexample>
         <programlisting role="php">
-  <![CDATA[
-  <?hh
-  $vec = Vector {1, 2, 3};
-  ]]>
+<![CDATA[
+<?hh
+$vec = Vector {1, 2, 3};
+]]>
         </programlisting>
         <para>
             The code above requires no hidden arrays or helper functions to build a Vector containing 1, 2, and 3. 
