@@ -81,7 +81,7 @@
       </listitem>
       <listitem>
         <para>
-          <literal>ArrayAccess</literal>. Hack allows such objects; it just will not recognize them as arrays. Not only is <literal>ArrayAccess</literal> an &quot;interesting&quot; interface (e.g., having a <literal>null</literal>key mean &quot;append&quot;), but supporting it causes a lot of strange edge cases such as needing more complicated checks around instance variable initialization. Since <literal>ArrayAccess</literal> is typically used to migrate old code, it is not supported for now; support could happen if a compelling case arose.
+          <literal>ArrayAccess</literal>. Hack allows such objects; it just will not recognize them as arrays. Not only is <literal>ArrayAccess</literal> an &quot;interesting&quot; interface (e.g., having a <literal>null</literal> key mean &quot;append&quot;), but supporting it causes a lot of strange edge cases such as needing more complicated checks around instance variable initialization. Since <literal>ArrayAccess</literal> is typically used to migrate old code, it is not supported for now; support could happen if a compelling case arose.
         </para>
       </listitem>
       <listitem>
