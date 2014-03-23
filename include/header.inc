@@ -45,7 +45,7 @@ if ($config["cache"]) {
  <link rel="alternate" type="application/atom+xml" href="<?php echo $MYSITE ?>feed.atom" title="PHP: Hypertext Preprocessor">
 
 <?php if (isset($_SERVER['BASE_PAGE'])): ?>
- <link rel="canonical" href="http://php.net/<?php echo $_SERVER['BASE_PAGE']?>">
+ <link rel="canonical" href="http://docs.hhvm.com/<?php echo $_SERVER['BASE_PAGE']?>">
 <?php if ($shortname): ?>
  <link rel="shorturl" href="<?php echo $shorturl ?>">
 <?php endif ?>
@@ -56,22 +56,10 @@ if ($config["cache"]) {
 <?php endforeach ?>
  <link href='http://fonts.googleapis.com/css?family=Source+Sans+Pro:400,600,400italic,600italic|Source+Code+Pro&amp;subset=latin,latin-ext' rel='stylesheet' type='text/css'>
 <?php foreach($CSS as $filename => $modified): ?>
-<!-- FOR HHVM -->
-<!--<link rel="stylesheet" type="text/css" href="<?php echo $MYSITE ?>cached.php?t=<?php echo $modified?>&amp;f=styles/<?php echo $filename?>" media="screen">-->
+<link rel="stylesheet" type="text/css" href="<?php echo $MYSITE ?>cached.php?t=<?php echo $modified?>&amp;f=styles/<?php echo $filename?>" media="screen">
 <link rel="stylesheet" type="text/css" href="<?php echo $MYSITE ?>styles/<?php echo $filename?>" media="screen">
 <?php endforeach ?>
 
- <!--[if lte IE 7]>
- <link rel="stylesheet" type="text/css" href="<?php echo $MYSITE ?>styles/workarounds.ie7.css" media="screen" />
- <![endif]-->
-
- <!--[if lte IE 9]>
- <link rel="stylesheet" type="text/css" href="<?php echo $MYSITE ?>styles/workarounds.ie9.css" media="screen" />
- <![endif]-->
-
- <!--[if IE]>
- <script type="text/javascript" src="<?php echo $MYSITE ?>js/ext/html5.js"></script>
- <![endif]-->
 
 <?php if (!empty($_SERVER["BASE_HREF"])): ?>
  <base href="<?php echo $_SERVER["BASE_HREF"] ?>">

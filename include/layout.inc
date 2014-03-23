@@ -538,7 +538,7 @@ function site_header($title = '', $config = array())
 
     // shorturl; http://wiki.snaplog.com/short_url
     if (isset($_SERVER['BASE_PAGE']) && $shortname = get_shortname($_SERVER["BASE_PAGE"])) {
-        $shorturl = "http://php.net/" . $shortname;
+        $shorturl = "http://docs.hhvm.com/" . $shortname;
     }
     
     require dirname(__FILE__) ."/header.inc";
