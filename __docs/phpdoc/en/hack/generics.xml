@@ -774,38 +774,38 @@ Considering the constraint on the type 'T'
 <![CDATA[
 <?hh
  
-interface IFap {}
-interface IFar implements IFap {}
-class Fap implements IFap {}
+interface IFaz {}
+interface IFar implements IFaz {}
+class Faz implements IFaz {}
 class Far implements IFar {}
-class NoIFap {}
+class NoIFaz {}
  
 class Bip {
-  public function get<T as IFap>(T $x): T {
+  public function get<T as IFaz>(T $x): T {
     return $x;
   }
 }
  
 function main_constraints_gm(): void {
   $bip = new Bip();
-  $bip->get(new Fap());
+  $bip->get(new Faz());
   $bip->get(new Far());
-  $bip->get(new NoIFap()); // Hack error;
+  $bip->get(new NoIFaz()); // Hack error;
 }
  
 main_constraints_gm();
 ]]>
         </programlisting>
         <para>
-          The generic method <literal>get()</literal> has a constraint that only types that implement <literal>IFap</literal> (or their children!) may be used as a the type parameter <literal>T</literal> to the method. Since the class <literal>Far</literal> implements <literal>IFar</literal> and <literal>IFar</literal> implements <literal>IFap</literal>, a <literal>Far</literal> is able to be passed to <literal>get()</literal>. However, a <literal>NoIFap</literal> is not able to be passed to <literal>get()</literal> since it has no chain that leads to an <literal>IFap</literal>. Here is the Hack error that will occur: 
+          The generic method <literal>get()</literal> has a constraint that only types that implement <literal>IFaz</literal> (or their children!) may be used as a the type parameter <literal>T</literal> to the method. Since the class <literal>Far</literal> implements <literal>IFar</literal> and <literal>IFar</literal> implements <literal>IFaz</literal>, a <literal>Far</literal> is able to be passed to <literal>get()</literal>. However, a <literal>NoIFaz</literal> is not able to be passed to <literal>get()</literal> since it has no chain that leads to an <literal>IFaz</literal>. Here is the Hack error that will occur: 
         </para>
         &example.outputs;
         <screen>
 <![CDATA[
 File "hack_constraints_method.php", line 11, characters 28-31:
-This is an object of type IFap
+This is an object of type IFaz
 File "hack_constraints_method.php", line 20, characters 13-24:
-It is incompatible with an object of type NoIFap
+It is incompatible with an object of type NoIFaz
 File "hack_constraints_method.php", line 11, characters 41-41:
 Considering the constraint on the type 'T'
 ]]>
