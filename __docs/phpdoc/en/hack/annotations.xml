@@ -985,10 +985,27 @@ function f3(): void {
     </para>
   </sect1>
 
-  <sect1 xml:id="hack.annotations.typejuggling">
-    <title>Type Juggling</title>
+  <sect1 xml:id="hack.annotations.typecasting">
+    <title>Type Casting</title>
     <para>
-      PHP allows what is called &quot;type juggling&quot;, basically allowing for types to be used synonymously for other types (e.g., <literal>double</literal> for <literal>float</literal>). Hack generally disallows this. For consistency purposes, Hack allows one type for one meaning:
+      HHVM allows <link linkend="language.types.typecasting">type casting</link>, basically allowing for a variable to be cast to another, appropriate type (e.g., <literal>int</literal> to <literal>bool</literal>). Hack allows type casts as well. For example, the type checker will give no errors for this type of code.
+            <informalexample>
+        <programlisting role="php">
+<![CDATA[
+<?hh
+function foo(): bool {
+  $foo = 10;   // $foo is an integer
+  $bar = (bool) $foo;   // $bar is a boolean
+  return $bar;
+}
+
+foo();
+]]>
+        </programlisting>
+      </informalexample>
+    </para>
+    <para>
+      That said, there are types that are synonyms for other types (e.g., <literal>double</literal> for <literal>float</literal>). Hack generally disallows this. For consistency purposes, Hack allows one type for one meaning:
       <informaltable>
         <tgroup cols="2">
           <colspec align="center" />
@@ -1056,6 +1073,30 @@ function f3(): void {
           </tbody>
         </tgroup>
       </informaltable>
+    </para>
+    <para>
+      Here is an example of how the type checker will throw an error if you try to use a synonym of a type that is not supported.
+            <informalexample>
+        <programlisting role="php">
+<![CDATA[
+<?hh
+function foo(): bool {
+  $foo = 10;   // $foo is an integer
+  $bar = (boolean) $foo;   // $bar is a boolean
+  return $bar;
+}
+
+foo();
+]]>
+        </programlisting>
+        &example.outputs;
+        <screen>
+<![CDATA[
+File "test.php", line 4, characters 11-17:
+Invalid Hack type. Using "boolean" in Hack is considered an error. Use "bool" instead, to keep the codebase consistent.
+]]>
+        </screen>
+      </informalexample>
     </para>
   </sect1>
 
