@@ -1150,7 +1150,7 @@ class HackArrayAnnotations {
 
   public function baz(FooFoo $val): array<FooFoo> {
     $this->arr[] = $val;
-    return $this->;arr;
+    return $this->arr;
   }
 }
 
