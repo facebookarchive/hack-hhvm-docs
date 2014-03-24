@@ -147,7 +147,7 @@ class AnnotatedClass {
       Yes, Facebook has done quite well with dynamically typed PHP.  However, it is possible to bring some statically typed language features to PHP without affecting functionality and performance. With statically typed languages, errors can be caught before runtime. Code becomes more readable and self-explaining. The likelihood of the rogue &quot;calling a method with an unexpected parameter type&quot; bug becomes very small as these are caught before execution. 
     </para>
     <para>
-      Hack help bridges the gap between a dynamically and statically typed language by providing features normally seen in statically type languages to PHP. A primary goal of Hack was to bring these features but remain as compatible as possible with current PHP codebases. Type annotations is a big step toward accomplishing this goal. 
+      Hack helps bridge the gap between dynamically and statically typed languages by providing features normally seen in statically typed languages to PHP. A primary goal of Hack was to bring these features but remain as compatible as possible with current PHP codebases. Type annotations is a big step toward accomplishing this goal. 
     </para>
   </sect1>
 
