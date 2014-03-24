@@ -47,9 +47,6 @@
      <oointerface>
       <interfacename>MutableVector&lt;Tv&gt;</interfacename>
      </oointerface>
-     <oointerface>
-      <interfacename>Indexish&lt;Tv&gt;</interfacename>
-     </oointerface>
     </classsynopsisinfo>
 <!-- }}} -->
  

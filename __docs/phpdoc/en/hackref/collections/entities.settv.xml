@@ -16,6 +16,8 @@
 &hackref.collections.settv.remove;
 &hackref.collections.settv.removeall;
 &hackref.collections.settv.toarray;
+&hackref.collections.settv.toimmset;
+&hackref.collections.settv.toimmvector;
 &hackref.collections.settv.toset;
 &hackref.collections.settv.tostring;
 &hackref.collections.settv.tovaluesarray;

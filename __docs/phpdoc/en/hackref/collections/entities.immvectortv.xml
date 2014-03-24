@@ -17,6 +17,8 @@
 &hackref.collections.immvectortv.mapwithkeytu;
 &hackref.collections.immvectortv.slice;
 &hackref.collections.immvectortv.toarray;
+&hackref.collections.immvectortv.toimmmap;
+&hackref.collections.immvectortv.toimmset;
 &hackref.collections.immvectortv.toimmvector;
 &hackref.collections.immvectortv.tokeysarray;
 &hackref.collections.immvectortv.tomap;

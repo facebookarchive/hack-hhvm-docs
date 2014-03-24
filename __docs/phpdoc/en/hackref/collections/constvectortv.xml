@@ -44,7 +44,12 @@
       <modifier>extends</modifier>
       <classname>KeyedIterable&lt;int, Tv&gt;</classname>
      </ooclass>
-         
+     
+     <ooclass>
+      <modifier>extends</modifier>
+      <classname>Indexish&lt;int, Tv&gt;</classname>
+     </ooclass>
+
     </classsynopsisinfo>
 <!-- }}} -->
     

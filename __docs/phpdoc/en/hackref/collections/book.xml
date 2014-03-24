@@ -14,12 +14,13 @@
   <para>
    Hack adds container types and interfaces to PHP. Building on Hack's support for generics, Hack adds first class, built-in parameterized collections such as vectors and maps. Collections are specialized for data storage and retrieval. Collections implement many of the same interfaces and are extendable to create even more specialized collections. Currently, Hack implements the following concrete collection types:
    <itemizedlist>
-     <listitem><para>Vector: An ordered, index-based list collection.</para></listitem>
-     <listitem><para>ImmVector: An immutable, ordered, index-based list collection.</para></listitem>
-     <listitem><para>Map: An unordered dictionary-style collection.</para></listitem>
-     <listitem><para>Set: A list-based collection that stores unique values.</para></listitem>
-     <listitem><para>ImmSet: An immutable, list-based collection that stores unique values.</para></listitem>
-     <listitem><para>Pair: An index-based collection that can hold exactly two elements.</para></listitem>
+     <listitem><para><link linkend="class.hack.vectortv">Vector</link>: An ordered, index-based list collection.</para></listitem>
+     <listitem><para><link linkend="class.hack.immvectortv">ImmVector</link>: An immutable, ordered, index-based list collection.</para></listitem>
+     <listitem><para><link linkend="class.hack.maptktv">Map</link>: An ordered dictionary-style collection.</para></listitem>
+     <listitem><para><link linkend="class.hack.immmaptktv">ImmMap</link>: An immutable, ordered dictionary-style collection.</para></listitem>
+     <listitem><para><link linkend="class.hack.settv">Set</link>: A list-based collection that stores unique values.</para></listitem>
+     <listitem><para><link linkend="class.hack.immsettv">ImmSet</link>: An immutable, list-based collection that stores unique values.</para></listitem>
+     <listitem><para><link linkend="class.hack.pairtv1tv2">Pair</link>: An index-based collection that can hold exactly two elements.</para></listitem>
    </itemizedlist>
   </para>
   <para>
@@ -32,6 +33,7 @@
  &hackref.collections.vectortv;
  &hackref.collections.immvectortv;
  &hackref.collections.maptktv;
+ &hackref.collections.immmaptktv;
  &hackref.collections.settv;
  &hackref.collections.immsettv;
  &hackref.collections.pairtv1tv2;

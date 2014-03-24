@@ -29,6 +29,9 @@
 &hackref.collections.vectortv.slice;
 &hackref.collections.vectortv.splice;
 &hackref.collections.vectortv.toarray;
+&hackref.collections.vectortv.toimmmap;
+&hackref.collections.vectortv.toimmset;
+&hackref.collections.vectortv.toimmvector;
 &hackref.collections.vectortv.tokeysarray;
 &hackref.collections.vectortv.tomap;
 &hackref.collections.vectortv.toset;

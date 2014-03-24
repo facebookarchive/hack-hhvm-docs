@@ -23,6 +23,9 @@
 &hackref.collections.maptktv.set;
 &hackref.collections.maptktv.setall;
 &hackref.collections.maptktv.toarray;
+&hackref.collections.maptktv.toimmmap;
+&hackref.collections.maptktv.toimmvector;
+&hackref.collections.maptktv.toimmset;
 &hackref.collections.maptktv.tokeysarray;
 &hackref.collections.maptktv.tomap;
 &hackref.collections.maptktv.toset;

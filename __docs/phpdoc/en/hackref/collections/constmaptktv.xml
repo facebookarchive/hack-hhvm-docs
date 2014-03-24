@@ -44,6 +44,11 @@
       <modifier>extends</modifier>
       <classname>KeyedIterable&lt;Tk, Tv&gt;</classname>
      </ooclass>
+
+     <ooclass>
+      <modifier>extends</modifier>
+      <classname>Indexish&lt;Tk, Tv&gt;</classname>
+     </ooclass>
          
     </classsynopsisinfo>
 <!-- }}} -->

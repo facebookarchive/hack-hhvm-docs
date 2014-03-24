@@ -48,10 +48,7 @@
 
 <!-- If the class implements an interface, or two, use this (one oointerface element per interface) -->
      <oointerface>
-      <interfacename>MutableMap&lt;Tv&gt;</interfacename>
-     </oointerface>
-     <oointerface>
-      <interfacename>Indexish&lt;Tv&gt;</interfacename>
+      <interfacename>MutableMap&lt;Tk, Tv&gt;</interfacename>
      </oointerface>
     </classsynopsisinfo>
 <!-- }}} -->
