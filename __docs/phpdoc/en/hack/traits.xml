@@ -137,10 +137,10 @@ No errors!
     <informalexample>
       <programlisting role="php">
 <![CDATA[
-&lt;?hh
+<?hh
 
 interface Bar {
-public function babs(Vector&lt;int&gt; $vec): int;
+public function babs(Vector<int> $vec): int;
 public function get(): int;
 }
 
