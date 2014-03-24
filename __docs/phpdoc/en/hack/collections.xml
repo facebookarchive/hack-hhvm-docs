@@ -487,6 +487,104 @@ a
     </para>
   </sect1>
 
+<sect1 xml:id="hack.collections.immutable">
+  <title>Immutable Collections</title>
+  <para>
+    Collections in Hack can take on two primary forms: mutable and immutable. The mutable <literal>Vector</literal>, <literal>Map</literal>, and <literal>Set</literal> all have immutable counterparts. The immutable collections are, as you would imagine, constant. No elements can be added or removed from them. Likewise, elements cannot be overridden using assignment.
+  </para>
+  <para>
+    Immutable collections generally implement a ConstXYZ interface (e.g., <literal><link linkend="class.hack.constvectortv">ConstVector</link></literal>). Here are the current concrete immutable collection classes:
+    <itemizedlist>
+      <listitem><para><link linkend="class.hack.immvectortv"><literal>ImmVector</literal></link></para></listitem>
+      <listitem><para><link linkend="class.hack.immmaptktv"><literal>ImmMap</literal></link></para></listitem>
+      <listitem><para><link linkend="class.hack.immsettv"><literal>ImmSet</literal></link></para></listitem>
+    </itemizedlist>
+  </para>
+</sect1>
+
+ <sect1 xml:id="hack.collections.interfaces">
+    <title>Collection Interfaces</title>
+    <para>
+      The following diagram shows at a high level how Hack collection interfaces are structured.
+      <figure>
+        <title>Collections Implementation</title>
+        <mediaobject>
+          <alt>Collection implementation diagram</alt>
+          <imageobject>
+            <imagedata fileref="en/hack/figures/collectionsimpl.png" />
+          </imageobject>
+        </mediaobject>
+      </figure>
+    </para>
+    <para>
+      In the design of HipHop collections, these general design patterns were followed:
+      <orderedlist>
+        <listitem>
+          <para>
+            Used patterns that PHP developers are accustomed to within various codebases (e.g., <literal>foreach</literal> both key/value and just value iteration). 
+          </para>
+        </listitem>
+        <listitem>
+          <para>
+            Allowed use of <literal>foreach</literal>, brackets syntax (e.g., <literal>$a[$b]</literal>) and higher order functions (e.g., <literal>filter</literal>) instead of manually operating on iterators. 
+          </para>
+        </listitem>
+        <listitem>
+          <para>
+            Allowed for supporting covariance and contravariance in the future to provide maximum power and flexibility while maintaining type safety. 
+          </para>
+        </listitem>
+        <listitem>
+          <para>
+            Followed design patterns from other popular collections frameworks where appropriate (e.g, C++, C#, Java, Python, Scala) for maximum developer appeal. 
+          </para>
+        </listitem>
+      </orderedlist>
+    </para>
+    <para>
+      <emphasis>Potential</emphasis> support for covariance and contravariance is indicated by the &quot;out&quot; keyword and &quot;in&quot; keyword respectively , though at present Hack does not support &quot;out&quot; and &quot;in&quot;. 
+    </para>
+    <sect2 xml:id="hack.collections.interfaces.specific">
+      <title>Specific Collection Interfaces</title>
+      <para>
+        The concrete collection classes (<literal>Vector</literal>, <literal>Map</literal>, etc.) use the collection interfaces as building blocks. Before diving into the lower layers of interfaces, it's worth covering the specific collection interfaces first.
+      </para>
+      <para>
+        The "const" interfaces (<link linkend="class.hack.constvectortv"><literal>ConstVector</literal></link>, <link linkend="class.hack.constmaptktv"><literal>ConstMap</literal></link>, and <link linkend="class.hack.constsettv"><literal>ConstSet</literal></link>) can be used in parameter type constraints to indicate that a given function will not mutate the collection. This can be important for larger codebases since collections have "reference-like"semantics and do not have "copy-on-write" behavior like PHP arrays. The "const" interfaces also provides a good foundation for adding "immutable" versions of collections (<literal>ImmVector</literal>, <literal>ImmMap</literal>, etc.) and for potentially supporting covariance in the future. The <literal>ConstMap</literal> interface can be used in a parameter type constraint to indicate that a given function will accept both Maps and ImmMaps. The collection specific interfaces also lay the foundation for adding more types of collections or user-defined collections down the road. Each of the "const" interfaces has a "mutable" counterpart (e.g. <link linkend="class.hack.mutablevectortv">MutableVector</link>)
+      </para>
+    </sect2>
+    <sect2 xml:id="hack.collections.interfaces.iteration">
+      <title>Iteration Interfaces</title>
+      <para>
+        The <literal>Iterable</literal>, <literal>Traversable</literal>, and associated interfaces allow for the traversal of values or keys/values coming from some source, whether it be a collection or a generator or some other kind of object. 
+      </para>
+      <para>
+        The <literal>Traversable</literal> style interfaces provide a continuous feeding of elements with <literal>foreach</literal>. <literal>Traversable</literal> also provides the capability for code to be compatible with both arrays and collections, while allowing for the typing of keys and values. A function that takes an <literal>Indexish</literal>, for example, can be passed an <literal>array&lt;int&gt;</literal> or a <literal>Vector&lt;int&gt;</literal>. 
+      </para>
+      <para>
+        <literal>Indexish</literal> is another interface that works with both arrays and collections, and it is intended to help ease the migration from arrays to typed collections for certain use cases. <literal>Indexish</literal> supports the array-like, square bracket (e.g. <literal>$x[$k]</literal>) syntax while also supporting the iteration via <literal>foreach</literal> (by extending the <literal>Traversable</literal> interface). The <literal>Indexish</literal> interface does not include functionality for mutating the underlying array or collection; this includes appending, removing, changing element types and changing the values of elements. While the <literal>Indexish</literal> does offer functionality for mutation, it is still possible to mutate the underlying array or collection if the programmer uses <literal>is_array()</literal> or <literal>instanceof</literal> to cast the container to its concrete type, or if the container is passed to "untyped" code. It is important to note that the copy semantics do remain the same for arrays and collections when using <literal>Indexish</literal>. Arrays are still copy-on-write, while collections are passed by reference. 
+      </para>
+      <para>
+        Given that <literal>Indexish</literal> supports keyed collections, <literal>Vector</literal> and <literal>Map</literal> implement <literal>Indexish</literal>. <literal>Set</literal> (which doesn't have a key) and <literal>Pair</literal> do not. 
+      </para>
+      <para>
+        The <literal>Iterable</literal> style interfaces allow for retrieving values using <literal>foreach</literal> at chosen times through the use of iterators (e.g.. <literal>next</literal>), while also providing various helper functions that can be used during iteration. 
+      </para>
+    </sect2>
+    <sect2 xml:id="hack.collections.interfaces.general">
+      <title>General Collection Interfaces</title>
+      <para>
+        The <literal>Collection</literal> interface provides basic functionality for adding and erasing elements, as well as iterating over elements in a uniform manner. 
+      </para>
+    </sect2>
+    <sect2 xml:id="hack.collections.interfaces.access">
+      <title>Access Interfaces</title>
+      <para>
+        Depending on the type of collection type implemented, one of the following interfaces (<literal>IndexAccess</literal>, <literal>SetAccess</literal> or <literal>MapAccess</literal>) will be implemented. These interfaces provide the functionality for checking values in a collection by index/key, removing items from a collection by index/key, as well as providing <literal>[]</literal> syntax for accessing values by index/key. All three of these interface types have a "const" companion for cases where the programmer wants to enforce a "read-only" contract. 
+      </para>
+    </sect2>
+  </sect1>
+
   <sect1 xml:id="hack.collections.squarebracketsyntax">
     <title>Square Bracket Syntax</title>
     <para>
@@ -842,89 +940,6 @@ class C {
     <para>
       At present, most other standard PHP builtins that accept arrays as parameters either (1) do not support collections or (2) silently copy the collection to an array. 
     </para>
-  </sect1>
-
-  <sect1 xml:id="hack.collections.interfaces">
-    <title>Collection Interfaces</title>
-    <para>
-      The following diagram shows at a high level how Hack collection interfaces are structured.
-      <figure>
-        <title>Collections Implementation</title>
-        <mediaobject>
-          <alt>Collection implementation diagram</alt>
-          <imageobject>
-            <imagedata fileref="en/hack/figures/collectionsimpl.png" />
-          </imageobject>
-        </mediaobject>
-      </figure>
-    </para>
-    <para>
-      In the design of HipHop collections, these general design patterns were followed:
-      <orderedlist>
-        <listitem>
-          <para>
-            Used patterns that PHP developers are accustomed to within various codebases (e.g., <literal>foreach</literal> both key/value and just value iteration). 
-          </para>
-        </listitem>
-        <listitem>
-          <para>
-            Allowed use of <literal>foreach</literal>, brackets syntax (e.g., <literal>$a[$b]</literal>) and higher order functions (e.g., <literal>filter</literal>) instead of manually operating on iterators. 
-          </para>
-        </listitem>
-        <listitem>
-          <para>
-            Allowed for supporting covariance and contravariance in the future to provide maximum power and flexibility while maintaining type safety. 
-          </para>
-        </listitem>
-        <listitem>
-          <para>
-            Followed design patterns from other popular collections frameworks where appropriate (e.g, C++, C#, Java, Python, Scala) for maximum developer appeal. 
-          </para>
-        </listitem>
-      </orderedlist>
-    </para>
-    <para>
-      <emphasis>Potential</emphasis> support for covariance and contravariance is indicated by the &quot;out&quot; keyword and &quot;in&quot; keyword respectively , though at present Hack does not support &quot;out&quot; and &quot;in&quot;. 
-    </para>
-    <sect2 xml:id="hack.collections.interfaces.specific">
-      <title>Specific Collection Interfaces</title>
-      <para>
-        The concrete collection classes (<literal>Vector</literal>, <literal>Map</literal>, etc.) use the collection interfaces as building blocks. Before diving into the lower layers of interfaces, it's worth covering the specific collection interfaces first.
-      </para>
-      <para>
-        The "const" interfaces (<link linkend="class.hack.constvectortv"><literal>ConstVector</literal></link>, <link linkend="class.hack.constmaptktv"><literal>ConstMap</literal></link>, and <link linkend="class.hack.constsettv"><literal>ConstSet</literal></link>) can be used in parameter type constraints to indicate that a given function will not mutate the collection. This can be important for larger codebases since collections have "reference-like"semantics and do not have "copy-on-write" behavior like PHP arrays. The "const" interfaces also provides a good foundation for adding "immutable" versions of collections (<literal>ImmVector</literal>, <literal>ImmMap</literal>, etc.) and for potentially supporting covariance in the future. The <literal>ConstMap</literal> interface can be used in a parameter type constraint to indicate that a given function will accept both Maps and ImmMaps. The collection specific interfaces also lay the foundation for adding more types of collections or user-defined collections down the road. Each of the "const" interfaces has a "mutable" counterpart (e.g. <link linkend="class.hack.mutablevectortv">MutableVector</link>)
-      </para>
-    </sect2>
-    <sect2 xml:id="hack.collections.interfaces.iteration">
-      <title>Iteration Interfaces</title>
-      <para>
-        The <literal>Iterable</literal>, <literal>Traversable</literal>, and associated interfaces allow for the traversal of values or keys/values coming from some source, whether it be a collection or a generator or some other kind of object. 
-      </para>
-      <para>
-        The <literal>Traversable</literal> style interfaces provide a continuous feeding of elements with <literal>foreach</literal>. <literal>Traversable</literal> also provides the capability for code to be compatible with both arrays and collections, while allowing for the typing of keys and values. A function that takes an <literal>Indexish</literal>, for example, can be passed an <literal>array&lt;int&gt;</literal> or a <literal>Vector&lt;int&gt;</literal>. 
-      </para>
-      <para>
-        <literal>Indexish</literal> is another interface that works with both arrays and collections, and it is intended to help ease the migration from arrays to typed collections for certain use cases. <literal>Indexish</literal> supports the array-like, square bracket (e.g. <literal>$x[$k]</literal>) syntax while also supporting the iteration via <literal>foreach</literal> (by extending the <literal>Traversable</literal> interface). The <literal>Indexish</literal> interface does not include functionality for mutating the underlying array or collection; this includes appending, removing, changing element types and changing the values of elements. While the <literal>Indexish</literal> does offer functionality for mutation, it is still possible to mutate the underlying array or collection if the programmer uses <literal>is_array()</literal> or <literal>instanceof</literal> to cast the container to its concrete type, or if the container is passed to "untyped" code. It is important to note that the copy semantics do remain the same for arrays and collections when using <literal>Indexish</literal>. Arrays are still copy-on-write, while collections are passed by reference. 
-      </para>
-      <para>
-        Given that <literal>Indexish</literal> supports keyed collections, <literal>Vector</literal> and <literal>Map</literal> implement <literal>Indexish</literal>. <literal>Set</literal> (which doesn't have a key) and <literal>Pair</literal> do not. 
-      </para>
-      <para>
-        The <literal>Iterable</literal> style interfaces allow for retrieving values using <literal>foreach</literal> at chosen times through the use of iterators (e.g.. <literal>next</literal>), while also providing various helper functions that can be used during iteration. 
-      </para>
-    </sect2>
-    <sect2 xml:id="hack.collections.interfaces.general">
-      <title>General Collection Interfaces</title>
-      <para>
-        The <literal>Collection</literal> interface provides basic functionality for adding and erasing elements, as well as iterating over elements in a uniform manner. 
-      </para>
-    </sect2>
-    <sect2 xml:id="hack.collections.interfaces.access">
-      <title>Access Interfaces</title>
-      <para>
-        Depending on the type of collection type implemented, one of the following interfaces (<literal>IndexAccess</literal>, <literal>SetAccess</literal> or <literal>MapAccess</literal>) will be implemented. These interfaces provide the functionality for checking values in a collection by index/key, removing items from a collection by index/key, as well as providing <literal>[]</literal> syntax for accessing values by index/key. All three of these interface types have a "const" companion for cases where the programmer wants to enforce a "read-only" contract. 
-      </para>
-    </sect2>
   </sect1>
 
   <sect1 xml:id="hack.collections.examples">
