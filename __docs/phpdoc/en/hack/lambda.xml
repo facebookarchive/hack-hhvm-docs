@@ -30,7 +30,7 @@ barbaz
     </informalexample>
   </para>
   <para>
-    Unfortunately, PHP's closure feature has several shortcomings. First, capturing variables from the enclosing function body is not done implicitly, but rather it requires the programmer to explicit list which variables should be captured in the "use(..)"clause. Second, even when no variables from the enclosing function body are being captured, the syntax is still relatively verbose compared with anonymous functions in several other languages. Thus while PHP closures help the programmer for some cases, their verbosity makes them more cumbersome to use particularly for design patterns that make heavy use of closures that capture variables and closures nested inside other closures. 
+    Unfortunately, PHP's closure feature has several shortcomings. First, capturing variables from the enclosing function body is not done implicitly, but rather it requires the programmer to explicitly list which variables should be captured in the "use(..)"clause. Second, even when no variables from the enclosing function body are being captured, the syntax is still relatively verbose compared with anonymous functions in several other languages. Thus while PHP closures help the programmer for some cases, their verbosity makes them more cumbersome to use particularly for design patterns that make heavy use of closures that capture variables and closures nested inside other closures. 
   </para>
   <para>
     To address the shortcomings of PHP closures, HHVM introduced a &quot;lambda expression&quot; feature. Lambda expressions offer similar functionality to PHP closures, but they capture variables from the enclosing function body implicitly and are less verbose in general. 
