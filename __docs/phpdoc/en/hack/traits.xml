@@ -13,16 +13,16 @@
 <?hh
 
 trait Foo {
-private int $x = 5;
-private bool $b = false;
+  private int $x = 5;
+  private bool $b = false;
 
-protected function getVal(): int {
-  return $this->x;
-}
+  protected function getVal(): int {
+    return $this->x;
+  }
 
-public function getBin(Vector<bool>; $vec): string {
-  return $vec[0];
-}
+  public function getBin(Vector<bool>; $vec): string {
+    return $vec[0];
+  }
 }
 ]]>
       </programlisting>
@@ -47,28 +47,28 @@ It is incompatible with a bool
 <?hh
 
 trait TTT {
-protected function foo(): int {
-  return $this->bar();
-}
+  protected function foo(): int {
+    return $this->bar();
+  }
 }
 
 class AAA {
-protected function bar(): int {
-  return 1;
-}
+  protected function bar(): int {
+    return 1;
+  }
 }
 
-class BBB extends AAA{
-use TTT;
+class BBB extends AAA {
+  use TTT;
 
-public function baz(): int {
-  return $this->foo();
-}
+  public function baz(): int {
+    return $this->foo();
+  }
 }
 
 function main_t(): void {
-$bbb = new BBB();
-echo $bbb->baz();
+  $bbb = new BBB();
+  echo $bbb->baz();
 }
 
 main_t();
@@ -95,30 +95,30 @@ int(5)
 <![CDATA[
 <?hh
 trait TTT {
-abstract protected function bar(): int;
+  abstract protected function bar(): int;
 
-protected function foo(): int {
-  return $this->bar();
-}
+  protected function foo(): int {
+    return $this->bar();
+  }
 }
 
 class AAA {
-protected function bar(): int {
-  return 1;
-}
+  protected function bar(): int {
+    return 1;
+  }
 }
 
-class BBB extends AAA{
-use TTT;
+class BBB extends AAA {
+  use TTT;
 
-public function baz(): int {
-  return $this->foo();
-}
+  public function baz(): int {
+    return $this->foo();
+  }
 }
 
 function main_t(): void {
-$bbb = new BBB();
-echo $bbb->baz();
+  $bbb = new BBB();
+  echo $bbb->baz();
 }
 
 main_t();
@@ -140,47 +140,47 @@ No errors!
 <?hh
 
 interface Bar {
-public function babs(Vector<int> $vec): int;
-public function get(): int;
+  public function babs(Vector<int> $vec): int;
+  public function get(): int;
 }
 
 trait Foo implements Bar {
-private int $x = 5;
+  private int $x = 5;
 
-private function getVal(): int {
-  return $this->x;
-}
-
-public function get(): int {
-  return $this->getVal();
-}
-
-public function babs(Vector<int>; $vec): int {
-  if (count($vec) < 0) {
-    return $vec[0];
+  private function getVal(): int {
+    return $this->x;
   }
-  return -1;
-}
+
+  public function get(): int {
+    return $this->getVal();
+  }
+
+  public function babs(Vector<int> $vec): int {
+    if (count($vec) < 0) {
+      return $vec[0];
+    }
+    return -1;
+  }
 }
 
 class Baz implements Bar {
-use Foo;
+  use Foo;
 
-private Vector<int> $v;
+  private Vector<int> $v;
 
-public function __construct() {
-  $this->v = Vector {};
-  $this->v[] = $this->get();
-}
+  public function __construct() {
+    $this->v = Vector {};
+    $this->v[] = $this->get();
+  }
 
-public function sass(): int {
-  return $this->babs($this->v);
-}
+  public function sass(): int {
+    return $this->babs($this->v);
+  }
 }
 
 function main_traits() {
-$b = new Baz();
-var_dump($b->sass());
+  $b = new Baz();
+  var_dump($b->sass());
 }
 
 main_traits();

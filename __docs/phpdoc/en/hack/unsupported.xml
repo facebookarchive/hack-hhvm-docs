@@ -107,7 +107,7 @@
 // Top-level code is not supported in Hack
 for ($i=1; $i<=5; $i++)
 {
-echo "The number is " . $i . "\n";
+  echo "The number is " . $i . "\n";
 }
 ]]>
         </programlisting>
@@ -126,7 +126,7 @@ echo "The number is " . $i . "\n";
 <![CDATA[
 <?php
 class Foo {
-public function foo() {}
+  public function foo() {}
 }
 ]]>
         </programlisting>
@@ -137,7 +137,7 @@ public function foo() {}
 <![CDATA[
 <?hh
 class Foo {
-public function foo() {}
+  public function foo() {}
 }
 ]]>           
         </programlisting>
@@ -157,9 +157,9 @@ This is a dangerous method name, if you want to define a constructor, use __cons
 <![CDATA[
 <?hh
 class Foo {
-// 2 constructors?
-public function __construct() {}
-public function foo() {}
+  // 2 constructors?
+  public function __construct() {}
+  public function foo() {}
 }
 ]]>
         </programlisting>
@@ -176,13 +176,13 @@ public function foo() {}
 <?php
 class StaticFoo {
   public static function staticMethod() {
-      return "Hello";
+    return "Hello";
   }
 }
 
 class StaticBar extends StaticFoo {
   public function fooStatic() {
-      return parent::staticMethod();
+    return parent::staticMethod();
   }
 }
 ]]>
@@ -211,9 +211,9 @@ The closest thing is staticMethod but it's a static method
 <![CDATA[
 <?php
 class Foo {
-public static function bar() {
-  echo "Hello";
-}
+  public static function bar() {
+    echo "Hello";
+  }
 }
 
 // Instance level
@@ -227,25 +227,25 @@ Foo::bar();
       </informalexample>
     </para>
     <para>
-      Hack does not allow the instance level static calls in <literal>//strict</literal> mode (this is allowed in <literal>// partial</literal> mode). Hack will balk about using &quot;dynamic classes&quot;.
+      Hack does not allow the instance level static calls in <literal>// strict</literal> mode (this is allowed in <literal>// partial</literal> mode). Hack will balk about using &quot;dynamic classes&quot;.
       <informalexample>
         <programlisting role="php">
 <![CDATA[
-<?hh //strict
+<?hh // strict
 class Foo {
-public static function bar() {
-  echo "Hello";
-}
+  public static function bar() {
+    echo "Hello";
+  }
 }
 
 function main_csm() {
-// Instance level
-$f = new Foo();
-// Hack will balk here
-$f::bar();
+  // Instance level
+  $f = new Foo();
+  // Hack will balk here
+  $f::bar();
 
-// Class level
-Foo::bar();
+  // Class level
+  Foo::bar();
 }
 
 main_csm();

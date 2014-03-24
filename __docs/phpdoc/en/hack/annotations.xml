@@ -73,7 +73,7 @@ class AnnotatedClass {
   public AnotherClass $ac;
 
   function bar(string $str, bool $b): float {
-    if ($b and $str === "Hi") {
+    if ($b && $str === "Hi") {
        return 3.2;
     }
     return 0.3;
@@ -839,7 +839,7 @@ function invert(bool $b): bool {
   if ($b) {
     return false;
   } else {
-      return true;
+    return true;
   }
 }
 
@@ -1088,7 +1088,7 @@ function f3(): void {
 <![CDATA[
 <?hh
 
-class FooFoo{}
+class FooFoo {}
 class HackArrayAnnotations {
   private array<FooFoo> $arr;
   private array<string, FooFoo> $arr2;
