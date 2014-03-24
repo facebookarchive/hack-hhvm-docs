@@ -164,17 +164,38 @@ function foo_strict(bool $b): int {
   <sect1 xml:id="hack.modes.unsafe">
     <title>Unsafe</title>
     <para>
-      <literal>// UNSAFE</literal> disables the type checker until the end of the current scope. From the comment until that point, the engineer is trusted. It can be useful when there is a bug in the type checker and work must continue. <literal>// UNSAFE</literal> can be used in any mode (<literal>// strict</literal>, <literal>// partial</literal> or <literal>// decl</literal>). It should not be used without discretion, however. Since unsafe code is ignored by the type checker, there are chances that runtime errors may result.
+      <literal>// UNSAFE</literal> disables the type checker from the point of unsafe declaration until the end of the current block of code (where the end of the current block generally refers to the associated ending brace (<literal>}</literal>) of which the <literal>// UNSAFE</literal> is declared). 
+     </para>
+     <para>
+       From the unsafe comment until the end of the block, the engineer is trusted. It can be useful when there is a bug in the type checker and work must continue. <literal>// UNSAFE</literal> can be used in any mode (<literal>// strict</literal>, <literal>// partial</literal> or <literal>// decl</literal>). It should not be used without discretion, however. Since unsafe code is ignored by the type checker, there are chances that runtime errors may result.
+     </para>
+     <para>
+      Here are two examples that demonstrate how the coverage of <literal> // UNSAFE </literal>.
       <informalexample>
         <programlisting role="php">
 <![CDATA[
 <?hh
 function unsafe_foo(int $x, int $y): int {
   if ($x > $y) {
-    // UNSAFE we want to showcase the unsafe notation
-    return "I am not checked by the type checker";
+    // UNSAFE
+    return "I am not checked by the type checker"; // Covered by UNSAFE
   }
-  return 34;
+  return 34; // NOT covered by UNSAFE
+}
+]]>
+        </programlisting>
+        <programlisting role="php">
+<![CDATA[
+<?hh
+function unsafe_foo(int $x, int $y): int {
+  if ($x === 3) {
+    return 6; // NOT covered by the UNSAFE
+  }
+  // UNSAFE
+  if ($x > $y) {
+    return "I am not checked by the type checker"; // Covered by the UNSAFE
+  }
+  return true; // Covered by the UNSAFE
 }
 ]]>
         </programlisting>
