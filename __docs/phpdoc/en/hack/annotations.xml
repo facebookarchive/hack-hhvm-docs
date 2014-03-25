@@ -1216,9 +1216,9 @@ class ABCD {
     $this->i = 4;
   }
   public function getBars(): array<BarBar> {
-    if (i < 5) {
+    if ($this->i < 5) {
       return array();
-    } else if (i < 10) {
+    } else if ($this->i < 10) {
       return $this->arr;
     } else {
       return array(null); // Type Error
