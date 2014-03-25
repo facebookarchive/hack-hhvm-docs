@@ -84,6 +84,70 @@ gen_foo(4);
     </para>
   </sect1>
 
+  <sect1 xml:id="hack.async.fetchingexample">
+    <title>Example: Coalesced Fetching</title>
+    <warning>
+      <simpara>
+        We felt it would be useful to introduce the concept and technology of async in order to get developers used to the syntax and some of the technical details. For example, you can currently write basic async functions that call other async functions. However, we are currently finalizing other foundations (e.g. async database, scheduling, and memory handling APIs) which will be required to reach the full potential of async in production.
+      </simpara>
+    </warning>
+    <para>
+      Async provides an interesting mechanism to perform coalesced fetching. Let's take ids as the "things" we want to fetch. In essence, your code is written as if you are fetching one ID, but, under the covers, the query is being batched.
+      <informalexample>
+        <programlisting role="php">
+<![CDATA[
+<?hh
+
+class Batcher {
+  private static ?Awaitable<array<int, int>> $pendingWH = null;
+  private static array<int, int> $ids = array();
+
+  public static async function fetch(int $id): Awaitable<int> {
+    self::$ids[$id] = $id;
+    if (self::$pendingWH === null) {
+      self::$pendingWH = self::fetchDispatch();
+    }
+    $results = await self::$pendingWH;
+    return $results[$id];
+  }
+
+  private static async function dispatch(): Awaitable<array<int, int>> {
+    await RescheduleWaitHandle::create(0, 0);
+    $ids = self::$ids;
+    self::$ids = null;
+    self::$pendingWH = null;
+
+    // do expensive serial multi-fetch
+    echo "Fetch ".count($ids)." ids:\n";
+    $results = array_map($id ==> $id * $id, $ids);
+    var_dump($results);
+
+    return $results;
+  }
+}
+
+async function gen1(): Awaitable<T> {
+  $r = await Batcher::fetch(1);
+  echo "Got result for id 1: $r\n";
+  $r = await Batcher::fetch(2);
+  echo "Got result for id 2: $r\n";
+}
+
+async function gen2(): Awaitable<T> {
+  $r = await Batcher::fetch(3);
+  echo "Got result for id 3: $r\n";
+}
+
+async function run(): Awaitable<T> {
+  await GenArrayWaitHandle::create(array(gen1(), gen2()));
+}
+
+run()->join();
+]]>
+        </programlisting>
+      </informalexample>
+    </para>
+  </sect1>
   <sect1 xml:id="hack.async.signatureexamples">
     <title>Signature Examples</title>
     <warning>
