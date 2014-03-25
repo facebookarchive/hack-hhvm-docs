@@ -317,7 +317,7 @@ USER_NOTE_TEXT;
 // Set up variables important for this page
 // including HTTP header information
 function manual_setup($setup) {
-    global $PGI, $MYSITE, $USERNOTES;
+    global $PGI, $MYSITE, $USERNOTES, $CONFIG;
 
     $PGI = $setup;
     // Set base href for this manual page
@@ -380,7 +380,7 @@ function manual_setup($setup) {
     );
     $lastmod = max($timestamps);
     
-    $config = array(
+    $CONFIG = array(
         "current" => "docs",
         "leftmenu" => $siblings,
         "breadcrumbs" => $menu,
@@ -396,7 +396,7 @@ function manual_setup($setup) {
         "next" => $setup["next"],
         "cache" => $lastmod,
     );
-    site_header($setup["this"][1] . " - Manual ", $config);
+    site_header($setup["this"][1] . " - Manual ", $CONFIG);
     
     $id = substr($setup['this'][0], 0, -4);
 // FOR HHVM
@@ -517,10 +517,10 @@ function url_exists($link)
 
 function manual_header(){}
 function manual_footer() {
+    global $CONFIG;
     manual_bugs_and_notes();
     echo "</section>";
-    $config = array();
-    site_footer($config);
+    site_footer($CONFIG);
 }
 
 // This function takes a DateTime object and returns a formated string of the time difference relative to now

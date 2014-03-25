@@ -13,6 +13,36 @@
     </aside>
 <?php endif; ?>
 
+<?php if (!empty($config['breadcrumbs'])): ?>
+  <div id="breadcrumbs">
+    <?php if (isset($config['prev'])): ?>
+      <div class="prev">
+        <a href="<?php echo $config['prev'][0]; ?>">
+          &laquo; <?php echo $config['prev'][1]; ?>
+        </a>
+      </div>
+    <?php endif; ?>
+    <?php if (isset($config['next'])): ?>
+      <div class="next">
+        <a href="<?php echo $config['next'][0]; ?>">
+          <?php echo $config['next'][1]; ?> &raquo;
+        </a>
+      </div>
+    <?php endif; ?>
+    <ul class="breadcrumbs-container">
+      <?php
+          $breadcrumbs = $config['breadcrumbs'];
+          $last = array_pop($breadcrumbs);
+          foreach ($breadcrumbs as $crumb) {
+              echo "      <li><a href='{$crumb['link']}'>{$crumb['title']}</a></li>";
+          }
+          echo "      <li><a href='{$last['link']}'>{$last['title']}</a></li>";
+
+      ?>
+    </ul>
+  </div>
+<?php endif; ?>
+
   </div><!-- layout -->
          
   <footer>
