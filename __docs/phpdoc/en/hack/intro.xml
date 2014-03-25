@@ -2,7 +2,7 @@
  <chapter xml:id="hack.intro" xmlns="http://docbook.org/ns/docbook">
 <title>The Hack Language</title>
   <para>
-    Hack is a language for HHVM that interopates seamlessly with PHP. HHVM supports both Hack and PHP; code can be run on HHVM in either language or even a mixture of both.
+    Hack is a language for HHVM that interoperates seamlessly with PHP. HHVM supports both Hack and PHP; code can be run on HHVM in either language or even a mixture of both.
   </para>
   <para>
     To get started with Hack, it really is as simple as:
