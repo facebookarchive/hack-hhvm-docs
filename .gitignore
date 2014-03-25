@@ -2,3 +2,4 @@
 logs/
 *.hdf
 www.pid
+.commit-template
