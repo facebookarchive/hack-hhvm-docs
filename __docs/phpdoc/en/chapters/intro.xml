@@ -81,29 +81,40 @@
         <info><title>An introductory Hack example</title></info>
         <programlisting role="php">
 <![CDATA[
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
-    "http://www.w3.org/TR/html4/loose.dtd">
-<html>
-    <head>
-        <title>Example</title>
-    </head>
-    <body>
-
-        <?hh
-            echo "Hi, I'm a Hack script!";
-        ?>
-
-    </body>
-</html>
+<?hh
+echo "Hi, I'm a Hack script!";
 ]]>
         </programlisting>
         <para>
-          The only change was changing the <literal>&lt;php</literal> at the top to <literal>&lt;hh</literal> (and the output string, obviously).
+          The primary changes were changing the <literal>&lt;?php</literal> at the top to <literal>&lt;?hh</literal> and removing the HTML (and the change to the output string, obviously).
         </para>
+        <note>
+          <para>
+            Hack and HTML code do not mix. Normally you can intersperse PHP and HTML code together in the same file like:
+           <informalexample>
+            <programlisting role="html">
+<![CDATA[
+<html>
+ <head>
+  <title>PHP Test</title>
+ </head>
+ <body>
+ <!-- hh and html do not mix -->
+ <?php echo '<p>Hello World</p>'; ?> 
+ </body>
+</html>
+]]>
+            </programlisting>
+            <para>
+              This code works fine in HHVM. You may jump in and out of Hack mode in an HTML file like this anywhere you want. But if you replace the <literal>&lt;?php</literal> with <literal>&lt;?hh</literal>, the code above will not work.
+            </para>
+          </informalexample>
+        </para>
+      </note>
       </example>
     </para>
     <para>
-      Of course, Hack can support more complex scenarios, but starting with Hack is really as simple as adding <literal>&lt;hh</literal> to the top of your file and writing the code to which you are accustomed, incrementally using Hack features at your leisure.
+      Of course, Hack can support more complex scenarios, but starting with Hack can really be as simple as adding <literal>&lt;?hh</literal> to the top of your existing PHP file and writing the code to which you are accustomed, incrementally using Hack features at your leisure.
     </para>
     <note>
       <para>
