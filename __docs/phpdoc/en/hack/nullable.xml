@@ -62,7 +62,7 @@ class Foo {
       </informalexample>
     </para>
     <para>
-      So what exactly is the Hack nullable feature trying to solve? In a statically-typed language such as C#, <literal>null</literal> cannot be assigned to a primitive like an <literal>int</literal>. Hack's primary purpose is to check type annotated PHP code, bringing a statically-typed feel to PHP. Taking the above example and &quot;hackifying&quot; it, the Hack type checker will complain, as it should since <literal>null</literal> is not in the range of values for <literal>int</literal>.
+      So what exactly is the Hack nullable feature trying to solve? In a statically-typed language such as C#, <literal>null</literal> cannot be assigned to a primitive like an <literal>int</literal>. One of Hack's primary purposes is to type check annotated code, bringing a statically-typed feel to the dynamic language that is PHP. Taking the above example and &quot;hackifying&quot; it, the Hack type checker will complain, as it should since <literal>null</literal> is not in the range of values for <literal>int</literal>.
       <informalexample>
         <programlisting role="php">
 <![CDATA[
