@@ -735,11 +735,12 @@ class C {
       <itemizedlist>
         <listitem>
           <para>
-            list assignment with a collection on the right hand side works as you would expect. </para>
+            list assignment with a collection on the right hand side works as you would expect. 
+          </para>
         </listitem>
         <listitem>
           <para>
-            Comparing collections using <literal>===</literal> returns true only iff they are the same object (reference equality). 
+            Comparing collections using <literal>===</literal> returns true if and only if they are the same object (reference equality). 
           </para>
         </listitem>
         <listitem>
