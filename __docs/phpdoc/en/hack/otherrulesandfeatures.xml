@@ -225,7 +225,7 @@ function f2(int $x, float $y): int {
 
 function foo(int $y): void { }
 
-function bar(?int Sx): void {
+function bar(?int $x): void {
   if (is_int($x)) {
     foo($x);
   } else {
