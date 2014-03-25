@@ -44,6 +44,11 @@ if ($config["cache"]) {
  <link rel="alternate" type="application/atom+xml" href="<?php echo $MYSITE ?>releases/feed.php" title="PHP Release feed">
  <link rel="alternate" type="application/atom+xml" href="<?php echo $MYSITE ?>feed.atom" title="PHP: Hypertext Preprocessor">
 
+  <meta property='og:type' content='website'>
+  <meta property='og:title' content='Hack and HHVM Manual'>
+  <meta property='og:description' content='The documentation for the Hack language and HHVM'>
+  <meta property='og:image' content='http://docs.hhvm.com/images/og.png'>
+
 <?php if (isset($_SERVER['BASE_PAGE'])): ?>
  <link rel="canonical" href="http://docs.hhvm.com/<?php echo $_SERVER['BASE_PAGE']?>">
 <?php if ($shortname): ?>
