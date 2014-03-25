@@ -26,7 +26,7 @@ function foo(MyInt $mi): void {}
     </informalexample>
   </para>
   <para>
-    Type name redefinitions are declared outside of classes at the top-level. Also, the grammar on the RHS of the declaration is the same as would be put for type anotations on a parameter or return type. For example, take this function signature: 
+    Type aliases are declared outside of classes at the top-level. Also, the grammar on the RHS of the declaration is the same as would be put for type annotations on a parameter or return type. For example, take this function signature: 
     <informalexample>
       <programlisting role="php">
 <![CDATA[
@@ -37,7 +37,7 @@ function foo((int, int) $x): void {}
     </informalexample>
   </para>
   <para>
-    A type name redefinition that would replace <literal>(int, int)</literal> in <literal>foo()</literal> would look like: 
+    A type alias that would replace <literal>(int, int)</literal> in <literal>foo()</literal> would look like: 
     <informalexample>
       <programlisting role="php">
 <![CDATA[
@@ -50,7 +50,7 @@ function foo(Point $x): void {}
     </informalexample>
   </para>
   <para>
-    While type aliasing and opaque type aliases are somewhat similar, there is a key difference around assignment compatibility to the original type. 
+    While type aliasing and opaque type aliases are very similar, there is a key difference around assignment compatibility to the original type. Unlike type aliases, Hack restricts opaque type aliases in a manner that only the file that defined the opaque type alias is allowed to access the underlying implementation. 
   </para>
 
   <sect1 xml:id="hack.typealiasing.typealiasing">
@@ -98,7 +98,7 @@ main_ta();
   <sect1 xml:id="hack.typealiasing.opaquetypealiasing">
     <title>Opaque Type Aliasing</title>
     <para>
-      Opaque type aliasing bear some similarity to normal type aliases. There is a key difference, however. Unlike type aliases, Hack restricts opaque type aliases such in a manner that only the file that defined the distinct type is allowed to access the underlying implementation. For example: 
+      Opaque type aliasing bear some similarity to normal type aliases. There is a key difference, however. Unlike type aliases, Hack restricts opaque type aliases such in a manner that only the file that defined the opaque type is allowed to access the underlying implementation. For example: 
       <informalexample>
         <para><emphasis>File1.php</emphasis></para>
         <programlisting role="php">
@@ -295,7 +295,7 @@ main_tap();
 ]]>
           </programlisting>
           <para>
-            Since a opaque type alias was used, the underlying implementation of <literal>Point</literal> (i.e., <literal>tuple</literal>) cannot be accessed outside of the file it was defined. Thus, it is important that mechanisms are added to be able to construct a representation of the distinct type. In this case, <literal>createPoint()</literal> was defined to be able to do this construction. This is the HHVM output from running the above test code:
+            Since a opaque type alias was used, the underlying implementation of <literal>Point</literal> (i.e., <literal>tuple</literal>) cannot be accessed outside of the file it was defined. Thus, it is important that mechanisms are added to be able to construct a representation of the opaque type. In this case, <literal>createPoint()</literal> was defined to be able to do this construction. This is the HHVM output from running the above test code:
           </para>
           &example.outputs;
           <screen>
