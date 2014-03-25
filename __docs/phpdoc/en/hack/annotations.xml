@@ -870,7 +870,7 @@ function say_hello(): void {
         </programlisting>
       </informalexample>
       <informalexample>
-        <para>Annoting with Nullable</para>
+        <para>Annotating with Nullable</para>
         <programlisting role="php">
 <![CDATA[
 <?hh
@@ -1335,7 +1335,7 @@ function f2(): string {
   </sect1>
 
   <sect1 xml:id="hack.annotations.this">
-    <title>Annoting with <literal>this</literal></title>
+    <title>Annotating with <literal>this</literal></title>
     <para>
       The <literal>this</literal> type is a pretty useful type, which you'll usually see as a return type. Here are some examples of it being used: 
       <informalexample>
