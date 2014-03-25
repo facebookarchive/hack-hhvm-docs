@@ -131,7 +131,7 @@
     </itemizedlist>
    </para>
    <para>
-    HHVM is fully <link linkend="install">available</link> on major variants of the Linux operating system, including Ubuntu, CentOS, Debian, etc. HHVM can be installed on Mac OS X to run in interpreted mode (no JIT, but that is being activelt developed). Windows support is actively being developed. HHVM has also support for most of the web servers today. This includes any web server that can utilize the FastCGI protocol, like Apache, lighttpd and nginx.</para>
+    HHVM is fully <link linkend="install">available</link> on major variants of the Linux operating system, including Ubuntu, CentOS, Debian, etc. HHVM can be installed on Mac OS X to run in interpreted mode (no JIT, but that is being actively developed). Windows support is actively being developed. HHVM has also support for most of the web servers today. This includes any web server that can utilize the FastCGI protocol, like Apache, lighttpd and nginx.</para>
    <para>
     So with HHVM, you have the freedom of choosing an operating system and a web server. Furthermore, you also have the choice of using procedural programming or object oriented programming (OOP), or a mixture of them both. And, of course, you can choose to use Hack or PHP as your programming language. </para>
    <para>
