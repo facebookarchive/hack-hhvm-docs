@@ -10,7 +10,7 @@
   &reftitle.description;
   <methodsynopsis>
    <modifier>public</modifier>
-   <type>ImmVector&lt;Tv&gt;</type>
+   <type>Tv</type>
    <methodname>ImmVector&lt;Tv&gt;::at</methodname>
    <methodparam><type>int</type><parameter>k</parameter></methodparam>
   </methodsynopsis>
