@@ -8,7 +8,7 @@
     To get started with Hack, it really is as simple as:
     <itemizedlist>
       <listitem><para>Use <literal>&lt;?hh</literal> at the top of your file; you can also change <literal>&lt;?php</literal> to <literal>&lt;?hh</literal> in existing PHP files, and your code will run just as before in HHVM.</para></listitem>
-      <listitem><para>Optionally name your file with the <literal>.hh</literal> extension to distingusih your Hack files from your PHP files. Of course, you can keep the name of the file <literal>.php</literal> (or any other extension that you use)</para></listitem>
+      <listitem><para>Optionally name your file with the <literal>.hh</literal> extension to distinguish your Hack files from your PHP files. Of course, you can keep the name of the file <literal>.php</literal> (or any other extension that you use)</para></listitem>
       <listitem><para>Optionally start using <link linkend="hacklangref">Hack features</link></para></listitem>
     </itemizedlist>
   </para>
