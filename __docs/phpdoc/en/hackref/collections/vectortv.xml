@@ -19,13 +19,13 @@
     Vectors only support integer keys. If a non-integer key is used, an exception will be thrown. 
    </para>
    <para>
-    Vectors suoport <literal>$m[$k]</literal> style syntax for getting and setting values by key. Vectors also support <literal>isset($m[$k])</literal> and <literal>empty($m[$k])</literal> syntax, and they provide similar semantics as arrays. Elements can be added to a Vector using <literal>$m[] = ..</literal> syntax. 
+    Vectors support <literal>$m[$k]</literal> style syntax for getting and setting values by key. Vectors also support <literal>isset($m[$k])</literal> and <literal>empty($m[$k])</literal> syntax, and they provide similar semantics as arrays. Elements can be added to a Vector using <literal>$m[] = ..</literal> syntax. 
    </para>
    <para>
      Vectors do not support iterating while new elements are being added or elements are being removed. When a new element is added or removed, all iterators that point to the Vector shall be considered invalid.
    </para>
    <para>
-     Vectors do not support taking elements by reference. If binding assignment (<literal>=&amp;</literal>) is used with an element of a Vector, or if an element of a Vector is passed by reference, of if a Vector is used with foreach by reference, an exception will be thrown.
+     Vectors do not support taking elements by reference. If binding assignment (<literal>=&amp;</literal>) is used with an element of a Vector, or if an element of a Vector is passed by reference, or if a Vector is used with <literal>foreach</literal> by reference, an exception will be thrown.
    </para>
   </section>
 <!-- }}} -->
