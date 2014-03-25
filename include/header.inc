@@ -37,7 +37,7 @@ if ($config["cache"]) {
   <meta name="viewport" content="width=device-width">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <title>PHP: <?php echo $title ?></title>
+  <title>Hack and HHVM: <?php echo $title ?></title>
 
  <link rel="shortcut icon" href="<?php echo $MYSITE ?>favicon.png">
  <link rel="search" type="application/opensearchdescription+xml" href="http://php.net/phpnetimprovedsearch.src" title="Add PHP.net search">
