@@ -1,6 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <chapter xml:id="hack.unsupported">
-  <title>Unsupported PHP Features</title>
+  <title>Unsupported PHP Features in Hack</title>
+  <note>
+    <para>
+      These are features that the Hack language does not support (i.e., the Hack type checker will give you an error if you try to use them). However, HHVM supports these features just fine when using PHP code.
+    </para>
+  </note>
   <para>
     While Hack is quite symbiotic with the PHP language, there are some PHP features that are not supported by Hack and the type checker. Here is a non-exhaustive list:
     <itemizedlist>
