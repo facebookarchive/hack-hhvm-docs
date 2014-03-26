@@ -26,7 +26,6 @@
 &hackref.collections.vectortv.set;
 &hackref.collections.vectortv.setall;
 &hackref.collections.vectortv.shuffle;
-&hackref.collections.vectortv.slice;
 &hackref.collections.vectortv.splice;
 &hackref.collections.vectortv.toarray;
 &hackref.collections.vectortv.toimmmap;
