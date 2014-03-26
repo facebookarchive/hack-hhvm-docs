@@ -3,7 +3,7 @@
 <refentry xml:id="hack.immsettv.toarray" xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink">
  <refnamediv>
   <refname>ImmSet&lt;Tv&gt;::toArray</refname>
-  <refpurpose>Return an array containing the values from this ImmSet</refpurpose>
+  <refpurpose>Return an array built from the values from this ImmSet</refpurpose>
  </refnamediv>
 
  <refsect1 role="description">
@@ -17,7 +17,7 @@
 
 <!-- Note: If this method/property as an alternate procedural mapping then the method/property synopsis MUST be listed BEFORE the function synopsis -->
   <para>
-   Returns an array containing the values from this ImmSet.
+    Returns an array containing the values from this ImmSet, <literal>array(val1 => val1, val2 => val2, ... )</literal>. This  maintains set-like semantics in <literal>array()</literal> land: O(1) membership test with <literal>array_has_key($a['key'])</literal> and iteration with <literal>foreach($a as $member)</literal>. Int-like strings end up with numerical array keys.
   </para>
  </refsect1>
 </refentry>

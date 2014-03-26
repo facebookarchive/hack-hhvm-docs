@@ -17,7 +17,7 @@
 
 <!-- Note: If this method/property as an alternate procedural mapping then the method/property synopsis MUST be listed BEFORE the function synopsis -->
   <para>
-   Returns an array containing the values from this Set.
+    Returns an array containing the values from this Set, <literal>array(val1 => val1, val2 => val2, ... )</literal>. This  maintains set-like semantics in <literal>array()</literal> land: O(1) membership test with <literal>array_has_key($a['key'])</literal> and iteration with <literal>foreach($a as $member)</literal>. Int-like strings end up with numerical array keys.
   </para>
  </refsect1>
 </refentry>
