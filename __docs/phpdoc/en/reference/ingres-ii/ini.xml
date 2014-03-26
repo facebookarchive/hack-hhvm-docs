@@ -209,8 +209,7 @@
     <listitem>
      <para>
       Specifies the default database name to use when connecting to the database
-      server if no other name is specified. Does not apply in
-      &sqlsafemode;.
+      server if no other name is specified.
      </para>
     </listitem>
    </varlistentry>
@@ -222,8 +221,7 @@
     <listitem>
      <para>
       Specifies the default password to use when connecting to the database
-      server if no other name is specified. Does not apply in
-      &sqlsafemode;.
+      server if no other name is specified. 
      </para>
     </listitem>
    </varlistentry>
@@ -235,8 +233,7 @@
     <listitem>
      <para>
       Specifies the default user name to use when connecting to the database
-      server if no other name is specified. Does not apply in
-      &sqlsafemode;.
+      server if no other name is specified. 
      </para>
     </listitem>
    </varlistentry>

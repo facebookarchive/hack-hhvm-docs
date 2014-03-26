@@ -94,9 +94,8 @@
   &reftitle.returnvalues;
   <para>
    &return.success; If the functionality of loading modules is not available
-   or has been disabled (either by setting
-   <link linkend="ini.enable-dl">enable_dl</link> off or by enabling &safemode;
-   in &php.ini;) an <constant>E_ERROR</constant> is emitted
+   or has been disabled (by setting
+   <link linkend="ini.enable-dl">enable_dl</link> off) an <constant>E_ERROR</constant> is emitted
    and execution is stopped. If <function>dl</function> fails because the
    specified library couldn't be loaded, in addition to &false; an
    <constant>E_WARNING</constant> message is emitted.
@@ -175,7 +174,6 @@ if (!extension_loaded('sqlite')) {
     <function>dl</function> is case sensitive on Unix platforms.
    </para>
   </note>
-  &note.sm.disabled;
  </refsect1>
 
  <refsect1 role="seealso">

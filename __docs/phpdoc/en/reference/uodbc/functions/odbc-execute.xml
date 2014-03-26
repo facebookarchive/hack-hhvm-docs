@@ -111,7 +111,7 @@ $success = odbc_execute($stmt, array($a, $b, $c));
       <row>
        <entry>4.2.0</entry>
        <entry>
-        File reading is now subject to &safemode; and
+        File reading is now subject to
         <link linkend="ini.open-basedir">open-basedir</link> restrictions
         in <parameter>parameters_array</parameter>.
        </entry>

@@ -46,8 +46,7 @@
       <para>
        If the PHP directive <link linkend="ini.mysql.default-host">
        mysql.default_host</link> is undefined (default), then the default 
-       value is 'localhost:3306'. In &sqlsafemode;, this parameter is ignored
-       and value 'localhost:3306' is always used.
+       value is 'localhost:3306'.
       </para>
      </listitem>
     </varlistentry>
@@ -56,9 +55,7 @@
      <listitem>
       <para>
        The username. Default value is defined by <link
-       linkend="ini.mysql.default-user">mysql.default_user</link>. In
-       &sqlsafemode;, this parameter is ignored and the name of the user that
-       owns the server process is used.
+       linkend="ini.mysql.default-user">mysql.default_user</link>.
       </para>
      </listitem>
     </varlistentry>
@@ -67,8 +64,7 @@
      <listitem>
       <para>
        The password. Default value is defined by <link
-       linkend="ini.mysql.default-password">mysql.default_password</link>. In
-       &sqlsafemode;, this parameter is ignored and empty password is used.
+       linkend="ini.mysql.default-password">mysql.default_password</link>.
       </para>
      </listitem>
     </varlistentry>   
@@ -83,7 +79,6 @@
        behavior and makes <function>mysql_connect</function> always open 
        a new link, even if <function>mysql_connect</function> was called 
        before with the same parameters.
-       In &sqlsafemode;, this parameter is ignored.
       </para>
      </listitem>
     </varlistentry>
@@ -99,7 +94,6 @@
        <constant>MYSQL_CLIENT_IGNORE_SPACE</constant> or
        <constant>MYSQL_CLIENT_INTERACTIVE</constant>.
        Read the section about <xref linkend="mysql.client-flags" /> for further information.
-       In &sqlsafemode;, this parameter is ignored.
       </para>
      </listitem>
     </varlistentry> 

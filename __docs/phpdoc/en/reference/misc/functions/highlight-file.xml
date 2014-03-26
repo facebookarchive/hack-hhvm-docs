@@ -82,7 +82,6 @@ AddType application/x-httpd-php-source .phps
        <entry>4.2.1</entry>
        <entry>
         This function is now also affected by <link
-        linkend="ini.safe-mode">safe_mode</link> and <link
         linkend="ini.open-basedir">open_basedir</link>.
        </entry>
       </row>

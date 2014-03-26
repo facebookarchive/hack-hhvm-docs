@@ -849,19 +849,6 @@ link identifier, created with <function>xslt_create</function>.</para></listitem
 </varlistentry>'>
 
 
-<!-- Notes for safe-mode limited functions: -->
-<!ENTITY note.sm.disabled '<note xmlns="http://docbook.org/ns/docbook"><simpara>&sm.disabled;</simpara></note>'>
-
-<!ENTITY note.sm.uidcheck '<note xmlns="http://docbook.org/ns/docbook"><simpara>When <link
-linkend="features.safe-mode">safe mode</link> is enabled, PHP checks whether
-the files or directories being operated upon have the same UID (owner) as the
-script that is being executed.</simpara></note>'>
-
-<!ENTITY note.sm.uidcheck.dir '<note xmlns="http://docbook.org/ns/docbook"><simpara>When <link
-linkend="features.safe-mode">safe mode</link> is enabled, PHP checks whether
-the directory in which the script is operating has the same UID (owner) as the
-script that is being executed.</simpara></note>'>
-
 <!ENTITY note.open-basedir.func '<note xmlns="http://docbook.org/ns/docbook"><para>This function is affected by <link
 linkend="ini.open-basedir">open_basedir</link>.</para></note>'>
 
@@ -871,28 +858,6 @@ language construct and not a function, it cannot be called using
 <link linkend="functions.variable-functions">variable functions</link>.</simpara>
 </note>'>
 
-<!-- Common pieces in features/safe-mode.xml
-     Jade doesn't allow in-line entities, so I put them here... Though they
-     should have been inline in safe-mode.xml -->
-<!ENTITY sm.uidcheck 'Checks whether the files or directories being operated
-upon have the same UID (owner) as the script that is being executed.'>
-
-<!ENTITY warn.sm.exec '<warning xmlns="http://docbook.org/ns/docbook"><simpara>With <link linkend="features.safe-mode">safe mode</link> enabled,
-the command string is escaped with <function>escapeshellcmd</function>. Thus,
-<literal>echo y | echo x</literal> becomes <literal>echo y \| echo x</literal>.</simpara></warning>'>
-
-<!ENTITY note.exec-path '<note xmlns="http://docbook.org/ns/docbook"><simpara>When
-<link linkend="features.safe-mode">safe mode</link> is enabled, you can only
-execute files within the <link linkend="ini.safe-mode-exec-dir">safe_mode_exec_dir</link>.
-For practical reasons, it is currently not allowed to have <literal>..</literal>
-components in the path to the executable.</simpara></note>'>
-
-<!ENTITY sm.uidcheck.dir 'Checks whether the directory in which
-the script is operating has the same UID (owner) as the script that is being
-executed.'>
-
-<!ENTITY sm.disabled 'This function is disabled when PHP is running in <link xmlns="http://docbook.org/ns/docbook"
-linkend="features.safe-mode">safe mode</link>.'>
 
 <!-- Common pieces in partintro-sections -->
 <!ENTITY no.config '<para xmlns="http://docbook.org/ns/docbook">This extension has no configuration directives defined in &php.ini;.</para>'>
@@ -994,11 +959,6 @@ This extension has been removed as of PHP 5 and moved to the
 <!ENTITY windows.builtin '<simpara xmlns="http://docbook.org/ns/docbook">The Windows version of PHP has built-in
 support for this extension. You do not need to load any additional
 extensions in order to use these functions.</simpara>'>
-
-<!-- These are here as helpers for manual consistency and brievety-->
-<!ENTITY safemode '<link xmlns="http://docbook.org/ns/docbook" linkend="ini.safe-mode">safe mode</link>'>
-
-<!ENTITY sqlsafemode '<link xmlns="http://docbook.org/ns/docbook" linkend="ini.sql.safe-mode">SQL safe mode</link>'>
 
 <!-- APD Notes -->
 <!ENTITY apd.debug-level.description '<varlistentry xmlns="http://docbook.org/ns/docbook"><term><parameter>

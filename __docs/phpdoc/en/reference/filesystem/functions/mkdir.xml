@@ -170,7 +170,7 @@ if (!mkdir($structure, 0777, true)) {
 
  <refsect1 role="notes">
   &reftitle.notes;
-  &note.sm.uidcheck.dir;
+  
  </refsect1>
 
  <refsect1 role="seealso">

@@ -188,15 +188,6 @@ $text = str_replace("\n.", "\n..", $text);
        </entry>
       </row>
       <row>
-       <entry>4.2.3</entry>
-       <entry>
-        The <parameter>additional_parameters</parameter> parameter is disabled in
-        <link linkend="ini.safe-mode">safe_mode</link> and the
-        <function>mail</function> function will expose a warning message
-        and return &false; when used.
-       </entry>
-      </row>
-      <row>
        <entry>4.0.5</entry>
        <entry>
         The <parameter>additional_parameters</parameter> parameter was added.
