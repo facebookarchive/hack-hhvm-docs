@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- $Revision: 327173 $ -->
-  <chapter xml:id="install.hack" xmlns="http://docbook.org/ns/docbook">
+  <chapter xml:id="install.hack" xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink">
    <title>Installation of Hack</title>
    <para>
     This section will guide you through the general installation and
@@ -11,7 +11,7 @@
     <itemizedlist>
      <listitem>
       <simpara>
-       HHVM installation
+        <link xlink:href="&url.hack.install;">HHVM Installation</link>
       </simpara>
      </listitem> 
     </itemizedlist>
