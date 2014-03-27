@@ -111,7 +111,7 @@ class Batcher {
     return $results[$id];
   }
 
-  private static async function dispatch(): Awaitable<array<int, int>> {
+  private static async function fetchDispatch(): Awaitable<array<int, int>> {
     await RescheduleWaitHandle::create(0, 0);
     $ids = self::$ids;
     self::$ids = null;
