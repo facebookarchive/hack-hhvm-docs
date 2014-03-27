@@ -1089,7 +1089,7 @@ fieldset {
     border: none;
     color: white;
     display: block;
-    padding: 0.3em;
+    padding: 1.3em 0em 1.3em 0.3em;
     background: rgba(0, 0, 0, 0.2);
 }
 
