@@ -66,12 +66,12 @@ function test(): void {
   // The typechecker cannot determine what function $f refers to. It will reject
   // this in strict mode, but in partial mode will admit it, even though it
   // fails at runtime.
-  $f = array('C', 's');
+  $f = array('C', 'f');
   $f(1);
 
   // But, with a call to class_meth(), we can know what function $f refers to,
   // and check its arguments statically. This will produce a type error.
-  $f = class_meth('C', 's');
+  $f = class_meth('C', 'f');
   $f(1);
 }
 ]]>
