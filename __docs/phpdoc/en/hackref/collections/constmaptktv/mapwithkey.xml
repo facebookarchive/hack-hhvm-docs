@@ -4,7 +4,7 @@
 <refentry xml:id="hack.constmaptktv.mapwithkey" xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink">
  <refnamediv>
   <refname>ConstMap&lt;Tk, Tv&gt;::mapWithKey&lt;Tu&gt;</refname>
-  <refpurpose>Return an ConstMap based on the return results of calling a provided function on every value of this ConstMap.</refpurpose>
+  <refpurpose>Return a ConstMap based on the return results of calling a provided function on every value of this ConstMap.</refpurpose>
  </refnamediv>
 
  <refsect1 role="description">
@@ -14,7 +14,7 @@
    <methodparam><type>function(Tk, Tv): Tu</type><parameter>callback</parameter></methodparam>
   </methodsynopsis>
   <para>
-   Returns an ConstMap based on the return results of calling a provided function on every value of this ConstMap.
+   Returns a ConstMap based on the return results of calling a provided function on every value of this ConstMap.
   </para>
  </refsect1>
 

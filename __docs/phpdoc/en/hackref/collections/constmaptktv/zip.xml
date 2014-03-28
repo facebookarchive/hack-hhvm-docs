@@ -14,7 +14,7 @@
    <methodparam><type>Traversable&lt;Tu&gt;</type><parameter>iterable</parameter></methodparam>
   </methodsynopsis>
   <para>
-   Returns an ConstMap that combines the elements of this ConstMap and another provided ConstMap, pair-wise.
+   Returns a ConstMap that combines the elements of this ConstMap and another provided ConstMap, pair-wise.
   </para>
  </refsect1>
 

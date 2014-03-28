@@ -17,7 +17,7 @@
 
 <!-- Note: If this method/property as an alternate procedural mapping then the method/property synopsis MUST be listed BEFORE the function synopsis -->
   <para>
-   Returns a Map that combines the elements of this Map and another provided iterable, pair-wise..
+    Returns a Map that combines the elements of this Map and another provided iterable, pair-wise.
   </para>
  </refsect1>
 </refentry>
