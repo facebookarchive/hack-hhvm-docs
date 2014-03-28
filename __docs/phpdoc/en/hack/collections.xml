@@ -171,7 +171,7 @@ function main() {
   $vector[] = 25;
 
   // Access value by key using "$c[$k]" syntax; note that "$c[$k]"
-  // syntax will throw if the key is out of bounds
+  // syntax will throw an OutOfBoundsException if the key is out of bounds
   echo $vector[0] . "\n";
 
   // Access value by key using get(); null will be returned if the key is
@@ -179,8 +179,8 @@ function main() {
   echo $vector->get(1) . "\n\n";
 
   // Set value by key using "$c[$k]=$v" syntax, overwriting the previous
-  // value; note that "$c[$k]=$v" syntax for Vectors will throw if the key
-  // is out of bounds
+  // value; note that "$c[$k]=$v" syntax for Vectors will throw an 
+  // OutOfBoundsException if the key is out of bounds
   $vector[0] = 999;
 
   // Remove an element by key
@@ -282,7 +282,7 @@ function main() {
   $map["E"] = 5;
  
   // Access value by key using "$c[$k]" syntax; note that "$c[$k]"
-  // syntax will throw if the key is not present
+  // syntax will throw an OutOfBoundsException if the key is not present
   echo $map["A"] . "\n";
  
   // Access value by key via get(); null will be returned if the key is
