@@ -611,7 +611,8 @@ function doc_toc($lang) {
 
     echo "<dl>\n";
     doc_toc_list($lang, $TOC, "getting-started");
-    doc_toc_list($lang, $TOC, "langref");
+    doc_toc_list($lang, $TOC, "hacklangref");
+    doc_toc_list($lang, $TOC, "phplangref");
     echo "</dl>\n";
 
     echo "<dl>\n";
@@ -620,7 +621,8 @@ function doc_toc($lang) {
     echo "</dl>\n";
 
     echo "<dl>\n";
-    doc_toc_list($lang, $TOC, "funcref");
+    doc_toc_list($lang, $TOC, "hackfuncref");
+    doc_toc_list($lang, $TOC, "phpfuncref");
     echo "</dl>\n";
 
     echo "<dl>\n";
@@ -649,6 +651,14 @@ function doc_toc($lang) {
 
 }
 function doc_toc_list($lang, $index, $file) {
+    // $TOC is an array in the $file.inc file included just below.
+    // This is a hack to stop the:
+    // HipHop Notice: Undefined variable: TOC
+    // that we are getting in the log files.
+    // Basically define $TOC before it is redefined again the include
+    // file.
+    $TOC = array();
+    
     include dirname(__FILE__) . "/../manual/$lang/toc/$file.inc";
 
     doc_toc_title($lang, $index, $file);
@@ -657,6 +667,8 @@ function doc_toc_list($lang, $index, $file) {
     }
 }
 function doc_toc_title($lang, $index, $file, $elm = "dt") {
+    $title = "";
+    $link = "";
     foreach($index as $entry) {
         if ($entry[0] == "$file.php") {
             $link  = $entry[0];
