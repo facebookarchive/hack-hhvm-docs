@@ -14,7 +14,7 @@
    <void />
   </methodsynopsis>
   <para>
-   Returns an ConstMap of this ConstMap's keys.
+   Returns a ConstMap of this ConstMap's keys.
   </para>
  </refsect1>
 

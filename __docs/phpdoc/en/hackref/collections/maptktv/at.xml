@@ -17,7 +17,7 @@
 
 <!-- Note: If this method/property as an alternate procedural mapping then the method/property synopsis MUST be listed BEFORE the function synopsis -->
   <para>
-    Returns the value at the specified key. If the key is not present, an exception is thrown.
+    Returns the value at the specified key. If the key is not present, an <literal>OutOfBoundsException</literal> is thrown.
   </para>
   <note>
     <para>

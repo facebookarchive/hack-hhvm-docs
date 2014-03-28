@@ -22,13 +22,13 @@
     Maps only support integer keys and string keys. If a key of a different type is used, an exception will be thrown.
    </para>
    <para>
-    Maps support <literal>$m[$k]</literal> style syntax for getting and setting values by key. Maps also support <literal>isset($m[$k])</literal> and <literal>empty($m[$k])</literal> syntax, and they provide similar semantics as arrays. Adding an element using <literal>$m[] = ..</literal> syntax is not supported. 
+     Maps support <literal>$m[$k]</literal> style syntax for getting and setting values by key. Maps also support <literal>isset($m[$k])</literal> and <literal>empty($m[$k])</literal> syntax, and they provide similar semantics as arrays. Adding an element using <literal>$m[] = ..</literal> syntax is not supported unless you assign a <link linkend="class.hack.pairtv1tv2">Pair</link>.
    </para>
    <para>
     Maps do not support iterating while new keys are being added or elements are being removed. When a new key is added or an element is removed, all iterators that point to the Map shall be considered invalid. 
    </para>
    <para>
-    Maps do not support taking elements by reference. If binding assignment (<literal>=&amp;</literal>) is used with an element of a Map, or if an element of a Map is passed by reference, of if a Map is used with foreach by reference, an exception will be thrown. 
+    Maps do not support taking elements by reference. If binding assignment (<literal>=&amp;</literal>) is used with an element of a Map, or if an element of a Map is passed by reference, or if a Map is used with foreach by reference, an exception will be thrown. 
    </para>
   </section>
 <!-- }}} -->

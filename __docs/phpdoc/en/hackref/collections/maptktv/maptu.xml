@@ -3,7 +3,7 @@
 <refentry xml:id="hack.maptktv.maptu" xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink">
  <refnamediv>
   <refname>Map&lt;Tk, Tv&gt;::map&lt;Tu&gt;</refname>
-  <refpurpose>Return an Map based on the return results of calling a provided function on every value of this Map.</refpurpose>
+  <refpurpose>Return a Map based on the return results of calling a provided function on every value of this Map.</refpurpose>
  </refnamediv>
 
  <refsect1 role="description">
@@ -17,7 +17,7 @@
 
 <!-- Note: If this method/property as an alternate procedural mapping then the method/property synopsis MUST be listed BEFORE the function synopsis -->
   <para>
-   Returns an Map based on the return results of calling a provided function on every value of this Map.
+    Returns a Map based on the return results of calling a provided function on every value of this Map.
   </para>
  </refsect1>
 </refentry>

@@ -14,7 +14,7 @@
    <methodparam><type>Traversable&lt;Tu&gt;</type><parameter>iterable</parameter></methodparam>
   </methodsynopsis>
   <para>
-   Returns an MutableMap that combines the elements of this MutableMap and another provided MutableMap, pair-wise.
+   Returns a MutableMap that combines the elements of this MutableMap and another provided MutableMap, pair-wise.
   </para>
  </refsect1>
 

@@ -14,7 +14,7 @@
    <void />
   </methodsynopsis>
   <para>
-   Returns an MutableMap of this MutableMap's keys.
+   Returns a MutableMap of this MutableMap's keys.
   </para>
  </refsect1>
 
