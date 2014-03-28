@@ -14,7 +14,7 @@
    <methodparam><type>string</type><parameter>method_name</parameter></methodparam>
   </methodsynopsis>
   <para>
-   <function>class_meth</function> takes an object and a method name, and returns a callable which will invoke that method on that class. Like <function>fun</function>, this is in order to aide the typechecker in statically analyzing callbacks passed into and out of functions.
+   <function>inst_meth</function> takes an object and a method name, and returns a callable which will invoke that method on that class instance. Like <function>fun</function>, this is in order to aide the typechecker in statically analyzing callbacks passed into and out of functions.
   </para>
   <para>
    Unlike <function>meth_caller</function>, this returns a callable which calls a specific method on the specific object passed in.
@@ -71,12 +71,12 @@ function test(): void {
   // The typechecker cannot determine what function $f refers to. It will reject
   // this in strict mode, but in partial mode will admit it, even though it
   // fails at runtime.
-  $f = array($c, 's');
+  $f = array($c, 'f');
   $f(1);
 
-  // But, with a call to class_meth(), we can know what function $f refers to,
+  // But, with a call to inst_meth(), we can know what function $f refers to,
   // and check its arguments statically. This will produce a type error.
-  $f = inst_meth($c, 's');
+  $f = inst_meth($c, 'f');
   $f(1);
 }
 ]]>
