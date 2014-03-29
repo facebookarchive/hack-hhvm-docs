@@ -92,7 +92,7 @@ barbaz
       When a lambda expression is executed at run time, it creates an object of type <literal>Closure</literal>, similar to what PHP 5.3's closure syntax does. Objects of type <literal>Closure</literal> created by lambda expression syntax vs. PHP 5.3's closure syntax is interchangeable; both offer the same semantics when stored in variables, passed around, or invoked. Objects of type <literal>Closure</literal> retain their current semantics, and both lambda expression syntax and PHP 5.3 closure syntax will continue to be supported going forward. 
     </para>
     <para>
-      Lambda expressions were designed to allow for extra brevity in common cases. In most cases the parameter list on the left hand side must be wrapped in parentheses, however if no return type is being specified AND there is exactly one parameter with no type hint and no default value then the parentheses can be omitted. Also when the right hand side is just a single expression, the result of expression will returned as the return value when the <literal>Closure</literal> object is invoked, which allows the programmer to avoid having to type "return"explicitly in many cases. The example above is equivalent to the following: 
+      Lambda expressions were designed to allow for extra brevity in common cases. In most cases the parameter list on the left hand side must be wrapped in parentheses, however if no return type is being specified AND there is exactly one parameter with no type hint and no default value then the parentheses can be omitted. Also when the right hand side is just a single expression, the result of expression will be returned as the return value when the <literal>Closure</literal> object is invoked, which allows the programmer to avoid having to type "return"explicitly in many cases. The example above is equivalent to the following: 
       <informalexample>
         <programlisting role="php">
 <![CDATA[
@@ -119,8 +119,8 @@ barbaz
       <informalexample>
         <programlisting role="php">
 <![CDATA[
-// Example 4
 <?hh
+// Example 4
 $f = $x ==> $y ==> $x + $y;
 $g = $f(7);
 echo $g(4); // Outputs 11
