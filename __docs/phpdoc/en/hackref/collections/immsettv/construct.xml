@@ -18,6 +18,14 @@
   <para>
    Creates an empty ImmSet (if no parameters are passed) or creates a ImmSet from a Traversable.
   </para>
+  <para>
+    There are three primary ways to construct a <literal>ImmSet</literal>:
+    <itemizedlist>
+      <listitem><simpara><literal>$v = new ImmSet(); // empty</literal></simpara></listitem>
+      <listitem><simpara><literal>$v = ImmSet {1, 2}; // <link linkend="hack.collections.literalsyntax">literal syntax</link></literal></simpara></listitem>
+      <listitem><simpara><literal>$v = new ImmSet($traversable); // from a <link linkend="hack.collections.interfaces">Traversable</link></literal></simpara></listitem>
+    </itemizedlist>
+  </para>
  </refsect1>
 </refentry>
 <!-- Keep this comment at the end of the file

@@ -18,6 +18,17 @@
   <para>
    Creates a Pair.
   </para>
+  <para>
+    There one primary way to construct a <literal>Pair</literal>:
+    <itemizedlist>
+      <listitem><simpara><literal>$v = Pair {1, 2}; // <link linkend="hack.collections.literalsyntax">literal syntax</link></literal></simpara></listitem>
+    </itemizedlist>
+  </para>
+  <note>
+    <para>
+      Pairs cannot be created with <literal>new</literal> syntax (an exception will be thrown). And, of course, pairs can only have two elements.
+    </para>
+  </note>
  </refsect1>
 </refentry>
 <!-- Keep this comment at the end of the file

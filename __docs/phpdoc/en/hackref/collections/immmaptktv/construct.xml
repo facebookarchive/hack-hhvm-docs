@@ -18,6 +18,14 @@
   <para>
    Creates an empty ImmMap (if no parameters are passed) or creates a ImmMap from a KeyedTraversable.
   </para>
+  <para>
+    There are three primary ways to construct a <literal>ImmMap</literal>:
+    <itemizedlist>
+      <listitem><simpara><literal>$v = new ImmMap(); // empty</literal></simpara></listitem>
+      <listitem><simpara><literal>$v = ImmMap {"a" => 1, "b" => 2}; // <link linkend="hack.collections.literalsyntax">literal syntax</link></literal></simpara></listitem>
+      <listitem><simpara><literal>$v = new ImmMap($traversable); // from a <link linkend="hack.collections.interfaces">Traversable</link></literal></simpara></listitem>
+    </itemizedlist>
+  </para>
  </refsect1>
 </refentry>
 <!-- Keep this comment at the end of the file
