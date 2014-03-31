@@ -5,9 +5,24 @@
 
   <sect1 xml:id="debugger.about">
    <title>About debugging in HHVM</title>
-   <simpara>
-    HHVM has a debugger called <literal>hphpd</literal> that is can be used to debug a running program or used as a standalone line-by-line scratch pad for simple testing. Invoke <literal>hphpd</literal> by typing <literal>hphpd</literal> at the command line.
-   </simpara>
+   <para>
+    HHVM has a debugger called <literal>hphpd</literal> that is can be used to debug a running program or used as a standalone line-by-line scratch pad for simple testing. Invoke <literal>hphpd</literal> by typing the following at the command line:
+    <informalexample>
+      <programlisting role="bash">
+<![CDATA[
+hhvm -m debug [filename]
+]]>
+      </programlisting>
+      <note>
+        <para>
+          <literal>filename</literal> is not needed if you want to run the debugger in a "standalone" format for quick testing.
+        </para>
+      </note>
+    </informalexample>
+   </para>
+   <para>
+    For more information on the debugger see <link xlink:href="https://github.com/facebook/hhvm/blob/master/hphp/doc/debugger.start">GitHub</link>.
+   </para>
   </sect1>
 
  </appendix>
