@@ -30,7 +30,12 @@ function f(): int {
     <title>Library functions</title>
     <para><literal>hh_server</literal> does not ship with any innate knowledge about the PHP and Hack standard libraries, but instead imports this information from <literal>hhi</literal> files that describe the type structure of the standard library. HHVM ships with a default set of such files, available at <literal>/usr/share/hhvm/hack/hhi</literal> in the default binary distribution or at <literal>hphp/hack/hhi</literal> in the source distribution.</para>
     <para>This directory contains information about the PHP standard library for the typechecker to consume. It should be copied into a location visible to the typechecker, but should <emphasis>not</emphasis> be ever executed at runtime or included in the autoloader. These files are effectively "interface" files that define types for parts of the standard library so the typechecker can verify they are used correctly. The runtime will produce an error if an hhi file is ever loaded at runtime, since it will redefine a function or class already built in to the runtime.</para>
-  </sect2>
+    <warning>
+      <para>
+        Due to the way the Hack type checker currently watches files for changes, etc. via <literal>inotify</literal>, you must <emphasis role="strong">copy</emphasis> the <literal>.hhi</literal> files to a location visible to the type checker. <emphasis>Symlinks will not work.</emphasis> This is an inotify limitation in the current version of incremental mode, and we are looking to address it.
+      </para>
+    </warning>
+   </sect2>
   <sect2 xml:id="install.hack.bootstrapping.editors">
     <title>Included editor extensions</title>
     <para>The HHVM and Hack installation ships with bindings for common editors. vim users will find a pathogen package at <literal>/usr/share/hhvm/hack/vim</literal> with installation instructions in the <literal>README</literal> contained therein. emacs users will find a plugin inside <literal>/usr/share/hhvm/hack/emacs</literal>.</para>
