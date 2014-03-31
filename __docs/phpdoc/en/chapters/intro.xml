@@ -161,7 +161,7 @@ echo "Hi, I'm a Hack script!";
     And many other interesting extensions exist, which are categorized both <link linkend="extensions">alphabetically</link> and by <link linkend="phpfuncref">PHP category</link> and <link linkend="hackfuncref">Hack category</link>.
    </para>
    <para>
-    As you can see this page is not enough to list all the features and benefits PHP can offer. Read on in the sections about <link linkend="install">installing HHVM</link>, and see the <link linkend="phpfuncref">PHP function reference</link> and the <link linkend="phpfuncref">Hack function reference</link> for explanation of the extensions mentioned here. 
+    As you can see this page is not enough to list all the features and benefits PHP and Hack can offer. Read on in the sections about <link linkend="install">installing HHVM</link>, and see the <link linkend="phpfuncref">PHP function reference</link> and the <link linkend="hackfuncref">Hack function reference</link> for explanation of the extensions mentioned here. 
    </para>
   </section>
 
