@@ -98,7 +98,7 @@ main_ta();
   <sect1 xml:id="hack.typealiasing.opaquetypealiasing">
     <title>Opaque Type Aliasing</title>
     <para>
-      Opaque type aliasing bear some similarity to normal type aliases. There is a key difference, however. Unlike type aliases, Hack restricts opaque type aliases such in a manner that only the file that defined the opaque type is allowed to access the underlying implementation. For example: 
+      Opaque type aliasing bear some similarity to normal type aliases. There is a key difference, however. Unlike type aliases, Hack restricts opaque type aliases in such a manner that only the file that defined the opaque type is allowed to access the underlying implementation. For example: 
       <informalexample>
         <para><emphasis>File1.php</emphasis></para>
         <programlisting role="php">
@@ -155,6 +155,62 @@ It is incompatible with an object of type SecretID
         <para>
           Note, however, the above code in <literal>File2.php</literal> will run fine in HHVM since at runtime <literal>SecretID</literal> is indeed just an <literal>int</literal>.
         </para>
+      </informalexample>
+    </para>
+    <para>
+      Here is another example where an opaque type alias is created from a <literal>string</literal>. The concatenation operator (<literal>.</literal>) can be used in the file where the opaque type alias is defined, but not in other files.
+      <informalexample>
+        <para><emphasis>File1.php</emphasis></para>
+        <programlisting role="php">
+<![CDATA[
+<?hh
+
+// File1.php
+
+newtype SecretString = string;
+
+function modify(SecretString $s): SecretString {
+  return $s . "1";
+}
+
+function main_ot1(): void {
+  var_dump(modify("Hello"));
+}
+
+main_ot1();
+]]>
+        </programlisting>
+        <para><emphasis>File2.php</emphasis></para>  
+        <programlisting role="php">
+<![CDATA[
+<?hh
+
+// File2.php
+
+require_once "File1.php";
+
+function try_modify(SecretString $s): SecretString {
+  return $s . "1";
+}
+
+function main_ot2(): void {
+    var_dump(modify("Hello"));
+}
+
+main_ot2();
+]]>
+        </programlisting>
+        &example.outputs;
+        <screen>
+<![CDATA[
+File "File2.php", line 8, characters 10-17:
+Invalid return type
+File "File2.php", line 7, characters 39-50:
+This is an object of type SecretString
+File "File2.php", line 8, characters 10-17:
+It is incompatible with a string because this is the result of a concatenation
+]]>
+        </screen>
       </informalexample>
     </para>
   </sect1>
