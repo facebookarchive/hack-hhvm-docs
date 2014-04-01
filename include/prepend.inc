@@ -15,7 +15,7 @@ header("Content-type: text/html; charset=utf-8");
 /* Fix Silly Same Origin Policies */
 if (isset($_SERVER["HTTP_ORIGIN"])) {
     $host = parse_url($_SERVER["HTTP_ORIGIN"]);
-    if (strncmp(strrev($host["host"]), strrev("php.net"), strlen("php.net")) != 0) {
+    if (strncmp(strrev($host["host"]), strrev("docs.hhvm.com"), strlen("docs.hhvm.com")) != 0) {
         exit(10);
     }
     if (isset($host["port"])) {
@@ -190,7 +190,7 @@ function google_cse($default = '', $lang = 'en') {
   google.setOnLoadCallback(function() {
     var customSearchOptions = {};
     var customSearchControl = new google.search.CustomSearchControl(
-      '011570197911755000456:fip9wopfz_u', customSearchOptions);
+      '004427703517724801744:anf7gmp7eie', customSearchOptions);
     customSearchControl.setLinkTarget(google.search.Search.LINK_TARGET_SELF);
     customSearchControl.setResultSetSize(google.search.Search.FILTERED_CSE_RESULTSET);
     var options = new google.search.DrawOptions();

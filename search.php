@@ -41,7 +41,7 @@ if (!empty($_FORM['pattern'])) {
         case "404manual":
             mirror_redirect($MYSITE . "results.php?q={$ucp}&p={$_FORM['show']}&l=$LANG");
             break;
-
+            
         // Covers the rest
         default:
             $p = urlencode($_FORM['show']);
@@ -57,8 +57,8 @@ else {
     $link = array(
         "rel"   => "search",
         "type"  => "application/opensearchdescription+xml",
-        "href"  => $MYSITE . "phpnetimprovedsearch.src",
-        "title" => "Add PHP.net search"
+        "href"  => $MYSITE . "docshhvmimprovedsearch.src",
+        "title" => "Add docs.hhvm.com search"
     );
     site_header("Search", array("link" => array($link), "current" => "help"));
 

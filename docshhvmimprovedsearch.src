@@ -1,0 +1,11 @@
+
+<?xml version="1.0"?>
+<OpenSearchDescription xmlns="http://a9.com/-/spec/opensearch/1.1/" xmlns:moz="http://www.mozilla.org/2006/browser/search/">
+ <ShortName>docs.hhvm</ShortName>
+ <Description>Hack and HHVM Docs - Search</Description>
+ <InputEncoding>UTF-8</InputEncoding>
+ <Contact>joelm@fb.com</Contact>
+ <Image height="16" width="16" type="image/x-icon">http://docs.hhvm.com/images/docshhvmsearch.png</Image>
+ <Developer>Marco Rodrigues (modified by Joel Marcey)</Developer>
+ <Url type="text/html" method="get" template="http://docs.hhvm.com/manual-lookup.php?pattern={searchTerms}&amp;src={referrer:source?}" />
+</OpenSearchDescription>

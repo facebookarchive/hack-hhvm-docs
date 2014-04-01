@@ -123,12 +123,12 @@ if ($snippet = is_known_snippet($notfound)) {
 
 ?>
 
-<h1>PHP Function List</h1>
+<h1>Hack and PHP Function List</h1>
 
 <?php if (!empty($notfound) && count($maybe) > 0) { ?>
 
 <p>
- <b><?php echo $notfound; ?></b> doesn't exist. Closest matches:
+ <b><?php echo $notfound; ?></b> function doesn't exist. Closest function matches:
 </p>
 
 <?php

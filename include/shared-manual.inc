@@ -448,8 +448,8 @@ function manual_language_chooser($currentlang, $currentpage) {
           </select>
         </fieldset>
       </form>
-CHANGE_LANG;*/
-    return trim($r);
+CHANGE_LANG;
+    return trim($r);*/
 }
 
 function manual_bugs_and_notes() {
