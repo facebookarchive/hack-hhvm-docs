@@ -30,8 +30,8 @@ function quickref_table($functions, $sort = true)
 {
     global $LANG;
 
-    echo "<!-- result list start -->\n";
-    echo "<ul id=\"quickref_functions\">\n";
+    $funcs = "<!-- result list start -->\n";
+    $funcs .= "<ul id=\"quickref_functions\">\n";
     // Prepare the data
     if ($sort) {
         asort($functions);
@@ -39,10 +39,35 @@ function quickref_table($functions, $sort = true)
     
     // Print out all rows
     foreach ($functions as $file => $name) {
-        echo "<li><a href=\"/manual/$LANG/$file\">$name</a></li>\n";
+        $funcs .= "<li><a href=\"/manual/$LANG/$file\">$name</a></li>\n";
     }
-    echo "</ul>\n";
-    echo "<!-- result list end -->\n";
+    $funcs .= "</ul>\n";
+    $funcs .= "<!-- result list end -->\n";
+
+    return $funcs;
+}
+
+function primary_content($notfound_enc) {
+    global $LANG;
+    // Could probably use search.php here (add another case to the switch)
+    // but for now...
+    $l = $LANG;
+    $q = $notfound_enc;
+
+    echo '<h1>Search results</h1>';
+
+    google_cse($q, $l); 
+}
+
+function sidebar_content($notfound, $maybe) {
+    $poss_matches = "<h2>Hack and PHP Function List</h2>";
+    if (!empty($notfound) && count($maybe) > 0) {
+        $poss_matches .= "<p><b>".$notfound."</b> function doesn't exist. Closest function matches:</p>";
+        $poss_matches .= quickref_table($maybe, false);
+    } else {
+        $poss_matches .= "<p><b>".$notfound."</b> function doesn't exist. No close matches either.</p>";
+    }
+    return $poss_matches;
 }
 
 // Open directory, fall back to English,
@@ -121,24 +146,12 @@ if ($snippet = is_known_snippet($notfound)) {
     echo "<p>{$snippet}</p>";
 }
 
-?>
-
-<h1>Hack and PHP Function List</h1>
-
-<?php if (!empty($notfound) && count($maybe) > 0) { ?>
-
-<p>
- <b><?php echo $notfound; ?></b> function doesn't exist. Closest function matches:
-</p>
-
-<?php
-quickref_table($maybe, false);
-
+// Left side content
+primary_content($notfound_enc);
+// Right side content (sidebar)
 $config = array(
-    "sidebar" => '<p class="panel"><a href="/search.php?show=all&amp;pattern=' . $notfound_enc . '">Full website search</a>',
+    "sidebar" => '<p class="panel">'. sidebar_content($notfound, $maybe),
 );
-
 site_footer($config);
-} 
 
 

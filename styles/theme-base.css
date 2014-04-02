@@ -1776,6 +1776,7 @@ div.soft-deprecation-notice blockquote.sidebar {
 aside.tips {
   -moz-box-sizing:border-box;
   box-sizing:border-box;
+  background:#fdf5e6;
 }
 aside.tips p {
   margin-top:0;
