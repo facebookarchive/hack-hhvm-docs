@@ -1218,11 +1218,11 @@ forward slashes: <filename>c:/directory/file.ext</filename>. A trailing
 slash may also be necessary for directories.</simpara></note>'>
 
 <!-- Snippets and titles for the contributors section -->
-<!ENTITY Credit.Authors.and.Contributors 'Authors and Contributors'>
+<!ENTITY Credit.Authors.and.Contributors 'Primary Authors and Contributors'>
 
-<!ENTITY Credit.Introduction '<para xmlns="http://docbook.org/ns/docbook"> There are many contributors who currently help in our work or have provided a great amount of help to the project in the past. There are a lot of unnamed people who help out with manual pages, the work of whom we are also very thankful for. A big thank you to the HHVM and PHP community</para>'>
+<!ENTITY Credit.Introduction '<para xmlns="http://docbook.org/ns/docbook"> Listed below are some of the primary contributors who have provided a great amount of help to this documentation project, particular as it pertains to the development and editing of the original <link xlink:href="&url.php.docs;" xmlns:xlink="http://www.w3.org/1999/xlink">php.net</link> documentation. There are also a lot of unnamed people who help out with manual pages, the work of whom we are also very thankful. A big thank you to the HHVM and PHP community</para>'>
 
-<!ENTITY Credit.Authors.and.Editors 'Authors and Editors'>
+<!ENTITY Credit.Authors.and.Editors 'Other Authors and Contributors'>
 
 <!ENTITY Credit.Past.Authors.Text 'The following contributors should be
 recognized for the impact they have made and/or continue to make by adding

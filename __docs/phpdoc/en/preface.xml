@@ -26,11 +26,9 @@
   information.
  </para>
  <para>
-  You can download this manual in several formats at <link
-  xlink:href="&url.php.doc.downloads;">&url.php.doc.downloads;</link>.
   More information about how this manual is developed can be found in the
   <link linkend="about">'About the manual'</link> appendix. If you are
-  interested in the <link linkend="history">history of PHP</link>,
+  interested in the <link linkend="history">history of HHVM</link>,
   visit the relevant appendix.
  </para>
   

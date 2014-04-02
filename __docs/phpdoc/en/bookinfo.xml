@@ -3,7 +3,7 @@
 
  <info xmlns="http://docbook.org/ns/docbook" xml:id="bookinfo">
   <pubdate>Last updated: <?dbtimestamp format="Y-m-d"?></pubdate>
-
+  &frontpage.authors;
   <copyright>
    <year>1997-<?dbtimestamp format="Y"?></year>
    <holder>the PHP Documentation Group</holder>

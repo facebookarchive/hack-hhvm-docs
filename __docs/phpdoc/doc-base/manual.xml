@@ -40,7 +40,7 @@
 <set xmlns="http://docbook.org/ns/docbook" version="5.0" xml:id="index" xml:lang="en" xmlns:xlink="http://www.w3.org/1999/xlink">
  <title>&HHVMManual;</title>
  &bookinfo;
-
+ 
  <book xml:id="manual">
   <title>&HHVMManual;</title>
   &preface;

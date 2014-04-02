@@ -7,13 +7,21 @@
    relentlessly! You have been warned! :)
  -->
 <section xml:id="contributors" xmlns="http://docbook.org/ns/docbook" xmlns:phd="http://www.php.net/ns/phd" phd:chunk="false">
- <info><title>&Credit.Authors.and.Contributors;</title></info>
-
- &Credit.Introduction;
-
- <section>
-  <info><title>&Credit.Authors.and.Editors;</title></info>
-  
+  <info><title>&Credit.Authors.and.Contributors;</title></info>
+   &Credit.Introduction;
+  <para>
+   Mehdi Achour,
+   Friedhelm Betz,
+   Antony Dovgal,
+   Nuno Lopes,
+   Hannes Magnusson,
+   Georg Richter,
+   Damien Seguy,
+   Jakub Vrana,
+   and edited by Philip Olson
+  </para>
+<section>
+  <info><title>&Credit.Authors.and.Editors;</title></info> 
   <para>
    &Credit.Past.Authors.Text;
    The HHVM and Hack Teams,
