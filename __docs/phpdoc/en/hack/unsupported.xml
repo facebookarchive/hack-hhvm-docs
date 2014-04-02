@@ -61,11 +61,6 @@
       </listitem>
       <listitem>
         <para>
-          Using PHP reserved keywords, constants, classes, <literal>parent</literal>, <literal>true</literal>, <literal>false </literal> as function, names or variable names. Trying to do so will result in a Hack syntax error.
-        </para>
-      </listitem>
-      <listitem>
-        <para>
           Globals (e.g., <literal>global $x;</literal>)
         </para>
       </listitem>
