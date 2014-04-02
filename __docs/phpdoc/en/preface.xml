@@ -26,10 +26,7 @@
   information.
  </para>
  <para>
-  More information about how this manual is developed can be found in the
-  <link linkend="about">'About the manual'</link> appendix. If you are
-  interested in the <link linkend="history">history of HHVM</link>,
-  visit the relevant appendix.
+  This manual began as a fork and clone of the documentation at <link xlink:href="&url.php.docs;">php.net</link>. More information about how this manual is developed can be found in the <link linkend="about">'About the manual'</link> appendix. If you are interested in the <link linkend="history">history of HHVM</link>, visit the relevant appendix. 
  </para>
   
  &contributors;

@@ -3,7 +3,17 @@
 
 <appendix xml:id="about" xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink">
  <title>About the manual</title>
-
+ 
+ <sect1 xml:id="about.origin">
+  <title>Origin</title>
+  <para>
+    The Hack and HHVM Manual began as a clone and fork of the <link xlink:href="&url.php.docs;">php.net</link> manual. In essence, a snapshot of the php.net manual was grabbed and used as the basis for this manual. At this point, while we label the functions that HHVM does not currently support to the best of our ability, information sync'ing between php.net and this manual does not currently exist. Thus, if a change to the documentation on php.net occurs that same change will not be reflected in this manual, at least in an automated format. We are looking how best to make this happen.
+  </para>
+  <para>
+    You will find the documentation sources for the Hack and HHVM manual in <link xlink:href="https://github.com/hhvm/hack-hhvm-docs">Github</link>. You can create issues, give pull requests and see instructions on how to build the documentation locally for testing.
+  </para>
+ </sect1>
+ 
  <sect1 xml:id="about.formats">
   <title>Formats</title>
   <para>
