@@ -31,16 +31,6 @@
       </listitem>
       <listitem>
         <para>
-          <literal>if/else</literal> statements without <literal>{}</literal>. <literal>else if</literal> is allowed (i.e. <literal>if (...) { ... } else if (...) { ... } else { ... }</literal> is ok).
-        </para>
-      </listitem>
-      <listitem>
-        <para>
-          <literal>elseif</literal> (without the space between else and if)
-        </para>
-      </listitem>
-      <listitem>
-        <para>
           Mixing static and instance function calls (<literal>A::foo()</literal> vs. <literal>$a->foo()</literal> )
         </para>
       </listitem>
