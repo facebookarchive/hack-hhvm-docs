@@ -224,14 +224,10 @@ class AnnotatedClass {
       Hack decided to annotate the return types at the end of a function/method declaration instead of near the beginning found in languages like C#. This was done mainly for readability purposes. But there are other reasons to have them positioned the way they are because of closures and searchability. With respect to closures, if the return type is annotated at the beginning of a function, PHP could interpret the return type to be a constant string, thus ignoring the return type altogether. With respect to searchability, searching for &quot;function foo&quot; will produce more useable results than having to use wildcards or some other mechanism to find all the functions named <literal>foo()</literal>, regardless of return type. 
     </para>
     <para>
-      Here is a matrix of many of the types available for Hack. This matrix shows how the types are defined and used in a class member, parameter and return type scenario. 
-      <informaltable>
-        <tgroup cols="5">
-          <colspec align="center" />
-          <colspec align="center" />
-          <colspec align="center" />
-          <colspec align="center" />
-          <colspec align="center" />
+      Here are some matrices of many of the types available for Hack. These matrices shows how the types are defined and used in a class member, parameter and return type scenario. 
+      <table>
+        <title>Hack types and class usage</title>
+        <tgroup cols="3">
           <tbody>
             <row>
               <entry>
@@ -249,9 +245,696 @@ class AnnotatedClass {
                   <emphasis role="strong">Example Class Member Usage</emphasis>
                 </para>
               </entry>
+            </row>
+            <row>
+              <entry>
+                <para>
+                  Boolean
+                </para>
+              </entry>
+              <entry>
+                <para>
+                  <literal>bool</literal>
+                </para>
+              </entry>
+              <entry>
+                <para>
+                  <literal>bool $b = false;</literal>
+                </para>
+              </entry>
+            </row>
+            <row>
+              <entry>
+                <para>
+                  Integer
+                </para>
+              </entry>
+              <entry>
+                <para>
+                  <literal>int</literal>
+                </para>
+              </entry>
+              <entry>
+                <para>
+                  <literal>int $i = 3;</literal>
+                </para>
+              </entry>
+            </row>
+            <row>
+              <entry>
+                <para>
+                  Float
+                </para>
+              </entry>
+              <entry>
+                <para>
+                  <literal>float</literal>
+                </para>
+              </entry>
+              <entry>
+                <para>
+                  <literal>float $f = 3.14;</literal>
+                </para>
+              </entry>
+            </row>
+            <row>
+              <entry>
+                <para>
+                  String
+                </para>
+              </entry>
+              <entry>
+                <para>
+                  <literal>string</literal>
+                </para>
+              </entry>
+              <entry>
+                <para>
+                  <literal>string $s = &quot;Hello&quot;;</literal>
+                </para>
+              </entry>
+            </row>
+            <row>
+              <entry>
+                <para>
+                  Untyped Array (partial mode only)
+                </para>
+              </entry>
+              <entry>
+                <para>
+                  <literal>array</literal>
+                </para>
+              </entry>
+              <entry>
+                <para>
+                  <literal>array $x = array();</literal>
+                </para>
+              </entry>
+            </row>
+            <row>
+              <entry>
+                <para>
+                  Array-as-vector
+                </para>
+              </entry>
+              <entry>
+                <para>
+                  <literal>array&lt;someType&gt;</literal>
+                </para>
+              </entry>
+              <entry>
+                <para>
+                  <literal>array&lt;string&gt; $arrs = array(&quot;hi&quot;, &quot;bye&quot;);</literal>
+                </para>
+              </entry>
+            </row>
+            <row>
+              <entry>
+                <para>
+                  Array-as-map
+                </para>
+              </entry>
+              <entry>
+                <para>
+                  <literal>array&lt;keyType, valueType&gt;</literal>
+                </para>
+              </entry>
+              <entry>
+                <para>
+                  <literal>array&lt;int, string&gt; $arrs = array(42 =&gt; &quot;answer&quot;);</literal>
+                </para>
+              </entry>
+            </row>
+            <row>
+              <entry>
+                <para>
+                  Generic Type
+                </para>
+              </entry>
+              <entry>
+                <para>
+                  <literal>NonPrimitiveType&lt;T&gt;</literal>
+                </para>
+              </entry>
+              <entry>
+                <para>
+                  <literal>T $t;</literal>
+                </para>
+              </entry>
+            </row>
+            <row>
+              <entry>
+                <para>
+                  Vector
+                </para>
+              </entry>
+              <entry>
+                <para>
+                  <literal>Vector&lt;T&gt;</literal>
+                </para>
+              </entry>
+              <entry>
+                <para>
+                  <literal>protected Vector&lt;int&gt; $vec = Vector {3, 4};</literal>
+                </para>
+              </entry>
+            </row>
+            <row>
+              <entry>
+                <para>
+                  Map
+                </para>
+              </entry>
+              <entry>
+                <para>
+                  <literal>Map&lt;Tk, Tv&gt;</literal>
+                </para>
+              </entry>
+              <entry>
+                <para>
+                  <literal>protected Map&lt;string, int&gt; $map = Map {&quot;A&quot; =&gt; 1, &quot;B&quot; =&gt; 2};</literal>
+                </para>
+              </entry>
+            </row>
+            <row>
+              <entry>
+                <para>
+                  Set
+                </para>
+              </entry>
+              <entry>
+                <para>
+                  <literal>Set&lt;Tv&gt;</literal>
+                </para>
+              </entry>
+              <entry>
+                <para>
+                  <literal>protected Set&lt;int&gt; $set = Set{1,2};</literal>
+                </para>
+              </entry>
+            </row>
+            <row>
+              <entry>
+                <para>
+                  Pair
+                </para>
+              </entry>
+              <entry>
+                <para>
+                  <literal>Pair&lt;Tv1, Tv2&gt;</literal>
+                </para>
+              </entry>
+              <entry>
+                <para>
+                  <literal>protected Pair&lt;int, string&gt; $pair = Pair {7, 'a'};</literal>
+                </para>
+              </entry>
+            </row>
+            <row>
+              <entry>
+                <para>
+                  User Object
+                </para>
+              </entry>
+              <entry>
+                <para>
+                  <literal>FooClass</literal>
+                </para>
+              </entry>
+              <entry>
+                <para>
+                  <literal>protected FooClass $a;</literal>
+                </para>
+              </entry>
+            </row>
+            <row>
+              <entry>
+                <para>
+                  Void
+                </para>
+              </entry>
+              <entry>
+                <para>
+                  <literal>void</literal>
+                </para>
+              </entry>
+              <entry>
+                <para>
+                  N/A
+                </para>
+              </entry>
+            </row>
+            <row>
+              <entry>
+                <para>
+                  Mixed Type
+                </para>
+              </entry>
+              <entry>
+                <para>
+                  <literal>mixed</literal>
+                </para>
+              </entry>
+              <entry>
+                <para>
+                  <literal>protected mixed $m = 3;</literal>
+                </para>
+              </entry>
+            </row>
+            <row>
+              <entry>
+                <para>
+                  Nullable
+                </para>
+              </entry>
+              <entry>
+                <para>
+                  <literal>?someType</literal>
+                </para>
+              </entry>
+              <entry>
+                <para>
+                  <literal>protected ?int $ni = null;</literal>
+                </para>
+              </entry>
+            </row>
+            <row>
+              <entry>
+                <para>
+                  Tuple
+                </para>
+              </entry>
+              <entry>
+                <para>
+                  <literal>tuple(type1, type2)</literal>
+                </para>
+              </entry>
+              <entry>
+                <para>
+                  <literal>protected (string, int) $tup = tuple(&quot;4&quot;, 4);</literal>
+                </para>
+              </entry>
+            </row>
+            <row>
+              <entry>
+                <para>
+                  Closure
+                </para>
+              </entry>
+              <entry>
+                <para>
+                  <literal>(function(type1, type2, …): returnType)</literal>
+                </para>
+              </entry>
+              <entry>
+                <para>
+                  <literal>protected (function(int, int): string) $x;</literal>
+                </para>
+              </entry>
+            </row>
+            <row>
+              <entry>
+                <para>
+                  Resource
+                </para>
+              </entry>
+              <entry>
+                <para>
+                  <literal>resource</literal>
+                </para>
+              </entry>
+              <entry>
+                <para>
+                  <literal>$r = fopen('/dev/null', 'r');</literal>
+                </para>
+              </entry>
+            </row>
+          </tbody>
+        </tgroup>
+      </table>
+      <table>
+        <title>Hack types and parameter usage</title>
+        <tgroup cols="3">
+          <tbody>
+            <row>
+              <entry>
+                <para>
+                  <emphasis role="strong">Type</emphasis>
+                </para>
+              </entry>
+              <entry>
+                <para>
+                  <emphasis role="strong">Definition</emphasis>
+                </para>
+              </entry>
               <entry>
                 <para>
                   <emphasis role="strong">Example Parameter Usage</emphasis>
+                </para>
+              </entry>
+            </row>
+            <row>
+              <entry>
+                <para>
+                  Boolean
+                </para>
+              </entry>
+              <entry>
+                <para>
+                  <literal>bool</literal>
+                </para>
+              </entry>
+              <entry>
+                <para>
+                  <literal>function foo(bool
+                  $b)</literal>
+                </para>
+              </entry>
+            </row>
+            <row>
+              <entry>
+                <para>
+                  Integer
+                </para>
+              </entry>
+              <entry>
+                <para>
+                  <literal>int</literal>
+                </para>
+              </entry>
+              <entry>
+                <para>
+                  <literal>function foo(int
+                  $i)</literal>
+                </para>
+              </entry>
+            </row>
+            <row>
+              <entry>
+                <para>
+                  Float
+                </para>
+              </entry>
+              <entry>
+                <para>
+                  <literal>float</literal>
+                </para>
+              </entry>
+              <entry>
+                <para>
+                  <literal>function foo(float
+                  $f)</literal>
+                </para>
+              </entry>
+            </row>
+            <row>
+              <entry>
+                <para>
+                  String
+                </para>
+              </entry>
+              <entry>
+                <para>
+                  <literal>string</literal>
+                </para>
+              </entry>
+              <entry>
+                <para>
+                  <literal>function foo(string $s)</literal>
+                </para>
+              </entry>
+            </row>
+            <row>
+              <entry>
+                <para>
+                  Untyped Array (partial mode only)
+                </para>
+              </entry>
+              <entry>
+                <para>
+                  <literal>array</literal>
+                </para>
+              </entry>
+              <entry>
+                <para>
+                  <literal>function foo(array $arr)</literal>
+                </para>
+              </entry>
+            </row>
+            <row>
+              <entry>
+                <para>
+                  Array-as-vector
+                </para>
+              </entry>
+              <entry>
+                <para>
+                  <literal>array&lt;someType&gt;</literal>
+                </para>
+              </entry>
+              <entry>
+                <para>
+                  <literal>function foo(array&lt;string&gt; $arrs)</literal>
+                </para>
+              </entry>
+            </row>
+            <row>
+              <entry>
+                <para>
+                  Array-as-map
+                </para>
+              </entry>
+              <entry>
+                <para>
+                  <literal>array&lt;keyType, valueType&gt;</literal>
+                </para>
+              </entry>
+              <entry>
+                <para>
+                  <literal>function foo(array&lt;int, string&gt; $arrs)</literal>
+                </para>
+              </entry>
+            </row>
+            <row>
+              <entry>
+                <para>
+                  Generic Type
+                </para>
+              </entry>
+              <entry>
+                <para>
+                  <literal>NonPrimitiveType&lt;T&gt;</literal>
+                </para>
+              </entry>
+              <entry>
+                <para>
+                  <literal>function foo(T $t)</literal> or <literal>function foo&lt;T&gt;(T $t)</literal>
+                </para>
+              </entry>
+            </row>
+            <row>
+              <entry>
+                <para>
+                  Vector
+                </para>
+              </entry>
+              <entry>
+                <para>
+                  <literal>Vector&lt;T&gt;</literal>
+                </para>
+              </entry>
+              <entry>
+                <para>
+                  <literal>function foo(Vector&lt;int&gt; $vec)</literal>
+                </para>
+              </entry>
+            </row>
+            <row>
+              <entry>
+                <para>
+                  Map
+                </para>
+              </entry>
+              <entry>
+                <para>
+                  <literal>Map&lt;Tk, Tv&gt;</literal>
+                </para>
+              </entry>
+              <entry>
+                <para>
+                  <literal>function foo(Map&lt;string, int&gt; $map)</literal>
+                </para>
+              </entry>
+            </row>
+            <row>
+              <entry>
+                <para>
+                  Set
+                </para>
+              </entry>
+              <entry>
+                <para>
+                  <literal>Set&lt;Tv&gt;</literal>
+                </para>
+              </entry>
+              <entry>
+                <para>
+                  <literal>function foo(Set&lt;int&gt; $set)</literal>
+                </para>
+              </entry>
+            </row>
+            <row>
+              <entry>
+                <para>
+                  Pair
+                </para>
+              </entry>
+              <entry>
+                <para>
+                  <literal>Pair&lt;Tv1, Tv2&gt;</literal>
+                </para>
+              </entry>
+              <entry>
+                <para>
+                  <literal>function foo(Pair&lt;int, string&gt; $pair)</literal>
+                </para>
+              </entry>
+            </row>
+            <row>
+              <entry>
+                <para>
+                  User Object
+                </para>
+              </entry>
+              <entry>
+                <para>
+                  <literal>FooClass</literal>
+                </para>
+              </entry>
+              <entry>
+                <para>
+                  <literal>function foo(FooClass $a)</literal>
+                </para>
+              </entry>
+            </row>
+            <row>
+              <entry>
+                <para>
+                  Void
+                </para>
+              </entry>
+              <entry>
+                <para>
+                  <literal>void</literal>
+                </para>
+              </entry>
+              <entry>
+                <para>
+                  N/A
+                </para>
+              </entry>
+            </row>
+            <row>
+              <entry>
+                <para>
+                  Mixed Type
+                </para>
+              </entry>
+              <entry>
+                <para>
+                  <literal>mixed</literal>
+                </para>
+              </entry>
+              <entry>
+                <para>
+                  <literal>function foo(mixed $m)</literal>
+                </para>
+              </entry>
+            </row>
+            <row>
+              <entry>
+                <para>
+                  Nullable
+                </para>
+              </entry>
+              <entry>
+                <para>
+                  <literal>?someType</literal>
+                </para>
+              </entry>
+              <entry>
+                <para>
+                  <literal>function foo(?int $ni)</literal>
+                </para>
+              </entry>
+            </row>
+            <row>
+              <entry>
+                <para>
+                  Tuple
+                </para>
+              </entry>
+              <entry>
+                <para>
+                  <literal>tuple(type1, type2)</literal>
+                </para>
+              </entry>
+              <entry>
+                <para>
+                  <literal>function foo((string, int) $tup)</literal>
+                </para>
+              </entry>
+            </row>
+            <row>
+              <entry>
+                <para>
+                  Closure
+                </para>
+              </entry>
+              <entry>
+                <para>
+                  <literal>(function(type1, type2, …): returnType)</literal>
+                </para>
+              </entry>
+              <entry>
+                <para>
+                  <literal>function foo((function(int, int): string) $x)</literal>
+                </para>
+              </entry>
+            </row>
+            <row>
+              <entry>
+                <para>
+                  Resource
+                </para>
+              </entry>
+              <entry>
+                <para>
+                  <literal>resource</literal>
+                </para>
+              </entry>
+              <entry>
+                <para>
+                  <literal>function foo(resource $r)</literal>
+                </para>
+              </entry>
+            </row>
+          </tbody>
+        </tgroup>
+      </table>
+      <table>
+        <title>Hack types and return type usage</title>
+        <tgroup cols="3">
+          <tbody>
+            <row>
+              <entry>
+                <para>
+                  <emphasis role="strong">Type</emphasis>
+                </para>
+              </entry>
+              <entry>
+                <para>
+                  <emphasis role="strong">Definition</emphasis>
                 </para>
               </entry>
               <entry>
@@ -273,17 +956,6 @@ class AnnotatedClass {
               </entry>
               <entry>
                 <para>
-                  <literal>bool $b = false;</literal>
-                </para>
-              </entry>
-              <entry>
-                <para>
-                  <literal>function foo(bool
-                  $b)</literal>
-                </para>
-              </entry>
-              <entry>
-                <para>
                   <literal>: bool</literal>
                 </para>
               </entry>
@@ -297,17 +969,6 @@ class AnnotatedClass {
               <entry>
                 <para>
                   <literal>int</literal>
-                </para>
-              </entry>
-              <entry>
-                <para>
-                  <literal>int $i = 3;</literal>
-                </para>
-              </entry>
-              <entry>
-                <para>
-                  <literal>function foo(int
-                  $i)</literal>
                 </para>
               </entry>
               <entry>
@@ -329,17 +990,6 @@ class AnnotatedClass {
               </entry>
               <entry>
                 <para>
-                  <literal>float $f = 3.14;</literal>
-                </para>
-              </entry>
-              <entry>
-                <para>
-                  <literal>function foo(float
-                  $f)</literal>
-                </para>
-              </entry>
-              <entry>
-                <para>
                   <literal>: float</literal>
                 </para>
               </entry>
@@ -353,17 +1003,6 @@ class AnnotatedClass {
               <entry>
                 <para>
                   <literal>string</literal>
-                </para>
-              </entry>
-              <entry>
-                <para>
-                  <literal>string $s = &quot;Hello&quot;;</literal>
-                </para>
-              </entry>
-              <entry>
-                <para>
-                  <literal>function foo(string
-                  $s)</literal>
                 </para>
               </entry>
               <entry>
@@ -385,16 +1024,6 @@ class AnnotatedClass {
               </entry>
               <entry>
                 <para>
-                  <literal>array $x = array();</literal>
-                </para>
-              </entry>
-              <entry>
-                <para>
-                  <literal>function foo(array $arr)</literal>
-                </para>
-              </entry>
-              <entry>
-                <para>
                   <literal>: array</literal>
                 </para>
               </entry>
@@ -408,16 +1037,6 @@ class AnnotatedClass {
               <entry>
                 <para>
                   <literal>array&lt;someType&gt;</literal>
-                </para>
-              </entry>
-              <entry>
-                <para>
-                  <literal>array&lt;string&gt; $arrs = array(&quot;hi&quot;, &quot;bye&quot;);</literal>
-                </para>
-              </entry>
-              <entry>
-                <para>
-                  <literal>function foo(array&lt;string&gt; $arrs)</literal>
                 </para>
               </entry>
               <entry>
@@ -439,16 +1058,6 @@ class AnnotatedClass {
               </entry>
               <entry>
                 <para>
-                  <literal>array&lt;int, string&gt; $arrs = array(42 =&gt; &quot;answer&quot;);</literal>
-                </para>
-              </entry>
-              <entry>
-                <para>
-                  <literal>function foo(array&lt;int, string&gt; $arrs)</literal>
-                </para>
-              </entry>
-              <entry>
-                <para>
                   <literal>: array&lt;int, string&gt;</literal>
                 </para>
               </entry>
@@ -462,16 +1071,6 @@ class AnnotatedClass {
               <entry>
                 <para>
                   <literal>NonPrimitiveType&lt;T&gt;</literal>
-                </para>
-              </entry>
-              <entry>
-                <para>
-                  <literal>T $t;</literal>
-                </para>
-              </entry>
-              <entry>
-                <para>
-                  <literal>function foo(T $t)</literal> or <literal>function foo&lt;T&gt;(T $t)</literal>
                 </para>
               </entry>
               <entry>
@@ -493,16 +1092,6 @@ class AnnotatedClass {
               </entry>
               <entry>
                 <para>
-                  <literal>protected Vector&lt;int&gt; $vec = Vector {3, 4};</literal>
-                </para>
-              </entry>
-              <entry>
-                <para>
-                  <literal>function foo(Vector&lt;int&gt; $vec)</literal>
-                </para>
-              </entry>
-              <entry>
-                <para>
                   <literal>: Vector&lt;int&gt;</literal>
                 </para>
               </entry>
@@ -516,16 +1105,6 @@ class AnnotatedClass {
               <entry>
                 <para>
                   <literal>Map&lt;Tk, Tv&gt;</literal>
-                </para>
-              </entry>
-              <entry>
-                <para>
-                  <literal>protected Map&lt;string, int&gt; $map = Map {&quot;A&quot; =&gt; 1, &quot;B&quot; =&gt; 2};</literal>
-                </para>
-              </entry>
-              <entry>
-                <para>
-                  <literal>function foo(Map&lt;string, int&gt; $map)</literal>
                 </para>
               </entry>
               <entry>
@@ -547,16 +1126,6 @@ class AnnotatedClass {
               </entry>
               <entry>
                 <para>
-                  <literal>protected Set&lt;int&gt; $set = Set{1,2};</literal>
-                </para>
-              </entry>
-              <entry>
-                <para>
-                  <literal>function foo(Set&lt;int&gt; $set)</literal>
-                </para>
-              </entry>
-              <entry>
-                <para>
                   <literal>: Set&lt;int&gt;</literal>
                 </para>
               </entry>
@@ -570,16 +1139,6 @@ class AnnotatedClass {
               <entry>
                 <para>
                   <literal>Pair&lt;Tv1, Tv2&gt;</literal>
-                </para>
-              </entry>
-              <entry>
-                <para>
-                  <literal>protected Pair&lt;int, string&gt; $pair = Pair {7, 'a'};</literal>
-                </para>
-              </entry>
-              <entry>
-                <para>
-                  <literal>function foo(Pair&lt;int, string&gt; $pair)</literal>
                 </para>
               </entry>
               <entry>
@@ -601,16 +1160,6 @@ class AnnotatedClass {
               </entry>
               <entry>
                 <para>
-                  <literal>protected FooClass $a;</literal>
-                </para>
-              </entry>
-              <entry>
-                <para>
-                  <literal>function foo(FooClass $a)</literal>
-                </para>
-              </entry>
-              <entry>
-                <para>
                   <literal>: FooClass</literal>
                 </para>
               </entry>
@@ -624,16 +1173,6 @@ class AnnotatedClass {
               <entry>
                 <para>
                   <literal>void</literal>
-                </para>
-              </entry>
-              <entry>
-                <para>
-                  N/A
-                </para>
-              </entry>
-              <entry>
-                <para>
-                  N/A
                 </para>
               </entry>
               <entry>
@@ -655,16 +1194,6 @@ class AnnotatedClass {
               </entry>
               <entry>
                 <para>
-                  <literal>protected mixed $m = 3;</literal>
-                </para>
-              </entry>
-              <entry>
-                <para>
-                  <literal>function foo(mixed $m)</literal>
-                </para>
-              </entry>
-              <entry>
-                <para>
                   <literal>: mixed</literal>
                 </para>
               </entry>
@@ -678,16 +1207,6 @@ class AnnotatedClass {
               <entry>
                 <para>
                   <literal>?someType</literal>
-                </para>
-              </entry>
-              <entry>
-                <para>
-                  <literal>protected ?int $ni = null;</literal>
-                </para>
-              </entry>
-              <entry>
-                <para>
-                  <literal>function foo(?int $ni)</literal>
                 </para>
               </entry>
               <entry>
@@ -709,16 +1228,6 @@ class AnnotatedClass {
               </entry>
               <entry>
                 <para>
-                  <literal>protected (string, int) $tup = tuple(&quot;4&quot;, 4);</literal>
-                </para>
-              </entry>
-              <entry>
-                <para>
-                  <literal>function foo((string, int) $tup)</literal>
-                </para>
-              </entry>
-              <entry>
-                <para>
                   <literal>: (string, int)</literal>
                 </para>
               </entry>
@@ -732,16 +1241,6 @@ class AnnotatedClass {
               <entry>
                 <para>
                   <literal>(function(type1, type2, …): returnType)</literal>
-                </para>
-              </entry>
-              <entry>
-                <para>
-                  <literal>protected (function(int, int): string) $x;</literal>
-                </para>
-              </entry>
-              <entry>
-                <para>
-                  <literal>function foo((function(int, int): string) $x)</literal>
                 </para>
               </entry>
               <entry>
@@ -763,23 +1262,13 @@ class AnnotatedClass {
               </entry>
               <entry>
                 <para>
-                  <literal>$r = fopen('/dev/null', 'r');</literal>
-                </para>
-              </entry>
-              <entry>
-                <para>
-                  <literal>function foo(resource $r)</literal>
-                </para>
-              </entry>
-              <entry>
-                <para>
                   <literal>: resource</literal>
                 </para>
               </entry>
             </row>
           </tbody>
         </tgroup>
-      </informaltable>
+      </table>
     </para>
     <para>
       Most of the time, initialization of the class members will be done in a constructor (i.e., <literal>__construct()</literal>). For brevity, most of the initialization in the table above was done inline. However, sometimes brevity doesn't work very well. For the generic type, user object, nullable and closure class members, here are example initializations in the constructor: 
