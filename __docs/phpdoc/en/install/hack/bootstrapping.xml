@@ -10,6 +10,31 @@
     <title>Getting the typechecker running</title>
     <para>In the root of your project directory, create an empty file named <literal>.hhconfig</literal>. The typechecker uses this file to know what directory tree to typecheck without needing to specify paths to every command.</para>
     <para>Now, run <literal>hh_client</literal>. This will start up the typechecking daemon, wait for it to finish checking the current directory tree, and report any errors that it found. Since your code is at this point likely all PHP and not Hack code, it should report <literal>No errors</literal>.</para>
+    <note>
+      <para>
+        When you run <literal>hh_client</literal>, it looks in the current directory for the <literal>.hhconfig</literal> file. If <literal>.hhconfig</literal> is not found in the current directory, the directory tree will be traversed looking for that file until it finds one (or not).
+        <informalexample>
+          <programlisting role="bash">
+<![CDATA[
+/projects
+--/project-1
+--.hhconfig
+--/app
+
+--/project-2
+--/app 
+--.hhconfig
+]]>
+          </programlisting>
+          <para>
+            If you run <literal>hh_client</literal> in <literal>project-2</literal>, you actually run <literal>hh_client</literal> for the whole <literal>projects</literal> directory, potentially exposing errors in <literal>project-1</literal> instead. Also, if you run <literal>hh_client</literal> in <literal>project-1/app</literal> and there is an <literal>.hhconfig</literal> file there as well, the type checker will only check that directory, potentially ignoring other errors in <literal>project-1</literal>, outside the <literal>app</literal> directory.
+          </para>
+        </informalexample>
+      </para>
+      <para>
+        The bottom line is to put an <literal>.hhconfig</literal> file in your project root and only your project root.
+      </para>
+    </note>
     <para>To test that it is working, try adding a file with these contents to your project:
       <informalexample>
         <programlisting role="php">
