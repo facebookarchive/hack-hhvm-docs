@@ -888,6 +888,12 @@ will only be available when the extension has either
 been compiled into PHP or dynamically loaded at runtime.
 </simpara>'>
 
+<!ENTITY extension.constants.hhvm '<simpara xmlns="http://docbook.org/ns/docbook">
+The constants below are defined by this extension, and
+will only be available when the extension has either
+been compiled into HHVM.
+</simpara>'>
+
 <!-- For STANDARD Constants used in reference/$extname/constants.xml -->
 <!ENTITY extension.constants.core '<simpara xmlns="http://docbook.org/ns/docbook">
 The constants below are always available as part of the PHP core.

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- $Revision: 330232 $ -->
 
-<refentry xml:id="function.xhprof-sample-disable" xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink">
+<refentry xml:id="hhvm.function.xhprof-sample-disable" xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink">
  <refnamediv>
   <refname>xhprof_sample_disable</refname>
   <refpurpose>Stops xhprof sample profiler</refpurpose>

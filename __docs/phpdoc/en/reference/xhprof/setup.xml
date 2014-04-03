@@ -9,7 +9,7 @@
   <para>
    Although not required, xhprof includes an interface that's written in PHP.
    It's used to save and display the profiled data in a usable way, where viewing
-   is done via a web browser. So, a PHP enabled web server will likely make the
+   is done via a web browser. So, an HHVM enabled web server will likely make the
    xhprof experience more useful.
   </para>
   <para>

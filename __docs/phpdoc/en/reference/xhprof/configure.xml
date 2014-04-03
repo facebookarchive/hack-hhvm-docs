@@ -5,8 +5,17 @@
  &reftitle.install;
 
  <para>
-  &pecl.info;
-  <link xlink:href="&url.pecl.package;xhprof">&url.pecl.package;xhprof</link>
+  To install XHProf, you are currently required to <link xlink:href="https://github.com/facebook/hhvm/wiki#building-hhvm">build HHVM from source</link> using the <literal>cmake -D HOTPROFILER:BOOL=ON</literal> when compiling. For example, when compiling HHVM, you would do something like this:
+  <informalexample>
+    <programlisting role="bash">
+<![CDATA[
+cd hhvm
+git submodule update --init
+cmake -D HOTPROFILER:BOOL=ON .
+make
+]]>
+    </programlisting>
+  </informalexample>
  </para>
 
 </section>
