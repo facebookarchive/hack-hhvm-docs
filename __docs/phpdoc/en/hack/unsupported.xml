@@ -89,23 +89,38 @@
   <sect1 xml:id="hack.unsupportedphpfeatures.toplevelcode">
     <title>Top-level code</title>
     <para>
-      There is something else to note about what Hack doesn't support: top-level code. This may be surprising, but Hack wants everything in a class or function. The implication here is that Hack will complain when writing certain scripts, for example.
+      There is something else to note about what Hack doesn't support: top-level code. This may be surprising, but the Hack type checker wants everything in a class or function (global scope static analysis can prove to be very difficult). The implication here is that the Hack type checker will ignore any top-level code when in <link linkend="hack.modes.partial"><literal>partial</literal></link> or <link linkend="hack.modes.decl"><literal>decl</literal></link> modes, and actually throw an error in <link linkend="hack.modes.strict"><literal>strict</literal></link> mode. For example:
       <informalexample>
         <programlisting role="php">
 <![CDATA[
-<?hh
+<?hh // strict
+
 // Top-level code is not supported in Hack
+// It is ignored in partial and decl modes
+// And a type checker error is thrown in strict mode
 for ($i=1; $i<=5; $i++)
 {
   echo "The number is " . $i . "\n";
 }
 ]]>
         </programlisting>
+        &example.outputs;
+        <screen>
+<![CDATA[
+File "/tmp/topCode.php", line 6, characters 1-3:
+Remove all toplevel statements except for requires
+]]>
+        </screen>
         <para>
-          Note, though, the above code will run with the HHVM virtual machine (and, of course, Zend). So typing <literal>php topCode.php</literal> will run correctly. The code just will not be type checked.
+          As with many cases in Hack, the above code will run in HHVM just fine. So typing <literal>hhvm topCode.php</literal> will run correctly. The code just will not be type checked.
         </para>
       </informalexample>
     </para>
+    <note>
+      <para>
+        As you can see from the error message in the above example, the only top-level statement allowed by the Hack type checker is <literal>require</literal> and <literal>require_once</literal>
+      </para>
+    </note>
   </sect1>
   <sect1 xml:id="hack.unsupportedphpfeatures.collisions">
     <title>Collisions</title>
