@@ -52,6 +52,7 @@ $iv = ImmVector {1, 2, 3};
  
 <!-- {{{ Class synopsis -->
     <classsynopsisinfo>
+     <modifier>final</modifier> <modifier>class</modifier>
      <ooclass>
       <classname>ImmVector&lt;Tv&gt;</classname>
      </ooclass>

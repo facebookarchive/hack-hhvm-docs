@@ -48,25 +48,45 @@ $arr5[9] = 3;
   <itemizedlist>
     <listitem>
       <para>
-        <literal>Vector</literal>: An ordered, index-based list collection.
+        <literal><link linkend="class.hack.vectortv">Vector</link></literal>: An ordered, index-based list collection.
       </para>
     </listitem>
     <listitem>
       <para>
-        <literal>Map</literal>: An ordered dictionary-style collection.
+        <literal><link linkend="class.hack.immvectortv">ImmVector</link></literal>: An immutable, ordered, index-based list collection.
       </para>
     </listitem>
     <listitem>
       <para>
-        <literal>Set</literal>: A list-based collection that stores unique values.
+        <literal><link linkend="class.hack.maptktv">Map</link></literal>: An ordered dictionary-style collection.
       </para>
     </listitem>
     <listitem>
       <para>
-        <literal>Pair</literal>: An index-based collection that can hold exactly two elements.
+        <literal><link linkend="class.hack.immmaptktv">ImmMap</link></literal>: An immutable, ordered dictionary-style collection.
+      </para>
+    </listitem>
+    <listitem>
+      <para>
+        <literal><link linkend="class.hack.settv">Set</link></literal>: A list-based collection that stores unique values.
+      </para>
+    </listitem>
+    <listitem>
+      <para>
+        <literal><link linkend="class.hack.immsettv">ImmSet</link></literal>: An immutable, list-based collection that stores unique values.
+      </para>
+    </listitem>
+    <listitem>
+      <para>
+        <literal><link linkend="class.hack.pairtv1tv2">Pair</link></literal>: An index-based collection that can hold exactly two elements.
       </para>
     </listitem>
   </itemizedlist>
+  <note>
+    <para>
+      All of the above classes are <link linkend="language.oop5.final"><literal>final</literal></link>. You will need to use some sort of composition pattern or define new classes if you want to do something such as add new helper methods.
+    </para>
+  </note>
   <para>
     The primary interfaces implemented by these collections (except <literal>Pair</literal>) have two incarnations: the normal, read-write interface implemented by the classes above and a read-only interface. The read-write interface is prefixed by <literal>Mutable</literal> and the read-only interface is prefixed by <literal>Const</literal>.
   </para>

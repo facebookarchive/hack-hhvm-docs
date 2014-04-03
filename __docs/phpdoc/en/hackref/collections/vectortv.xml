@@ -39,6 +39,7 @@
  
 <!-- {{{ Class synopsis -->
     <classsynopsisinfo>
+     <modifier>final</modifier> <modifier>class</modifier>
      <ooclass>
       <classname>Vector&lt;Tv&gt;</classname>
      </ooclass>

@@ -54,6 +54,7 @@ function foo(): void {
 
 <!-- {{{ Class synopsis -->
     <classsynopsisinfo>
+     <modifier>final</modifier> <modifier>class</modifier>
      <ooclass>
       <classname>ImmMap&lt;Tk, Tv&gt;</classname>
      </ooclass>

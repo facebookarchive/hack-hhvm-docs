@@ -42,6 +42,7 @@
 
 <!-- {{{ Class synopsis -->
     <classsynopsisinfo>
+     <modifier>final</modifier> <modifier>class</modifier>
      <ooclass>
       <classname>Map&lt;Tk, Tv&gt;</classname>
      </ooclass>

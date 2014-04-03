@@ -27,6 +27,7 @@
 
 <!-- {{{ Class synopsis -->
     <classsynopsisinfo>
+     <modifier>final</modifier> <modifier>class</modifier>  
      <ooclass>
       <classname>ImmSet&lt;Tv&gt;</classname>
      </ooclass>
