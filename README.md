@@ -1,5 +1,9 @@
 The repo for hhvm.com. This contains the website, blog and HHVM/Hack documentation. You'll need PHP v5.3 or greater, and have SQLite installed.
 
+# Contributing to HHVM and Hack Manual Documentation
+
+You agree to license any contributions that you make to the HHVM and Hack Manual Documentation under the Creative Commons Attribution 3.0 License found at http://creativecommons.org/licenses/by/3.0/legalcode.
+
 # To update or add documentation
 
 The docs live in `__docs/phpdoc/en`. The `.xml` files and associated directories here are basically the top level outline for the documents. The key ones are `language` and `reference`.
