@@ -259,7 +259,7 @@ class AnnotatedClass {
               </entry>
               <entry>
                 <para>
-                  <literal>bool $b = false;</literal>
+                  <literal>protected bool $b;</literal>
                 </para>
               </entry>
             </row>
@@ -276,7 +276,7 @@ class AnnotatedClass {
               </entry>
               <entry>
                 <para>
-                  <literal>int $i = 3;</literal>
+                  <literal>protected int $i;</literal>
                 </para>
               </entry>
             </row>
@@ -293,7 +293,7 @@ class AnnotatedClass {
               </entry>
               <entry>
                 <para>
-                  <literal>float $f = 3.14;</literal>
+                  <literal>protected float $f;</literal>
                 </para>
               </entry>
             </row>
@@ -310,7 +310,7 @@ class AnnotatedClass {
               </entry>
               <entry>
                 <para>
-                  <literal>string $s = &quot;Hello&quot;;</literal>
+                  <literal>protected string $s;</literal>
                 </para>
               </entry>
             </row>
@@ -327,7 +327,7 @@ class AnnotatedClass {
               </entry>
               <entry>
                 <para>
-                  <literal>array $x = array();</literal>
+                  <literal>protected array $x;</literal>
                 </para>
               </entry>
             </row>
@@ -344,7 +344,7 @@ class AnnotatedClass {
               </entry>
               <entry>
                 <para>
-                  <literal>array&lt;string&gt; $arrs = array(&quot;hi&quot;, &quot;bye&quot;);</literal>
+                  <literal>protected array&lt;string&gt; $arrs;</literal>
                 </para>
               </entry>
             </row>
@@ -361,7 +361,7 @@ class AnnotatedClass {
               </entry>
               <entry>
                 <para>
-                  <literal>array&lt;int, string&gt; $arrs = array(42 =&gt; &quot;answer&quot;);</literal>
+                  <literal>protected array&lt;int, string&gt; $arrs;</literal>
                 </para>
               </entry>
             </row>
@@ -378,7 +378,7 @@ class AnnotatedClass {
               </entry>
               <entry>
                 <para>
-                  <literal>T $t;</literal>
+                  <literal>protected T $t;</literal>
                 </para>
               </entry>
             </row>
@@ -395,7 +395,7 @@ class AnnotatedClass {
               </entry>
               <entry>
                 <para>
-                  <literal>protected Vector&lt;int&gt; $vec = Vector {3, 4};</literal>
+                  <literal>protected Vector&lt;int&gt; $vec;</literal>
                 </para>
               </entry>
             </row>
@@ -412,7 +412,7 @@ class AnnotatedClass {
               </entry>
               <entry>
                 <para>
-                  <literal>protected Map&lt;string, int&gt; $map = Map {&quot;A&quot; =&gt; 1, &quot;B&quot; =&gt; 2};</literal>
+                  <literal>protected Map&lt;string, int&gt; $map;</literal>
                 </para>
               </entry>
             </row>
@@ -429,7 +429,7 @@ class AnnotatedClass {
               </entry>
               <entry>
                 <para>
-                  <literal>protected Set&lt;int&gt; $set = Set{1,2};</literal>
+                  <literal>protected Set&lt;int&gt; $set;</literal>
                 </para>
               </entry>
             </row>
@@ -446,7 +446,7 @@ class AnnotatedClass {
               </entry>
               <entry>
                 <para>
-                  <literal>protected Pair&lt;int, string&gt; $pair = Pair {7, 'a'};</literal>
+                  <literal>protected Pair&lt;int, string&gt; $pair;</literal>
                 </para>
               </entry>
             </row>
@@ -497,7 +497,7 @@ class AnnotatedClass {
               </entry>
               <entry>
                 <para>
-                  <literal>protected mixed $m = 3;</literal>
+                  <literal>protected mixed $m;</literal>
                 </para>
               </entry>
             </row>
@@ -514,7 +514,7 @@ class AnnotatedClass {
               </entry>
               <entry>
                 <para>
-                  <literal>protected ?int $ni = null;</literal>
+                  <literal>protected ?int $ni;</literal>
                 </para>
               </entry>
             </row>
@@ -531,7 +531,7 @@ class AnnotatedClass {
               </entry>
               <entry>
                 <para>
-                  <literal>protected (string, int) $tup = tuple(&quot;4&quot;, 4);</literal>
+                  <literal>protected (string, int) $tup;</literal>
                 </para>
               </entry>
             </row>
@@ -565,7 +565,7 @@ class AnnotatedClass {
               </entry>
               <entry>
                 <para>
-                  <literal>$r = fopen('/dev/null', 'r');</literal>
+                  <literal>protected resource $r;</literal>
                 </para>
               </entry>
             </row>
