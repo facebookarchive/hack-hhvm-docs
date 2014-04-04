@@ -382,7 +382,7 @@ object(Map)#1 (2) {
 <sect1 xml:id="hack.collections.set">
     <title>Set</title>
     <para>
-      Sets are an unordered associative collection that stores unique values. Unlike vectors and maps, sets do not have keys, and thus cannot be iterated on keys (i.e., <literal>Set</literal> does not implement <literal>KeyedIterable</literal>). Likewise, sets do not support <literal>$c[$k]</literal> or <literal>$c[$k]=$v</literal> syntax (though <literal>$c[]=$v</literal> syntax is supported for adding elements). Insert, remove, and search operations for <literal>Set</literal> are performed in O(lg N) time or better. Intersect and some other operations are available in the Sets class. <emphasis>Note: <literal>Set</literal> only supports <literal>int</literal> and <literal>string</literal> values at present. Support for other types may come in the future.</emphasis> Here is the <link linkend="class.hack.settv">programmer accessible interface</link> of a Hack implemented <literal>Set</literal>.
+      Sets are an ordered collection that stores unique values. Unlike vectors and maps, sets do not have keys, and thus cannot be iterated on keys (i.e., <literal>Set</literal> does not implement <literal>KeyedIterable</literal>). Likewise, sets do not support <literal>$c[$k]</literal> or <literal>$c[$k]=$v</literal> syntax (though <literal>$c[]=$v</literal> syntax is supported for adding elements). Insert, remove, and search operations for <literal>Set</literal> are performed in O(lg N) time or better. Intersect and some other operations are available in the Sets class. <emphasis>Note: <literal>Set</literal> only supports <literal>int</literal> and <literal>string</literal> values at present. Support for other types may come in the future.</emphasis> Here is the <link linkend="class.hack.settv">programmer accessible interface</link> of a Hack implemented <literal>Set</literal>.
     </para>
     <para>
       Here is a basic example showing how <literal>Set</literal> can be used:
@@ -398,6 +398,9 @@ function main() {
   // Add elements using "$c[]=$v" syntax
   $set[] = "C";
  
+  // This will have no effect since "B" exists already
+  $set[] = "B";
+  
   // Add elements using the add() method
   $set->add("D")->add("E");
  

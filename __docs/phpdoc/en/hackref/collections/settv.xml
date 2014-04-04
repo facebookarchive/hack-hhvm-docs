@@ -10,7 +10,7 @@
   <section xml:id="settv.intro">
    &reftitle.intro;
    <para>
-    Set is an ordered set-style collection. HHVM provides a native implementation for this class. The PHP class definition below is not actually used at run time; it is simply provided for the typechecker and for developer reference. 
+    <link linkend="hack.collections.set">Set</link> is an ordered set-style (unique values) collection. HHVM provides a native implementation for this class. The PHP class definition below is not actually used at run time; it is simply provided for the typechecker and for developer reference. 
   </para>
    <para> 
     Like all objects in PHP, Sets have reference-like semantics. When a caller passes a Set to a callee, the callee can modify the Set and the caller will see the changes. Sets do not have "copy-on-write" semantics. 
