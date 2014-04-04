@@ -173,7 +173,7 @@ main_col();
   <sect1 xml:id="hack.collections.vector">
     <title>Vector</title>
     <para>
-      Vectors are an integer-indexed (zero-based) collection with similar semantics to a C++ <literal>vector</literal> or a C#/Java <literal>ArrayList</literal>. Random access to elements happen in O(1) time. Inserts occur at O(1) when added to the end, but could hit O(n) with inserts elsewhere. Removal has similar time semantics. Iteration over the entire vector occurs at O(n) time. Inserting n elements into an empty Vector will take O(n) time in the average case (amortized). Here is the <link linkend="class.hack.vectortv">programmer accessible interface</link> of a Hack <literal>Vector</literal>.
+      A Vector is an integer-indexed (zero-based) collection with similar semantics to a C++ <literal>vector</literal> or a C#/Java <literal>ArrayList</literal>. Random access to elements happen in O(1) time. Inserts occur at O(1) when added to the end, but could hit O(n) with inserts elsewhere. Removal has similar time semantics. Iteration over the entire vector occurs at O(n) time. Inserting n elements into an empty Vector will take O(n) time in the average case (amortized). Here is the <link linkend="class.hack.vectortv">programmer accessible interface</link> of a Hack <literal>Vector</literal>.
     </para>
     <para>
       Here are some basic examples that show how <literal>Vector</literal> can be used:
@@ -282,7 +282,7 @@ main();
   <sect1 xml:id="hack.collections.map">
     <title>Map</title>
     <para>
-      Maps are an ordered dictionary-style collection. Elements are stored as key/value pairs. <emphasis>Maps retain element insertion order</emphasis>, meaning that iterating over a Map will visit the elements in the same order that they were inserted. Insert, remove and search operations are performed in O(lg n) time or better (amortized). <emphasis>Note: <literal>Map</literal> only supports <literal>int</literal> and <literal>string</literal> keys at present. Support for other types may come in the future.</emphasis> Here is the <link linkend="class.hack.maptktv">programmer accessible interface</link> for <literal>Map</literal>.
+      A Map is an ordered dictionary-style collection. Elements are stored as key/value pairs. <emphasis>Maps retain element insertion order</emphasis>, meaning that iterating over a Map will visit the elements in the same order that they were inserted. Insert, remove and search operations are performed in O(lg n) time or better (amortized). <emphasis>Note: <literal>Map</literal> only supports <literal>int</literal> and <literal>string</literal> keys at present. Support for other types may come in the future.</emphasis> Here is the <link linkend="class.hack.maptktv">programmer accessible interface</link> for <literal>Map</literal>.
     </para>
     <para>
       Here are some basic examples showing how <literal>Map</literal> can be used:
@@ -382,7 +382,7 @@ object(Map)#1 (2) {
 <sect1 xml:id="hack.collections.set">
     <title>Set</title>
     <para>
-      Sets are an ordered collection that stores unique values. Unlike vectors and maps, sets do not have keys, and thus cannot be iterated on keys (i.e., <literal>Set</literal> does not implement <literal>KeyedIterable</literal>). Likewise, sets do not support <literal>$c[$k]</literal> or <literal>$c[$k]=$v</literal> syntax (though <literal>$c[]=$v</literal> syntax is supported for adding elements). Insert, remove, and search operations for <literal>Set</literal> are performed in O(lg N) time or better. Intersect and some other operations are available in the Sets class. <emphasis>Note: <literal>Set</literal> only supports <literal>int</literal> and <literal>string</literal> values at present. Support for other types may come in the future.</emphasis> Here is the <link linkend="class.hack.settv">programmer accessible interface</link> of a Hack implemented <literal>Set</literal>.
+      A Set is an ordered collection that stores unique values. Unlike vectors and maps, sets do not have keys, and thus cannot be iterated on keys (i.e., <literal>Set</literal> does not implement <literal>KeyedIterable</literal>). Likewise, sets do not support <literal>$c[$k]</literal> or <literal>$c[$k]=$v</literal> syntax (though <literal>$c[]=$v</literal> syntax is supported for adding elements). Insert, remove, and search operations for <literal>Set</literal> are performed in O(lg N) time or better. Intersect and some other operations are available in the Sets class. <emphasis>Note: <literal>Set</literal> only supports <literal>int</literal> and <literal>string</literal> values at present. Support for other types may come in the future.</emphasis> Here is the <link linkend="class.hack.settv">programmer accessible interface</link> of a Hack implemented <literal>Set</literal>.
     </para>
     <para>
       Here is a basic example showing how <literal>Set</literal> can be used:
@@ -474,7 +474,7 @@ object(Set)#1 (2) {
   <sect1 xml:id="hack.collections.pair">
     <title>Pair</title>
     <para>
-      An indexed container restricted to containing exactly two elements. <literal>Pair</literal> has integer keys; key 0 refers to the first element and key 1 refers to the second element (all other integer keys are out of bounds). The first type parameter specifies the type constraint for the first element, and the second type parameter specifies the type constraint for the second element. <literal>Pair</literal>s are immutable, meaning that the elements of a <literal>Pair</literal> cannot be assigned to or removed. Note however that <literal>Pair</literal>s may contain mutable objects. <emphasis>In many cases, a <link linkend="hack.tuples">tuple</link> is a better choice than a Pair.</emphasis> Here is the <link linkend="class.hack.pairtv1tv2">programmer accessible interface</link> for Hack pairs.
+      A Pair is an indexed container restricted to containing exactly two elements. <literal>Pair</literal> has integer keys; key 0 refers to the first element and key 1 refers to the second element (all other integer keys are out of bounds). The first type parameter specifies the type constraint for the first element, and the second type parameter specifies the type constraint for the second element. <literal>Pair</literal>s are immutable, meaning that the elements of a <literal>Pair</literal> cannot be assigned to or removed. Note however that <literal>Pair</literal>s may contain mutable objects. <emphasis>In many cases, a <link linkend="hack.tuples">tuple</link> is a better choice than a Pair.</emphasis> Here is the <link linkend="class.hack.pairtv1tv2">programmer accessible interface</link> for Hack pairs.
     </para>
     <para>
       Here is a simple example showing how <literal>Pair</literal> can be used:
