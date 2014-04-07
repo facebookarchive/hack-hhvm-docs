@@ -11,8 +11,8 @@
   <methodsynopsis>
    <modifier>public</modifier>
    <type>ImmSet&lt;Tv&gt;</type>
-   <methodname>ImmSet&lt;Tv&gt;::fromArray</methodname>
-   <methodparam><type>array</type><parameter>arr</parameter></methodparam>
+   <methodname>ImmSet&lt;Tv&gt;::fromArrays</methodname>
+   <methodparam><type>array</type><parameter>...</parameter></methodparam>
   </methodsynopsis>
 
 <!-- Note: If this method/property as an alternate procedural mapping then the method/property synopsis MUST be listed BEFORE the function synopsis -->
