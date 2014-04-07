@@ -160,11 +160,49 @@ function foo_strict(bool $b): int {
       However, since the code was declared with <literal>// decl</literal>, the type checker ignores
       the type annotation and the fact that <literal>bar_partial()</literal> actually returns a <literal>string</literal>. However, now <literal>// strict</literal> code can call <literal>bar_partial()</literal> without type checker errors.
     </para>
+    <note>
+      <para>
+        In practical terms, using <literal>// Decl </literal> is equivalent to putting <literal><link linkend="hack.modes.unsafe">// UNSAFE</link></literal> at the top of every function (actually, in this respect, this is really close to how the Hack type checker works). The following example demonstrates this equivalency:
+        <informalexample>
+          <programlisting role="php">
+<![CDATA[
+<?hh // decl
+
+function foo(): int {
+  return "Hi";
+}
+
+function bar(): string {
+  return 3;
+}
+]]>
+          </programlisting>
+          <programlisting role="php">
+<![CDATA[
+<?hh
+
+function foo(): int {
+  // UNSAFE
+  return "Hi";
+}
+
+function bar(): string {
+  // UNSAFE
+  return 3;
+}
+]]>
+          </programlisting>
+        </informalexample>
+      </para>
+      <para>
+        So, <literal>// UNSAFE</literal> is used for "letting me do unsafe things one function at a time"; <literal>// decl</literal> is used to, in essence, "unsafe the entire file". If possible, try to use <literal>// UNSAFE</literal> over <literal>// decl</literal> in order to narrow down as much as possible the code that is not type-checked.
+      </para>
+    </note>
   </sect1>
   <sect1 xml:id="hack.modes.unsafe">
     <title>Unsafe</title>
     <para>
-      <literal>// UNSAFE</literal> disables the type checker from the point of unsafe declaration until the end of the current block of code (where the end of the current block generally refers to the associated ending brace (<literal>}</literal>) of which the <literal>// UNSAFE</literal> is declared). 
+      <literal>// UNSAFE</literal> disables the type checker from the point of unsafe declaration until the end of the current block of code (where the end of the current block generally refers to the associated ending brace (<literal>}</literal>) of which the <literal>// UNSAFE</literal> is declared).
      </para>
      <para>
        From the unsafe comment until the end of the block, the engineer is trusted. It can be useful when there is a bug in the type checker and work must continue. <literal>// UNSAFE</literal> can be used in any mode (<literal>// strict</literal>, <literal>// partial</literal> or <literal>// decl</literal>). It should not be used without discretion, however. Since unsafe code is ignored by the type checker, there are chances that runtime errors may result.
