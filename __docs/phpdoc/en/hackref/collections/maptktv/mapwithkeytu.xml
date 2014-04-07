@@ -10,7 +10,7 @@
   &reftitle.description;
   <methodsynopsis>
    <modifier>public</modifier>
-   <type>Map&lt;Tk, Tv&gt;</type>
+   <type>Map&lt;Tk, Tu&gt;</type>
    <methodname>Map&lt;Tk, Tv&gt;::mapWithKey&lt;Tu&gt;</methodname>
    <methodparam><type>(function(Tk, Tv): Tu)</type><parameter>callback</parameter></methodparam>
   </methodsynopsis>
