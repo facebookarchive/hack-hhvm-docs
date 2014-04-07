@@ -14,6 +14,35 @@
    <para>
     Interface to provide accessing objects as arrays.
    </para>
+   <warning>
+    <para>
+      The Hack type checker will allow for objects to implement the <literal>ArrayAccess</literal> (e.g., the type checker will make sure the interface is implemented correctly), but the type checker does not support using array semantics on such an object.... and there are no plans to allow this behavior. For example:
+            <informalexample>
+        <programlisting role="php">
+<![CDATA[
+<?hh
+// Assume Obj implements ArrayAccess<Tk, Tv>
+
+function main(): void {
+  $o = new Obj();
+  $o->offsetSet(3, 3); // works fine
+  $o[4] = 4; // NOT SUPPORTED BY HACK
+}
+]]>
+
+        </programlisting>
+        &example.outputs;
+        <screen>
+<![CDATA[
+File "/tmp/aa1.php", line 6, characters 3-7:
+This is not a container, this is an object of type Obj
+File "/tmp/aa1.php", line 4, characters 8-16:
+You might want to check this out
+]]>
+        </screen>
+      </informalexample>
+    </para>
+   </warning>
   </section>
 <!-- }}} -->
 
@@ -31,7 +60,7 @@
      </ooclass>
     </classsynopsisinfo>
 <!-- }}} -->
-    
+
     <classsynopsisinfo role="comment">&Methods;</classsynopsisinfo>
     <xi:include xpointer="xmlns(db=http://docbook.org/ns/docbook) xpointer(id('class.hack.arrayaccesstktv')/db:refentry/db:refsect1[@role='description']/descendant::db:methodsynopsis[1])" />
    </classsynopsis>
@@ -45,67 +74,48 @@
     <programlisting role="php">
 <![CDATA[
 <?hh
-class Obj<string, string> implements ArrayAccess<string, string> {
-  private array $container = array();
+class Obj<Tk, Tv> implements ArrayAccess<Tk, Tv> {
+  private Map<Tk, Tv> $container;
   public function __construct() {
-    $this->container = array(
-      "one"   => 1,
-      "two"   => 2,
-      "three" => 3,
-    );
+    $this->container = Map {};
   }
-  public function offsetSet(string $key, string $value): this {
-    if (is_null($key)) {
-      $this->container[] = $value;
-    } else {
+  public function offsetSet(Tk $key, Tv $value): this {
+    if (!is_null($key)) {
       $this->container[$key] = $value;
     }
+    return $this;
   }
-  public function offsetExists(string $offset): bool {
+  public function offsetExists(Tk $offset): bool {
     return isset($this->container[$offset]);
   }
-  public function offsetUnset(string $offset): this {
+  public function offsetUnset(Tk $offset): this {
     unset($this->container[$offset]);
+    return $this;
   }
-  public function offsetGet(string $offset): ?string {
-    return isset($this->container[$offset]) ? $this->container[$offset] : null;
+  public function offsetGet(Tk $offset): ?Tv {
+    return isset($this->container[$offset]) ? $this->container[$offset] : $
   }
 }
 
-$obj = new Obj();
+function main(): void {
+  $o = new Obj();
+  $o->offsetSet(3, 3);
+  var_dump($o);
+}
 
-var_dump(isset($obj["two"]));
-var_dump($obj["two"]);
-unset($obj["two"]);
-var_dump(isset($obj["two"]));
-$obj["two"] = "A value";
-var_dump($obj["two"]);
-$obj[] = 'Append 1';
-$obj[] = 'Append 2';
-$obj[] = 'Append 3';
-print_r($obj);
+main();
 ]]>
     </programlisting>
     &example.outputs.similar;
     <screen>
 <![CDATA[
-bool(true)
-int(2)
-bool(false)
-string(7) "A value"
-obj Object
-(
-    [container:obj:private] => Array
-        (
-            [one] => 1
-            [three] => 3
-            [two] => A value
-            [0] => Append 1
-            [1] => Append 2
-            [2] => Append 3
-        )
-
-)
+object(Obj)#1 (1) {
+  ["container":"Obj":private]=>
+  object(HH\Map)#2 (1) {
+    [3]=>
+    int(3)
+  }
+}
 ]]>
     </screen>
    </example><!-- }}} -->
