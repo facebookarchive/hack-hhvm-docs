@@ -60,7 +60,7 @@ int(-1)
   </para>
   <note>
     <para>
-      Classes with only public fields can also be used for the same representation. 
+      Classes with only public fields can also be used for the same representation.
     </para>
   </note>
   <para>
@@ -86,7 +86,7 @@ function foo(MyShape $x): void {}
     </informalexample>
     <note>
       <para>
-        Notice how shapes are declared with the HHVM keyword <literal>type</literal> or <literal>newtype</literal>. This means shapes follow the same behavior as a <link linkend="hack.typealiasing">type alias or opaque type</link> (e.g. underlying behavior can be accessed and changed across files for a type alias). 
+        Notice how shapes are declared with the HHVM keyword <literal>type</literal> or <literal>newtype</literal>. This means shapes follow the same behavior as a <link linkend="hack.typealiasing">type alias or opaque type</link> (e.g. underlying behavior can be accessed and changed across files for a type alias).
       </para>
     </note>
   </para>
@@ -100,19 +100,19 @@ function foo(MyShape $x): void {}
         <programlisting role="php">
 <![CDATA[
 <?hh
- 
+
 type Point2D = shape('x' => int, 'y' => int);
- 
+
 function dotProduct(Point2D $a, Point2D $b): int {
   var_dump($a);
   var_dump($b);
   return $a['x'] * $b['x'] + $a['y'] * $b['y'];
 }
- 
+
 function main_sse(): void {
   echo dotProduct(shape('x' => 3, 'y' => 3), shape('x' => 4, 'y' => 4));
 }
- 
+
 main_sse();
 ]]>
         </programlisting>
@@ -123,7 +123,7 @@ main_sse();
 ]]>
         </screen>
         <para>
-          Notice how the "keys" of the shape are indicies to <literal>Point2D</literal> (e.g., <literal>'x'</literal> and <literal>'y'</literal>). 
+          Notice how the "keys" of the shape are indicies to <literal>Point2D</literal> (e.g., <literal>'x'</literal> and <literal>'y'</literal>).
         </para>
       </informalexample>
     </para>
@@ -138,9 +138,9 @@ main_sse();
         <programlisting role="php">
 <![CDATA[
 <?hh
- 
+
 type RandomData = shape('id' => string, 'url' => string, 'count' => int);
- 
+
 function foo_saf(RandomData $rd): RandomData {
   if ($rd['id'] === '573065673A34Z') {
     $rd['count']++;
@@ -157,15 +157,15 @@ function foo_saf(RandomData $rd): RandomData {
         <programlisting role="php">
 <![CDATA[
 <?hh
- 
+
 function setup_saf() {
   $rd = shape('id' => null, 'url' => null, 'count' => 0);
   $rd['id'] = '573065673A34Y';
   $rd['url'] = 'http://facebook.com';
   var_dump($rd);
   var_dump(foo_saf($rd));
- 
- 
+
+
   // This should cause a Hack error
   // But this will still run in HHVM
   $rd['count'] = 'I should error';
@@ -177,19 +177,19 @@ function setup_saf() {
         <programlisting role="php">
 <![CDATA[
 <?hh
- 
+
 require_once 'shapesAcrossFiles1.php';
 require_once 'shapesAcrossFiles2.php';
- 
+
 function main_saf() {
   setup_saf();
 }
- 
+
 main_saf();
 ]]>
         </programlisting>
         <para>
-          Running <literal>main_saf()</literal> should produce a Hack error in <literal>setup_saf()</literal> since <literal>$rd['count']</literal> was set to a <literal>string</literal> and the shape <literal>RandomData</literal> expects <literal>count</literal> to be an <literal>int</literal> when <literal>foo()</literal> is called. 
+          Running <literal>main_saf()</literal> should produce a Hack error in <literal>setup_saf()</literal> since <literal>$rd['count']</literal> was set to a <literal>string</literal> and the shape <literal>RandomData</literal> expects <literal>count</literal> to be an <literal>int</literal> when <literal>foo()</literal> is called.
         </para>
         &example.outputs;
         <screen>
@@ -243,27 +243,27 @@ array(3) {
         <programlisting role="php">
 <![CDATA[
 <?hh
- 
+
 type Point<T> = shape ('x' => T, 'y' => T);
- 
+
 function gen_shape_add<T>(Point<T> $pt1, Point<T> $pt2): Point<T> {
   $sumx = $pt1['x'] + $pt2['x'];
   $sumy = $pt1['y'] + $pt2['y'];
   return shape ('x' => $sumx, 'y' => $sumy);
 }
- 
+
 function main_gs() {
   // Float based shape
   $pt1 = shape('x' => 1.0, 'y' => 2.0);
   $pt2 = shape('x' => 3.0, 'y' => 4.0);
   var_dump(gen_shape_add($pt1, $pt2));
- 
+
   // Int based shape
   $pt3 = shape('x' => 1, 'y' => 2);
   $pt4 = shape('x' => 3, 'y' => 4);
   var_dump(gen_shape_add($pt3, $pt4));
 }
- 
+
 main_gs();
 ]]>
         </programlisting>
@@ -271,15 +271,15 @@ main_gs();
         <screen>
 <![CDATA[
 array(2) {
-  [0]=>
+  ["x"]=>
   float(4)
-  [1]=>
+  ["y"]=>
   float(6)
 }
 array(2) {
-  [0]=>
+  ["x"]=>
   int(4)
-  [1]=>
+  ["y"]=>
   int(6)
 }
 ]]>
@@ -292,7 +292,7 @@ array(2) {
   <sect1 xml:id="hack.shapes.summary">
     <title>Summary</title>
     <para>
-      Shapes are useful to create type-checkable, struct-like entities so that plain arrays are not used for this purpose. PHP arrays are already overloaded enough. Shapes have a syntax that provides similar semantics as a type alias or opaque type, depending on whether <literal>type</literal> or <literal>newtype</literal> is used to declare the shape. 
+      Shapes are useful to create type-checkable, struct-like entities so that plain arrays are not used for this purpose. PHP arrays are already overloaded enough. Shapes have a syntax that provides similar semantics as a type alias or opaque type, depending on whether <literal>type</literal> or <literal>newtype</literal> is used to declare the shape.
     </para>
   </sect1>
 
