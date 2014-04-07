@@ -160,6 +160,7 @@
 <!ENTITY url.hack.install "http://hacklang.org/install/">
 <!ENTITY url.hack.tutorial "http://hacklang.org/tutorial">
 <!ENTITY url.hack.hhvm.docs "https://github.com/facebook/hack-hhvm-docs">
+<!ENTITY url.hack.vim "https://github.com/hhvm/vim-hack">
 <!ENTITY url.haru.lib "http://libharu.org">
 <!ENTITY url.hhvm "http://hhvm.com">
 <!ENTITY url.hhvm.manual "hhtp://hhvm.com/manual">

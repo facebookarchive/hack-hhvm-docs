@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<sect1 xml:id="install.hack.bootstrapping">
+<sect1 xml:id="install.hack.bootstrapping" xmlns:xlink="http://www.w3.org/1999/xlink">
   <title>Bootstrapping a Project</title>
   <para>The static type system of Hack is enforced by a typechecker external to the HHVM runtime itself. It runs in the background, watching for file modifications and updating its state. Getting this static typechecker running requires a little bit of additional setup.</para>
   <sect2 xml:id="install.hack.bootstrapping.hhvm">
@@ -22,7 +22,7 @@
 --/app
 
 --/project-2
---/app 
+--/app
 --.hhconfig
 ]]>
           </programlisting>
@@ -63,7 +63,7 @@ function f(): int {
    </sect2>
   <sect2 xml:id="install.hack.bootstrapping.editors">
     <title>Included editor extensions</title>
-    <para>The HHVM and Hack installation ships with bindings for common editors. vim users will find a pathogen package at <literal>/usr/share/hhvm/hack/vim</literal> with installation instructions in the <literal>README</literal> contained therein. emacs users will find a plugin inside <literal>/usr/share/hhvm/hack/emacs</literal>.</para>
+    <para>Hack maintains support for plugins for some common editors. vim users can find a package in <link xlink:href="&url.hack.vim;">Github</link> with installation instructions in the <literal>README</literal> contained therein. emacs users will find a plugin inside <literal>/usr/share/hhvm/hack/emacs</literal>, included with the Hack package.</para>
     <para>Although <literal>hh_client</literal> can be used directly on the command line, having the immediate feedback directly in an editor can be an amazing productivity boost. If your preferred editor or IDE is unsupported, contributions of additional plugins are very welcome; the existing plugins are decent examples of how to script the <literal>hh_client</literal> interface.</para>
   </sect2>
   <sect2 xml:id="install.hack.bootstrapping.structure">
