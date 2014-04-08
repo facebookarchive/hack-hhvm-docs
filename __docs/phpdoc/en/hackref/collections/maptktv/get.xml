@@ -12,7 +12,7 @@
    <modifier>public</modifier>
    <type>?Tv</type>
    <methodname>Map&lt;Tk, Tv&gt;::get</methodname>
-   <methodparam><type>int</type><parameter>k</parameter></methodparam>
+   <methodparam><type>Tk</type><parameter>k</parameter></methodparam>
   </methodsynopsis>
 
 <!-- Note: If this method/property as an alternate procedural mapping then the method/property synopsis MUST be listed BEFORE the function synopsis -->
