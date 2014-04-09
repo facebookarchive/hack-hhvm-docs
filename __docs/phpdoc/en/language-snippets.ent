@@ -264,6 +264,11 @@ and suppressing this warning.</para></warning>'>
 currently not documented; only its argument list is available.
 </simpara></warning>'>
 
+<!ENTITY warn.hack.async '<warning>
+    <simpara>
+      There is currently basic support for async. For example, you can currently write basic async functions that call other async functions. However, we are currently finalizing other foundations (e.g. async database, scheduling, and memory handling APIs) which will be required to reach the full potential of async in production. We felt, though, it would be useful to introduce the concept and technology of async (even with basic functionality) in order to get developers used to the syntax and some of the technical details.
+    </simpara>
+  </warning>'>
 
 <!-- Misc -->
 
@@ -1129,7 +1134,7 @@ field_offset</parameter></term><listitem><para>The numerical field offset. The
 
 <!ENTITY mysql.alternative.note '<para xmlns="http://docbook.org/ns/docbook">This extension is deprecated as of PHP 5.5.0, and will be removed in the future.
 Instead, the <link linkend="book.mysqli">MySQLi</link> or <link linkend="ref.pdo-mysql">PDO_MySQL</link> extension should be used.>
-See also <link linkend="mysqlinfo.api.choosing">MySQL: choosing an API</link> guide for more information. 
+See also <link linkend="mysqlinfo.api.choosing">MySQL: choosing an API</link> guide for more information.
 Alternatives to this function include:</para>'>
 
 <!-- Sybase Notes -->

@@ -1,11 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <chapter xml:id="hack.async">
   <title>Async</title>
-  <warning>
-    <simpara>
-      We felt it would be useful to introduce the concept and technology of async in order to get developers used to the syntax and some of the technical details. For example, you can currently write basic async functions that call other async functions. However, we are currently finalizing other foundations (e.g. async database, scheduling, and memory handling APIs) which will be required to reach the full potential of async in production.
-    </simpara>
-  </warning>
+  &warn.hack.async;
   <para>
     Asynchronous programming refers to a programming design pattern that allows several distinct tasks to cooperatively transfer control to one another on a given thread of execution. The tasks are isolated from one another from the perspective of dependency minimization and task interaction. Asynchronous programming is most often used in the context of input/output (I/O). For synchronous (i.e., blocking) I/O APIs, asynchronous tasks can be batched together to perform a set of work. And, of course, asynchronous (i.e., non-blocking) I/O APIs fit nicely into the asynchronous programming model.
   </para>
@@ -59,11 +55,7 @@ gen_foo(4);
 
   <sect1 xml:id="hack.async.asyncawait">
     <title><literal>async</literal> and <literal>await</literal></title>
-    <warning>
-      <simpara>
-        We felt it would be useful to introduce the concept and technology of async in order to get developers used to the syntax and some of the technical details. For example, you can currently write basic async functions that call other async functions. However, we are currently finalizing other foundations (e.g. async database, scheduling, and memory handling APIs) which will be required to reach the full potential of async in production.
-      </simpara>
-    </warning>
+    &warn.hack.async;
     <para>
       <literal>async</literal> declares a function as asynchronous. <literal>await</literal> suspends the execution of an async function until the result of the asynchronous operation represented by <literal>await</literal> is available. The return value of a function that <literal>await</literal> can be used upon is an object that implements <literal>Awaitable&lt;T&gt;</literal>.
     </para>
@@ -71,11 +63,7 @@ gen_foo(4);
 
   <sect1 xml:id="hack.async.annotating">
     <title>Type Annotating Async Functions</title>
-    <warning>
-      <simpara>
-        We felt it would be useful to introduce the concept and technology of async in order to get developers used to the syntax and some of the technical details. For example, you can currently write basic async functions that call other async functions. However, we are currently finalizing other foundations (e.g. async database, scheduling, and memory handling APIs) which will be required to reach the full potential of async in production.
-      </simpara>
-    </warning>
+    &warn.hack.async;
     <para>
       Typing async functions so that the Hack type checker will understand them is fairly straightforward. Just ensure that the function signature is preceded by the <literal>async</literal> keyword and that the return type is an object that implements <literal>Awaitable&lt;T&gt;</literal> (normally this should just be <literal>Awaitable&lt;T&gt;</literal> directly).
     </para>
@@ -86,11 +74,7 @@ gen_foo(4);
 
   <sect1 xml:id="hack.async.fetchingexample">
     <title>Example: Coalesced Fetching</title>
-    <warning>
-      <simpara>
-        We felt it would be useful to introduce the concept and technology of async in order to get developers used to the syntax and some of the technical details. For example, you can currently write basic async functions that call other async functions. However, we are currently finalizing other foundations (e.g. async database, scheduling, and memory handling APIs) which will be required to reach the full potential of async in production.
-      </simpara>
-    </warning>
+    &warn.hack.async;
     <para>
       Async provides an interesting mechanism to perform coalesced fetching. Let's take ids as the "things" we want to fetch. In essence, your code is written as if you are fetching one ID, but, under the covers, the query is being batched.
       <informalexample>
@@ -150,11 +134,7 @@ run()->join();
   </sect1>
   <sect1 xml:id="hack.async.signatureexamples">
     <title>Signature Examples</title>
-    <warning>
-      <simpara>
-        We felt it would be useful to introduce the concept and technology of async in order to get developers used to the syntax and some of the technical details. For example, you can currently write basic async functions that call other async functions. However, we are currently finalizing other foundations (e.g. async database, scheduling, and memory handling APIs) which will be required to reach the full potential of async in production.
-      </simpara>
-    </warning>
+    &warn.hack.async;
     <informalexample>
       <programlisting role="php">
 <![CDATA[
@@ -175,11 +155,7 @@ class MyPreparable extends Preparable<MyPreparable> { ... }
 
   <sect1 xml:id="hack.async.awaitablesvscontinuations">
     <title>Awaitables vs Continuations</title>
-    <warning>
-      <simpara>
-        We felt it would be useful to introduce the concept and technology of async in order to get developers used to the syntax and some of the technical details. For example, you can currently write basic async functions that call other async functions. However, we are currently finalizing other foundations (e.g. async database, scheduling, and memory handling APIs) which will be required to reach the full potential of async in production.
-      </simpara>
-    </warning>
+    &warn.hack.async;
     <para>
       This table briefly summarizes <literal>Continuation&lt;T&gt;</literal> and <literal>Awaitable&lt;T&gt;</literal>. Continuations are used in *synchronous, generator* based programming on functions that <literal>yield</literal> results.
     </para>
