@@ -2,9 +2,13 @@
 <chapter xml:id="hack.xhp">
   <title>Typing XHP</title>
   <para>
-    XHP augments the syntax of PHP such that XML document fragments become valid PHP expressions. Hack currently understands and type checks against two XHP types: <literal>:xhp</literal> and <literal>XHPChild</literal>. <literal>:xhp</literal> is the parent of all XHP elements. For example, <literal>&lt;div&gt;</literal>, <literal>&lt;ui:link&gt;,</literal>, etc. all derive from <literal>:xhp</literal>. <literal>XHPChild</literal> is a special interface implemented by <literal>array</literal>s, <literal>string</literal>s, <literal>int</literal>s and <literal>float</literal>s, as well as <literal>:xhp</literal> itself. This interface's primary use is to provide a concrete type for the <literal>{}</literal> operator (e.g., <literal>&lt;div&gt;{$foo}&lt;/div&gt;</literal>). It also provides a way to type <literal>appendChild</literal>'s argument. In the future, Hack will also provide a way to statically check some XHP rules (e.g., categories, etc.). 
+    XHP augments the syntax of Hack and PHP such that XML document fragments become valid PHP expressions. Hack currently understands and type checks against two XHP types: <literal>:xhp</literal> and <literal>XHPChild</literal>. <literal>:xhp</literal> is the parent of all XHP elements. For example, <literal>&lt;div&gt;</literal>, <literal>&lt;ui:link&gt;,</literal>, etc. all derive from <literal>:xhp</literal>. <literal>XHPChild</literal> is a special interface implemented by <literal>array</literal>s, <literal>string</literal>s, <literal>int</literal>s and <literal>float</literal>s, as well as <literal>:xhp</literal> itself. This interface's primary use is to provide a concrete type for the <literal>{}</literal> operator (e.g., <literal>&lt;div&gt;{$foo}&lt;/div&gt;</literal>). It also provides a way to type <literal>appendChild</literal>'s argument. In the future, Hack will also provide a way to statically check some XHP rules (e.g., categories, etc.).
   </para>
-
+  <note>
+    <para>
+      See <link linkend="install.xhp">Installing XHP</link> for information on how to get XHP working with your codebase.
+    </para>
+  </note>
   <sect1 xml:id="hack.xhp.types">
     <title>XHP Types</title>
     <para>
@@ -13,20 +17,20 @@
     <orderedlist>
       <listitem>
         <para>
-          The <literal>:xhp</literal> class is the root class for all XHP elements. For example, <literal>&lt;div&gt;</literal>, <literal>&lt;ui:link>&gt;</literal>, etc. all derive from <literal>:xhp</literal>. 
+          The <literal>:xhp</literal> class is the root class for all XHP elements. For example, <literal>&lt;div&gt;</literal>, <literal>&lt;ui:link>&gt;</literal>, etc. all derive from <literal>:xhp</literal>.
         </para>
       </listitem>
       <listitem>
         <para>
-          The type of an <literal>&lt;xyz&gt;</literal> element is <literal>:xyz</literal>. Use <literal>:xyz</literal> when annotating types, but <literal>&lt;xyz&gt;</literal> when building XHP nodes. 
+          The type of an <literal>&lt;xyz&gt;</literal> element is <literal>:xyz</literal>. Use <literal>:xyz</literal> when annotating types, but <literal>&lt;xyz&gt;</literal> when building XHP nodes.
         </para>
       </listitem>
       <listitem>
         <para>
-          There is a special <literal>XHPChild</literal> interface, compatible with <literal>array</literal>, <literal>string</literal>, <literal>int</literal>, <literal>float</literal> and, of course, <literal>:xhp</literal>. 
+          There is a special <literal>XHPChild</literal> interface, compatible with <literal>array</literal>, <literal>string</literal>, <literal>int</literal>, <literal>float</literal> and, of course, <literal>:xhp</literal>.
         </para>
       </listitem>
-    </orderedlist> 
+    </orderedlist>
   </sect1>
 
    <sect1 xml:id="hack.xhp.xhpchild">
@@ -40,12 +44,12 @@
 ]]>
         </programlisting>
         <para>
-          <literal>$foo</literal> is an <literal>XHPChild</literal> object. 
+          <literal>$foo</literal> is an <literal>XHPChild</literal> object.
         </para>
       </informalexample>
     </para>
     <para>
-      The XHP method <literal>appendChild()</literal> also takes an <literal>XHPChild</literal>. Thus, given the example XHP fragment above, the following code can be written as an equivalent alternative: 
+      The XHP method <literal>appendChild()</literal> also takes an <literal>XHPChild</literal>. Thus, given the example XHP fragment above, the following code can be written as an equivalent alternative:
           <informalexample>
         <programlisting role="php">
 <![CDATA[
@@ -56,7 +60,7 @@ $div->appendChild($foo);
       </informalexample>
     </para>
     <para>
-      When writing an API that takes an argument flowing into the <literal>{}</literal> operator, use the <literal>XHPChild</literal> type hint. 
+      When writing an API that takes an argument flowing into the <literal>{}</literal> operator, use the <literal>XHPChild</literal> type hint.
       <informalexample>
         <programlisting role="php">
 <![CDATA[
@@ -69,7 +73,7 @@ function render_in_a_box(XHPChild $msg): :xhp {
       </informalexample>
     </para>
     <para>
-      Of course, there will be cases when a specific type other than <literal>XHPChild</literal> needs to be used, and that is obviously ok. 
+      Of course, there will be cases when a specific type other than <literal>XHPChild</literal> needs to be used, and that is obviously ok.
       <informalexample>
         <programlisting role="php">
 <![CDATA[
@@ -86,17 +90,17 @@ function do_some_alignment(:ui:slideshow $x) {
   <sect1 xml:id="hack.xhp.returningxhpelements">
     <title>Returning XHP Elements</title>
     <para>
-      When returning an XHP element, there is a choice between returning the specific XHP type (e.g., <literal>:ui:box</literal>) or the more general <literal>:xhp</literal> or <literal>XHPChild</literal>. 
+      When returning an XHP element, there is a choice between returning the specific XHP type (e.g., <literal>:ui:box</literal>) or the more general <literal>:xhp</literal> or <literal>XHPChild</literal>.
     </para>
     <itemizedlist>
       <listitem>
         <para>
-          Returning a specific XHP type is useful in the rare cases where the caller needs to call specific methods on the XHP element. 
+          Returning a specific XHP type is useful in the rare cases where the caller needs to call specific methods on the XHP element.
         </para>
       </listitem>
       <listitem>
         <para>
-          Returning <literal>XHPChild</literal> is useful in cases such as: 
+          Returning <literal>XHPChild</literal> is useful in cases such as:
           <informalexample>
             <programlisting role="php">
 <![CDATA[
@@ -116,7 +120,7 @@ function foo(int $x): mixed {
       </listitem>
       <listitem>
         <para>
-          Returning <literal>:xhp</literal> is a good choice in a majority of cases since it hides the actual element as an implementation detail. For example, a method like <literal>render_in_a_box()</literal> in the example above might be changed to return a <literal>&lt;xui:box&gt;</literal>. If the return type is <literal>:xhp</literal>, the function signature does not need to be changed. 
+          Returning <literal>:xhp</literal> is a good choice in a majority of cases since it hides the actual element as an implementation detail. For example, a method like <literal>render_in_a_box()</literal> in the example above might be changed to return a <literal>&lt;xui:box&gt;</literal>. If the return type is <literal>:xhp</literal>, the function signature does not need to be changed.
         </para>
       </listitem>
     </itemizedlist>
@@ -129,7 +133,7 @@ function foo(int $x): mixed {
     <itemizedlist>
         <listitem>
           <para>
-            A handful of classes behave like XHP but don't derive from <literal>:xhp</literal>. A class was created called <literal>XHPChildClass</literal> to deal with these edge cases. <literal>XHPChildClass</literal> will probably not have to ever be dealt with directly, but, just in case, <literal>XHPChildClass</literal> is a subclass of <literal>XHPChild</literal>. 
+            A handful of classes behave like XHP but don't derive from <literal>:xhp</literal>. A class was created called <literal>XHPChildClass</literal> to deal with these edge cases. <literal>XHPChildClass</literal> will probably not have to ever be dealt with directly, but, just in case, <literal>XHPChildClass</literal> is a subclass of <literal>XHPChild</literal>.
           </para>
         </listitem>
         <listitem>
@@ -144,7 +148,7 @@ function foo(int $x): mixed {
         </listitem>
         <listitem>
           <para>
-            <literal>:xhp</literal> was previously called <literal>:x:base</literal>. 
+            <literal>:xhp</literal> was previously called <literal>:x:base</literal>.
           </para>
         </listitem>
       </itemizedlist>
@@ -168,11 +172,11 @@ $num = <ui:number value={new Exception()} />; // Type error
       </informalexample>
     </para>
     <para>
-      In the future, Hack may provide static type checking for native XHP attributes or other rule-based assumptions (e.g. categories). There are a few hurdles to overcome or work around--currently, all attributes are lumped into a map structure, which is not Hack-friendly, but attributes are declared with XHP-specific syntax indicating their types, so Hack could analyze those accordingly. The end goal is deep integration of Hack throughout the XHP framework, whether by way of special XHP analysis, or rewriting parts of core libraries to fit within Hack's current confines. 
+      In the future, Hack may provide static type checking for native XHP attributes or other rule-based assumptions (e.g. categories). There are a few hurdles to overcome or work around--currently, all attributes are lumped into a map structure, which is not Hack-friendly, but attributes are declared with XHP-specific syntax indicating their types, so Hack could analyze those accordingly. The end goal is deep integration of Hack throughout the XHP framework, whether by way of special XHP analysis, or rewriting parts of core libraries to fit within Hack's current confines.
     </para>
   </sect1>
 </chapter>
-  
+
 <!-- Keep this comment at the end of the file
 Local variables:
 mode: sgml

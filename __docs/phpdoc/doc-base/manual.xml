@@ -40,7 +40,7 @@
 <set xmlns="http://docbook.org/ns/docbook" version="5.0" xml:id="index" xml:lang="en" xmlns:xlink="http://www.w3.org/1999/xlink">
  <title>&HHVMManual;</title>
  &bookinfo;
- 
+
  <book xml:id="manual">
   <title>&HHVMManual;</title>
   &preface;
@@ -64,6 +64,7 @@
   &install.extensions;
   &install.ini;
   &install.hack.index;
+  &install.xhp;
  </book>
  <book xml:id="hacklangref">
   <title>&HackLanguageReference;</title>
@@ -273,7 +274,7 @@
    &reference.xattr.book;
    &reference.xdiff.book;
   </set>
-    
+
   <set xml:id="refs.international">
    <title>&HumanLanguageandCharacterEncodingSupport;</title>
    &reference.enchant.book;
@@ -402,8 +403,8 @@
    &reference.tcpwrap.book;
    &reference.varnish.book;
    &reference.yaz.book;
-   &reference.nis.book; 
-   &reference.zmq.book; 
+   &reference.nis.book;
+   &reference.zmq.book;
   </set>
 
   <set xml:id="refs.search">
