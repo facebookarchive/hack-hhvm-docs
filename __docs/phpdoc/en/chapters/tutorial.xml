@@ -3,22 +3,22 @@
  <chapter xml:id="tutorial" xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink">
   <info><title>A simple tutorial</title></info>
   <para>
-   Here we would like to show the very basics of HHVM in a short, simple tutorial. This text only deals with dynamic web page creation with HHVM, though HHVM is not only capable of creating web pages. See the section titled <link linkend="intro-what-can-hhvm-do">What can HHVM do</link> for more information. 
+   Here we would like to show the very basics of HHVM in a short, simple tutorial. This text only deals with dynamic web page creation with HHVM, though HHVM is not only capable of creating web pages. See the section titled <link linkend="intro-what-can-hhvm-do">What can HHVM do</link> for more information.
   </para>
   <para>
-   HHVM-enabled web pages are treated just like regular HTML pages and you can create and edit them the same way you normally create regular HTML pages. 
+   HHVM-enabled web pages are treated just like regular HTML pages and you can create and edit them the same way you normally create regular HTML pages.
   </para>
 
   <section xml:id="tutorial.requirements">
    <info><title>What do I need?</title></info>
    <para>
-    In this tutorial we assume that your server has activated support for HHVM and that all files ending in <filename>.php</filename> are handled by HHVM. On most servers, this is the default extension for Hack and PHP files, but ask your server administrator to be sure. If your server supports HHVM, then you do not need to do anything. Just create your <filename>.php</filename> files, put them in your web directory and the server will automatically parse them for you. There is no need to compile anything nor do you need to install any extra tools. Think of these HHVM-enabled files as simple HTML files with a whole new family of magical tags that let you do all sorts of things. 
+    In this tutorial we assume that your server has activated support for HHVM and that all files ending in <filename>.php</filename> are handled by HHVM. On most servers, this is the default extension for Hack and PHP files, but ask your server administrator to be sure. If your server supports HHVM, then you do not need to do anything. Just create your <filename>.php</filename> files, put them in your web directory and the server will automatically parse them for you. There is no need to compile anything nor do you need to install any extra tools. Think of these HHVM-enabled files as simple HTML files with a whole new family of magical tags that let you do all sorts of things.
    </para>
    <para>
-    Let us say you want to save precious bandwidth and develop locally. In this case, you will want to install a web server, such as <link xlink:href="&url.apache;">Apache</link>, and of course <link xlink:href="&url.hhvm.downloads;">HHVM</link>. You will most likely want to install a database as well, such as <link xlink:href="&url.mysql.docs;">MySQL</link>. 
+    Let us say you want to save precious bandwidth and develop locally. In this case, you will want to install a web server, such as <link xlink:href="&url.apache;">Apache</link>, and of course <link xlink:href="&url.hhvm.downloads;">HHVM</link>. You will most likely want to install a database as well, such as <link xlink:href="&url.mysql.docs;">MySQL</link>.
    </para>
    <para>
-    Our manual has <link linkend="install">installation instructions for HHVM</link>. If you have problems with installing HHVM yourself, we would suggest you ask your questions on our <link xlink:href="&url.hhvm.irc;">HHVM IRC channel</link>. It is easy to setup a web server with HHVM support on Linux. On Linux, you may find <link xlink:href="&url.rpmfind;">rpmfind</link> and <link xlink:href="&url.rpmfind.pbone;">PBone</link> helpful for locating RPMs. You may also want to visit <link xlink:href="&url.apt-get;">apt-get</link> to find packages for Debian. 
+    Our manual has <link linkend="install">installation instructions for HHVM</link>. If you have problems with installing HHVM yourself, we would suggest you ask your questions on our <link xlink:href="&url.hhvm.irc;">HHVM IRC channel</link>. It is easy to setup a web server with HHVM support on Linux. On Linux, you may find <link xlink:href="&url.rpmfind;">rpmfind</link> and <link xlink:href="&url.rpmfind.pbone;">PBone</link> helpful for locating RPMs. You may also want to visit <link xlink:href="&url.apt-get;">apt-get</link> to find packages for Debian.
    </para>
   </section>
 
@@ -36,7 +36,7 @@
  </head>
  <body>
  <!-- hh and html do not mix -->
- <?php echo '<p>Hello World</p>'; ?> 
+ <?php echo '<p>Hello World</p>'; ?>
  </body>
 </html>
 ]]>
@@ -48,19 +48,19 @@
     </para>
    </note>
    <para>
-    Create a file named <filename>hello.php</filename> and put it in your web server's root directory (<varname>DOCUMENT_ROOT</varname>) with the following content: 
+    Create a file named <filename>hello.php</filename> and put it in your web server's root directory (<varname>DOCUMENT_ROOT</varname>) with the following content:
    </para>
    <para>
     <example>
      <info><title>Our first HHVM script: <filename>hello.php</filename></title></info>
      <programlisting role="php">
 <![CDATA[
-<?hh 
-echo '<h1>Hello World</h1>'; 
+<?hh
+echo '<h1>Hello World</h1>';
 ]]>
      </programlisting>
      <simpara>
-      Use your browser to access the file with your web server's URL, ending with the <literal>/hello.php</literal> file reference. When developing locally this URL will be something like <literal>http://localhost/hello.php</literal> or <literal>http://127.0.0.1/hello.php</literal> but this depends on the web server's configuration. If everything is configured correctly, this file will be parsed by PHP and the following output will be sent to your browser (with an <literal>h1</literal> emphasis): 
+      Use your browser to access the file with your web server's URL, ending with the <literal>/hello.php</literal> file reference. When developing locally this URL will be something like <literal>http://localhost/hello.php</literal> or <literal>http://127.0.0.1/hello.php</literal> but this depends on the web server's configuration. If everything is configured correctly, this file will be parsed by PHP and the following output will be sent to your browser (with an <literal>h1</literal> emphasis):
      </simpara>
      <screen role="html">
 <![CDATA[
@@ -70,29 +70,29 @@ Hello World
     </example>
    </para>
    <para>
-    This program is extremely simple and you really did not need to use HHVM to create a page like this. All it does is display: <literal>Hello World</literal> using the HHVM <function>echo</function> statement. Note that the file <emphasis>does not need to be executable</emphasis> or special in any way. The server finds out that this file needs to be interpreted by HHVM because you used the ".php" extension, which the server is configured to pass on to HHVM. Think of this as a normal HTML file which happens to have a set of special tags available to you that do a lot of interesting things. 
+    This program is extremely simple and you really did not need to use HHVM to create a page like this. All it does is display: <literal>Hello World</literal> using the HHVM <function>echo</function> statement. Note that the file <emphasis>does not need to be executable</emphasis> or special in any way. The server finds out that this file needs to be interpreted by HHVM because you used the ".php" extension, which the server is configured to pass on to HHVM. Think of this as a normal HTML file which happens to have a set of special tags available to you that do a lot of interesting things.
    </para>
    <para>
-    If you tried this example and it did not output anything, it prompted for download, or you see the whole file as text, chances are that the server you are on does not have HHVM enabled, or is not configured properly. Ask your administrator to enable it for you using the <link linkend="install">Installation</link> chapter of the manual. If you are developing locally, also read the installation chapter to make sure everything is configured properly. Make sure that you access the file via http with the server providing you the output. If you just call up the file from your file system, then it will not be parsed by PHP. If the problems persist anyway, do not hesitate to use our <link xlink:href="&url.hhvm.irc;">HHVM IRC channel</link> for support. 
+    If you tried this example and it did not output anything, it prompted for download, or you see the whole file as text, chances are that the server you are on does not have HHVM enabled, or is not configured properly. Ask your administrator to enable it for you using the <link linkend="install">Installation</link> chapter of the manual. If you are developing locally, also read the installation chapter to make sure everything is configured properly. Make sure that you access the file via http with the server providing you the output. If you just call up the file from your file system, then it will not be parsed by PHP. If the problems persist anyway, do not hesitate to use our <link xlink:href="&url.hhvm.irc;">HHVM IRC channel</link> for support.
    </para>
    <para>
-    The point of the example is to show the special Hack (or could have been PHP) tag format. In this example we used <literal>&lt;?hh</literal> to indicate the start of a Hack tag. Then we put the Hack statement. Closing tags (<literal>?&gt;</literal>) are not supported in Hack, and generally omitted in newer PHP code. For more details, read the manual section on the <link linkend="language.basic-syntax"> basic PHP syntax</link>. 
+    The point of the example is to show the special Hack (or could have been PHP) tag format. In this example we used <literal>&lt;?hh</literal> to indicate the start of a Hack tag. Then we put the Hack statement. Closing tags (<literal>?&gt;</literal>) are not supported in Hack, and generally omitted in newer PHP code. For more details, read the manual section on the <link linkend="language.basic-syntax"> basic PHP syntax</link>.
    </para>
    <note>
     <info><title>A Note on Line Feeds</title></info>
     <para>
-     Line feeds have little meaning in HTML, however it is still a good idea to make your HTML look nice and clean by putting line feeds in.  A linefeed that follows immediately after a closing <literal>?&gt;</literal> will be removed by HHVM.  This can be extremely useful when you are putting in many blocks of PHP code or include files containing PHP code that aren't supposed to output anything.  At the same time it can be a bit confusing.  You can put a space after the closing <literal>?&gt;</literal> to force a space and a line feed to be output, or you can put an explicit line feed in the last echo/print from within your PHP block. 
+     Line feeds have little meaning in HTML, however it is still a good idea to make your HTML look nice and clean by putting line feeds in.  A linefeed that follows immediately after a closing <literal>?&gt;</literal> will be removed by HHVM.  This can be extremely useful when you are putting in many blocks of PHP code or include files containing PHP code that aren't supposed to output anything.  At the same time it can be a bit confusing.  You can put a space after the closing <literal>?&gt;</literal> to force a space and a line feed to be output, or you can put an explicit line feed in the last echo/print from within your PHP block.
     </para>
-   </note> 
+   </note>
   </section>
   <section xml:id="tutorial.useful">
    <info><title>Something Useful</title></info>
    <para>
-    Let us do something more useful now. We are going to check what sort of browser the visitor is using. For that, we check the user agent string the browser sends as part of the HTTP request. This information is stored in a <link linkend="language.variables">variable</link>. Variables always start with a dollar-sign in Hack and PHP. The variable we are interested in right now is <varname>$_SERVER['HTTP_USER_AGENT']</varname>. 
+    Let us do something more useful now. We are going to check what sort of browser the visitor is using. For that, we check the user agent string the browser sends as part of the HTTP request. This information is stored in a <link linkend="language.variables">variable</link>. Variables always start with a dollar-sign in Hack and PHP. The variable we are interested in right now is <varname>$_SERVER['HTTP_USER_AGENT']</varname>.
    </para>
    <note>
     <para>
-     <varname>$_SERVER</varname> is a 
+     <varname>$_SERVER</varname> is a
      special reserved PHP variable that contains all web server information. It is known as a superglobal.  See the related manual page on <link linkend="language.variables.superglobals">superglobals</link> for more information.
     </para>
    </note>
@@ -117,17 +117,17 @@ Mozilla/5.0 (Macintosh; Intel Mac OS X 10_9_2) AppleWebKit/537.36 (KHTML, like G
    </example>
    </para>
    <para>
-    There are many <link linkend="language.types">types</link> of variables available in HHVM.  In the above example we printed an <link linkend="language.types.array">Array</link> element. Arrays can be very useful. 
+    There are many <link linkend="language.types">types</link> of variables available in HHVM.  In the above example we printed an <link linkend="language.types.array">Array</link> element. Arrays can be very useful.
    </para>
    <para>
     <varname>$_SERVER</varname> is just one variable that HHVM automatically makes available to you. A list can be seen in the <link linkend="reserved.variables">Reserved Variables</link> section of the manual.
    </para>
    <para>
-    You can put multiple statements inside a Hack or PHP tag and create little blocks of code that do more than just a single echo. For example, if you want to check for Chrome you can do this: 
+    You can put multiple statements inside a Hack or PHP tag and create little blocks of code that do more than just a single echo. For example, if you want to check for Chrome you can do this:
    </para>
    <para>
     <example>
-     <info><title>Example using <link linkend="language.control-structures">control 
+     <info><title>Example using <link linkend="language.control-structures">control
      structures</link> and <link linkend="language.functions">functions</link></title></info>
      <programlisting role="php">
 <![CDATA[
@@ -148,13 +148,13 @@ You are using Chrome.
     </example>
    </para>
    <para>
-    Here we introduce a couple of new concepts. We have an <link linkend="control-structures.if">if</link> statement. If you are familiar with the basic syntax used by the C language, this should look logical to you. Otherwise, you should probably read the <link linkend="phplangref">PHP Language Reference</link> or the <link linkend="hacklangref">Hack Language Reference</link> parts of the manual. 
+    Here we introduce a couple of new concepts. We have an <link linkend="control-structures.if">if</link> statement. If you are familiar with the basic syntax used by the C language, this should look logical to you. Otherwise, you should probably read the <link linkend="phplangref">PHP Language Reference</link> or the <link linkend="hacklangref">Hack Language Reference</link> parts of the manual.
    </para>
    <para>
-    The second concept we introduced was the <function>strpos</function> function call. <function>strpos</function> is a function built into HHVM which searches a string for another string. In this case we are looking for <literal>'Chrome'</literal> (so-called needle) inside <varname>$_SERVER['HTTP_USER_AGENT']</varname> (so-called haystack).  If the needle is found inside the haystack, the function returns the position of the needle relative to the start of the haystack.  Otherwise, it returns &false;.  If it does not return &false;, the <link linkend="control-structures.if">if</link> expression evaluates to &true; and the code within its {braces} is executed. Otherwise, the code is not run. Feel free to create similar examples, with <link linkend="control-structures.if">if</link>, <link linkend="control-structures.else">else</link>, and other functions such as <function>strtoupper</function> and <function>strlen</function>. Each related manual page contains examples too.  If you are unsure how to use functions, you will want to read both the manual page on <link linkend="about.prototypes">how to read a function definition</link> and the section about <link linkend="language.functions">HHVM functions</link>. 
+    The second concept we introduced was the <function>strpos</function> function call. <function>strpos</function> is a function built into HHVM which searches a string for another string. In this case we are looking for <literal>'Chrome'</literal> (so-called needle) inside <varname>$_SERVER['HTTP_USER_AGENT']</varname> (so-called haystack).  If the needle is found inside the haystack, the function returns the position of the needle relative to the start of the haystack.  Otherwise, it returns &false;.  If it does not return &false;, the <link linkend="control-structures.if">if</link> expression evaluates to &true; and the code within its {braces} is executed. Otherwise, the code is not run. Feel free to create similar examples, with <link linkend="control-structures.if">if</link>, <link linkend="control-structures.else">else</link>, and other functions such as <function>strtoupper</function> and <function>strlen</function>. Each related manual page contains examples too.  If you are unsure how to use functions, you will want to read both the manual page on <link linkend="about.prototypes">how to read a function definition</link> and the section about <link linkend="language.functions">HHVM functions</link>.
    </para>
    <para>
-    We can take this a step further and show you a bit more complicated control flow: 
+    We can take this a step further and show you a bit more complicated control flow:
    </para>
    <para>
     <example>
@@ -180,11 +180,11 @@ strpos() must have returned non-false. You are using Chrome
     </example>
    </para>
   </section>
-   
+
   <section xml:id="tutorial.forms">
    <info><title>Dealing with Forms</title></info>
    <para>
-    One of the most powerful features of HHVM is the way it handles HTML forms. The basic concept that is important to understand is that any form element will automatically be available to your PHP scripts.  Please read the manual section on <link linkend="language.variables.external">Variables from external sources</link> for more information and examples on using forms with HHVM.  Here is an example HTML form: 
+    One of the most powerful features of HHVM is the way it handles HTML forms. The basic concept that is important to understand is that any form element will automatically be available to your PHP scripts.  Please read the manual section on <link linkend="language.variables.external">Variables from external sources</link> for more information and examples on using forms with HHVM.  Here is an example HTML form:
    </para>
    <para>
     <example>
@@ -201,14 +201,14 @@ strpos() must have returned non-false. You are using Chrome
     </example>
    </para>
    <para>
-    There is nothing special about this form. It is a straight HTML form with no special tags of any kind. When the user fills in this form and hits the submit button, the <filename>action.php</filename> page is called. In this file you would write something like this: 
+    There is nothing special about this form. It is a straight HTML form with no special tags of any kind. When the user fills in this form and hits the submit button, the <filename>action.php</filename> page is called. In this file you would write something like this:
    </para>
    <para>
     <example>
      <info><title>Printing data from our form</title></info>
      <programlisting role="php">
 <![CDATA[
-<?hh 
+<?hh
 echo "Hello ";
 echo htmlspecialchars($_POST['name']);
 echo ". You are ";
@@ -221,13 +221,13 @@ echo " years old";
      </para>
      <screen role="html">
 <![CDATA[
-Hi Joe. You are 22 years old.
+Hello Joe. You are 22 years old.
 ]]>
      </screen>
     </example>
    </para>
    <para>
-    Apart from the <function>htmlspecialchars</function> and <literal>(int)</literal> parts, it should be obvious what this does. <function>htmlspecialchars</function> makes sure any characters that are special in HTML are properly encoded so people can't inject HTML tags or Javascript into your page. For the age field, since we know it is a number, we can just <link linkend="language.types.typecasting">convert</link> it to an <type>integer</type> which will automatically get rid of any stray characters.  You can also have HHVM do this for you automatically by using the <link linkend="ref.filter">filter</link> extension. The <varname>$_POST['name']</varname> and <varname>$_POST['age']</varname> variables are automatically set for you by HHVM.  Earlier we used the <varname>$_SERVER</varname> superglobal; above we just introduced the <varname>$_POST</varname> superglobal which contains all POST data.  Notice how the <emphasis>method</emphasis> of our form is POST.  If we used the method <emphasis>GET</emphasis> then our form information would live in the <varname>$_GET</varname> superglobal instead. You may also use the <varname>$_REQUEST</varname> superglobal, if you do not care about the source of your request data. It contains the merged information of GET, POST and COOKIE data.  Also see the <function>import_request_variables</function> function. 
+    Apart from the <function>htmlspecialchars</function> and <literal>(int)</literal> parts, it should be obvious what this does. <function>htmlspecialchars</function> makes sure any characters that are special in HTML are properly encoded so people can't inject HTML tags or Javascript into your page. For the age field, since we know it is a number, we can just <link linkend="language.types.typecasting">convert</link> it to an <type>integer</type> which will automatically get rid of any stray characters.  You can also have HHVM do this for you automatically by using the <link linkend="ref.filter">filter</link> extension. The <varname>$_POST['name']</varname> and <varname>$_POST['age']</varname> variables are automatically set for you by HHVM.  Earlier we used the <varname>$_SERVER</varname> superglobal; above we just introduced the <varname>$_POST</varname> superglobal which contains all POST data.  Notice how the <emphasis>method</emphasis> of our form is POST.  If we used the method <emphasis>GET</emphasis> then our form information would live in the <varname>$_GET</varname> superglobal instead. You may also use the <varname>$_REQUEST</varname> superglobal, if you do not care about the source of your request data. It contains the merged information of GET, POST and COOKIE data.  Also see the <function>import_request_variables</function> function.
    </para>
   </section>
  </chapter>
