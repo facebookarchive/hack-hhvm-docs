@@ -89,7 +89,7 @@ class ManualNotesSorter {
 
 
     /*
-     * Not sure why, but using `$b['sort'] - $a['sort']` does not seem to 
+     * Not sure why, but using `$b['sort'] - $a['sort']` does not seem to
      * work properly.
      */
     private function factorSort($a, $b) {
@@ -111,7 +111,7 @@ class ManualNotesSorter {
         $note = array_shift($notes);
         $note['score'] = $net = ($note['votes']['up'] - $note['votes']['down']);
         $note['total'] = $totalVotes = ($note['votes']['up'] + $note['votes']['down']);
-        $note['rating'] = $totalVotes > 0 
+        $note['rating'] = $totalVotes > 0
             ? $note['votes']['up'] / $totalVotes
             : .5;
 
@@ -123,7 +123,7 @@ class ManualNotesSorter {
         foreach ($notes as &$note) {
             $note['score'] = $net = ($note['votes']['up'] - $note['votes']['down']);
             $note['total'] = $totalVotes = ($note['votes']['up'] + $note['votes']['down']);
-            $note['rating'] = $totalVotes > 0 
+            $note['rating'] = $totalVotes > 0
                 ? $note['votes']['up'] / $totalVotes
                 : .5;
             $age = $note['xwhen'];
@@ -243,7 +243,7 @@ function manual_note_display($date, $name, $text, $id, $votes = array('up'=>0,'d
     $datestr = relTime(new DateTime("@{$date}"));
     $fdatestr = date("Y-m-d h:i", $date);
     $text    = clean_note($text);
-    
+
     // Calculate note rating by up/down votes
     $vote = $votes['up'] - $votes['down'];
     $p = floor(($votes['up'] / (($votes['up'] + $votes['down']) ? $votes['up'] + $votes['down'] : 1)) * 100);
@@ -351,7 +351,7 @@ function manual_setup($setup) {
             "current" => $setup["this"][0] == $entry[0],
         );
     }
-    
+
     $menu = array();
     foreach(array_reverse($setup["parents"]) as $parent) {
         $menu[] = array(
@@ -369,7 +369,7 @@ function manual_setup($setup) {
         $siblings = array(array_merge($last_item, array("children" => $siblings)));
         $menu[] = $last_item;
     }
-    
+
     $base = "manual/" . $setup["head"][1] . "/";
     $_SERVER["BASE_PAGE"] = "/" . $base . $setup["this"][0];
     $timestamps = array(
@@ -379,7 +379,7 @@ function manual_setup($setup) {
         $lastusernote,
     );
     $lastmod = max($timestamps);
-    
+
     $CONFIG = array(
         "current" => "docs",
         "leftmenu" => $siblings,
@@ -397,7 +397,7 @@ function manual_setup($setup) {
         "cache" => $lastmod,
     );
     site_header($setup["this"][1] . " - Manual ", $CONFIG);
-    
+
     $id = substr($setup['this'][0], 0, -4);
 // FOR HHVM
 /*    $language_chooser = 'manual_language_chooser';
@@ -460,7 +460,7 @@ function manual_bugs_and_notes() {
     $filebugsnippet = make_link(
         $filebuglink,
         "File A Documentation Bug",
-        "_blank",
+        "_blank"
     );
     $noteslink = "http://www.php.net/manual/en/". $filename . "#usernotes";
     $noteslinksnippet = make_link(
@@ -469,7 +469,7 @@ function manual_bugs_and_notes() {
     );
     $bug_notes_header = <<<BUG_NOTES_HEADER
 <section id="bugnotes">
- <div class="head"> 
+ <div class="head">
   <h3 class="title">Links</h3>
   <ul>
     <li>{$filebugsnippet}</li>
@@ -484,12 +484,12 @@ BUG_NOTES_HEADER;
   <ul>
    <li>{$filebugsnippet}</li>
   </ul>
- </div> 
+ </div>
 NOTES_HEADER;
     if (url_exists($noteslink)) {
         echo $bug_notes_header;
     } else {
-        echo $bug_header;  
+        echo $bug_header;
     }
 }
 
