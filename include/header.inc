@@ -49,6 +49,11 @@ if ($config["cache"]) {
   <meta property='og:description' content='The documentation for the Hack language and HHVM'>
   <meta property='og:image' content='http://docs.hhvm.com/images/og.png'>
 
+<?php 
+// Google Analytics Tracking
+include $_SERVER['DOCUMENT_ROOT'] . '/include/ga.inc';
+?>
+
 <?php if (isset($_SERVER['BASE_PAGE'])): ?>
  <link rel="canonical" href="http://docs.hhvm.com/<?php echo $_SERVER['BASE_PAGE']?>">
 <?php if ($shortname): ?>
