@@ -35,6 +35,49 @@ barbaz
   <para>
     To address the shortcomings of PHP closures, HHVM introduced a &quot;lambda expression&quot; feature. Lambda expressions offer similar functionality to PHP closures, but they capture variables from the enclosing function body implicitly and are less verbose in general.
   </para>
+  <para>
+    Here are two simple examples of how to use lambda expressions. You can find more examples <link linkend="hack.lambda.examples">here</link>.
+    <informalexample>
+        <programlisting role="php">
+<![CDATA[
+<?hh
+// Never do this, but just illustrating that this won't be captured.
+$b = 34;
+function lam(int $b): int {
+  // $b is captured from the parameter in this function body
+  $fn = $a ==> $a + $b;
+  // Do other stuff
+  // .....
+  return $fn(10);
+}
+
+var_dump(lam(42)); // return 52
+]]>
+        </programlisting>
+      </informalexample>
+      <informalexample>
+        <programlisting role="php">
+<![CDATA[
+<?hh
+// Never do this, but just illustrating that this won't be captured.
+$b = 34;
+function lam(int $b): int {
+  // Multi-statement lambda body
+  // $b is captured from the parameter in this function body
+  $fn = $a ==> {$b = mult($b); return ($a + $b);};
+  // Do other stuff
+  // .....
+  return $fn(10);
+}
+
+function mult(int $x): int {
+  return $x * 4;
+}
+var_dump(lam(42)); // return 178
+]]>
+        </programlisting>
+      </informalexample>
+    </para>
   <note>
     <para>
       There are currently some limitations to lambda expressions that are being worked on or considered:
