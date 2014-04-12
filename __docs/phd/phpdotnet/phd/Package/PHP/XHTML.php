@@ -305,24 +305,24 @@ abstract class Package_PHP_XHTML extends Package_Generic_XHTML {
 
     public function format_refname_text($value, $tag) {
         // For HHVM
-        // Not sure why this returned false. But this screws all sorts of things up 
+        // Not sure why this returned false. But this screws all sorts of things up
         // for generics. In Render.php::execute (near line 143), $data ends up being false and the
         // raw value is used instead.
         $ret = $this->TEXT($value);
 
-        // Only check existance of a function if we are not looking 
+        // Only check existance of a function if we are not looking
         // at a hack function , or if they are not one of those
-        // language constructs masquerading as a function. 
+        // language constructs masquerading as a function.
         // And only check if we are running the renderer with hhvm.
-        // Checking hhvm support would not make sense if running PHP5, 
+        // Checking hhvm support would not make sense if running PHP5,
         // obviously
         if (!in_array($this->CURRENT_ID, $this->not_really_functions) &&
-            strpos($this->CURRENT_ID, "hack.") === false &&  
-            (strpos(phpversion(), "hiphop") !== false || 
-            strpos(phpversion(), "hhvm") !== false)) { 
+            strpos($this->CURRENT_ID, "hack.") === false &&
+            (strpos(phpversion(), "hiphop") !== false ||
+            strpos(phpversion(), "hhvm") !== false)) {
           $this->cchunk["hhvmsupport"] = $this->check_hhvm_function_support($value);
         }
-        
+
         $this->cchunk["refname"][] = $ret;
         return $ret;
     }
@@ -384,14 +384,14 @@ abstract class Package_PHP_XHTML extends Package_Generic_XHTML {
         // space between <type> and the <methodname> in methodsynopsis
         return '</span> ';
     }
-    public function format_type_if_object_or_pseudo_text($type, $tagname) {
+    public function format_type_if_object_or_pseudo_text($type, $tagname, $is_return = false) {
         if (in_array(strtolower($type), array("bool", "int", "double", "boolean", "integer", "float", "string", "array", "object", "resource", "null"))) {
             return false;
         }
-        return self::format_type_text($type, $tagname);
+        return self::format_type_text($type, $tagname, $is_return);
     }
 
-    public function format_type_text($type, $tagname) {
+    public function format_type_text($type, $tagname, $is_return = false) {
         $t = strtr(strtolower($type), "_", "-");
         $href = $fragment = "";
 
@@ -430,12 +430,17 @@ abstract class Package_PHP_XHTML extends Package_Generic_XHTML {
         // To handle generics
         $type = $this->TEXT($type);
         if ($href && $this->chunked) {
-            return '<a href="' .$href. $this->getExt().($fragment ? "#$fragment" : ""). '" class="' .$tagname. ' ' .$type. '">' .$type. '</a>';
+            return '<a href="' . $href . $this->getExt() .
+                   ($fragment ? "#$fragment" : "") . '" class="' . $tagname .
+                   ' ' . $type . '">' . ($is_return ? ": " : "") . $type . '</a>';
         }
         if ($href) {
-            return '<a href="#' .($fragment ? $fragment : $href). '" class="' .$tagname. ' ' .$type. '">' .$type. '</a>';
+            return '<a href="#' . ($fragment ? $fragment : $href) .
+                   '" class="' . $tagname . ' ' . $type . '">' .
+                   ($is_return ? ": " : "") . $type.  '</a>';
         }
-        return '<span class="' .$tagname. ' ' .$type. '">' .$type. '</span>';
+        return '<span class="' . $tagname . ' ' . $type . '">' .
+               ($is_return ? ": " : "") . $type . '</span>';
     }
 
     public function format_example_title($open, $name, $attrs, $props) {
@@ -489,6 +494,7 @@ abstract class Package_PHP_XHTML extends Package_Generic_XHTML {
         $display_value = parent::format_classsynopsis_methodsynopsis_methodname_text($value, $tag);
         return $this->format_varname_text($display_value, $tag);
     }
+
     public function format_classsynopsis_methodsynopsis_methodname_text($value, $tag) {
         if ($this->cchunk["classsynopsis"]["classname"]) {
           if (strpos($value, "::") === false && strpos($value, "->") === false) {
@@ -505,7 +511,8 @@ abstract class Package_PHP_XHTML extends Package_Generic_XHTML {
             if (isset($attrs[Reader::XMLNS_PHD]["args"])) {
                 $this->cchunk["args"] = $attrs[Reader::XMLNS_PHD]["args"];
             }
-            return '<span class="' . $tag . '">';
+            // Add "function" modifier to methods and functions for proper signatures
+            return '<span class="modifier">function </span><span class="' . $tag . '">';
         }
         return "</span>";
     }
@@ -734,7 +741,7 @@ abstract class Package_PHP_XHTML extends Package_Generic_XHTML {
       } else {
         // If we have a ::, it is a class name
         $cm_split = explode("::", $function_or_method_name);
-        return method_exists($cm_split[0], 
+        return method_exists($cm_split[0],
                            $cm_split[1]);
       }
     }

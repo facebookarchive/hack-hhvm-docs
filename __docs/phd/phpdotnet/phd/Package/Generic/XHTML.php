@@ -933,27 +933,20 @@ abstract class Package_Generic_XHTML extends Format_Abstract_XHTML {
     }
 
     public function format_classsynopsis_methodsynopsis_methodname_text($value, $tag) {
-        // For HHVM - Handle generics
-        if ($this->cchunk["classsynopsis"]["classname"] === false) {
-            $value = $this->TEXT($value);
-            return $value;
-        }
+        $explode = null;
         if (strpos($value, '::')) {
             $explode = '::';
         } elseif (strpos($value, '->')) {
             $explode = '->';
         } elseif (strpos($value, '-&gt;')) {
             $explode = '-&gt;';
-        } else {
-            return $value;
         }
 
-        list($class, $method) = explode($explode, $value);
-        if ($class !== $this->cchunk["classsynopsis"]["classname"]) {
-            $value = $this->TEXT($value);
-            return $value;
+        if ($explode !== null) {
+            list($class, $method) = explode($explode, $value);
+            return $this->TEXT($method);
         }
-        return $this->TEXT($method);
+        return $value;
     }
 
     public function format_classsynopsis_ooclass_classname_text($value, $tag) {
@@ -985,8 +978,6 @@ abstract class Package_Generic_XHTML extends Format_Abstract_XHTML {
             $content = str_repeat("]", $this->params["opt"]);
         }
         $content .= " )";
-
-        $content .= "</div>\n";
 
         return $content;
     }

@@ -47,10 +47,12 @@ class Render extends ObjectStorage
         }
 
         $lastdepth = -1;
+        $in_method_synopsis = false;
+        $is_method_return_type = false;
+        $method_return_type_content = "";
         while($r->read()) {
             $type = $r->nodeType;
             $data = $retval = $name = $open = false;
-
             switch($type) {
                 case \XMLReader::ELEMENT: /* {{{ */
                 $open  = true;
@@ -85,6 +87,14 @@ class Render extends ObjectStorage
                 if ($name == "notatag")
                     continue;
 
+                if ($name === "methodsynopsis" && $open === true) {
+                    $in_method_synopsis = true;
+                }
+
+                if ($name === "type" && $in_method_synopsis && $open == true) {
+                    $is_method_return_type = true;
+                }
+
                 foreach($this as $format) {
                     $map = $this[$format][\XMLReader::ELEMENT];
 
@@ -110,7 +120,11 @@ class Render extends ObjectStorage
                     } else {
                         $data = $format->{$tag}($open, $name, $attrs, $props);
                     }
-                    $format->appendData($data);
+                    if ($is_method_return_type) {
+                        $method_return_type_content .= $data;
+                    } else {
+                        $format->appendData($data);
+                    }
                 }
 
                 $lastdepth = $depth;
@@ -126,24 +140,43 @@ class Render extends ObjectStorage
                     $map = $this[$format][\XMLReader::TEXT];
                     if (isset($map[$name])) {
                         $tag = $map[$name];
-
                         if (is_array($tag)) {
                             $tag = $this->notXPath($tag, $eldepth);
                         }
-
                         if ($tag !== false) {
-                            $data = $format->{$tag}($value, $name);
+                            if ($is_method_return_type) {
+                                // ":" is added in the
+                                // format_type_if_object_or_pseudo_text
+                                // method
+                                $data = $format->{$tag}($value, $name, true);
+                            } else {
+                                $data = $format->{$tag}($value, $name);
+                            }
                         } else {
-                            $data = $format->TEXT($value);
+                            if ($is_method_return_type) {
+                                $data = ": " . $format->TEXT($value);
+                            } else {
+                                $data = $format->TEXT($value);
+                            }
                         }
                     } else {
                         $data = $format->TEXT($value);
                     }
-
                     if ($data === false) {
-                        $format->appendData($value);
+                        if ($is_method_return_type) {
+                            // Probably a primitive that doesn't have a special
+                            // inner <span> tag. So add the : for return.
+                            $method_return_type_content .= ": " . $value;
+                        } else {
+                            $format->appendData($value);
+                        }
                     } else {
-                        $format->appendData($data);
+                        if ($is_method_return_type) {
+                            // The ": " will have been added in the $data field
+                            $method_return_type_content .= $data;
+                        } else {
+                            $format->appendData($data);
+                        }
                     }
                 }
                 break;
@@ -154,7 +187,11 @@ class Render extends ObjectStorage
                 $value  = $r->value;
                 foreach($this as $format) {
                     $retval = $format->CDATA($value);
-                    $format->appendData($retval);
+                    if ($is_method_return_type) {
+                        $method_return_type_content .= $retval;
+                    } else {
+                        $format->appendData($retval);
+                    }
                 }
                 break;
                     /* }}} */
@@ -164,7 +201,11 @@ class Render extends ObjectStorage
                             /* WS is always WS */
                 $retval  = $r->value;
                 foreach($this as $format) {
-                    $format->appendData($retval);
+                    if ($is_method_return_type) {
+                        $method_return_type_content .= $retval;
+                    } else {
+                        $format->appendData($retval);
+                    }
                 }
                 break;
                     /* }}} */
@@ -175,10 +216,28 @@ class Render extends ObjectStorage
                 foreach ($this as $format) {
                     $retval = $format->parsePI($target, $data);
                     if ($retval) {
-                        $format->appendData($retval);
+                        if ($is_method_return_type) {
+                            $method_return_type_content .= $retval;
+                        } else {
+                            $format->appendData($retval);
+                        }
                     }
                 }
                 break;
+            }
+
+            if ($in_method_synopsis && $name === "type" && $type === \XMLReader::END_ELEMENT) {
+                $is_method_return_type = false;
+                // There may be other type elements we don't want to buffer
+                $in_method_synopsis = false;
+            }
+
+            // Constructors use the same rendering as methods. Return type content will be empty, but we need
+            // to capture the </div>
+            if (($name === "methodsynopsis" || $name == "constructorsynopsis") && $type === \XMLReader::END_ELEMENT) {
+                $format->appendData($method_return_type_content);
+                $format->appendData("</div>\n");
+                $method_return_type_content = "";
             }
         }
 
