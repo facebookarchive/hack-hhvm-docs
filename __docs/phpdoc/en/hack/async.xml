@@ -45,7 +45,7 @@ gen_foo(4);
 ]]>
       </programlisting>
       <para>
-        <literal>gen_foo()</literal> is an async function as shown by the <literal>async</literal> keyword preceding the function signature. Async functions always returns an object that implements <literal>Awaitable&lt;T&gt;</literal> (the normal concrete implementation is <literal>WaitHandle&lt;T&gt;</literal>, but it is almost always preferred to use the <literal>Awaitable&lt;T&gt;</literal> interface).
+        <literal>gen_foo()</literal> is an async function as shown by the <literal>async</literal> keyword preceding the function signature. Async functions always return an object that implements <literal>Awaitable&lt;T&gt;</literal> (the normal concrete implementation is <literal>WaitHandle&lt;T&gt;</literal>, but it is almost always preferred to use the <literal>Awaitable&lt;T&gt;</literal> interface).
       </para>
       <para>
         The call to <literal>gen_foo()</literal> brings with it some interesting properties that are unique to async functions. The async function may eagerly execute part of the async function body. The call <literal>gen_bar()</literal> first returns an <literal>Awaitable</literal>, that may or may not be finished in its execution. If it is not finished, <literal>gen_foo()</literal> suspends execution; otherwise <literal>gen_foo()</literal> just unpacks the result and continues eager execution. The execution will not suspend outside of the <literal>await</literal> statement. The asynchronous programming framework keeps track of all of the asynchronous operations that should be completed.
