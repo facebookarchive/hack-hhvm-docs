@@ -75,12 +75,21 @@ function test(): void {
   $f(1);
 
   // But, with a call to inst_meth(), we can know what function $f refers to,
-  // and check its arguments statically. This will produce a type error.
+  // and check its arguments statically. This will produce a type error (as
+  // shown below)
   $f = inst_meth($c, 'f');
   $f(1);
 }
 ]]>
     </programlisting>
+    &example.outputs;
+    <screen>
+<![CDATA[
+im.php:20:15,15: Invalid argument
+  im.php:4:21,26: This is a string
+  im.php:20:15,15: It is incompatible with an int
+]]>
+    </screen>
    </example>
   </para>
   <para>
