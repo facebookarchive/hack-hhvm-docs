@@ -19,7 +19,7 @@
   |             Hannes Magnusson <bjori@php.net>                         |
   |             Gwynne Raskind <gwynne@php.net>                          |
   +----------------------------------------------------------------------+
-  
+
   $Id: configure.php 330577 2013-06-20 23:22:04Z bjori $
 */
 
@@ -31,7 +31,7 @@ echo "configure.php: $cvs_id\n";
 function usage() // {{{
 {
     global $acd;
-    
+
     echo <<<HELPCHUNK
 configure.php configures this package to adapt to many kinds of systems, and PhD
 builds too.
@@ -68,7 +68,7 @@ Package-specific:
   --with-php=PATH                Path to php CLI executable [detect]
   --with-lang=LANG               Language to build [{$acd['LANG']}]
   --with-partial=ID              Root ID to build [{$acd['PARTIAL']}]
-  --disable-broken-file-listing  Do not ignore translated files in 
+  --disable-broken-file-listing  Do not ignore translated files in
                                  broken-files.txt
   --redirect-stderr-to-stdout    Redirect STDERR to STDOUT. Use STDOUT as the
                                  standard output for XML errors [{$acd['STDERR_TO_STDOUT']}]
@@ -99,7 +99,7 @@ function is_windows() {
 function checking($for) // {{{
 {
     global $ac;
-    
+
     if ($ac['quiet'] != 'yes') {
         echo "Checking {$for}... ";
         flush();
@@ -109,7 +109,7 @@ function checking($for) // {{{
 function checkerror($msg) // {{{
 {
     global $ac;
-    
+
     if ($ac['quiet'] != 'yes') {
         echo "\n";
     }
@@ -120,7 +120,7 @@ function checkerror($msg) // {{{
 function checkvalue($v) // {{{
 {
     global $ac;
-    
+
     if ($ac['quiet'] != 'yes') {
         echo "{$v}\n";
     }
@@ -318,7 +318,7 @@ foreach ($_SERVER['argv'] as $k => $opt) { // {{{
     } else {
         continue;
     }
-    
+
     $overridden_settings[] = strtoupper($o);
     switch ($o) {
         case 'h':
@@ -406,7 +406,7 @@ foreach ($_SERVER['argv'] as $k => $opt) { // {{{
         case 'basedir':
             $ac['basedir'] = $v;
             break;
-        
+
         case 'output':
             $ac['OUTPUT_FILENAME'] = $v;
             break;
@@ -618,7 +618,7 @@ if ($ac['HOWTO'] === 'yes') {
         echo "INFO: All you have to do now is run 'phd -d {$fileout} -t howto'\n";
         exit(0);
     }
-    
+
     echo "INFO: I am trying to figure out what went wrong...\n";
     echo "INFO: Here are the errors I found:\n";
     if ($ac['DETAILED_ERRORMSG'] == 'yes') {
@@ -719,7 +719,7 @@ if ($ac['PARTIAL'] != '' && $ac['PARTIAL'] != 'no') { // {{{
     echo "done.\n";
     echo "Partial manual saved to {$filename}. To build it, run 'phd -d {$filename}'\n";
     exit(0);
-} // }}} 
+} // }}}
 
 $mxml = $ac["OUTPUT_FILENAME"];
 if ($dom->validate()) {
@@ -765,7 +765,7 @@ CAT;
     echo "\nThe document didn't validate, ";
 
     // Allow the .manual.xml file to be created, even if it is not valid.
-    if ($ac['FORCE_DOM_SAVE'] == 'yes') { 
+    if ($ac['FORCE_DOM_SAVE'] == 'yes') {
         printf("writing %s anyway, and ", basename($ac["OUTPUT_FILENAME"]));
         if ($ac["SEGFAULT_SPEED"] == "yes") {
             $t = $dom->doctype;

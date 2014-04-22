@@ -13,7 +13,7 @@
    <methodparam><type>int</type><parameter>direction</parameter></methodparam>
   </methodsynopsis>
   <para>
-   Return the current error mode for string conversions in 
+   Return the current error mode for string conversions in
    <parameter>direction</parameter>.
   </para>
  </refsect1>
@@ -27,8 +27,8 @@
      <listitem>
       <para>
        Get the error mode for conversion <parameter>direction</parameter>. This
-       can either be <constant>FROM_UNICODE</constant> or 
-       <constant>TO_UNICODE</constant>. See 
+       can either be <constant>FROM_UNICODE</constant> or
+       <constant>TO_UNICODE</constant>. See
        <function>unicode_set_error_mode</function> for more details.
       </para>
      </listitem>
@@ -47,7 +47,7 @@
  <refsect1 role="errors">
   &reftitle.errors;
   <para>
-   Emits a <constant>E_WARNING</constant> level error if 
+   Emits a <constant>E_WARNING</constant> level error if
    <parameter>direction</parameter> is invalid.
   </para>
  </refsect1>

@@ -5,7 +5,7 @@
   <refname>ldap_mod_add</refname>
   <refpurpose>Add attribute values to current attributes</refpurpose>
  </refnamediv>
- 
+
  <refsect1 role="description">
   &reftitle.description;
   <methodsynopsis>

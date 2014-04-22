@@ -5,7 +5,7 @@
   <refname>ini_get_all</refname>
   <refpurpose>Gets all configuration options</refpurpose>
  </refnamediv>
- 
+
  <refsect1 role="description">
   &reftitle.description;
   <methodsynopsis>

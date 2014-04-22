@@ -5,7 +5,7 @@
   <refname>w32api_invoke_function</refname>
   <refpurpose>Invokes function funcname with the arguments passed after the function name</refpurpose>
  </refnamediv>
- 
+
  <refsect1 role="description">
   &reftitle.description;
   <methodsynopsis>
@@ -16,7 +16,7 @@
   </methodsynopsis>
   <para>
    <function>w32api_invoke_function</function> tries to find the previously
-   registered function, passing the parameters you provided. 
+   registered function, passing the parameters you provided.
   </para>
  </refsect1>
 

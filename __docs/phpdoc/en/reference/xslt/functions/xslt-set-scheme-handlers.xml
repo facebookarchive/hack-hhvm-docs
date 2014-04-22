@@ -27,7 +27,7 @@
      <term><parameter>handlers</parameter></term>
      <listitem>
       <para>
-       An array with the following keys: <literal>"get_all"</literal>, 
+       An array with the following keys: <literal>"get_all"</literal>,
        <literal>"open"</literal>, <literal>"get"</literal>, <literal>"put"</literal>,
        and <literal>"close"</literal>.
       </para>

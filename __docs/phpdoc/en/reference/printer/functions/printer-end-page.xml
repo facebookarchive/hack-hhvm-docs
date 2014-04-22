@@ -5,7 +5,7 @@
   <refname>printer_end_page</refname>
   <refpurpose>Close active page</refpurpose>
  </refnamediv>
- 
+
  <refsect1 role="description">
   &reftitle.description;
   <methodsynopsis>

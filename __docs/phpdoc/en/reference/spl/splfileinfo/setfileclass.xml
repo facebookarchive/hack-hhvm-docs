@@ -27,7 +27,7 @@
      <term><parameter>class_name</parameter></term>
      <listitem>
       <para>
-       The class name to use when openFile() is called. 
+       The class name to use when openFile() is called.
       </para>
      </listitem>
     </varlistentry>
@@ -64,7 +64,7 @@ var_dump($info->openFile());
     &example.outputs.similar;
     <screen>
 <![CDATA[
-object(MyFoo)#2 (0) { } 
+object(MyFoo)#2 (0) { }
 ]]>
     </screen>
    </example>

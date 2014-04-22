@@ -19,7 +19,7 @@
    Get response cookie(s) after the request has been sent.
   </para>
   <para>
-   If redirects were allowed and several responses were received, the data 
+   If redirects were allowed and several responses were received, the data
    references the last received response.
   </para>
 

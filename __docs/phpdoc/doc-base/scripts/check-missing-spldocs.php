@@ -37,7 +37,7 @@ foreach (new RecursiveIteratorIterator(new RecursiveDirectoryIterator($docgen_sp
 	}
 
 	$fileid = str_replace($docgen_spl, '', $filepath);
-	
+
 	if (file_exists($phpdoc_spl . $fileid)) {
 		$contents = file_get_contents($phpdoc_spl . $fileid);
 		if (false !== strpos($contents, 'warn.undocumented.func')) {

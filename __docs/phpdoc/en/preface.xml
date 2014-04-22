@@ -18,17 +18,17 @@
 
  <para>
   This manual consists primarily of a <link linkend="phpfuncref">
-  PHP function reference</link> and <link linkend="hackfuncref">Hack function reference</link>, but also contains a 
-  <link linkend="phplangref">PHP language reference</link>, a 
+  PHP function reference</link> and <link linkend="hackfuncref">Hack function reference</link>, but also contains a
+  <link linkend="phplangref">PHP language reference</link>, a
   <link linkend="hacklangref">Hack language reference</link>, explanations
-  of some of PHP's major <link linkend="features">features</link>, 
-  and other <link linkend="appendices">supplemental</link> 
+  of some of PHP's major <link linkend="features">features</link>,
+  and other <link linkend="appendices">supplemental</link>
   information.
  </para>
  <para>
-  This manual began as a fork and clone of the documentation at <link xlink:href="&url.php.docs;">php.net</link>. More information about how this manual is developed can be found in the <link linkend="about">'About the manual'</link> appendix. If you are interested in the <link linkend="history">history of HHVM</link>, visit the relevant appendix. 
+  This manual began as a fork and clone of the documentation at <link xlink:href="&url.php.docs;">php.net</link>. More information about how this manual is developed can be found in the <link linkend="about">'About the manual'</link> appendix. If you are interested in the <link linkend="history">history of HHVM</link>, visit the relevant appendix.
  </para>
-  
+
  &contributors;
 </preface>
 

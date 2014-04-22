@@ -19,12 +19,12 @@
    </methodsynopsis>
   <para>
    If the first and only parameter is an array, <function>min</function>
-   returns the lowest value in that array. If at least two parameters are 
+   returns the lowest value in that array. If at least two parameters are
    provided, <function>min</function> returns the smallest of these values.
   </para>
   <note>
    <para>
-    PHP will evaluate a non-numeric <type>string</type> as 
+    PHP will evaluate a non-numeric <type>string</type> as
     <literal>0</literal> if compared to <type>integer</type>, but still return the string if it's seen as the
     numerically lowest value.  If multiple arguments evaluate to
     <literal>0</literal>, <function>min</function> will return the lowest

@@ -42,7 +42,7 @@
  <refsect1 role="errors">
   &reftitle.errors;
   <para>
-   Raises an <constant>E_WARNING</constant> when the <parameter>content_type</parameter> 
+   Raises an <constant>E_WARNING</constant> when the <parameter>content_type</parameter>
    doesn't seem to contain a primary and a secondary part.
   </para>
  </refsect1>

@@ -57,17 +57,17 @@ $obj = new SubClass();
 
 // In BaseClass constructor
 $obj = new OtherSubClass();
-?> 
+?>
 ]]>
     </programlisting>
    </example>
    <para>
-    For backwards compatibility, if PHP 5 cannot find a 
+    For backwards compatibility, if PHP 5 cannot find a
     <link linkend="object.construct">__construct()</link> function for a given class, and the
     class did not inherit one from a parent class, it will
     search for the old-style constructor function, by the name of the class.
     Effectively, it means that the only case that would have compatibility
-    issues is if the class had a method named 
+    issues is if the class had a method named
     <link linkend="object.construct">__construct()</link> which was used for different semantics.
    </para>
    <para>
@@ -128,7 +128,7 @@ class MyDestructableClass {
 }
 
 $obj = new MyDestructableClass();
-?> 
+?>
 ]]>
     </programlisting>
    </example>

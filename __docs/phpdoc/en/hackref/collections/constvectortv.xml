@@ -29,7 +29,7 @@
      <ooclass>
       <classname>ConstVector&lt;Tv&gt;</classname>
      </ooclass>
-     
+
      <ooclass>
       <modifier>extends</modifier>
       <classname>ConstCollection&lt;Tv&gt;</classname>
@@ -44,7 +44,7 @@
       <modifier>extends</modifier>
       <classname>KeyedIterable&lt;int, Tv&gt;</classname>
      </ooclass>
-     
+
      <ooclass>
       <modifier>extends</modifier>
       <classname>Indexish&lt;int, Tv&gt;</classname>
@@ -52,13 +52,13 @@
 
     </classsynopsisinfo>
 <!-- }}} -->
-    
+
     <classsynopsisinfo role="comment">&Methods;</classsynopsisinfo>
     <xi:include xpointer="xmlns(db=http://docbook.org/ns/docbook) xpointer(id('class.hack.constvectortv')/db:refentry/db:refsect1[@role='description']/descendant::db:methodsynopsis[1])" />
 
     <classsynopsisinfo role="comment">&InheritedMethods;</classsynopsisinfo>
     <xi:include xpointer="xmlns(db=http://docbook.org/ns/docbook) xpointer(id('class.hack.constcollectionte')/db:refentry/db:refsect1[@role='description']/descendant::db:methodsynopsis[1])" />
-   
+
     <classsynopsisinfo role="comment">&InheritedMethods;</classsynopsisinfo>
     <xi:include xpointer="xmlns(db=http://docbook.org/ns/docbook) xpointer(id('class.hack.constindexaccesstktv')/db:refentry/db:refsect1[@role='description']/descendant::db:methodsynopsis[1])" />
 

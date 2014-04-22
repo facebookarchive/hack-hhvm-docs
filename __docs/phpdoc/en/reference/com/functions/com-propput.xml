@@ -11,7 +11,7 @@
   &reftitle.description;
   <simpara>
    &info.function.alias;
-   <function>com_set</function>.    
+   <function>com_set</function>.
   </simpara>
   &com.use-oo-instead;
  </refsect1>

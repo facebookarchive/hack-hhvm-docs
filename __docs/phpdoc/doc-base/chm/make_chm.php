@@ -1,11 +1,11 @@
 <?php
 
-/* 
+/*
  PLEASE DO NOT MAKE ANY MAJOR MODIFICATIONS TO THIS CODE!
  There is a new script collection on the way to replace
  these scripts. Please see the htmlhelp folder for the new
  build system.
- 
+
  See make_chm.README for information about this system.
 */
 
@@ -30,7 +30,7 @@ $MAIN_FILES = array(
     "appendices.html"
 );
 
-// Header for index and toc 
+// Header for index and toc
 $HEADER = '<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML//EN">
 <html>
 <head>
@@ -46,7 +46,7 @@ $HEADER = '<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML//EN">
 makeProjectFile();
 makeContentFiles();
 
-// Generate the HTML Help content files 
+// Generate the HTML Help content files
 function makeContentFiles()
 {
     global $LANGUAGE, $MANUAL_TITLE, $HEADER, $MAIN_FILES,
@@ -89,7 +89,7 @@ function makeContentFiles()
     $MAIN_REGEXP = join("|", $MAIN_FILES);
 
     preg_match_all("![IVX]+[^<]*<A\\s+HREF=\"($MAIN_REGEXP)\"\\s*>([^<]+)</A\\s*>(.+)</DT\\s*></DL\\s*></DD\\s*><(?:DT|/DL)\\s*>!Ui", $indexline, $matches, PREG_SET_ORDER);
-    
+
     // Go through the main files, and link in subpages
     foreach ($matches as $matchinfo) {
         mapAndIndex($matchinfo[2], $matchinfo[1], "    ", $toc, $index);
@@ -236,6 +236,6 @@ function findDeeperLinks ($filename, $toc, $index)
         // return;
 
     }
-    
+
 } // findDeeperLinks() function end
 ?>

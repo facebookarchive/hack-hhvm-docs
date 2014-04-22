@@ -36,7 +36,7 @@
       <para>
        If the <parameter>hebrew</parameter> parameter is set to &true;, the
        <parameter>fl</parameter> parameter is used for Hebrew, string based,
-       output format.  
+       output format.
       </para>
      </listitem>
     </varlistentry>
@@ -44,7 +44,7 @@
      <term><parameter>fl</parameter></term>
      <listitem>
       <para>
-       The available formats are:  
+       The available formats are:
        <constant>CAL_JEWISH_ADD_ALAFIM_GERESH</constant>,
        <constant>CAL_JEWISH_ADD_ALAFIM</constant>,
        <constant>CAL_JEWISH_ADD_GERESHAYIM</constant>.
@@ -101,7 +101,7 @@
 <![CDATA[
 <?php
 echo jdtojewish(gregoriantojd(10, 8, 2002), true,
-       CAL_JEWISH_ADD_GERESHAYIM + CAL_JEWISH_ADD_ALAFIM + CAL_JEWISH_ADD_ALAFIM_GERESH); 
+       CAL_JEWISH_ADD_GERESHAYIM + CAL_JEWISH_ADD_ALAFIM + CAL_JEWISH_ADD_ALAFIM_GERESH);
 ?>
 ]]>
     </programlisting>
@@ -113,7 +113,7 @@ echo jdtojewish(gregoriantojd(10, 8, 2002), true,
   &reftitle.seealso;
   <para>
    <simplelist>
-    <member><function>jewishtojd</function></member> 
+    <member><function>jewishtojd</function></member>
     <member><function>cal_from_jd</function></member>
    </simplelist>
   </para>

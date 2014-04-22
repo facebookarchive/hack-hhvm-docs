@@ -33,7 +33,7 @@
      <term><parameter>mode</parameter></term>
      <listitem>
       <para>
-       This optional parameter can be used to change the behavior of this 
+       This optional parameter can be used to change the behavior of this
        function.
       </para>
       <para>
@@ -52,8 +52,8 @@
      <term><parameter>error</parameter></term>
      <listitem>
       <para>
-       If used, it will contain the error messages. 
-       <parameter>error</parameter> must be passed in by <link 
+       If used, it will contain the error messages.
+       <parameter>error</parameter> must be passed in by <link
        linkend="language.references">reference</link>.
       </para>
      </listitem>

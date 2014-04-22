@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- $Revision$ -->
- 
+
 <section xml:id="{extname}.installation" xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink">
  &reftitle.install;
- 
+
  <!-- If the extension doesn't need to be installed (built-in extension) use this entity -->
  <!-- &no.install; -->
  <!-- There are various PECL related entities in language-snippets.ent -->
@@ -15,7 +15,7 @@
   Windows users ...
  </para>
 </section>
- 
+
 <!-- Keep this comment at the end of the file
 Local variables:
 mode: sgml

@@ -13,12 +13,12 @@
   </methodsynopsis>
   <para>
    <function>nsapi_request_headers</function> gets all the HTTP headers in
-   the current request. This is only supported when PHP runs as a 
+   the current request. This is only supported when PHP runs as a
    <productname>NSAPI</productname> module.
   </para>
   <note>
    <para>
-    Prior to PHP 4.3.3, <function>getallheaders</function> was only 
+    Prior to PHP 4.3.3, <function>getallheaders</function> was only
     available for the Apache servers.  After PHP 4.3.3,
     <function>getallheaders</function> is an alias for
     <function>nsapi_request_headers</function> if you use the NSAPI module.
@@ -27,8 +27,8 @@
   <note>
    <para>
     You can also get at the value of the common CGI variables by
-    reading them from the <varname>$_SERVER</varname> superglobal, which 
-    works whether or not you are using PHP as a 
+    reading them from the <varname>$_SERVER</varname> superglobal, which
+    works whether or not you are using PHP as a
     <productname>NSAPI</productname> module.
    </para>
   </note>

@@ -5,7 +5,7 @@
   <refname>md5</refname>
   <refpurpose>Calculate the md5 hash of a string</refpurpose>
  </refnamediv>
- 
+
  <refsect1 role="description">
   &reftitle.description;
   <methodsynopsis>
@@ -49,7 +49,7 @@
  <refsect1 role="returnvalues">
   &reftitle.returnvalues;
   <para>
-   Returns the hash as a 32-character hexadecimal number. 
+   Returns the hash as a 32-character hexadecimal number.
   </para>
  </refsect1>
 
@@ -96,7 +96,7 @@ if (md5($str) === '1f3870be274f6c49b3e31a0c6728957f') {
    </example>
   </para>
  </refsect1>
- 
+
   <refsect1 role="notes">
   &reftitle.notes;
   &note.passwordhashing;

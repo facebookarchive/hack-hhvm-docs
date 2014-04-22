@@ -46,7 +46,7 @@ function callback_highlight_php($matches) {
 }
 
 function callback_highlight_xml_indent($match) {
-    return strtr($match[0], array(' ' => '&nbsp;', "\t" => '&nbsp;&nbsp;&nbsp;&nbsp;')); 
+    return strtr($match[0], array(' ' => '&nbsp;', "\t" => '&nbsp;&nbsp;&nbsp;&nbsp;'));
 }
 function callback_highlight_xml($matches) {
         $source = trim(htmlentities($matches[1]));
@@ -72,7 +72,7 @@ function callback_highlight_xml($matches) {
             '&lt;<span class="tags">?xml</span> $1 <span class="tags">?</span>&gt;',
             '<span class="tags">&lt;![<span class="keyword">CDATA</span>[</span><span class="cdata">$1</span><span class="tags">]]&gt;</span>'
         );
-        
+
         $result = preg_replace($match, $replace, $source);
         $result = preg_replace_callback('/^([ \t]+)/m', 'callback_highlight_xml_indent', $result);
         return '<div class="xmlcode">' . nl2br($result) . '</div>';

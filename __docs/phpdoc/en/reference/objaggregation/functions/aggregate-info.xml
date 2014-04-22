@@ -56,12 +56,12 @@
 class Slicer {
     var $vegetable;
 
-    function Slicer($vegetable) 
+    function Slicer($vegetable)
     {
         $this->vegetable = $vegetable;
     }
 
-    function slice_it($num_cuts) 
+    function slice_it($num_cuts)
     {
         echo "Doing some simple slicing\n";
         for ($i=0; $i < $num_cuts; $i++) {
@@ -74,12 +74,12 @@ class Dicer {
     var $vegetable;
     var $rotation_angle = 90;   // degrees
 
-    function Dicer($vegetable) 
+    function Dicer($vegetable)
     {
         $this->vegetable = $vegetable;
     }
 
-    function dice_it($num_cuts) 
+    function dice_it($num_cuts)
     {
         echo "Cutting in one direction\n";
         for ($i=0; $i < $num_cuts; $i++) {
@@ -92,12 +92,12 @@ class Dicer {
         }
     }
 
-    function rotate($deg) 
+    function rotate($deg)
     {
         echo "Now rotating {$this->vegetable} {$deg} degrees\n";
     }
 
-    function _secret_super_dicing($num_cuts) 
+    function _secret_super_dicing($num_cuts)
     {
         // so secret we cannot show you ;-)
     }
@@ -133,7 +133,7 @@ Array
 ]]>
     </screen>
    </example>
-   As you can see, all properties and methods of the 
+   As you can see, all properties and methods of the
    <classname>Dicer</classname> class have been aggregated
    into our new object, with the exception of the class
    constructor and the method <methodname>_secret_super_dicing</methodname>

@@ -3,13 +3,13 @@
 
 	PHP Documentation setup script
 	- Checks out the PHP doc sources, and installs PhD.
-	
-	Usage: 
+
+	Usage:
 	- Help:    php create-phpdoc-setup.php -h
 	- Example: php create-phpdoc-setup.php -l en -b /my/svn
 	- Creates: /my/svn/doc-en/
 
-	TODO: 
+	TODO:
 	- Determine if this is useful
 	- If this is useful, make it easier to get/download/find
 	- Find/Fix bugs that most likely exist
@@ -92,7 +92,7 @@ if (!$configs['PATH_PEAR'] = get_installed_path('pear', $configs['PATH_PEAR'], '
 echo_line('Checking: PhD installation:');
 if (!$configs['PATH_PHD'] = get_installed_path('phd', $configs['PATH_PHD'], '-V')) {
 	echo_line('Warning:  PhD is not installed.', FALSE);
-	
+
 	if ($configs['PATH_PEAR']) {
 		echo_line(' But I will attempt to install PhD later.');
 	} else {
@@ -148,12 +148,12 @@ if (false !== strpos($out, 'All good. Saving')) {
 // PhD installation
 if (!$configs['PATH_PHD']) {
 	echo_line('Running:  Attempting to install PhD.');
-	
+
 	if ($configs['PATH_PEAR']) {
 
 		$command = $configs['PATH_PEAR'] . ' install doc.php.net/PhD doc.php.net/PhD_PHP';
 		$out     = shell_exec($command);
-	
+
 		if (!$configs['PATH_PHD'] = get_installed_path('phd', $configs['PATH_PHD'], '-V')) {
 			echo_line('Warning:  Attempted and failed to install PhD. Here was the output:');
 			print_r($out);
@@ -183,7 +183,7 @@ echo_line('-- Commit :)    : svn commit en/reference/strings/functions/strlen.xm
 
 /******* Function library ****************************************************/
 function get_installed_path($program, $test_path = NULL, $version = '--version') {
-	
+
 	// Test $test_path, if provided by user
 	if (!empty($test_path)) {
 		$command = "$test_path $version 2>&1";
@@ -195,7 +195,7 @@ function get_installed_path($program, $test_path = NULL, $version = '--version')
 			echo_line("Warning:  The desired program ($program) was not found at path ($test_path). Will try finding it myself.");
 		}
 	}
-	
+
 	// Now try finding it ourselves...
 	// FIXME: will this always work?
 	$command = "which $program 2>&1";
@@ -245,12 +245,12 @@ function do_getopts() {
 		't' => '',     // Test. Outputs your configuration.
 	);
 	foreach ($options as $option_k => $option_v) {
-		
+
 		// This means it was set. But, I don't like false being the value.
 		if (in_array($option_k, array('h','u','t')) && $option_v === false) {
 			$option_v = true;
 		}
-			
+
 		if (!empty($option_v)) {
 			$configs[$option_k] = $option_v;
 		}
@@ -266,7 +266,7 @@ function do_getopts() {
 		'HELP'			=> $configs['h'],
 		'TEST'			=> $configs['t'],
 	);
-	
+
 	if (!empty($configs['BASEDIR_SVN'])) {
 		$configs['DIR_SVN'] = $configs['BASEDIR_SVN'] . '/doc-' . $configs['LANG_CODE'];
 	}
@@ -283,7 +283,7 @@ function is_phpdoc_checkout($configs) {
 	} else {
 		return false;
 	}
-}	
+}
 function echo_line($line = '', $newline = TRUE) {
 	echo $line;
 	if ($newline) {

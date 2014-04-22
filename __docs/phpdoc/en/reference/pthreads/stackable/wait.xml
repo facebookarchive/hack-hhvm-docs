@@ -50,7 +50,7 @@
 class Work extends Stackable {
     public function run() {
         $this->synchronized(function($object){
-        printf("%s Synchronized\n", __CLASS__);    
+        printf("%s Synchronized\n", __CLASS__);
         $object->notify();
         }, $this);
     }

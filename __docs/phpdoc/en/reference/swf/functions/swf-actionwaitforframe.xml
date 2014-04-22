@@ -5,7 +5,7 @@
   <refname>swf_actionwaitforframe</refname>
   <refpurpose>Skip actions if a frame has not been loaded</refpurpose>
  </refnamediv>
- 
+
  <refsect1 role="description">
   &reftitle.description;
   <methodsynopsis>

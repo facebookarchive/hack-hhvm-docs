@@ -5,7 +5,7 @@
   <refname>swf_fontsize</refname>
   <refpurpose>Change the font size</refpurpose>
  </refnamediv>
- 
+
  <refsect1 role="description">
   &reftitle.description;
   <methodsynopsis>
@@ -13,7 +13,7 @@
    <methodparam><type>float</type><parameter>size</parameter></methodparam>
   </methodsynopsis>
   <para>
-   Changes the font size to the value given by the 
+   Changes the font size to the value given by the
    <parameter>size</parameter> parameter.
   </para>
  </refsect1>

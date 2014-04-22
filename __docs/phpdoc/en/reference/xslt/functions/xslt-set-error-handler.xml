@@ -5,7 +5,7 @@
   <refname>xslt_set_error_handler</refname>
   <refpurpose>Set an error handler for a <acronym>XSLT</acronym> processor</refpurpose>
  </refnamediv>
- 
+
  <refsect1 role="description">
   &reftitle.description;
   <methodsynopsis>
@@ -53,7 +53,7 @@
    &return.void;
   </para>
  </refsect1>
- 
+
  <refsect1 role="examples">
   &reftitle.examples;
   <example>
@@ -123,7 +123,7 @@ array(4) {
    </screen>
   </example>
  </refsect1>
- 
+
  <refsect1 role="seealso">
   &reftitle.seealso;
   <para>

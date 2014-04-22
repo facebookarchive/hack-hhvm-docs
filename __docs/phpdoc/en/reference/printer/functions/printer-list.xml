@@ -5,7 +5,7 @@
   <refname>printer_list</refname>
   <refpurpose>Return an array of printers attached to the server</refpurpose>
  </refnamediv>
- 
+
  <refsect1 role="description">
   &reftitle.description;
   <methodsynopsis>
@@ -126,7 +126,7 @@ var_dump(printer_list(PRINTER_ENUM_LOCAL | PRINTER_ENUM_SHARED));
    </example>
   </para>
  </refsect1>
- 
+
 </refentry>
 
 <!-- Keep this comment at the end of the file

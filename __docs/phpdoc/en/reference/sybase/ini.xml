@@ -68,12 +68,12 @@
   </tgroup>
  </table>
  </para>
- 
+
  &ini.descriptions.title;
- 
+
  <para>
  <variablelist>
-  
+
   <varlistentry xml:id="ini.sybase.allow-persistent">
    <term>
     <parameter>sybase.allow_persistent</parameter>
@@ -85,7 +85,7 @@
     </para>
    </listitem>
   </varlistentry>
-  
+
   <varlistentry xml:id="ini.sybase.max-persistent">
    <term>
     <parameter>sybase.max_persistent</parameter>
@@ -98,7 +98,7 @@
     </para>
    </listitem>
   </varlistentry>
-  
+
   <varlistentry xml:id="ini.sybase.max-links">
    <term>
     <parameter>sybase.max_links</parameter>
@@ -111,7 +111,7 @@
     </para>
    </listitem>
   </varlistentry>
-  
+
   <varlistentry xml:id="ini.sybase.min-error-severity">
    <term>
     <parameter>sybase.min_error_severity</parameter>
@@ -123,7 +123,7 @@
     </para>
    </listitem>
   </varlistentry>
-  
+
   <varlistentry xml:id="ini.sybase.min-message-severity">
    <term>
     <parameter>sybase.min_message_severity</parameter>
@@ -135,7 +135,7 @@
     </para>
    </listitem>
   </varlistentry>
-  
+
   <varlistentry xml:id="ini.magic-quotes-sybase">
    <term>
     <parameter>magic_quotes_sybase</parameter>
@@ -155,7 +155,7 @@
      <para>
       Note that when <parameter>magic_quotes_sybase</parameter>
       is ON it completely overrides <parameter>magic_quotes_gpc
-      </parameter>.  In this case even when 
+      </parameter>.  In this case even when
       <parameter>magic_quotes_gpc</parameter> is enabled
       neither double quotes, backslashes or NUL's
       will be escaped.
@@ -227,12 +227,12 @@
   </tgroup>
  </table>
  </para>
- 
+
  &ini.descriptions.title;
- 
+
  <para>
   <variablelist>
-   
+
    <varlistentry xml:id="ini.sybct.allow-persistent">
     <term>
      <parameter>sybct.allow_persistent</parameter>
@@ -245,7 +245,7 @@
      </para>
     </listitem>
    </varlistentry>
-   
+
    <varlistentry xml:id="ini.sybct.max-persistent">
     <term>
      <parameter>sybct.max_persistent</parameter>
@@ -258,7 +258,7 @@
      </para>
     </listitem>
    </varlistentry>
-   
+
    <varlistentry xml:id="ini.sybct.max-links">
     <term>
      <parameter>sybct.max_links</parameter>
@@ -272,7 +272,7 @@
      </para>
     </listitem>
    </varlistentry>
-   
+
    <varlistentry xml:id="ini.sybct.min-server-severity">
     <term>
      <parameter>sybct.min_server_severity</parameter>
@@ -288,7 +288,7 @@
      </para>
     </listitem>
    </varlistentry>
-   
+
    <varlistentry xml:id="ini.sybct.min-client-severity">
     <term>
      <parameter>sybct.min_client_severity</parameter>
@@ -304,7 +304,7 @@
      </para>
     </listitem>
    </varlistentry>
-   
+
      <varlistentry xml:id="ini.sybct.login-timeout">
       <term>
        <parameter>sybct.login_timeout</parameter>
@@ -320,7 +320,7 @@
        </para>
       </listitem>
      </varlistentry>
-     
+
      <varlistentry xml:id="ini.sybct.timeout">
       <term>
        <parameter>sybct.timeout</parameter>
@@ -349,7 +349,7 @@
      </para>
     </listitem>
    </varlistentry>
-   
+
    <varlistentry xml:id="ini.sybct.deadlock-retry-count">
     <term>
      <parameter>sybct.deadlock_retry_count</parameter>
@@ -362,7 +362,7 @@
      </para>
     </listitem>
    </varlistentry>
-   
+
   </variablelist>
  </para>
  <para>

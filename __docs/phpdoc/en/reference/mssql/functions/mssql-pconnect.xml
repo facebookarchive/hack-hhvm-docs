@@ -5,7 +5,7 @@
   <refname>mssql_pconnect</refname>
   <refpurpose>Open persistent MS SQL connection</refpurpose>
  </refnamediv>
- 
+
  <refsect1 role="description">
   &reftitle.description;
   <methodsynopsis>
@@ -44,7 +44,7 @@
      <term><parameter>servername</parameter></term>
      <listitem>
       <para>
-       The MS SQL server. It can also include a port number. e.g. 
+       The MS SQL server. It can also include a port number. e.g.
        <literal>hostname:port</literal>.
       </para>
      </listitem>
@@ -53,7 +53,7 @@
      <term><parameter>username</parameter></term>
      <listitem>
       <para>
-       The username. 
+       The username.
       </para>
      </listitem>
     </varlistentry>
@@ -61,7 +61,7 @@
      <term><parameter>password</parameter></term>
      <listitem>
       <para>
-       The password. 
+       The password.
       </para>
      </listitem>
     </varlistentry>

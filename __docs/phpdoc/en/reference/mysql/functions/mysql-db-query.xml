@@ -25,7 +25,7 @@
    <methodparam choice="opt"><type>resource</type><parameter>link_identifier</parameter><initializer>NULL</initializer></methodparam>
   </methodsynopsis>
   <para>
-   <function>mysql_db_query</function> selects a database, and executes a 
+   <function>mysql_db_query</function> selects a database, and executes a
    query on it.
   </para>
   &warn.deprecated.function-5-3-0.removed-6-0-0;
@@ -59,7 +59,7 @@
    </variablelist>
   </para>
  </refsect1>
- 
+
  <refsect1 role="returnvalues">
   &reftitle.returnvalues;
   <para>
@@ -91,8 +91,8 @@
       <row>
        <entry>4.0.6</entry>
        <entry>
-        This function is deprecated, do not use this function. Use 
-        <function>mysql_select_db</function> and 
+        This function is deprecated, do not use this function. Use
+        <function>mysql_select_db</function> and
         <function>mysql_query</function> instead.
        </entry>
       </row>

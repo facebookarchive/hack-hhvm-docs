@@ -21,7 +21,7 @@
   </methodsynopsis>
 
   <para>
-   This function serves an identical purpose to the 
+   This function serves an identical purpose to the
    <function>mysqli_fetch_field</function> function with the single
    difference that, instead of returning one object at a time for each field,
    the columns are returned as an array of objects.

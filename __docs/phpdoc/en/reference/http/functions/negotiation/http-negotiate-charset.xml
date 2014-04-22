@@ -15,7 +15,7 @@
   </methodsynopsis>
   <para>
    This function negotiates the clients preferred charset based on its
-   <literal>Accept-Charset</literal> HTTP header. The qualifier is recognized and charsets 
+   <literal>Accept-Charset</literal> HTTP header. The qualifier is recognized and charsets
    without qualifier are rated highest.
   </para>
  </refsect1>

@@ -66,7 +66,7 @@ while (true) {
 	if ($best>0) {
 		$bestchars=array_search($best, $counter);
 		$tocomp=str_replace($bestchars, $replacewith, $tocomp);
-		if ($result) 
+		if ($result)
 			$result=$replacewith.$bestchars."}".$result;
 		else
 			$result=$replacewith.$bestchars;

@@ -5,7 +5,7 @@
   <refname>bcpow</refname>
   <refpurpose>Raise an arbitrary precision number to another</refpurpose>
  </refnamediv>
- 
+
  <refsect1 role="description">
   &reftitle.description;
   <methodsynopsis>
@@ -15,8 +15,8 @@
    <methodparam choice="opt"><type>int</type><parameter>scale</parameter></methodparam>
   </methodsynopsis>
   <para>
-   Raise <parameter>left_operand</parameter> to the power 
-   <parameter>right_operand</parameter>. 
+   Raise <parameter>left_operand</parameter> to the power
+   <parameter>right_operand</parameter>.
   </para>
  </refsect1>
 
@@ -51,7 +51,7 @@
    Returns the result as a string.
   </para>
  </refsect1>
- 
+
  <refsect1 role="examples">
   &reftitle.examples;
   <example>
@@ -89,7 +89,7 @@ echo bcpow('5', '2', 2);     // prints "25", not "25.00"
    </para>
   </note>
  </refsect1>
- 
+
  <refsect1 role="seealso">
   &reftitle.seealso;
   <para>

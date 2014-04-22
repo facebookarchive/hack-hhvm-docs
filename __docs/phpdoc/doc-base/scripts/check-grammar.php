@@ -5,7 +5,7 @@
 	This script checks the documentation for grammatical problems, and it's a port from here:
 		- http://matt.might.net/articles/shell-scripts-for-passive-voice-weasel-words-duplicates/
 	Read that entry for details and reasons.
-	
+
 	TODO:
 	- Ideally we'd efficiently find the following facts about each problem:
 		- The exact problem
@@ -42,9 +42,9 @@ if (!is_dir($opts['p'])) {
 $found       = array('duplicate' => array(), 'weasel' => array(), 'passive' => array());
 $weasels_arr = explode('|', $weasels);
 foreach (new RecursiveIteratorIterator(new RecursiveDirectoryIterator($opts['p'])) as $file) {
-	
+
 	$pathname = $file->getPathname();
-	
+
 	if (!$file->isFile() || strpos($pathname, '.svn')) {
 		continue;
 	}
@@ -53,7 +53,7 @@ foreach (new RecursiveIteratorIterator(new RecursiveDirectoryIterator($opts['p']
 		continue;
 	}
 	$lines = file($pathname, FILE_IGNORE_NEW_LINES);
-	
+
 	/*** Duplicate words ******************************************/
 	// @todo make output nicer
 	if (preg_match_all('/\b(\w+)\s+\1\b/', implode($lines, "\n"), $matches)) {

@@ -64,7 +64,7 @@
    <para>
     Although it is always good practice to free the memory used by the result
     of a query using the <function>mysqli_free_result</function> function,
-    when transferring large result sets using the 
+    when transferring large result sets using the
     <function>mysqli_store_result</function> this becomes particularly
     important.
    </para>

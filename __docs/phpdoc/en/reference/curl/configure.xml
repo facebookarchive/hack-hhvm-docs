@@ -8,7 +8,7 @@
   location of the directory containing the <filename>lib</filename> and <filename>include</filename>
   directories. In the <filename>include</filename> directory there should be a folder
   named <filename>curl</filename> which should contain the <filename>easy.h</filename> and
-  <filename>curl.h</filename> files. There should be a file named 
+  <filename>curl.h</filename> files. There should be a file named
   <filename>libcurl.a</filename> located in the <filename>lib</filename> directory. Beginning
   with PHP 4.3.0 you can configure PHP to use cURL for URL streams
   <option role="configure">--with-curlwrappers</option>.
@@ -17,7 +17,7 @@
  <note>
   <title>Note to Win32 Users</title>
   <simpara>
-  In order to enable this module on a Windows environment, 
+  In order to enable this module on a Windows environment,
   <filename>libeay32.dll</filename> and <filename>ssleay32.dll</filename>
   must be present in your PATH.
   </simpara>

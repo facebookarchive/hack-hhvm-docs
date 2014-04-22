@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!--
-$Id: test.xml 317302 2011-09-26 05:35:58Z yannick $ 
+$Id: test.xml 317302 2011-09-26 05:35:58Z yannick $
 $Rev: 317302 $
 $Revision: 317302 $
 $Date: 2011-09-25 22:35:58 -0700 (Sun, 25 Sep 2011) $
@@ -17,9 +17,9 @@ $URL: https://svn.php.net/repository/phpdoc/doc-base/trunk/RFC/test.xml $
  <section xml:id="test.ignored.section">
   <title>Testing</title>
   <para>
-   
+
    test commit from local version of the editor : new structure for modified files.
-   
+
    Ignore me, unless you're test committing.
    Creating test commit as "anonymous" but with an email address.
    Test

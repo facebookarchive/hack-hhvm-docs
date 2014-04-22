@@ -49,7 +49,7 @@
     <programlisting role="php">
 <![CDATA[
 <?php
-// Declare a simple function to return an 
+// Declare a simple function to return an
 // array from our object
 function get_students($obj)
 {
@@ -60,7 +60,7 @@ function get_students($obj)
     return $obj->students;
 }
 
-// Declare a new class instance and fill up 
+// Declare a new class instance and fill up
 // some values
 $obj = new stdClass();
 $obj->students = array('Kalle', 'Ross', 'Felipe');

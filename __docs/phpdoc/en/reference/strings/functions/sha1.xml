@@ -5,7 +5,7 @@
   <refname>sha1</refname>
   <refpurpose>Calculate the sha1 hash of a string</refpurpose>
  </refnamediv>
- 
+
  <refsect1 role="description">
   &reftitle.description;
   <methodsynopsis>
@@ -96,7 +96,7 @@ if (sha1($str) === 'd0be2dc421be4fcd0172e5afceea3970e2f3d940') {
    </example>
   </para>
  </refsect1>
- 
+
  <refsect1 role="notes">
   &reftitle.notes;
   &note.passwordhashing;

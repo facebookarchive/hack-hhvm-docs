@@ -5,7 +5,7 @@
   <refname>ldap_get_option</refname>
   <refpurpose>Get the current value for given option</refpurpose>
  </refnamediv>
- 
+
  <refsect1 role="description">
   &reftitle.description;
   <methodsynopsis>

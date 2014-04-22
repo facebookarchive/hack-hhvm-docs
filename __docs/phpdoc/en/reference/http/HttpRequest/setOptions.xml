@@ -28,7 +28,7 @@
      <term><parameter>options</parameter></term>
      <listitem>
       <para>
-       an associative array, which values will overwrite the 
+       an associative array, which values will overwrite the
        currently set request options;
        if empty or omitted, the options of the <classname>HttpRequest</classname> object will be reset
       </para>

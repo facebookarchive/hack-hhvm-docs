@@ -3,7 +3,7 @@
 <sect1 xml:id="install.linux.mint" xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink">
   <title>Debian Mint Installation</title>
   <para>
-    This section contains notes and hints specific to installing HHVM on Mint. 
+    This section contains notes and hints specific to installing HHVM on Mint.
   </para>
   <sect2 xml:id="install.linux.mint.prebuilt">
     <title>Prebuilt Packages</title>

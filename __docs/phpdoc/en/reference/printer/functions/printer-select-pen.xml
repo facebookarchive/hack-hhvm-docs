@@ -5,7 +5,7 @@
   <refname>printer_select_pen</refname>
   <refpurpose>Select a pen</refpurpose>
  </refnamediv>
- 
+
  <refsect1 role="description">
   &reftitle.description;
   <methodsynopsis>
@@ -19,7 +19,7 @@
    a single line the pen is used. If you draw an rectangle the pen is used
    to draw the borders, while the brush is used to fill the shape.
    If you haven't selected a pen before drawing shapes, the shape won't be
-   outlined. 
+   outlined.
   </para>
  </refsect1>
 
@@ -82,7 +82,7 @@ printer_close($handle);
    </example>
   </para>
  </refsect1>
- 
+
 </refentry>
 
 <!-- Keep this comment at the end of the file

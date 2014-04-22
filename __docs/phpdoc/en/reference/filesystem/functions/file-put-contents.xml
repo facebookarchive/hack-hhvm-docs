@@ -3,7 +3,7 @@
 
 <refentry xmlns="http://docbook.org/ns/docbook" xml:id="function.file-put-contents">
  <refnamediv>
-  <refname>file_put_contents</refname> 
+  <refname>file_put_contents</refname>
   <refpurpose>Write a string to a file</refpurpose>
  </refnamediv>
 
@@ -16,14 +16,14 @@
    <methodparam choice="opt"><type>int</type><parameter>flags</parameter><initializer>0</initializer></methodparam>
    <methodparam choice="opt"><type>resource</type><parameter>context</parameter></methodparam>
   </methodsynopsis>
-  <para> 
-   This function is identical to calling <function>fopen</function>, 
+  <para>
+   This function is identical to calling <function>fopen</function>,
    <function>fwrite</function> and <function>fclose</function> successively
    to write data to a file.
   </para>
   <para>
    If <parameter>filename</parameter> does not exist, the file is created.
-   Otherwise, the existing file is overwritten, unless the 
+   Otherwise, the existing file is overwritten, unless the
    <constant>FILE_APPEND</constant> flag is set.
   </para>
  </refsect1>
@@ -63,7 +63,7 @@
      <term><parameter>flags</parameter></term>
      <listitem>
       <para>
-       The value of <parameter>flags</parameter> can be any combination of 
+       The value of <parameter>flags</parameter> can be any combination of
        the following flags, joined with the binary OR (<literal>|</literal>)
        operator.
       </para>
@@ -93,7 +93,7 @@
             <constant>FILE_APPEND</constant>
            </entry>
            <entry>
-            If file <parameter>filename</parameter> already exists, append 
+            If file <parameter>filename</parameter> already exists, append
             the data to the file instead of overwriting it.
            </entry>
           </row>
@@ -102,7 +102,7 @@
             <constant>LOCK_EX</constant>
            </entry>
            <entry>
-            Acquire an exclusive lock on the file while proceeding to the 
+            Acquire an exclusive lock on the file while proceeding to the
             writing.
            </entry>
           </row>
@@ -112,11 +112,11 @@
             <constant>FILE_TEXT</constant>
            </entry>
            <entry>
-            <parameter>data</parameter> is written in text mode. If unicode 
+            <parameter>data</parameter> is written in text mode. If unicode
             semantics are enabled, the default encoding is UTF-8.
             You can specify a different encoding by creating a custom context
             or by using the <function>stream_default_encoding</function> to
-            change the default. This flag cannot be used with 
+            change the default. This flag cannot be used with
             <constant>FILE_BINARY</constant>. This flag is only available since
             PHP 6.
            </entry>
@@ -143,7 +143,7 @@
      <term><parameter>context</parameter></term>
      <listitem>
       <para>
-       A valid context resource created with 
+       A valid context resource created with
        <function>stream_context_create</function>.
       </para>
      </listitem>
@@ -188,7 +188,7 @@ file_put_contents($file, $current);
 $file = 'people.txt';
 // The new person to add to the file
 $person = "John Smith\n";
-// Write the contents to the file, 
+// Write the contents to the file,
 // using the FILE_APPEND flag to append the content to the end of the file
 // and the LOCK_EX flag to prevent anyone else writing to the file at the same time
 file_put_contents($file, $person, FILE_APPEND | LOCK_EX);
@@ -239,7 +239,7 @@ file_put_contents($file, $person, FILE_APPEND | LOCK_EX);
    </informaltable>
   </para>
  </refsect1>
-  
+
  <refsect1 role="notes">
   &reftitle.notes;
   &note.bin-safe;

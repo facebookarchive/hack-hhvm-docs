@@ -5,7 +5,7 @@
    <refnamediv>
     <refname>xpath_eval_expression</refname>
     <refpurpose>
-     Evaluates the XPath Location Path in the given string 
+     Evaluates the XPath Location Path in the given string
     </refpurpose>
    </refnamediv>
    <refsect1>
@@ -13,13 +13,13 @@
     <methodsynopsis>
      <type>XPathObject</type><methodname>XPathContext::xpath_eval_expression</methodname>
      <methodparam><type>string</type><parameter>expression</parameter></methodparam>
-     <methodparam choice="opt"><type>domnode</type><parameter>contextnode</parameter></methodparam>      
+     <methodparam choice="opt"><type>domnode</type><parameter>contextnode</parameter></methodparam>
     </methodsynopsis>
     <methodsynopsis>
      <type>XPathObject</type><methodname>xpath_eval_expression</methodname>
      <methodparam><type>XPathContext</type><parameter>xpath_context</parameter></methodparam>
      <methodparam><type>string</type><parameter>expression</parameter></methodparam>
-     <methodparam choice="opt"><type>domnode</type><parameter>contextnode</parameter></methodparam>      
+     <methodparam choice="opt"><type>domnode</type><parameter>contextnode</parameter></methodparam>
     </methodsynopsis>
     <para>
      <example>

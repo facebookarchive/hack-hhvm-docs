@@ -10,7 +10,7 @@
   <section xml:id="immmaptktv.intro">
    &reftitle.intro;
    <para>
-     ImmMap is an immutable Map. HHVM provides a native implementation for this class. The Hack class definition is not actually used at run time; it is simply provided for the Hack typechecker and for developer reference. 
+     ImmMap is an immutable Map. HHVM provides a native implementation for this class. The Hack class definition is not actually used at run time; it is simply provided for the Hack typechecker and for developer reference.
    </para>
    <para>
      An ImmMap cannot be mutated. No elements can be added or removed from it, nor can elements be overwritten using assignment (i.e. <literal>$c[$k] = $v</literal> is not allowed).
@@ -70,13 +70,13 @@ function foo(): void {
      <xi:include xpointer="xmlns(db=http://docbook.org/ns/docbook) xpointer(id('class.hack.immmaptktv')/db:refentry/db:refsect1[@role='description']/descendant::db:constructorsynopsis[1])" />
      <xi:include xpointer="xmlns(db=http://docbook.org/ns/docbook) xpointer(id('class.hack.immmaptktv')/db:refentry/db:refsect1[@role='description']/descendant::db:methodsynopsis[1])" />
    </classsynopsis>
-  </section> 
+  </section>
  </partintro>
-  
+
  &hackref.collections.entities.immmaptktv;
- 
+
 </phpdoc:classref>
- 
+
 <!-- Keep this comment at the end of the file
 Local variables:
 mode: sgml

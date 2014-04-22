@@ -5,7 +5,7 @@
  <refnamediv>
   <refname>MongoCollection::ensureIndex</refname>
   <refpurpose>
-   Creates an index on the given field(s), or does nothing if the index 
+   Creates an index on the given field(s), or does nothing if the index
    already exists
   </refpurpose>
  </refnamediv>
@@ -24,8 +24,8 @@
   </para>
  </refsect1>
 
- <refsect1 role="parameters"> 
-  &reftitle.parameters; 
+ <refsect1 role="parameters">
+  &reftitle.parameters;
   <para>
    <variablelist>
     <varlistentry>
@@ -40,16 +40,16 @@
        descending sort.
       </para>
      </listitem>
-    </varlistentry>   
+    </varlistentry>
     <varlistentry>
      <term>
       <parameter>options</parameter>
      </term>
      <listitem>
       <para>
-       This parameter is an associative array of the form 
-       <literal>array("optionname" => &lt;boolean&gt;, ...)</literal>. Currently 
-       supported options are: 
+       This parameter is an associative array of the form
+       <literal>array("optionname" => &lt;boolean&gt;, ...)</literal>. Currently
+       supported options are:
        <itemizedlist>
         &mongo.writes.parameters.writeconcern;
         <listitem>
@@ -267,7 +267,7 @@ $collection->insert(array("username" => "joeschmoe"));
 $collection->insert(array("username" => "joeschmoe"));
 
 /*
- * index creation fails, you can't create a unique index on a key with 
+ * index creation fails, you can't create a unique index on a key with
  * non-unique values
  */
 $collection->ensureIndex(array("username" => 1), array("unique" => 1));
@@ -277,7 +277,7 @@ $collection->ensureIndex(array("username" => 1), array("unique" => 1));
  */
 $collection->ensureIndex(array("username" => 1), array("unique" => 1, "dropDups" => 1));
 
-/* 
+/*
  * now we have a unique index, more inserts with the same username (such as the
  * one below) will fail
  */
@@ -292,7 +292,7 @@ $collection->insert(array("username" => "joeschmoe"));
    <title>Geospatial Indexing</title>
    <para>
     Mongo supports geospatial indexes, which allow you to search for documents
-    near a given location or within a shape.  For example, to create a 
+    near a given location or within a shape.  For example, to create a
     geospatial index on the "loc" field:
    </para>
    <programlisting role="php">
@@ -310,8 +310,8 @@ $collection->ensureIndex(array("loc" => "2d"));
  <refsect1 role="seealso">
   &reftitle.seealso;
   <para>
-   MongoDB core docs on 
-   <link xlink:href="&url.mongodb.dochub.indexes;">vanilla indexes</link> and 
+   MongoDB core docs on
+   <link xlink:href="&url.mongodb.dochub.indexes;">vanilla indexes</link> and
    <link xlink:href="&url.mongodb.dochub.geo;">geospatial indexes</link>.
   </para>
  </refsect1>
@@ -335,4 +335,4 @@ End:
 vim600: syn=xml fen fdm=syntax fdl=2 si
 vim: et tw=78 syn=sgml
 vi: ts=1 sw=1
---> 
+-->

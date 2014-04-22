@@ -67,7 +67,7 @@ var_dump($info->getBasename('.txt'));
 <![CDATA[
 string(8) "file.txt"
 string(8) "file.txt"
-string(4) "file" 
+string(4) "file"
 ]]>
     </screen>
    </example>

@@ -16,7 +16,7 @@
    client. There are many SVN clients you can use, although
    we recommend one command line tool or a proven WYSIWYG tool.
   </para>
-  
+
   <para>
    You will need more programs and tools to manipulate the
    XML files and test their content for errors. The tools
@@ -26,7 +26,7 @@
    about the tools you need in the
    <link linkend="chapter-tools">tools</link> section.
   </para>
-  
+
   <para>
    If you have problems not covered in this document,
    write to <email>&email.phpdoc;</email> and ask.

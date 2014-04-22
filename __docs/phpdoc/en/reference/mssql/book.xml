@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- $Revision: 332155 $ -->
- 
+
 <book xml:id="book.mssql" xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink">
  <?phpdoc extension-membership="bundledexternal" ?>
  <title>Microsoft SQL Server</title>
  <titleabbrev>Mssql</titleabbrev>
- 
+
  <!-- {{{ preface -->
  <preface xml:id="intro.mssql">
   &reftitle.intro;
@@ -16,12 +16,12 @@
    This extension is not available anymore on Windows with PHP 5.3 or later.
   </para>
   <para>
-   SQLSRV, an alternative extension for MS SQL connectivity is available from 
+   SQLSRV, an alternative extension for MS SQL connectivity is available from
    Microsoft: <link xlink:href="&url.sqlsrv;">&url.sqlsrv;</link>.
   </para>
  </preface>
  <!-- }}} -->
- 
+
  &reference.mssql.setup;
  &reference.mssql.constants;
  &reference.mssql.reference;

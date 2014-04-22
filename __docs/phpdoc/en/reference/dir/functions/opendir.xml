@@ -37,10 +37,10 @@
      <term><parameter>context</parameter></term>
      <listitem>
       <para>
-       For a description of the <parameter>context</parameter> parameter, 
+       For a description of the <parameter>context</parameter> parameter,
        refer to <link linkend="ref.stream">the streams section</link> of
        the manual.
-      </para> 
+      </para>
      </listitem>
     </varlistentry>
    </variablelist>
@@ -52,7 +52,7 @@
   <para>
    Returns a directory handle <type>resource</type> on success, or
    &false; on failure.
-  </para> 
+  </para>
   <para>
    If <parameter>path</parameter> is not a valid directory or the
    directory can not be opened due to permission restrictions or
@@ -80,14 +80,14 @@
       <row>
        <entry>5.0.0</entry>
        <entry>
-        <parameter>path</parameter> supports the <literal>ftp://</literal> 
+        <parameter>path</parameter> supports the <literal>ftp://</literal>
         URL wrapper.
        </entry>
       </row>
       <row>
        <entry>4.3.0</entry>
        <entry>
-        <parameter>path</parameter> can also be any URL which supports 
+        <parameter>path</parameter> can also be any URL which supports
         directory listing, however only the <literal>file://</literal>
         URL wrapper supports this in PHP 4
        </entry>

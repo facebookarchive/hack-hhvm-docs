@@ -13,7 +13,7 @@
    <methodparam><type>string</type><parameter>namespaceURI</parameter></methodparam>
   </methodsynopsis>
   <para>
-   Returns the value of an attribute by name and namespace URI or an empty 
+   Returns the value of an attribute by name and namespace URI or an empty
    string if attribute does not exist or not positioned on an element node.
   </para>
  </refsect1>
@@ -44,7 +44,7 @@
   &reftitle.returnvalues;
   <para>
    The value of the attribute, or an empty string if no attribute with the
-   given <parameter>localName</parameter> and 
+   given <parameter>localName</parameter> and
    <parameter>namespaceURI</parameter> is found or not positioned of element.
   </para>
  </refsect1>

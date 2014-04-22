@@ -5,7 +5,7 @@
   <refname>printer_close</refname>
   <refpurpose>Close an open printer connection</refpurpose>
  </refnamediv>
- 
+
  <refsect1 role="description">
   &reftitle.description;
   <methodsynopsis>

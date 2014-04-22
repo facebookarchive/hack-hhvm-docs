@@ -33,7 +33,7 @@
      scripts. Either <classname>IteratorAggregate&lt;Tv&gt;</classname> or
      <classname>Iterator&lt;Tv&gt;</classname> must be used instead.
       When implementing an interface which extends Traversable&lt;Tv&gt;, make sure to
-      list <classname>IteratorAggregate&lt;Tv&gt;</classname> or 
+      list <classname>IteratorAggregate&lt;Tv&gt;</classname> or
       <classname>Iterator&lt;Tv&gt;</classname> before its name in the implements
       clause.
     </para>

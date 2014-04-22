@@ -42,7 +42,7 @@ http_response_code(404);
        </informalexample>
       </para>
      </listitem>
-    </varlistentry>   
+    </varlistentry>
    </variablelist>
   </para>
  </refsect1>
@@ -78,7 +78,7 @@ var_dump(http_response_code()); // int(404)
    </example>
   </para>
  </refsect1>
- 
+
  <refsect1 role="seealso">
   &reftitle.seealso;
   <para>
@@ -87,7 +87,7 @@ var_dump(http_response_code()); // int(404)
     <member><function>headers_list</function></member>
    </simplelist>
   </para>
- </refsect1> 
+ </refsect1>
 
 
 </refentry>

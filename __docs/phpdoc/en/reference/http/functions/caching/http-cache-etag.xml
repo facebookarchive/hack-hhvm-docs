@@ -13,7 +13,7 @@
    <methodparam choice="opt"><type>string</type><parameter>etag</parameter></methodparam>
   </methodsynopsis>
   <para>
-   Attempts to cache the sent entity by its <literal>ETag</literal>, either supplied or generated 
+   Attempts to cache the sent entity by its <literal>ETag</literal>, either supplied or generated
    by the hash algorithm specified by the &link.http.configuration;
    <link linkend="http.configuration.etag.mode">http.etag.mode</link>.
   </para>

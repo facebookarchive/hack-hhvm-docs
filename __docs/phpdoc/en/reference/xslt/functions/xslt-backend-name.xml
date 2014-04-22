@@ -5,7 +5,7 @@
   <refname>xslt_backend_name</refname>
   <refpurpose>Returns the name of the backend</refpurpose>
  </refnamediv>
- 
+
  <refsect1 role="description">
   &reftitle.description;
   <methodsynopsis>

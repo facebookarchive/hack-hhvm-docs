@@ -57,7 +57,7 @@ echo $root->node_name(); // chapter
  <refsect1 role="migration">
   <title>Migrating to PHP 5</title>
   <para>
-   Use the <property>tagName</property> property of the 
+   Use the <property>tagName</property> property of the
    <classname>DOMElement</classname> object.
   </para>
  </refsect1>

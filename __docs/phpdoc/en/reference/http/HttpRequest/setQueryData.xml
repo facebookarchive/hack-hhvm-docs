@@ -30,7 +30,7 @@
      <term><parameter>query_data</parameter></term>
      <listitem>
       <para>
-       a string or associative array parameter containing the pre-encoded 
+       a string or associative array parameter containing the pre-encoded
        query string or to be encoded query fields;
        if empty, the query data will be unset
       </para>

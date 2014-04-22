@@ -10,10 +10,10 @@
   <section xml:id="immsettv.intro">
    &reftitle.intro;
    <para>
-    ImmSet is an immuatble Set. HHVM provides a native implementation for this class. The Hack class definition is not actually used at run time; it is simply provided for the Hack typechecker and for developer reference. 
+    ImmSet is an immuatble Set. HHVM provides a native implementation for this class. The Hack class definition is not actually used at run time; it is simply provided for the Hack typechecker and for developer reference.
    </para>
    <para>
-    A ImmSet cannot be mutated. No elements can be added or removed from it, * nor can elements be overwritten using assignment (i.e. "$s[] = $v" is not allowed). 
+    A ImmSet cannot be mutated. No elements can be added or removed from it, * nor can elements be overwritten using assignment (i.e. "$s[] = $v" is not allowed).
    </para>
   </section>
 <!-- }}} -->
@@ -27,7 +27,7 @@
 
 <!-- {{{ Class synopsis -->
     <classsynopsisinfo>
-     <modifier>final</modifier> <modifier>class</modifier>  
+     <modifier>final</modifier> <modifier>class</modifier>
      <ooclass>
       <classname>ImmSet&lt;Tv&gt;</classname>
      </ooclass>
@@ -43,13 +43,13 @@
      <xi:include xpointer="xmlns(db=http://docbook.org/ns/docbook) xpointer(id('class.hack.immsettv')/db:refentry/db:refsect1[@role='description']/descendant::db:constructorsynopsis[1])" />
      <xi:include xpointer="xmlns(db=http://docbook.org/ns/docbook) xpointer(id('class.hack.immsettv')/db:refentry/db:refsect1[@role='description']/descendant::db:methodsynopsis[1])" />
    </classsynopsis>
-  </section> 
+  </section>
  </partintro>
- 
+
  &hackref.collections.entities.immsettv;
- 
+
 </phpdoc:classref>
- 
+
 <!-- Keep this comment at the end of the file
 Local variables:
 mode: sgml

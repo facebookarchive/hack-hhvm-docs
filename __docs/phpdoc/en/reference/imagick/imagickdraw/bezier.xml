@@ -26,7 +26,7 @@
      <term><parameter>coordinates</parameter></term>
      <listitem>
       <para>
-       Multidimensional array like array( array( 'x' => 1, 'y' => 2 ), 
+       Multidimensional array like array( array( 'x' => 1, 'y' => 2 ),
        array( 'x' => 3, 'y' => 4 ) )
       </para>
      </listitem>

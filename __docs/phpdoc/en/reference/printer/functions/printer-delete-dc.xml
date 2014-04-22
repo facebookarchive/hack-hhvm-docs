@@ -5,7 +5,7 @@
   <refname>printer_delete_dc</refname>
   <refpurpose>Delete a device context</refpurpose>
  </refnamediv>
- 
+
  <refsect1 role="description">
   &reftitle.description;
   <methodsynopsis>

@@ -49,7 +49,7 @@
   <para>
     The UTF-8 encoded version of the domain name &return.falseforfailure;.
     RFC 3490 4.2 states though "ToUnicode never fails. If any step fails, then the original input
-    sequence is returned immediately in that step." 
+    sequence is returned immediately in that step."
   </para>
  </refsect1>
 

@@ -1,5 +1,5 @@
 <?php
-/*  
+/*
   +----------------------------------------------------------------------+
   | PHP Version 4                                                        |
   +----------------------------------------------------------------------+
@@ -15,12 +15,12 @@
   +----------------------------------------------------------------------+
   | Authors:    Mehdi Achour <didou@php.net>                             |
   +----------------------------------------------------------------------+
- 
+
   $Id: view_check_phpdoc.php 307070 2011-01-04 11:45:55Z rquadling $
 */
 
 /**
- * @todo 
+ * @todo
  * Add support for online doc editing
  * Add count of "perfect" functions
  * Get this on http://doc.php.net/
@@ -119,7 +119,7 @@ if (!$restrict) {
 
     echo '<p>
 This script parses the <i>reference/</i> directory of the PHPDOC module and checks for common problems in the documentation. For now, supported tests are:
-  
+
  <ul>';
     foreach ($errors as $type => $info) {
         echo "<li>{$errors[$type]['label']} (<a href=\"{$_SERVER['PHP_SELF']}?restrict=$type\">Restrict</a>)</li>";
@@ -180,7 +180,7 @@ This script parses the <i>reference/</i> directory of the PHPDOC module and chec
             if (!isset($problems[$restrict])) {
                 continue;
             }
-            
+
             if ($i % 4 == 0) {
                 echo '<tr>';
             }

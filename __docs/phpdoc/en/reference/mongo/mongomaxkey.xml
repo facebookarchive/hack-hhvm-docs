@@ -12,9 +12,9 @@
   <section xml:id="mongomaxkey.intro">
    &reftitle.intro;
    <para>
-    <classname>MongoMaxKey</classname> is a special type used by the database 
-    that evaluates to greater than any other type.  Thus, if a query is sorted 
-    by a given field in ascending order, any document with a 
+    <classname>MongoMaxKey</classname> is a special type used by the database
+    that evaluates to greater than any other type.  Thus, if a query is sorted
+    by a given field in ascending order, any document with a
     <classname>MongoMaxKey</classname> as its value will be returned last.
    </para>
    <para>
@@ -59,8 +59,8 @@ $cursor = $collection->find()->sort(array("do by" => 1));
 ]]>
    </programlisting>
    <para>
-    The cursor will contain the staff meeting document, then the dishes 
-    document. The dishes document will always be returned last, regardless of 
+    The cursor will contain the staff meeting document, then the dishes
+    document. The dishes document will always be returned last, regardless of
     what else is added to the collection (unless other documents are added with
     <classname>MongoMaxKey</classname> in the "do by" field).
    </para>

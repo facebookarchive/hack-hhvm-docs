@@ -15,16 +15,16 @@
   +----------------------------------------------------------------------+
   | Authors:    Moshe Doron <momo@php.net>                               |
   +----------------------------------------------------------------------+
-  
+
  $Id: hackmanuallang.php 307070 2011-01-04 11:45:55Z rquadling $
 */
 
 /*
 	REQUIRES: PHP 4.3.0 CLI or higher
-	
+
 	This file is patch allow per language customize for not pulling the autobuild system all those condition
 	i making use this file to bypass some jade mysteries on the hebrew manual impossible build proccess
-	
+
 	Usage: php scriptname lang-code
 */
 error_reporting(2047);
@@ -51,7 +51,7 @@ if($lang=="he"){
 }
 
 function my_shell($cmd){
-	//echo "shell $cmd\n";	
+	//echo "shell $cmd\n";
 	$shell = shell_exec($cmd);
 	//echo $shell;
 }

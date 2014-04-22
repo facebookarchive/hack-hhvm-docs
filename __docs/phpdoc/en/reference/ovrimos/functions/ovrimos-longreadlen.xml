@@ -5,7 +5,7 @@
   <refname>ovrimos_longreadlen</refname>
   <refpurpose>Specifies how many bytes are to be retrieved from long datatypes</refpurpose>
  </refnamediv>
- 
+
  <refsect1 role="description">
   &reftitle.description;
   <methodsynopsis>

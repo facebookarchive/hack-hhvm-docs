@@ -18,8 +18,8 @@
 
   $Id: workbench.php 307070 2011-01-04 11:45:55Z rquadling $
 */
-//-- The PHPDOC Online XML Editing Tool 
-//--- Purpose: this file is the frameset 
+//-- The PHPDOC Online XML Editing Tool
+//--- Purpose: this file is the frameset
 
 require 'base.php';
 $user = sessionCheck();

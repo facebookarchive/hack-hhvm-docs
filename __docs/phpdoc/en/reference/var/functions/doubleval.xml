@@ -29,7 +29,7 @@
       <row>
        <entry>4.2.0</entry>
        <entry>
-        <function>doubleval</function> became an alias of 
+        <function>doubleval</function> became an alias of
         <function>floatval</function>. Before this time, only
         <function>doubleval</function> existed.
        </entry>

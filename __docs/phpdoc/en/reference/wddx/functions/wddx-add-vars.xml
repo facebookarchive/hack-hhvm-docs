@@ -5,7 +5,7 @@
   <refname>wddx_add_vars</refname>
   <refpurpose>Add variables to a WDDX packet with the specified ID</refpurpose>
  </refnamediv>
- 
+
  <refsect1 role="description">
   &reftitle.description;
   <methodsynopsis>

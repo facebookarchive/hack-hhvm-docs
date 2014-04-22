@@ -279,7 +279,7 @@ while (($row = oci_fetch_array($stid, OCI_ASSOC))) {
     echo "<tr>\n";
     $rc = $row['MFRC'];
     oci_execute($rc);  // returned column value from the query is a ref cursor
-    while (($rc_row = oci_fetch_array($rc, OCI_ASSOC))) {   
+    while (($rc_row = oci_fetch_array($rc, OCI_ASSOC))) {
         echo "    <td>" . $rc_row['CITY'] . "</td>\n";
     }
     oci_free_statement($rc);

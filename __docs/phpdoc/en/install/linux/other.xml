@@ -3,7 +3,7 @@
 <sect1 xml:id="install.linux.other" xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink">
   <title>Other Linux Installations</title>
   <para>
-    This section contains notes and hints specific to installing HHVM on other Linux distributions. 
+    This section contains notes and hints specific to installing HHVM on other Linux distributions.
   </para>
   <sect2 xml:id="install.linux.other.compile">
     <title>Compile</title>

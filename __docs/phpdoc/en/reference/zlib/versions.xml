@@ -3,7 +3,7 @@
 <!--
   Do NOT translate this file
 -->
-<versions> 
+<versions>
  <function name='gzclose' from='PHP 4, PHP 5'/>
  <function name='gzcompress' from='PHP 4 &gt;= 4.0.1, PHP 5'/>
  <function name='gzdeflate' from='PHP 4 &gt;= 4.0.4, PHP 5'/>

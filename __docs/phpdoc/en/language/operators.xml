@@ -93,15 +93,15 @@
        <row>
         <entry>right</entry>
         <entry>
-         <literal>++</literal> 
-         <literal>--</literal> 
-         <literal>~</literal> 
-         <literal>(int)</literal> 
-         <literal>(float)</literal> 
-         <literal>(string)</literal> 
+         <literal>++</literal>
+         <literal>--</literal>
+         <literal>~</literal>
+         <literal>(int)</literal>
+         <literal>(float)</literal>
+         <literal>(string)</literal>
          <literal>(array)</literal>
-         <literal>(object)</literal> 
-         <literal>(bool)</literal> 
+         <literal>(object)</literal>
+         <literal>(bool)</literal>
          <literal>@</literal>
         </entry>
         <entry>
@@ -136,8 +136,8 @@
        <row>
         <entry>left</entry>
         <entry>
-         <literal>+</literal> 
-         <literal>-</literal> 
+         <literal>+</literal>
+         <literal>-</literal>
          <literal>.</literal>
         </entry>
         <entry>
@@ -147,7 +147,7 @@
        <row>
         <entry>left</entry>
         <entry>
-         <literal>&lt;&lt;</literal> 
+         <literal>&lt;&lt;</literal>
          <literal>&gt;&gt;</literal>
         </entry>
         <entry>
@@ -157,9 +157,9 @@
        <row>
         <entry>non-associative</entry>
         <entry>
-         <literal>&lt;</literal> 
-         <literal>&lt;=</literal> 
-         <literal>&gt;</literal> 
+         <literal>&lt;</literal>
+         <literal>&lt;=</literal>
+         <literal>&gt;</literal>
          <literal>&gt;=</literal>
         </entry>
         <entry>
@@ -170,9 +170,9 @@
         <entry>non-associative</entry>
         <entry>
          <literal>==</literal>
-         <literal>!=</literal> 
-         <literal>===</literal> 
-         <literal>!==</literal> 
+         <literal>!=</literal>
+         <literal>===</literal>
+         <literal>!==</literal>
          <literal>&lt;&gt;</literal>
         </entry>
         <entry>
@@ -224,17 +224,17 @@
        <row>
         <entry>right</entry>
         <entry>
-         <literal>=</literal> 
-         <literal>+=</literal> 
-         <literal>-=</literal> 
-         <literal>*=</literal> 
-         <literal>/=</literal> 
-         <literal>.=</literal> 
-         <literal>%=</literal> 
-         <literal>&amp;=</literal> 
-         <literal>|=</literal> 
-         <literal>^=</literal> 
-         <literal>&lt;&lt;=</literal> 
+         <literal>=</literal>
+         <literal>+=</literal>
+         <literal>-=</literal>
+         <literal>*=</literal>
+         <literal>/=</literal>
+         <literal>.=</literal>
+         <literal>%=</literal>
+         <literal>&amp;=</literal>
+         <literal>|=</literal>
+         <literal>^=</literal>
+         <literal>&lt;&lt;=</literal>
          <literal>&gt;&gt;=</literal>
          <literal>=&gt;</literal>
         </entry>

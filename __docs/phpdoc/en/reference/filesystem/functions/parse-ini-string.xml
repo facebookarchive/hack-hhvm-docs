@@ -5,7 +5,7 @@
   <refname>parse_ini_string</refname>
   <refpurpose>Parse a configuration string</refpurpose>
  </refnamediv>
- 
+
  <refsect1 role="description">
   &reftitle.description;
   <methodsynopsis>
@@ -42,7 +42,7 @@
        By setting the <parameter>process_sections</parameter>
        parameter to &true;, you get a multidimensional array, with
        the section names and settings included. The default
-       for <parameter>process_sections</parameter> is &false;      
+       for <parameter>process_sections</parameter> is &false;
       </para>
      </listitem>
     </varlistentry>
@@ -50,8 +50,8 @@
      <term><parameter>scanner_mode</parameter></term>
      <listitem>
       <para>
-       Can either be <constant>INI_SCANNER_NORMAL</constant> (default) or 
-       <constant>INI_SCANNER_RAW</constant>. If <constant>INI_SCANNER_RAW</constant> 
+       Can either be <constant>INI_SCANNER_NORMAL</constant> (default) or
+       <constant>INI_SCANNER_RAW</constant>. If <constant>INI_SCANNER_RAW</constant>
        is supplied, then option values will not be parsed.
       </para>
      </listitem>
@@ -59,7 +59,7 @@
    </variablelist>
   </para>
  </refsect1>
- 
+
  <refsect1 role="returnvalues">
   &reftitle.returnvalues;
   <para>
@@ -80,7 +80,7 @@
    </simpara>
   </note>
  </refsect1>
- 
+
  <refsect1 role="seealso">
   &reftitle.seealso;
   <para>

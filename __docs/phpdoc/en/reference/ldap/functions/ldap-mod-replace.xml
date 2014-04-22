@@ -5,7 +5,7 @@
   <refname>ldap_mod_replace</refname>
   <refpurpose>Replace attribute values with new ones</refpurpose>
  </refnamediv>
- 
+
  <refsect1 role="description">
   &reftitle.description;
   <methodsynopsis>
@@ -17,7 +17,7 @@
   <para>
    Replaces one or more attributes from the specified <parameter>dn</parameter>.
    It performs the modification at the attribute level as opposed to the object
-   level. Object-level modifications are done by the 
+   level. Object-level modifications are done by the
    <function>ldap_modify</function> function.
   </para>
  </refsect1>

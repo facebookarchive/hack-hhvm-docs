@@ -7,7 +7,7 @@
    Creates a PHP value from a stored representation
   </refpurpose>
  </refnamediv>
- 
+
  <refsect1 role="description">
   &reftitle.description;
   <methodsynopsis>
@@ -16,7 +16,7 @@
   </methodsynopsis>
   <simpara>
    <function>unserialize</function> takes a single serialized variable and
-   converts it back into a PHP value.  
+   converts it back into a PHP value.
   </simpara>
  </refsect1>
 
@@ -31,7 +31,7 @@
        The serialized string.
       </para>
       <para>
-       If the variable being unserialized is an object, after successfully 
+       If the variable being unserialized is an object, after successfully
        reconstructing the object PHP will automatically attempt to call the
        <link linkend="object.wakeup">__wakeup()</link> member
        function (if it exists).
@@ -43,7 +43,7 @@
          It's possible to set a callback-function which will be called,
          if an undefined class should be instantiated during unserializing.
          (to prevent getting an incomplete <type>object</type> "__PHP_Incomplete_Class".)
-         Use your &php.ini;, <function>ini_set</function> or &htaccess; 
+         Use your &php.ini;, <function>ini_set</function> or &htaccess;
          to define '<literal>unserialize_callback_func</literal>'.  Everytime an undefined class
          should be instantiated, it'll be called.  To disable this feature just
          empty this setting.
@@ -135,7 +135,7 @@ $serialized_object='O:1:"a":1:{s:5:"value";s:3:"100";}';
 // unserialize_callback_func directive available as of PHP 4.2.0
 ini_set('unserialize_callback_func', 'mycallback'); // set your callback_function
 
-function mycallback($classname) 
+function mycallback($classname)
 {
     // just include a file containing your classdefinition
     // you get $classname to figure out which classdefinition is required

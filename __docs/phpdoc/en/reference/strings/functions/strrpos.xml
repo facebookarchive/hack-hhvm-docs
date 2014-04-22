@@ -5,7 +5,7 @@
   <refname>strrpos</refname>
   <refpurpose>Find the position of the last occurrence of a substring in a string</refpurpose>
  </refnamediv>
- 
+
  <refsect1 role="description">
   &reftitle.description;
   <methodsynopsis>
@@ -68,7 +68,7 @@
   </para>
   &return.falseproblem;
  </refsect1>
- 
+
  <refsect1 role="changelog">
   &reftitle.changelog;
   <para>
@@ -99,7 +99,7 @@
    </informaltable>
   </para>
  </refsect1>
- 
+
  <refsect1 role="examples">
   &reftitle.examples;
   <para>

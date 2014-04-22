@@ -5,7 +5,7 @@
   <refname>ldap_rename</refname>
   <refpurpose>Modify the name of an entry</refpurpose>
  </refnamediv>
- 
+
  <refsect1 role="description">
   &reftitle.description;
   <methodsynopsis>

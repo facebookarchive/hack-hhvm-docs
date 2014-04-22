@@ -5,7 +5,7 @@
   <refname>strcspn</refname>
   <refpurpose>Find length of initial segment not matching mask</refpurpose>
  </refnamediv>
- 
+
  <refsect1 role="description">
   &reftitle.description;
   <methodsynopsis>

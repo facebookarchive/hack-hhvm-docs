@@ -67,7 +67,7 @@
  <refsect1 role="returnvalues">
   &reftitle.returnvalues;
   <para>
-   Returns &true; if <parameter>name</parameter> is callable, &false; 
+   Returns &true; if <parameter>name</parameter> is callable, &false;
    otherwise.
   </para>
  </refsect1>
@@ -87,7 +87,7 @@
 //  Simple variable containing a function
 //
 
-function someFunction() 
+function someFunction()
 {
 }
 
@@ -103,7 +103,7 @@ echo $callable_name, "\n";  // someFunction
 
 class someClass {
 
-  function someMethod() 
+  function someMethod()
   {
   }
 
@@ -120,8 +120,8 @@ echo $callable_name, "\n";  //  someClass::someMethod
 ?>
 ]]>
     </programlisting>
-   </example>   
-  </para>   
+   </example>
+  </para>
  </refsect1>
 
  <refsect1 role="seealso">

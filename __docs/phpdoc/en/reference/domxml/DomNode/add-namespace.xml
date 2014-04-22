@@ -56,8 +56,8 @@
   <title>Migrating to PHP 5</title>
   <para>
    You can set the namespace URI and prefix of a <classname>DOMElement</classname>
-   or a <classname>DOMAttr</classname> at creation time by using 
-   <xref linkend='domdocument.createelementns' /> or 
+   or a <classname>DOMAttr</classname> at creation time by using
+   <xref linkend='domdocument.createelementns' /> or
    <xref linkend='domdocument.createattributens' />.
   </para>
   <note>

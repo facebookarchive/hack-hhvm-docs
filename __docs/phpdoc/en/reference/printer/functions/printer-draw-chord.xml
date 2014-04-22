@@ -5,7 +5,7 @@
   <refname>printer_draw_chord</refname>
   <refpurpose>Draw a chord</refpurpose>
  </refnamediv>
- 
+
  <refsect1 role="description">
   &reftitle.description;
   <methodsynopsis>
@@ -152,7 +152,7 @@ printer_close($handle);
    </example>
   </para>
  </refsect1>
- 
+
 </refentry>
 
 <!-- Keep this comment at the end of the file

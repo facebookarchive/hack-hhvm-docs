@@ -1,5 +1,5 @@
 <?php
-/*  
+/*
   +----------------------------------------------------------------------+
   | PHP Version 4                                                        |
   +----------------------------------------------------------------------+
@@ -16,7 +16,7 @@
   | Authors:    Philip Olson <philip@php.net>                            |
   |             Etienne Kneuss <colder@php.net>                          |
   +----------------------------------------------------------------------+
- 
+
   $Id: fix-whitespace.php 307070 2011-01-04 11:45:55Z rquadling $
 */
 
@@ -26,8 +26,8 @@ if (PHP_SAPI !== 'cli') {
 }
 
 if ($_SERVER['argc'] == 2 &&
-      in_array($_SERVER['argv'][1], array('--help', '-help', '-h', '-?')) 
-      || 
+      in_array($_SERVER['argv'][1], array('--help', '-help', '-h', '-?'))
+      ||
       $_SERVER['argc'] < 2) {
 
     echo "Prepare documentation for the new style (Whitespace Fix)\n\n";
@@ -58,50 +58,50 @@ $log = array('nonfiles'  => array(),
 
 
 while (false !== ($file = readdir($dh))) {
-    
+
     $fullpath_file = $fullpath_dir . $file;
-    
+
     if (!is_file($fullpath_file)) {
             $log['nonfiles'][] = $file;
             continue;
     }
-    
+
     $parts = pathinfo($fullpath_file);
-    
+
     if (isset($parts['extension']) && $parts['extension'] !== 'xml') {
             continue;
     }
-    
+
     $lines = file($fullpath_file);
     $hash  = sha1(implode('', $lines));
-    
+
     $tmp   = '';
 
-    
+
     // start a state machine through the lines
-    
+
     $states = array('in_comment'          => false,
                     'front_spaces'        => 0,
                     'refpurpose_lines'    => array(),
                     'metsys_indent_diff'  => 0,
                     'methodparam_lines'   => array(),
                     );
-    
+
     foreach ($lines as $key => $line) {
-            
+
             do {
-                
+
                 // WS should not change inside example code
                 if (preg_match('#</?programlisting|</?screen#', $line)) {
-                
+
                     $states['in_comment'] = !$states['in_comment'];
-                    
+
                 } else if ($states['in_comment']) {
-                
+
                     break;
-                    
+
                 }
-                
+
                 // remove front spaces
                 if (preg_match('#^([ ]+)<refentry xml:id=(?:"|\')function.#', $line, $match)) {
                     $states['front_spaces'] = strlen($match[1]);
@@ -109,31 +109,31 @@ while (false !== ($file = readdir($dh))) {
                     if ($states['front_spaces'] !== 2) {
                         // ask for a confirmation if there is not 2 spaces:
                         echo "Strange indenting  (".(int)$states['front_spaces']." spaces) has been encountered in $fullpath_file\n";
-                        
+
                         $number = null;
                         while ($number > $states['front_spaces'] || $number === null) {
-                            
+
                             if($number > $states['front_spaces']) {
                                 echo "ERROR: Number out of range.\n";
                             }
                             echo "How many spaces would you like to remove? (0-".(int)$states['front_spaces'].")\n";
                             fscanf(STDIN, "%d\n", $number);
                         }
-                        
+
                         $states['front_spaces'] = $number;
                     }
-                    
+
                 }
-                
+
                 if ($states['front_spaces']) {
                     $line = preg_replace('#^[ ]{'.(int)$states['front_spaces'].'}#', '', $line);
                 }
-                
+
                 // WS on refpurpose (put refpurpose on its own line)
-                
-                
+
+
                 if (preg_match('#<refpurpose>\s$#', $line)) {
-                    
+
                     $line = rtrim($line);
                     $states['refpurpose_lines'][] = $line;
                     continue 2;
@@ -150,36 +150,36 @@ while (false !== ($file = readdir($dh))) {
                     }
                 }
 
-                
-                
+
+
                 // WS on methodsynopsis (flush even horizontally with the refname)
 
                 if (preg_match('#^([ ]+)<methodsynopsis#', $line, $match)) {
-                    
+
                     // check the indenting on the line before
                     if(preg_match('#^([ ]+)<#', $lines[$key-1], $matchBefore)) {
-                    
+
                         $indent       = strlen($match[1]);
                         $indentBefore = strlen($matchBefore[1]) - $states['front_spaces'];
-                        
+
                         if ($indent > $indentBefore) {
                             $states['metsys_indent_diff'] = $indent - $indentBefore;
                         }
                     }
-                    
-                } 
-                
+
+                }
+
                 if ($states['metsys_indent_diff']) {
                     $line = substr($line, $states['metsys_indent_diff']);
                 }
-                
+
                 if (strpos($line, '</methodsynopsis') !== false) {
                     $states['metsys_indent_diff'] = 0;
                 }
-                
+
 
                 // method param should be on one line
-                
+
                 if (preg_match('#<methodparam#', $line) && strpos($line, '</methodparam') === false) {
                     $line = rtrim($line);
                     $states['methodparam_lines'][] = $line;
@@ -198,10 +198,10 @@ while (false !== ($file = readdir($dh))) {
                 }
 
             } while(false);
-            
+
             $tmp .= rtrim($line) . "\n";
     }
-    
+
     if (false !== strpos($tmp, '<refsect1 role="')) {
             $log['newstyle'][] = $file;
             continue;

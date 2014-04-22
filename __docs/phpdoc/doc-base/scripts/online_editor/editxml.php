@@ -18,7 +18,7 @@
 
   $Id: editxml.php 307070 2011-01-04 11:45:55Z rquadling $
 */
-//-- The PHPDOC Online XML Editing Tool 
+//-- The PHPDOC Online XML Editing Tool
 //--- Purpose: this is the actual xml editor script
 
 //------- Initialization
@@ -29,7 +29,7 @@ $lang = $user['phpdocLang'];
 $translationPath = $phpdocLangs[$lang]['DocCVSPath'];
 
 
-//------- Frames split 
+//------- Frames split
 if (isset($_REQUEST['split'])) {
 	if ($_REQUEST['split']=='false' || !$_REQUEST['split']) $_REQUEST['split'] = false;
 	$_SESSION['split'] = $_REQUEST['split'];
@@ -37,7 +37,7 @@ if (isset($_REQUEST['split'])) {
 
 if (!empty($_SESSION['split']) && !isset($_REQUEST['noframes'])) {
 	$source = $_REQUEST['source'];
-	$file = $_REQUEST['file'];	
+	$file = $_REQUEST['file'];
 
 	// ToDo automatically show the translated file in one frame and the source in another
 	print "<frameset cols=*,*><frame name=frame1 src='editxml.php?file=$file&source=$source&noframes=1'><frame name=frame2 src='editxml.php?file=$file&source=$source&noframes=1'></frameset>";
@@ -81,8 +81,8 @@ if (!empty($_REQUEST['linebyline']) && $_REQUEST['linebyline']!='false') {
 
 
 
-//------- Functions 
-// Parse XML to find editable text 
+//------- Functions
+// Parse XML to find editable text
 // this function is written poorly but it does the job
 function myParse($text) {
 	$results = array();
@@ -101,10 +101,10 @@ function myParse($text) {
 			$tagC .= $c;
 		} else {
 			if ($c=="\n") {
-				// Advance the counter so each line is stored separately 
-				if (empty($_SESSION['para'])) { 
+				// Advance the counter so each line is stored separately
+				if (empty($_SESSION['para'])) {
 					$rc++;
-				} else {					
+				} else {
 					if (!isset($results[$rc])) {
 						// Get position of New editable text
 						$results[$rc] = array('index'=>$i, 'text'=>'');
@@ -129,19 +129,19 @@ function myParse($text) {
 
 	// Filter editable text
 	$resultsx = array();
-	foreach($results as $resline) {		
+	foreach($results as $resline) {
 		$res = trim($resline['text']);
 
-		// Skip empty, &xx; and literals 
+		// Skip empty, &xx; and literals
 		if (!$res || ($res[0]=='&' && substr($res,-1)==';') || isLiteral($res) ) continue;
-		
+
 		if (!empty($_SESSION['para'])) {
 			// trim \n and adjust position
 			while(substr($resline['text'], 0, 1)=="\n" || substr($resline['text'], 0, 1)=="\r") {
 				$resline['index']++;
 				$resline['text'] = substr($resline['text'], 1);
 			}
-			// recheck \n 
+			// recheck \n
 			if (!strstr($resline['text'], "\n")) {
 				// treat as one line (trim and adjust)
 				while(substr($resline['text'], 0, 1)==' ') {
@@ -180,7 +180,7 @@ $status = getTranslationStatus($file);
 
 switch($source) {
 	case 'upath': // User cached path
-		$file = $user['cache'].getCacheName($file);	
+		$file = $user['cache'].getCacheName($file);
 	break;
 	case 'apath': // File from translation
 		$file = $translationPath.$file;
@@ -203,7 +203,7 @@ switch($source) {
 
 //------- Prepare the file for editing
 
-if ($source!='diff'): 
+if ($source!='diff'):
 // Read the file contents
 $data = implode('', file($file));
 
@@ -214,7 +214,7 @@ if (empty($_SESSION['textedit'])) {
 preg_match_all("#<\!\[CDATA\[(.+)\]\]>#Us", $data, $matches);
 $cdataStore = array();
 $cdataMarks = array();
-	foreach($matches[0] as $i=>$cdata) {		
+	foreach($matches[0] as $i=>$cdata) {
 		$mark = "<CDATA-$i-></CDATA>";
 		$cdl = strlen($cdata)-strlen($mark);
 		$mark = "<CDATA-$i-".str_repeat('X', $cdl).'></CDATA>';
@@ -239,7 +239,7 @@ foreach($results as $index=>$text) {
 	if (isset($_POST['textAt'][$index])) {
 		$newtext = stripslashes2($_POST['textAt'][$index]);
 
-		// Fix paragraphs that lost prefix \n 
+		// Fix paragraphs that lost prefix \n
 		if (strstr($newtext, "\n") && substr($newtext, 0, 1)!="\n") {
 			//$newtext = "\n$newtext";
 		}
@@ -247,7 +247,7 @@ foreach($results as $index=>$text) {
 		$results[$index] = $newtext;
 		$newdata = substr_replace($newdata, $newtext, $index, strlen($text));
 		$updated = true;
-	}	
+	}
 
 	// Put special marks
 	if ($newtext!="'>" && $newtext!='">') {
@@ -318,10 +318,10 @@ if (!empty($updated) || !empty($_REQUEST['download'])) {
 		header('Content-Disposition: attachment; filename='.basename($requestedFilename));
 		print $newdata;
 		exit;
-	}	
+	}
 
 	if ($requireLogin) {
-		// Save file in user cache folder 
+		// Save file in user cache folder
 		$f = fopen($user['cache'].getCacheName($requestedFilename), 'w');
 		fputs($f, $newdata);
 		fclose($f);
@@ -331,7 +331,7 @@ if (!empty($updated) || !empty($_REQUEST['download'])) {
 		$time = getDateTimeToLog();
 		$ip = getUserIP();
 		fputs($f, "$time|$ip|$requestedFilename\r\n");
-		fclose($f);	
+		fclose($f);
 	}
 
 	exit("File has been saved in your cache folder. You can now <a href='editxml.php?file=$requestedFilename&source=$source&download=yes&noframes=1'>download it</a> or edit another file");
@@ -362,7 +362,7 @@ if (empty($_SESSION['textedit'])) {
 	// Update input size according to text length
 	foreach($results as $index=>$text) {
 		if (!strstr($text, "\n")) {
-			$size = strlen(utf8_decode($text));		
+			$size = strlen(utf8_decode($text));
 			$data = str_replace("textAt[$index]", "textAt[$index] size=$size cols=$size", $data);
 		} else {
 			$size = substr_count($text, "\n")+1;
@@ -385,7 +385,7 @@ if (empty($_SESSION['textedit'])) {
 		}
 	}
 
-} 
+}
 
 endif;
 
@@ -399,46 +399,46 @@ endif;
 <style type="text/css">
 	body  {
 		font-family: Tahoma;
-		font-size: 12px; 
+		font-size: 12px;
 	}
 	.xinput {
-		font-family: <?php print $phpdocLangs[$lang]['font']; ?>; 
+		font-family: <?php print $phpdocLangs[$lang]['font']; ?>;
 		border: 0px none;
-		color: #AA0000; 
+		color: #AA0000;
 		border-bottom: 1px dotted gray;
 		}
 	.xinput2 {
 		font-family: <?php print $phpdocLangs[$lang]['font']; ?>;
-		color: #AA0000;; 
+		color: #AA0000;;
 		}
 	.editbox {
 		font-family: <?php print $phpdocLangs[$lang]['font']; ?>;
 		color: #006600; background-color: white;
-		border: 3px groove; width: 100%; height: 400px; 
+		border: 3px groove; width: 100%; height: 400px;
 		overflow: auto;
 	}
 	.editbox-diff {
 		font-family: <?php print $phpdocLangs[$lang]['font']; ?>;
 		color: #006600; background-color: white;
-		border: 3px groove; width: 100%; height: 550px; 
+		border: 3px groove; width: 100%; height: 550px;
 		overflow: auto;
 	}
-	a:link    { 
+	a:link    {
 		text-decoration: none;
 		color: #000066;
 	}
 
-	a:hover   { 
+	a:hover   {
 		text-decoration: none;
 		color: #ff0000;
 	}
 
-	a:active  { 
+	a:active  {
 		text-decoration: none;
 		color: #ff0000;
 	}
 
-	a:visited { 
+	a:visited {
 		text-decoration: none;
 		color: #000066;
 	}
@@ -456,7 +456,7 @@ function irn(i) {
 // un-Highlight input on mouse over
 function iro(i) {
 	var ob = document.getElementById('textAt['+i+']');
-	ob.style.backgroundColor = '#FFFFFF';	
+	ob.style.backgroundColor = '#FFFFFF';
 }
 
 var updated = false;
@@ -495,10 +495,10 @@ function ku(i, e) {
 	if (l) {
 		ob.size = l;
 		ob.cols = l;
-	}	
+	}
 }
 
-// Translate using google API on double click 
+// Translate using google API on double click
 function dblclk(obj) {
 	// translate(obj);
 	var selection = new Selection(obj);
@@ -507,22 +507,22 @@ function dblclk(obj) {
 		var ln = s.end - s.start;
 		var word = obj.value.substr(s.start, ln);
 		translate(obj, word, s.start, s.end);
-	}	
+	}
 }
 
 
-// Right To Left and Left To Right 
+// Right To Left and Left To Right
 function rtl(button) {
 	if (button.value == 'RTL') {
 		button.value = 'LTR';
 		document.getElementById('editbox').dir = 'rtl';
 	} else {
 		button.value = 'RTL';
-		document.getElementById('editbox').dir = 'ltr';		
+		document.getElementById('editbox').dir = 'ltr';
 	}
 }
 
-// Prevent Losing changes 
+// Prevent Losing changes
 function uconfirm() {
 	if (updated) {
 		return confirm('This will cancel any unsaved updates, are you sure?');
@@ -536,12 +536,12 @@ function showhframe() {
 }
 
 
-//------------- The following are required for Google translation 
+//------------- The following are required for Google translation
 
 // Cross Browser selectionStart/selectionEnd
 // Version 0.2
 // Copyright (c) 2005-2007 KOSEKI Kengo
-// 
+//
 // This script is distributed under the MIT licence.
 // http://www.opensource.org/licenses/mit-license.php
 
@@ -558,9 +558,9 @@ Selection.prototype.create = function() {
 }
 
 Selection.prototype._mozillaGetSelection = function() {
-    return { 
-        start: this.element.selectionStart, 
-        end: this.element.selectionEnd 
+    return {
+        start: this.element.selectionStart,
+        end: this.element.selectionEnd
     };
 }
 
@@ -599,14 +599,14 @@ Selection.prototype._ieGetSelection = function() {
 Selection.prototype._createSelectionMarker = function() {
     return "##SELECTION_MARKER_" + Math.random() + "##";
 }
-//------------		
+//------------
 </script>
 
 
 <script type="text/javascript" src="http://www.google.com/jsapi"></script><script type="text/javascript">
-//-- Google Translation API	      
+//-- Google Translation API
 		google.load("language", "1");
-		
+
 	var transTarget = new Array();
 function translate(obj, word, s, e) {
 
@@ -619,8 +619,8 @@ function translate(obj, word, s, e) {
 	transTarget[2] = s;
 	transTarget[3] = e;
 
-	google.language.translate(word, "en", "<?php print $phpdocLangs[$lang]['id']; ?>", function(result) {  if (!result.error) { 
-		//var container = document.getElementById("translation");   
+	google.language.translate(word, "en", "<?php print $phpdocLangs[$lang]['id']; ?>", function(result) {  if (!result.error) {
+		//var container = document.getElementById("translation");
 		var w = transTarget[0].value;
 		var w1 = '';
 		if (transTarget[2]) {
@@ -630,7 +630,7 @@ function translate(obj, word, s, e) {
 		if (word.substr(word.length-1)==' ') w2 = ' '+w2;
 		if (word.substr(0, 1)==' ') w1 = w1 + ' ';
 
-		transTarget[0].value = w1+result.translation+w2;  
+		transTarget[0].value = w1+result.translation+w2;
 		var l = transTarget[0].value.length;
 		if (l) {
 			transTarget[0].size = l;
@@ -712,16 +712,16 @@ if (empty($_SESSION['textedit']) || $source=='diff') {
 		<pre><?php print $data; ?></pre>
 </div>
 
-<?php 
+<?php
  } else {
 	// Edit XML as Text
-?>	
+?>
 <center><img id=loading src=images/loading.gif align=absmiddle><div>
 	<textarea name=xmldata id=editbox ondblclick="dblclk(this);" dir=<?php print $direction; ?> style="font-family: Fixedsys; background-color: white; width: 100%; height: 400px;"><?php print $data; ?></textarea></div>
 </center>
-<?php 
+<?php
  }
- 
+
 if ($source!='diff') {
 
 ?>
@@ -730,10 +730,10 @@ if ($source!='diff') {
 <input name=source type=hidden value="<?php print $source; ?>">
 <input name=file type=hidden value="<?php print $requestedFilename; ?>">
 <input type=button value=<?php print $directionx;?> onclick="rtl(this);">
-<?php 
+<?php
 	if ($requireLogin) print '<input name=save type=submit value="Save in cache">';
 ?>
-<input name=download type=submit value=Download> 
+<input name=download type=submit value=Download>
 
 </form>
 
@@ -741,18 +741,18 @@ if ($source!='diff') {
 <iframe id=hframe name=hframe width=100% height=100 border=0 style="display: none"></iframe>
 
 <ul>
- <li>After translating the file, please download (and save) it then either: 
+ <li>After translating the file, please download (and save) it then either:
   <ul>
    <li>Commit to CVS</li>
    <li>Or send it to the <?php print $phpdocLangs[$lang]['mailing']; ?> mailing list</li>
   </ul>
  </li>
- <li>If you have questions, contact the main discussion list (phpdoc@lists.php.net) or 
+ <li>If you have questions, contact the main discussion list (phpdoc@lists.php.net) or
      write <?php print $phpdocLangs[$lang]['mailing']; ?> for translation specific concerns.
  </li>
  <li>In the future there will be a patch queue.</li>
 </ul>
-<?php 
+<?php
 }
 ?>
 

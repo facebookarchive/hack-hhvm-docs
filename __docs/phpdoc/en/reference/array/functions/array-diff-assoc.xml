@@ -5,7 +5,7 @@
   <refname>array_diff_assoc</refname>
   <refpurpose>Computes the difference of arrays with additional index check</refpurpose>
  </refnamediv>
- 
+
  <refsect1 role="description">
   &reftitle.description;
   <methodsynopsis>

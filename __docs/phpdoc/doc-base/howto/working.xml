@@ -85,7 +85,7 @@
       <simpara>
        This file is used to store all central translation info,
        like a small intro text for translators, the persons
-       list, and the files under translation / modification. 
+       list, and the files under translation / modification.
        This file is not present in the English tree.
       </simpara>
      </listitem>
@@ -104,7 +104,7 @@
    </variablelist>
   </para>
  </chapter>
- 
+
  <chapter xml:id="chapter-conventions" xmlns:xlink="http://www.w3.org/1999/xlink">
   <title>Conventions</title>
 
@@ -113,7 +113,7 @@
    you should stick to these conventions, to ease the team
    work in the module.
   </para>
-  
+
   <para>
    <orderedlist>
     <listitem><simpara>
@@ -155,13 +155,13 @@
      The contents of examples with programlistings
      start on column 0 in the XML code. Indenting,
      bracketing and naming conventions in examples should
-     adhere to the PEAR coding standards. 
+     adhere to the PEAR coding standards.
     </simpara></listitem>
     <listitem><simpara>
      All examples use the <literal>&lt;?php ... ?&gt;</literal>
      form instead of <literal>&lt;? ... ?&gt;</literal>. Use
      <literal>&lt;![CDATA[ ... ]]&gt;</literal>
-     for examples, since it eliminates the need to change 
+     for examples, since it eliminates the need to change
      <literal>&lt;</literal> to <literal>&amp;lt;</literal>, etc.
      Examples look much better, and easily manageable.
     </simpara></listitem>
@@ -253,7 +253,7 @@ foo("bar", "baz"); // second argument was added in PHP 4.0.3
 ]]>
      </programlisting>
     </para></listitem>
-      
+
     <listitem><simpara>
      The language constants true, false and null
      should be written as <literal>&amp;true;</literal>,
@@ -310,7 +310,7 @@ foo("bar", "baz"); // second argument was added in PHP 4.0.3
       integer or float). A callback is denoted as
       <literal>callable</literal>.
      </simpara>
-     
+
      <simpara>
       Do not use <literal>mixed</literal>, if the return
       value is of a certain (not boolean) type, and FALSE
@@ -324,11 +324,11 @@ foo("bar", "baz"); // second argument was added in PHP 4.0.3
 
      <simpara>
       If a function requires no arguments, use
-      <literal>&lt;void/></literal> instead of 
+      <literal>&lt;void/></literal> instead of
       <literal>&lt;parameter>void&lt;/parameter></literal>,
       since the former is the correct DocBook XML tag.
      </simpara>
-     
+
      <simpara>
       If a function has an undefined return-value, use
       the word <literal>void</literal>.
@@ -396,11 +396,11 @@ foo
       <filename>aliases.xml</filename> appendix
       is the place to store aliases not documented elsewhere.
      </simpara>
-       
+
      <simpara>
       For example <literal>mysql_db_name</literal> and
       <literal>mysql_dbname</literal> will be documented as the same
-      function, with the latter being listed as an alias of the 
+      function, with the latter being listed as an alias of the
       former, while <literal>show_source</literal> and
       <literal>highlight_file</literal> will be documented as two
       different functions (one as an alias), as the names are
@@ -474,13 +474,13 @@ foo
    </orderedlist>
   </para>
  </chapter>
- 
+
  <chapter xml:id="chapter-skeletons" xmlns:xlink="http://www.w3.org/1999/xlink">
   <title>Documentation Skeletons</title>
   <para>
-   Below are some "skeletons" to copy and paste from when adding 
-   documentation. All of these files should end with a line ending ("\n"). If 
-   a section does not exist (like a ChangeLog), simply don't include that 
+   Below are some "skeletons" to copy and paste from when adding
+   documentation. All of these files should end with a line ending ("\n"). If
+   a section does not exist (like a ChangeLog), simply don't include that
    refsect1 inside the documentation.
   </para>
   <note>
@@ -517,7 +517,7 @@ foo
    The functions description goes here.
   &lt;/para&gt;
  &lt;/refsect1&gt;
- 
+
  &lt;refsect1 role="parameters"&gt;
   &amp;reftitle.parameters;
   &lt;para&gt;
@@ -541,7 +541,7 @@ foo
    &lt;/variablelist&gt;
   &lt;/para&gt;
  &lt;/refsect1&gt;
- 
+
  &lt;refsect1 role="returnvalues"&gt;
   &amp;reftitle.returnvalues;
   &lt;para&gt;
@@ -549,7 +549,7 @@ foo
    true on success and false on failure, just use &amp;return.success; here.
   &lt;/para&gt;
  &lt;/refsect1&gt;
- 
+
  &lt;refsect1 role="errors"&gt;
   &amp;reftitle.errors;
   &lt;para&gt;
@@ -593,7 +593,7 @@ foo
    &lt;/informaltable&gt;
   &lt;/para&gt;
  &lt;/refsect1&gt;
- 
+
  &lt;refsect1 role="examples"&gt;
   &amp;reftitle.examples;
   &lt;para&gt;
@@ -630,7 +630,7 @@ Use a screen like we did below
    parameters section. Consider that before using this section!
   &lt;/para&gt;
  &lt;/refsect1&gt;
- 
+
  &lt;refsect1 role="seealso"&gt;
   &amp;reftitle.seealso;
   &lt;para&gt;
@@ -684,14 +684,14 @@ vi: ts=1 sw=1
   &lt;section xml:id="extname.intro"&gt;
    &amp;reftitle.intro;
    &lt;para&gt;
-     
+
    &lt;/para&gt;
   &lt;/section&gt;
 
   &lt;section xml:id="extname.requirements"&gt;
    &amp;reftitle.required;
    &lt;para&gt;
-     
+
    &lt;/para&gt;
   &lt;/section&gt;
 
@@ -746,7 +746,7 @@ vi: ts=1 sw=1
 &lt;section xml:id="extname.installation" xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink"&gt;
  &amp;reftitle.install;
  &lt;para&gt;
-  To enable extname support, configure PHP with 
+  To enable extname support, configure PHP with
   &lt;option role="configure"&gt;theconfigoption&lt;/option&gt;
  &lt;/para&gt;
  &lt;para&gt;
@@ -791,12 +791,12 @@ vi: ts=1 sw=1
   &lt;variablelist&gt;
    &lt;varlistentry&gt;
     &lt;term&gt;
-     &lt;constant&gt;CONSTANT_NAME&lt;/constant&gt; 
+     &lt;constant&gt;CONSTANT_NAME&lt;/constant&gt;
      (&lt;type&gt;itstype&lt;/type&gt;)
     &lt;/term&gt;
     &lt;listitem&gt;
      &lt;simpara&gt;
-     
+
      &lt;/simpara&gt;
     &lt;/listitem&gt;
    &lt;/varlistentry&gt;
@@ -862,9 +862,9 @@ vi: ts=1 sw=1
 
   &amp;php_ini_constants;
  &lt;/para&gt;
- 
+
  &amp;ini.descriptions.title;
- 
+
  &lt;para&gt;
   &lt;variablelist&gt;
    &lt;varlistentry xml:id="ini.extname.theini-option"&gt;
@@ -874,7 +874,7 @@ vi: ts=1 sw=1
     &lt;/term&gt;
     &lt;listitem&gt;
      &lt;para&gt;
-     
+
      &lt;/para&gt;
     &lt;/listitem&gt;
    &lt;/varlistentry&gt;
@@ -918,7 +918,7 @@ vi: ts=1 sw=1
    projects (eg. the Japanese). There are quite a few things for
    translators to know, though these are simple.
   </para>
-  
+
   <sect1 xml:id="translation-starting">
    <title>Starting a New Translation</title>
    <para>
@@ -943,25 +943,25 @@ vi: ts=1 sw=1
      <listitem>
       <simpara>
        Once approved, <link linkend="svn-account">ask for a SVN account</link>.
-       Mention that you would like to start a new translation and be sure to 
+       Mention that you would like to start a new translation and be sure to
        include the name of the translation in this request.
       </simpara>
      </listitem>
      <listitem>
       <simpara>
-       The PHP documentation group will then ask 
+       The PHP documentation group will then ask
        <link xlink:href="mailto:&email.systems.php;">&email.systems.php;</link>
        to create a new translation. This involves setting up a new mailing
-       list (<literal>doc-LANGCODE@lists.php.net</literal>), a newsgroup 
-       (<literal>php.doc.LANGCODE</literal>), and a SVN module 
-       (<literal>phpdoc-LANGCODE</literal>). At this point the LANGCODE 
+       list (<literal>doc-LANGCODE@lists.php.net</literal>), a newsgroup
+       (<literal>php.doc.LANGCODE</literal>), and a SVN module
+       (<literal>phpdoc-LANGCODE</literal>). At this point the LANGCODE
        should also be added to the <literal>docweb</literal> system.
       </simpara>
      </listitem>
      <listitem>
       <simpara>
        Check out the modules named <filename>phpdoc</filename>
-       and <literal>phpdoc-LANGCODE</literal> (using the 
+       and <literal>phpdoc-LANGCODE</literal> (using the
        <literal>phpdoc-LANGCODE-dir</literal> alias) as
        described in the <link linkend="chapter-svn">SVN chapter</link>
        of this HOWTO.
@@ -989,9 +989,9 @@ vi: ts=1 sw=1
      </listitem>
      <listitem>
       <simpara>
-       After the translation makes a good start, its LANGCODE is added 
-       to the other PHP SVN modules like <literal>phpweb</literal>, 
-       <literal>livedocs</literal>, and to this 
+       After the translation makes a good start, its LANGCODE is added
+       to the other PHP SVN modules like <literal>phpweb</literal>,
+       <literal>livedocs</literal>, and to this
        <link linkend="chapter-maillist">howto</link>. After doing so
        the new translation will be online!
       </simpara>
@@ -1130,14 +1130,14 @@ vi: ts=1 sw=1
        generated by the build system for the missing ids
        not yet in those old files, these errors are
        inevitable. Either update your translation, or
-       remove the offending files, thus allowing the 
+       remove the offending files, thus allowing the
        English originals to take precedence.
       </simpara>
      </listitem>
     </itemizedlist>
    </para>
   </sect1>
-  
+
   <sect1 xml:id="translation-revtrack">
    <title>Revision Tracking</title>
    <para>
@@ -1168,7 +1168,7 @@ vi: ts=1 sw=1
 
    <sect2 xml:id="translation-revcheck-translators">
     <title>The Translators Files</title>
-    
+
     <para>
      Some translations are using a <filename>Translators</filename>
      file in the root of their translation's tree for revision tracking.
@@ -1176,7 +1176,7 @@ vi: ts=1 sw=1
      user names of the contributors of this translation,
      and the list of files translated.
     </para>
-    
+
     <para>
      Along with the XML file names, associations between
      translators and files, revision numbers, and status
@@ -1237,7 +1237,7 @@ history.xml                 jane            1.2
 
    <sect2 xml:id="translation-revcheck-comments">
     <title>The Revision Comments</title>
-    
+
     <para>
      There is another way of tracking versions instead of
      using the method described above. You can decide yourself,
@@ -1273,7 +1273,7 @@ history.xml                 jane            1.2
      Currently, all three fields (English revision, Maintainer, Status)
      are needed. Maintainer is intended to be a SVN user name, or some
      nickname without a space, status can be anything without a space.
-     Note, that this header is not updated by SVN (in contrast with 
+     Note, that this header is not updated by SVN (in contrast with
      <literal>$Revision</literal>, which is updated automatically).
      This is only updated when you edit the contents of the comment
      yourself.
@@ -1299,11 +1299,11 @@ history.xml                 jane            1.2
      than the <filename>Translators</filename> file. See it
      yourself for an example with the Italian translation (code:
      it). You can also easily run this with <literal>make
-     revcheck</literal> in the phpdoc root directory, in 
-     case you issued a 
+     revcheck</literal> in the phpdoc root directory, in
+     case you issued a
      <literal>./configure --with-lang=xx</literal> before.
     </para>
-    
+
     <para>
      As this system gets popular in many translation groups,
      the automatic build process also generates a
@@ -1313,7 +1313,7 @@ history.xml                 jane            1.2
      See the Italian translation's file online:
      <link xlink:href="&url.revcheck.it;">&url.revcheck.it;</link>.
     </para>
-    
+
     <para>
      There are some extensions introduced for this script,
      as need arised to port all contents of the
@@ -1337,7 +1337,7 @@ history.xml                 jane            1.2
   more information. This paragraph is printed on the top of the
   generated revcheck.html page.
  </intro>
- 
+
  <chmindex>
   This file was generated: <datetime/><br/>
   Go to <a href="http://www.php.net/download-docs">http://www.php.net/download-docs</a>
@@ -1349,7 +1349,7 @@ history.xml                 jane            1.2
   <person name="Jane Smith"  email="jsmith@yahoo.com" nick="jane"   svn="yes"/>
   <person name="Joe Forever" email="joe@forever.net"  nick="joefo"  svn="no"/>
  </translators>
- 
+
  <work-in-progress>
   <file name="appendices/aliases.xml" person="joedoe" type="working"/>
   <file name="functions/dbx.xml"      person="joefo"  type="working"/>
@@ -1370,7 +1370,7 @@ history.xml                 jane            1.2
      all the translators. Assigning ready files may be needed if
      a time consuming update is in progress on that file.
     </para>
-    
+
     <para>
      There are two CHM format related elements in this XML file. The
      first is the &lt;chmindex&gt; element, where you can specify your
@@ -1383,7 +1383,7 @@ history.xml                 jane            1.2
      important for the "next generation" CHMs, which are currently
      under heavy testing and development.
     </para>
-    
+
     <para>
      There are two optional parameters you can add to a &lt;file&gt;,
      if you would like to record it: the <literal>date</literal>
@@ -1393,7 +1393,7 @@ history.xml                 jane            1.2
      CO-Revision in the generated table). There is currently no
      fixed format for the <literal>date</literal> parameter.
     </para>
-    
+
     <para>
      Another add-on to this system is just to give credit to all people
      who worked on one file, and not just the current maintainer. To achieve
@@ -1408,7 +1408,7 @@ history.xml                 jane            1.2
      comments only affect the display of the translators table in
      <filename>revcheck.html.gz</filename>.
     </para>
-    
+
     <para>
      Revision comments can be used also to print a diff between the current
      English file and the file used for the translation. Script
@@ -1421,29 +1421,29 @@ history.xml                 jane            1.2
 
  <chapter xml:id="chapter-maillist" xmlns:xlink="http://www.w3.org/1999/xlink">
   <title>Mailing Lists, Newsgroups and SVN Modules</title>
-  
+
   <para>
-   The PHP documentation is actively worked on each day, and the quality of work 
-   is enhanced by both peer review (reviewing each others commits) and communication. 
+   The PHP documentation is actively worked on each day, and the quality of work
+   is enhanced by both peer review (reviewing each others commits) and communication.
    There are several mailing lists used to meet these goals including:
-   <itemizedlist>   
+   <itemizedlist>
     <listitem>
      <simpara>
       <email>&email.phpdoc;</email> is used for general communication
-      regarding the PHP documentation. This list is used when making 
+      regarding the PHP documentation. This list is used when making
       decisions that affect the manual.
      </simpara>
     </listitem>
     <listitem>
      <simpara>
       <email>&email.doc.vcs;</email> receives each commit made to both the English
-      tree of the documentation, and build system. Following this list is important 
+      tree of the documentation, and build system. Following this list is important
       for peer review and all are encouraged to subscribe.
      </simpara>
     </listitem>
     <listitem>
      <simpara>
-      <email>&email.doc.bugs;</email> receives all documentation related bug activity 
+      <email>&email.doc.bugs;</email> receives all documentation related bug activity
       from &url.php.bugs;. This also includes bugs for the build system and translations.
      </simpara>
     </listitem>
@@ -1472,7 +1472,7 @@ history.xml                 jane            1.2
    Simplified Chinese list.
   </para>
   <para>
-   Currently these translation lists receive messages from the following 
+   Currently these translation lists receive messages from the following
    senders:
    <itemizedlist>
     <listitem>
@@ -1483,8 +1483,8 @@ history.xml                 jane            1.2
     </listitem>
     <listitem>
      <simpara>
-      The SVN server: diffs for commits made to the translation to 
-      their corresponding module's XML files. 
+      The SVN server: diffs for commits made to the translation to
+      their corresponding module's XML files.
      </simpara>
     </listitem>
     <listitem>
@@ -1502,10 +1502,10 @@ history.xml                 jane            1.2
    only work on the English version, you subscribe to the three main
    lists (phpdoc, doc-cvs, doc-bugs) and redirect them to whichever
    folder you see fit using filters within your email client.
-   If you are also a member of a translation group, then you should 
+   If you are also a member of a translation group, then you should
    additionally subscribe to the translation's mailing list.
-   Reading the main mailing lists mails enables you to know what is 
-   going on in the English tree, what needs to be updated, and what 
+   Reading the main mailing lists mails enables you to know what is
+   going on in the English tree, what needs to be updated, and what
    changed in the build system.
   </para>
   <para>
@@ -1606,7 +1606,7 @@ history.xml                 jane            1.2
       <row>
        <entry>SVN Repository</entry>
        <entry>
-        <link xlink:href="&url.php.svn;phpdoc/">phpdoc</link> and 
+        <link xlink:href="&url.php.svn;phpdoc/">phpdoc</link> and
         <link xlink:href="&url.php.svn;phd/">phd</link>
        </entry>
        <entry><link xlink:href="mailto:&email.doc.vcs;">doc-cvs</link></entry>
@@ -1942,7 +1942,7 @@ history.xml                 jane            1.2
 
  <chapter xml:id="chapter-user-notes" xmlns:xlink="http://www.w3.org/1999/xlink">
   <title>User Note Editing Guidelines</title>
-  
+
   <para>
    These are some guidelines to follow when editing user notes in the manual.
   </para>
@@ -1992,7 +1992,7 @@ history.xml                 jane            1.2
     <listitem>
      <simpara>
       If the note contains useful information appropriate for the manual proper,
-      you may incorporate the information into the manual and then 'delete' the 
+      you may incorporate the information into the manual and then 'delete' the
       note.
      </simpara>
     </listitem>

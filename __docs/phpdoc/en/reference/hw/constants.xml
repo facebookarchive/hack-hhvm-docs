@@ -6,34 +6,34 @@
  <variablelist>
   <varlistentry xml:id="constant.hw-attr-lang">
    <term>
-    <constant>HW_ATTR_LANG</constant> 
+    <constant>HW_ATTR_LANG</constant>
     (<type>integer</type>)
    </term>
    <listitem>
     <simpara>
-     
+
     </simpara>
    </listitem>
   </varlistentry>
   <varlistentry xml:id="constant.hw-attr-nr">
    <term>
-    <constant>HW_ATTR_NR</constant> 
+    <constant>HW_ATTR_NR</constant>
     (<type>integer</type>)
    </term>
    <listitem>
     <simpara>
-     
+
     </simpara>
    </listitem>
   </varlistentry>
   <varlistentry xml:id="constant.hw-attr-none">
    <term>
-    <constant>HW_ATTR_NONE</constant> 
+    <constant>HW_ATTR_NONE</constant>
     (<type>integer</type>)
    </term>
    <listitem>
     <simpara>
-     
+
     </simpara>
    </listitem>
   </varlistentry>

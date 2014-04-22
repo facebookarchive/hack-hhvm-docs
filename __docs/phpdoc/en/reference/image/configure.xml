@@ -6,7 +6,7 @@
   To enable GD-support configure PHP
   <option role="configure">--with-gd[=DIR]</option>, where DIR is the GD base
   install directory. To use the recommended bundled version of the GD library
-  (which was first bundled in PHP 4.3.0), use the configure option 
+  (which was first bundled in PHP 4.3.0), use the configure option
   <option role="configure">--with-gd</option>.
   GD library requires <productname>libpng</productname> and
   <productname>libjpeg</productname> to compile.
@@ -17,7 +17,7 @@
   removed in PHP 4.3.2. Also note that the preferred truecolor image
   functions, such as <function>imagecreatetruecolor</function>, require GD2.
  </para>
- 
+
  <para>
   Enhance the capabilities of GD to handle more image formats by specifying
   the <literal>--with-XXXX</literal> configure switch to your PHP configure

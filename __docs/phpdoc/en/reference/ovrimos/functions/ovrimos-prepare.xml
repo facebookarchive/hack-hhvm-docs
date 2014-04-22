@@ -5,7 +5,7 @@
   <refname>ovrimos_prepare</refname>
   <refpurpose>Prepares an SQL statement</refpurpose>
  </refnamediv>
- 
+
  <refsect1 role="description">
   &reftitle.description;
   <methodsynopsis>
@@ -26,7 +26,7 @@
      <term><parameter>connection_id</parameter></term>
      <listitem>
       <para>
-       The Ovrimos connection identifier, returned by 
+       The Ovrimos connection identifier, returned by
        <function>ovrimos_connect</function>.
       </para>
      </listitem>
@@ -61,7 +61,7 @@
 $conn=ovrimos_connect("db_host", "8001", "admin", "password");
 if ($conn!=0) {
     echo "Connection ok!";
-    
+
     // Prepare the statement
     $res=ovrimos_prepare($conn, "select table_id, table_name
                                   from sys.tables where table_id=1");

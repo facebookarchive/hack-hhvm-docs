@@ -84,7 +84,7 @@ tidy_setopt('indent', FALSE);
    <member><function>tidy_save_config</function></member>
   </simplelist>
  </refsect1>
- 
+
 </refentry>
 
 <!-- Keep this comment at the end of the file

@@ -5,7 +5,7 @@
   <refname>swf_getbitmapinfo</refname>
   <refpurpose>Get information about a bitmap</refpurpose>
  </refnamediv>
- 
+
  <refsect1 role="description">
   &reftitle.description;
   <methodsynopsis>
@@ -13,7 +13,7 @@
    <methodparam><type>int</type><parameter>bitmapid</parameter></methodparam>
   </methodsynopsis>
   <para>
-   Returns information about a bitmap.  
+   Returns information about a bitmap.
   </para>
  </refsect1>
 

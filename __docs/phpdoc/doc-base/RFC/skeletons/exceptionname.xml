@@ -9,9 +9,9 @@
  xmlns="http://docbook.org/ns/docbook">
  <title>The ExceptionName class</title>
  <titleabbrev>ExceptionName</titleabbrev>
- 
+
  <partintro>
- 
+
 <!-- {{{ ExceptionName intro -->
   <section xml:id="exceptionname.intro">
    &reftitle.intro;
@@ -20,20 +20,20 @@
    </para>
   </section>
 <!-- }}} -->
- 
+
   <section xml:id="exceptionname.synopsis">
    &reftitle.classsynopsis;
- 
+
 <!-- {{{ Synopsis -->
    <classsynopsis>
     <ooclass><classname>ExceptionName</classname></ooclass>
- 
+
 <!-- {{{ Exception synopsis -->
     <classsynopsisinfo>
      <ooclass>
       <classname>ExceptionName</classname>
      </ooclass>
- 
+
 <!-- If the exception extends another one, use this
      <ooclass>
       <modifier>extends</modifier>
@@ -42,28 +42,28 @@
 -->
     </classsynopsisinfo>
 <!-- }}} -->
- 
+
 <!-- Comment this section out if the exception does not contain any methods -->
     <classsynopsisinfo role="comment">Methods</classsynopsisinfo>
     <xi:include xpointer="xmlns(db=http://docbook.org/ns/docbook) xpointer(id('class.exceptionname')/db:refentry/db:refsect1[@role='description']/descendant::db:methodsynopsis[1])" />
- 
+
 <!-- If the exception extends another exception use this
     <classsynopsisinfo role="comment">Inherited methods</classsynopsisinfo>
     <xi:include xpointer="xmlns(db=http://docbook.org/ns/docbook) xpointer(id('class.baseexceptionname')/db:refentry/db:refsect1[@role='description']/descendant::db:methodsynopsis[1])" />
    </classsynopsis>
 -->
 <!-- }}} -->
- 
+
   </section>
- 
+
  </partintro>
- 
+
  <!-- If the exception has any methods you'd like to document use this
  &reference.extname.entities.classname;
  -->
- 
+
 </exceptionref:class>
- 
+
 <!-- Keep this comment at the end of the file
 Local variables:
 mode: sgml

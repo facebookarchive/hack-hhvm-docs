@@ -13,9 +13,9 @@
    <modifier>public</modifier> <type>void</type><methodname>CachingIterator::getCache</methodname>
    <void />
   </methodsynopsis>
-  
+
   &warn.undocumented.func;
-  
+
  </refsect1>
 
  <refsect1 role="parameters">

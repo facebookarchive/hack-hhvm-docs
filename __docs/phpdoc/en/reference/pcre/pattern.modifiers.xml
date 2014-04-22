@@ -85,7 +85,7 @@
         does normal substitution of backreferences in the
         replacement string, evaluates it as PHP code, and uses the
         result for replacing the search string.
-        Single quotes, double quotes, backslashes (<literal>\</literal>) and NULL chars will 
+        Single quotes, double quotes, backslashes (<literal>\</literal>) and NULL chars will
         be escaped by backslashes in substituted backreferences.
        </simpara>
        <caution>

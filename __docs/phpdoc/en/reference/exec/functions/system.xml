@@ -96,8 +96,8 @@ echo '
   &reftitle.notes;
   &warn.escapeshell;
   &note.exec-bg;
-  
-  
+
+
  </refsect1>
 
  <refsect1 role="seealso">

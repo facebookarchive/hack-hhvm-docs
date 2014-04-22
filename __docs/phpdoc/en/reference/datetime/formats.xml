@@ -20,7 +20,7 @@
  <!--Time Formats: {{{-->
  <section xml:id="datetime.formats.time">
   <title>Time Formats</title>
-  
+
   <para>
    This page describes the different time formats that the
    <function>strtotime</function>, <classname>DateTime</classname> and
@@ -177,7 +177,7 @@
  <!--Date Formats: {{{-->
  <section xml:id="datetime.formats.date">
   <title>Date Formats</title>
-  
+
   <para>
    This page describes the different date formats that the
    <function>strtotime</function>, <classname>DateTime</classname> and
@@ -353,7 +353,7 @@
     </tbody>
    </tgroup>
   </table>
-  
+
   <table>
    <title>ISO8601 Notations</title>
    <tgroup cols="3">

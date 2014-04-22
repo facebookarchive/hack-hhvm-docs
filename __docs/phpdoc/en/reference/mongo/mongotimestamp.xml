@@ -13,7 +13,7 @@
    &reftitle.intro;
    <para>
     <classname>MongoTimestamp</classname> is used by sharding.  If you're not
-    looking to write sharding tools, what you probably want is 
+    looking to write sharding tools, what you probably want is
     <classname>MongoDate</classname>.
    </para>
    <para>
@@ -22,7 +22,7 @@
    </para>
    <para>
     <emphasis>
-     This class is not for measuring time, creating a timestamp on a 
+     This class is not for measuring time, creating a timestamp on a
      document or automatically adding or updating a timestamp on a document.
     </emphasis>
     Unless you are writing something that interacts with the sharding internals,
@@ -65,7 +65,7 @@
     </fieldsynopsis>
 
     <classsynopsisinfo role="comment">&Methods;</classsynopsisinfo>
-    <xi:include xpointer="xmlns(db=http://docbook.org/ns/docbook) xpointer(id('class.mongotimestamp')/db:refentry/db:refsect1[@role='description']/descendant::db:methodsynopsis[1])" /> 
+    <xi:include xpointer="xmlns(db=http://docbook.org/ns/docbook) xpointer(id('class.mongotimestamp')/db:refentry/db:refsect1[@role='description']/descendant::db:methodsynopsis[1])" />
 
    </classsynopsis>
 <!-- }}} -->

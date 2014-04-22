@@ -15,7 +15,7 @@
 	 * +----------------------------------------------------------------------+
 	 * | Authors: Kalle Sommer Nielsen <kalle@php.net>                        |
 	 * +----------------------------------------------------------------------+
-	 * 
+	 *
 	 * $Id: build-chms.php 329603 2013-02-28 19:55:56Z kalle $
 	 */
 
@@ -53,7 +53,7 @@
 						'de'    => 'German',
 						'es'    => 'Spanish',
 						'fr'    => 'French',
-						'it'	=> 'Italian', 
+						'it'	=> 'Italian',
 						'ja'    => 'Japanese',
 						'pt_BR' => 'Brazilian Portuguese',
 						'ro'    => 'Romanian',

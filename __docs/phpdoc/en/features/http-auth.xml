@@ -4,16 +4,16 @@
   <title>HTTP authentication with PHP</title>
 
   <simpara>
-   It is possible to use the 
-   <function>header</function> function to send an <literal>"Authentication Required"</literal> 
-   message to the client browser causing it to pop up a Username/Password 
-   input window.  Once the user has filled in a username and a password, 
-   the URL containing the PHP script will be called again with the 
-   <link linkend="reserved.variables">predefined variables</link> 
-   <varname>PHP_AUTH_USER</varname>, <varname>PHP_AUTH_PW</varname>, 
-   and <varname>AUTH_TYPE</varname> set to the user name, password and 
-   authentication type respectively.  These predefined variables are found 
-   in the <varname>$_SERVER</varname> and 
+   It is possible to use the
+   <function>header</function> function to send an <literal>"Authentication Required"</literal>
+   message to the client browser causing it to pop up a Username/Password
+   input window.  Once the user has filled in a username and a password,
+   the URL containing the PHP script will be called again with the
+   <link linkend="reserved.variables">predefined variables</link>
+   <varname>PHP_AUTH_USER</varname>, <varname>PHP_AUTH_PW</varname>,
+   and <varname>AUTH_TYPE</varname> set to the user name, password and
+   authentication type respectively.  These predefined variables are found
+   in the <varname>$_SERVER</varname> and
    <varname>$HTTP_SERVER_VARS</varname> arrays. Both "Basic" and "Digest"
    (since PHP 5.1.0) authentication methods are supported. See the
    <function>header</function> function for more information.
@@ -22,9 +22,9 @@
   <note>
    <title>PHP Version Note</title>
    <para>
-    <link linkend="language.variables.superglobals">Superglobals</link>, 
-    such as <varname>$_SERVER</varname>, became 
-    available in PHP <link xlink:href="&url.php.release4.1.0;">4.1.0</link>. 
+    <link linkend="language.variables.superglobals">Superglobals</link>,
+    such as <varname>$_SERVER</varname>, became
+    available in PHP <link xlink:href="&url.php.release4.1.0;">4.1.0</link>.
    </para>
   </note>
 
@@ -126,17 +126,17 @@ function http_digest_parse($txt)
     Please be careful when coding the HTTP header lines. In order to guarantee maximum
     compatibility with all clients, the keyword "Basic" should be written with an
     uppercase "B", the realm string must be enclosed in double (not single) quotes,
-    and exactly one space should precede the <emphasis>401</emphasis> code in the 
+    and exactly one space should precede the <emphasis>401</emphasis> code in the
     <emphasis>HTTP/1.0 401</emphasis> header line. Authentication parameters have
     to be comma-separated as seen in the digest example above.
    </para>
   </note>
 
   <para>
-   Instead of simply printing out <varname>PHP_AUTH_USER</varname> 
-   and <varname>PHP_AUTH_PW</varname>, as done in the above example, 
-   you may want to check the username and password for validity.  
-   Perhaps by sending a query to a database, or by looking up the 
+   Instead of simply printing out <varname>PHP_AUTH_USER</varname>
+   and <varname>PHP_AUTH_PW</varname>, as done in the above example,
+   you may want to check the username and password for validity.
+   Perhaps by sending a query to a database, or by looking up the
    user in a dbm file.
   </para>
 
@@ -180,7 +180,7 @@ function authenticate() {
     echo "You must enter a valid login ID and password to access this resource\n";
     exit;
 }
- 
+
 if (!isset($_SERVER['PHP_AUTH_USER']) ||
     ($_POST['SeenBefore'] == 1 && $_POST['OldAuth'] == $_SERVER['PHP_AUTH_USER'])) {
     authenticate();
@@ -210,7 +210,7 @@ if (!isset($_SERVER['PHP_AUTH_USER']) ||
   <simpara>
    Also note that until PHP 4.3.3, HTTP Authentication did not work
    using Microsoft's IIS server with the CGI version of PHP due to a
-   limitation of IIS.  In order to get it to work in PHP 4.3.3+, 
+   limitation of IIS.  In order to get it to work in PHP 4.3.3+,
    you must edit your IIS configuration "<literal>Directory Security</literal>".
    Click on "<literal>Edit</literal>" and only check
    "<literal>Anonymous Access</literal>", all other fields

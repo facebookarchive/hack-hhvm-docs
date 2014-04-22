@@ -5,7 +5,7 @@
   <refname>file</refname>
   <refpurpose>Reads entire file into an array</refpurpose>
  </refnamediv>
- 
+
  <refsect1 role="description">
   &reftitle.description;
   <methodsynopsis>
@@ -51,7 +51,7 @@
          </term>
          <listitem>
           <simpara>
-           Search for the file in the <link 
+           Search for the file in the <link
            linkend="ini.include-path">include_path</link>.
           </simpara>
          </listitem>
@@ -84,7 +84,7 @@
          <listitem>
           <simpara>
            The content is returned in UTF-8 encoding. You can specify a different
-           encoding by creating a custom context. This flag cannot be used with 
+           encoding by creating a custom context. This flag cannot be used with
            <constant>FILE_BINARY</constant>.
           </simpara>
          </listitem>
@@ -95,7 +95,7 @@
          </term>
          <listitem>
           <simpara>
-           The content is read as binary data. This is the default setting 
+           The content is read as binary data. This is the default setting
            and cannot be used with <constant>FILE_TEXT</constant>.
           </simpara>
          </listitem>
@@ -109,7 +109,7 @@
      <term><parameter>context</parameter></term>
      <listitem>
       <para>
-       A context resource created with the 
+       A context resource created with the
        <function>stream_context_create</function> function.
       </para>
       <para>
@@ -155,7 +155,7 @@
       <row>
        <entry>6.0.0</entry>
        <entry>
-        Added support for the <constant>FILE_TEXT</constant> and 
+        Added support for the <constant>FILE_TEXT</constant> and
         <constant>FILE_BINARY</constant> flags.
         <note>
          <para>

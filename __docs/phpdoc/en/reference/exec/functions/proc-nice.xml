@@ -45,7 +45,7 @@
   &reftitle.returnvalues;
   <para>
    &return.success;
-   If an error occurs, like the user lacks permission to change the priority, 
+   If an error occurs, like the user lacks permission to change the priority,
    an error of level <constant>E_WARNING</constant> is also generated.
   </para>
  </refsect1>

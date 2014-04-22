@@ -4,7 +4,7 @@
 <chapter xml:id="com.error-handling" xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink">
  <title>Errors and error handling</title>
 
- <!-- FIXME: this markup --> 
+ <!-- FIXME: this markup -->
  <para>
   <emphasis>Exceptions (PHP 5)</emphasis>
  </para>

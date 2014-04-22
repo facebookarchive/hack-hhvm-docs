@@ -5,7 +5,7 @@
   <refname>ovrimos_exec</refname>
   <refpurpose>Executes an SQL statement</refpurpose>
  </refnamediv>
- 
+
  <refsect1 role="description">
   &reftitle.description;
   <methodsynopsis>
@@ -14,8 +14,8 @@
    <methodparam><type>string</type><parameter>query</parameter></methodparam>
   </methodsynopsis>
   <para>
-   Executes an SQL statement (query or update) and returns a result 
-   identifier. 
+   Executes an SQL statement (query or update) and returns a result
+   identifier.
   </para>
  </refsect1>
 
@@ -27,7 +27,7 @@
      <term><parameter>connection_id</parameter></term>
      <listitem>
       <para>
-       The Ovrimos connection identifier, returned by 
+       The Ovrimos connection identifier, returned by
        <function>ovrimos_connect</function>.
       </para>
      </listitem>

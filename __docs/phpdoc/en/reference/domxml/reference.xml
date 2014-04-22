@@ -148,7 +148,7 @@
      method - in the following tables. Classes with an equivalent in the
      DOM standard are named DOMxxx.
     </para>
- 
+
     <para>
     <table>
      <title>List of classes</title>
@@ -357,7 +357,7 @@
         <entry><function>DomElement_set_attribute_node</function></entry>
         <entry></entry>
        </row>
-   
+
        <row>
         <entry>get_elements_by_tagname</entry>
         <entry><function>DomElement_get_elements_by_tagname</function></entry>

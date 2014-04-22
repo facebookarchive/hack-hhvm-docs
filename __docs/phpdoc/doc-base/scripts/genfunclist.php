@@ -32,7 +32,7 @@
  * Known limitations:
  * - can't handle multiline comments and precompiler directives
  *
- * TODO: 
+ * TODO:
  * - add PHPUnit regression tests
  */
 

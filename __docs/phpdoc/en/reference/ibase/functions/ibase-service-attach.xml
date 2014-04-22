@@ -5,7 +5,7 @@
   <refname>ibase_service_attach</refname>
   <refpurpose>Connect to the service manager</refpurpose>
  </refnamediv>
- 
+
  <refsect1 role="description">
   &reftitle.description;
   <methodsynopsis>

@@ -15,7 +15,7 @@
   +----------------------------------------------------------------------+
   | Authors:    Moshe Doron <momo@php.net>                               |
   +----------------------------------------------------------------------+
-  
+
  $Id: HtmlParser.class.php 307070 2011-01-04 11:45:55Z rquadling $
 */
 
@@ -137,29 +137,29 @@ $HEType["xmp"] =			1060;
 
 
 foreach ($HEType as $key=>$value){
-	$EHType[$value] = $key;	
+	$EHType[$value] = $key;
 }
 
 
 class CHtmlParse{
-	
+
 	/*
  	* Parser functions:
  	*
- 	*   html_parse()                       - top level entry point.			  
+ 	*   html_parse()                       - top level entry point.
 	*     parse_start()               - deals with start tags           <A...>
-	*		parse_script			  - deals with <script tag				  
+	*		parse_script			  - deals with <script tag
 	*     parse_end()                 - deals with end tags             </...>
- 	*     plaintext()														  
-	*		plaintext_english()												  
-	*		plaintext_hebrew()												  
+ 	*     plaintext()
+	*		plaintext_english()
+	*		plaintext_hebrew()
  	*     parse_decl()                - deals with declarations         <!...>
- 	*       parse_comment()           - deals with <!-- ... -->				  
- 	*       parse_marked_section      - deals with <![ ... [ ... ]]> 		  
+ 	*       parse_comment()           - deals with <!-- ... -->
+ 	*       parse_marked_section      - deals with <![ ... [ ... ]]>
  	*     parse_process()             - deals with process instructions <?...>
  	*     parse_null()                - deals with anything else        <....>
  	*/
-	
+
 	var $len;
 	var $data;
 	var $pos;
@@ -168,8 +168,8 @@ class CHtmlParse{
 	var $EBT;  //ElementsByType.
 	var $ECE;   //Elements close by $ATE id.
 	var $NOE; //NumberOfElements.
-	
-	
+
+
 	function CHtmlParse($data){
 		if(isset($this->ATE)) unset($this->ATE);
 		if(isset($this->EBT)) unset($this->EBT);
@@ -179,11 +179,11 @@ class CHtmlParse{
 		$this->pos = 0;
 		$this->ATE[] = false;
 		$this->NOE = 0;
-		
+
 		$this->map_all();
 		$this->end_map();
 	}
-	
+
 	function map_all(){
 		$this->move_to_next_notrim();
 		while($this->pos < $this->len){
@@ -211,10 +211,10 @@ class CHtmlParse{
 			$this->move_to_next_notrim();
 		}
 	}
-	
+
 	function parse_start(&$endfl){
 		global $HEType,$EHType;
-		
+
 		//fining the <html> tag type:
 		$last = $this->pos;
 		$this->move_to_prop_end();
@@ -237,7 +237,7 @@ class CHtmlParse{
 //debuginfo("endfl: $endfl");
 				return $return;
 			}
-			
+
 			$last = $this->pos;
 			$offset = $this->move_to_propname_end();
 			if($offset < 0){
@@ -246,7 +246,7 @@ class CHtmlParse{
 //debuginfo("endfl: $endfl");
 				return $return;
 			}
-			
+
 			$prop = strtolower(substr($this->data,$last,$this->pos-$last));
 			$this->move_to_next_notrim();
 			if($this->data{$this->pos} == '='){ // if property have value:
@@ -272,10 +272,10 @@ class CHtmlParse{
 			}
 		}
 	}
-	
+
 	function parse_end(){
 		global $HEType;
-		
+
 		$last = ++$this->pos;
 		$this->move_to_character(">");
 		$tmp = strtolower(substr($this->data,$last,$this->pos-$last));
@@ -286,7 +286,7 @@ class CHtmlParse{
 		}
 		return $return;
 	}
-	
+
 	function parse_decl(){
 		$this->pos++;
 //debuginfo("pos is: ". $this->pos. ", character is: " .$this->data{$this->pos});
@@ -304,15 +304,15 @@ class CHtmlParse{
 			return false;
 		}
 	}
-	
+
 		function parse_comment(){
 			$last = $this->pos;
 			while ($this->pos+1 < $this->len){
 //debuginfo("yep: ".$this->data{$this->pos}.$this->data{$this->pos+1}.$this->data{$this->pos+2});
-				if($this->data{$this->pos} == "-" 
+				if($this->data{$this->pos} == "-"
 				 && $this->data{$this->pos+1} == "-"
 				 && $this->data{$this->pos+2} == ">"){
-					
+
 					$oldlen = $this->len;
 					$this->len = $this->pos;
 					$this->pos = $last;
@@ -330,8 +330,8 @@ class CHtmlParse{
 			$this->add_error("comment on $last char haven't closed");
 			return array("w4htype"=>__HTML_COMMENT__,"data"=>substr($this->data,$last,$this->pos-$last));
 		}
-		
-		
+
+
 		function parse_marked_section(){
 			$last = $this->pos;
 			while ($this->pos <= $this->len){
@@ -345,7 +345,7 @@ class CHtmlParse{
 			$this->add_error("marked on $last char haven't closed");
 			return array("w4htype"=>__HTML_MARKED__,"data"=>substr($this->data,$last,$this->pos-$last));
 		}
-	
+
 	function parse_process(){
 		$last = $this->pos;
 		while ($this->pos < $this->len){
@@ -359,44 +359,44 @@ class CHtmlParse{
 		$this->add_error("process on $last char haven't closed");
 		return array("w4htype"=>__HTML_PROCESS__,"data"=>substr($this->data,$last,$this->pos-$last));
 	}
- 	
+
 	function parse_null(){
 		$this->add_error("NULL found",-1);
 		$this->move_to_character(">");
 		$this->pos++;
 //debuginfo("pos is: ". $this->pos. ", character is: " .$this->data{$this->pos});
 	}
-	
+
 	function plaintext(){
 		$this->move_to_next_notrim();
 		return @call_user_method("plaintext_".$this->encoding,$this);
 	}
-		
+
 		function plaintext_english(){
 			$last =  $this->pos;
 			$encoding = __HTML_FREE_ENGLISH__;
-			
+
 			while($this->pos < $this->len && $this->data{$this->pos} != '<'){
 				$this->pos++;
 			}
 			if($last ==  $this->pos) return false;
 			return array("w4htype"=>$encoding,"data"=>substr($this->data,$last,$this->pos-$last));
 		}
-		
+
 		function plaintext_hebrew(){
 			$last = $this->pos;
 			$encoding= __HTML_FREE_ENGLISH__;
-			
+
 			while($this->pos < $this->len && $this->data{$this->pos} != '<'){
 				if(ord($this->data{$this->pos}) >= 224 && ord($this->data{$this->pos}) <= 250)
-					$encoding = __HTML_FREE_HEBREW__; 
+					$encoding = __HTML_FREE_HEBREW__;
 				$this->pos++;
 			}
 			if($last ==  $this->pos) return false;
 			return array("w4htype"=>$encoding,"data"=>substr($this->data,$last,$this->pos-$last));
 		}
-		
-		
+
+
 	function map(&$element,$endfl=0){
 		$type = $element["w4htype"];
 		$this->NOE++;
@@ -410,20 +410,20 @@ class CHtmlParse{
 
 			if($id = @array_pop($this->maptmp[-$type])){
 				$this->ECE[$id] = $this->NOE;
-			}else{ //if more close 
+			}else{ //if more close
 				$this->ECE[$this->NOE] = $this->NOE;
 				$this->add_error("more  close tag (code $type) then open");
 			}
 		}
 	}
-	
+
 	function end_map(){
 		for($a=1;$a<=$this->NOE;$a++){
 			if(!isset($this->ECE[$a])) $this->ECE[$a] = $a;
 		}
 		unset($this->maptmp);
 	}
-	
+
 	function add_error($msg,$level=0){
 		$this->errors[] = array("msg"=>$msg,"level"=>$level);
 		if($level > 1000){
@@ -432,19 +432,19 @@ class CHtmlParse{
 		}
 		//if($level >= -1) exit;
 	}
-	
+
 	function show_errors(){
 		$count = count($this->errors);
 		for($a=0;$a<$count;$a++){
 			echo $this->errors[$a]["msg"]."\r\n<br>";
 		}
 	}
-	
-	
+
+
 	// ----------------------------------------------------------
 	// pointer checking & moving function to convert into macroz:
 	// ----------------------------------------------------------
-	
+
 	function move_to_character($char){
 		while($this->pos++ < $this->len){
 			if($this->data{$this->pos} == $char){
@@ -454,8 +454,8 @@ class CHtmlParse{
 		$this->add_error("no $char ascii:".ord($char).": found");
 		return 0;
 	}
-	
-	
+
+
 	function move_to_prop_start(){
 		while($this->pos < $this->len){
 //debuginfo($this->data{$this->pos});
@@ -478,8 +478,8 @@ class CHtmlParse{
 		$this->add_error("string end before prop start");
 		return 0;
 	}
-	
-	
+
+
 	// this function is used to find out if the property name\value have closed
 	// return -2 on simple close
 	// return -1 on '/' style (xhtml\xml) close
@@ -499,7 +499,7 @@ class CHtmlParse{
 		$this->add_error("string end before prop end");
 		return 0;
 	}
-	
+
 	function move_to_propname_end(){
 		while($this->pos < $this->len){
 //debuginfo($this->data{$this->pos});
@@ -514,7 +514,7 @@ class CHtmlParse{
 		$this->add_error("string end before prop end");
 		return 0;
 	}
-	
+
 	function move_to_next_notrim(){
 		while($this->pos < $this->len){
 			if (!is_html_trim($this->data{$this->pos})){
@@ -524,7 +524,7 @@ class CHtmlParse{
 		}
 		return ($this->pos < $this->len)?$this->data{$this->pos}:false;
 	}
-	
+
 	function move_to_next_trim(){
 		while($this->pos < $this->len){
 			if (is_html_trim($this->data{$this->pos})){
@@ -535,7 +535,7 @@ class CHtmlParse{
 		$this->add_error("string end before trim");
 		return 0;
 	}
-	
+
 }
 
 //convert to macro

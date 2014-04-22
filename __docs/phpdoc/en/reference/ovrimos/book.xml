@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- $Revision: 330340 $ -->
- 
+
 <book xml:id="book.ovrimos" xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink">
  <title>Ovrimos SQL</title>
- 
+
  <!-- {{{ preface -->
  <preface xml:id="intro.ovrimos">
   &reftitle.intro;
@@ -19,7 +19,7 @@
   &note.no-windows.extension;
  </preface>
  <!-- }}} -->
- 
+
  &reference.ovrimos.setup;
  &reference.ovrimos.constants;
  &reference.ovrimos.examples;

@@ -5,7 +5,7 @@
   <refname>ovrimos_field_len</refname>
   <refpurpose>Returns the length of the output column</refpurpose>
  </refnamediv>
- 
+
  <refsect1 role="description">
   &reftitle.description;
   <methodsynopsis>

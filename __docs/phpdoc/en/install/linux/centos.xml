@@ -3,7 +3,7 @@
 <sect1 xml:id="install.linux.centos" xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink">
   <title>CentOS Linux Installation</title>
   <para>
-    This section contains notes and hints specific to installing HHVM on CentOS. 
+    This section contains notes and hints specific to installing HHVM on CentOS.
   </para>
   <sect2 xml:id="install.linux.centos.prebuilt">
     <title>Prebuilt Packages</title>

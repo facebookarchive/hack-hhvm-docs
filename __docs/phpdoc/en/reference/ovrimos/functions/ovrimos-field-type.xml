@@ -5,7 +5,7 @@
   <refname>ovrimos_field_type</refname>
   <refpurpose>Returns the type of the output column</refpurpose>
  </refnamediv>
- 
+
  <refsect1 role="description">
   &reftitle.description;
   <methodsynopsis>
@@ -14,7 +14,7 @@
    <methodparam><type>int</type><parameter>field_number</parameter></methodparam>
   </methodsynopsis>
   <para>
-   Returns the type of the output column 
+   Returns the type of the output column
   </para>
  </refsect1>
 

@@ -20,7 +20,7 @@
    composition of behavior; that is, the application of class members without
    requiring inheritance.
   </para>
-  
+
   <example xml:id="language.oop5.traits.basicexample">
     <title>Trait example</title>
     <programlisting role="php">
@@ -44,7 +44,7 @@ class ezcReflectionFunction extends ReflectionFunction {
 ]]>
     </programlisting>
    </example>
-  
+
   <sect2 xml:id="language.oop5.traits.precedence">
    <title>Precedence</title>
    <para>
@@ -124,7 +124,7 @@ Hello Universe!
     </screen>
    </example>
   </sect2>
-  
+
   <sect2 xml:id="language.oop5.traits.multiple">
    <title>Multiple Traits</title>
    <para>
@@ -170,7 +170,7 @@ Hello World!
     </screen>
    </example>
   </sect2>
-  
+
   <sect2 xml:id="language.oop5.traits.conflict">
    <title>Conflict Resolution</title>
    <para>
@@ -185,7 +185,7 @@ Hello World!
    <para>
     Since this only allows one to exclude methods, the <literal>as</literal>
     operator can be used to allow the inclusion of one of the conflicting
-    methods under another name. 
+    methods under another name.
    </para>
    <example xml:id="language.oop5.traits.conflict.ex1">
     <title>Conflict Resolution</title>
@@ -199,7 +199,7 @@ Hello World!
       The Aliased_Talker makes use of the <literal>as</literal> operator
       to be able to use B's bigTalk implementation under an additional alias
       <literal>talk</literal>.
-    </para> 
+    </para>
     <programlisting role="php">
 <![CDATA[
 <?php
@@ -240,7 +240,7 @@ class Aliased_Talker {
     </programlisting>
    </example>
   </sect2>
-  
+
   <sect2 xml:id="language.oop5.traits.visibility">
    <title>Changing Method Visibility</title>
    <para>
@@ -273,7 +273,7 @@ class MyClass2 {
     </programlisting>
    </example>
   </sect2>
-  
+
   <sect2 xml:id="language.oop5.traits.composition">
    <title>Traits Composed from Traits</title>
    <para>
@@ -320,7 +320,7 @@ Hello World!
     </screen>
    </example>
   </sect2>
-  
+
   <sect2 xml:id="language.oop5.traits.abstract">
    <title>Abstract Trait Members</title>
    <para>
@@ -354,7 +354,7 @@ class MyHelloWorld {
     </programlisting>
    </example>
   </sect2>
-  
+
   <sect2 xml:id="language.oop5.traits.static">
    <title>Static Trait Members</title>
    <para>
@@ -408,7 +408,7 @@ Example::doSomething();
     </programlisting>
    </example>
   </sect2>
-  
+
   <sect2 xml:id="language.oop5.traits.properties">
    <title>Properties</title>
    <para>
@@ -461,7 +461,7 @@ class PropertiesExample {
   </sect2>
 
  </sect1>
- 
+
 <!-- Keep this comment at the end of the file
 Local variables:
 mode: sgml

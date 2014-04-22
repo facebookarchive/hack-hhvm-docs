@@ -21,7 +21,7 @@ function apply($input)
 				<?php
 				exit;
 			}
-			
+
 			// break out of for-loop
 
 			$modeline_started = TRUE;
@@ -32,8 +32,8 @@ function apply($input)
 			$found_ced = preg_match("sgml-default-dtd-file:.*manual\.ced", $line);
 			}
 		}
-						
-						
+
+
 
 		if (1 !== $found_ced) {
 			$output .= "$line\n";
@@ -71,6 +71,6 @@ vi: ts=1 sw=1
 -->
 
 HEREDOC;
-	
+
 	return $output;
 }

@@ -4,18 +4,18 @@ $overwrite = false;
 $zend_include_dir = "../../php-src/Zend";
 
 $zend_include_files = array(
-                            "zend.h", 
-                            "zend_API.h", 
+                            "zend.h",
+                            "zend_API.h",
                             "zend_builtin_functions.h",
                             "zend_compile.h",
                             "zend_constants.h",
                             "zend_exceptions.h",
                             "zend_execute.h",
-                            "zend_hash.h", 
+                            "zend_hash.h",
                             "zend_highlight.h",
                             "zend_interfaces.h",
                             "zend_ini.h",
-                            "zend_list.h", 
+                            "zend_list.h",
                             "zend_modules.h",
                             "zend_objects.h",
                             "zend_object_handlers.h",
@@ -29,18 +29,18 @@ $zend_include_files = array(
                             "../TSRM/tsrm_virtual_cwd.h",
                             );
 
-$output_dirs = array("../en/internals/zendapi/macros" => array("ZEND_", "Z_", "RETURN_"), 
+$output_dirs = array("../en/internals/zendapi/macros" => array("ZEND_", "Z_", "RETURN_"),
                      "../en/internals/tsrm/macros" => array("VCWD_"));
 
 foreach ($zend_include_files as $infile) {
   echo "processing $zend_include_dir/$infile\n";
-  
+
   $in = fopen("$zend_include_dir/$infile", "r");
-  
+
   if (!$in) {
     die("can't open $zend_include_dir/$infile");
   }
-  
+
   // loop over all lines in the file
   while (!feof($in)) {
     $line = trim(fgets($in));
@@ -62,9 +62,9 @@ foreach ($zend_include_files as $infile) {
             echo "writing $outfile\n";
             // now write the template file to phpdoc/en/internals/zendapi/macros
             ob_start();
-          
+
             echo '<?xml version="1.0" encoding="iso-8859-1"?>'."\n";
-          
+
             // take revision from existing file if any, else it is 1.1
             if (!$overwrite || !file_exists($outfile)) {
               echo "<!-- $"."Revision: 1.1 $ -->\n";
@@ -84,7 +84,7 @@ foreach ($zend_include_files as $infile) {
  </refnamediv>
 
  <refsect1 role="description">
-  &reftitle.description;          
+  &reftitle.description;
   <literallayout>#include &lt;<?php echo basename($infile); ?>&gt;</literallayout>
   <methodsynopsis>
    <type>???</type><methodname><?php echo $macro; ?></methodname>
@@ -151,13 +151,13 @@ vim: et tw=78 syn=sgml
 vi: ts=1 sw=1
 -->
 <?php
-       
+
             file_put_contents($outfile, ob_get_clean());
           }
         }
       }
     }
   }
-  
+
 }
 ?>

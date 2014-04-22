@@ -113,7 +113,7 @@
    </term>
    <listitem>
     <simpara>
-      Require an array as input. 
+      Require an array as input.
     </simpara>
    </listitem>
   </varlistentry>
@@ -135,7 +135,7 @@
    </term>
    <listitem>
     <simpara>
-     Use NULL instead of FALSE on failure. 
+     Use NULL instead of FALSE on failure.
     </simpara>
    </listitem>
   </varlistentry>

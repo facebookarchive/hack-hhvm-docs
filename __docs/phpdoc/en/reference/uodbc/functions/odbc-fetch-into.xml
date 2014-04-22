@@ -5,7 +5,7 @@
   <refname>odbc_fetch_into</refname>
   <refpurpose>Fetch one result row into array</refpurpose>
  </refnamediv>
- 
+
  <refsect1 role="description">
   &reftitle.description;
   <methodsynopsis>
@@ -78,7 +78,7 @@
        <entry>4.2.0</entry>
        <entry>
         The <parameter>result_array</parameter> and <parameter>rownumber</parameter>
-        parameters have been swapped. This allows the rownumber to be a constant again. 
+        parameters have been swapped. This allows the rownumber to be a constant again.
        </entry>
       </row>
       <row>

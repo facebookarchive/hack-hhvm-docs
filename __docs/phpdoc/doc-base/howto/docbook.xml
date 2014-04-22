@@ -14,7 +14,7 @@
    </para>
 
    <para>
-    What is DocBook? The following is a quote from 
+    What is DocBook? The following is a quote from
     <link xlink:href="&url.docbook;">DocBook: The Definitive Guide</link>:
    </para>
 
@@ -29,12 +29,12 @@
    </para>
 
    <para>
-    Simply this means that writing a DocBook file is no more than writing a text 
-    file and using a few simple "tags" when needed. Like HTML, an opening tag is 
-    a &lt; bracket followed by the tag's name, optionally some arguments, and then 
-    the &gt; bracket (e.g. &lt;para&gt; for paragraphs). A closing tag is a &lt; 
-    bracket followed by a / sign, the tag name, then the closing &gt; bracket 
-    (e.g. &lt;/para&gt; for paragraphs). For example uses, have a look at an existing 
+    Simply this means that writing a DocBook file is no more than writing a text
+    file and using a few simple "tags" when needed. Like HTML, an opening tag is
+    a &lt; bracket followed by the tag's name, optionally some arguments, and then
+    the &gt; bracket (e.g. &lt;para&gt; for paragraphs). A closing tag is a &lt;
+    bracket followed by a / sign, the tag name, then the closing &gt; bracket
+    (e.g. &lt;/para&gt; for paragraphs). For example uses, have a look at an existing
     file within the PHP manual sources, or use the <link linkend="chapter-skeletons">
     documentation skeletons</link>.
    </para>
@@ -42,22 +42,22 @@
    <para>
     As described above, DocBook uses a similar structure to HTML with the main
     difference being DocBook uses tags to define the <emphasis>meaning</emphasis>
-    whereas HTML often times defines the look and layout. So the idea behind 
+    whereas HTML often times defines the look and layout. So the idea behind
     DocBook is to define as much as possible about the information so that build
     and rendering software will intelligently output the text into many formats.
    </para>
 
    <para>
-    We use DocBook because it makes it easy to generate several formats of our 
-    documents (HTML, PDF, Microsoft HTML Help (CHM), RTF, etc.), and DocBook is 
-    the standard way for storing structured technical information.     
+    We use DocBook because it makes it easy to generate several formats of our
+    documents (HTML, PDF, Microsoft HTML Help (CHM), RTF, etc.), and DocBook is
+    the standard way for storing structured technical information.
    </para>
-   
+
    <note>
     <title>DocBook version upgrade history</title>
     <para>
      On January 2, 2007 we upgraded from DocBook 4.1.2 to 4.5 and then
-     to DocBook 5 at around June 20, 2007. These upgrades included changes 
+     to DocBook 5 at around June 20, 2007. These upgrades included changes
      to most files in the phpdoc CVS repository.
     </para>
    </note>

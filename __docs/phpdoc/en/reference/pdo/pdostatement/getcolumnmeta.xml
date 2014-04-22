@@ -52,8 +52,8 @@
    <table>
     <title>Column metadata</title>
     <tgroup cols="2">
-     <colspec colname='c1'/> 
-     <colspec colname='c2'/> 
+     <colspec colname='c1'/>
+     <colspec colname='c2'/>
      <thead>
       <row>
        <entry>Name</entry>

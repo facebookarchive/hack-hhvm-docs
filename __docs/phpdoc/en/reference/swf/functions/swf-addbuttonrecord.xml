@@ -5,7 +5,7 @@
   <refname>swf_addbuttonrecord</refname>
   <refpurpose>Controls location, appearance and active area of the current button</refpurpose>
  </refnamediv>
- 
+
  <refsect1 role="description">
   &reftitle.description;
   <methodsynopsis>
@@ -15,7 +15,7 @@
    <methodparam><type>int</type><parameter>depth</parameter></methodparam>
   </methodsynopsis>
   <para>
-   Allow you to define the specifics of using a button.  
+   Allow you to define the specifics of using a button.
   </para>
  </refsect1>
 
@@ -28,9 +28,9 @@
      <listitem>
       <para>
        Defines what states the button can have, these can be any or all of
-       the following constants: <constant>BSHitTest</constant>, 
+       the following constants: <constant>BSHitTest</constant>,
        <constant>BSDown</constant>, <constant>BSOver</constant> or
-       <constant>BSUp</constant>.   
+       <constant>BSUp</constant>.
       </para>
      </listitem>
     </varlistentry>
@@ -40,7 +40,7 @@
       <para>
        The second parameter, the <parameter>shapeid</parameter> is the look
        of the button, this is usually the object id of the shape of the
-       button. 
+       button.
       </para>
      </listitem>
     </varlistentry>

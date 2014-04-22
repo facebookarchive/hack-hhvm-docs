@@ -100,7 +100,7 @@ echo "Hi, I'm a Hack script!";
  </head>
  <body>
  <!-- hh and html do not mix -->
- <?php echo '<p>Hello World</p>'; ?> 
+ <?php echo '<p>Hello World</p>'; ?>
  </body>
 </html>
 ]]>
@@ -131,12 +131,12 @@ echo "Hi, I'm a Hack script!";
     <itemizedlist>
      <listitem>
       <simpara>
-       Server-side scripting. This is the most traditional and main target field for HHVM. You need three things to make this work. The HHVM parser, a web server and a web browser. You need to run the web server, with a connected HHVM installation. You can access the Hack program output with a web browser, viewing the Hack page through the server. All these can run on your home machine if you are just experimenting with Hack programming. See the <link linkend="install">installation instructions</link> section for more information on how to install HHVM. 
+       Server-side scripting. This is the most traditional and main target field for HHVM. You need three things to make this work. The HHVM parser, a web server and a web browser. You need to run the web server, with a connected HHVM installation. You can access the Hack program output with a web browser, viewing the Hack page through the server. All these can run on your home machine if you are just experimenting with Hack programming. See the <link linkend="install">installation instructions</link> section for more information on how to install HHVM.
       </simpara>
      </listitem>
      <listitem>
       <simpara>
-       Command line scripting. You can make an HHVM script to run it without any server or browser. You only need the HHVM parser to use it this way. This type of usage is ideal for regularly executed scripts or testing new libraries and functionality. These scripts can also be used for simple text processing tasks. See the section about <link linkend="features.commandline">Command line usage of HHVM</link> for more information. 
+       Command line scripting. You can make an HHVM script to run it without any server or browser. You only need the HHVM parser to use it this way. This type of usage is ideal for regularly executed scripts or testing new libraries and functionality. These scripts can also be used for simple text processing tasks. See the section about <link linkend="features.commandline">Command line usage of HHVM</link> for more information.
       </simpara>
      </listitem>
     </itemizedlist>
@@ -146,10 +146,10 @@ echo "Hi, I'm a Hack script!";
    <para>
     So with HHVM, you have the freedom of choosing an operating system and a web server. Furthermore, you also have the choice of using procedural programming or object oriented programming (OOP), or a mixture of them both. And, of course, you can choose to use Hack or PHP as your programming language. </para>
    <para>
-    With HHVM you are not limited to output HTML. HHVM's abilities includes outputting images, PDF files and even Flash movies (using libswf and Ming) generated on the fly. You can also output easily any text, such as XHTML and any other XML file. HHVM can autogenerate these files, and save them in the file system, instead of printing it out, forming a server-side cache for your dynamic content. 
+    With HHVM you are not limited to output HTML. HHVM's abilities includes outputting images, PDF files and even Flash movies (using libswf and Ming) generated on the fly. You can also output easily any text, such as XHTML and any other XML file. HHVM can autogenerate these files, and save them in the file system, instead of printing it out, forming a server-side cache for your dynamic content.
    </para>
    <para>
-    One of the strongest and most significant features in HHVM is its support for a <link linkend="refs.database">wide range of databases</link>. Writing a database-enabled web page is incredibly simple using one of the database specific extensions (e.g., for <link linkend="book.mysqli">mysql</link>), or using an abstraction layer like <link linkend="book.pdo">PDO</link>, or connect to any database supporting the Open Database Connection standard via the <link linkend="book.uodbc">ODBC</link> extension. Other databases may utilize <link linkend="book.curl">cURL</link> or <link linkend="book.sockets">sockets</link>. 
+    One of the strongest and most significant features in HHVM is its support for a <link linkend="refs.database">wide range of databases</link>. Writing a database-enabled web page is incredibly simple using one of the database specific extensions (e.g., for <link linkend="book.mysqli">mysql</link>), or using an abstraction layer like <link linkend="book.pdo">PDO</link>, or connect to any database supporting the Open Database Connection standard via the <link linkend="book.uodbc">ODBC</link> extension. Other databases may utilize <link linkend="book.curl">cURL</link> or <link linkend="book.sockets">sockets</link>.
    </para>
    <para>
     HHVM also has support for talking to other services using protocols such as LDAP, IMAP, HTTP, and others. You can also open raw network sockets and interact using any other protocol. HHVM has support for the WDDX complex data exchange between virtually all Web programming languages.
@@ -161,7 +161,7 @@ echo "Hi, I'm a Hack script!";
     And many other interesting extensions exist, which are categorized both <link linkend="extensions">alphabetically</link> and by <link linkend="phpfuncref">PHP category</link> and <link linkend="hackfuncref">Hack category</link>.
    </para>
    <para>
-    As you can see this page is not enough to list all the features and benefits PHP and Hack can offer. Read on in the sections about <link linkend="install">installing HHVM</link>, and see the <link linkend="phpfuncref">PHP function reference</link> and the <link linkend="hackfuncref">Hack function reference</link> for explanation of the extensions mentioned here. 
+    As you can see this page is not enough to list all the features and benefits PHP and Hack can offer. Read on in the sections about <link linkend="install">installing HHVM</link>, and see the <link linkend="phpfuncref">PHP function reference</link> and the <link linkend="hackfuncref">Hack function reference</link> for explanation of the extensions mentioned here.
    </para>
   </section>
 

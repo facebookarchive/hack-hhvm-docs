@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- $Revision: 324814 $ --> 
+<!-- $Revision: 324814 $ -->
 
 <refentry xml:id="amqpenvelope.getheader" xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink">
  <refnamediv>
@@ -11,7 +11,7 @@
    &reftitle.description;
    <methodsynopsis>
     <modifier>public</modifier> <type>string</type><methodname>AMQPEnvelope::getHeader</methodname>
-    <methodparam><type>string</type><parameter>header_key</parameter></methodparam>    
+    <methodparam><type>string</type><parameter>header_key</parameter></methodparam>
    </methodsynopsis>
    <para>
     Get the header value for a specific header key.

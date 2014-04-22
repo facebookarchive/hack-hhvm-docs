@@ -9,7 +9,7 @@
    library. You will need the 0-9-1 version of the rabbitmq-c client library, linked to the rabbitmq-codegen version that corresponds
    to the version of the broker you are using. Use the following steps to download and install the library:
  </para>
-  
+
  <programlisting role="shell">
   <![CDATA[
   # Download the rabbitmq-c library @ version 0-9-1

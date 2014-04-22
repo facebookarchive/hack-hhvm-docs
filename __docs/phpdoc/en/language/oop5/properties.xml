@@ -41,11 +41,11 @@
    </para>
   </note>
   <para>
-   Within class methods non-static properties may be accessed by using 
-   <literal>-&gt;</literal> (Object Operator): <varname>$this-&gt;property</varname> 
-   (where <literal>property</literal> is the name of the property). 
+   Within class methods non-static properties may be accessed by using
+   <literal>-&gt;</literal> (Object Operator): <varname>$this-&gt;property</varname>
+   (where <literal>property</literal> is the name of the property).
    Static properties are accessed by using the <literal>::</literal> (Double Colon):
-   <varname>self::$property</varname>. See <link linkend="language.oop5.static">Static Keyword</link> 
+   <varname>self::$property</varname>. See <link linkend="language.oop5.static">Static Keyword</link>
    for more information on the difference between static and non-static properties.
   </para>
   <para>
@@ -86,7 +86,7 @@ EOD;
 }
 ?>
 ]]>
-    </programlisting>   
+    </programlisting>
    </example>
   </para>
 
@@ -100,7 +100,7 @@ EOD;
 
   <para>
    Unlike
-   <link linkend="language.types.string.syntax.heredoc">heredocs</link>, 
+   <link linkend="language.types.string.syntax.heredoc">heredocs</link>,
    <link linkend="language.types.string.syntax.nowdoc">nowdocs</link>
    can be used in any static data context, including property
    declarations.
@@ -126,7 +126,7 @@ EOT;
    </para>
   </note>
  </sect1>
- 
+
 <!-- Keep this comment at the end of the file
 Local variables:
 mode: sgml

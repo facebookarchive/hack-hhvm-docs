@@ -25,7 +25,7 @@ if (substr(PHP_VERSION, 0, 1) == "4") {
 
 require_once "Console/Getopt.php";
 $console = new Console_Getopt;
-$args = $console->getopt($console->readPHPArgv(), array(), 
+$args = $console->getopt($console->readPHPArgv(), array(),
                          array("format=", "include=", "help"));
 
 // {{{ gather arguments
@@ -43,7 +43,7 @@ foreach ($args[0] as $arg) {
     } elseif ($arg[0] == '--include') {
         $sections[] = $arg[1];
         $incflag = true;
-    }    
+    }
 }
 
 if ($incflag) {
@@ -138,7 +138,7 @@ foreach ($file as $line) {
         if ($includePart == false) {
             continue;
         }
-        
+
         if (preg_match("/(\s\t)*&([a-z0-9\.-]+);/", $line, $matches)) {
 
             if ($sections) {
@@ -151,7 +151,7 @@ foreach ($file as $line) {
             } else if ($hasReadline) {
                 $include = evaluate(readline("Include " . $matches[2] . "? [NO] "));
             }
-            
+
             if ($include == true) {
                 $partStack[] = $line;
             }

@@ -5,7 +5,7 @@
   <refname>flock</refname>
   <refpurpose>Portable advisory file locking</refpurpose>
  </refnamediv>
- 
+
  <refsect1 role="description">
   &reftitle.description;
   <methodsynopsis>
@@ -32,7 +32,7 @@
    platforms) with the <constant>LOCK_NB</constant> option documented below.
   </para>
  </refsect1>
- 
+
  <refsect1 role="parameters">
   &reftitle.parameters;
   <para>
@@ -67,8 +67,8 @@
        </itemizedlist>
       </para>
       <para>
-       It is also possible to add <constant>LOCK_NB</constant> as a bitmask to one 
-       of the above operations if you don't want <function>flock</function> to 
+       It is also possible to add <constant>LOCK_NB</constant> as a bitmask to one
+       of the above operations if you don't want <function>flock</function> to
        block while locking. (not supported on Windows)
       </para>
      </listitem>
@@ -85,14 +85,14 @@
    </variablelist>
   </para>
  </refsect1>
- 
+
  <refsect1 role="returnvalues">
   &reftitle.returnvalues;
   <para>
    &return.success;
   </para>
  </refsect1>
- 
+
  <refsect1 role="changelog">
   &reftitle.changelog;
   <para>
@@ -126,7 +126,7 @@
    </informaltable>
   </para>
  </refsect1>
- 
+
  <refsect1 role="examples">
   &reftitle.examples;
   <para>
@@ -177,7 +177,7 @@ fclose($fp);
    </example>
   </para>
  </refsect1>
- 
+
  <refsect1 role="notes">
   &reftitle.notes;
   <note>
@@ -227,7 +227,7 @@ fclose($fp);
    </para>
   </warning>
  </refsect1>
- 
+
 </refentry>
 
 <!-- Keep this comment at the end of the file

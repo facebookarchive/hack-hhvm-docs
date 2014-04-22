@@ -14,19 +14,19 @@
   | license@php.net so we can mail you a copy immediately.               |
   +----------------------------------------------------------------------+
   | Authors:    Mehdi Achour <didou@php.net> (Original Author)           |
-  |             Vincent Gevers <vincent@php.net>                         |          
+  |             Vincent Gevers <vincent@php.net>                         |
   +----------------------------------------------------------------------+
 
  $Id: notes_stats.php 307070 2011-01-04 11:45:55Z rquadling $
 */
 
 /*
- * Warning: This script uses a lot of memory 
+ * Warning: This script uses a lot of memory
  *
  * Usage:
  * $ php notes_stats.php [mbox-file] > notes.php
  */
- 
+
 /*
  * TODO:
  * - Caching the articles (SQLite?)
@@ -47,18 +47,18 @@ if (isset($argv[1]) && file_exists($argv[1])) { // from file
 
     $lines = file($argv[1]);
     $count = count($lines);
-    
+
     for ($i = 0; $i < $count; ++$i) {
         list($time, $subj) = explode(' ', $lines[$i], 2);
-        
+
         $inputs[] = array($time, substr($subj, 12));
     }
-    
+
 } elseif (isset($argv[1])) {
 
     echo "File doesn't exist!";
     exit(1);
- 
+
 } else { // from nntp
 
  $s = nntp_connect("news.php.net")
@@ -78,7 +78,7 @@ if (isset($argv[1]) && file_exists($argv[1])) { // from file
      or die("failed to XOVER the new items");
 
  for ($i = $first; $i < $last; $i++) {
- 
+
      $line = fgets($s, 4096);
      list($n,$subj,$author,$odate,$messageid,$references,$bytes,$lines,$extra)= explode("\t", $line, 9);
      $inputs[] = array($odate, $subj);
@@ -110,27 +110,27 @@ while (list( , $inp) = each($inputs)) {
             $d[2] = 'rejected';
         if ($d[2] == 'approved')
             continue;
-         
+
         if(calc_time($odate)) {
             // 'new' before $after
             @$team['n'][$d[4]]['total']++;
-            @$team['n'][$d[4]][$d[2]]++; 
+            @$team['n'][$d[4]][$d[2]]++;
             @$tmp['n'][$d[4]]++;
             @$files['n'][$d[3]]++;
         } else {
             // 'old' after $after
-            @$team['o'][$d[4]][$d[2]]++; 
+            @$team['o'][$d[4]][$d[2]]++;
             @$tmp['o'][$d[4]]++;
-            @$team['o'][$d[4]]['total']++; 
+            @$team['o'][$d[4]]['total']++;
             @$files['o'][$d[3]]++;
         }
-        
+
         // the normal arrays
         @$team[$d[4]]['total']++;
-        @$team[$d[4]][$d[2]]++; 
+        @$team[$d[4]][$d[2]]++;
         @$tmp[$d[4]]++;
         @$files[$d[3]]++;
- 
+
     } // end if(preg_match
 } // end while(each
 
@@ -174,7 +174,7 @@ foreach ($tmp as $user => $total) {
     if($user == 'o' or $user =='n')
        continue;
 
-    if($total >= $minact) { 
+    if($total >= $minact) {
         echo "<tr bgcolor=\"";
         $bg = ($bg == '#EBEBEB') ? '#BEBEBE' : '#EBEBEB';
         echo "$bg\">\n\t<td>$user</td>\n\t<td>";
@@ -187,7 +187,7 @@ foreach ($tmp as $user => $total) {
         echo $total;
         echo "</td>\n</tr>\n";
     }
-    
+
 }
 
 ?>
@@ -212,7 +212,7 @@ Last half year (with more than <?php echo $minact; ?> actions counted)
 $bg = '#EBEBEB';
 foreach ($tmp['n'] as $user => $total) {
 
-    if($total >= $minact) {    
+    if($total >= $minact) {
         echo "<tr bgcolor=\"";
         $bg = ($bg == '#EBEBEB') ? '#BEBEBE' : '#EBEBEB';
         echo "$bg\">\n\t<td>$user</td>\n\t<td>";
@@ -295,7 +295,7 @@ $bg = '#EBEBEB';
 foreach ($team as $user => $actions) {
     if($user == 'o' or $user =='n' or $user == '')
        continue;
-       
+
     echo "<tr bgcolor=\"";
     $bg = ($bg == '#EBEBEB') ? '#BEBEBE' : '#EBEBEB';
     echo "$bg\">\n\t<td>$user</td>\n\t<td>";
@@ -329,15 +329,15 @@ $i = 0;
     foreach($tmp as $k => $v) {
     if($k == 'o' or $k =='n')
        continue;
-       
+
         $i++;
         echo "<tr bgcolor=\"";
-        $bg = ($bg == '#EBEBEB') ? '#BEBEBE' : '#EBEBEB'; 
+        $bg = ($bg == '#EBEBEB') ? '#BEBEBE' : '#EBEBEB';
         echo "$bg\">\n\t<td>$i</td>\n\t<td>$k</td>\n\t<td>$v</td>\n</tr>\n";
-    
+
     if ($i == 15)
         break;
-}       
+}
 
 ?>
 </table>
@@ -357,15 +357,15 @@ $i = 0;
     foreach($files as $k => $v) {
     if($k == 'o' or $k =='n')
        continue;
-       
+
         $i++;
         echo "<tr bgcolor=\"";
-       $bg = ($bg == '#EBEBEB') ? '#BEBEBE' : '#EBEBEB'; 
+       $bg = ($bg == '#EBEBEB') ? '#BEBEBE' : '#EBEBEB';
         echo "$bg\">\n\t<td>$i</td>\n\t<td>$k</td>\n\t<td>$v</td>\n</tr>\n";
-    
+
     if ($i == 20)
         break;
-}       
+}
 
 ?>
 </table>
@@ -375,7 +375,7 @@ $i = 0;
 <?php
  $time_end = getmicrotime();
  $time = $time_end - $time_start;
- 
+
  echo "All done in $time seconds\n";
  ?>
 </body>
@@ -407,16 +407,16 @@ function nntp_cmd($conn,$command,$expected) {
   return $code == $expected ? $extra : false;
 }
 
-function getmicrotime() { 
-    list($usec, $sec) = explode(" ", microtime()); 
-    return ((float)$usec + (float)$sec); 
-} 
+function getmicrotime() {
+    list($usec, $sec) = explode(" ", microtime());
+    return ((float)$usec + (float)$sec);
+}
 
 function calc_time ($before) {
 global $after;
 
 // simple caching
-if(@$in_old == true) 
+if(@$in_old == true)
    return false;
 
 if (!is_numeric($before)) {
@@ -427,7 +427,7 @@ $afterall =  $before - (time() - $after);
 
 if($afterall > 0) {
     // more then $after
-    $in_old = false;    
+    $in_old = false;
     return true;
 } else {
     // older then $after

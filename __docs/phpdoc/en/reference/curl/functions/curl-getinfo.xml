@@ -5,7 +5,7 @@
   <refname>curl_getinfo</refname>
   <refpurpose>Get information regarding a specific transfer</refpurpose>
  </refnamediv>
- 
+
  <refsect1 role="description">
   &reftitle.description;
   <methodsynopsis>
@@ -14,7 +14,7 @@
    <methodparam choice="opt"><type>int</type><parameter>opt</parameter><initializer>0</initializer></methodparam>
   </methodsynopsis>
   <para>
-   Gets information about the last transfer. 
+   Gets information about the last transfer.
   </para>
  </refsect1>
 
@@ -106,8 +106,8 @@
         </listitem>
         <listitem>
          <simpara>
-          <constant>CURLINFO_HEADER_OUT</constant> - The request string sent. For this to 
-          work, add the <constant>CURLINFO_HEADER_OUT</constant> option to the handle by calling 
+          <constant>CURLINFO_HEADER_OUT</constant> - The request string sent. For this to
+          work, add the <constant>CURLINFO_HEADER_OUT</constant> option to the handle by calling
           <function>curl_setopt</function>
          </simpara>
         </listitem>
@@ -148,7 +148,7 @@
   &reftitle.returnvalues;
   <para>
    If <parameter>opt</parameter> is given, returns its value.
-   Otherwise, returns an associative array with the following elements 
+   Otherwise, returns an associative array with the following elements
    (which correspond to <parameter>opt</parameter>), or &false; on failure:
    <itemizedlist>
     <listitem>
@@ -258,7 +258,7 @@
     </listitem>
     <listitem>
      <simpara>
-      "request_header" (This is only set if the <constant>CURLINFO_HEADER_OUT</constant> 
+      "request_header" (This is only set if the <constant>CURLINFO_HEADER_OUT</constant>
       is set by a previous call to <function>curl_setopt</function>)
      </simpara>
     </listitem>
@@ -289,7 +289,7 @@
    </informaltable>
   </para>
  </refsect1>
- 
+
  <refsect1 role="examples">
   &reftitle.examples;
   <para>
@@ -320,13 +320,13 @@ curl_close($ch);
    </example>
   </para>
  </refsect1>
- 
+
  <refsect1 role="notes">
   &reftitle.notes;
   <note>
    <para>
-    Information gathered by this function is kept if the handle is re-used. This means 
-    that unless a statistic is overridden internally by this function, the previous info 
+    Information gathered by this function is kept if the handle is re-used. This means
+    that unless a statistic is overridden internally by this function, the previous info
     is returned.
    </para>
   </note>

@@ -21,7 +21,7 @@
    </para>
   </warning>
  </refsect1>
- 
+
  <refsect1 role="parameters"><!-- {{{ -->
   &reftitle.parameters;
   <para>
@@ -57,8 +57,8 @@
     </varlistentry>
    </variablelist>
   </para>
- </refsect1><!-- }}} --> 
- 
+ </refsect1><!-- }}} -->
+
  <refsect1 role="examples">
   &reftitle.examples;
   <para>

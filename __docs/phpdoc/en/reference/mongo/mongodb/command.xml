@@ -47,16 +47,16 @@ public function command($data) {
        The query to send.
       </para>
      </listitem>
-    </varlistentry>   
+    </varlistentry>
     <varlistentry>
      <term>
       <parameter>options</parameter>
      </term>
      <listitem>
       <para>
-       This parameter is an associative array of the form 
-       <literal>array("optionname" => &lt;boolean&gt;, ...)</literal>. Currently 
-       supported options are: 
+       This parameter is an associative array of the form
+       <literal>array("optionname" => &lt;boolean&gt;, ...)</literal>. Currently
+       supported options are:
        <itemizedlist>
         &mongo.writes.parameters.timeout;
        </itemizedlist>
@@ -82,7 +82,7 @@ public function command($data) {
       <row>
        <entry>1.2.0</entry>
        <entry>
-        Added <literal>options</literal> parameter with a single option: 
+        Added <literal>options</literal> parameter with a single option:
         <literal>"timeout"</literal>.
        </entry>
       </row>
@@ -93,7 +93,7 @@ public function command($data) {
  </refsect1>
 
  <refsect1 role="returnvalues">
-  &reftitle.returnvalues;  
+  &reftitle.returnvalues;
   <para>
    Returns database response. Every database response is always maximum one
    document, which means that the result of a database command can never
@@ -159,10 +159,10 @@ $people->insert(array("name" => "Molly", "age" => 87));
 $ages = $db->command(
     array(
         "distinct" => "people",
-        "key" => "age", 
+        "key" => "age",
         "query" => array("age" => array('$gte' => 18))
     )
-);  
+);
 
 foreach ($ages['values'] as $age) {
     echo "$age\n";
@@ -189,9 +189,9 @@ foreach ($ages['values'] as $age) {
 <?php
 
 // sample event document
-$events->insert(array("user_id" => $id, 
-    "type" => $type, 
-    "time" => new MongoDate(), 
+$events->insert(array("user_id" => $id,
+    "type" => $type,
+    "time" => new MongoDate(),
     "desc" => $description));
 
 // construct map and reduce functions
@@ -199,12 +199,12 @@ $map = new MongoCode("function() { emit(this.user_id,1); }");
 $reduce = new MongoCode("function(k, vals) { ".
     "var sum = 0;".
     "for (var i in vals) {".
-        "sum += vals[i];". 
+        "sum += vals[i];".
     "}".
     "return sum; }");
 
 $sales = $db->command(array(
-    "mapreduce" => "events", 
+    "mapreduce" => "events",
     "map" => $map,
     "reduce" => $reduce,
     "query" => array("type" => "sale"),
@@ -228,12 +228,12 @@ User 4af467e4fd543cce7b0ea8e2 had 1 sale(s).
    <note>
     <title>Using <classname>MongoCode</classname></title>
     <para>
-     This example uses <classname>MongoCode</classname>, which can also take a 
+     This example uses <classname>MongoCode</classname>, which can also take a
      scope argument.  However, at the moment, MongoDB does not support using
      scopes in MapReduce.  If you would like to use client-side variables in the
-     MapReduce functions, you can add them to the global scope by using the 
+     MapReduce functions, you can add them to the global scope by using the
      optional scope field with the database command.  See the
-     <link xlink:href="&url.mongodb.dochub.mapreduce;">MapReduce documentation</link> 
+     <link xlink:href="&url.mongodb.dochub.mapreduce;">MapReduce documentation</link>
      for more information.
     </para>
    </note>
@@ -242,19 +242,19 @@ User 4af467e4fd543cce7b0ea8e2 had 1 sale(s).
     <para>
      Before 1.8.0, the <literal>out</literal> argument was optional. If you did
      not use it, MapReduce results would be written to a temporary collection,
-     which would be deleted when your connection was closed. In 1.8.0+, the 
+     which would be deleted when your connection was closed. In 1.8.0+, the
      <literal>out</literal> argument is required. See the
-     <link xlink:href="&url.mongodb.dochub.mapreduce;">MapReduce documentation</link> 
+     <link xlink:href="&url.mongodb.dochub.mapreduce;">MapReduce documentation</link>
      for more information.
     </para>
    </note>
    <para>
-    If you are going to be using MapReduce, Prajwal Tuladhar created an API for 
+    If you are going to be using MapReduce, Prajwal Tuladhar created an API for
     Mongo PHP users which provides a nicer interface than the bare command.  You
     can download it from
     <link xlink:href="&url.mongodb.mapreduceapi;">Github</link>
-    and there is a 
-    <link xlink:href="&url.mongodb.mapreduceapi.blog;">blog post</link> 
+    and there is a
+    <link xlink:href="&url.mongodb.mapreduceapi.blog;">blog post</link>
     on how to use it.
    </para>
   </example>
@@ -375,11 +375,11 @@ print_r($r);
    </simplelist>
   </para>
   <para>
-   MongoDB core docs on 
+   MongoDB core docs on
    <link xlink:href="&url.mongodb.dochub.commands;">database commands</link>
-   and on individual commands: 
-   <link xlink:href="&url.mongodb.dochub.findandmodify;">findAndModify</link>, 
-   <link xlink:href="&url.mongodb.dochub.getlasterror;">getLastError</link>, and 
+   and on individual commands:
+   <link xlink:href="&url.mongodb.dochub.findandmodify;">findAndModify</link>,
+   <link xlink:href="&url.mongodb.dochub.getlasterror;">getLastError</link>, and
    <link xlink:href="&url.mongodb.dochub.repairdatabase;">repairDatabase</link> (dozens more
    exist, there are merely a few examples).
   </para>
@@ -403,4 +403,4 @@ End:
 vim600: syn=xml fen fdm=syntax fdl=2 si
 vim: et tw=78 syn=sgml
 vi: ts=1 sw=1
---> 
+-->

@@ -90,7 +90,7 @@ imagedestroy($php);
   <note>
    <para>
     You need not take special action when you are finished with a brush, but
-    if you destroy the brush image, you must not use the 
+    if you destroy the brush image, you must not use the
     <constant>IMG_COLOR_BRUSHED</constant> or
     <constant>IMG_COLOR_STYLEDBRUSHED</constant> colors until you have set a
     new brush image!

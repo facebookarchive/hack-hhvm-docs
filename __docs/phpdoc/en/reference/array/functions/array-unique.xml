@@ -178,7 +178,7 @@ array(2) {
    </example>
   </para>
  </refsect1>
- 
+
  <refsect1 role="seealso">
   &reftitle.seealso;
   <para>
@@ -192,7 +192,7 @@ array(2) {
   &reftitle.notes;
   <note>
    <simpara>
-    Note that <function>array_unique</function> is not intended to 
+    Note that <function>array_unique</function> is not intended to
     work on multi dimensional arrays.
    </simpara>
   </note>

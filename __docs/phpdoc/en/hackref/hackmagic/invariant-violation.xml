@@ -5,7 +5,7 @@
   <refname>invariant_violation</refname>
   <refpurpose>Throws an exception when a program invariant is violated</refpurpose>
  </refnamediv>
- 
+
  <refsect1 role="description">
   &reftitle.description;
   <methodsynopsis>

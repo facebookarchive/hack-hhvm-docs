@@ -18,7 +18,7 @@
 
   $Id: login.php 307070 2011-01-04 11:45:55Z rquadling $
 */
-//-- The PHPDOC Online XML Editing Tool 
+//-- The PHPDOC Online XML Editing Tool
 //--- Purpose: allows users to login using an email address (TODO we may use CVS or other way in future)
 
 //------- Initialization
@@ -52,7 +52,7 @@ if (isset($_POST['lang'])) {
 		$email = trim(strtolower($email));
 		$p1 = preg_match("#^([a-z0-9][a-z0-9_\.]*)@[a-z0-9][a-z0-9\-]+\.[a-z]{2,6}$#", $email);
 		$p2 = preg_match("#^([a-z0-9][a-z0-9_\.]*)@[a-z0-9][a-z0-9\-]+\.[a-z]{2,3}\.[a-z]{2}$#", $email);
-	
+
 		if (!$p1 && !$p2) {
 			exit('That was not a valid email address');
 		}
@@ -65,9 +65,9 @@ if (isset($_POST['lang'])) {
 		if (!file_exists($usersCachePath.$email)) {
 			@mkdir($usersCachePath.$email, $filesChMod);
 		}
-		
+
 	}
-	
+
 
 
 	if (is_dir($usersCachePath.$email) || !$requireLogin) {
@@ -105,11 +105,11 @@ if (isset($_POST['lang'])) {
 <h3> The PHPDOC Online XML Editing Tool :: Choose your language</h3>
 <form action=login.php method=post>
 <input type=hidden name=from value="<?php print $_REQUEST['from']; ?>">
-<?php 
+<?php
 if ($requireLogin) { ?>
 Your email address (must be valid) <input type=text name=email><br>
 <?php } ?>
-Translating PHPDOC to 
+Translating PHPDOC to
 <select name=lang><?php
 foreach($phpdocLangs as $lang=>$langInfo) {
 	print "<option value='$lang'>$lang</option>";
@@ -118,7 +118,7 @@ foreach($phpdocLangs as $lang=>$langInfo) {
 </select>* <input type=submit value="Start editing">
 </form>
 
- Developed by Salah Faya visualmind(@)php.net<br> 
+ Developed by Salah Faya visualmind(@)php.net<br>
  Version 1.0 - essentially developed for Arabic Translation of PHP Manual<br>
  Now updated to work with all phpdoc translations.
 <br>

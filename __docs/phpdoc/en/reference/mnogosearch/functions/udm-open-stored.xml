@@ -5,7 +5,7 @@
   <refname>udm_open_stored</refname>
   <refpurpose>Open connection to stored</refpurpose>
  </refnamediv>
- 
+
  <refsect1 role="description">
   &reftitle.description;
   <methodsynopsis>

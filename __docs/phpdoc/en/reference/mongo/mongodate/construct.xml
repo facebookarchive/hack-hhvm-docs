@@ -32,7 +32,7 @@
        Number of seconds since January 1st, 1970.
       </para>
      </listitem>
-    </varlistentry>     
+    </varlistentry>
     <varlistentry>
      <term>
       <parameter>usec</parameter>
@@ -44,7 +44,7 @@
        value will be truncated to millisecond resolution.
       </para>
      </listitem>
-    </varlistentry>     
+    </varlistentry>
    </variablelist>
   </para>
  </refsect1>

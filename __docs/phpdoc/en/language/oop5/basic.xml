@@ -297,7 +297,7 @@ a default value
 namespace NS {
     class ClassName {
     }
-    
+
     echo ClassName::class;
 }
 ?>

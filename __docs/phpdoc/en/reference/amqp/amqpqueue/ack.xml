@@ -43,7 +43,7 @@
    </variablelist>
   </para>
  </refsect1>
- 
+
  <refsect1 role="errors">
   &reftitle.errors;
   <para>
@@ -53,7 +53,7 @@
    Throws <classname>AMQPConnectionException</classname> if the connection to the broker was lost.
   </para>
  </refsect1>
- 
+
  <refsect1 role="returnvalues">
   &reftitle.returnvalues;
   <para>

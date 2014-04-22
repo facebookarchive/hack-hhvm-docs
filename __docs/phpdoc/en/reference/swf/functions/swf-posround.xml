@@ -5,7 +5,7 @@
   <refname>swf_posround</refname>
   <refpurpose>Enables or Disables the rounding of the translation when objects are placed or moved</refpurpose>
  </refnamediv>
- 
+
  <refsect1 role="description">
   &reftitle.description;
   <methodsynopsis>
@@ -15,7 +15,7 @@
   <para>
    Enables or disables the rounding of the translation when objects are
    placed or moved, there are times when text becomes more readable because
-   rounding has been enabled.  
+   rounding has been enabled.
   </para>
  </refsect1>
 

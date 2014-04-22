@@ -14,9 +14,9 @@
    <void/>
   </methodsynopsis>
   <para>
-   This function returns the previous sibling of the current node. If there 
-   is no previous sibling it returns &false; (&lt; 4.3) or &null; (&gt;= 4.3). You 
-   can use this function to iterate over all children of a node as shown in 
+   This function returns the previous sibling of the current node. If there
+   is no previous sibling it returns &false; (&lt; 4.3) or &null; (&gt;= 4.3). You
+   can use this function to iterate over all children of a node as shown in
    the example.
   </para>
   <para>

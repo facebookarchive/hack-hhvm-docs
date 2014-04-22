@@ -5,7 +5,7 @@
   <refname>ovrimos_result_all</refname>
   <refpurpose>Prints the whole result set as an HTML table</refpurpose>
  </refnamediv>
- 
+
  <refsect1 role="description">
   &reftitle.description;
   <methodsynopsis>
@@ -14,7 +14,7 @@
    <methodparam choice="opt"><type>string</type><parameter>format</parameter></methodparam>
   </methodsynopsis>
   <para>
-   Prints the whole result set as an HTML table. 
+   Prints the whole result set as an HTML table.
   </para>
  </refsect1>
 

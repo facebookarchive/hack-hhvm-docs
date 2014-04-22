@@ -17,7 +17,7 @@
  <function name='stream_context_set_option' from='PHP 4 &gt;= 4.3.0, PHP 5'/>
  <function name='stream_context_set_params' from='PHP 4 &gt;= 4.3.0, PHP 5'/>
  <function name='stream_copy_to_stream' from='PHP 5'/>
- <!-- FIXME PHP_6 
+ <!-- FIXME PHP_6
  <function name='stream_encoding' from='PHP 6'/>
  -->
  <function name='stream_filter_append' from='PHP 4 &gt;= 4.3.0, PHP 5'/>
@@ -58,7 +58,7 @@
  <function name='php_user_filter::filter' from='PHP 5'/>
  <function name='php_user_filter::onclose' from='PHP 5'/>
  <function name='php_user_filter::oncreate' from='PHP 5'/>
- 
+
  <function name='streamwrapper' from='PHP 4 &gt;= 4.3.2, PHP 5'/>
  <function name='streamwrapper::__construct' from='PHP 4 &gt;= 4.3.2, PHP 5'/>
  <function name='streamwrapper::__destruct' from='PHP 4 &gt;= 4.3.2, PHP 5'/>

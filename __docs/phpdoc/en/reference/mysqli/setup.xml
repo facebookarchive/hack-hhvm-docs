@@ -13,7 +13,7 @@
   </para>
   <note>
    <para>
-    The mysqli extension is designed to work with MySQL version 4.1.13 or 
+    The mysqli extension is designed to work with MySQL version 4.1.13 or
     newer, or 5.0.7 or newer. For previous versions, please see the <link
     linkend="intro.mysql">MySQL</link> extension documentation.
    </para>

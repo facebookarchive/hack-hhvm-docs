@@ -5,15 +5,15 @@
   <para>
    It is possible to define constant values on a per-class basis remaining the
    same and unchangeable. Constants differ from normal variables in that you
-   don't use the <varname>$</varname> symbol to declare or use them. 
+   don't use the <varname>$</varname> symbol to declare or use them.
   </para>
   <para>
    The value must be a constant expression, not (for example) a variable, a
    property, a result of a mathematical operation, or a function call.
   </para>
   <para>
-   It's also possible for interfaces to have <literal>constants</literal>. Look at 
-   the <link linkend="language.oop5.interfaces">interface documentation</link> for 
+   It's also possible for interfaces to have <literal>constants</literal>. Look at
+   the <link linkend="language.oop5.interfaces">interface documentation</link> for
    examples.
   </para>
   <para>
@@ -48,7 +48,7 @@ echo $class::CONSTANT."\n"; // As of PHP 5.3.0
 ]]>
    </programlisting>
   </example>
-  
+
   <example>
    <title>Static data example</title>
    <programlisting role="php">
@@ -73,7 +73,7 @@ EOT;
    </para>
   </note>
  </sect1>
- 
+
 <!-- Keep this comment at the end of the file
 Local variables:
 mode: sgml

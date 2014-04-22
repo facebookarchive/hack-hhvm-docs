@@ -79,10 +79,10 @@ class AnnotatedClass {
     return 0.3;
   }
 }
-]]>    
+]]>
       </programlisting>
       <para>
-        What should be noticeably different from PHP is that <literal>AnnotatedClass</literal> has type information on all member variables (whether public, private or protected), as well as its function parameters and return types. The annotated types in this example are:        
+        What should be noticeably different from PHP is that <literal>AnnotatedClass</literal> has type information on all member variables (whether public, private or protected), as well as its function parameters and return types. The annotated types in this example are:
         <itemizedlist>
           <listitem>
             <para>
@@ -138,27 +138,27 @@ class AnnotatedClass {
   <sect1 xml:id="hack.annotations.why">
     <title>Why?</title>
     <para>
-      Normally dynamically typed languages allow variables to take on any type representation and allow this type representation to be changed on-the-fly. So, in PHP, a variable <literal>$x</literal> can be assigned to an <literal>int</literal> and then, down the line, be assigned to a <literal>string</literal> ... all in the same local scope. In other words, not only is the value of a variable mutable, the type of a variable is mutable. This ability allows for rapid prototyping, more concise code, and a lot of flexibility. Dynamic typing also comes with a cost. Errors are only caught at runtime. There is no compile-time analysis for code optimization. (Virtual machines like HHVM can mitigate the optimization disadvantage of a dynamically typed language by providing an intermediate translation step before runtime, the time which can be used for optimizations.) Bugs can go undetected for years and rear their ugly head when, for example, a call to a method with an unexpected parameter type is made. 
+      Normally dynamically typed languages allow variables to take on any type representation and allow this type representation to be changed on-the-fly. So, in PHP, a variable <literal>$x</literal> can be assigned to an <literal>int</literal> and then, down the line, be assigned to a <literal>string</literal> ... all in the same local scope. In other words, not only is the value of a variable mutable, the type of a variable is mutable. This ability allows for rapid prototyping, more concise code, and a lot of flexibility. Dynamic typing also comes with a cost. Errors are only caught at runtime. There is no compile-time analysis for code optimization. (Virtual machines like HHVM can mitigate the optimization disadvantage of a dynamically typed language by providing an intermediate translation step before runtime, the time which can be used for optimizations.) Bugs can go undetected for years and rear their ugly head when, for example, a call to a method with an unexpected parameter type is made.
     </para>
     <para>
-      &quot;<emphasis>Wait a second! Facebook.com, with its billion+ users, is written with tens of millions of lines of PHP! A dynamic language worked well for Facebook.</emphasis>&quot; 
+      &quot;<emphasis>Wait a second! Facebook.com, with its billion+ users, is written with tens of millions of lines of PHP! A dynamic language worked well for Facebook.</emphasis>&quot;
     </para>
     <para>
-      Yes, Facebook has done quite well with dynamically typed PHP.  However, it is possible to bring some statically typed language features to PHP without affecting functionality and performance. With statically typed languages, errors can be caught before runtime. Code becomes more readable and self-explaining. The likelihood of the rogue &quot;calling a method with an unexpected parameter type&quot; bug becomes very small as these are caught before execution. 
+      Yes, Facebook has done quite well with dynamically typed PHP.  However, it is possible to bring some statically typed language features to PHP without affecting functionality and performance. With statically typed languages, errors can be caught before runtime. Code becomes more readable and self-explaining. The likelihood of the rogue &quot;calling a method with an unexpected parameter type&quot; bug becomes very small as these are caught before execution.
     </para>
     <para>
-      Hack helps bridge the gap between dynamically and statically typed languages by providing features normally seen in statically typed languages to PHP. A primary goal of Hack was to bring these features but remain as compatible as possible with current PHP codebases. Type annotations is a big step toward accomplishing this goal. 
+      Hack helps bridge the gap between dynamically and statically typed languages by providing features normally seen in statically typed languages to PHP. A primary goal of Hack was to bring these features but remain as compatible as possible with current PHP codebases. Type annotations is a big step toward accomplishing this goal.
     </para>
   </sect1>
 
   <sect1 xml:id="hack.annotations.types">
     <title>What types can be used?</title>
     <para>
-      With Hack, most every PHP type can be used for type annotations. These types can be used to annotate function arguments, return types or member variables. 
+      With Hack, most every PHP type can be used for type annotations. These types can be used to annotate function arguments, return types or member variables.
       <itemizedlist>
         <listitem>
           <para>
-            Primitive, basic types: <literal>int</literal>, <literal>float</literal>, <literal>string</literal>, <literal>bool</literal>, <literal>array</literal> (<emphasis role="strong">However</emphasis>, do not use the aliases <literal>double</literal>, <literal>integer</literal>, <literal>boolean</literal>, <literal>real</literal>) 
+            Primitive, basic types: <literal>int</literal>, <literal>float</literal>, <literal>string</literal>, <literal>bool</literal>, <literal>array</literal> (<emphasis role="strong">However</emphasis>, do not use the aliases <literal>double</literal>, <literal>integer</literal>, <literal>boolean</literal>, <literal>real</literal>)
           </para>
         </listitem>
         <listitem>
@@ -193,7 +193,7 @@ class AnnotatedClass {
         </listitem>
         <listitem>
           <para>
-            XHP elements <literal>:x:frag</literal>, <literal>:x:base</literal>, <literal>:div</literal>, and the catch-all <literal>:xhp</literal>. 
+            XHP elements <literal>:x:frag</literal>, <literal>:x:base</literal>, <literal>:div</literal>, and the catch-all <literal>:xhp</literal>.
           </para>
         </listitem>
         <listitem>
@@ -203,7 +203,7 @@ class AnnotatedClass {
         </listitem>
         <listitem>
           <para>
-            closures: <literal>(function(type1, type2, ...): return_type)</literal> 
+            closures: <literal>(function(type1, type2, ...): return_type)</literal>
           </para>
         </listitem>
         <listitem>
@@ -214,17 +214,17 @@ class AnnotatedClass {
       </itemizedlist>
     </para>
     <para>
-      The <literal>array</literal> type may only be used in the Hack default (i.e., <literal>// partial</literal>) or <literal>// decl</literal> modes. When using arrays in <literal>// strict</literal> mode, Hack will throw an error about using a collection class such as a <literal>Vector</literal> or <literal>Map</literal>. 
+      The <literal>array</literal> type may only be used in the Hack default (i.e., <literal>// partial</literal>) or <literal>// decl</literal> modes. When using arrays in <literal>// strict</literal> mode, Hack will throw an error about using a collection class such as a <literal>Vector</literal> or <literal>Map</literal>.
     </para>
   </sect1>
 
   <sect1 xml:id="hack.annotations.usingtypes">
     <title>How to type annotate</title>
     <para>
-      Hack decided to annotate the return types at the end of a function/method declaration instead of near the beginning found in languages like C#. This was done mainly for readability purposes. But there are other reasons to have them positioned the way they are because of closures and searchability. With respect to closures, if the return type is annotated at the beginning of a function, PHP could interpret the return type to be a constant string, thus ignoring the return type altogether. With respect to searchability, searching for &quot;function foo&quot; will produce more useable results than having to use wildcards or some other mechanism to find all the functions named <literal>foo()</literal>, regardless of return type. 
+      Hack decided to annotate the return types at the end of a function/method declaration instead of near the beginning found in languages like C#. This was done mainly for readability purposes. But there are other reasons to have them positioned the way they are because of closures and searchability. With respect to closures, if the return type is annotated at the beginning of a function, PHP could interpret the return type to be a constant string, thus ignoring the return type altogether. With respect to searchability, searching for &quot;function foo&quot; will produce more useable results than having to use wildcards or some other mechanism to find all the functions named <literal>foo()</literal>, regardless of return type.
     </para>
     <para>
-      Here are some matrices of many of the types available for Hack. These matrices shows how the types are defined and used in a class member, parameter and return type scenario. 
+      Here are some matrices of many of the types available for Hack. These matrices shows how the types are defined and used in a class member, parameter and return type scenario.
       <table>
         <title>Hack types and class usage</title>
         <tgroup cols="3">
@@ -1271,7 +1271,7 @@ class AnnotatedClass {
       </table>
     </para>
     <para>
-      Most of the time, initialization of the class members will be done in a constructor (i.e., <literal>__construct()</literal>). For brevity, most of the initialization in the table above was done inline. However, sometimes brevity doesn't work very well. For the generic type, user object, nullable and closure class members, here are example initializations in the constructor: 
+      Most of the time, initialization of the class members will be done in a constructor (i.e., <literal>__construct()</literal>). For brevity, most of the initialization in the table above was done inline. However, sometimes brevity doesn't work very well. For the generic type, user object, nullable and closure class members, here are example initializations in the constructor:
       <informalexample>
         <programlisting role="php">
 <![CDATA[
@@ -1612,7 +1612,7 @@ Invalid Hack type. Using "boolean" in Hack is considered an error. Use "bool" in
       </itemizedlist>
     </para>
     <para>
-      Here is an example of how various arrays are annotated. Remember that, in Hack, the use of arrays are more restricted in <literal>// strict</literal> mode. 
+      Here is an example of how various arrays are annotated. Remember that, in Hack, the use of arrays are more restricted in <literal>// strict</literal> mode.
       <informalexample>
         <programlisting role="php">
 <![CDATA[
@@ -1717,12 +1717,12 @@ class ABCD {
 ]]>
         </programlisting>
         <para>
-          An empty array can be returned from a method that is annotated to return a typed array. However, an array with the first element <literal>null</literal> is not compatible. In order to make that work, a nullable typed array must be used as the annotation (e.g., <literal>: array&lt;?BarBar&gt;</literal>). 
+          An empty array can be returned from a method that is annotated to return a typed array. However, an array with the first element <literal>null</literal> is not compatible. In order to make that work, a nullable typed array must be used as the annotation (e.g., <literal>: array&lt;?BarBar&gt;</literal>).
         </para>
       </informalexample>
     </para>
   </sect1>
-  
+
   <sect1 xml:id="hack.annotations.closures">
     <title>Annotating Closures</title>
     <para>
@@ -1752,7 +1752,7 @@ main_closure_example();
 ]]>
         </programlisting>
         <para>
-          How is the function <literal>foo_closure()</literal> and the closure function actually annotated? Here is the proper Hack type annotation for such a function: 
+          How is the function <literal>foo_closure()</literal> and the closure function actually annotated? Here is the proper Hack type annotation for such a function:
           <programlisting role="php">
 <![CDATA[
 <?hh
@@ -1812,21 +1812,21 @@ function f2(): string {
       </informalexample>
     </para>
   </sect1>
-  
+
   <sect1 xml:id="hack.annotations.constructors">
     <title>Annotating Constructors</title>
     <para>
-      With constructors, parameters are annotated as normal. It may also be tempting to annotate the return type of <literal>__construct()</literal> with <literal>: void</literal>. However, this is misleading (and technically incorrect). While there is no explicit <literal>return</literal> statement in <literal>__construct</literal> (a general hint that <literal>void</literal> is correct), the constructor actually does implicitly return the instantiated type for which <literal>__construct</literal> was called. 
+      With constructors, parameters are annotated as normal. It may also be tempting to annotate the return type of <literal>__construct()</literal> with <literal>: void</literal>. However, this is misleading (and technically incorrect). While there is no explicit <literal>return</literal> statement in <literal>__construct</literal> (a general hint that <literal>void</literal> is correct), the constructor actually does implicitly return the instantiated type for which <literal>__construct</literal> was called.
     </para>
     <para>
-      Therefore, to avoid any confusion, do not annotate the return type of <literal>__construct</literal>. The Hack type checker will throw an error if there is an annotation present. 
+      Therefore, to avoid any confusion, do not annotate the return type of <literal>__construct</literal>. The Hack type checker will throw an error if there is an annotation present.
     </para>
   </sect1>
 
   <sect1 xml:id="hack.annotations.this">
     <title>Annotating with <literal>this</literal></title>
     <para>
-      The <literal>this</literal> type is a pretty useful type, which you'll usually see as a return type. Here are some examples of it being used: 
+      The <literal>this</literal> type is a pretty useful type, which you'll usually see as a return type. Here are some examples of it being used:
       <informalexample>
         <programlisting role="php">
 <![CDATA[
@@ -1864,7 +1864,7 @@ final class Child {
 ]]>
         </programlisting>
         <para>
-          <literal>this</literal> is the type of <literal>$this</literal> and <literal>new static()</literal>. If <literal>Base::setX()</literal> returns <literal>this</literal>, that means that at callsites, <literal>$child-&gt;setX()</literal> is known to return an instance of <literal>Child</literal>. 
+          <literal>this</literal> is the type of <literal>$this</literal> and <literal>new static()</literal>. If <literal>Base::setX()</literal> returns <literal>this</literal>, that means that at callsites, <literal>$child-&gt;setX()</literal> is known to return an instance of <literal>Child</literal>.
         </para>
       </informalexample>
     </para>
@@ -1899,12 +1899,12 @@ class Base {
 ]]>
         </programlisting>
       </informalexample>
-    </para>  
-    <para>  
-      <literal>this</literal> can only be used in covariant locations, which means you cannot use <literal>this</literal> in as a function parameter typehint or as a member variable typehint. When Hack has proper covariance support, you will be able to use <literal>this</literal> to instantiate any covariant type variable, like <literal>Awaitable&lt;this&gt;</literal> and <literal>ImmVector&lt;this&gt;</literal>. Until then, you can only use <literal>this</literal> with <literal>Awaitable</literal>. 
     </para>
     <para>
-      At the moment, there is no return type that means <literal>$this</literal> and only <literal>$this</literal>. The <literal>this</literal> can be satisfied with any object with the same type as <literal>$this</literal>. 
+      <literal>this</literal> can only be used in covariant locations, which means you cannot use <literal>this</literal> in as a function parameter typehint or as a member variable typehint. When Hack has proper covariance support, you will be able to use <literal>this</literal> to instantiate any covariant type variable, like <literal>Awaitable&lt;this&gt;</literal> and <literal>ImmVector&lt;this&gt;</literal>. Until then, you can only use <literal>this</literal> with <literal>Awaitable</literal>.
+    </para>
+    <para>
+      At the moment, there is no return type that means <literal>$this</literal> and only <literal>$this</literal>. The <literal>this</literal> can be satisfied with any object with the same type as <literal>$this</literal>.
     </para>
   </sect1>
 
@@ -1942,7 +1942,7 @@ function sum(mixed $x): void {
 <?hh
 
 function swap(int &$x, int &$y): void {
-  $x = $y; 
+  $x = $y;
   $y = 'boom';
 }
 
@@ -1962,12 +1962,12 @@ main();
 ]]>
         </programlisting>
         <para>
-          It seems pretty clear that this shouldn't be done (trying to swap an <literal>int</literal> but writing in a <literal>string</literal>, when the <literal>swap()</literal> method takes two <literal>int</literal>s.). In fact, HHVM will balk at runtime when trying to execute this code. But getting an error at runtime defeats the whole purpose of the benefits of Hack. 
+          It seems pretty clear that this shouldn't be done (trying to swap an <literal>int</literal> but writing in a <literal>string</literal>, when the <literal>swap()</literal> method takes two <literal>int</literal>s.). In fact, HHVM will balk at runtime when trying to execute this code. But getting an error at runtime defeats the whole purpose of the benefits of Hack.
         </para>
       </informalexample>
     </para>
     <para>
-      Hack allows passing primitives by reference in <literal>// partial</literal> mode only. Hack will not allow this in <literal>// strict</literal> mode. The only reason this is even allowed by Hack in <literal>// partial</literal> mode is to allow for easier migration of various PHP codebases. 
+      Hack allows passing primitives by reference in <literal>// partial</literal> mode only. Hack will not allow this in <literal>// strict</literal> mode. The only reason this is even allowed by Hack in <literal>// partial</literal> mode is to allow for easier migration of various PHP codebases.
     </para>
     <para>
       Why are these type of references bad? Consider the following PHP code snippet:
@@ -1989,7 +1989,7 @@ foo();
 ]]>
         </programlisting>
         <para>
-         After the <literal>foreach</literal> completes, there will still be a dangling reference to the last element in the array. So, if a developer then writes<literal>$k = 'foo';</literal>, the array will be mutated ... behavior probably not desired. 
+         After the <literal>foreach</literal> completes, there will still be a dangling reference to the last element in the array. So, if a developer then writes<literal>$k = 'foo';</literal>, the array will be mutated ... behavior probably not desired.
        </para>
         &example.outputs;
         <screen>
@@ -2029,7 +2029,7 @@ function gen() {
       </informalexample>
     </para>
     <para>
-    Code using <literal>gen()</literal> must match the right type, in the right order. Static checking of this is not possible. Therefore, Hack implements two kinds of generators: 
+    Code using <literal>gen()</literal> must match the right type, in the right order. Static checking of this is not possible. Therefore, Hack implements two kinds of generators:
     <informaltable>
       <tgroup cols="4">
         <colspec align="center" />
@@ -2094,12 +2094,12 @@ function gen() {
             </entry>
             <entry>
               <para>
-                In an <literal>async</literal> function, return or <literal>await</literal> directly 
+                In an <literal>async</literal> function, return or <literal>await</literal> directly
               </para>
             </entry>
             <entry>
               <para>
-                The return type of <literal>async</literal> functions are all Awaitables. They can all be prepared using <literal>prep()</literal> and <literal>await</literal>. In this example, <literal>$foo</literal> is of type <literal>T</literal> for every expression <literal>yield result($foo);</literal>. Not all Awaitables are Continuations. 
+                The return type of <literal>async</literal> functions are all Awaitables. They can all be prepared using <literal>prep()</literal> and <literal>await</literal>. In this example, <literal>$foo</literal> is of type <literal>T</literal> for every expression <literal>yield result($foo);</literal>. Not all Awaitables are Continuations.
               </para>
             </entry>
           </row>

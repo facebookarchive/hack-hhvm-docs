@@ -5,7 +5,7 @@
   <refname>xslt_free</refname>
   <refpurpose>Free XSLT processor</refpurpose>
  </refnamediv>
- 
+
  <refsect1 role="description">
   &reftitle.description;
   <methodsynopsis>
@@ -32,7 +32,7 @@
    &return.void;
   </para>
  </refsect1>
- 
+
  <refsect1 role="seealso">
   &reftitle.seealso;
   <para>

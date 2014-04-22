@@ -22,7 +22,7 @@ class Person {
     </informalexample>
   </para>
   <para>
-    This is pretty straightforward. Declare the property. Assign the property with a value passed to the constructor. 
+    This is pretty straightforward. Declare the property. Assign the property with a value passed to the constructor.
   </para>
   <para>
     With just a few properties, this is not too cumbersome. Imagine a class with ten properties. It could easily become tedious to basically declare the properties twice, once in the class header and once in the constructor.

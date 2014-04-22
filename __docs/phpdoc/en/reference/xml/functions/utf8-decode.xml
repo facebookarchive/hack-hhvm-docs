@@ -2,13 +2,13 @@
 <!-- $Revision: 297028 $ -->
 <refentry xmlns="http://docbook.org/ns/docbook" xml:id="function.utf8-decode">
  <refnamediv>
-  <refname>utf8_decode</refname> 
+  <refname>utf8_decode</refname>
   <refpurpose>
    Converts a string with ISO-8859-1 characters encoded with UTF-8
    to single-byte ISO-8859-1
   </refpurpose>
  </refnamediv>
- 
+
  <refsect1 role="description">
   &reftitle.description;
   <methodsynopsis>

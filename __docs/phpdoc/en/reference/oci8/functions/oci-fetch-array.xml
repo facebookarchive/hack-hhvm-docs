@@ -6,7 +6,7 @@
   <refpurpose>Returns the next row from a query as an associative or numeric array
   </refpurpose>
  </refnamediv>
- 
+
  <refsect1 role="description">
   &reftitle.description;
   <methodsynopsis>
@@ -127,7 +127,7 @@
    uppercase associative indices in the result array.  Case-sensitive
    column names will have array indices using the exact column case.
    Use <function>var_dump</function> on the result array to verify the
-   appropriate case to use for each query. 
+   appropriate case to use for each query.
   </para>
   <para>
    The table name is not included in the array index.  If your query
@@ -413,8 +413,8 @@ var_dump($row);
 //    }
 
 // To query a repeated column name, use an SQL column alias like "AS ctnm":
-$sql = 'SELECT mycity.name AS ctnm, mycountry.name 
-        FROM mycity, mycountry 
+$sql = 'SELECT mycity.name AS ctnm, mycountry.name
+        FROM mycity, mycountry
         WHERE mycity.id = mycountry.id';
 $stid = oci_parse($conn, $sql);
 oci_execute($stid);
@@ -497,7 +497,7 @@ oci_bind_by_name($stid, ':rc', $refcur, -1, OCI_B_CURSOR);
 oci_execute($stid);
 
 // Execute the returned REF CURSOR and fetch from it like a statement identifier
-oci_execute($refcur);  
+oci_execute($refcur);
 echo "<table border='1'>\n";
 while (($row = oci_fetch_array($refcur, OCI_ASSOC+OCI_RETURN_NULLS)) != false) {
     echo "<tr>\n";
@@ -512,7 +512,7 @@ oci_free_statement($refcur);
 oci_free_statement($stid);
 oci_close($conn);
 
-?> 
+?>
 ]]>
     </programlisting>
    </example>
@@ -544,7 +544,7 @@ if ($oracleversion >= 12) {
     // Make use of Oracle 12c OFFSET / FETCH NEXT syntax
     $sql = $sql . ' OFFSET :offset ROWS FETCH NEXT :numrows ROWS ONLY';
 } else {
-    // Older versions required query syntax like this or the 
+    // Older versions required query syntax like this or the
     // base query needed to be rewritten to use a row_number() function
     $sql = "SELECT * FROM (SELECT A.*, ROWNUM AS MY_RNUM
                            FROM ($sql) A

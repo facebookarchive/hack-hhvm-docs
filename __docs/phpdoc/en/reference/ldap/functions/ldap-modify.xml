@@ -5,7 +5,7 @@
   <refname>ldap_modify</refname>
   <refpurpose>Modify an LDAP entry</refpurpose>
  </refnamediv>
- 
+
  <refsect1 role="description">
   &reftitle.description;
   <methodsynopsis>

@@ -15,7 +15,7 @@
    <methodparam choice="opt"><type>int</type><parameter>depth</parameter><initializer>512</initializer></methodparam>
   </methodsynopsis>
   <para>
-   Returns a string containing the JSON representation of 
+   Returns a string containing the JSON representation of
    <parameter>value</parameter>.
   </para>
  </refsect1>

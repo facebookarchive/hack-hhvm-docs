@@ -46,7 +46,7 @@
  <refsect1 role="returnvalues">
   &reftitle.returnvalues;
   <para>
-   Returns a tree of Dom objects starting by a 
+   Returns a tree of Dom objects starting by a
    <classname>DomDocument</classname>.
   </para>
  </refsect1>

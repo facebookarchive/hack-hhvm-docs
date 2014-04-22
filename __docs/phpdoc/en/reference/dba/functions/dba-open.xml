@@ -44,23 +44,23 @@
        are not supported.
       </para>
       <para>
-       Additionally you can set the database lock method with the next char. 
+       Additionally you can set the database lock method with the next char.
        Use <literal>l</literal> to lock the database with a <filename>.lck</filename>
-       file or <literal>d</literal> to lock the databasefile itself. It is 
+       file or <literal>d</literal> to lock the databasefile itself. It is
        important that all of your applications do this consistently.
       </para>
       <para>
-       If you want to test the access and do not want to wait for the lock 
-       you can add <literal>t</literal> as third character. When you are 
-       absolutely sure that you do not require database locking you can do 
+       If you want to test the access and do not want to wait for the lock
+       you can add <literal>t</literal> as third character. When you are
+       absolutely sure that you do not require database locking you can do
        so by using <literal>-</literal> instead of <literal>l</literal> or
-       <literal>d</literal>. When none of <literal>d</literal>, 
+       <literal>d</literal>. When none of <literal>d</literal>,
        <literal>l</literal> or <literal>-</literal> is used, dba will lock
        on the database file as it would with <literal>d</literal>.
       </para>
       <note>
        <para>
-        There can only be one writer for one database file. When you use dba on 
+        There can only be one writer for one database file. When you use dba on
         a web server and more than one request requires write operations they can
         only be done one after another. Also read during write is not allowed.
         The dba extension uses locks to prevent this. See the following table:
@@ -154,8 +154,8 @@
      <listitem>
       <para>
        The name of the <link linkend="dba.requirements">handler</link> which
-       shall be used for accessing <parameter>path</parameter>. It is passed 
-       all optional parameters given to <function>dba_open</function> and 
+       shall be used for accessing <parameter>path</parameter>. It is passed
+       all optional parameters given to <function>dba_open</function> and
        can act on behalf of them.
       </para>
      </listitem>
@@ -186,8 +186,8 @@
        <entry>
         It's possible to open database files over network connection. However
         in cases a socket connection will be used (as with http or ftp) the
-        connection will be locked instead of the resource itself. This is important 
-        to know since in such cases locking is simply ignored on the resource 
+        connection will be locked instead of the resource itself. This is important
+        to know since in such cases locking is simply ignored on the resource
         and other solutions have to be found.
        </entry>
       </row>
@@ -197,7 +197,7 @@
         Locking and the <parameter>mode</parameter> modifiers <literal>"l"</literal>, <literal>"d"</literal>, <literal>"-"</literal>
         and <literal>"t"</literal> were added.
         In previous PHP versions, you must use semaphores to guard against
-        simultaneous database access for any database handler with the exception 
+        simultaneous database access for any database handler with the exception
         of GDBM. See <link linkend="book.sem">System V semaphore support</link>.
        </entry>
       </row>
@@ -205,8 +205,8 @@
        <entry>4.3.5</entry>
        <entry>
         The open mode <literal>"c"</literal> was broken for several internal handlers and truncated
-        the database instead of appending data to an existent database. 
-        Also <literal>dbm</literal> and <literal>ndbm</literal> failed on mode <literal>"c"</literal> in typical configurations (this 
+        the database instead of appending data to an existent database.
+        Also <literal>dbm</literal> and <literal>ndbm</literal> failed on mode <literal>"c"</literal> in typical configurations (this
         cannot be fixed).
        </entry>
       </row>

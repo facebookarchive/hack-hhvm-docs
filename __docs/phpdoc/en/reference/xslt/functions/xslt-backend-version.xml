@@ -5,7 +5,7 @@
   <refname>xslt_backend_version</refname>
   <refpurpose>Returns the version number of Sablotron</refpurpose>
  </refnamediv>
- 
+
  <refsect1 role="description">
   &reftitle.description;
   <methodsynopsis>

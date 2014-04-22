@@ -5,7 +5,7 @@
   <refname>fputcsv</refname>
   <refpurpose>Format line as CSV and write to file pointer</refpurpose>
  </refnamediv>
- 
+
  <refsect1 role="description">
   &reftitle.description;
   <methodsynopsis>
@@ -18,7 +18,7 @@
   <para>
    <function>fputcsv</function> formats a line (passed as a
    <parameter>fields</parameter> array) as CSV and write it (terminated by a
-   newline) to the specified file <parameter>handle</parameter>. 
+   newline) to the specified file <parameter>handle</parameter>.
   </para>
  </refsect1>
 

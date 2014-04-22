@@ -5,7 +5,7 @@
   <refname>sql_regcase</refname>
   <refpurpose>Make regular expression for case insensitive match</refpurpose>
  </refnamediv>
- 
+
  <refsect1 role="description">
   &reftitle.description;
   <methodsynopsis>

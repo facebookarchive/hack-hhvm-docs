@@ -60,9 +60,9 @@
    </tgroup>
   </table>
  </para>
- 
+
  &ini.descriptions.title;
- 
+
  <para>
   <variablelist>
    <varlistentry xml:id="ini.allow-url-fopen">
@@ -72,23 +72,23 @@
     </term>
     <listitem>
      <para>
-      This option enables the URL-aware fopen wrappers that enable 
-      accessing URL object like files. Default wrappers are provided for 
+      This option enables the URL-aware fopen wrappers that enable
+      accessing URL object like files. Default wrappers are provided for
       the access of <link linkend="features.remote-files">remote files</link>
       using the ftp or http protocol, some extensions like
       <link linkend="ref.zlib">zlib</link> may register additional
-      wrappers. 
+      wrappers.
      </para>
      <note>
       <para>
-       This option was introduced immediately after the release of version 
-       4.0.3. For versions up to and including 4.0.3 you can only disable this 
+       This option was introduced immediately after the release of version
+       4.0.3. For versions up to and including 4.0.3 you can only disable this
        feature at compile time by using the configuration switch <parameter>
        --disable-url-fopen-wrapper</parameter>.
       </para>
      </note>
      <warning>
-      <para> 
+      <para>
        On Windows versions prior to PHP 4.3.0, the following functions do not
        support remote file accessing: <function>include</function>,
        <function>include_once</function>, <function>require</function>,
@@ -106,13 +106,13 @@
     </term>
     <listitem>
      <para>
-      This option allows the use of URL-aware fopen wrappers with the following 
-      functions: <function>include</function>, <function>include_once</function>, 
+      This option allows the use of URL-aware fopen wrappers with the following
+      functions: <function>include</function>, <function>include_once</function>,
       <function>require</function>, <function>require_once</function>.
      </para>
      <note>
       <para>
-       This setting requires allow_url_fopen to be on. 
+       This setting requires allow_url_fopen to be on.
       </para>
      </note>
     </listitem>

@@ -1,16 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- $Revision: 330340 $ -->
- 
+
 <book xml:id="book.domxml" xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink">
  <title>DOM XML (PHP 4)</title>
- 
+
  <!-- {{{ preface -->
  <preface xml:id="intro.domxml">
   &reftitle.intro;
   <para>
-   The DOM XML extension has been overhauled in PHP 4.3.0 to better comply with 
+   The DOM XML extension has been overhauled in PHP 4.3.0 to better comply with
    the DOM standard. The extension still contains
-   many old functions, but they should no longer be used. In particular, functions 
+   many old functions, but they should no longer be used. In particular, functions
    that are not object-oriented should be avoided.
   </para>
   <para>
@@ -34,7 +34,7 @@
   <note>
    <simpara>
     This extension is no longer marked experimental. It will, however, never
-    be released with PHP 5, and will only be distributed with PHP 4. 
+    be released with PHP 5, and will only be distributed with PHP 4.
     If you need DOM XML support with PHP 5 you can use the
     <link linkend="book.dom">DOM</link> extension. This
     <literal>domxml</literal> extension is not compatible with the
@@ -43,7 +43,7 @@
   </note>
  </preface>
  <!-- }}} -->
- 
+
  &reference.domxml.setup;
  &reference.domxml.constants;
  &reference.domxml.reference;

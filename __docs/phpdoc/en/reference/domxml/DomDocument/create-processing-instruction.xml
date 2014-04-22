@@ -15,7 +15,7 @@
     <para>
      This function returns a new instance of class
      <classname>DomCData</classname>. The content of the pi is the
-     value of the passed parameter. 
+     value of the passed parameter.
      &node.inserted;
     </para>
     <para>

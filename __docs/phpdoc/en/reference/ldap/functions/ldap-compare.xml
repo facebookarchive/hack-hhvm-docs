@@ -5,7 +5,7 @@
   <refname>ldap_compare</refname>
   <refpurpose>Compare value of attribute found in entry specified with DN</refpurpose>
  </refnamediv>
- 
+
  <refsect1 role="description">
   &reftitle.description;
   <methodsynopsis>

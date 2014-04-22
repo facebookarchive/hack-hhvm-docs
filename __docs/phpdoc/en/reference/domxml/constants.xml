@@ -24,7 +24,7 @@
      </row>
      <row>
       <entry>
-       <constant>XML_ATTRIBUTE_NODE</constant> 
+       <constant>XML_ATTRIBUTE_NODE</constant>
       (<type>integer</type>)
       </entry>
       <entry>2</entry>
@@ -326,7 +326,7 @@ no someone familiar with this extension should do further work.
    </tgroup>
   </table>
  </appendix>
- 
+
  <!-- Keep this comment at the end of the file
 Local variables:
 mode: sgml

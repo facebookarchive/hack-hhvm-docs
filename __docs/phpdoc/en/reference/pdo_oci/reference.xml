@@ -17,7 +17,7 @@
      to enable access from PHP to Oracle databases through the OCI library.
     </para>
    </section>
-   
+
    &reference.pdo-oci.configure;
 
   </partintro>

@@ -5,7 +5,7 @@
   <refname>strip_tags</refname>
   <refpurpose>Strip HTML and PHP tags from a string</refpurpose>
  </refnamediv>
- 
+
  <refsect1 role="description">
   &reftitle.description;
   <methodsynopsis>

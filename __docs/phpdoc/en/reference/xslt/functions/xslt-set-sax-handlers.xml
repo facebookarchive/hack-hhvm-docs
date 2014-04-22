@@ -5,7 +5,7 @@
   <refname>xslt_set_sax_handlers</refname>
   <refpurpose>Set the SAX handlers to be called when the XML document gets processed</refpurpose>
  </refnamediv>
- 
+
  <refsect1 role="description">
   &reftitle.description;
   <methodsynopsis>
@@ -175,7 +175,7 @@ $handlers = array(
   </para>
  </refsect1>
 
- 
+
  <refsect1 role="examples">
   &reftitle.examples;
   <example>

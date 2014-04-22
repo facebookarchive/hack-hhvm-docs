@@ -37,7 +37,7 @@
      <term><parameter>compose</parameter></term>
      <listitem>
       <para>
-       Composite operator. See <link 
+       Composite operator. See <link
        linkend="imagick.constants.compositeop">Composite Operator
        Constants</link>
       </para>

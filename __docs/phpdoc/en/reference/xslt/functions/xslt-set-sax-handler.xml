@@ -5,7 +5,7 @@
   <refname>xslt_set_sax_handler</refname>
   <refpurpose>Set SAX handlers for a XSLT processor</refpurpose>
  </refnamediv>
- 
+
  <refsect1 role="description">
   &reftitle.description;
   <methodsynopsis>
@@ -15,7 +15,7 @@
   </methodsynopsis>
   <para>
    Set SAX handlers on the resource handle given by
-   <parameter>xh</parameter>. 
+   <parameter>xh</parameter>.
   </para>
  </refsect1>
 

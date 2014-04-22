@@ -5,7 +5,7 @@
   <refname>set_magic_quotes_runtime</refname>
   <refpurpose>Sets the current active configuration setting of magic_quotes_runtime</refpurpose>
  </refnamediv>
- 
+
  <refsect1 role="description">
   &reftitle.description;
   <methodsynopsis>

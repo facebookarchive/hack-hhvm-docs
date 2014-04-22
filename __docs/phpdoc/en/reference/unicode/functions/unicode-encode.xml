@@ -14,7 +14,7 @@
    <methodparam choice="opt"><type>int</type><parameter>errmode</parameter></methodparam>
   </methodsynopsis>
   <para>
-   Takes a <type>unicode</type> string and converts it to a string in 
+   Takes a <type>unicode</type> string and converts it to a string in
    the specified <parameter>encoding</parameter>.
   </para>
  </refsect1>
@@ -45,7 +45,7 @@
       <para>
        Conversion error mode. This parameter determines the action to take when
        the converter cannot convert a character. For a list of available modes,
-       refer to <function>unicode_set_error_mode</function>. If the parameter 
+       refer to <function>unicode_set_error_mode</function>. If the parameter
        is not set, the global error mode is used.
       </para>
      </listitem>
@@ -64,11 +64,11 @@
  <refsect1 role="errors">
   &reftitle.errors;
   <para>
-   Emits a <constant>E_WARNING</constant> level error if a converter cannot 
+   Emits a <constant>E_WARNING</constant> level error if a converter cannot
    be created for the desired <parameter>encoding</parameter>.
   </para>
  </refsect1>
- 
+
  <refsect1 role="examples">
   &reftitle.examples;
   <para>

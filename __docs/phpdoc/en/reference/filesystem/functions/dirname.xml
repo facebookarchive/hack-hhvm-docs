@@ -5,7 +5,7 @@
   <refname>dirname</refname>
   <refpurpose>Returns parent directory's path</refpurpose>
  </refnamediv>
- 
+
  <refsect1 role="description">
   &reftitle.description;
   <methodsynopsis>
@@ -109,8 +109,8 @@ echo "3) " . dirname("."); // 3) .
   </note>
   <note>
    <para>
-    <function>dirname</function> is locale aware, so for it to see the 
-    correct directory name with multibyte character paths, the matching locale must 
+    <function>dirname</function> is locale aware, so for it to see the
+    correct directory name with multibyte character paths, the matching locale must
     be set using the <function>setlocale</function> function.
    </para>
   </note>

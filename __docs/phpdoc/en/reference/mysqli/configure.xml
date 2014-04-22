@@ -5,7 +5,7 @@
 &reftitle.install;
 
  <para>
-  The <literal>mysqli</literal> extension was introduced with PHP version 
+  The <literal>mysqli</literal> extension was introduced with PHP version
   5.0.0. The MySQL Native Driver was included in PHP version 5.3.0.
  </para>
 

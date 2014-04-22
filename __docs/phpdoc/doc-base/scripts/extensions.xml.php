@@ -15,7 +15,7 @@
   +----------------------------------------------------------------------+
   | Authors:    Nuno Lopes <nlopess@php.net>                             |
   +----------------------------------------------------------------------+
- 
+
   $Id: extensions.xml.php 330339 2013-05-23 17:37:21Z vrana $
 */
 
@@ -48,7 +48,7 @@ foreach ($files as $filename) {
 		$ext = $match[1];
 	}
 	$Alphabetical['alphabetical'][$ext] = 1;
-	
+
 	$m = 'pecl';
 	if (preg_match('/<\?phpdoc extension-membership="([^"]+)" *\?>/S', $file, $match)) {
 		$m = $match[1];

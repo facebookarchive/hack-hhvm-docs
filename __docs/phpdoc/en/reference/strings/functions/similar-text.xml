@@ -5,7 +5,7 @@
   <refname>similar_text</refname>
   <refpurpose>Calculate the similarity between two strings</refpurpose>
  </refnamediv>
- 
+
  <refsect1 role="description">
   &reftitle.description;
   <methodsynopsis>
@@ -49,7 +49,7 @@
       <para>
        By passing a reference as third argument,
        <function>similar_text</function> will calculate the similarity in
-       percent for you. 
+       percent for you.
       </para>
      </listitem>
     </varlistentry>

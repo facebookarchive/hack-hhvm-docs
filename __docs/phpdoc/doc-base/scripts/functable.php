@@ -125,7 +125,7 @@ function get_pecl_releases($package)
             }
         }
         sort($releases);
-        return $releases;    
+        return $releases;
     } catch (Exception $e) {
         fwrite(STDERR, " WARN: NO RELEASES\n");
         return false;
@@ -137,10 +137,10 @@ function grab_pecl_release($package, $release)
     rm_recursive(PATH_TMP);
     mkdir(PATH_TMP);
     chdir(PATH_TMP);
-    
+
     $remoteTarball = 'http://pecl.php.net/get/'. urlencode($package) . '-' . urlencode($release);
     file_put_contents(PATH_TMP . '/pecl_tarball.tgz', file_get_contents($remoteTarball));
-    
+
     // should probably do this as natively as possible.. @@@fixme
     exec('which tar', $tar, $success);
     if($success == 0) {
@@ -259,10 +259,10 @@ function parse_protos($path)
 function convert_array_to_words($func, $tags4, $tags5, $tagsPECL)
 {
     // this functions should be refactored
-    
+
     static $phpRegex = '/PHP_([45])_([0-9])_([0-9])/';
     static $rep = '$1.$2.$3';
-    
+
     // function exists in PHP 4?
     $text4 = '';
     $ft4 = array();
@@ -270,7 +270,7 @@ function convert_array_to_words($func, $tags4, $tags5, $tagsPECL)
         if (isset($func[$t])) {
             $ft4[] = $t;
         }
-    }    
+    }
     if (!$ft4) {
         $text4 = '';
     } elseif ($ft4 == $tags4) {
@@ -282,7 +282,7 @@ function convert_array_to_words($func, $tags4, $tags5, $tagsPECL)
             $text4 = "PHP 4 >= " . preg_replace($phpRegex, $rep, $ft4[0]);
         }
     }
-    
+
     // function exists in PHP 5?
     $text5 = '';
     $ft5 = array();
@@ -302,7 +302,7 @@ function convert_array_to_words($func, $tags4, $tags5, $tagsPECL)
             $text5 = "PHP 5 >= " . preg_replace($phpRegex, $rep, $ft5[0]);
         }
     }
-    
+
     // function exists in PECL?
     $textPECL = '';
     if ($tagsPECL) {
@@ -367,15 +367,15 @@ if (!is_readable(PATH_DB)) {
 if (!getenv('DO_CVS')) {
 	fwrite(STDERR, "Skipping CVS\n");
 } else {
-	fwrite(STDERR, "Using CVS\n");    
+	fwrite(STDERR, "Using CVS\n");
     if (getenv('FUNCTABLE_TAGS')) {
         $tags = explode(' ', getenv('FUNCTABLE_TAGS'));
     } else {
         $tags = get_php_release_tags();
     }
-    
+
 	fwrite(STDERR, "PHP Tags: " . implode(' ', $tags) ."\n");
-    
+
     foreach ($tags as $tag) {
 		fwrite(STDERR, "Getting tag: $tag\n");
         checkout_tag($tag);
@@ -424,7 +424,7 @@ if (!getenv('DO_PECL')) {
             }
         }
     }
-    
+
     foreach ($releases as $pkg => $versions) {
         foreach ($versions as $ver) {
             $pkgName = $pkg . '-' . $ver;

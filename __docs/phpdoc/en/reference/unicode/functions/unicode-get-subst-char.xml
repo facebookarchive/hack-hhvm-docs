@@ -13,9 +13,9 @@
    <void />
   </methodsynopsis>
   <para>
-   Return the substitution character for string conversion errors set by 
+   Return the substitution character for string conversion errors set by
    <function>unicode_set_subst_char</function>.
-  </para> 
+  </para>
  </refsect1>
 
  <refsect1 role="returnvalues">

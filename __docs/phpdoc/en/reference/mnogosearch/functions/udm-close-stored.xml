@@ -5,7 +5,7 @@
   <refname>udm_close_stored</refname>
   <refpurpose>Close connection to stored</refpurpose>
  </refnamediv>
- 
+
  <refsect1 role="description">
   &reftitle.description;
   <methodsynopsis>

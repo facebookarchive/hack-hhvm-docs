@@ -36,7 +36,7 @@ $leave = array(
     "while", "null", "tagName", "clientLeft", "parseInt", "border", "isNaN",
     "getAttribute", "charCode", "keyCode", "cc", "setTimeout", "fh_HideAll",
     "setAttribute", "replace", "g", "s", "getCookie", "createElement",
-    "getElementsByTagName", "appendChild", 
+    "getElementsByTagName", "appendChild",
 );
 
 $text = implode(" ", $lines);

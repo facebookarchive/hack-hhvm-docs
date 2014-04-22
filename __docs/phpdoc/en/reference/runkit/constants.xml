@@ -72,7 +72,7 @@
   </varlistentry>
   <varlistentry xml:id="constant.runkit-import-override">
    <term>
-    <constant>RUNKIT_IMPORT_OVERRIDE</constant> 
+    <constant>RUNKIT_IMPORT_OVERRIDE</constant>
      (<type>integer</type>)
    </term>
    <listitem>

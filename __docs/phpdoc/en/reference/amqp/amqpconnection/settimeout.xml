@@ -16,7 +16,7 @@
   <para>
    Set the amount of time, in seconds, after which this instance of an <classname>AMQPConnection</classname> object times out a request to the broker. Setting this value will
    override the default value specified by the <literal>amqp.timeout</literal> INI setting.
-   
+
    To specify a timeout of 500ms, simply pass in 0.5.
   </para>
  </refsect1>

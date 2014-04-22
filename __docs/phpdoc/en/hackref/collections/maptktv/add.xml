@@ -5,7 +5,7 @@
   <refname>Map&lt;Tk, Tv&gt;::add</refname>
   <refpurpose>Add a key/value Pair to this Map</refpurpose>
  </refnamediv>
- 
+
  <refsect1 role="description">
   &reftitle.description;
   <methodsynopsis>
@@ -14,7 +14,7 @@
    <methodname>Map&lt;Tk, Tv&gt;::add</methodname>
    <methodparam><type>Pair&lt;Tk, Tv&gt;Tv</type><parameter>p</parameter></methodparam>
   </methodsynopsis>
- 
+
 <!-- Note: If this method/property as an alternate procedural mapping then the method/property synopsis MUST be listed BEFORE the function synopsis -->
   <para>
     Add a key/value Pair to this Map. <literal>$mp-&gt;add($p)</literal> is semantically equivalent to <literal>$mp[] = $p</literal> (except that <literal>add()</literal> returns the Map).

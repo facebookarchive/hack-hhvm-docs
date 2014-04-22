@@ -2,7 +2,7 @@
 <!-- $Revision: 297028 $ -->
 <refentry xml:id="function.jewishtojd" xmlns="http://docbook.org/ns/docbook">
  <refnamediv>
-  <refname>JewishToJD</refname> 
+  <refname>JewishToJD</refname>
   <refpurpose>Converts a date in the Jewish Calendar to Julian Day Count</refpurpose>
  </refnamediv>
  <refsect1 role="description">
@@ -49,7 +49,7 @@
        The year as a number between 1 and 9999
       </para>
      </listitem>
-    </varlistentry>  
+    </varlistentry>
    </variablelist>
   </para>
  </refsect1>
@@ -65,7 +65,7 @@
   &reftitle.seealso;
   <para>
    <simplelist>
-    <member><function>jdtojewish</function></member> 
+    <member><function>jdtojewish</function></member>
     <member><function>cal_to_jd</function></member>
    </simplelist>
   </para>

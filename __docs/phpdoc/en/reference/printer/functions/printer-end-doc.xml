@@ -5,7 +5,7 @@
  <refname>printer_end_doc</refname>
   <refpurpose>Close document</refpurpose>
  </refnamediv>
- 
+
  <refsect1 role="description">
   &reftitle.description;
   <methodsynopsis>

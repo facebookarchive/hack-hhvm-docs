@@ -5,7 +5,7 @@
   <refname>oci_field_type</refname>
   <refpurpose>Returns field's data type</refpurpose>
  </refnamediv>
- 
+
  <refsect1 role="description">
   &reftitle.description;
   <methodsynopsis>

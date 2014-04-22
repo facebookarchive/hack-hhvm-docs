@@ -14,7 +14,7 @@
    or <productname>postfix</productname>, be sure to
    use the appropriate sendmail wrappers that come with them.  PHP will
    first look for sendmail in your <literal>PATH</literal>, and then in
-   the following:  
+   the following:
    <literal>/usr/bin:/usr/sbin:/usr/etc:/etc:/usr/ucblib:/usr/lib</literal>.
    It's highly recommended to have sendmail available from your
    <literal>PATH</literal>.  Also, the user that compiled PHP must have

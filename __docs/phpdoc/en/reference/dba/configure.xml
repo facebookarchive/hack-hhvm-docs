@@ -14,11 +14,11 @@
   <para>
    After configuring and compiling PHP you must execute the following test
    from commandline: <literal>php run-tests.php ext/dba</literal>. This shows
-   whether your combination of handlers works. Most problematic are 
+   whether your combination of handlers works. Most problematic are
    <literal>dbm</literal> and <literal>ndbm</literal> which conflict with
    many installations. The reason for this is that on several systems these
    libraries are part of more than one other library. The configuration test
-   only prevents you from configuring malfunctioning single handlers but not 
+   only prevents you from configuring malfunctioning single handlers but not
    combinations.
   </para>
  </warning>
@@ -120,7 +120,7 @@
         <para>
          The db4 option was added in PHP 4.3.2. In earlier versions of PHP you need to use
          <option role="configure">--with-db3=DIR</option> with DIR being the
-         path to db4 library. It is not possible to use db versions starting 
+         path to db4 library. It is not possible to use db versions starting
          from 4.1 with PHP prior to version 4.3.0. Also, the db libraries with
          versions 4.1 through 4.1.24 cannot be used in any PHP version.
         </para>
@@ -140,7 +140,7 @@
        <option role="configure">--with-cdb[=DIR]</option>.
        <note>
         <para>
-         Since PHP 4.3.0 you can omit DIR to use the bundled cdb library 
+         Since PHP 4.3.0 you can omit DIR to use the bundled cdb library
          that adds the cdb_make handler which allows creation of cdb files
          and allows to access cdb files on the network using PHP's streams.
         </para>
@@ -210,7 +210,7 @@
   <note>
    <para>
     Up to PHP 4.3.0 you are able to add both db2 and db3 handler but only one
-    of them can be used internally. That means that you cannot have both file 
+    of them can be used internally. That means that you cannot have both file
     formats. Starting with PHP 5.0.0 there is a configuration check avoid such
     misconfigurations.
    </para>

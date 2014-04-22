@@ -34,7 +34,7 @@ foreach (new RecursiveIteratorIterator(new RecursiveDirectoryIterator($opts['p']
 	if (!$file->isFile() || pathinfo($filepath, PATHINFO_EXTENSION) !== 'xml') {
 		continue;
 	}
-	
+
 	$contents = file_get_contents($filepath);
 
 	$matches = array();

@@ -14,7 +14,7 @@
    <void/>
   </methodsynopsis>
   <para>
-   This method gets the data of the ProcessingInstruction node.  
+   This method gets the data of the ProcessingInstruction node.
   </para>
  </refsect1>
  <refsect1 role="returnvalues">

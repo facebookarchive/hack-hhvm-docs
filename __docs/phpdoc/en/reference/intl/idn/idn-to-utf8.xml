@@ -17,7 +17,7 @@
   </methodsynopsis>
   <para>
    This function converts Unicode domain name from IDNA ASCII-compatible format to plain Unicode, encoded in UTF-8.
-  </para> 
+  </para>
   </refsect1>
 
  <refsect1 role="parameters">
@@ -102,7 +102,7 @@
    </informaltable>
   </para>
  </refsect1>
- 
+
  <refsect1 role="examples">
   &reftitle.examples;
   <example>
@@ -111,7 +111,7 @@
 <![CDATA[
 <?php
 
-echo idn_to_utf8('xn--tst-qla.de'); 
+echo idn_to_utf8('xn--tst-qla.de');
 
 ?>
 ]]>

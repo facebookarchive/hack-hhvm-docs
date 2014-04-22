@@ -1,19 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- $Revision: 330340 $ -->
- 
+
 <book xml:id="book.printer" xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink">
  <title>Printer</title>
- 
+
  <!-- {{{ preface -->
  <preface xml:id="intro.printer">
   &reftitle.intro;
   <para>
-   These functions are only available under Windows 9.x, ME, NT4 and 
+   These functions are only available under Windows 9.x, ME, NT4 and
    2000. They have been added in PHP 4.0.4.
   </para>
  </preface>
  <!-- }}} -->
- 
+
  &reference.printer.setup;
  &reference.printer.constants;
  &reference.printer.reference;

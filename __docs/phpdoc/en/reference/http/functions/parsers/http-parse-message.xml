@@ -13,7 +13,7 @@
    <methodparam><type>string</type><parameter>message</parameter></methodparam>
   </methodsynopsis>
   <para>
-   Parses the HTTP <parameter>message</parameter> into a simple 
+   Parses the HTTP <parameter>message</parameter> into a simple
    recursive <type>object</type>.
   </para>
  </refsect1>
@@ -95,7 +95,7 @@ stdClass object
   [type] => 2
   [httpVersion] => 1.1
   [responseCode] => 200
-  [headers] => Array 
+  [headers] => Array
   (
     [Content-Length] => 3
     [Server] => Apache
@@ -106,12 +106,12 @@ stdClass object
     [type] => 2
     [httpVersion] => 1.1
     [responseCode] => 302
-    [headers] => Array 
+    [headers] => Array
     (
       [Content-Length] => 0
       [Location] => ...
     )
-    [body] => 
+    [body] =>
     [parentMessage] => ...
   )
 )

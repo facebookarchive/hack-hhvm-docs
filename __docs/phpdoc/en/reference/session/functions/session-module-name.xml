@@ -5,7 +5,7 @@
   <refname>session_module_name</refname>
   <refpurpose>Get and/or set the current session module</refpurpose>
  </refnamediv>
- 
+
  <refsect1 role="description">
   &reftitle.description;
   <methodsynopsis>
@@ -14,7 +14,7 @@
   </methodsynopsis>
   <para>
    <function>session_module_name</function> gets the name of the current
-   session module. 
+   session module.
   </para>
  </refsect1>
 

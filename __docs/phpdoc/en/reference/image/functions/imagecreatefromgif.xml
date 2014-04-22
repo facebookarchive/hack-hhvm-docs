@@ -94,7 +94,7 @@ imagedestroy($img);
   </note>
   <note>
    <para>
-    When reading animated GIF files into memory, only the first frame 
+    When reading animated GIF files into memory, only the first frame
     is returned in the image resource pointer.
    </para>
   </note>

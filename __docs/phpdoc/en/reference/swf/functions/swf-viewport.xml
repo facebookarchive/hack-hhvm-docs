@@ -5,7 +5,7 @@
   <refname>swf_viewport</refname>
   <refpurpose>Select an area for future drawing</refpurpose>
  </refnamediv>
- 
+
  <refsect1 role="description">
   &reftitle.description;
   <methodsynopsis>

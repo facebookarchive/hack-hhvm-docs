@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- $Revision: 330340 $ -->
- 
+
 <book xml:id="book.spplus" xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink">
  <title>SPPLUS Payment System</title>
  <titleabbrev>SPPLUS</titleabbrev>
- 
+
  <!-- {{{ preface -->
  <preface xml:id="intro.spplus">
   &reftitle.intro;
    <para>
-    This extension gives you the possibility to use the 
+    This extension gives you the possibility to use the
     <link xlink:href="&url.spplus;">SPPLUS Payment System</link>
     of the Caisse d'Epargne (a French Bank).
    </para>

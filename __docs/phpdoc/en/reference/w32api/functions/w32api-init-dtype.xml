@@ -5,7 +5,7 @@
   <refname>w32api_init_dtype</refname>
   <refpurpose>Creates an instance of the data type typename and fills it with the values passed</refpurpose>
  </refnamediv>
- 
+
  <refsect1 role="description">
   &reftitle.description;
   <methodsynopsis>
@@ -16,7 +16,7 @@
   </methodsynopsis>
   <para>
    This function creates an instance of the data type named
-   <parameter>typename</parameter>, filling in the values of the data type. 
+   <parameter>typename</parameter>, filling in the values of the data type.
   </para>
  </refsect1>
 

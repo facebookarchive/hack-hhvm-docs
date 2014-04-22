@@ -5,7 +5,7 @@
   <refname>oci_field_is_null</refname>
   <refpurpose>Checks if the field is &null;</refpurpose>
  </refnamediv>
- 
+
  <refsect1 role="description">
   &reftitle.description;
   <methodsynopsis>
@@ -14,8 +14,8 @@
    <methodparam><type>mixed</type><parameter>field</parameter></methodparam>
   </methodsynopsis>
   <para>
-   Checks if the given <parameter>field</parameter> from the 
-   <parameter>statement</parameter> is &null;. 
+   Checks if the given <parameter>field</parameter> from the
+   <parameter>statement</parameter> is &null;.
   </para>
  </refsect1>
 
@@ -46,7 +46,7 @@
  <refsect1 role="returnvalues">
   &reftitle.returnvalues;
   <para>
-   Returns &true; if <parameter>field</parameter> is &null;, &false; otherwise. 
+   Returns &true; if <parameter>field</parameter> is &null;, &false; otherwise.
   </para>
  </refsect1>
 

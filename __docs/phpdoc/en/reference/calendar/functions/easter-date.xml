@@ -50,7 +50,7 @@
        The year as a number between 1970 an 2037
       </para>
      </listitem>
-    </varlistentry>  
+    </varlistentry>
    </variablelist>
   </para>
  </refsect1>
@@ -162,7 +162,7 @@ Easter in 2015 is on April 5
   <para>
    <simplelist>
     <member>
-     <function>easter_days</function> for calculating Easter 
+     <function>easter_days</function> for calculating Easter
      before 1970 or after 2037
     </member>
    </simplelist>
@@ -170,7 +170,7 @@ Easter in 2015 is on April 5
  </refsect1>
 
 </refentry>
- 
+
 <!-- Keep this comment at the end of the file
 Local variables:
 mode: sgml

@@ -5,7 +5,7 @@
   <refname>eregi</refname>
   <refpurpose>Case insensitive regular expression match</refpurpose>
  </refnamediv>
- 
+
  <refsect1 role="description">
   &reftitle.description;
   <methodsynopsis>
@@ -48,7 +48,7 @@
        If matches are found for parenthesized substrings of
        <parameter>pattern</parameter> and the function is called with the
        third argument <parameter>regs</parameter>, the matches will be stored
-       in the elements of the array <parameter>regs</parameter>. 
+       in the elements of the array <parameter>regs</parameter>.
       </para>
       <para>
        $regs[1] will contain the substring which starts at the first left
@@ -99,7 +99,7 @@ if (eregi('z', $string)) {
   &note.regex.deprecated;
   <tip>
    <para>
-    <function>eregi</function> is deprecated as of PHP 5.3.0. <function>preg_match</function> 
+    <function>eregi</function> is deprecated as of PHP 5.3.0. <function>preg_match</function>
     with the <literal>i</literal> (<constant>PCRE_CASELESS</constant>) modifier is the suggested alternative.
    </para>
   </tip>

@@ -179,7 +179,7 @@
           difference to UTC with colon between hours and minutes, or timezone
           abbreviation</entry>
           <entry>Examples: <literal>UTC</literal>, <literal>GMT</literal>,
-           <literal>Atlantic/Azores</literal> or 
+           <literal>Atlantic/Azores</literal> or
            <literal>+0200</literal> or <literal>+02:00</literal> or
            <literal>EST</literal>, <literal>MDT</literal>
           </entry>
@@ -271,7 +271,7 @@
       parsing to fail and an error message is appended to the returned
       structure. You can query error messages with
       <methodname>DateTime::getLastErrors</methodname>.
-     </para>       
+     </para>
      <para>
       If <parameter>format</parameter> does not contain the character
       <literal>!</literal> then portions of the generated time which are not

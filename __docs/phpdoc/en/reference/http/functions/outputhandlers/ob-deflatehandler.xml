@@ -21,9 +21,9 @@
    The deflate output buffer handler can only be used once.
   </para>
   <para>
-   It conflicts with <function>ob_gzhandler</function> and 
+   It conflicts with <function>ob_gzhandler</function> and
    <link linkend="ref.zlib">zlib.output_compression</link> as well and should
-   not be used after <link linkend="ref.mbstring">mbstring</link> extension's <function>mb_output_handler</function> and 
+   not be used after <link linkend="ref.mbstring">mbstring</link> extension's <function>mb_output_handler</function> and
    <link linkend="ref.session">session</link> extension's URL-Rewriter (AKA session.use_trans_sid).
   </para>
  </refsect1>

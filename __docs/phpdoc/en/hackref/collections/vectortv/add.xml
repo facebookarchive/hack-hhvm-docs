@@ -5,7 +5,7 @@
   <refname>Vector&lt;Tv&gt;::add</refname>
   <refpurpose>Append a value to the end of the vector.</refpurpose>
  </refnamediv>
- 
+
  <refsect1 role="description">
   &reftitle.description;
   <methodsynopsis>

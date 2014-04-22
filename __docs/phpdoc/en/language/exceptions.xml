@@ -165,7 +165,7 @@ string(4) "foo!"
 ]]>
     </screen>
    </example>
-   
+
   <sect1 xml:id="language.exceptions.extending">
    <title>Extending Exceptions</title>
    <para>
@@ -211,7 +211,7 @@ class Exception
     If a class extends the built-in Exception class and re-defines the <link
     linkend="language.oop5.decon">constructor</link>, it is highly recommended
     that it also call <link
-    linkend="language.oop5.paamayim-nekudotayim">parent::__construct()</link> 
+    linkend="language.oop5.paamayim-nekudotayim">parent::__construct()</link>
     to ensure all available data has been properly assigned. The <link
     linkend="language.oop5.magic">__toString()</link> method can be overridden
     to provide a custom output when the object is presented as a string.
@@ -236,7 +236,7 @@ class MyException extends Exception
     // Redefine the exception so message isn't optional
     public function __construct($message, $code = 0, Exception $previous = null) {
         // some code
-    
+
         // make sure everything is assigned properly
         parent::__construct($message, $code, $previous);
     }
@@ -276,7 +276,7 @@ class TestException
                 throw new Exception('2 is not allowed as a parameter', 6);
                 break;
 
-            default: 
+            default:
                 // No exception, object will be created.
                 $this->var = $avalue;
                 break;
@@ -357,7 +357,7 @@ class MyException extends Exception
     // Redefine the exception so message isn't optional
     public function __construct($message, $code = 0) {
         // some code
-    
+
         // make sure everything is assigned properly
         parent::__construct($message, $code);
     }
@@ -379,7 +379,7 @@ class MyException extends Exception
   </sect1>
 
  </chapter>
- 
+
 <!-- Keep this comment at the end of the file
 Local variables:
 mode: sgml

@@ -5,7 +5,7 @@
   <refname>printer_create_brush</refname>
   <refpurpose>Create a new brush</refpurpose>
  </refnamediv>
- 
+
  <refsect1 role="description">
   &reftitle.description;
   <methodsynopsis>
@@ -87,7 +87,7 @@
      <term><parameter>color</parameter></term>
      <listitem>
       <para>
-       <parameter>color</parameter> must be a color in RGB hex format, i.e. 
+       <parameter>color</parameter> must be a color in RGB hex format, i.e.
        "<literal>000000</literal>" for black.
       </para>
      </listitem>

@@ -2,23 +2,23 @@
 <!-- $Revision: 297028 $ -->
 <section xml:id="zip.installation" xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink">
  &reftitle.install;
- 
+
  <section xml:id="zip.old.installation">
   <title>PHP 4</title>
-  
+
   <note>
    <para>
     Zip support before PHP 4.1.0 is experimental.
    </para>
   </note>
-  
+
   <warning>
    <para>
     Because the PHP 4 zip extension is unmaintained we recommend that the PECL
     extension is used rather than the bundled one.
    </para>
   </warning>
-  
+
   <section xml:id="zip.installation.old.linux">
    <title>Linux systems</title>
    <para>
@@ -28,7 +28,7 @@
     xlink:href="&url.zziplib;">ZZIPlib</link> library install.
    </para>
   </section>
-  
+
   <section xml:id="zip.installation.old.windows">
    <title>Windows</title>
    <para>
@@ -40,7 +40,7 @@
 
  <section xml:id="zip.installation.new">
   <title>PHP 5.2.0 and later</title>
-  
+
   <section xml:id="zip.installation.new.linux">
    <title>Linux systems</title>
    <para>
@@ -49,7 +49,7 @@
     configure option.
    </para>
   </section>
-  
+
   <section xml:id="zip.installation.new.windows">
    <title>Windows</title>
    <para>

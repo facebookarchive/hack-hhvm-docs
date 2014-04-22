@@ -3,7 +3,7 @@
 
 <appendix xml:id="about" xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink">
  <title>About the manual</title>
- 
+
  <sect1 xml:id="about.origin">
   <title>Origin</title>
   <para>
@@ -13,7 +13,7 @@
     You will find the documentation sources for the Hack and HHVM manual in <link xlink:href="https://github.com/hhvm/hack-hhvm-docs">Github</link>. You can create issues, give pull requests and see instructions on how to build the documentation locally for testing.
   </para>
  </sect1>
- 
+
  <sect1 xml:id="about.formats">
   <title>Formats</title>
   <para>
@@ -23,7 +23,7 @@
    The manual can be read online at the <link xlink:href="&url.hhvm.manual;">hhvm.com website</link>
   </para>
  </sect1>
- 
+
  <sect1 xml:id="about.notes">
   <title>About user notes</title>
   <para>
@@ -44,9 +44,9 @@
  <sect1 xml:id="about.prototypes">
    <title>How to read a function definition (prototype)</title>
    <para>
-    Each function in the manual is documented for quick reference. Knowing how 
-    to read and understand the text will make learning HHVM and Hack 
-    much easier.  Rather than relying on examples or cut/paste, everyone should 
+    Each function in the manual is documented for quick reference. Knowing how
+    to read and understand the text will make learning HHVM and Hack
+    much easier.  Rather than relying on examples or cut/paste, everyone should
     know how to read function definitions (prototypes).  Let's begin:
    </para>
    <note>
@@ -54,13 +54,13 @@
      Prerequisite: Basic understanding of <link linkend="language.types">types</link>
     </title>
     <para>
-     Hack provides a static-typing option. It's important to have 
-     a basic understanding of <link linkend="language.types">types</link> as 
+     Hack provides a static-typing option. It's important to have
+     a basic understanding of <link linkend="language.types">types</link> as
      they have important meaning.
     </para>
    </note>
    <para>
-    Function definitions tell us what 
+    Function definitions tell us what
     type of value is <link linkend="functions.returning-values">returned</link>.
     Let's use the definition for <function>strlen</function> as our first example:
    </para>
@@ -111,9 +111,9 @@ Returns the length of given string.
           int
          </entry>
          <entry>
-          Type of value this function returns, which is an 
+          Type of value this function returns, which is an
           <type>integer</type> (i.e. the length of a string is measured in
-          numbers). 
+          numbers).
          </entry>
         </row>
         <row>
@@ -121,8 +121,8 @@ Returns the length of given string.
           ( string $string )
          </entry>
          <entry>
-          The first (and in this case the only) parameter/argument for this 
-          function is named <parameter>string</parameter>, and it's a 
+          The first (and in this case the only) parameter/argument for this
+          function is named <parameter>string</parameter>, and it's a
           <type>string</type>.
          </entry>
         </row>
@@ -145,31 +145,31 @@ Returns the length of given string.
      Its prototype is as follows:
     </para>
     <para>
-     <screen>    
+     <screen>
 <![CDATA[
       bool in_array ( mixed $needle, array $haystack [, bool $strict])
 ]]>
      </screen>
     </para>
     <para>
-     What does this mean?  in_array() returns a 
-     <link linkend="language.types.boolean">boolean</link> value, &true; on 
-     success (if the <parameter>needle</parameter> was found in the 
-     <parameter>haystack</parameter>)&return.falseforfailure; (if the 
-     <parameter>needle</parameter> was not found in the 
-     <parameter>haystack</parameter>).  The first parameter is named 
-     <parameter>needle</parameter> and it can be of many different 
-     <link linkend="language.types">types</link>, so we call it 
-     "<emphasis>mixed</emphasis>".  This mixed <parameter>needle</parameter> 
-     (what we're looking for) can be either a scalar value (string, integer, 
+     What does this mean?  in_array() returns a
+     <link linkend="language.types.boolean">boolean</link> value, &true; on
+     success (if the <parameter>needle</parameter> was found in the
+     <parameter>haystack</parameter>)&return.falseforfailure; (if the
+     <parameter>needle</parameter> was not found in the
+     <parameter>haystack</parameter>).  The first parameter is named
+     <parameter>needle</parameter> and it can be of many different
+     <link linkend="language.types">types</link>, so we call it
+     "<emphasis>mixed</emphasis>".  This mixed <parameter>needle</parameter>
+     (what we're looking for) can be either a scalar value (string, integer,
      or <link linkend="language.types.float">float</link>), or an
      <link linkend="language.types.array">array</link>.
-     <parameter>haystack</parameter> (the array we're searching in) is the 
-     second parameter.  The third <emphasis>optional</emphasis> parameter is 
-     named <parameter>strict</parameter>.  All optional parameters are seen 
-     in <emphasis>[</emphasis> brackets <emphasis>]</emphasis>.  The manual 
-     states that the <parameter>strict</parameter> parameter defaults to 
-     boolean &false;.  See the manual page on each function for details on 
+     <parameter>haystack</parameter> (the array we're searching in) is the
+     second parameter.  The third <emphasis>optional</emphasis> parameter is
+     named <parameter>strict</parameter>.  All optional parameters are seen
+     in <emphasis>[</emphasis> brackets <emphasis>]</emphasis>.  The manual
+     states that the <parameter>strict</parameter> parameter defaults to
+     boolean &false;.  See the manual page on each function for details on
      how they work.
     </para>
     <para>
@@ -177,7 +177,7 @@ Returns the length of given string.
      <function>html_entity_decode</function> as an example:
     </para>
     <para>
-     <screen>    
+     <screen>
 <![CDATA[
 (PHP 4 >= 4.3.0, PHP 5)
 ]]>
@@ -185,7 +185,7 @@ Returns the length of given string.
     </para>
     <para>
      This means that this function has only been
-     available in a released version since PHP 4.3.0. 
+     available in a released version since PHP 4.3.0.
     </para>
  </sect1>
 
@@ -200,7 +200,7 @@ Returns the length of given string.
   </para>
   <note>
    <para>
-    Please don't abuse the bug system by submitting requests for help. 
+    Please don't abuse the bug system by submitting requests for help.
     Instead, use a support option like the <link xlink:href="&url.hhvm.irc;">IRC channel</link>.
    </para>
   </note>
@@ -208,17 +208,17 @@ Returns the length of given string.
    The HHVM and Hack manual is <link xlink:href="&url.hack.hhvm.docs;">open source on Github</link>. Please feel free to submit a pull request for any additions or modifcations.
   </para>
  </sect1>
- 
+
  <sect1 xml:id="about.generate">
   <title>How we generate the formats</title>
   <para>
    This manual is written in <acronym>XML</acronym> using the <link
    xlink:href="&url.docbook.xml;">DocBook XML DTD</link>, using <link
-   xlink:href="&url.phd;"><acronym>PhD</acronym></link> (The [PH]P based 
+   xlink:href="&url.phd;"><acronym>PhD</acronym></link> (The [PH]P based
    [D]ocBook renderer) for maintenance and formatting.
   </para>
   <para>
-   Using <acronym>XML</acronym> as a source format gives 
+   Using <acronym>XML</acronym> as a source format gives
    the ability to generate many output formats from the source
    files, while only maintaining one source document for all formats.
    The tool used for formatting the online manual is <link

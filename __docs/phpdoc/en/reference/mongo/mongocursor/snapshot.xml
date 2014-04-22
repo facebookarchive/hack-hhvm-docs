@@ -14,9 +14,9 @@
    <void/>
   </methodsynopsis>
   <para>
-   Use snapshot mode for the query.  Snapshot mode assures no duplicates are returned, 
-   or objects missed, which were present at both the start and end of the query's 
-   execution (if an object is new during the query, or deleted during the query, it 
+   Use snapshot mode for the query.  Snapshot mode assures no duplicates are returned,
+   or objects missed, which were present at both the start and end of the query's
+   execution (if an object is new during the query, or deleted during the query, it
    may or may not be returned, even with snapshot mode).
   </para>
   <para>
@@ -30,10 +30,10 @@
  <refsect1 role="parameters">
   &reftitle.parameters;
   &no.function.parameters;
- </refsect1> 
+ </refsect1>
 
  <refsect1 role="returnvalues">
-  &reftitle.returnvalues;  
+  &reftitle.returnvalues;
   <para>
    Returns this cursor.
   </para>
@@ -64,4 +64,4 @@ End:
 vim600: syn=xml fen fdm=syntax fdl=2 si
 vim: et tw=78 syn=sgml
 vi: ts=1 sw=1
---> 
+-->

@@ -59,10 +59,10 @@ $frame->dispose();
    <itemizedlist>
     <listitem>
      <simpara>
-      <literal>new Java()</literal> will create an instance of a class if 
-      a suitable constructor is available. If no parameters are passed and 
-      the default constructor is useful as it provides access to classes 
-      like <literal>java.lang.System</literal> which expose most of their 
+      <literal>new Java()</literal> will create an instance of a class if
+      a suitable constructor is available. If no parameters are passed and
+      the default constructor is useful as it provides access to classes
+      like <literal>java.lang.System</literal> which expose most of their
       functionality through static methods.
      </simpara>
     </listitem>
@@ -78,7 +78,7 @@ $frame->dispose();
      <simpara>
       Both static and instance members can be accessed on an object with
       the same syntax. Furthermore, if the java object is of type
-      <literal>java.lang.Class</literal>, then static members of the class 
+      <literal>java.lang.Class</literal>, then static members of the class
       (fields and methods) can be accessed.
      </simpara>
     </listitem>
@@ -106,7 +106,7 @@ $frame->dispose();
       increasing the number of overloads to select from.
      </simpara>
      <simpara>
-      Once a method is selected, the parameters are coerced if necessary, 
+      Once a method is selected, the parameters are coerced if necessary,
       possibly with a loss of data (example: double precision floating point
       numbers will be converted to boolean).
       <!-- FIXME Why aren't java-doubles converted to PHP-floats? Is this

@@ -24,7 +24,7 @@
       <productname>libmbfl</productname> is necesarry for <literal>mbstring</literal>.
       <productname>libmbfl</productname> is bundled with <literal>mbstring</literal>.
       If <productname>libmbfl</productname> is already installed on the system,
-      <option role="configure">--with-libmbfl[=DIR]</option> can be specified to use 
+      <option role="configure">--with-libmbfl[=DIR]</option> can be specified to use
       the installed library.
      </para>
      <para>
@@ -33,20 +33,20 @@
       Korean, and Russian in addition to Japanese.
      </para>
      <para>
-      For PHP 4.3.3 or before, 
+      For PHP 4.3.3 or before,
       To enable that feature, you will have to supply either one of the
       following options to the <literal>LANG</literal> parameter
-      of <option role="configure">--enable-mbstring=LANG</option>; 
+      of <option role="configure">--enable-mbstring=LANG</option>;
       <option role="configure">--enable-mbstring=cn</option> for Simplified Chinese support,
-      <option role="configure">--enable-mbstring=tw</option> for Traditional Chinese support, 
-      <option role="configure">--enable-mbstring=kr</option> for Korean support, 
+      <option role="configure">--enable-mbstring=tw</option> for Traditional Chinese support,
+      <option role="configure">--enable-mbstring=kr</option> for Korean support,
       <option role="configure">--enable-mbstring=ru</option> for Russian support, and
       <option role="configure">--enable-mbstring=ja</option> for Japanese support (default).
        To enable all supported encoding, use <option role="configure">--enable-mbstring=all</option>.
      </para>
      <note>
       <para>
-       As of PHP 4.3.4, 
+       As of PHP 4.3.4,
        all supported encoding by <productname>libmbfl</productname> is enabled
        with <option role="configure">--enable-mbstring</option>.
       </para>
@@ -63,7 +63,7 @@
      </para>
      <note>
       <para>
-       As of PHP 4.3.0, the option 
+       As of PHP 4.3.0, the option
        <option role="configure">--enable-mbstr-enc-trans</option>
        was eliminated and replaced with the runtime setting
        <literal>mbstring.encoding_translation</literal>.

@@ -1,5 +1,5 @@
 #!/usr/bin/php -q
-<?php 
+<?php
 /*
   +----------------------------------------------------------------------+
   | PHP Version 4                                                        |
@@ -91,7 +91,7 @@ foreach ($files as $file) {
     }
 }
 
-    
+
 /* Utility functions: */
 
 function all_xml_files($startdir)
@@ -114,5 +114,5 @@ function all_xml_files($startdir)
 
     return $entries;
 }
-    
+
 

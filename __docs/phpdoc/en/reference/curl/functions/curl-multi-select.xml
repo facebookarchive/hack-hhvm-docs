@@ -5,7 +5,7 @@
   <refname>curl_multi_select</refname>
   <refpurpose>Wait for activity on any curl_multi connection</refpurpose>
  </refnamediv>
- 
+
  <refsect1 role="description">
   &reftitle.description;
   <methodsynopsis>
@@ -35,11 +35,11 @@
    </variablelist>
   </para>
  </refsect1>
- 
+
  <refsect1 role="returnvalues">
   &reftitle.returnvalues;
   <para>
-   On success, returns the number of descriptors contained in 
+   On success, returns the number of descriptors contained in
    the descriptor sets.  On failure, this function will return -1 on a select failure or timeout (from the underlying select system call).
   </para>
  </refsect1>

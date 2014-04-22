@@ -22,10 +22,10 @@ define("MB_OK", 0);
 dl("php_w32api.dll");
 
 // Register the GetTickCount function from kernel32.dll
-w32api_register_function("kernel32.dll", 
+w32api_register_function("kernel32.dll",
                          "GetTickCount",
                          "long");
-                         
+
 // Register the MessageBoxA function from User32.dll
 w32api_register_function("User32.dll",
                          "MessageBoxA",
@@ -49,9 +49,9 @@ $str = sprintf("You have been using your computer for:" .
                 $mins - ($hours*60));
 
 // Display a message box with only an OK button and the uptime text
-MessageBoxA(NULL, 
-            $str, 
-            "Uptime Information", 
+MessageBoxA(NULL,
+            $str,
+            "Uptime Information",
             MB_OK);
 ?>
 ]]>

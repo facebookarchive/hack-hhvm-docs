@@ -19,7 +19,7 @@
    If the supplied argument is greater than 0, it is handled as timestamp
    and will be sent as date of last modification. If it is 0 or omitted,
    the current time will be sent as <literal>Last-Modified</literal> date.
-   If it's negative, it is handled as expiration time in seconds, which means 
+   If it's negative, it is handled as expiration time in seconds, which means
    that if the requested last modification date is not between the calculated timespan,
    the <literal>Last-Modified</literal> header is updated and the actual body will be sent.
   </para>

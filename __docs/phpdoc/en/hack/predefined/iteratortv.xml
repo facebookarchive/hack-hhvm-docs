@@ -29,14 +29,14 @@
      <ooclass>
       <classname>Iterator&lt;Tv&gt;</classname>
      </ooclass>
-     
+
      <ooclass>
       <modifier>extends</modifier>
       <classname>Traversable&lt;Tv&gt;</classname>
      </ooclass>
     </classsynopsisinfo>
 <!-- }}} -->
-    
+
     <classsynopsisinfo role="comment">&Methods;</classsynopsisinfo>
     <xi:include xpointer="xmlns(db=http://docbook.org/ns/docbook) xpointer(id('class.hack.iteratortv')/db:refentry/db:refsect1[@role='description']/descendant::db:methodsynopsis[1])" />
    </classsynopsis>
@@ -61,7 +61,7 @@ class myIterator<Tv> implements Iterator<Tv> {
     "firstelement",
     "secondelement",
     "lastelement",
-  );  
+  );
 
   public function __construct() {
     $this->position = 0;

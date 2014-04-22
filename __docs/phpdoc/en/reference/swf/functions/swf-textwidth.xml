@@ -5,7 +5,7 @@
   <refname>swf_textwidth</refname>
   <refpurpose>Get the width of a string</refpurpose>
  </refnamediv>
- 
+
  <refsect1 role="description">
   &reftitle.description;
   <methodsynopsis>

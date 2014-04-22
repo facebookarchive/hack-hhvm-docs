@@ -41,7 +41,7 @@
    </orderedlist>
   </para>
   <simpara>
-   PHP Namespaces provide a way in which to group related classes, interfaces, 
+   PHP Namespaces provide a way in which to group related classes, interfaces,
    functions and constants.  Here is an example of namespace syntax in PHP:
   </simpara>
   <example>
@@ -72,8 +72,8 @@ echo constant($d); // see "Namespaces and dynamic language features" section
   <note>
    <para>
     Namespace names <literal>PHP</literal> and <literal>php</literal>, and compound names starting
-    with these names (like <literal>PHP\Classes</literal>) are reserved for internal language use 
-    and should not be used in the userspace code. 
+    with these names (like <literal>PHP\Classes</literal>) are reserved for internal language use
+    and should not be used in the userspace code.
    </para>
   </note>
  </sect1>
@@ -378,7 +378,7 @@ subnamespace\foo(); // resolves to function Foo\Bar\subnamespace\foo
 subnamespace\foo::staticmethod(); // resolves to class Foo\Bar\subnamespace\foo,
                                   // method staticmethod
 echo subnamespace\FOO; // resolves to constant Foo\Bar\subnamespace\FOO
-                                  
+
 /* Fully qualified name */
 \Foo\Bar\foo(); // resolves to function Foo\Bar\foo
 \Foo\Bar\foo::staticmethod(); // resolves to class Foo\Bar\foo, method staticmethod
@@ -697,11 +697,11 @@ $obj = new \Another\thing; // instantiates object of class Another\thing
   <sect2 xml:id="language.namespaces.importing.scope">
    <title>Scoping rules for importing</title>
    <para>
-    The <literal>use</literal> keyword must be declared in the 
-    outermost scope of a file (the global scope) or inside namespace 
-    declarations. This is because the importing is done at compile 
-    time and not runtime, so it cannot be block scoped. The following 
-    example will show an illegal use of the <literal>use</literal> 
+    The <literal>use</literal> keyword must be declared in the
+    outermost scope of a file (the global scope) or inside namespace
+    declarations. This is because the importing is done at compile
+    time and not runtime, so it cannot be block scoped. The following
+    example will show an illegal use of the <literal>use</literal>
     keyword:
    </para>
    <para>
@@ -725,7 +725,7 @@ class Greenlandic
    </para>
    <note>
     <para>
-     Importing rules are per file basis, meaning included files will 
+     Importing rules are per file basis, meaning included files will
      <emphasis>NOT</emphasis> inherit the parent file's importing rules.
     </para>
    </note>
@@ -737,8 +737,8 @@ class Greenlandic
   <para>
    Without any namespace definition, all class and function definitions are
    placed into the global space - as it was in PHP before namespaces were
-   supported. Prefixing a name with <literal>\</literal> will specify that 
-   the name is required from the global space even in the context of the 
+   supported. Prefixing a name with <literal>\</literal> will specify that
+   the name is required from the global space even in the context of the
    namespace.
    <example>
     <title>Using global space specification</title>
@@ -748,11 +748,11 @@ class Greenlandic
 namespace A\B\C;
 
 /* This function is A\B\C\fopen */
-function fopen() { 
+function fopen() {
      /* ... */
      $f = \fopen(...); // call global fopen
      return $f;
-} 
+}
 ?>
     ]]>
     </programlisting>
@@ -865,7 +865,7 @@ if (is_array('hi')) { // prints "is not array"
       All unqualified and qualified names (not fully qualified names) are translated during
       compilation according to current
       import rules. For example, if the namespace <literal>A\B\C</literal> is imported as
-      <literal>C</literal>, a call to 
+      <literal>C</literal>, a call to
       <literal>C\D\e()</literal> is translated to <literal>A\B\C\D\e()</literal>.
      </simpara>
     </listitem>
@@ -880,15 +880,15 @@ if (is_array('hi')) { // prints "is not array"
     <listitem>
      <simpara>
       Unqualified class names are translated during compilation according to current
-      import rules (full name substituted for short imported name). In example, if 
-      the namespace <literal>A\B\C</literal> is imported as C, <literal>new C()</literal> is 
+      import rules (full name substituted for short imported name). In example, if
+      the namespace <literal>A\B\C</literal> is imported as C, <literal>new C()</literal> is
       translated to <literal>new A\B\C()</literal>.
      </simpara>
     </listitem>
     <listitem>
      <simpara>
       Inside namespace (say A\B), calls to unqualified functions are resolved at run-time.
-      Here is how a 
+      Here is how a
       call to function <literal>foo()</literal> is resolved:
      </simpara>
       <orderedlist>
@@ -910,7 +910,7 @@ if (is_array('hi')) { // prints "is not array"
      <simpara>
       Inside namespace (say <literal>A\B</literal>), calls to unqualified or qualified
       class names (not fully qualified class names)
-      are resolved at run-time. Here is how a call to 
+      are resolved at run-time. Here is how a call to
       <literal>new C()</literal> or <literal>new D\E()</literal> is resolved.
       For <literal> new C()</literal>:
      </simpara>
@@ -944,7 +944,7 @@ if (is_array('hi')) { // prints "is not array"
       </listitem>
      </orderedlist>
      <simpara>
-      To reference any global class in the global namespace, 
+      To reference any global class in the global namespace,
       its fully qualified name <literal>new \C()</literal> must be used.
      </simpara>
     </listitem>

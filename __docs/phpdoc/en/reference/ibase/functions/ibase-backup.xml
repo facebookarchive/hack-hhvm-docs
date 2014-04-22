@@ -5,7 +5,7 @@
   <refname>ibase_backup</refname>
   <refpurpose>Initiates a backup task in the service manager and returns immediately</refpurpose>
  </refnamediv>
- 
+
  <refsect1 role="description">
   &reftitle.description;
   <methodsynopsis>

@@ -5,7 +5,7 @@
   <refname>lchgrp</refname>
   <refpurpose>Changes group ownership of symlink</refpurpose>
  </refnamediv>
- 
+
  <refsect1 role="description">
   &reftitle.description;
   <methodsynopsis>
@@ -78,7 +78,7 @@ lchgrp($link, 8);
  <refsect1 role="notes">
   &reftitle.notes;
   &note.no-remote;
-  
+
   &note.no-windows;
  </refsect1>
 

@@ -5,7 +5,7 @@
   <refname>xslt_set_encoding</refname>
   <refpurpose>Set the encoding for the parsing of <acronym>XML</acronym> documents</refpurpose>
  </refnamediv>
- 
+
  <refsect1 role="description">
   &reftitle.description;
   <methodsynopsis>

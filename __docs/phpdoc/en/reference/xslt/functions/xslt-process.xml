@@ -5,7 +5,7 @@
   <refname>xslt_process</refname>
   <refpurpose>Perform an <acronym>XSLT</acronym> transformation</refpurpose>
  </refnamediv>
- 
+
  <refsect1 role="description">
   &reftitle.description;
   <methodsynopsis>
@@ -24,7 +24,7 @@
    through the use of argument buffers -- a concept taken from the <productname>Sablotron</productname>
    <acronym>XSLT</acronym> processor (currently the only <acronym>XSLT</acronym> processor this extension supports).
    The input containers default to a filename 'containing' the document to be
-   processed. 
+   processed.
   </para>
  </refsect1>
 
@@ -117,7 +117,7 @@
        <entry>4.0.6</entry>
        <entry>
         This function no longer takes XML strings in
-        <parameter>xmlcontainer</parameter> or 
+        <parameter>xmlcontainer</parameter> or
         <parameter>xslcontainer</parameter>. Passing a string containing XML
         to either of these parameters will result in a segmentation fault in
         Sablotron versions up to and including version 0.95.
@@ -128,7 +128,7 @@
    </informaltable>
   </para>
  </refsect1>
- 
+
  <refsect1 role="examples">
   &reftitle.examples;
   <para>
@@ -309,7 +309,7 @@ My node set : &lt;foo&gt;bar&lt;/foo&gt;
    </example>
   </para>
  </refsect1>
- 
+
  <refsect1 role="notes">
   &reftitle.notes;
   &note.xslt.windows;

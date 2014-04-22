@@ -61,7 +61,7 @@ $path   = $opts['p'];
 foreach (new RecursiveIteratorIterator(new RecursiveDirectoryIterator($path)) as $file) {
 
 	$filename = $file->getPathname();
-	
+
 	if (!$file->isFile() || pathinfo($filename, PATHINFO_EXTENSION) !== 'xml' || is_known_failure($filename)) {
 		continue;
 	}
@@ -137,20 +137,20 @@ function get_examples ($filename)  {
 			}
 
 			$info[] = array(
-						'title' 	=> trim(str_replace("\n", '', $title)), 
-						'filename'	=> trim($filename), 
-						'example'	=> trim($example), 
+						'title' 	=> trim(str_replace("\n", '', $title)),
+						'filename'	=> trim($filename),
+						'example'	=> trim($example),
 						'expected'	=> trim($expected),
 						'type'		=> trim($type),
 						'num'		=> (int) $num + 1,
 						);
-			
+
 		}
 	}
-	
+
 	if (empty($info)) {
 		return false;
-	}	
+	}
 	return $info;
 }
 
@@ -164,13 +164,13 @@ function validate_example ($info, $filename) {
 	exec("php -l {$filename} 2>&1", $out, $return);
 
 	$fq  = preg_quote($filename);
-	
+
 	$info['return'] = trim(preg_replace(array("@(in $fq.*)@", "@Errors parsing $fq@"), '', $out[0]));
 
 	// Has it always been "No syntax errors detected"? Let's assume so for now
 	if (false === strpos($info['return'], 'No syntax errors detected')) {
 		$parts = explode("\n", $info['example']);
-		
+
 		$error_line_num = (int) trim(substr($out[0], strpos($out[0], 'on line')+8));
 
 		$info['error_line_num'] = $error_line_num;
@@ -211,7 +211,7 @@ function is_known_failure($filename) {
 		'reference/strings/functions/echo.xml',
 	);
 
-	foreach ($known_failures as $fail) {		
+	foreach ($known_failures as $fail) {
 		if (false !== strpos($filename, $fail)) {
 			return true;
 		}

@@ -55,7 +55,7 @@ abstract class Format extends ObjectStorage
 
     // Have an array of statement / language primitives disguised as "functions"
     // in the docs (e.g., function.unset)
-    protected $not_really_functions = array("function.array", "function.isset", "function.unset", 
+    protected $not_really_functions = array("function.array", "function.isset", "function.unset",
                                             "function.empty", "function.echo", "function.eval",
                                             "function.exit", "function.list", "function.print");
     public function __construct() {

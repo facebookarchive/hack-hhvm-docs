@@ -29,7 +29,7 @@
       Each of the Hack features, and more, is discussed in great detail in this documentation.
     </para>
     <para>
-      Hack code is indicated through the <literal>&lt;?hh</literal> marker at the top of a file, as opposed to the canonical <literal>&lt;?php</literal> marker. 
+      Hack code is indicated through the <literal>&lt;?hh</literal> marker at the top of a file, as opposed to the canonical <literal>&lt;?php</literal> marker.
     </para>
     <para>
       <emphasis role="strong">Very important note</emphasis>: The type checker is invoked before runtime to determine whether code is typesafe. While HHVM knows about and understands the Hack language, it does not necessarily strictly enforce them. This is different from a true statically-typed language like C# where code is type checked at compile time and enforced (usually via some sort of exception mechanism) at runtime.
@@ -72,7 +72,7 @@ function say_hello($name) {
 function say_hello(string $name) {
   return <div class="box">Hello {$name}</div>;
 }
-]]>         
+]]>
         </programlisting>
       </informalexample>
     </para>
@@ -80,7 +80,7 @@ function say_hello(string $name) {
       In 2012, Facebook engineering teams started exploring the idea of annotating return types. And the Hack language was born...
     </para>
   </sect1>
-  
+
   <sect1 xml:id="hack.intro.summary">
     <title>Summary</title>
     <para>

@@ -15,31 +15,31 @@
   +----------------------------------------------------------------------+
   | Authors:    Moshe Doron <momo@php.net>                               |
   +----------------------------------------------------------------------+
-  
+
  $Id: HtmlExtParser.class.php 307070 2011-01-04 11:45:55Z rquadling $
 */
 
 class CHtmlExtParse extends CHtmlParse{
-	
+
 	function CHtmlExtParse($data){
 		// make the html compatible to the parser:
 		$data = str_replace("\r\n>",">",$data);
 		$data = str_replace("\n>",">",$data);
-		
+
 		$this->CHtmlParse($data);
 	}
-	
+
 	function fix_hebrew(){
 		global $EHType,$HEType;
 		$cnt = count($this->ATE);
-		
+
 		// fix functions '()':
 		if($tmp = $this->get_element_id_by_rule(array("tag"=>"div","properties"=>array("class","refsect1")))){
 			if(isset($this->ATE[$tmp+6]["data"])){
 				$this->ATE[$tmp+6]["data"] = "<span dir=ltr>".$this->ATE[$tmp+6]["data"];
 				$this->ATE[$tmp+10]["data"] .= "</span>";
 			} else {
-				//TODO: find exceptions (on the stream part there are some)	
+				//TODO: find exceptions (on the stream part there are some)
 			}
 		}
         $tmp=0;

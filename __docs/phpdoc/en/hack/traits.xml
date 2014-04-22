@@ -206,7 +206,7 @@ int(5)
   <sect1 xml:id="hack.traits.requriements">
     <title>Trait Requirements</title>
     <para>
-      The Hack typechecker is effective because it is able to take annotated facts sprinkled across the codebase in logical places (function entry and exit points, class definitions, etc), throw them together to reconcile them, and detect any mismatches. Traits are a sizeable wrench in the works, because the nature of traits in PHP is &quot;declare a bunch of stuff to be thrown into another scope at a later time, then check if it works at runtime&quot;, whereas the typechecker is only happy if it can take a piece of code and statically verify it independently of its usage sites. A syntactic way of having traits state that they only apply inside a particular type hierarchy allows their declarations to be both more explicit and more amenable to static analysis. 
+      The Hack typechecker is effective because it is able to take annotated facts sprinkled across the codebase in logical places (function entry and exit points, class definitions, etc), throw them together to reconcile them, and detect any mismatches. Traits are a sizeable wrench in the works, because the nature of traits in PHP is &quot;declare a bunch of stuff to be thrown into another scope at a later time, then check if it works at runtime&quot;, whereas the typechecker is only happy if it can take a piece of code and statically verify it independently of its usage sites. A syntactic way of having traits state that they only apply inside a particular type hierarchy allows their declarations to be both more explicit and more amenable to static analysis.
     </para>
     <para>
       While traits can theoretically be used for aspect oriented programming to add functionality to a class that is entirely orthogonal to the rest of the class definition, in practice it seems that a major, if not the dominant, use case for traits is to provide an implementation of functionality that applies only within the context of a particular class hierarchy. For example, if there are 50 subclasses of X, and X::foo() has 3 different recommended implementations, the 3 traits that make those implementations possible are meaningless outside of the class hierarchy and over time may start to justifiably use the functionality of X.
@@ -215,7 +215,7 @@ int(5)
       Trait requirement declarations serve to tie traits to class hierarchies and move the issues of assumptions about the using class from being discoverable only at run time to being easily discoverable in static analysis. In the example above, <literal>T</literal>'s trait requirements indicate that <literal>I</literal> is something that classes using <literal>T</literal> are <emphasis role="strong">required</emphasis> to implement.
     </para>
     <para>
-      For the purposes of the Hack typechecker, trait requirements now mean that any functions inside <literal>T</literal> above now know that <literal>$this instanceof C</literal> and <literal>$this instanceof I</literal> are true, and duplicating the implementations of <literal>C</literal> and <literal>I</literal> using redundant <literal>abstract function</literal> declarations is no longer unnecessary. 
+      For the purposes of the Hack typechecker, trait requirements now mean that any functions inside <literal>T</literal> above now know that <literal>$this instanceof C</literal> and <literal>$this instanceof I</literal> are true, and duplicating the implementations of <literal>C</literal> and <literal>I</literal> using redundant <literal>abstract function</literal> declarations is no longer unnecessary.
     </para>
     <sect2 xml:id="hack.traits.requirements.examples">
       <informalexample>
@@ -227,7 +227,7 @@ class C {}
 interface I {
   public function foo();
 }
- 
+
 // Trait T requires that any using class is a descendent of class C and implements
 // interface I
 trait T {
@@ -239,7 +239,7 @@ trait T {
 ]]>
         </programlisting>
         <para>
-          When enforcing trait requirements, all T cares about is that <literal>X instanceof C</literal> is true and <literal>X instanceof I</literal> is true for any using class X. It doesn't care about how exactly compliance with X's declared interfaces is achieved, or how many layers of inheritance there might be between X and C. 
+          When enforcing trait requirements, all T cares about is that <literal>X instanceof C</literal> is true and <literal>X instanceof I</literal> is true for any using class X. It doesn't care about how exactly compliance with X's declared interfaces is achieved, or how many layers of inheritance there might be between X and C.
         </para>
         <programlisting role="php">
 <![CDATA[
@@ -249,7 +249,7 @@ class X1 extends C implements I {
   use T;
   public function foo() { .. } // I satisfied via inline implementation
 }
- 
+
 trait U {
   public function foo() { .. }
 }
@@ -257,34 +257,34 @@ class X2 extends C implements I {
   use T;
   use U; // I satisfied via another trait
 }
- 
+
 interface J extends I {}
 class X3 extends C implements J { // interface inheritance is fine
   use T;
   public function foo() { .. } // with an inline implementation in this case
 }
- 
+
 class D extends C implements I {
   public function foo() { .. }
 }
 class X4 extends D { // number of inheritance hops wouldn't matter to instanceof ...
   use T; // ... so they don't matter to trait requirements
 }
- 
+
 // Classes X5, X6, and X7 do not satisfy all of T's requirements
 class X5 { // neither extends C nor implements I
   use T;
 }
- 
+
 class X6 extends C { // doesn't implement I
   use T;
 }
- 
+
 class X7 implements I { // doesn't extend C
   use T;
   public function foo() { .. }
 }
- 
+
 // While class X8 provides a compatible implementation for all of interface I's methods,
 // it is not considered to satisfy T's requirements because it does not formally implement
 // interface I
@@ -292,7 +292,7 @@ class X8 extends C {
   use T;
   use U;
 }
- 
+
 // Class X9 would technically satisfy T's requirements if it were a valid declaration
 // ... but it's not! It will fail to load at run time because it doesn't provide an
 // implementation for I::foo()

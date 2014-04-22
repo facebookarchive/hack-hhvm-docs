@@ -136,7 +136,7 @@ global $nb_reviewed_yes;
 
 // Sort the result
 if (isset($result['reviewed_no']) ) {
-    ksort($result['reviewed_no']); 
+    ksort($result['reviewed_no']);
 }
 if (isset($result['no_tag'])) {
     ksort($result['no_tag']);

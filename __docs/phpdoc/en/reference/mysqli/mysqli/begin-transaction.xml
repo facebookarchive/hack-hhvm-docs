@@ -26,9 +26,9 @@
   <para>
 
   </para>
-  
+
   &warn.undocumented.func;
- 
+
  </refsect1>
 
  <refsect1 role="parameters">
@@ -40,7 +40,7 @@
      <term><parameter>flags</parameter></term>
      <listitem>
       <para>
-       
+
       </para>
      </listitem>
     </varlistentry>
@@ -48,7 +48,7 @@
      <term><parameter>name</parameter></term>
      <listitem>
       <para>
-       
+
       </para>
      </listitem>
     </varlistentry>

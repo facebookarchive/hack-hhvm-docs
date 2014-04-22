@@ -3,9 +3,9 @@
 <phpdoc:classref xml:id="class.hack.vectortv" xmlns:phpdoc="http://php.net/ns/phpdoc" xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:xi="http://www.w3.org/2001/XInclude">
  <title>The Vector&lt;Tv&gt; class</title>
  <titleabbrev>Vector&lt;Tv&gt;</titleabbrev>
- 
+
  <partintro>
- 
+
 <!-- {{{ ClassName intro -->
   <section xml:id="vectortv.intro">
    &reftitle.intro;
@@ -16,10 +16,10 @@
     Like all objects in Hack, Vectors have reference-like semantics. When a caller passes a Vector to a callee, the callee can modify the Vector and the caller will see the changes. Vectors do not have "copy-on-write" semantics.
    </para>
    <para>
-    Vectors only support integer keys. If a non-integer key is used, an exception will be thrown. 
+    Vectors only support integer keys. If a non-integer key is used, an exception will be thrown.
    </para>
    <para>
-    Vectors support <literal>$m[$k]</literal> style syntax for getting and setting values by key. Vectors also support <literal>isset($m[$k])</literal> and <literal>empty($m[$k])</literal> syntax, and they provide similar semantics as arrays. Elements can be added to a Vector using <literal>$m[] = ..</literal> syntax. 
+    Vectors support <literal>$m[$k]</literal> style syntax for getting and setting values by key. Vectors also support <literal>isset($m[$k])</literal> and <literal>empty($m[$k])</literal> syntax, and they provide similar semantics as arrays. Elements can be added to a Vector using <literal>$m[] = ..</literal> syntax.
    </para>
    <para>
      Vectors do not support iterating while new elements are being added or elements are being removed. When a new element is added or removed, all iterators that point to the Vector shall be considered invalid.
@@ -29,39 +29,39 @@
    </para>
   </section>
 <!-- }}} -->
- 
+
   <section xml:id="vectortv.synopsis">
    <title>Class synopsis</title>
- 
+
 <!-- {{{ Synopsis -->
    <classsynopsis>
     <ooclass><classname>Vector&lt;Tv&gt;</classname></ooclass>
- 
+
 <!-- {{{ Class synopsis -->
     <classsynopsisinfo>
      <modifier>final</modifier> <modifier>class</modifier>
      <ooclass>
       <classname>Vector&lt;Tv&gt;</classname>
      </ooclass>
- 
+
 <!-- If the class implements an interface, or two, use this (one oointerface element per interface) -->
      <oointerface>
       <interfacename>MutableVector&lt;Tv&gt;</interfacename>
      </oointerface>
     </classsynopsisinfo>
 <!-- }}} -->
- 
+
     <classsynopsisinfo role="comment">&Methods;</classsynopsisinfo>
      <xi:include xpointer="xmlns(db=http://docbook.org/ns/docbook) xpointer(id('class.hack.vectortv')/db:refentry/db:refsect1[@role='description']/descendant::db:constructorsynopsis[1])" />
      <xi:include xpointer="xmlns(db=http://docbook.org/ns/docbook) xpointer(id('class.hack.vectortv')/db:refentry/db:refsect1[@role='description']/descendant::db:methodsynopsis[1])" />
    </classsynopsis>
-  </section> 
+  </section>
  </partintro>
- 
+
  &hackref.collections.entities.vectortv;
- 
+
 </phpdoc:classref>
- 
+
 <!-- Keep this comment at the end of the file
 Local variables:
 mode: sgml

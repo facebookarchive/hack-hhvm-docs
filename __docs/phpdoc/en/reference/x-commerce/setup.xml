@@ -18,7 +18,7 @@
    but the installation will prefer the system libavro if available).
   </para>
  </section>
- 
+
  &reference.x-commerce.configure;
 
  <section xml:id="x-commerce.configuration">

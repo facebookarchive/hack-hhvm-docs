@@ -15,23 +15,23 @@
   +----------------------------------------------------------------------+
   | Authors:    Moshe Doron <momo@php.net>                               |
   +----------------------------------------------------------------------+
-  
+
   $Id: rtlpatch.php 307070 2011-01-04 11:45:55Z rquadling $
 */
 
 /*
 	REQUIRES: PHP 4.3.2 CLI or higher
-	
+
 	This file is temporary patch allow the hebrew and (in the future arabic) html generation.
-	
+
 	this script have to be run after the build proccess.
 	giving the docs path it's edit the files and add dir=rtl,ltr where needed
-	
+
 	CAUTION! be careful here!
 	that's 'll replace all the file with "rtl" version, so u may want first try it on partial directory.
-	
+
 	Usage: php rtlpatch path/to/html/directory
-	
+
 	script runing time on my box is about 15% then the build time, not so big deal, that'll force me rewrite the parser in C ;)
 
 */
@@ -66,29 +66,29 @@ function loopfiles($dirName){
 		mysyslog("Die: $dirName doesn't exists or have no read permission!\n");
 		exit;
 	}
-	
+
 	while($entry = $d->read()) {
 		if ($entry != "." && $entry != "..") {
 			if (is_dir($dirName."/".$entry)) {
 				$qudir[] = $entry;
-			}else{ 
+			}else{
 				if(eregi(".html",$entry)||eregi(".php",$entry)) {
 					$qufile[] = $dirName."/".$entry;
 				}
 			}
 		}
 	}
-	
+
 	$count = count($qufile);
 	for($a=0;$a<$count;$a++){
 		fix_file($qufile[$a]);
 	}
-	
+
 	$count = count($qudir);
 	for($a=0;$a<$count;$a++){
 		loopfiles($dirName."/".$qudir[$a]);
 	}
-	
+
 	$d->close();
 }
 
@@ -110,7 +110,7 @@ function mygetfile($file){
 		mysyslog("$file doesn't exists or have no read permission");
 		return false;
 	}
-	
+
 	$ret = "";
 	while($buf = fread($f,4096)){
 		$ret.=$buf;
@@ -136,7 +136,7 @@ mysyslog("replaceing the old files with new one; one way ticket...");
 		mysyslog("Die: $dirName doesn't exists or have no read permission!\n");
 		exit;
 	}
-	
+
 	while($entry = $d->read()) {
 		if ($entry != "." && $entry != "..") {
 			$dentry = $dirName."/".$entry;
@@ -151,7 +151,7 @@ mysyslog("replaceing the old files with new one; one way ticket...");
 			}
 		}
 	}
-	
+
 	$d->close();
 }
 

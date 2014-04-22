@@ -5,7 +5,7 @@
   <refname>swf_labelframe</refname>
   <refpurpose>Label the current frame</refpurpose>
  </refnamediv>
- 
+
  <refsect1 role="description">
   &reftitle.description;
   <methodsynopsis>

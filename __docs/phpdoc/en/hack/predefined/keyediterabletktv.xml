@@ -29,7 +29,7 @@
      <ooclass>
       <classname>KeyedIterable&lt;Tk, Tv&gt;</classname>
      </ooclass>
-     
+
      <ooclass>
       <modifier>extends</modifier>
       <classname>KeyedTraversable&lt;Tk, Tv&gt;</classname>
@@ -39,13 +39,13 @@
       <modifier>extends</modifier>
       <classname>Iterable&lt;Tv&gt;</classname>
      </ooclass>
-         
+
     </classsynopsisinfo>
 <!-- }}} -->
-    
+
     <classsynopsisinfo role="comment">&Methods;</classsynopsisinfo>
     <xi:include xpointer="xmlns(db=http://docbook.org/ns/docbook) xpointer(id('class.hack.keyediterabletktv')/db:refentry/db:refsect1[@role='description']/descendant::db:methodsynopsis[1])" />
-   
+
     <classsynopsisinfo role="comment">&InheritedMethods;</classsynopsisinfo>
     <xi:include xpointer="xmlns(db=http://docbook.org/ns/docbook) xpointer(id('class.hack.iterabletv')/db:refentry/db:refsect1[@role='description']/descendant::db:methodsynopsis[1])" />
 

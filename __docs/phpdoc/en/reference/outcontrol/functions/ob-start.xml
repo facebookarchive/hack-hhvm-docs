@@ -5,7 +5,7 @@
   <refname>ob_start</refname>
   <refpurpose>Turn on output buffering</refpurpose>
  </refnamediv>
- 
+
  <refsect1 role="description">
   &reftitle.description;
   <methodsynopsis>
@@ -335,7 +335,7 @@ if (version_compare(PHP_VERSION, '5.4.0', '>=')) {
     <member><function>ob_tidyhandler</function></member>
    </simplelist>
   </para>
- </refsect1>  
+ </refsect1>
 
 </refentry>
 

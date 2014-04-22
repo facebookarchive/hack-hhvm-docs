@@ -5,7 +5,7 @@
   <refname>sybase_close</refname>
   <refpurpose>Closes a Sybase connection</refpurpose>
  </refnamediv>
- 
+
  <refsect1 role="description">
   &reftitle.description;
   <methodsynopsis>

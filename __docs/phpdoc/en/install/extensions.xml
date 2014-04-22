@@ -9,7 +9,7 @@
       HHVM supports many core extensions (including third-party). HHVM also provides an easy way through HNI (HHVM Native Interface) to create your own extensions. See the <link xlink:href="&url.hhvm.install.extensions;">full list</link>.
     </simpara>
   </sect1>
-</chapter>   
+</chapter>
 
 <!-- Keep this comment at the end of the file
 Local variables:

@@ -5,7 +5,7 @@
   <refname>swf_actiongeturl</refname>
   <refpurpose>Get a URL from a Shockwave Flash movie</refpurpose>
  </refnamediv>
- 
+
  <refsect1 role="description">
   &reftitle.description;
   <methodsynopsis>

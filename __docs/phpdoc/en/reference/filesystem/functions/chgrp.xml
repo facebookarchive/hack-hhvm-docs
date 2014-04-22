@@ -5,7 +5,7 @@
   <refname>chgrp</refname>
   <refpurpose>Changes file group</refpurpose>
  </refnamediv>
- 
+
  <refsect1 role="description">
   &reftitle.description;
   <methodsynopsis>
@@ -78,7 +78,7 @@ printf($format, $filename, date('r'), filegroup($filename));
  <refsect1 role="notes">
   &reftitle.notes;
   &note.no-remote;
-  
+
  </refsect1>
 
  <refsect1 role="seealso">

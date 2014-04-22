@@ -12,8 +12,8 @@
 
   <para>
    Configure (<filename>configure.php</filename>) has several options
-   that are used to help validate XML changes before commit, and also 
-   setup the build environment. A few examples. 
+   that are used to help validate XML changes before commit, and also
+   setup the build environment. A few examples.
    <example>
     <title><filename>configure.php</filename> examples</title>
     <programlisting>
@@ -39,18 +39,18 @@ $ php configure.php --force-dom-save
 $ php configure.php --partial=book.apc
 ]]>
     </programlisting>
-   </example>  
+   </example>
   </para>
-  
+
   <note>
    <title>The future of <filename>configure.php</filename></title>
    <para>
-    The <filename>configure.php</filename> script (which replaced autoconf/configure/make) 
+    The <filename>configure.php</filename> script (which replaced autoconf/configure/make)
     will be replaced by "PhD Setup" in the future. However, feel free to report
     bugs and problems as they occur.
    </para>
   </note>
-  
+
  </chapter>
 
  <chapter xml:id="chapter-validating" xmlns:xlink="http://www.w3.org/1999/xlink">
@@ -63,21 +63,21 @@ $ php configure.php --partial=book.apc
 
   <para>
    It is important to test before committing changes because committing errors
-   will cause other contributors tests to fail. This also means the 
+   will cause other contributors tests to fail. This also means the
    automatic build process will halt, so the manuals files and downloads
    will not be updated online.
   </para>
   <para>
-   Before a commit is made, the diff should be reviewed to ensure the 
-   patch only contains intentional modifications. For example, whitespace 
-   changes are rarely necessary so should be eliminated before commit. For 
+   Before a commit is made, the diff should be reviewed to ensure the
+   patch only contains intentional modifications. For example, whitespace
+   changes are rarely necessary so should be eliminated before commit. For
    example:
    <example>
     <title>Creating a unified diff / patch</title>
     <programlisting>
 <![CDATA[
 # Creates a unified diff, and saves it as a file named diff.patch
-# Next, open this file in a text editor (like vim) and be certain 
+# Next, open this file in a text editor (like vim) and be certain
 # it looks correct
 $ svn diff en/reference/foo/bar.xml > diff.patch
 $ vim diff.patch
@@ -97,7 +97,7 @@ $ vim diff.patch
     as otherwise the new file will not be validated or built.
   </para>
  </note>
- 
+
  </chapter>
 
  <chapter xml:id="chapter-viewing" xmlns:xlink="http://www.w3.org/1999/xlink">
@@ -106,7 +106,7 @@ $ vim diff.patch
   <para>
    After being certain the diff looks commit worthy, and the XML validates, it
    may be worthwhile to see how the change will look after the manual is built.
-   We use <link xlink:href="&url.phd;">PhD</link> to build the manual with several 
+   We use <link xlink:href="&url.phd;">PhD</link> to build the manual with several
    themes and formats available to create viewable documentation, including:
    <itemizedlist>
     <listitem>
@@ -125,7 +125,7 @@ $ vim diff.patch
      <para>
       <literal>php</literal>, the main PHP online manual found at <link
       xlink:href="&url.php.manual;">&url.php.manual;</link>. You'll need to
-      setup a <link xlink:href="&url.php.mirroring;">phpweb mirror</link> 
+      setup a <link xlink:href="&url.php.mirroring;">phpweb mirror</link>
       to view these locally.
      </para>
     </listitem>
@@ -172,10 +172,10 @@ $ phd -d .manual.xml -p book.apc -t bightml
   </para>
   <para>
    The built files are placed in the current working directory
-   within <filename>php/</filename>, <filename>html/</filename>, 
-   and as <filename>bightml.html</filename> respectively. 
+   within <filename>php/</filename>, <filename>html/</filename>,
+   and as <filename>bightml.html</filename> respectively.
   </para>
-  
+
   <para>
    If all goes well, you should have your own copy of the
    documentation, including any changes you've made.

@@ -17,7 +17,7 @@
    <methodparam choice="opt"><type>string</type><parameter>profile_filename</parameter></methodparam>
   </methodsynopsis>
   <para>
-   Applies an XSLT Transformation on the given 
+   Applies an XSLT Transformation on the given
    <classname>DomDocument</classname> object.
   </para>
  </refsect1>
@@ -29,7 +29,7 @@
      <term><parameter>xml_doc</parameter></term>
      <listitem>
       <para>
-       The XML document being transformed, as a 
+       The XML document being transformed, as a
        <classname>DomDocument</classname> object.
       </para>
      </listitem>
@@ -47,13 +47,13 @@
      <listitem>
       <para>
        If set to &false; the values of the <parameter>xslt_params</parameter>
-       will be quoted. This is the default behavior. It allows you to pass 
+       will be quoted. This is the default behavior. It allows you to pass
        the values as PHP strings.
       </para>
       <note>
        <para>
         If your strings contains both single and double quotes, you must take
-        care of quoting all the values by yourself and set this parameter to 
+        care of quoting all the values by yourself and set this parameter to
         &true;.
        </para>
       </note>
@@ -73,7 +73,7 @@
  <refsect1 role="returnvalues">
   &reftitle.returnvalues;
   <para>
-   Returns the result of the processing, as a 
+   Returns the result of the processing, as a
    <classname>DomDocument</classname> object.
   </para>
  </refsect1>

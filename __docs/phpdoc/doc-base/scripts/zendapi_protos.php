@@ -4,18 +4,18 @@ $overwrite = false;
 $zend_include_dir = "../../php-src/Zend";
 
 $zend_include_files = array(
-                            "zend.h", 
-                            "zend_API.h", 
+                            "zend.h",
+                            "zend_API.h",
                             "zend_builtin_functions.h",
                             "zend_compile.h",
                             "zend_constants.h",
                             "zend_exceptions.h",
                             "zend_execute.h",
-                            "zend_hash.h", 
+                            "zend_hash.h",
                             "zend_highlight.h",
                             "zend_interfaces.h",
                             "zend_ini.h",
-                            "zend_list.h", 
+                            "zend_list.h",
                             "zend_modules.h",
                             "zend_objects.h",
                             "zend_object_handlers.h",
@@ -52,19 +52,19 @@ foreach ($zend_include_files as $infile) {
         $line = trim(fgets($in));
         if (substr($line, -1) == "\\") { // multiline macro, read one more line
             $line = substr($line, 0, -1) . trim(fgets($in));
-        }       
-        
-        // first we look for prototypes marked with ZEND_API 
+        }
+
+        // first we look for prototypes marked with ZEND_API
         if (preg_match('/^\s*(ZEND|TSRM|CWD)_API\s+(\S+)\s+(\S+)\((.*)\)/U', $line, $matches)) {
             // parse prototypes, step #1
-          
-            // extract return type and function name 
+
+            // extract return type and function name
             $api_type    = $matches[1];
             $return_type = $matches[2];
             $function    = $matches[3];
             $param_list  = $matches[4];
 
-            // the pointer '*' is usually next to the function name, not the type 
+            // the pointer '*' is usually next to the function name, not the type
             // TODO what if there is whitespace on both sides of the '*'?
             while ($function[0] == '*') {
                 $return_type.= "*";
@@ -77,7 +77,7 @@ foreach ($zend_include_files as $infile) {
             $params = array();
             foreach (explode(",", $param_list) as $param) {
               $new_param = array();
-              
+
               $tokens = preg_split("/\s+/", trim($param));
               $name   = array_pop($tokens);
               if (preg_match("|_DC$|", $name)) {
@@ -87,7 +87,7 @@ foreach ($zend_include_files as $infile) {
                 $magic = "";
               }
               $type   = implode(" ", $tokens);
-              
+
               if (empty($name)) {
                 $new_param['type'] = "magic";
                 $new_param['name'] = $type;
@@ -100,29 +100,29 @@ foreach ($zend_include_files as $infile) {
                 $new_param['name'] = $name;
               }
               $params[$name] = $new_param;
-              
+
               if ($magic) {
                 $params[$magic] = array("type"=>"magic", "name"=>$magic);
               }
             }
-            
+
             $functions[$function] = array("name"        => $function,
-                                          "return_type" => $return_type, 
+                                          "return_type" => $return_type,
                                           "params"      => $params,
                                           "api_type"    => $api_type,
                                           "infile"      => $infile
                                           );
-        }        
+        }
 
         // next we look for macros that seem to be just wrappers around existing functions
         // TODO catch multiline definitions
         if (preg_match('|^#define\s+(\w+)\((.*)\)\s+(\w+)\(|U', $line, $matches)) {
           $wrapper    = $matches[1];
-          $param_list = $matches[2]; 
+          $param_list = $matches[2];
           $function   = $matches[3];
 
-          $wrappers[$wrapper] = array("function"   => $function, 
-                                      "wrapper"    => $wrapper, 
+          $wrappers[$wrapper] = array("function"   => $function,
+                                      "wrapper"    => $wrapper,
                                       "param_list" => $param_list,
                                       "infile"     => $infile
                                       );
@@ -146,9 +146,9 @@ do {
         }
         $params[$param] = array("type"=>$param_type, "name"=>$param);
       }
-      
+
       $functions[$name] = array("name"        => $name,
-                                "return_type" => $function["return_type"], 
+                                "return_type" => $function["return_type"],
                                 "params"      => $params,
                                 "api_type"    => $function["api_type"],
                                 "infile"      => $wrapper["infile"]
@@ -160,7 +160,7 @@ do {
 } while ($additions > 0);
 
 foreach ($functions as $name => $function) {
-  create_page($name, $function["return_type"], $function["params"], $function["api_type"], $function["infile"]); 
+  create_page($name, $function["return_type"], $function["params"], $function["api_type"], $function["infile"]);
 }
 
 
@@ -171,17 +171,17 @@ function create_page($function, $return_type, $params, $api_type, $infile)
   // now generate the doc filename for this function
   $functype = (strtolower($function) == $function) ? "function" : "macro";
   $filename = $api_dir[$api_type]."/".$functype."s/".$function.".xml";
-            
+
   // only proceed it fhe file doesn't exist yet (no overwrites)
   // and do not expose functions staring with '_'
   if (($function[0] != '_') && ($overwrite || !file_exists($filename))) {
     // now write the template file to phpdoc/en/internals/zendapi/functions
     echo "writing $filename\n";
     ob_start();
-                
+
     echo '<?xml version="1.0" encoding="iso-8859-1"?>'."\n";
-                
-    // take revision from existing file 
+
+    // take revision from existing file
     if (!$overwrite || !file_exists($filename)) {
       echo "<!-- $"."Revision: 1.1 $ -->\n";
     } else {
@@ -204,7 +204,7 @@ function create_page($function, $return_type, $params, $api_type, $infile)
   &reftitle.description;
   <literallayout>#include &lt;<?php echo basename($infile); ?>&gt;</literallayout>
   <methodsynopsis>
-<?php 
+<?php
     if ($return_type == "void") {
       echo "   <void/>";
     } else {
@@ -215,7 +215,7 @@ function create_page($function, $return_type, $params, $api_type, $infile)
       echo "\n";
       foreach($params as $param) {
         echo "    <methodparam><type>$param[type]</type><parameter>$param[name]</parameter></methodparam>\n";
-      }  
+      }
     } else {
       echo "<void/>\n";
     }
@@ -278,8 +278,8 @@ vim: et tw=78 syn=sgml
 vi: ts=1 sw=1
 -->
 <?php
-       
-    file_put_contents($filename, ob_get_clean());                
-  }   
+
+    file_put_contents($filename, ob_get_clean());
+  }
 }
 ?>

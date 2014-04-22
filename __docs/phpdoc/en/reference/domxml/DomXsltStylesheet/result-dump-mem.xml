@@ -15,8 +15,8 @@
   </methodsynopsis>
   <para>
    Since <xref linkend="function.domxsltstylesheet-process" /> always returns
-   a well-formed XML DomDocument, no matter what output method was declared 
-   in <![CDATA[<xsl:output>]]> and similar attributes/elements, it's of not 
+   a well-formed XML DomDocument, no matter what output method was declared
+   in <![CDATA[<xsl:output>]]> and similar attributes/elements, it's of not
    much use, if you want to output HTML 4 or text data.
   </para>
   <para>
@@ -36,7 +36,7 @@ $filename = "stylesheet.xsl";
 $xmldoc = domxml_open_file("data.xml");
 $xsldoc = domxml_xslt_stylesheet_file($filename);
 $result =  $xsldoc->process($xmldoc);
-echo $xsldoc->result_dump_mem($result);     
+echo $xsldoc->result_dump_mem($result);
 ?>
 ]]>
     </programlisting>

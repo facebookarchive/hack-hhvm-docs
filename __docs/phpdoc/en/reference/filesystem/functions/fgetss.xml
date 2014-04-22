@@ -5,7 +5,7 @@
   <refname>fgetss</refname>
   <refpurpose>Gets line from file pointer and strip HTML tags</refpurpose>
  </refnamediv>
- 
+
  <refsect1 role="description">
   &reftitle.description;
   <methodsynopsis>

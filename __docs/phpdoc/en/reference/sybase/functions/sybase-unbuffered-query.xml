@@ -5,7 +5,7 @@
   <refname>sybase_unbuffered_query</refname>
   <refpurpose>Send a Sybase query and do not block</refpurpose>
  </refnamediv>
- 
+
  <refsect1 role="description">
   &reftitle.description;
   <methodsynopsis>

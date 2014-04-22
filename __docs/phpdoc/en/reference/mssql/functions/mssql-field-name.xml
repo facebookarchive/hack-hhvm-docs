@@ -5,7 +5,7 @@
   <refname>mssql_field_name</refname>
   <refpurpose>Get the name of a field</refpurpose>
  </refnamediv>
- 
+
  <refsect1 role="description">
   &reftitle.description;
   <methodsynopsis>
@@ -14,8 +14,8 @@
    <methodparam choice="opt"><type>int</type><parameter>offset</parameter><initializer>-1</initializer></methodparam>
   </methodsynopsis>
   <para>
-   Returns the name of field no. <parameter>offset</parameter> in 
-   <parameter>result</parameter>. 
+   Returns the name of field no. <parameter>offset</parameter> in
+   <parameter>result</parameter>.
   </para>
  </refsect1>
 

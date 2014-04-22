@@ -18,7 +18,7 @@
    Get response header(s) after the request has been sent.
   </para>
   <para>
-   If redirects were allowed and several responses were received, the data 
+   If redirects were allowed and several responses were received, the data
    references the last received response.
   </para>
 
@@ -41,7 +41,7 @@
  <refsect1 role="returnvalues">
   &reftitle.returnvalues;
   <para>
-   Returns either a string with the value of the header matching name if requested, 
+   Returns either a string with the value of the header matching name if requested,
    &false; on failure, or an associative array containing all response headers.
   </para>
  </refsect1>

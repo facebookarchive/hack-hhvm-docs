@@ -5,7 +5,7 @@
   <refname>oci_bind_by_name</refname>
   <refpurpose>Binds a PHP variable to an Oracle placeholder</refpurpose>
  </refnamediv>
- 
+
  <refsect1 role="description">
   &reftitle.description;
   <methodsynopsis>
@@ -113,7 +113,7 @@
      </listitem>
     </varlistentry>
     <varlistentry>
-     <term><parameter>variable</parameter></term> 
+     <term><parameter>variable</parameter></term>
      <listitem>
       <para>
        The PHP variable to be associated with <parameter>bv_name</parameter>

@@ -5,7 +5,7 @@
   <refname>w32api_set_call_method</refname>
   <refpurpose>Sets the calling method used</refpurpose>
  </refnamediv>
- 
+
  <refsect1 role="description">
   &reftitle.description;
   <methodsynopsis>
@@ -13,7 +13,7 @@
    <methodparam><type>int</type><parameter>method</parameter></methodparam>
   </methodsynopsis>
   <para>
-   This function sets the method call type. 
+   This function sets the method call type.
   </para>
  </refsect1>
 

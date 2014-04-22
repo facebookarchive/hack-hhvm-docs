@@ -58,12 +58,12 @@ $table = $r->fetchAll(PDO::FETCH_COLUMN|PDO::FETCH_UNIQUE);
 $functions = get_defined_functions();
 foreach($functions['internal'] as $function) {
 	$function = strtolower($function);
-	
+
 	if (skip_documentation($function)) {
 		$skipped['functions'][] = $function;
 		continue;
 	}
-	
+
 	if(isset($table[$function])) {
 		$documented['functions'][] = $function;
 	} else {
@@ -121,12 +121,12 @@ $inis = ini_get_all();
 echo 'Scanning ini settings', PHP_EOL;
 foreach ($inis as $ini => $ini_value) {
 	$ini_search = 'ini.' . strtolower(str_replace('_', '-', $ini));
-	
+
 	if (skip_documentation_pattern($ini)) {
 		$skipped['inis'][] = $ini_search;
 		continue;
 	}
-	
+
 	if (in_array($ini_search, $table)) {
 		$documented['inis'][] = $ini;
 	} else {
@@ -171,19 +171,19 @@ function skip_documentation($name) {
 		'mbereg_search_getpos', 'mbereg_search_setpos', 'mysql', 'mysql_fieldtype',
 		'mysql_fieldname','mysql_fieldtable','mysql_fieldlen','mysql_fieldflags',
 		'mysql_selectdb','mysql_freeresult','mysql_numfields','mysql_numrows',
-		'mysql_listdbs','mysql_listtables','mysql_listfields', 'mysql_dbname', 
-		'mysql_table_name', 'socket_getopt','socket_setopt','key_exists', '_', 
+		'mysql_listdbs','mysql_listtables','mysql_listfields', 'mysql_dbname',
+		'mysql_table_name', 'socket_getopt','socket_setopt','key_exists', '_',
 
 		// Class::Methods
 		// Classes
 		'__php_incomplete_class',
 	);
-	
+
 	if (in_array($name, $skips)) {
 		return true;
 	}
 
-	
+
 	if (skip_documentation_pattern($name)) {
 		return true;
 	}
@@ -192,9 +192,9 @@ function skip_documentation($name) {
 }
 
 function skip_documentation_pattern($name) {
-	
+
 	$skip_patterns = array('xdebug');
-	
+
 	foreach ($skip_patterns as $skip_pattern) {
 		if (false !== strpos($name, $skip_pattern)) {
 			return true;

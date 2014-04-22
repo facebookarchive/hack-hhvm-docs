@@ -5,7 +5,7 @@
   <refname>swf_shapelineto</refname>
   <refpurpose>Draw a line</refpurpose>
  </refnamediv>
- 
+
  <refsect1 role="description">
   &reftitle.description;
   <methodsynopsis>

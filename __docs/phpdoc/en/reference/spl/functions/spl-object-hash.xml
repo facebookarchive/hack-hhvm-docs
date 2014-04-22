@@ -27,7 +27,7 @@
       <term><parameter>object</parameter></term>
       <listitem>
        <para>
-        Any object. 
+        Any object.
        </para>
       </listitem>
      </varlistentry>
@@ -67,7 +67,7 @@ $storage[$id] = $object;
     When an object is destroyed, its hash may be reused for other objects.
    </para>
   </note>
- </refsect1> 
+ </refsect1>
 </refentry>
 
 <!-- Keep this comment at the end of the file

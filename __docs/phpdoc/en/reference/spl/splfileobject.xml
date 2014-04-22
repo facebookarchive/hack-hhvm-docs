@@ -29,12 +29,12 @@
      <ooclass>
       <classname>SplFileObject</classname>
      </ooclass>
-     
+
      <ooclass>
       <modifier>extends</modifier>
       <classname>SplFileInfo</classname>
      </ooclass>
-     
+
      <oointerface>
       <interfacename>RecursiveIterator</interfacename>
      </oointerface>
@@ -69,10 +69,10 @@
      <varname linkend="splfileobject.constants.read-csv">SplFileObject::READ_CSV</varname>
      <initializer>8</initializer>
     </fieldsynopsis>
-    
+
     <classsynopsisinfo role="comment">&Methods;</classsynopsisinfo>
     <xi:include xpointer="xmlns(db=http://docbook.org/ns/docbook) xpointer(id('class.splfileobject')/db:refentry/db:refsect1[@role='description']/descendant::db:methodsynopsis[1])" />
-    
+
     <classsynopsisinfo role="comment">&InheritedMethods;</classsynopsisinfo>
     <xi:include xpointer="xmlns(db=http://docbook.org/ns/docbook) xpointer(id('class.splfileinfo')/db:refentry/db:refsect1[@role='description']/descendant::db:methodsynopsis[1])" />
 
@@ -80,7 +80,7 @@
 <!-- }}} -->
 
   </section>
-  
+
 <!-- {{{ SplFileObject constants -->
   <section xml:id="splfileobject.constants">
    &reftitle.constants;

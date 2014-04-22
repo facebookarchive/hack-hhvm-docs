@@ -5,7 +5,7 @@
   <refname>invariant_callback_register</refname>
   <refpurpose>Registers a callback for when <function>invariant_violation</function> is called</refpurpose>
  </refnamediv>
- 
+
  <refsect1 role="description">
   &reftitle.description;
   <methodsynopsis>

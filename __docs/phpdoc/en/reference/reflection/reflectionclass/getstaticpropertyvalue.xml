@@ -36,7 +36,7 @@
      <term><parameter>def_value</parameter></term>
      <listitem>
       <para>
-       
+
       </para>
      </listitem>
     </varlistentry>
@@ -50,7 +50,7 @@
    The value of the static property.
   </para>
  </refsect1>
- 
+
  <refsect1 role="examples">
   &reftitle.examples;
   <para>

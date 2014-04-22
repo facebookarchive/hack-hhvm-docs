@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- $Revision: 324122 $ -->
 <sect1 xml:id="language.pseudo-types">
- <title>Pseudo-types and variables used in this documentation</title> 
+ <title>Pseudo-types and variables used in this documentation</title>
 
  <sect2 xml:id="language.types.mixed">
   <title>mixed</title>
@@ -37,9 +37,9 @@
    <type>callable</type> type hint was introduced by PHP 5.4. It means exactly
    the same.
   </para>
-  
+
  </sect2>
- 
+
  <sect2 xml:id="language.types.void">
   <title>void</title>
 
@@ -62,7 +62,7 @@
 
  </sect2>
 </sect1>
- 
+
 <!-- Keep this comment at the end of the file
 Local variables:
 mode: sgml

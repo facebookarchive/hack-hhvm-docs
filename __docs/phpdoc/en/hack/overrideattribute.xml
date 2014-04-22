@@ -41,7 +41,7 @@ class CParent {
 ]]>
       </programlisting>
       <para>
-        ... the <literal>&lt;&lt;Override&gt;&gt;</literal> annotation will result in a typechecker error, alerting the refactorer of <literal>CParent</literal> of the existence of <literal>Child</literal>. 
+        ... the <literal>&lt;&lt;Override&gt;&gt;</literal> annotation will result in a typechecker error, alerting the refactorer of <literal>CParent</literal> of the existence of <literal>Child</literal>.
       </para>
     </informalexample>
   </para>
@@ -49,7 +49,7 @@ class CParent {
   <sect1 xml:id="hack.overrideattribute.traits">
     <title>In Traits</title>
     <para>
-      The <literal>&lt;&lt;Override&gt;&gt;</literal> annotation may also be added to trait methods, although with slightly different behavior than in standard classes. For trait methods annotated with <literal>&lt;&lt;Override&gt;&gt;</literal>, the check of whether the overridden method exists is deferred to the classes that <literal>use</literal> the trait. 
+      The <literal>&lt;&lt;Override&gt;&gt;</literal> annotation may also be added to trait methods, although with slightly different behavior than in standard classes. For trait methods annotated with <literal>&lt;&lt;Override&gt;&gt;</literal>, the check of whether the overridden method exists is deferred to the classes that <literal>use</literal> the trait.
       <informalexample>
         <programlisting role="php">
 <![CDATA[
@@ -58,15 +58,15 @@ trait T1 {
   <<Override>> // checked on use classes
   function foo(): void {}
 }
- 
+
 class C1 {
   use T1; // error! foo is not an override
 }
- 
+
 class C2 {
   function foo(): void {}
 }
- 
+
 class C3 extends C2 {
   use T1; // OK! C2's implementation is being overridden
 }

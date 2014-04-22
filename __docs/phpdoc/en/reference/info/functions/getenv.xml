@@ -5,7 +5,7 @@
   <refname>getenv</refname>
   <refpurpose>Gets the value of an environment variable</refpurpose>
  </refnamediv>
- 
+
  <refsect1 role="description">
   &reftitle.description;
   <methodsynopsis>

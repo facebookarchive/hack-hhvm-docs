@@ -16,8 +16,8 @@
    <methodparam choice="opt"><type>int</type><parameter>channel</parameter><initializer>Imagick::CHANNEL_DEFAULT</initializer></methodparam>
   </methodsynopsis>
   <para>
-   Applies an arithmetic, relational, or logical expression to an image. 
-   Use these operators to create lighter or darker versions of an image, to increase or decrease contrast in an image, 
+   Applies an arithmetic, relational, or logical expression to an image.
+   Use these operators to create lighter or darker versions of an image, to increase or decrease contrast in an image,
    or to negate the image colors. &imagick.method.available.0x649;
   </para>
  </refsect1>

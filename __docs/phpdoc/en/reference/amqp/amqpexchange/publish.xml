@@ -124,7 +124,7 @@
            <entry><emphasis>headers</emphasis></entry>
            <entry>custom attributes to pass along with message</entry>
            <entry>array</entry>
-          </row>          
+          </row>
          </tbody>
         </tgroup>
        </table>

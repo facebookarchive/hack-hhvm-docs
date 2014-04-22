@@ -1,6 +1,6 @@
 #!/usr/bin/php -q
 <?php
-/*  
+/*
   +----------------------------------------------------------------------+
   | PHP Version 4                                                        |
   +----------------------------------------------------------------------+
@@ -16,7 +16,7 @@
   +----------------------------------------------------------------------+
   | Authors:    Gabor Hojtsy <goba@php.net>                              |
   +----------------------------------------------------------------------+
- 
+
   $Id: dbtags.php 307070 2011-01-04 11:45:55Z rquadling $
 */
 
@@ -57,7 +57,7 @@ $used_tags = array();
 $langcodes = array("en");
 
 // Parameter value copying
-if ($argc == 2) { 
+if ($argc == 2) {
     $langcodes = array($argv[1]);
     if ($argv[1] === 'all') {
         $langcodes = array("ar", "cs", "de", "en", "es", "fr",
@@ -112,19 +112,19 @@ function check_file ($filename, &$used_tags)
 {
     // Read in file contents
     $contents = preg_replace("/[\r\n]/", "", join("", file($filename)));
-    
+
     // Drop out CDATA sections, they do not contain any DocBook tags
     $contents = preg_replace("/<!\\[CDATA\\[.+\\]\\]>/U", "", $contents);
-    
+
     // Drop out comments, they do not contain any DocBook tags
     $contents = preg_replace("/<!--.+-->/U", "", $contents);
 
     // Find all tags in this file
     preg_match_all("!<([^\\s>/]+)[\\s>]!U", $contents, $tags_found);
-    
+
     // No entities found
     if (count($tags_found[1]) == 0) { return; }
-    
+
     // New occurrences found, so increase the number
     foreach ($tags_found[1] as $tag_name) {
         if (isset($used_tags[$tag_name])) {
@@ -135,7 +135,7 @@ function check_file ($filename, &$used_tags)
     }
 
 } // check_file() function end
-  
+
 /*********************************************************************/
 /* Here starts the program                                           */
 /*********************************************************************/
@@ -150,17 +150,17 @@ foreach ($langcodes as $langcode) {
     } else {
         $tested_trees[] = $langcode;
     }
-      
+
     // If directory is OK, start with the header
     echo "Searching in $docdir$langcode ...\n";
-    
+
     // Check the requested directory
     check_dir("$docdir$langcode/", $used_tags);
 
 }
-    
+
 echo "Generating tag_usage.txt ...\n";
-    
+
 $fp = fopen("tag_usage.txt", "w");
 fwrite($fp, "TAG USAGE STATISTICS
 

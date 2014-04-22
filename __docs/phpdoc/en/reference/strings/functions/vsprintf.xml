@@ -5,7 +5,7 @@
   <refname>vsprintf</refname>
   <refpurpose>Return a formatted string</refpurpose>
  </refnamediv>
- 
+
  <refsect1 role="description">
   &reftitle.description;
   <methodsynopsis>
@@ -51,7 +51,7 @@
    for <function>sprintf</function>).
   </para>
  </refsect1>
- 
+
  <refsect1 role="examples">
   &reftitle.examples;
   <para>

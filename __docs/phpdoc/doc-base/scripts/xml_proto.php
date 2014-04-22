@@ -15,7 +15,7 @@
   +----------------------------------------------------------------------+
   | Authors:   Brad House <bradmssw@php.net>                             |
   +----------------------------------------------------------------------+
- 
+
   $Id: xml_proto.php 313932 2011-07-29 15:33:16Z rquadling $
 */
 
@@ -128,7 +128,7 @@ function write_cvsignore()
   fclose($fp);
   echo "Wrote: $filename\n";
   return(1);
-  
+
 }
 
 function write_reference_xml()
@@ -204,7 +204,7 @@ function write_reference_xml()
        "vi: ts=1 sw=1\n" .
        "-->\n");
   fclose($fp);
-  
+
   echo "Wrote: $filename\n";
   return(1);
 }
@@ -283,7 +283,7 @@ function write_functions_xml()
         fwrite($fp, $tmp);
     }
     fwrite ($fp, "  </para>\n </refsect1>\n\n");
-    fwrite($fp, 
+    fwrite($fp,
         " <refsect1 role=\"returnvalues\">\n" .
         "  &reftitle.returnvalues;\n" .
         "  <para>\n" .
@@ -452,7 +452,7 @@ function add_constant_to_list($name, $type)
 {
   global $constlist;
   global $num_const;
-  
+
   $constlist[$num_const]["name"]=$name;
   $constlist[$num_const]["type"]=$type;
 
@@ -715,8 +715,8 @@ echo <<<NOTES
 
 Note: Also be sure to double check the documentation before commit as this
       script is still being tested.  Things to check:
-      
-      a) The parameter names in the prototype must be alphanumeric (no spaces 
+
+      a) The parameter names in the prototype must be alphanumeric (no spaces
          or other characters).  Sometimes this isn't the case in the PHP sources.
       b) Be sure optional parameters are listed as such, and vice versa.
       c) The script defaults to --with-{ext} but it could be different, like

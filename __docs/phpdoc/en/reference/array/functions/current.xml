@@ -38,7 +38,7 @@
    The <function>current</function> function simply returns the
    value of the array element that's currently being pointed to by the
    internal pointer.  It does not move the pointer in any way.  If the
-   internal pointer points beyond the end of the elements list or the array is 
+   internal pointer points beyond the end of the elements list or the array is
    empty, <function>current</function> returns &false;.
   </para>
   &return.falseproblem;

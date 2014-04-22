@@ -5,7 +5,7 @@
   <refname>bcscale</refname>
   <refpurpose>Set default scale parameter for all bc math functions</refpurpose>
  </refnamediv>
- 
+
  <refsect1 role="description">
   &reftitle.description;
   <methodsynopsis>
@@ -40,7 +40,7 @@
    &return.success;
   </para>
  </refsect1>
- 
+
  <refsect1 role="examples">
   &reftitle.examples;
   <para>

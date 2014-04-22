@@ -5,7 +5,7 @@
   <refname>gmp_random</refname>
   <refpurpose>Random number</refpurpose>
  </refnamediv>
- 
+
  <refsect1 role="description">
   &reftitle.description;
   <methodsynopsis>
@@ -35,7 +35,7 @@
       <para>
        The limiter.
       </para>
-      &gmp.parameter; 
+      &gmp.parameter;
      </listitem>
     </varlistentry>
    </variablelist>

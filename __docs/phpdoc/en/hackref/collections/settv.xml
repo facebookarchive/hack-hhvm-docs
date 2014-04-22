@@ -10,25 +10,25 @@
   <section xml:id="settv.intro">
    &reftitle.intro;
    <para>
-    <link linkend="hack.collections.set">Set</link> is an ordered set-style (unique values) collection. HHVM provides a native implementation for this class. The PHP class definition below is not actually used at run time; it is simply provided for the typechecker and for developer reference. 
-  </para>
-   <para> 
-    Like all objects in PHP, Sets have reference-like semantics. When a caller passes a Set to a callee, the callee can modify the Set and the caller will see the changes. Sets do not have "copy-on-write" semantics. 
+    <link linkend="hack.collections.set">Set</link> is an ordered set-style (unique values) collection. HHVM provides a native implementation for this class. The PHP class definition below is not actually used at run time; it is simply provided for the typechecker and for developer reference.
   </para>
    <para>
-    Sets preserve insertion order of the elements. When iterating over a Set, the elements appear in the order they were inserted. Also, Sets do not automagically convert integer-like strings (ex. "123") into integers. 
+    Like all objects in PHP, Sets have reference-like semantics. When a caller passes a Set to a callee, the callee can modify the Set and the caller will see the changes. Sets do not have "copy-on-write" semantics.
+  </para>
+   <para>
+    Sets preserve insertion order of the elements. When iterating over a Set, the elements appear in the order they were inserted. Also, Sets do not automagically convert integer-like strings (ex. "123") into integers.
    </para>
    <para>
-    Sets only support integer values and string values. If a value of a different type is used, an exception will be thrown. 
+    Sets only support integer values and string values. If a value of a different type is used, an exception will be thrown.
    </para>
    <para>
-    In general, Sets do not support <literal>$c[$k]</literal> style syntax. Adding an element using <literal>$c[] = ..</literal> syntax is supported. 
+    In general, Sets do not support <literal>$c[$k]</literal> style syntax. Adding an element using <literal>$c[] = ..</literal> syntax is supported.
    </para>
    <para>
-    Set do not support iteration while elements are being added or removed. When an element is added or removed, all iterators that point to the Set shall be considered invalid. 
+    Set do not support iteration while elements are being added or removed. When an element is added or removed, all iterators that point to the Set shall be considered invalid.
    </para>
    <para>
-    Sets do not support taking elements by reference. If binding assignment (<literal>=&amp;</literal>) is used when adding a new element to a Set (ex. <literal>$c[] =&amp; ...</literal>), or if a Set is used with foreach by reference, an exception will be thrown. 
+    Sets do not support taking elements by reference. If binding assignment (<literal>=&amp;</literal>) is used when adding a new element to a Set (ex. <literal>$c[] =&amp; ...</literal>), or if a Set is used with foreach by reference, an exception will be thrown.
     </para>
   </section>
 <!-- }}} -->
@@ -58,13 +58,13 @@
      <xi:include xpointer="xmlns(db=http://docbook.org/ns/docbook) xpointer(id('class.hack.settv')/db:refentry/db:refsect1[@role='description']/descendant::db:constructorsynopsis[1])" />
      <xi:include xpointer="xmlns(db=http://docbook.org/ns/docbook) xpointer(id('class.hack.settv')/db:refentry/db:refsect1[@role='description']/descendant::db:methodsynopsis[1])" />
    </classsynopsis>
-  </section> 
+  </section>
  </partintro>
- 
+
  &hackref.collections.entities.settv;
- 
+
 </phpdoc:classref>
- 
+
 <!-- Keep this comment at the end of the file
 Local variables:
 mode: sgml

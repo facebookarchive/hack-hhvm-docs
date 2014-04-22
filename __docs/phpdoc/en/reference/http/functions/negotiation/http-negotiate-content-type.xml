@@ -15,7 +15,7 @@
   </methodsynopsis>
   <para>
    This function negotiates the clients preferred content type based on its
-   <literal>Accept</literal> HTTP header. The qualifier is recognized and content types 
+   <literal>Accept</literal> HTTP header. The qualifier is recognized and content types
    without qualifier are rated highest.
   </para>
  </refsect1>

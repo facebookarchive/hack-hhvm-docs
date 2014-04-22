@@ -5,7 +5,7 @@
   <refname>xslt_backend_info</refname>
   <refpurpose>Returns the information on the compilation settings of the backend</refpurpose>
  </refnamediv>
- 
+
  <refsect1 role="description">
   &reftitle.description;
   <methodsynopsis>
@@ -17,7 +17,7 @@
    compilation settings of the backend.
   </para>
  </refsect1>
- 
+
  <refsect1 role="returnvalues">
   &reftitle.returnvalues;
   <para>

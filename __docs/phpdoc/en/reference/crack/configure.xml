@@ -10,7 +10,7 @@
  <para>
   &pecl.source.4;
   In order to use these functions you must compile PHP with Crack support
-  by using the <option role="configure">--with-crack[=DIR]</option> 
+  by using the <option role="configure">--with-crack[=DIR]</option>
   configuration option.
  </para>
  <para>

@@ -30,7 +30,7 @@ Check documented functions in phpdoc
   By providing the optional "missing" parameter,
   only a list of undocumented functions is listed,
   otherwise a full status report is printed.
-  
+
   This program depends on ../funclist.txt as the
   list of functions compiled from the PHP source.
 <?php
@@ -89,13 +89,13 @@ function check_file ($dirname, $filename, &$functions)
 {
     // Read in file contents
     $contents = preg_replace("/[\r\n]/", "", join("", file($dirname.$filename)));
-    
+
     // Find all functions defined in this file
     preg_match_all("!id\s*=\s*([\"'])(function|class)\.([^\\1]+)\\1!U", $contents, $ids_found);
 
     // No ids found in file
     if (count($ids_found[3]) == 0) { return; }
-    
+
     // Put functions into function list
     foreach ($ids_found[3] as $id) {
         $functions[str_replace("-", "_", $id)] = $filename;
@@ -103,13 +103,13 @@ function check_file ($dirname, $filename, &$functions)
     ksort($functions);
 
 } // check_file() function end
-  
+
 // Parse funclist.txt file for function names
 function parse_funclist($funclist, &$longest, &$functions)
 {
     // Read in file, initialize longest
     $file_lines = file($funclist);
-    
+
     // Go through all lines, and find function names
     foreach ($file_lines as $line) {
         $line = trim($line);
@@ -131,13 +131,13 @@ function parse_funclist($funclist, &$longest, &$functions)
 
 // Start with searching header
 echo "Searching in $docdir for XML files...\n";
-    
+
 // Check the requested directory
 check_dir("$docdir/", $func_documented);
 
 // Process $funclist for PHP functions
 parse_funclist($funclist, $longest, $func_in_php);
-   
+
 if ($argv[1] == "missing") {
     $undocumented = array_diff($func_in_php, array_keys($func_documented));
     echo "Functions in PHP source but not in documentation:\n\n";

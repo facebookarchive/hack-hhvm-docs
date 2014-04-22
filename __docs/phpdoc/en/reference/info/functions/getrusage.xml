@@ -5,7 +5,7 @@
   <refname>getrusage</refname>
   <refpurpose>Gets the current resource usages</refpurpose>
  </refnamediv>
- 
+
  <refsect1 role="description">
   &reftitle.description;
   <methodsynopsis>
@@ -14,7 +14,7 @@
   </methodsynopsis>
   <para>
    This is an interface to <command>getrusage(2)</command>. It gets data returned
-   from the system call. 
+   from the system call.
   </para>
  </refsect1>
 

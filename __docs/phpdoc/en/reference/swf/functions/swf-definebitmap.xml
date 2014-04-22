@@ -5,7 +5,7 @@
   <refname>swf_definebitmap</refname>
   <refpurpose>Define a bitmap</refpurpose>
  </refnamediv>
- 
+
  <refsect1 role="description">
   &reftitle.description;
   <methodsynopsis>
@@ -15,7 +15,7 @@
   </methodsynopsis>
   <para>
    The <function>swf_definebitmap</function> function defines a
-   bitmap given an image.  
+   bitmap given an image.
   </para>
  </refsect1>
 

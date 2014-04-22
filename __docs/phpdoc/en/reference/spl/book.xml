@@ -5,12 +5,12 @@
  <?phpdoc extension-membership="core" ?>
  <title>Standard PHP Library (SPL)</title>
  <titleabbrev>SPL</titleabbrev>
- 
+
  <preface xml:id="intro.spl">
   &reftitle.intro;
   <para>
    The Standard PHP Library (SPL) is a collection of interfaces and classes that are meant to solve
-   common problems. 
+   common problems.
   </para>
  </preface>
 

@@ -16,7 +16,7 @@ $conversion_xsl='
 
 <!-- ignore funcsynopsis tags -->
 <xsl:template match="/funcsynopsis">
-     <xsl:apply-templates/>   
+     <xsl:apply-templates/>
 </xsl:template>
 
 <!-- convert foncprototype to methodsynopsis -->
@@ -122,7 +122,7 @@ function apply($input) {
 				$xslt_processor = xslt_create();
 			}
 			$result = xslt_process($xslt_processor, 'arg:/_xml', 'arg:/_xsl', NULL, $arguments);
-			
+
 			if(is_string($result)) {
 				$result = str_replace("&amp;","&",$result);
 				$result = explode("\n",$result);

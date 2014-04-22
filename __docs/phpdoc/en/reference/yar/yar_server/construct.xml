@@ -27,7 +27,7 @@
     <listitem>
      <para>
        An Object, all public methods of its will be registered as RPC
-       services.   
+       services.
      </para>
     </listitem>
    </varlistentry>
@@ -51,7 +51,7 @@
 class API {
     /**
      * the doc info will be generated automatically into service info page.
-     * @params 
+     * @params
      * @return
      */
     public function some_method($parameter, $option = "foo") {

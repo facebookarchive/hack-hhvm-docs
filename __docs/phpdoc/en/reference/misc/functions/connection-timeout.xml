@@ -5,7 +5,7 @@
   <refname>connection_timeout</refname>
   <refpurpose>Check if the script timed out</refpurpose>
  </refnamediv>
- 
+
  <refsect1 role="description">
   &reftitle.description;
   <methodsynopsis>

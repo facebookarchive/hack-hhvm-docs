@@ -5,7 +5,7 @@
   <refname>mssql_fetch_row</refname>
   <refpurpose>Get row as enumerated array</refpurpose>
  </refnamediv>
- 
+
  <refsect1 role="description">
   &reftitle.description;
   <methodsynopsis>

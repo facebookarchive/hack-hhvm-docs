@@ -30,7 +30,7 @@ function main_vna() {
 main_vna();
 ]]>
         </programlisting>
-        <para> 
+        <para>
           The general gotcha here will be that any explicitly defined parameters are counted in the call to <literal>func_get_args()</literal>.
         </para>
       </informalexample>
@@ -425,7 +425,7 @@ class Foo {
     ...
   }
 }
-]]>         
+]]>
         </programlisting>
       </informalexample>
     </para>
@@ -676,7 +676,7 @@ class BB extends AA {
     </para>
     <note>
       <para>
-        Overloading on return type within the same class is not supported by Hack (in fact, like PHP, no overloading exists at all; thus, this holds for function arguments as well). For example: 
+        Overloading on return type within the same class is not supported by Hack (in fact, like PHP, no overloading exists at all; thus, this holds for function arguments as well). For example:
         <informalexample>
           <programlisting role="php">
 <![CDATA[
@@ -735,7 +735,7 @@ function bar(): B {
 bar();
 ]]>
       </programlisting>
-      <para> 
+      <para>
         Without the <literal>invariant()</literal>, Hack will give an error similar to the following:
       </para>
       &example.outputs;
@@ -860,7 +860,7 @@ class A {
   <sect1 xml:id="hack.otherrulesandfeatures.initialization">
     <title>Calling Non-Private Methods During Initialization</title>
     <para>
-      The Hack type checker will throw an error when trying to call non-private methods during the initialization of an object. Here is an example: 
+      The Hack type checker will throw an error when trying to call non-private methods during the initialization of an object. Here is an example:
       <informalexample>
         <programlisting role="php">
 <![CDATA[
@@ -1170,7 +1170,7 @@ This should not print a capital 'A': \x41
         <programlisting role="php">
 <![CDATA[
 <?hh
-$obj = newv(FooClass::class, $constructor_args); 
+$obj = newv(FooClass::class, $constructor_args);
 BaseFacebookTestCase::assertInstanceOf(FooClass::class, $obj, 'I hope that constructor worked');
 ]]>
         </programlisting>

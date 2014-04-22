@@ -25,7 +25,7 @@
      <term><parameter>type</parameter></term>
      <listitem>
       <para>
-       Refer to the list of <link 
+       Refer to the list of <link
        linkend="imagick.constants.resourcetypes">resourcetype constants</link>.
       </para>
      </listitem>

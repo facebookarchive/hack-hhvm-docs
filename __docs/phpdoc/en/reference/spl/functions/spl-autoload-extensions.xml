@@ -13,7 +13,7 @@
   </methodsynopsis>
   <para>
    This function can modify and check the file extensions that the built in
-   <function>__autoload</function> fallback function <function>spl_autoload</function> 
+   <function>__autoload</function> fallback function <function>spl_autoload</function>
    will be using.
   </para>
  </refsect1>

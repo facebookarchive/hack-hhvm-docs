@@ -5,11 +5,11 @@
 
  <sect1 xml:id="language.types.intro">
   <title>Introduction</title>
-  
+
   <simpara>
    PHP supports eight primitive types.
   </simpara>
-  
+
   <para>
    Four scalar types:
   </para>
@@ -89,19 +89,19 @@
   </para>
 
   <itemizedlist>
- 
+
    <listitem>
     <simpara>
      <type>mixed</type>
     </simpara>
    </listitem>
- 
+
    <listitem>
     <simpara>
      <type>number</type>
     </simpara>
    </listitem>
- 
+
    <listitem>
     <simpara>
      <type>callback</type>
@@ -109,7 +109,7 @@
    </listitem>
 
   </itemizedlist>
-  
+
   <para>
    And the pseudo-variable <parameter>$...</parameter>.
   </para>
@@ -118,7 +118,7 @@
    Some references to the type "double" may remain in the manual. Consider
    double the same as float; the two names exist only for historic reasons.
   </simpara>
-  
+
   <simpara>
    The type of a variable is not usually set by the programmer; rather, it is
    decided at runtime by PHP depending on the context in which that variable is
@@ -139,7 +139,7 @@
     <literal>is_<replaceable>type</replaceable></literal> functions. Some
     examples:
    </para>
-   
+
    <informalexample>
     <programlisting role="php">
 <![CDATA[
@@ -183,7 +183,7 @@ if (is_string($a_bool)) {
    type-related comparisons.
   </simpara>
  </sect1>
- 
+
  &language.types.boolean;
  &language.types.integer;
  &language.types.float;
@@ -195,9 +195,9 @@ if (is_string($a_bool)) {
  &language.types.callable;
  &language.types.pseudo-types;
  &language.types.type-juggling;
- 
+
 </chapter>
- 
+
 <!-- Keep this comment at the end of the file
 Local variables:
 mode: sgml

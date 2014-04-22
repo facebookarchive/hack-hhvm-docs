@@ -144,7 +144,7 @@ class Foo {
 class Foo {
   public function foo() {}
 }
-]]>           
+]]>
         </programlisting>
         &example.outputs;
         <screen>
@@ -227,7 +227,7 @@ $f::bar();
 
 // Class level
 Foo::bar();
-]]>           
+]]>
         </programlisting>
       </informalexample>
     </para>

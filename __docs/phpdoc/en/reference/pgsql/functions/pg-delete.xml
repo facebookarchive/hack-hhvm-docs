@@ -59,7 +59,7 @@
      <term><parameter>options</parameter></term>
      <listitem>
       <para>
-       Any number of <constant>PGSQL_CONV_FORCE_NULL</constant>, 
+       Any number of <constant>PGSQL_CONV_FORCE_NULL</constant>,
        <constant>PGSQL_DML_NO_CONV</constant>,
        <constant>PGSQL_DML_EXEC</constant> or
        <constant>PGSQL_DML_STRING</constant> combined. If <constant>PGSQL_DML_STRING</constant> is part of the
@@ -78,7 +78,7 @@
    via <parameter>options</parameter>.
   </para>
  </refsect1>
- 
+
  <refsect1 role="examples">
   &reftitle.examples;
   <para>
@@ -86,7 +86,7 @@
     <title><function>pg_delete</function> example</title>
     <programlisting role="php">
 <![CDATA[
-<?php 
+<?php
   $db = pg_connect('dbname=foo');
   // This is safe, since $_POST is converted automatically
   $res = pg_delete($db, 'post_log', $_POST);

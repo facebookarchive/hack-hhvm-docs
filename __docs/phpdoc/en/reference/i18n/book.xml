@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- $Revision: 330340 $ -->
- 
+
 <book xml:id="book.i18n" xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink">
  <?phpdoc extension-membership="core" ?>
  <title>Internationalization</title>
  <titleabbrev>i18n</titleabbrev>
- 
+
  <!-- {{{ preface -->
  <preface xml:id="intro.i18n">
   &reftitle.intro;
@@ -13,11 +13,11 @@
    I18n (short for internationalization) are means of adapting an application
    for different languages and cultures. The scope of i18n support includes
    support for local date and time, currency, measures, number formatting and
-   strings in different encoding. Native support for i18n and l10n 
-   (localization) appeared in PHP6. 
+   strings in different encoding. Native support for i18n and l10n
+   (localization) appeared in PHP6.
   </para>
   <para>
-   Please note that in PHP6, POSIX locales are obsoleted by the set of locales 
+   Please note that in PHP6, POSIX locales are obsoleted by the set of locales
    included with the ICU library.
   </para>
   <warning>
@@ -27,7 +27,7 @@
   </warning>
  </preface>
  <!-- }}} -->
- 
+
  &reference.i18n.setup;
  &reference.i18n.constants;
  &reference.i18n.reference;

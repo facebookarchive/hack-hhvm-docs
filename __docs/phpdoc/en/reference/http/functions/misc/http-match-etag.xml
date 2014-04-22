@@ -14,7 +14,7 @@
    <methodparam choice="opt"><type>bool</type><parameter>for_range</parameter><initializer>false</initializer></methodparam>
   </methodsynopsis>
   <para>
-   Matches the given <literal>ETag</literal> against the clients <literal>If-Match</literal> resp. 
+   Matches the given <literal>ETag</literal> against the clients <literal>If-Match</literal> resp.
    <literal>If-None-Match</literal> HTTP headers.
   </para>
  </refsect1>

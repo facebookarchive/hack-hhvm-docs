@@ -15,7 +15,7 @@
   <para>
    Returns the data from the specified location in the database.
   </para>
-  
+
  </refsect1>
  <refsect1 role="parameters">
   &reftitle.parameters;

@@ -47,9 +47,9 @@
      </term>
      <listitem>
       <para>
-       This parameter is an associative array of the form 
-       <literal>array("optionname" => &lt;boolean&gt;, ...)</literal>. Currently 
-       supported options are: 
+       This parameter is an associative array of the form
+       <literal>array("optionname" => &lt;boolean&gt;, ...)</literal>. Currently
+       supported options are:
        <itemizedlist>
         <listitem>
          <para>
@@ -74,12 +74,12 @@
           <literal>"multiple"</literal>
          </para>
          <para>
-          All documents matching $criteria will be updated.  
-          <function>MongoCollection::update</function> has exactly the opposite 
-          behavior of <function>MongoCollection::remove</function>: it updates 
-          one document by default, not all matching documents.  <emphasis>It is 
-          recommended that you always specify whether you want to update 
-           multiple documents or a single document</emphasis>, as the database 
+          All documents matching $criteria will be updated.
+          <function>MongoCollection::update</function> has exactly the opposite
+          behavior of <function>MongoCollection::remove</function>: it updates
+          one document by default, not all matching documents.  <emphasis>It is
+          recommended that you always specify whether you want to update
+           multiple documents or a single document</emphasis>, as the database
           may change its default behavior at some point in the future.
          </para>
         </listitem>
@@ -289,7 +289,7 @@ array(3) {
 $c->drop();
 $c->update(
     array("name" => "joe"),
-    array("username" => "joe312", "createdAt" => new MongoDate()), 
+    array("username" => "joe312", "createdAt" => new MongoDate()),
     array("upsert" => true)
 );
 var_dump($c->findOne());
@@ -368,4 +368,4 @@ End:
 vim600: syn=xml fen fdm=syntax fdl=2 si
 vim: et tw=78 syn=sgml
 vi: ts=1 sw=1
---> 
+-->

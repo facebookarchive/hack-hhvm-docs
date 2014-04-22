@@ -23,10 +23,10 @@
   </para>
   <para>
    (PHP 4.3) This function replaces the child <parameter>oldnode</parameter>
-   with the passed <parameter>newnode</parameter>, even if the new node already 
-   is a child of the DomNode. If <parameter>newnode</parameter> was already 
+   with the passed <parameter>newnode</parameter>, even if the new node already
+   is a child of the DomNode. If <parameter>newnode</parameter> was already
    inserted in the document it is first unlinked from its existing context.
-   If the old node cannot be found the function returns &false;. If the replacement 
+   If the old node cannot be found the function returns &false;. If the replacement
    succeeds the old node is returned. (This behaviour is according to the W3C specs).
   </para>
   <para>

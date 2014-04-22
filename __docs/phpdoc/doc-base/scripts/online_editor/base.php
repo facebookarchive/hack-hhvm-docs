@@ -19,10 +19,10 @@
   $Id: base.php 307070 2011-01-04 11:45:55Z rquadling $
 
 */
-//-- The PHPDOC Online XML Editing Tool 
+//-- The PHPDOC Online XML Editing Tool
 //--- Purpose: base file (all other files require this to start)
 
-//------- Configuration 
+//------- Configuration
 // Root path to the phpdoc-all directory
 // -- cvs co phpdoc-all
 define ('CVS_ROOT_PATH', '/cvs/phpdoc-all/');
@@ -72,22 +72,22 @@ $translations_RTL = array('ar', 'he');
 // Only needed if $requireLogin is true
 $usersCachePath = '/path/to/editor/users/';
 // Files Permissions Mod
-$filesChMod = 0777;	
+$filesChMod = 0777;
 
 foreach ($translations as $language => $lang_info) {
 	addLanguage($language, $lang_info[0], $lang_info[1]);
-} 
+}
 // Languages and paths: (ToDo Font should be defined for better display)
 
 // Hide files (ignore)
 $ignoreListingFolders = array('.', '..', 'CVS');
 $ignoreListingFiles = array('contributors.xml', 'contributors.ent', 'livedocs.ent');
 
-//------- Base functions 
+//------- Base functions
 
 function addLanguage($lang, $id, $charset='utf-8', $font='Fixedsys') {
 	global $phpdocLangs, $translations_RTL;
-	
+
 	$lists = get_mailing_list_info($id);
 
 	$phpdocLangs[$lang]['DocCVSPath'] = CVS_ROOT_PATH . $id;
@@ -103,7 +103,7 @@ function addLanguage($lang, $id, $charset='utf-8', $font='Fixedsys') {
 function sessionCheck($arguments='') {
 	session_start();
 	if (!isset($_SESSION['user'])) {
-		if ($_SERVER['REQUEST_METHOD']=='GET') {			
+		if ($_SERVER['REQUEST_METHOD']=='GET') {
 			$_SESSION['redo'] = $_SERVER['SCRIPT_NAME'].'?'.$_SERVER['QUERY_STRING'];
 		}
 		header('location: login.php'.$arguments);
@@ -121,7 +121,7 @@ function getUserIP() {
 }
 
 function getCacheName($filename) {
-	// change reference/ext/file.xml  to reference~ext~file.xml	
+	// change reference/ext/file.xml  to reference~ext~file.xml
 	$filename = str_replace(array('/', '\\'), '~', $filename);
        return $filename;
 }
@@ -153,7 +153,7 @@ function getTranslationStatus($file) {
 	global $user, $phpdocLangs;
 
 	$lang = $user['phpdocLang'];
-	$translationPath = $phpdocLangs[$lang]['DocCVSPath'];	
+	$translationPath = $phpdocLangs[$lang]['DocCVSPath'];
 	$trFile = $translationPath.$file;
 	$enFile = CVS_ROOT_PATH . 'en/' . $file;
 
@@ -163,7 +163,7 @@ function getTranslationStatus($file) {
 		$status['fileRevision'] = getRevision($trFile);
 		$status['fileEnRevision'] = getRevision($trFile, true);
 		if ($status['fileEnRevision'] && $status['lastEnRevision']) {
-			$distance = round((float) $status['lastEnRevision'], 3) - round((float) $status['fileEnRevision'], 3) ; 
+			$distance = round((float) $status['lastEnRevision'], 3) - round((float) $status['fileEnRevision'], 3) ;
 			$backward = 0;
 			if ($distance<0) {
 				$backward = -1;
@@ -179,11 +179,11 @@ function getTranslationStatus($file) {
 				$backward = 5;
 			}
 			$status['backward'] = $backward;
-			$status['distance'] = $distance;			
+			$status['distance'] = $distance;
 		}
 	} else {
 		$status['translated'] = false;
-	}	
+	}
 	return $status;
 }
 
@@ -194,4 +194,4 @@ function get_mailing_list_info ($id) {
 		'subscribe' => "doc-{$list_id}-subscribe@lists.php.net",
 		'archives'  => "http://news.php.net/php.doc.{$list_id}",
 	);
-} 
+}

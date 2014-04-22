@@ -12,9 +12,9 @@
   <section xml:id="mongominkey.intro">
    &reftitle.intro;
    <para>
-    <classname>MongoMinKey</classname> is a special type used by the database 
+    <classname>MongoMinKey</classname> is a special type used by the database
     that evaluates to less than any other type.  Thus, if a query is sorted by a
-    given field in ascending order, any document with a 
+    given field in ascending order, any document with a
     <classname>MongoMinKey</classname> as its value will be returned first.
    </para>
    <para>
@@ -59,7 +59,7 @@ $cursor = $collection->find()->sort(array("do by" => 1));
 ]]>
    </programlisting>
    <para>
-    The cursor will contain the lunch document, then the staff meeting document.  
+    The cursor will contain the lunch document, then the staff meeting document.
     The lunch document will always be returned first, regardless of what else
     is added to the collection (unless other documents are added with
     <classname>MongoMinKey</classname> in the "do by" field).

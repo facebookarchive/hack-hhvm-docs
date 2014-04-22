@@ -19,10 +19,10 @@
   </para>
   <para>
    There are five types of binary data currently recognized by the BSON spec:
-   function (0x01), byte array (0x02), UUID (0x03), MD5 (0x05), and user defined 
-   (0x80).  The default type is byte array (0x02).  There is no particular 
+   function (0x01), byte array (0x02), UUID (0x03), MD5 (0x05), and user defined
+   (0x80).  The default type is byte array (0x02).  There is no particular
    difference in how the driver or server interpret different types, so by and
-   large they are irrelevant for now.  Any number (between 0 and 255) could be 
+   large they are irrelevant for now.  Any number (between 0 and 255) could be
    used for type, if the user is willing to assume the risk that the database
    might eventually do something with binary data based on type.
   </para>
@@ -41,7 +41,7 @@
        Binary data.
       </para>
      </listitem>
-    </varlistentry>     
+    </varlistentry>
     <varlistentry>
      <term>
       <parameter>type</parameter>
@@ -51,7 +51,7 @@
        Data type.
       </para>
      </listitem>
-    </varlistentry>     
+    </varlistentry>
    </variablelist>
   </para>
  </refsect1>

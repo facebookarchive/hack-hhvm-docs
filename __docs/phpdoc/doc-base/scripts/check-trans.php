@@ -795,7 +795,7 @@ preg_match("/<refsect1 role=\"seealso\">(.*)<\/refsect1>/s", $lang_content, $mat
 if (isset($match2[1])) {
     preg_match_all("/<member>(.*?)<\/member>/s", $match2[1], $match3);
     if (isset($match3[1])) {
-        $lang_seeAlsoMember = count($match3[1]);	
+        $lang_seeAlsoMember = count($match3[1]);
     }
 }
 

@@ -324,7 +324,7 @@ mail($to, $subject, $message, $headers);
   </para>
  </refsect1>
 
- <refsect1 role="notes">    
+ <refsect1 role="notes">
   &reftitle.notes;
   <note>
    <para>
@@ -346,11 +346,11 @@ mail($to, $subject, $message, $headers);
    <para>
     As such, the <parameter>to</parameter> parameter should not be an address
     in the form of &quot;Something &lt;someone@example.com&gt;&quot;. The
-    mail command may not parse this properly while talking with 
+    mail command may not parse this properly while talking with
     the MTA.
    </para>
   </note>
-  
+
   <note>
    <para>
     It is worth noting that the <function>mail</function> function is not

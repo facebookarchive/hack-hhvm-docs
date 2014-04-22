@@ -19,9 +19,9 @@
   &reftitle.returnvalues;
   <para>
    Returns a bit-field corresponding to the image formats supported by the
-   version of GD linked into PHP.  The following bits are returned, 
+   version of GD linked into PHP.  The following bits are returned,
    <constant>IMG_GIF</constant> | <constant>IMG_JPG</constant> |
-   <constant>IMG_PNG</constant> | <constant>IMG_WBMP</constant> | 
+   <constant>IMG_PNG</constant> | <constant>IMG_WBMP</constant> |
    <constant>IMG_XPM</constant>.
   </para>
  </refsect1>

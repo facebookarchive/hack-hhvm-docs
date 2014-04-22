@@ -5,7 +5,7 @@
   <refname>java_last_exception_get</refname>
   <refpurpose>Get last Java exception</refpurpose>
  </refnamediv>
- 
+
  <refsect1 role="description">
   &reftitle.description;
   <methodsynopsis>

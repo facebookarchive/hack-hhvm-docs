@@ -5,7 +5,7 @@
   <refname>swf_modifyobject</refname>
   <refpurpose>Modify an object</refpurpose>
  </refnamediv>
- 
+
  <refsect1 role="description">
   &reftitle.description;
   <methodsynopsis>
@@ -15,7 +15,7 @@
   </methodsynopsis>
   <para>
    Updates the position and/or color of the object at the specified
-   <parameter>depth</parameter>.  
+   <parameter>depth</parameter>.
   </para>
  </refsect1>
 
@@ -36,7 +36,7 @@
      <listitem>
       <para>
        Determines what is updated. <parameter>how</parameter> can either be
-       the constant <constant>MOD_MATRIX</constant> or 
+       the constant <constant>MOD_MATRIX</constant> or
        <constant>MOD_COLOR</constant> or it can be a combination of both.
       </para>
       <para>

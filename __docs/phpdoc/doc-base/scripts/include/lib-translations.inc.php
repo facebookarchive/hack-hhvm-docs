@@ -16,7 +16,7 @@
   | Authors:    Philip Olson <philip@php.net>                            |
   |             Some code stolen from other phpdoc/scripts/              |
   +----------------------------------------------------------------------+
-  
+
   $Id: lib-translations.inc.php 307070 2011-01-04 11:45:55Z rquadling $
 
 Introduction:
@@ -39,7 +39,7 @@ Usage examples:
 */
 
 function is_translation_current ($filename_en, $filename_lang) {
-	
+
 	if (!is_readable ($filename_en)) {
 		trigger_error("File ($filename_en) is not readable", E_USER_WARNING);
 		return false;
@@ -48,24 +48,24 @@ function is_translation_current ($filename_en, $filename_lang) {
 		trigger_error("File ($filename_lang) is not readable", E_USER_WARNING);
 		return false;
 	}
-	
+
 	$en   = file_get_contents($filename_en);
 	$lang = file_get_contents($filename_lang);
-	
+
 	$match_en = $match_lang = array();
 
 	preg_match ("/<!-- .Revision: (\d+) . -->/",    $en,   $match_en);
 	preg_match ("/<!--\s*EN-Revision:\s*(\d+)\s*/", $lang, $match_lang);
-	
+
 	if (empty($match_en[1]) || empty($match_lang[1])) {
 		trigger_error("Cannot extract Revision info for (LANG: $filename_lang) (EN: $filename_lang)", E_USER_WARNING);
 		return false;
 	}
-	
+
 	if (trim($match_en[1]) === trim($match_lang[1])) {
 		return true;
 	}
-	
+
 	return false;
 }
 
@@ -83,18 +83,18 @@ function is_translatable ($filename) {
 							'license.xml',
 							'versions.xml',
 	);
-	
+
 	if (in_array(basename($filename), $files_not_translated)) {
 		return false;
 	}
-	
+
 	$files_matches = array('/internals/', '/internals2/', 'entities.');
-	
+
 	foreach ($files_matches as $match) {
 		if (false !== strpos($filename, $match)) {
 			return false;
 		}
 	}
-	
+
 	return true;
 }

@@ -5,7 +5,7 @@
   <refname>ldap_connect</refname>
   <refpurpose>Connect to an LDAP server</refpurpose>
  </refnamediv>
- 
+
  <refsect1 role="description">
   &reftitle.description;
   <methodsynopsis>
@@ -29,7 +29,7 @@
       <para>
        If you are using OpenLDAP 2.x.x you can specify a URL instead of the
        hostname. To use LDAP with SSL, compile OpenLDAP 2.x.x with SSL
-       support, configure PHP with SSL, and set this parameter as  
+       support, configure PHP with SSL, and set this parameter as
        <literal>ldaps://hostname/</literal>.
       </para>
      </listitem>

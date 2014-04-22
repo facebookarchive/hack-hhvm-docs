@@ -5,7 +5,7 @@
   <refname>uniqid</refname>
   <refpurpose>Generate a unique ID</refpurpose>
  </refnamediv>
- 
+
  <refsect1 role="description">
   &reftitle.description;
   <methodsynopsis>
@@ -15,7 +15,7 @@
   </methodsynopsis>
   <para>
    Gets a prefixed unique identifier based on the current time in
-   microseconds. 
+   microseconds.
   </para>
  </refsect1>
 
@@ -71,7 +71,7 @@
 /* A uniqid, like: 4b3403665fea6 */
 printf("uniqid(): %s\r\n", uniqid());
 
-/* We can also prefix the uniqid, this the same as 
+/* We can also prefix the uniqid, this the same as
  * doing:
  *
  * $uniqid = $prefix . uniqid();
@@ -79,7 +79,7 @@ printf("uniqid(): %s\r\n", uniqid());
  */
 printf("uniqid('php_'): %s\r\n", uniqid('php_'));
 
-/* We can also activate the more_entropy parameter, which is 
+/* We can also activate the more_entropy parameter, which is
  * required on some systems, like Cygwin. This makes uniqid()
  * produce a value like: 4b340550242239.64159797
  */
@@ -126,16 +126,16 @@ printf("uniqid('', true): %s\r\n", uniqid('', true));
   &reftitle.notes;
   <caution>
    <para>
-    This function does not generate cryptographically secure tokens, 
-    in fact without being passed any additional parameters the return 
-    value is little different from <function>microtime</function>. If 
-    you need to generate cryptographically secure tokens use 
+    This function does not generate cryptographically secure tokens,
+    in fact without being passed any additional parameters the return
+    value is little different from <function>microtime</function>. If
+    you need to generate cryptographically secure tokens use
     <function>openssl_random_pseudo_bytes</function>.
    </para>
   </caution>
   <note>
    <para>
-    Under Cygwin, the <parameter>more_entropy</parameter> must be set 
+    Under Cygwin, the <parameter>more_entropy</parameter> must be set
     to &true; for this function to work.
    </para>
   </note>

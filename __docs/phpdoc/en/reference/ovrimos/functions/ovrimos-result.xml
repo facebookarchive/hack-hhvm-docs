@@ -5,7 +5,7 @@
   <refname>ovrimos_result</refname>
   <refpurpose>Retrieves the output column</refpurpose>
  </refnamediv>
- 
+
  <refsect1 role="description">
   &reftitle.description;
   <methodsynopsis>
@@ -35,7 +35,7 @@
      <term><parameter>field</parameter></term>
      <listitem>
       <para>
-       Either as a string with the field name or as an 1-based index. 
+       Either as a string with the field name or as an 1-based index.
       </para>
      </listitem>
     </varlistentry>

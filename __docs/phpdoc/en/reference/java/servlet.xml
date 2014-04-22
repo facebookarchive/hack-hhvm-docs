@@ -8,7 +8,7 @@
   extension to enable the entire PHP processor to be run as a servlet.
   The primary advantage of this from a PHP perspective is that web servers
   which support servlets typically take great care in pooling and reusing
-  JVMs. Build instructions for the Servlet SAPI module can be found in 
+  JVMs. Build instructions for the Servlet SAPI module can be found in
   <filename>php4/sapi/README</filename>.
 
   Notes:

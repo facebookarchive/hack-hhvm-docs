@@ -40,11 +40,11 @@
  <refsect1 role="errors">
   &reftitle.errors;
   <para>
-   In case the date format has an error, the element 'errors' will 
+   In case the date format has an error, the element 'errors' will
    contains the error messages.
   </para>
  </refsect1>
- 
+
  <refsect1 role="examples">
   &reftitle.examples;
   <para>
@@ -73,7 +73,7 @@ Array
     [warnings] => Array()
     [error_count] => 0
     [errors] => Array()
-    [is_localtime] => 
+    [is_localtime] =>
 )
 ]]>
     </screen>

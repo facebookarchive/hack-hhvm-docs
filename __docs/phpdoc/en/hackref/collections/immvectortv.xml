@@ -3,9 +3,9 @@
 <phpdoc:classref xml:id="class.hack.immvectortv" xmlns:phpdoc="http://php.net/ns/phpdoc" xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:xi="http://www.w3.org/2001/XInclude">
  <title>The ImmVector&lt;Tv&gt; class</title>
  <titleabbrev>ImmVector&lt;Tv&gt;</titleabbrev>
- 
+
  <partintro>
- 
+
 <!-- {{{ ClassName intro -->
   <section xml:id="immvectortv.intro">
    &reftitle.intro;
@@ -13,7 +13,7 @@
      ImmVector is an immutable Vector. HHVM provides a native implementation for this class. The Hack class definition is not actually used at run time; it is simply provided for the Hack typechecker and for developer reference.
    </para>
    <para>
-     A ImmVector cannot be mutated. No elements can be added or removed from it, nor can elements be overwritten using assignment (i.e. <literal>$c[$k] = $v</literal> is not allowed). 
+     A ImmVector cannot be mutated. No elements can be added or removed from it, nor can elements be overwritten using assignment (i.e. <literal>$c[$k] = $v</literal> is not allowed).
    </para>
    <para>
      Construction is as follows:
@@ -37,44 +37,44 @@ $iv = new ImmVector($a);
 <?hh
 $iv = ImmVector {1, 2, 3};
 ]]>
-        </programlisting> 
+        </programlisting>
       </informalexample>
    </para>
   </section>
 <!-- }}} -->
- 
+
   <section xml:id="immvectortv.synopsis">
    <title>Class synopsis</title>
- 
+
 <!-- {{{ Synopsis -->
    <classsynopsis>
     <ooclass><classname>ImmVector&lt;Tv&gt;</classname></ooclass>
- 
+
 <!-- {{{ Class synopsis -->
     <classsynopsisinfo>
      <modifier>final</modifier> <modifier>class</modifier>
      <ooclass>
       <classname>ImmVector&lt;Tv&gt;</classname>
      </ooclass>
- 
+
 <!-- If the class implements an interface, or two, use this (one oointerface element per interface) -->
      <oointerface>
       <interfacename>ConstVector&lt;Tv&gt;</interfacename>
      </oointerface>
     </classsynopsisinfo>
 <!-- }}} -->
- 
+
     <classsynopsisinfo role="comment">&Methods;</classsynopsisinfo>
      <xi:include xpointer="xmlns(db=http://docbook.org/ns/docbook) xpointer(id('class.hack.immvectortv')/db:refentry/db:refsect1[@role='description']/descendant::db:constructorsynopsis[1])" />
      <xi:include xpointer="xmlns(db=http://docbook.org/ns/docbook) xpointer(id('class.hack.immvectortv')/db:refentry/db:refsect1[@role='description']/descendant::db:methodsynopsis[1])" />
    </classsynopsis>
-  </section> 
+  </section>
  </partintro>
- 
+
  &hackref.collections.entities.immvectortv;
- 
+
 </phpdoc:classref>
- 
+
 <!-- Keep this comment at the end of the file
 Local variables:
 mode: sgml

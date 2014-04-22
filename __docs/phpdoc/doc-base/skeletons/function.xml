@@ -5,7 +5,7 @@
   <refname>func_name</refname>
   <refpurpose>The func_name purpose</refpurpose>
  </refnamediv>
- 
+
  <refsect1 role="description">
   &reftitle.description;
   <methodsynopsis>
@@ -22,7 +22,7 @@
    The function description goes here.
   </para>
  </refsect1>
- 
+
  <refsect1 role="parameters">
   &reftitle.parameters;
   <para>
@@ -46,7 +46,7 @@
    </variablelist>
   </para>
  </refsect1>
- 
+
  <refsect1 role="returnvalues">
   &reftitle.returnvalues;
   <para>
@@ -54,21 +54,21 @@
    true on success and false on failure, just use &return.success; here.
   </para>
  </refsect1>
- 
+
  <refsect1 role="errors">
   &reftitle.errors;
   <para>
    When does this function issue E_* level errors, and/or throw exceptions.
   </para>
  </refsect1>
- 
+
  <refsect1 role="unicode">
   &reftitle.unicode;
   <para>
    Information specific to unicode, from the PHP 6 changes.
   </para>
  </refsect1>
- 
+
  <refsect1 role="changelog">
   &reftitle.changelog;
   <para>
@@ -92,7 +92,7 @@
    </informaltable>
   </para>
  </refsect1>
- 
+
  <refsect1 role="examples">
   &reftitle.examples;
   <para>
@@ -124,7 +124,7 @@ Use a screen like we did below
    </example>
   </para>
  </refsect1>
- 
+
  <refsect1 role="notes">
   &reftitle.notes;
   <caution>
@@ -138,7 +138,7 @@ Use a screen like we did below
   &note.not-bin-safe;
   &note.registerglobals;
  </refsect1>
- 
+
  <refsect1 role="seealso">
   &reftitle.seealso;
   <para>
@@ -150,7 +150,7 @@ Use a screen like we did below
   </para>
  </refsect1>
 </refentry>
- 
+
 <!-- Keep this comment at the end of the file
 Local variables:
 mode: sgml

@@ -1,6 +1,6 @@
 #!/usr/local/bin/php -q
 <?php
-/*  
+/*
   +----------------------------------------------------------------------+
   | PHP Version 4                                                        |
   +----------------------------------------------------------------------+
@@ -17,7 +17,7 @@
   | Authors:    Roel Vanhout <roel@2e-systems.com>                       |
   |             Derick Rethans <derick@php.net>                          |
   +----------------------------------------------------------------------+
- 
+
   $Id: make_man.php 307070 2011-01-04 11:45:55Z rquadling $
 */
 
@@ -114,7 +114,7 @@ foreach($refentries[0] as $refentry) {
 		} else if (preg_match ('/<parameter>(.*?)<\/parameter>/s', $param, $matches)) {
 			$data = $matches[1];
 			$do_var = 1;
-		} 
+		}
 
 		if ($do_var) {
 			if(preg_match('/<methodparam choice="opt">.*<\/methodparam>/s', $param)) {
@@ -207,7 +207,7 @@ foreach($functions as $function) {
 	$function['example']
 	*/
 
-	$page = '.TH ' . $function['name'] . " 7  \"" . date("j F, Y") . "\" \"PHPDOC MANPAGE\" \"PHP Programmer's Manual\"\n.SH NAME\n" . 
+	$page = '.TH ' . $function['name'] . " 7  \"" . date("j F, Y") . "\" \"PHPDOC MANPAGE\" \"PHP Programmer's Manual\"\n.SH NAME\n" .
 			$function['name'] . "\n.SH SYNOPSIS\n.B " . $function['prototype'] . "\n.SH DESCRIPTION\n" . $function['shortdesc'] . ".\n";
 	if(!empty($function['paragraph']) && count($function['paragraph']) > 0) {
 		foreach($function['paragraph'] as $para) {

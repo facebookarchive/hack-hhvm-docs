@@ -5,7 +5,7 @@
   <refname>calcul_hmac</refname>
   <refpurpose>Obtain a hmac key (needs 8 arguments)</refpurpose>
  </refnamediv>
- 
+
  <refsect1 role="description">
   &reftitle.description;
   <methodsynopsis>

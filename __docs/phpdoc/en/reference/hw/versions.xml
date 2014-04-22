@@ -3,7 +3,7 @@
 <!--
   Do NOT translate this file
 -->
-<versions> 
+<versions>
  <function name='hw_array2objrec' from='PHP 4'/>
  <function name='hw_changeobject' from='PHP 4'/>
  <function name='hw_children' from='PHP 4'/>

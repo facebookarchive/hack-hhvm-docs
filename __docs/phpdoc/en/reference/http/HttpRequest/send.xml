@@ -19,7 +19,7 @@
   </para>
   <note>
    <para>
-    While an exception may be thrown, the transfer could have succeeded 
+    While an exception may be thrown, the transfer could have succeeded
     at least partially, so you might want to check the return values of various
     <classname>HttpRequest</classname>::getResponse*() methods.
    </para>

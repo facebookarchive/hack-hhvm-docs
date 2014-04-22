@@ -32,7 +32,7 @@
         <warning>
          <para>
          If e.g. an ISO-8859-1 (aka Western Europe latin1) encoded string is
-         passed it will be converted into an ACE encoded "xn--" string. 
+         passed it will be converted into an ACE encoded "xn--" string.
          It will not be the one you expected though!
          </para>
         </warning>
@@ -43,7 +43,7 @@
      <term><parameter>errorcode</parameter></term>
      <listitem>
       <para>
-       Will be set to the IDNA error code. 
+       Will be set to the IDNA error code.
       </para>
      </listitem>
     </varlistentry>

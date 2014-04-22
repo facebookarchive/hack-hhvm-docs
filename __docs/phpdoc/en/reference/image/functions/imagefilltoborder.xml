@@ -48,7 +48,7 @@
      <term><parameter>border</parameter></term>
      <listitem>
       <para>
-       The border color. A color identifier created with 
+       The border color. A color identifier created with
        <function>imagecolorallocate</function>.
       </para>
      </listitem>
@@ -57,7 +57,7 @@
      <term><parameter>color</parameter></term>
      <listitem>
       <para>
-       The fill color. A color identifier created with 
+       The fill color. A color identifier created with
        <function>imagecolorallocate</function>.
       </para>
      </listitem>

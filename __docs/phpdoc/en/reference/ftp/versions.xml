@@ -3,7 +3,7 @@
 <!--
   Do NOT translate this file
 -->
-<versions> 
+<versions>
  <function name='ftp_alloc' from='PHP 5'/>
  <function name='ftp_cdup' from='PHP 4, PHP 5'/>
  <function name='ftp_chdir' from='PHP 4, PHP 5'/>

@@ -13,7 +13,7 @@
    <methodparam><type>string</type><parameter>localName</parameter></methodparam>
   </methodsynopsis>
   <para>
-   Removes attribute is namespace <parameter>namespaceURI</parameter> 
+   Removes attribute is namespace <parameter>namespaceURI</parameter>
    named <parameter>localName</parameter> from the element.
   </para>
  </refsect1>

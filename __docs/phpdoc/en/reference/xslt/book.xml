@@ -1,16 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- $Revision: 330340 $ -->
- 
+
 <book xml:id="book.xslt" xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink">
  <title>XSLT (PHP 4)</title>
- 
+
  <!-- {{{ preface -->
  <preface xml:id="intro.xslt">
   &reftitle.intro;
   <para>
    This PHP extension provides a processor independent API to XSLT
    transformations. Currently this extension only supports the Sablotron
-   library from the Ginger Alliance. Support is planned for other 
+   library from the Ginger Alliance. Support is planned for other
    libraries, such as the Xalan library or the libxslt library.
   </para>
   <para>
@@ -23,7 +23,7 @@
   <note>
    <simpara>
     This extension is different than the sablotron extension distributed with
-    versions of PHP prior to PHP 4.1.0, currently only the new XSLT extension in 
+    versions of PHP prior to PHP 4.1.0, currently only the new XSLT extension in
     PHP 4.1.0 is supported. If you need support for the old extension, please ask
     your questions on the PHP mailing lists.
    </simpara>
@@ -41,7 +41,7 @@
   </note>
  </preface>
  <!-- }}} -->
- 
+
  &reference.xslt.setup;
  &reference.xslt.constants;
  &reference.xslt.reference;

@@ -1,5 +1,5 @@
 <?php
-/*  
+/*
   +----------------------------------------------------------------------+
   | PHP Version 4                                                        |
   +----------------------------------------------------------------------+
@@ -15,7 +15,7 @@
   +----------------------------------------------------------------------+
   | Authors:    Hartmut Holzgraefe <hholzgra@php.net>                    |
   +----------------------------------------------------------------------+
- 
+
   $Id: reference-split.php 313932 2011-07-29 15:33:16Z rquadling $
 */
 
@@ -40,12 +40,12 @@ $en_revs = array();
     return 0;
   }
 
-  // get max. revision for a region in a cvs file 
+  // get max. revision for a region in a cvs file
   // (witch simple data caching)
   function cvs_max_rev($filename,$start,$end) {
     static $lastfile = "";
     static $array = array();
-    
+
     if($filename!=$lastfile) {
       $cmd="/usr/bin/cvs annotate $filename 2>/dev/null";
       $fp=popen($cmd,"r");
@@ -71,7 +71,7 @@ $en_revs = array();
   }
 # }}}
 
-# {{{ convert_file 
+# {{{ convert_file
 
 function convert_file($dir,$file) {
   global $en_revs;
@@ -81,15 +81,15 @@ function convert_file($dir,$file) {
 	// open input stream
 	$fin = fopen("$dir/$file","r");
 
-	// get extension basename 
-	$name = str_replace(".xml","",$file); 
+	// get extension basename
+	$name = str_replace(".xml","",$file);
 	$name = str_replace("_","-",$name);
 
 	// get language from path
 	$parts=explode("/",$dir);
 	$lang=$parts[1];
 
-	// create directories for generated extension files 
+	// create directories for generated extension files
 	$base="./$lang/reference/$name";
 	if(!file_exists("./$lang/reference")) mkdir("./$lang/reference",0777);
 	if(file_exists($base)) exec("rm -rf $base"); // cleanup
@@ -134,8 +134,8 @@ function convert_file($dir,$file) {
         if($value=="Maintainer:")  $maintainer   = $array[$key+1];
         if($value=="Status:")      $trans_status = $array[$key+1];
       }
-		} elseif(strstr($line,("<refentry "))) { // start of function description 
-			// extract id 
+		} elseif(strstr($line,("<refentry "))) { // start of function description
+			// extract id
 			ereg("id=['\"](.*)['\"]",$line,$matches);
 			$id=str_replace("_","-",$matches[1]);
 			$id=ereg_replace("^function\.","",$id);
@@ -155,8 +155,8 @@ function convert_file($dir,$file) {
       $blockstart=$lineno;
 		} else if (strstr($line,("</refentry>"))) {
 			// end of function description
-			
-			// close output stream and switch 
+
+			// close output stream and switch
 			if(!isset($block)) {
         fwrite($fout,$line);
       }else{
@@ -198,7 +198,7 @@ vim600: syn=xml fen fdm=syntax fdl=2 si
 vim: et tw=78 syn=sgml
 vi: ts=1 sw=1
 -->
-');				
+');
 				fclose($fslave);
 				$fout = &$fmaster;
         unset($block);
@@ -224,30 +224,30 @@ vi: ts=1 sw=1
         if(isset($block))
           $block .= $line;
         else
-          fwrite($fout,$line);				
+          fwrite($fout,$line);
 				$lastline_empty=false;
 			} else {
 				if(!$lastline_empty) {
           if(isset($block))
             $block .= $line;
           else
-            fwrite($fout,$line);				
+            fwrite($fout,$line);
         }
-				$lastline_empty=true; 
+				$lastline_empty=true;
 			}
 		}
 	}
 
-	fclose($fmaster); 
+	fclose($fmaster);
 	// close input stream
 	fclose($fin);
 }
 
-# }}} 
+# }}}
 
 # {{{ convert_dir
 
-// convert dir -> search for XML files to convert 
+// convert dir -> search for XML files to convert
 //    and recurse into subdirs
 function convert_dir($dirname) {
 
@@ -258,7 +258,7 @@ function convert_dir($dirname) {
 	if ($dir = opendir($dirname)) {
 
 		// for each file in dir
-		while (($file = readdir($dir)) !== false) {			
+		while (($file = readdir($dir)) !== false) {
 
 			if($file{0}==".") continue; // ignore hidden files
 			if($file=="CVS") continue;  // ignore CVS information

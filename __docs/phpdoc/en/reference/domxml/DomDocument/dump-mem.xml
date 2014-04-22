@@ -13,7 +13,7 @@
     <methodsynopsis>
      <type>string</type><methodname>DomDocument::dump_mem</methodname>
      <methodparam choice="opt"><type>bool</type><parameter>format</parameter></methodparam>
-     <methodparam choice="opt"><type>string</type><parameter>encoding</parameter></methodparam> 
+     <methodparam choice="opt"><type>string</type><parameter>encoding</parameter></methodparam>
     </methodsynopsis>
     <para>
      Creates an XML document from the dom representation. This function

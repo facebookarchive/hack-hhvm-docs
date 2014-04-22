@@ -5,7 +5,7 @@
   <refname>xslt_error</refname>
   <refpurpose>Returns an error string</refpurpose>
  </refnamediv>
- 
+
  <refsect1 role="description">
   &reftitle.description;
   <methodsynopsis>
@@ -62,7 +62,7 @@ xslt_free($xh);
    </example>
   </para>
  </refsect1>
- 
+
  <refsect1 role="seealso">
   &reftitle.seealso;
   <para>

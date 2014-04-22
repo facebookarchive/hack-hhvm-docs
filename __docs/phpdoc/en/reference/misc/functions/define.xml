@@ -5,7 +5,7 @@
   <refname>define</refname>
   <refpurpose>Defines a named constant</refpurpose>
  </refnamediv>
- 
+
  <refsect1 role="description">
   &reftitle.description;
   <methodsynopsis>
@@ -35,10 +35,10 @@
      <term><parameter>value</parameter></term>
      <listitem>
       <para>
-       The value of the constant; only scalar and <type>null</type> values are allowed. 
-       Scalar values are <type>integer</type>, 
-       <type>float</type>, <type>string</type> or <type>boolean</type> values. It is 
-       possible to define <type>resource</type> constants, however it is not recommended 
+       The value of the constant; only scalar and <type>null</type> values are allowed.
+       Scalar values are <type>integer</type>,
+       <type>float</type>, <type>string</type> or <type>boolean</type> values. It is
+       possible to define <type>resource</type> constants, however it is not recommended
        and may cause unpredictable behavior.
       </para>
      </listitem>
@@ -47,8 +47,8 @@
      <term><parameter>case_insensitive</parameter></term>
      <listitem>
       <para>
-       If set to &true;, the constant will be defined case-insensitive. 
-       The default behavior is case-sensitive; i.e. 
+       If set to &true;, the constant will be defined case-insensitive.
+       The default behavior is case-sensitive; i.e.
        <literal>CONSTANT</literal> and <literal>Constant</literal> represent
        different values.
       </para>

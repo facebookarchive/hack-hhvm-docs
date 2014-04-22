@@ -15,7 +15,7 @@
   </methodsynopsis>
   <para>
    This function sets the error mode for string conversions between different
-   encodings. An error can occur during conversion when an illegal character 
+   encodings. An error can occur during conversion when an illegal character
    is encountered or if a character cannot be represented into the new encoding.
    By default, when an error is encountered, the conversion stops.
   </para>
@@ -30,9 +30,9 @@
      <listitem>
       <para>
        The <parameter>direction</parameter> sets the conversion direction to
-       which the error mode will apply. This can either be 
-       <constant>FROM_UNICODE</constant>, which will set the error mode for 
-       conversions from a <type>unicode</type> string to a binary string 
+       which the error mode will apply. This can either be
+       <constant>FROM_UNICODE</constant>, which will set the error mode for
+       conversions from a <type>unicode</type> string to a binary string
        or <constant>TO_UNICODE</constant>, which will set the error mode
        for conversions from a binary string to a <type>unicode</type> string.
       </para>
@@ -42,7 +42,7 @@
      <term><parameter>mode</parameter></term>
      <listitem>
       <para>
-       <parameter>mode</parameter> determines how the conversion errors are 
+       <parameter>mode</parameter> determines how the conversion errors are
        handled. It should be one of the following constants:
       </para>
       <para>
@@ -104,7 +104,7 @@
             <constant>U_CONV_ERROR_ESCAPE_JAVA</constant>
            </entry>
            <entry>
-            Escape the faulty bytes and print them in the Java character 
+            Escape the faulty bytes and print them in the Java character
             format.
            </entry>
           </row>

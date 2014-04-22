@@ -5,7 +5,7 @@
   <refname>w32api_deftype</refname>
   <refpurpose>Defines a type for use with other w32api_functions</refpurpose>
  </refnamediv>
- 
+
  <refsect1 role="description">
   &reftitle.description;
   <methodsynopsis>
@@ -70,7 +70,7 @@
   <para>
    This function takes 2n+1 arguments, where n is the number of members the
    type has. After that is the type of the member followed by the members
-   name (in pairs). 
+   name (in pairs).
   </para>
  </refsect1>
 

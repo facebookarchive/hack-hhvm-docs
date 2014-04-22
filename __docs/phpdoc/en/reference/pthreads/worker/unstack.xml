@@ -49,7 +49,7 @@
 <?php
 class Work extends Stackable {
     public function run() {
-        
+
     }
 }
 

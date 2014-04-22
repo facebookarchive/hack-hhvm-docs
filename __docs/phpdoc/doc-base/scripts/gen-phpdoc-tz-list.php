@@ -45,7 +45,7 @@
 <?php
     }
 
-    foreach ($groupedList as $group => $zones) { 
+    foreach ($groupedList as $group => $zones) {
         $m = count($zones) > 4 ? 5 : count($zones); ?>
 
  <sect1 xml:id="timezones.<?php echo strtolower($group); ?>">

@@ -5,7 +5,7 @@
   <refname>swf_shapearc</refname>
   <refpurpose>Draw a circular arc</refpurpose>
  </refnamediv>
- 
+
  <refsect1 role="description">
   &reftitle.description;
   <methodsynopsis>
@@ -17,7 +17,7 @@
    <methodparam><type>float</type><parameter>ang2</parameter></methodparam>
   </methodsynopsis>
   <para>
-   Draws a circular arc. 
+   Draws a circular arc.
   </para>
  </refsect1>
 

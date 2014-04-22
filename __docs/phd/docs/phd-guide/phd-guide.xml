@@ -91,13 +91,13 @@ install ok: channel://doc.php.net/PhD_PEAR-1.0.0
 $ svn checkout http://svn.php.net:/repository/phd/trunk phd
 ... output
 
-pear install package.xml package_generic.xml package_php.xml package_pear.xml 
+pear install package.xml package_generic.xml package_php.xml package_pear.xml
 [...]
 install ok: channel://doc.php.net/PhD-1.0.1
 install ok: channel://doc.php.net/PhD_Generic-1.0.1
 install ok: channel://doc.php.net/PhD_PHP-1.0.1
 install ok: channel://doc.php.net/PhD_PEAR-1.0.1
-bjori@jessica:/usr/src/php/svn/phd/trunk$ 
+bjori@jessica:/usr/src/php/svn/phd/trunk$
 
 $ phd --version
 PhD Version: phd-from-svn
@@ -272,8 +272,8 @@ Supported packages:
       </screen>
 
       <note>
-        <para>The format packages are provided by separate PEAR packages 
-        (doc.php.net/PhD_Generic, doc.php.net/PhD_IDE, doc.php.net/PhD_PEAR and 
+        <para>The format packages are provided by separate PEAR packages
+        (doc.php.net/PhD_Generic, doc.php.net/PhD_IDE, doc.php.net/PhD_PEAR and
         doc.php.net/PhD_PHP) where only the Generic is installed by default.
         </para>
       </note>

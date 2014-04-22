@@ -27,7 +27,7 @@
      <term><parameter>text</parameter></term>
      <listitem>
       <para>
-       The text to measure. 
+       The text to measure.
       </para>
      </listitem>
     </varlistentry>
@@ -35,7 +35,7 @@
      <term><parameter>width</parameter></term>
      <listitem>
       <para>
-       The width of the area to put the text to. 
+       The width of the area to put the text to.
       </para>
      </listitem>
     </varlistentry>

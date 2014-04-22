@@ -40,10 +40,10 @@ $users->save($profile);
     </programlisting>
    </example>
    <para>
-    This class contains a <varname>type</varname> field, which currently gives 
-    no additional functionality in the driver or the database.  There are five 
-    predefined types (which are the class constants listed below), and the user 
-    can create their own (at the risk of the BSON spec catching up with them). 
+    This class contains a <varname>type</varname> field, which currently gives
+    no additional functionality in the driver or the database.  There are five
+    predefined types (which are the class constants listed below), and the user
+    can create their own (at the risk of the BSON spec catching up with them).
     By default, the PHP driver always uses type 2: a byte array.
    </para>
   </section>
@@ -63,7 +63,7 @@ $users->save($profile);
      </ooclass>
     </classsynopsisinfo>
 <!-- }}} -->
-    
+
     <classsynopsisinfo role="comment">&Constants;</classsynopsisinfo>
     <fieldsynopsis>
      <modifier>const</modifier>

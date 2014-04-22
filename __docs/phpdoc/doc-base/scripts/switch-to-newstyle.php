@@ -45,15 +45,15 @@ if (!is_dir($fullpath_dir)) {
 
 $counts = array('old' => 0, 'new' => 0);
 foreach (glob($fullpath_dir . "*.xml") as $file) {
-    
+
     $old = file_get_contents($file);
-    
+
     // Check if file is already using the new style and if so, skip it
     if (false !== strpos($old, '<refsect1 role=')) {
         $counts['new']++;
         continue;
     }
-    
+
     // Switch description and examples
     $new = str_replace(
     array('<refsect1>', '<title>Description</title>', "  </para>\n  <para>\n   <example>"),
@@ -80,8 +80,8 @@ foreach (glob($fullpath_dir . "*.xml") as $file) {
   </para>
  </refsect1>',
  $new);
- 
- $result = array(); 
+
+ $result = array();
  // Write parameters and return values
  preg_match('@<methodsynopsis>([(.\n]*)</methodsynopsis>@m', $old, $result);
 
@@ -119,7 +119,7 @@ foreach (glob($fullpath_dir . "*.xml") as $file) {
      }
      $new = preg_replace('!</refsect1>!', $buffer, $new, 1);
  }
- 
+
  if ($new === $old) {
      continue;
  }

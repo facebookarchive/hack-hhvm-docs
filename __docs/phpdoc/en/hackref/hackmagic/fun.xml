@@ -5,7 +5,7 @@
   <refname>fun</refname>
   <refpurpose>Creates a function type from a constant string</refpurpose>
  </refnamediv>
- 
+
  <refsect1 role="description">
   &reftitle.description;
   <methodsynopsis>

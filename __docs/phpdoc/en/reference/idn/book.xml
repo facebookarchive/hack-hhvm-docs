@@ -8,10 +8,10 @@
  <preface xml:id="intro.idn">
   &reftitle.intro;
   <para>
-    This extension gives access to the GNU Libidn which is 
-    an implementation of the Stringprep, Punycode and IDNA specifications 
-    defined by the IETF Internationalized Domain Names (IDN) working 
-    group, used for internationalized domain names. 
+    This extension gives access to the GNU Libidn which is
+    an implementation of the Stringprep, Punycode and IDNA specifications
+    defined by the IETF Internationalized Domain Names (IDN) working
+    group, used for internationalized domain names.
   </para>
  </preface>
 

@@ -64,7 +64,7 @@ function __autoload($class_name) {
 }
 
 $obj  = new MyClass1();
-$obj2 = new MyClass2(); 
+$obj2 = new MyClass2();
 ?>
 ]]>
     </programlisting>
@@ -169,7 +169,7 @@ Fatal error: Class 'MissingException' not found in testMissingException.php on l
   </simplesect>
 
  </sect1>
- 
+
 <!-- Keep this comment at the end of the file
 Local variables:
 mode: sgml

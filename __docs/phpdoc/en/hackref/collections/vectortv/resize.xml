@@ -18,7 +18,7 @@
 
 <!-- Note: If this method/property as an alternate procedural mapping then the method/property synopsis MUST be listed BEFORE the function synopsis -->
   <para>
-    Resizes this Vector to contain <literal>$sz</literal> elements. If <literal>$sz</literal> is smaller than the current size of the Vector, elements are removed from the end of the Vector. If <literal>$sz</literal> is greater than the current size of the Vector, the Vector is extended by appending as many copies of 'value' as * needed to reach a size of <literal>$sz</literal> elements. 
+    Resizes this Vector to contain <literal>$sz</literal> elements. If <literal>$sz</literal> is smaller than the current size of the Vector, elements are removed from the end of the Vector. If <literal>$sz</literal> is greater than the current size of the Vector, the Vector is extended by appending as many copies of 'value' as * needed to reach a size of <literal>$sz</literal> elements.
   </para>
  </refsect1>
 </refentry>

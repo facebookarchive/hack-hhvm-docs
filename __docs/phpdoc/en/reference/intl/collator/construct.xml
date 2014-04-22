@@ -51,7 +51,7 @@
         is represented by:
         L&lt;language&gt;_Z&lt;script&gt;_R&lt;region&gt;_V&lt;variant&gt;_K&lt;keyword&gt;.
         for <emphasis>RFC4646</emphasis> locale naming.
-        
+
         <example><title>Locale format</title>
         Example:
         Locale="sv" (Swedish) "Kypper" &lt; "Köpfe"

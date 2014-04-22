@@ -16,15 +16,15 @@
   </methodsynopsis>
   <para>
    This function inserts the new node <parameter>newnode</parameter> right
-   before the node <parameter>refnode</parameter>. The return value is the 
-   inserted node. If you plan to do further modifications on the appended 
+   before the node <parameter>refnode</parameter>. The return value is the
+   inserted node. If you plan to do further modifications on the appended
    child you must use the returned node.
   </para>
   <para>
-   (PHP &gt;= 4.3 only) If <parameter>newnode</parameter> already is part of a 
-   document, it will be first unlinked from its existing context. If 
+   (PHP &gt;= 4.3 only) If <parameter>newnode</parameter> already is part of a
+   document, it will be first unlinked from its existing context. If
    <parameter>refnode</parameter> is NULL, then <parameter>newnode</parameter>
-   will be inserted at the end of the list of children.  
+   will be inserted at the end of the list of children.
   </para>
   <para>
    <function>domnode_insert_before</function> is very similar to

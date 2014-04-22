@@ -18,7 +18,7 @@
 
   $Id: cvslist.php 307070 2011-01-04 11:45:55Z rquadling $
 */
-//-- The PHPDOC Online XML Editing Tool 
+//-- The PHPDOC Online XML Editing Tool
 //--- Purpose: lists the folders and files in the left frame
 
 //------- Initialization
@@ -38,7 +38,7 @@ if (isset($_REQUEST['path'])) {
 	}
 }
 
-// Prevent wrong paths 
+// Prevent wrong paths
 if (strstr($path, '.') || $file=='..' || $file=='.') {
 	exit;
 }
@@ -93,7 +93,7 @@ if ($file) {
 }
 
 
-//------- Functions 
+//------- Functions
 function printPathAsLinks($path) {
 	global $lang;
 
@@ -101,7 +101,7 @@ function printPathAsLinks($path) {
 	$pp = '';
 	foreach($px as $i=>$p) {
 		$pp .= $p.'/';
-		if (!$p && !$i) $p = $lang;  
+		if (!$p && !$i) $p = $lang;
 		print "<a href='?path=$pp'>$p</a>";
 		if ($p || !$i) print '/';
 	}
@@ -118,7 +118,7 @@ function printDirectories($dirs, $path) {
 
 function printFiles($files, $path) {
 	global $translationPath, $user;
-	
+
 	sort($files);
 	foreach($files as $fl) {
 		$status = getTranslationStatus($path.$fl);
@@ -156,7 +156,7 @@ function printFiles($files, $path) {
 			}
 		}
 	}
-	
+
 }
 
 
@@ -169,22 +169,22 @@ body {
 	font-family: Tahoma;
 	font-size: 12px;
 }
-a:link    { 
+a:link    {
 	text-decoration: none;
 	color: #000066;
 }
 
-a:hover   { 
+a:hover   {
 	text-decoration: none;
 	color: #ff0000;
 }
 
-a:active  { 
+a:active  {
 	text-decoration: none;
 	color: #ff0000;
 }
 
-a:visited { 
+a:visited {
 	text-decoration: none;
 	color: #000066;
 }
@@ -204,11 +204,11 @@ printFiles($files, $path);
 <hr>
 
 <form action=login.php method=post target=_top>
-<?php 
+<?php
 if ($requireLogin) { ?>
 	<input type=hidden name=email value="<?php print $user['email']; ?>"><br>
 <?php } ?>
-Switch language:<br> 
+Switch language:<br>
 <select name=lang onchange="if (this.value) this.form.submit();">
 <option value=''></option>
 <?php

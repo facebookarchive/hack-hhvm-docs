@@ -130,7 +130,7 @@
          <literal>bypass_shell</literal> (windows only): bypass
          <literal>cmd.exe</literal> shell when set to &true;
         </member>
-        <!--  FIXME PHP_6 
+        <!--  FIXME PHP_6
         <member>
          <literal>context</literal>: stream context used when opening files
          (created with <function>stream_context_create</function>)
@@ -299,7 +299,7 @@ if (is_resource($process)) {
    </para>
   </note>
  </refsect1>
- 
+
  <refsect1 role="seealso">
   &reftitle.seealso;
   <para>

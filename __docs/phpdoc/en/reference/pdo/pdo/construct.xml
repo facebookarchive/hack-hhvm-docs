@@ -18,7 +18,7 @@
   </constructorsynopsis>
   <para>
    Creates a PDO instance to represent a connection to the requested
-   database. 
+   database.
   </para>
  </refsect1>
  <refsect1 role="parameters">
@@ -64,8 +64,8 @@
         <varlistentry><term>Aliasing</term>
          <listitem>
           <para>
-           <parameter>dsn</parameter> consists of a name 
-           <parameter>name</parameter> that maps to 
+           <parameter>dsn</parameter> consists of a name
+           <parameter>name</parameter> that maps to
            <code>pdo.dsn.<parameter>name</parameter></code> in &php.ini;
            defining the DSN string.
           </para>
@@ -213,8 +213,8 @@ try {
     Before PHP5.3, a class which extends PDO and implements <literal>__call</literal> magic will always receive lower case <parameter>$method</parameter>.
    </para>
   </note>
-  
-  
+
+
  </refsect1>
 </refentry>
 

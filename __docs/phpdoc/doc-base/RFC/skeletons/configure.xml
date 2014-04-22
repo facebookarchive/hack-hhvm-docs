@@ -8,7 +8,7 @@
  <!-- &no.install; -->
  <!-- There are various PECL related entities in language-snippets.ent -->
  <para>
-  To enable extname support, configure PHP with 
+  To enable extname support, configure PHP with
   <option role="configure">theconfigoption</option>
  </para>
  <para>

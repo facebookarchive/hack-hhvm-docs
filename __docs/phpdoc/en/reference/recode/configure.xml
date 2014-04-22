@@ -21,7 +21,7 @@
    their own <literal>hash_insert</literal> function.
   </para>
  </warning>
- 
+
  &warn.imaprecodeyaz;
 
 </section>

@@ -5,7 +5,7 @@
   <refname>array_filter</refname>
   <refpurpose>Filters elements of an array using a callback function</refpurpose>
  </refnamediv>
- 
+
  <refsect1 role="description">
   &reftitle.description;
   <methodsynopsis>
@@ -162,7 +162,7 @@ Array
    </para>
   </caution>
  </refsect1>
- 
+
  <refsect1 role="seealso">
   &reftitle.seealso;
   <para>

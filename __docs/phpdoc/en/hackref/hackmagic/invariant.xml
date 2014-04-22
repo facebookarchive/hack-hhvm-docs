@@ -5,7 +5,7 @@
   <refname>invariant</refname>
   <refpurpose>Enforces a given condition is true</refpurpose>
  </refnamediv>
- 
+
  <refsect1 role="description">
   &reftitle.description;
   <methodsynopsis>

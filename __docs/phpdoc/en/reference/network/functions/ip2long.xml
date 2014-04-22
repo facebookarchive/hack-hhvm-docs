@@ -5,7 +5,7 @@
   <refname>ip2long</refname>
   <refpurpose>Converts a string containing an (IPv4) Internet Protocol dotted address into a proper address</refpurpose>
  </refnamediv>
- 
+
  <refsect1 role="description">
   &reftitle.description;
   <methodsynopsis>
@@ -15,7 +15,7 @@
   <para>
    The function <function>ip2long</function> generates an IPv4 Internet
    network address from its Internet standard format (dotted string)
-   representation. 
+   representation.
   </para>
   <para>
    <function>ip2long</function> will also work with non-complete IP

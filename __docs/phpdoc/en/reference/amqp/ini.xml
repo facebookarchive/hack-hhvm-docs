@@ -142,7 +142,7 @@
      </term>
      <listitem>
       <para>
-       Whether calls to <methodname>AMQPQueue::get</methodname> and <methodname>AMQPQueue::consume</methodname> should require that the client explicitly acknowledge messages. Setting this value to 1 will pass in the <constant>AMQP_AUTOACK</constant> flag to the above method calls if the <literal>flags</literal> field is omitted. 
+       Whether calls to <methodname>AMQPQueue::get</methodname> and <methodname>AMQPQueue::consume</methodname> should require that the client explicitly acknowledge messages. Setting this value to 1 will pass in the <constant>AMQP_AUTOACK</constant> flag to the above method calls if the <literal>flags</literal> field is omitted.
       </para>
      </listitem>
     </varlistentry>
@@ -153,7 +153,7 @@
      </term>
      <listitem>
       <para>
-       The minimum number of messages to require during a call to <methodname>AMQPQueue::consume</methodname>. 
+       The minimum number of messages to require during a call to <methodname>AMQPQueue::consume</methodname>.
       </para>
      </listitem>
     </varlistentry>

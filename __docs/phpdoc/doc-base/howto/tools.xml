@@ -2,7 +2,7 @@
 
 <chapter xml:id="chapter-tools" xmlns:xlink="http://www.w3.org/1999/xlink">
  <title>Tools and Setup Instructions</title>
-  
+
  <para>
   The required tools depends on the Operating System. Linux is recommended,
   although several members of the documentation team uses Windows. All
@@ -59,8 +59,8 @@
    SVN:
   </para>
   <para>
-   PHP: Several operating systems include PHP by default, but the following 
-   extensions are required: libxml, xmlreader, and DOM. These are enabled by 
+   PHP: Several operating systems include PHP by default, but the following
+   extensions are required: libxml, xmlreader, and DOM. These are enabled by
    default since PHP 5.1.0.
   </para>
   <para>
@@ -78,8 +78,8 @@
    SVN: Either use cygwin, or install a svn client within the system shell.
   </para>
   <para>
-   PHP: Several operating systems include PHP by default, but the following 
-   extensions are required: libxml, xmlreader, and DOM. These are enabled by 
+   PHP: Several operating systems include PHP by default, but the following
+   extensions are required: libxml, xmlreader, and DOM. These are enabled by
    default since PHP 5.1.0.
   </para>
   <para>

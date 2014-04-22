@@ -14,7 +14,7 @@
    <methodparam><type>string</type><parameter>filename</parameter></methodparam>
   </methodsynopsis>
   <para>
-   Outputs or save an WebP version of the given <parameter>image</parameter>. 
+   Outputs or save an WebP version of the given <parameter>image</parameter>.
   </para>
  </refsect1>
 

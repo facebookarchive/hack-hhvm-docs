@@ -5,7 +5,7 @@
   <refname>printer_draw_roundrect</refname>
   <refpurpose>Draw a rectangle with rounded corners</refpurpose>
  </refnamediv>
- 
+
  <refsect1 role="description">
   &reftitle.description;
   <methodsynopsis>
@@ -126,7 +126,7 @@ printer_close($handle);
    </example>
   </para>
  </refsect1>
- 
+
 </refentry>
 
 <!-- Keep this comment at the end of the file

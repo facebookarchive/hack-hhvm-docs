@@ -26,7 +26,7 @@
  <refsect1 role="migration">
   <title>Migrating to PHP 5</title>
   <para>
-   Use the <property>name</property> property of 
+   Use the <property>name</property> property of
    <classname>DOMAttr</classname>.
   </para>
  </refsect1>

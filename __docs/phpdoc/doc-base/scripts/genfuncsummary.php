@@ -1,5 +1,5 @@
 <?php
-/*  
+/*
   +----------------------------------------------------------------------+
   | PHP Version 4                                                        |
   +----------------------------------------------------------------------+
@@ -15,7 +15,7 @@
   +----------------------------------------------------------------------+
   | Authors:    anatoly techtonik <techtonik@php.net>                    |
   +----------------------------------------------------------------------+
- 
+
   $Id: genfuncsummary.php 307070 2011-01-04 11:45:55Z rquadling $
 */
 
@@ -105,7 +105,7 @@ foreach ($parsefiles as $key => $file) {
 
 # | Authors:    Gabor Hoitsy <goba@php.net>                              |
 
-/* 
+/*
 
 for i in `find $1 -name "*.[ch]" -print -o -name "*.ec" -print | xargs egrep -li "\{\{\{ proto" | sort` ; do
  echo $i | sed -e "s|$1|# php-src|"
@@ -120,9 +120,9 @@ fi
 
 /****[ Original funcsummary.awk ] *****/
 //
-///^[[:space:]]*\/\*[[:space:]]*\{\{\{[[:space:]]*proto/ { 
+///^[[:space:]]*\/\*[[:space:]]*\{\{\{[[:space:]]*proto/ {
 //	split($0,proto,"proto[[:space:]]+|\\*/[[:space:]]*$");
-//	parse=1; 
+//	parse=1;
 //	same=1;
 //	lc=0;
 //}
@@ -141,12 +141,12 @@ fi
 //	}
 //	next;
 //}
-//{	
-//	if(parse && !same) { 
+//{
+//	if(parse && !same) {
 //		split($0,temp,"\\*/[[:space:]]*$");
 //		line[lc++]=temp[1];
-//		
-//	} 
+//
+//	}
 //	same=0;
 //}
 

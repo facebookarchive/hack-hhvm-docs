@@ -21,7 +21,7 @@
   <para>
    <function>pg_convert</function> checks and converts the values in
    <parameter>assoc_array</parameter> into suitable values for use in an SQL
-   statement. Precondition for <function>pg_convert</function> is the 
+   statement. Precondition for <function>pg_convert</function> is the
    existence of a table <parameter>table_name</parameter> which has at least
    as many columns as <parameter>assoc_array</parameter> has elements. The
    fieldnames in <parameter>table_name</parameter> must match the indices in
@@ -31,7 +31,7 @@
   </para>
   <note>
    <para>
-    If there are boolean fields in <parameter>table_name</parameter> don't 
+    If there are boolean fields in <parameter>table_name</parameter> don't
     use the constant &true; in <parameter>assoc_array</parameter>. It will be
     converted to the string 'TRUE' which is no valid entry for boolean fields
     in PostgreSQL. Use one of t, true, 1, y, yes instead.
@@ -72,7 +72,7 @@
      <term><parameter>options</parameter></term>
      <listitem>
       <para>
-       Any number of <constant>PGSQL_CONV_IGNORE_DEFAULT</constant>, 
+       Any number of <constant>PGSQL_CONV_IGNORE_DEFAULT</constant>,
        <constant>PGSQL_CONV_FORCE_NULL</constant> or
        <constant>PGSQL_CONV_IGNORE_NOT_NULL</constant>, combined.
       </para>
@@ -96,15 +96,15 @@
     <title><function>pg_convert</function> example</title>
     <programlisting role="php">
 <![CDATA[
-<?php 
+<?php
   $dbconn = pg_connect('dbname=foo');
-  
+
   $tmp = array(
       'author' => 'Joe Thackery',
       'year' => 2005,
       'title' => 'My Life, by Joe Thackery'
   );
-  
+
   $vals = pg_convert($dbconn, 'authors', $tmp);
 ?>
 ]]>

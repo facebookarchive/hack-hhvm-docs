@@ -4,7 +4,7 @@
 <appendix xml:id="tokenizer.examples">
  &reftitle.examples;
  <para>
-  Here is a simple example PHP scripts using the tokenizer that 
+  Here is a simple example PHP scripts using the tokenizer that
   will read in a PHP file, strip all comments from the source
   and print the pure code only.
  </para>
@@ -38,8 +38,8 @@ foreach ($tokens as $token) {
        // token array
        list($id, $text) = $token;
 
-       switch ($id) { 
-           case T_COMMENT: 
+       switch ($id) {
+           case T_COMMENT:
            case T_ML_COMMENT: // we've defined this
            case T_DOC_COMMENT: // and this
                // no action on comments
@@ -55,7 +55,7 @@ foreach ($tokens as $token) {
 ?>
 ]]>
   </programlisting>
- </example>    
+ </example>
 </appendix>
 
 

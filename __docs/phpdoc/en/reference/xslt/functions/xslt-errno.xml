@@ -5,7 +5,7 @@
   <refname>xslt_errno</refname>
   <refpurpose>Returns an error number</refpurpose>
  </refnamediv>
- 
+
  <refsect1 role="description">
   &reftitle.description;
   <methodsynopsis>

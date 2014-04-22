@@ -5,7 +5,7 @@
   <refname>ldap_mod_del</refname>
   <refpurpose>Delete attribute values from current attributes</refpurpose>
  </refnamediv>
- 
+
  <refsect1 role="description">
   &reftitle.description;
   <methodsynopsis>
@@ -17,7 +17,7 @@
   <para>
    Removes one or more attributes from the specified <parameter>dn</parameter>.
    It performs the modification at the attribute level as opposed to the object
-   level. Object-level deletions are done by the 
+   level. Object-level deletions are done by the
    <function>ldap_delete</function> function.
   </para>
  </refsect1>

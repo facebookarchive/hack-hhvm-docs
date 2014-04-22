@@ -3,10 +3,10 @@
 <chapter xml:id="install.macosx" xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink">
   <title>Installation on Mac OS X</title>
   <para>
-    This section contains notes and hints specific to installing HHVM on Mac OS X. Currently Mac OS X has only interpreted support for HHVM (i.e., the JIT is not available). However, there is active development on getting full support for HHVM on Mac OS X. 
+    This section contains notes and hints specific to installing HHVM on Mac OS X. Currently Mac OS X has only interpreted support for HHVM (i.e., the JIT is not available). However, there is active development on getting full support for HHVM on Mac OS X.
   </para>
   <para>
-    There is no current prebuilt package. Only a compilation method to get HHVM working on Mac OS X. Compiling is similar to the <link linkend="install.linux">Linux installation guide</link>. 
+    There is no current prebuilt package. Only a compilation method to get HHVM working on Mac OS X. Compiling is similar to the <link linkend="install.linux">Linux installation guide</link>.
   </para>
   <note>
     <para>

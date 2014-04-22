@@ -40,7 +40,7 @@
    Returns a resultset &return.falseforfailure;.
   </para>
  </refsect1>
- 
+
  <refsect1 role="mysqlnd">
    &reftitle.mysqlnd;
 
@@ -55,9 +55,9 @@
    <title>&style.oop;</title>
    <programlisting role="php">
 <![CDATA[
-<?php 
+<?php
 
-$mysqli = new mysqli("127.0.0.1", "user", "password", "world"); 
+$mysqli = new mysqli("127.0.0.1", "user", "password", "world");
 
 if($mysqli->connect_error)
 {
@@ -102,9 +102,9 @@ $mysqli->close();
    <title>&style.procedural;</title>
    <programlisting role="php">
 <![CDATA[
-<?php 
+<?php
 
-$link = mysqli_connect("127.0.0.1", "user", "password", "world"); 
+$link = mysqli_connect("127.0.0.1", "user", "password", "world");
 
 if (!$link)
 {
@@ -149,10 +149,10 @@ mysqli_close($link);
    &examples.outputs;
    <screen>
 <![CDATA[
-Albania 3401200 Europe 
-Algeria 31471000 Africa 
-Afghanistan 22720000 Asia 
-Anguilla 8000 North America 
+Albania 3401200 Europe
+Algeria 31471000 Africa
+Afghanistan 22720000 Asia
+Anguilla 8000 North America
 ]]>
    </screen>
   </example>

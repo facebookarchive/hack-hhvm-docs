@@ -178,9 +178,9 @@
   </table>
   &ini.php.constants;
  </para>
- 
+
  &ini.descriptions.title;
- 
+
  <para>
   <variablelist>
    <varlistentry xml:id="ini.opcache.enable">
@@ -374,7 +374,7 @@
       <function>is_file</function> and <function>is_readable</function> are
       called. This may increase performance in applications that check the
       existence and readability of PHP scripts, but risks returning stale data
-      if 
+      if
       <link linkend="ini.opcache.validate-timestamps">opcache.validate_timestamps</link>
       is disabled.
      </para>

@@ -38,16 +38,16 @@ foreach ($functions as $function_name) {
 
 	// @todo fix source so trim() isn't needed
 	$function_name = trim($function_name);
-	
+
 	$function      = $api->getFunctionByName($function_name);
 	$prototype     = (string) $function;
-	
+
 	// @todo fix this. Replaces class.method with class::method
 	// @todo fix this? Replaces NULL with null, to remain consistent
 	$function_name_fixed = str_replace('.', '::', (string) $function_name);
 	$prototype           = str_replace($function_name, $function_name_fixed, $prototype);
 	$prototype           = str_replace('NULL', 'null', $prototype);
-	
+
 	// Some contain new lines, let's remove them
 	$purpose = str_replace("\n", '', (string) $function->getPurpose());
 	// @todo fix bug when return description contains tables (example: variant_and())
@@ -74,23 +74,23 @@ foreach ($functions as $function_name) {
 			[purpose] => Add headers
 			[prototype] => bool HttpRequest::addHeaders(array $headers)
 			[return] => Returns TRUE on success or FALSE on failure.
-			[versions] => 
+			[versions] =>
 		)
 	*/
-	
+
 	// @todo Describe (implement?) other options like ->getParams(), ->getSeeAlsoEntries(), ->getChangelogEntries()
 	$json_arr[$function_name_fixed] = array(
-		
+
 		// Example usage: php.net/$id works
 		'id'	    => (string) $function->getManualId(),
-		
-		'purpose'   => (string) $purpose, 
-		
+
+		'purpose'   => (string) $purpose,
+
 		'prototype' => (string) $prototype,
-		
+
 		// Return description. It contains text (including tables) so may be large and odd
 		'return'    => (string) $return,
-		
+
 		// @todo This appears empty for class::method's -- why?
 		'versions'	=> (string) $function->getVersion(),
 	);

@@ -67,7 +67,7 @@
      <term><parameter>iv</parameter></term>
      <listitem>
       <para>
-       A non-NULL Initialization Vector. 
+       A non-NULL Initialization Vector.
       </para>
      </listitem>
     </varlistentry>

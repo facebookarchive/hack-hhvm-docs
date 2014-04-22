@@ -5,7 +5,7 @@
   <refname>swf_shapemoveto</refname>
   <refpurpose>Move the current position</refpurpose>
  </refnamediv>
- 
+
  <refsect1 role="description">
   &reftitle.description;
   <methodsynopsis>

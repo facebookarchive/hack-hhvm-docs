@@ -4,7 +4,7 @@
    <title>Installation of Hack</title>
    <para>
     This section will guide you through the general installation and
-    configuration of Hack. 
+    configuration of Hack.
    </para>
    <para>
     Hack prerequisites:
@@ -13,13 +13,13 @@
       <simpara>
         <link xlink:href="&url.hack.install;">HHVM Installation</link>
       </simpara>
-     </listitem> 
+     </listitem>
     </itemizedlist>
    </para>
 
    &install.hack.bootstrapping;
    &install.hack.conversion;
-   
+
   </chapter>
 
 <!-- Keep this comment at the end of the file

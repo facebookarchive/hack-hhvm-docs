@@ -20,7 +20,7 @@
    (PHP &gt;= 4.3 only) If no parent is found, NULL is returned.
   </para>
   <para>
-   The following example will show two identical lists of children. 
+   The following example will show two identical lists of children.
    <example>
     <title>Finding the document of a node</title>
     <programlisting role="php">

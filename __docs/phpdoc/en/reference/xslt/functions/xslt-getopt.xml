@@ -5,7 +5,7 @@
   <refname>xslt_getopt</refname>
   <refpurpose>Get options on a given xsl processor</refpurpose>
  </refnamediv>
- 
+
  <refsect1 role="description">
   &reftitle.description;
   <methodsynopsis>
@@ -30,11 +30,11 @@
  <refsect1 role="returnvalues">
   &reftitle.returnvalues;
   <para>
-   Returns the options, a bitmask constructed with the 
+   Returns the options, a bitmask constructed with the
    <literal>XSLT_SABOPT_XXX</literal> constants.
   </para>
  </refsect1>
- 
+
  <refsect1 role="seealso">
   &reftitle.seealso;
   <para>

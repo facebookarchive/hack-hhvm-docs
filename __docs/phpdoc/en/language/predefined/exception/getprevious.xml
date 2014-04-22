@@ -6,7 +6,7 @@
   <refname>Exception::getPrevious</refname>
   <refpurpose>Returns previous Exception</refpurpose>
  </refnamediv>
- 
+
  <refsect1 role="description">
   &reftitle.description;
   <methodsynopsis>
@@ -17,16 +17,16 @@
    Returns previous Exception (the third parameter of <methodname>Exception::__construct</methodname>).
   </para>
  </refsect1>
- 
+
  <refsect1 role="parameters">
   &reftitle.parameters;
   &no.function.parameters;
  </refsect1>
- 
+
  <refsect1 role="returnvalues">
   &reftitle.returnvalues;
   <para>
-   Returns the previous <classname>Exception</classname> if available 
+   Returns the previous <classname>Exception</classname> if available
    or &null; otherwise.
   </para>
  </refsect1>
@@ -73,10 +73,10 @@ try {
    </example>
   </para>
  </refsect1>
- 
+
 
 </refentry>
- 
+
 <!-- Keep this comment at the end of the file
 Local variables:
 mode: sgml

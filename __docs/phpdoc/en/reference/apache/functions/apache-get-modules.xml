@@ -16,7 +16,7 @@
    Get a list of loaded Apache modules.
   </para>
  </refsect1>
- 
+
  <refsect1 role="returnvalues">
   &reftitle.returnvalues;
   <para>
@@ -39,8 +39,8 @@
       <row>
        <entry>5.0.0</entry>
        <entry>
-        Became available when using Apache 1, or the PHP  Apache 2 
-        <emphasis>filter</emphasis> API. Before this time, it was only 
+        Became available when using Apache 1, or the PHP  Apache 2
+        <emphasis>filter</emphasis> API. Before this time, it was only
         available when using the Apache 2 <emphasis>handler</emphasis> API.
        </entry>
       </row>

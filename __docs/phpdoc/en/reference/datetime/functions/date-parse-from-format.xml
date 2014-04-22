@@ -75,7 +75,7 @@ Array
     [hour] => 13
     [minute] => 0
     [second] => 0
-    [fraction] => 
+    [fraction] =>
     [warning_count] => 0
     [warnings] => Array
         (
@@ -89,7 +89,7 @@ Array
     [is_localtime] => 1
     [zone_type] => 1
     [zone] => -60
-    [is_dst] => 
+    [is_dst] =>
 )
 ]]>
     </screen>

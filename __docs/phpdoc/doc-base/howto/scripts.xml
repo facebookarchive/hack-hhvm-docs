@@ -26,7 +26,7 @@
    dictionary.
   </para>
  </sect1>
- 
+
  <sect1 xml:id="scripts.check-references.php">
   <title>check-references.php</title>
   <para>
@@ -44,7 +44,7 @@
    defined in the beginning of this script.
   </para>
  </sect1>
- 
+
  <sect1 xml:id="scripts.diff-en-rev.php">
   <title>diff_en_rev.php</title>
   <para>
@@ -62,7 +62,7 @@
    list of modified files in the directory is printed.
   </para>
  </sect1>
- 
+
  <sect1 xml:id="scripts.extensions.xml.php">
   <title>extensions.xml.php</title>
   <para>

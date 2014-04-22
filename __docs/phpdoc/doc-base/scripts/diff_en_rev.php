@@ -65,14 +65,14 @@ foreach ($files as $lang_filename) {
 		continue;
 	}
 	$en_filename = ereg_replace('^[^/]*', 'en', $lang_filename);
-	
+
 	// find EN-Revision tag
 	if (!eregi("(.*)<!-- *EN-Revision: +([^ ]*)", head($lang_filename), $regs)) {
 		fwrite(STDERR, "Error: Can't find EN-Revision tag in first 500 bytes of $lang_filename.\n");
 	}
 	$line_no = substr_count($regs[1], "\n") + 1;
 	$revision = $regs[2];
-	
+
 	// compare with local version
 	$same_revision = (file_exists($en_filename) && eregi('<!-- *\\$'.'Revision: +([0-9.])', head($en_filename), $regs) && $regs[1] == $revision); // '.' due to storing to CVS repository
 	if (is_dir($filename)) {

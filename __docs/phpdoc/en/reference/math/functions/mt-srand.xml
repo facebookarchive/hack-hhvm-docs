@@ -58,7 +58,7 @@
       <row>
        <entry>4.2.0</entry>
        <entry>
-        The <parameter>seed</parameter> becomes optional 
+        The <parameter>seed</parameter> becomes optional
         and defaults to a random value if omitted.
        </entry>
       </row>

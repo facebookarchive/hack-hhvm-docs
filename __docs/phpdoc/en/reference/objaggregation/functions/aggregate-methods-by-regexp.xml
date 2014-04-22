@@ -20,7 +20,7 @@
   </methodsynopsis>
   <para>
    Aggregates methods from a class to an existing object using a regular
-   expression to match method names. 
+   expression to match method names.
   </para>
   <para>
    The class constructor or methods whose names start with an underscore

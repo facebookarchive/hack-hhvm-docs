@@ -15,7 +15,7 @@
     <classname>Awaitable&lt;T&gt;</classname> objects are returned from <link
     linkend="hack.async">async functions</link>.
    </para>
-   
+
    <caution>
     <para>
      <classname>Awaitable&lt;T&gt;</classname> objects cannot be instantiated via
@@ -40,7 +40,7 @@
      </ooclass>
     </classsynopsisinfo>
 <!-- }}} -->
-    
+
     <classsynopsisinfo role="comment">&Methods;</classsynopsisinfo>
     <xi:include xpointer="xmlns(db=http://docbook.org/ns/docbook) xpointer(id('class.hack.awaitablet')/db:refentry/db:refsect1[@role='description']/descendant::db:methodsynopsis[not(@role='procedural')])" />
    </classsynopsis>

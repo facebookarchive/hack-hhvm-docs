@@ -45,7 +45,7 @@
        </para>
       </warning>
      </listitem>
-    </varlistentry>   
+    </varlistentry>
     <varlistentry>
      <term>
       <parameter>fields</parameter>
@@ -57,7 +57,7 @@
        The <literal>_id</literal> field is always returned.
       </para>
      </listitem>
-    </varlistentry>   
+    </varlistentry>
    </variablelist>
   </para>
  </refsect1>
@@ -70,11 +70,11 @@
  <refsect1 role="errors">
   &reftitle.errors;
   <para>
-   Throws <classname>MongoConnectionException</classname> if it cannot reach the 
+   Throws <classname>MongoConnectionException</classname> if it cannot reach the
    database.
   </para>
  </refsect1>
- 
+
  <refsect1 role="examples">
   &reftitle.examples;
   <example>
@@ -153,4 +153,4 @@ End:
 vim600: syn=xml fen fdm=syntax fdl=2 si
 vim: et tw=78 syn=sgml
 vi: ts=1 sw=1
---> 
+-->

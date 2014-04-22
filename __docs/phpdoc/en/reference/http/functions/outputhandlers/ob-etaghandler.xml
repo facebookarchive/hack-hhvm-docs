@@ -17,7 +17,7 @@
    &http.use.ob_start;
   </para>
   <para>
-   Output buffer handler generating an <literal>ETag</literal> with the hash algorithm 
+   Output buffer handler generating an <literal>ETag</literal> with the hash algorithm
    specified with the &link.http.configuration; <link linkend="http.configuration.etag.mode">http.etag.mode</link>.
   </para>
   <para>

@@ -5,7 +5,7 @@
   <refname>strcmp</refname>
   <refpurpose>Binary safe string comparison</refpurpose>
  </refnamediv>
- 
+
  <refsect1 role="description">
   &reftitle.description;
   <methodsynopsis>

@@ -27,7 +27,7 @@
      <term><parameter>name</parameter></term>
      <listitem>
       <para>
-       The name of the attribute. If this attribute doesn't exist, it will be 
+       The name of the attribute. If this attribute doesn't exist, it will be
        created.
       </para>
      </listitem>

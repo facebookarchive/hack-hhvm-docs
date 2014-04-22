@@ -157,7 +157,7 @@
         </term>
         <listitem>
           <simpara>
-            If set during a call to <methodname>AMQPQueue::ack</methodname>, the delivery tag is treated as "up to and including", so that multiple messages can be acknowledged with a single method. If set to zero, the delivery tag refers to a single message. If the <constant>AMQP_MULTIPLE</constant> flag is set, and the delivery tag is zero, this indicates acknowledgement of all outstanding messages. 
+            If set during a call to <methodname>AMQPQueue::ack</methodname>, the delivery tag is treated as "up to and including", so that multiple messages can be acknowledged with a single method. If set to zero, the delivery tag refers to a single message. If the <constant>AMQP_MULTIPLE</constant> flag is set, and the delivery tag is zero, this indicates acknowledgement of all outstanding messages.
           </simpara>
         </listitem>
       </varlistentry>
@@ -168,7 +168,7 @@
         </term>
         <listitem>
           <simpara>
-            If set during a call to <methodname>AMQPExchange::bind</methodname>, the server will not respond to the method. The client should not wait for a reply method. If the server could not complete the method it will raise a channel or connection exception. 
+            If set during a call to <methodname>AMQPExchange::bind</methodname>, the server will not respond to the method. The client should not wait for a reply method. If the server could not complete the method it will raise a channel or connection exception.
           </simpara>
         </listitem>
       </varlistentry>      <varlistentry xml:id="constant.amqp-ex-type-direct">

@@ -88,7 +88,7 @@ array(1) {
     object(Foo)#2 (0) {
     }
 }
-]]>         
+]]>
       </screen>
     </informalexample>
   </para>
@@ -96,7 +96,7 @@ array(1) {
     A &quot;map&quot; is the most associative for an array. In other words, Hack disallows <literal>array&lt;int, int, int&gt;</literal>.
   </para>
 </chapter>
-  
+
 <!-- Keep this comment at the end of the file
 Local variables:
 mode: sgml

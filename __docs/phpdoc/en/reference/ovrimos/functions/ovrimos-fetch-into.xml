@@ -5,7 +5,7 @@
   <refname>ovrimos_fetch_into</refname>
   <refpurpose>Fetches a row from the result set</refpurpose>
  </refnamediv>
- 
+
  <refsect1 role="description">
   &reftitle.description;
   <methodsynopsis>
@@ -16,7 +16,7 @@
    <methodparam choice="opt"><type>int</type><parameter>rownumber</parameter></methodparam>
   </methodsynopsis>
   <para>
-   Fetches a row from the given result set, into 
+   Fetches a row from the given result set, into
    <parameter>result_array</parameter>.
   </para>
  </refsect1>
@@ -87,7 +87,7 @@
            <entry><literal>Absolute</literal></entry>
            <entry>
             Absolute position from the start.
-            Requires <parameter>rownumber</parameter>. 
+            Requires <parameter>rownumber</parameter>.
            </entry>
           </row>
          </tbody>
@@ -100,9 +100,9 @@
      <term><parameter>rownumber</parameter></term>
      <listitem>
       <para>
-       The row number, first one is 0. Only needed when 
+       The row number, first one is 0. Only needed when
        <parameter>how</parameter> is set to
-       <literal>Absolute</literal>. 
+       <literal>Absolute</literal>.
       </para>
      </listitem>
     </varlistentry>

@@ -11,7 +11,7 @@
    <title>PHP 4</title>
    <para>
     The bundled PHP 4 version requires <link xlink:href="&url.zziplib;">ZZIPlib</link>,
-    by Guido Draheim, version 0.10.6 or later 
+    by Guido Draheim, version 0.10.6 or later
    </para>
   </section>
 

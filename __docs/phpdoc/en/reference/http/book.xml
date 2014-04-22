@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- $Revision: 330340 $ -->
- 
+
 <book xml:id="book.http" xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink">
  <title>HTTP</title>
- 
+
  <!-- {{{ preface -->
  <preface xml:id="intro.http">
   &reftitle.intro;
@@ -12,14 +12,14 @@
    set of functionality for major applications.
   </simpara>
   <simpara>
-   The HTTP extension eases handling of HTTP URLs, dates, redirects, 
-   headers and messages in a HTTP context (both incoming and outgoing). 
-   It also provides means for client negotiation of preferred language 
-   and charset, as well as a convenient way to exchange arbitrary data 
+   The HTTP extension eases handling of HTTP URLs, dates, redirects,
+   headers and messages in a HTTP context (both incoming and outgoing).
+   It also provides means for client negotiation of preferred language
+   and charset, as well as a convenient way to exchange arbitrary data
    with caching and resuming capabilities.
   </simpara>
   <simpara>
-   Also provided is a powerful request and parallel interface (PHP 5+), 
+   Also provided is a powerful request and parallel interface (PHP 5+),
    if the extension is built with cURL support.
   </simpara>
   <simpara>
@@ -29,7 +29,7 @@
   </simpara>
  </preface>
  <!-- }}} -->
- 
+
  &reference.http.setup;
  &reference.http.constants;
  &reference.http.request-options;

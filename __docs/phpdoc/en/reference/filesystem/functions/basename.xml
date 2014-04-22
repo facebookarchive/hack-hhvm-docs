@@ -5,7 +5,7 @@
   <refname>basename</refname>
   <refpurpose>Returns trailing name component of path</refpurpose>
  </refnamediv>
- 
+
  <refsect1 role="description">
   &reftitle.description;
   <methodsynopsis>
@@ -103,13 +103,13 @@ echo "5) ".basename("/");
 2) passwd
 3) etc
 4) .
-5) 
+5)
 ]]>
     </screen>
    </example>
   </para>
  </refsect1>
- 
+
  <refsect1 role="notes">
   &reftitle.notes;
   <note>
@@ -121,8 +121,8 @@ echo "5) ".basename("/");
   </note>
   <note>
    <para>
-    <function>basename</function> is locale aware, so for it to see the 
-    correct basename with multibyte character paths, the matching locale must 
+    <function>basename</function> is locale aware, so for it to see the
+    correct basename with multibyte character paths, the matching locale must
     be set using the <function>setlocale</function> function.
    </para>
   </note>

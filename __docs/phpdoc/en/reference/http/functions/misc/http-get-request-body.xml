@@ -16,7 +16,7 @@
    Get the raw request body (e.g. POST or PUT data).
   </para>
   <para>
-   This function can not be used after 
+   This function can not be used after
    <function>http_get_request_body_stream</function>
    if the request method was another than POST.
   </para>

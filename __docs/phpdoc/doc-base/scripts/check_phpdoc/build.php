@@ -1,5 +1,5 @@
 <?php
-/*  
+/*
   +----------------------------------------------------------------------+
   | PHP Version 4                                                        |
   +----------------------------------------------------------------------+
@@ -15,12 +15,12 @@
   +----------------------------------------------------------------------+
   | Authors:    Mehdi Achour <didou@php.net>                             |
   +----------------------------------------------------------------------+
- 
+
   $Id: build.php 307070 2011-01-04 11:45:55Z rquadling $
 */
 
 /**
- * @todo 
+ * @todo
  * Improve support for deprecated functions (introduce a new entity in phpdoc?)
  * Check for role="reference" on parameters
  * Check against php-src for parameters/return values (parse the C code, not protos)
@@ -215,7 +215,7 @@ foreach (glob('../../en/reference/*/*/*.xml') as $function) {
         $status[$extension][$funcname]['noerrors'] = 1;
     }
     unset($errors);
-    
+
     // ChangeLog
     if (!isset($changelog) && preg_match('!PHP \d!', $xmlstr)) {
         $status[$extension][$funcname]['nochangelog'] = 1;

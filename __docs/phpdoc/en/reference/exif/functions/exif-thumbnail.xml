@@ -16,17 +16,17 @@
    <methodparam choice="opt"><type>int</type><parameter role="reference">imagetype</parameter></methodparam>
   </methodsynopsis>
   <para>
-   <function>exif_thumbnail</function> reads the embedded thumbnail of a 
-   <acronym>TIFF</acronym> or <acronym>JPEG</acronym> image. 
+   <function>exif_thumbnail</function> reads the embedded thumbnail of a
+   <acronym>TIFF</acronym> or <acronym>JPEG</acronym> image.
   </para>
   <para>
    If you want to deliver thumbnails through this function, you should send
    the mimetype information using the <function>header</function> function.
   </para>
   <para>
-   It is possible that <function>exif_thumbnail</function> cannot create an 
-   image but can determine its size. In this case, the return value is 
-   &false; but <parameter>width</parameter> and <parameter>height</parameter> 
+   It is possible that <function>exif_thumbnail</function> cannot create an
+   image but can determine its size. In this case, the return value is
+   &false; but <parameter>width</parameter> and <parameter>height</parameter>
    are set.
   </para>
  </refsect1>
@@ -74,7 +74,7 @@
  <refsect1 role="returnvalues">
   &reftitle.returnvalues;
   <para>
-   Returns the embedded thumbnail, or &false; if the image contains no 
+   Returns the embedded thumbnail, or &false; if the image contains no
    thumbnail.
   </para>
  </refsect1>
@@ -93,8 +93,8 @@
       <row>
        <entry>4.3.0</entry>
        <entry>
-        The optional parameters <parameter>width</parameter>, 
-        <parameter>height</parameter>, and <parameter>imagetype</parameter> 
+        The optional parameters <parameter>width</parameter>,
+        <parameter>height</parameter>, and <parameter>imagetype</parameter>
         all became available.
        </entry>
       </row>

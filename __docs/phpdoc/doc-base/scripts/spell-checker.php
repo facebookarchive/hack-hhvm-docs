@@ -119,7 +119,7 @@ function check_data($xml, $data)
                     echo "Added '$word' to personal wordlist.\n";
                 }
                 if ($response[0] == 'l') {
-                    file_put_contents('/tmp/fix-me-later.txt', $note, FILE_APPEND); 
+                    file_put_contents('/tmp/fix-me-later.txt', $note, FILE_APPEND);
                     echo "You will deal with '$word' later.\n";
                 }
             }

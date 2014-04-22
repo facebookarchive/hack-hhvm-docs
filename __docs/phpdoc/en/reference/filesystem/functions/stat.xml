@@ -5,7 +5,7 @@
   <refname>stat</refname>
   <refpurpose>Gives information about a file</refpurpose>
  </refnamediv>
- 
+
  <refsect1 role="description">
   &reftitle.description;
   <methodsynopsis>
@@ -179,13 +179,13 @@
 $stat = stat('C:\php\php.exe');
 
 /*
- * Print file access time, this is the same 
+ * Print file access time, this is the same
  * as calling fileatime()
  */
 echo 'Access time: ' . $stat['atime'];
 
 /*
- * Print file modification time, this is the 
+ * Print file modification time, this is the
  * same as calling filemtime()
  */
 echo 'Modification time: ' . $stat['mtime'];
@@ -211,7 +211,7 @@ if (!$stat) {
     echo 'stat() call failed...';
 } else {
     /*
-     * We want the access time to be 1 week 
+     * We want the access time to be 1 week
      * after the current access time.
      */
     $atime = $stat['atime'] + 604800;

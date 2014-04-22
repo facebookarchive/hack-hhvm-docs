@@ -17,7 +17,7 @@
    Parse parameter list.
   </para>
   <para>
-   See the <link linkend="http.constants.params">params parsing constants table</link> for possible 
+   See the <link linkend="http.constants.params">params parsing constants table</link> for possible
    values of the <parameter>flags</parameter> argument.
   </para>
  </refsect1>

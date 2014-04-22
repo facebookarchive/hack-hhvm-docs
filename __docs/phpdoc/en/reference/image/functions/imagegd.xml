@@ -13,7 +13,7 @@
    <methodparam choice="opt"><type>string</type><parameter>filename</parameter></methodparam>
   </methodsynopsis>
   <para>
-   Outputs a GD image to the given <parameter>filename</parameter>. 
+   Outputs a GD image to the given <parameter>filename</parameter>.
   </para>
  </refsect1>
  <refsect1 role="parameters">

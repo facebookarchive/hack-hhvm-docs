@@ -1,6 +1,6 @@
 #!/usr/bin/php -q
 <?php
-/*  
+/*
   +----------------------------------------------------------------------+
   | PHP Version 4                                                        |
   +----------------------------------------------------------------------+
@@ -17,7 +17,7 @@
   | Authors:    Georg Richter <georg@php.net>                            |
   |             Gabor Hojtsy <goba@php.net>                              |
   +----------------------------------------------------------------------+
- 
+
   $Id: checkent.php 307070 2011-01-04 11:45:55Z rquadling $
 */
 
@@ -92,7 +92,7 @@ foreach ($entity_urls as $num => $entity_url) {
 
         // Depending on URL scheme
         switch ($url["scheme"]) {
-    
+
             // Use URL fopen wrapper
             case "http":
                 if ($fpurl = @fopen($entity_url, "r")) {
@@ -102,7 +102,7 @@ foreach ($entity_urls as $num => $entity_url) {
                     errormsg ($entity, "Could not open document: " . $entity_url);
                 }
             break;
-    
+
             // Use FTP functions
             case "ftp":
                 if ($ftp = @ftp_connect($url["host"])) {

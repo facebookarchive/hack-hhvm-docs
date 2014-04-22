@@ -26,7 +26,7 @@
     <term><parameter>avro_message</parameter></term>
     <listitem>
      <para>
-      The binary avro message to be decoded. 
+      The binary avro message to be decoded.
      </para>
     </listitem>
    </varlistentry>
@@ -34,7 +34,7 @@
     <term><parameter>json_schema</parameter></term>
     <listitem>
      <para>
-      The avro JSON schema (avpr) to be used in decoding the message. 
+      The avro JSON schema (avpr) to be used in decoding the message.
      </para>
     </listitem>
    </varlistentry>

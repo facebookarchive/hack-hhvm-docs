@@ -5,7 +5,7 @@
   <refname>posix_mkfifo</refname>
   <refpurpose>Create a fifo special file (a named pipe)</refpurpose>
  </refnamediv>
- 
+
  <refsect1 role="description">
   &reftitle.description;
   <methodsynopsis>
@@ -57,7 +57,7 @@
 
  <refsect1 role="notes">
   &reftitle.notes;
-  
+
  </refsect1>
 
 </refentry>

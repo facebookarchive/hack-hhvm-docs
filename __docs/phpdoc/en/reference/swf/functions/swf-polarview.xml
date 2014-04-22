@@ -5,7 +5,7 @@
   <refname>swf_polarview</refname>
   <refpurpose>Define the viewer's position with polar coordinates</refpurpose>
  </refnamediv>
- 
+
  <refsect1 role="description">
   &reftitle.description;
   <methodsynopsis>
@@ -17,7 +17,7 @@
   </methodsynopsis>
   <para>
    The <function>swf_polarview</function> function defines the
-   viewer's position in polar coordinates.  
+   viewer's position in polar coordinates.
   </para>
  </refsect1>
 
@@ -29,7 +29,7 @@
      <term><parameter>dist</parameter></term>
      <listitem>
       <para>
-       The distance between the viewpoint to the world space origin.  
+       The distance between the viewpoint to the world space origin.
       </para>
      </listitem>
     </varlistentry>
@@ -38,7 +38,7 @@
      <listitem>
       <para>
        Defines the azimuthal angle in the x,y coordinate plane, measured in
-       distance from the y axis.  
+       distance from the y axis.
       </para>
      </listitem>
     </varlistentry>

@@ -4,7 +4,7 @@
  &reftitle.install;
  <para>
   The PDO_SQLITE PDO driver is enabled by default. To disable,
-  <option role="configure">--without-pdo-sqlite[=DIR]</option> may be used, 
+  <option role="configure">--without-pdo-sqlite[=DIR]</option> may be used,
   where the optional <literal>[=DIR]</literal> is the sqlite base install directory.
  </para>
 </section>

@@ -19,7 +19,7 @@
   </methodsynopsis>
   <para>
    Aggregates properties from a class to an existing object using a list of
-   property names. 
+   property names.
   </para>
   <para>
    The properties whose names start with an underscore character (_), which

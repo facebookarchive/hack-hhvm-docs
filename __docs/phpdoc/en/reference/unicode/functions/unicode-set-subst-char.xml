@@ -14,11 +14,11 @@
   </methodsynopsis>
   <para>
    When converting a string from or to unicode, an invalid or unconvertible
-   character may be encountered. When the conversion error mode is set to 
-   <constant>U_CONV_ERROR_SUBST</constant>, the character that caused the 
-   error is substituted by a character set by this function. The default 
+   character may be encountered. When the conversion error mode is set to
+   <constant>U_CONV_ERROR_SUBST</constant>, the character that caused the
+   error is substituted by a character set by this function. The default
    substitution character is <literal>?</literal>.
-  </para> 
+  </para>
  </refsect1>
 
  <refsect1 role="parameters">
@@ -47,7 +47,7 @@
  <refsect1 role="errors">
   &reftitle.errors;
   <para>
-   Emits a <constant>E_WARNING</constant> level error if 
+   Emits a <constant>E_WARNING</constant> level error if
    <parameter>character</parameter> is invalid.
   </para>
  </refsect1>

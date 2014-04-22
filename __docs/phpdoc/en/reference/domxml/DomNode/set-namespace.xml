@@ -17,7 +17,7 @@
   <para>
    Sets the namespace of a node to <parameter>uri</parameter>.
    If there is already a namespace declaration with the same uri in one of the parent nodes
-   of the node, the prefix of this is taken, otherwise it will take the one provided 
+   of the node, the prefix of this is taken, otherwise it will take the one provided
    in the optional parameter <parameter>prefix</parameter> or generate a random one.
   </para>
   <para>

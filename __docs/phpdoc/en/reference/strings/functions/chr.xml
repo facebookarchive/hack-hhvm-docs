@@ -5,7 +5,7 @@
   <refname>chr</refname>
   <refpurpose>Return a specific character</refpurpose>
  </refnamediv>
- 
+
  <refsect1 role="description">
   &reftitle.description;
   <methodsynopsis>
@@ -17,7 +17,7 @@
    by <parameter>ascii</parameter>.
   </para>
   <para>
-   This function complements <function>ord</function>. 
+   This function complements <function>ord</function>.
   </para>
  </refsect1>
 

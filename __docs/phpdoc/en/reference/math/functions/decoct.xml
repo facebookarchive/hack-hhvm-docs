@@ -14,7 +14,7 @@
   <para>
    Returns a string containing an octal representation of the given
    <parameter>number</parameter> argument.  The largest number that can be converted is
-   4294967295 in decimal resulting to "37777777777". 
+   4294967295 in decimal resulting to "37777777777".
   </para>
  </refsect1>
  <refsect1 role="parameters">

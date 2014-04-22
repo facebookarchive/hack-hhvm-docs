@@ -45,7 +45,7 @@
      <term><parameter>waitSearcher</parameter></term>
      <listitem>
       <para>
-       Block until a new searcher is opened and registered as the main query searcher, making the changes visible. 
+       Block until a new searcher is opened and registered as the main query searcher, making the changes visible.
       </para>
      </listitem>
     </varlistentry>

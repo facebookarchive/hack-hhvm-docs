@@ -7,21 +7,21 @@
    to be objects (by specifying the name of the class in the function
    prototype), interfaces, arrays (since PHP 5.1) or <type>callable</type>
    (since PHP 5.4). However, if <type>NULL</type> is used
-   as the default parameter value, it will be allowed as an argument for any 
+   as the default parameter value, it will be allowed as an argument for any
    later call.
   </para>
-  
+
   <para>
    If class or interface is specified as type hint then all its children or
    implementations are allowed too.
   </para>
-  
+
   <para>
    Type hints can not be used with scalar types such as <type>int</type> or
    <type>string</type>.
    <link linkend="language.types.resource">Resources</link> and <link linkend="language.oop5.traits">Traits</link> are not allowed either.
   </para>
-  
+
   <example>
    <title>Type Hinting examples</title>
     <programlisting role="php">
@@ -48,14 +48,14 @@ class MyClass
     public function test_array(array $input_array) {
         print_r($input_array);
     }
-    
+
     /**
      * First parameter must be iterator
      */
     public function test_interface(Traversable $iterator) {
         echo get_class($iterator);
     }
-    
+
     /**
      * First parameter must be callable
      */
@@ -154,7 +154,7 @@ test(new stdClass);
    </programlisting>
   </example>
  </sect1>
- 
+
 <!-- Keep this comment at the end of the file
 Local variables:
 mode: sgml

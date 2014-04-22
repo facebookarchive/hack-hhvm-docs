@@ -47,7 +47,7 @@
 class API {
     /**
      * the doc info will be generated automatically into service info page.
-     * @params 
+     * @params
      * @return
      */
     public function some_method($parameter, $option = "foo") {

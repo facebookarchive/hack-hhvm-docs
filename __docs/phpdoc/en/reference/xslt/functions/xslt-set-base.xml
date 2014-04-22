@@ -5,7 +5,7 @@
   <refname>xslt_set_base</refname>
   <refpurpose>Set the base URI for all <acronym>XSLT</acronym> transformations</refpurpose>
  </refnamediv>
- 
+
  <refsect1 role="description">
   &reftitle.description;
   <methodsynopsis>

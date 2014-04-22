@@ -18,7 +18,7 @@
       hashes using the <constant>CRYPT_BLOWFISH</constant> algorithm.
      </para>
      <para>
-      This will always result in a hash using the "$2y$" crypt format, 
+      This will always result in a hash using the "$2y$" crypt format,
       which is always 60 characters wide.
      </para>
      <para>
@@ -37,7 +37,7 @@
       </listitem>
       <listitem>
        <para>
-        <literal>cost</literal> - which denotes the algorithmic cost that should be used. 
+        <literal>cost</literal> - which denotes the algorithmic cost that should be used.
         Examples of these values can be found on the <function>crypt</function> page.
        </para>
        <para>

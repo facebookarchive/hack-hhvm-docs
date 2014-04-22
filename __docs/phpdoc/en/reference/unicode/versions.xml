@@ -5,7 +5,7 @@
 -->
 
 <versions>
-<!-- FIXME PHP_6 
+<!-- FIXME PHP_6
  <function name='unicode_decode' from='PHP 6 &gt;= 6.0.0'/>
  <function name='unicode_encode' from='PHP 6 &gt;= 6.0.0'/>
  <function name='unicode_get_error_mode' from='PHP 6 &gt;= 6.0.0'/>

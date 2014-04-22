@@ -5,7 +5,7 @@
    <refnamediv>
     <refname>xpath_eval</refname>
     <refpurpose>
-     Evaluates the XPath Location Path in the given string 
+     Evaluates the XPath Location Path in the given string
     </refpurpose>
    </refnamediv>
    <refsect1>
@@ -13,16 +13,16 @@
     <methodsynopsis>
      <type>XPathObject</type><methodname>XPathContext::xpath_eval</methodname>
      <methodparam><type>string</type><parameter>xpath_expression</parameter></methodparam>
-     <methodparam choice="opt"><type>domnode</type><parameter>contextnode</parameter></methodparam>      
+     <methodparam choice="opt"><type>domnode</type><parameter>contextnode</parameter></methodparam>
     </methodsynopsis>
     <methodsynopsis>
      <type>XPathObject</type><methodname>xpath_eval</methodname>
      <methodparam><type>XPathContext</type><parameter>xpath_context</parameter></methodparam>
      <methodparam><type>string</type><parameter>xpath_expression</parameter></methodparam>
-     <methodparam choice="opt"><type>domnode</type><parameter>contextnode</parameter></methodparam>      
+     <methodparam choice="opt"><type>domnode</type><parameter>contextnode</parameter></methodparam>
     </methodsynopsis>
     <para>
-    The optional <parameter>contextnode</parameter> can be specified for doing relative XPath queries. 
+    The optional <parameter>contextnode</parameter> can be specified for doing relative XPath queries.
     </para>
     <para>
      See also <function>xpath_new_context</function>.

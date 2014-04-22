@@ -28,7 +28,7 @@
      <listitem>
       <para>&gd.image.path;</para>
       <para>
-       To skip this argument in order to provide the 
+       To skip this argument in order to provide the
        <parameter>quality</parameter> parameter, use &null;.
       </para>
      </listitem>
@@ -38,7 +38,7 @@
      <listitem>
       <para>
        <parameter>quality</parameter> is optional, and ranges from 0 (worst
-       quality, smaller file) to 100 (best quality, biggest file). The 
+       quality, smaller file) to 100 (best quality, biggest file). The
        default is the default IJG quality value (about 75).
       </para>
      </listitem>

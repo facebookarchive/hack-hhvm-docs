@@ -18,7 +18,7 @@
 
   $Id: intro.php 307070 2011-01-04 11:45:55Z rquadling $
 */
-//-- The PHPDOC Online XML Editing Tool 
+//-- The PHPDOC Online XML Editing Tool
 //--- Purpose: just an introduction
 // ToDo show summary of translated files (or revcheck)
 
@@ -31,7 +31,7 @@ $lang = $user['phpdocLang'];
 <body style="font-family: Tahoma; font-size: 12px;">
 
 <h2> The PHPDOC Online XML Editing Tool </h2>
- Developed by Salah Faya visualmind(@)php.net<br> 
+ Developed by Salah Faya visualmind(@)php.net<br>
  Version 1.0 - essentially developed for Arabic Translation of PHP Manual<br>
  Now updated to work with all phpdoc translations<br>
 <br>

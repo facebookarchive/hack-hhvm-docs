@@ -8,7 +8,7 @@
   <option role="configure">--without-pcre-regex</option>. Use
   <option role="configure">--with-pcre-regex=DIR</option> to specify DIR
   where PCRE's include and library files are located, if not using bundled library.
-  For older versions you have to configure and compile PHP 
+  For older versions you have to configure and compile PHP
   with <option role="configure">--with-pcre-regex[=DIR]</option> in order
   to use these functions.
  </para>

@@ -5,7 +5,7 @@
   <refname>udm_check_stored</refname>
   <refpurpose>Check connection to stored</refpurpose>
  </refnamediv>
- 
+
  <refsect1 role="description">
   &reftitle.description;
   <methodsynopsis>

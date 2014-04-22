@@ -45,7 +45,7 @@
      <term><parameter>color</parameter></term>
      <listitem>
       <para>
-       The fill color. A color identifier created with 
+       The fill color. A color identifier created with
        <function>imagecolorallocate</function>.
       </para>
      </listitem>

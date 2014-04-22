@@ -16,7 +16,7 @@ $packagexml->setOptions(array(
   "roles"                => array("sh" => "script",),
   "dir_roles"            => array("man3" => "doc",),
 
-  // This will unfortunately also exclude DOMDocument.xinclude, there is no way 
+  // This will unfortunately also exclude DOMDocument.xinclude, there is no way
   // of doing case-sensitive ignores :(
   "ignore"               => array("index.sqlite", "man3/DomDocument.xinclude.3.gz"),
 ));

@@ -5,7 +5,7 @@
   <refname>xslt_set_log</refname>
   <refpurpose>Set the log file to write log messages to</refpurpose>
  </refnamediv>
- 
+
  <refsect1 role="description">
   &reftitle.description;
   <methodsynopsis>

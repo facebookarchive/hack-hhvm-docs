@@ -15,7 +15,7 @@
      <void/>
     </methodsynopsis>
     <para>
-     This function returns the root element node of a document. 
+     This function returns the root element node of a document.
     </para>
     <para>
      The following example returns just the element with name <literal>CHAPTER</literal> and

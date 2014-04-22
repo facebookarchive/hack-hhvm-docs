@@ -5,7 +5,7 @@
   <refname>utf8_encode</refname>
   <refpurpose>Encodes an ISO-8859-1 string to UTF-8</refpurpose>
  </refnamediv>
- 
+
  <refsect1 role="description">
   &reftitle.description;
   <methodsynopsis>

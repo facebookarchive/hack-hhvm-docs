@@ -19,12 +19,12 @@
    communicating with the AMQP broker. Though named "rabbit", this library is compatible with all Version 0-9-1
    compatible AMQP brokers.
   </para>
-  
+
   <para>
    We *HIGHLY* recommend you review the <link xlink:href="&url.amqp.amqp_0_9_1_reference;">AMQP specification reference, version 0-9-1</link>. This document will help explain a lot of the calls made available by this extension.
   </para>
  </preface>
- 
+
  &reference.amqp.setup;
  &reference.amqp.constants;
  &reference.amqp.examples;

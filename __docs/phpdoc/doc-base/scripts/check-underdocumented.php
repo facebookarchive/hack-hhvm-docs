@@ -34,7 +34,7 @@ foreach (new RecursiveIteratorIterator(new RecursiveDirectoryIterator($phpdoc_pa
 
 	$filepath = $file->getPathname();
 	$filename = $file->getBasename();
-	
+
 	if (strpos($filepath, '.svn')) {
 		continue;
 	}
@@ -45,7 +45,7 @@ foreach (new RecursiveIteratorIterator(new RecursiveDirectoryIterator($phpdoc_pa
 
 	$fileid = str_replace($phpdoc_path, '', $filepath);
 	$ext    = strtok($fileid, DIRECTORY_SEPARATOR);
-	
+
 	if (file_exists($phpdoc_path . $fileid)) {
 		$contents = file_get_contents($phpdoc_path . $fileid);
 		if (false !== strpos($contents, 'warn.undocumented.func')) {

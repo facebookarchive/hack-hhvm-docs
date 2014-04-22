@@ -25,7 +25,7 @@
 <?php
 
 // include.xml contains :
-// <child>test</child> 
+// <child>test</child>
 
 $xml = '<?xml version="1.0"?>
 <root xmlns:xi="http://www.w3.org/2001/XInclude">
@@ -41,7 +41,7 @@ $domxml->xinclude();
 
 echo $domxml->dump_mem();
 
-?>                 
+?>
 ]]>
       </programlisting>
       &example.outputs;

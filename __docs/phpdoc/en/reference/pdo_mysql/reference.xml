@@ -122,7 +122,7 @@ $username = 'username';
 $password = 'password';
 $options = array(
     PDO::MYSQL_ATTR_INIT_COMMAND => 'SET NAMES utf8',
-); 
+);
 
 $dbh = new PDO($dsn, $username, $password, $options);
 ?>
@@ -190,9 +190,9 @@ mysql:unix_socket=/tmp/mysql.sock;dbname=testdb
     <note>
      <title>Unix only:</title>
      <para>
-      When the host name is set to <literal>"localhost"</literal>, then the connection to the 
-      server is made thru a domain socket. If PDO_MYSQL is compiled against libmysqlclient then the 
-      location of the socket file is at libmysqlclient's compiled in location. If PDO_MYSQL is compiled 
+      When the host name is set to <literal>"localhost"</literal>, then the connection to the
+      server is made thru a domain socket. If PDO_MYSQL is compiled against libmysqlclient then the
+      location of the socket file is at libmysqlclient's compiled in location. If PDO_MYSQL is compiled
       against mysqlnd a default socket can be set thru the <link linkend="ini.pdo-mysql.default-socket">
       pdo_mysql.default_socket</link> setting.
      </para>

@@ -2,7 +2,7 @@
 namespace phpdotnet\phd;
 /* $Id$ */
 
-// @php_dir@ gets replaced by pear with the install dir. use __DIR__ when 
+// @php_dir@ gets replaced by pear with the install dir. use __DIR__ when
 // running from SVN
 define("__INSTALLDIR__", "@php_dir@" == "@"."php_dir@" ? __DIR__ : "@php_dir@");
 
@@ -103,7 +103,7 @@ foreach((array)Config::package() as $package) {
     if (count(Config::output_format()) == 0) {
         Config::set_output_format((array)$factory->getOutputFormats());
     }
- 
+
     // Register the formats
     foreach (Config::output_format() as $format) {
         $render->attach($factory->createFormat($format));

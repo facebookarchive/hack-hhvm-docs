@@ -2,12 +2,12 @@
 <!-- $Revision: 331904 $ -->
 <chapter xml:id="configuration" xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink">
  <title>Runtime Configuration</title>
- 
+
  <sect1 xml:id="configuration.file">
   <title>The configuration file</title>
-  
+
   <simpara>
-   The configuration file (&php.ini;) is read when HHVM starts up. For the server module versions of HHVM, this happens only once when the web server is started. For the <acronym>CLI</acronym> (Command-Line) versions, it happens on every invocation. 
+   The configuration file (&php.ini;) is read when HHVM starts up. For the server module versions of HHVM, this happens only once when the web server is started. For the <acronym>CLI</acronym> (Command-Line) versions, it happens on every invocation.
   </simpara>
   <para>
    &php.ini; is searched for in these locations (in order):
@@ -65,18 +65,18 @@ include_path = ".;c:\hhvm\lib"
    </example>
   </para>
  </sect1>
- 
+
  <sect1 xml:id="configuration.changes.modes">
-  <title>Where a configuration setting may be set</title> 
+  <title>Where a configuration setting may be set</title>
   <para>
    These modes determine when and where a HHVM directive may or may not
    be set, and each directive within the manual refers to one of these
    modes. For example, some settings may be set within a PHP script
    using <function>ini_set</function>, whereas others may require
    &php.ini;.
-  </para> 
+  </para>
   <para>
-   For example, the <link linkend="ini.output-buffering">output_buffering</link> setting is <literal>PHP_INI_PERDIR</literal> therefore it may not be set using <function>ini_set</function>. However, the <link linkend="ini.display-errors">display_errors</link> directive is <literal>PHP_INI_ALL</literal> therefore it may be set anywhere, including with <function>ini_set</function>. 
+   For example, the <link linkend="ini.output-buffering">output_buffering</link> setting is <literal>PHP_INI_PERDIR</literal> therefore it may not be set using <function>ini_set</function>. However, the <link linkend="ini.display-errors">display_errors</link> directive is <literal>PHP_INI_ALL</literal> therefore it may be set anywhere, including with <function>ini_set</function>.
   </para>
   <para>
    <table>
@@ -115,20 +115,20 @@ include_path = ".;c:\hhvm\lib"
    </table>
   </para>
  </sect1>
- 
+
  <sect1 xml:id="configuration.changes">
   <title>How to change configuration settings</title>
   <sect2 xml:id="configuration.changes.other">
    <title>Other interfaces to HHVM</title>
    <para>
-    Regardless of how you run HHVM, you can change certain values at runtime of your scripts through <function>ini_set</function>. See the documentation on the <function>ini_set</function> page for more information. 
+    Regardless of how you run HHVM, you can change certain values at runtime of your scripts through <function>ini_set</function>. See the documentation on the <function>ini_set</function> page for more information.
    </para>
    <para>
-    If you are interested in a complete list of configuration settings on your system with their current values, you can execute the <function>phpinfo</function> function, and review the resulting page. You can also access the values of individual configuration directives at runtime using <function>ini_get</function> or <function>get_cfg_var</function>. 
+    If you are interested in a complete list of configuration settings on your system with their current values, you can execute the <function>phpinfo</function> function, and review the resulting page. You can also access the values of individual configuration directives at runtime using <function>ini_get</function> or <function>get_cfg_var</function>.
    </para>
   </sect2>
  </sect1>
- 
+
 </chapter>
 
 <!-- Keep this comment at the end of the file

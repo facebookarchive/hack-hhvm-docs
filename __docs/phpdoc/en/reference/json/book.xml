@@ -10,8 +10,8 @@
   &reftitle.intro;
   <para>
    This extension implements the <link
-    xlink:href="&url.json;">JavaScript Object Notation (JSON)</link> 
-   data-interchange format. The decoding is handled by a parser based on 
+    xlink:href="&url.json;">JavaScript Object Notation (JSON)</link>
+   data-interchange format. The decoding is handled by a parser based on
    the JSON_checker by Douglas Crockford.
   </para>
   &json.implementation.superset;

@@ -15,10 +15,10 @@
    <methodparam choice="opt"><type>bool</type><parameter>normalize_array</parameter></methodparam>
   </methodsynopsis>
   <para>
-   Returns the color described by the GmagickPixel object, as an array. If the color has an opacity channel set, this is provided as a fourth value in the list. 
+   Returns the color described by the GmagickPixel object, as an array. If the color has an opacity channel set, this is provided as a fourth value in the list.
   </para>
 
-   
+
 
  </refsect1>
 
@@ -38,7 +38,7 @@
      <term><parameter>normalize_array</parameter></term>
      <listitem>
       <para>
-       Normalize the color values 
+       Normalize the color values
       </para>
      </listitem>
     </varlistentry>
@@ -49,7 +49,7 @@
  <refsect1 role="returnvalues">
   &reftitle.returnvalues;
   <para>
-   An array of channel values, each normalized if TRUE is given as param. Throws GmagickPixelException on error. 
+   An array of channel values, each normalized if TRUE is given as param. Throws GmagickPixelException on error.
   </para>
  </refsect1>
 

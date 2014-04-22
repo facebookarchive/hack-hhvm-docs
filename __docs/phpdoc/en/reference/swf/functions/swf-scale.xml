@@ -5,7 +5,7 @@
   <refname>swf_scale</refname>
   <refpurpose>Scale the current transformation</refpurpose>
  </refnamediv>
- 
+
  <refsect1 role="description">
   &reftitle.description;
   <methodsynopsis>

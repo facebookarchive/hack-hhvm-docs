@@ -14,10 +14,10 @@
   <sect1 xml:id="reserved.keywords">
   <title>List of Keywords</title>
    <simpara>
-    These words have special meaning in HHVM. Some of them represent things 
-    which look like functions, some look like constants, and so on - but 
+    These words have special meaning in HHVM. Some of them represent things
+    which look like functions, some look like constants, and so on - but
     they're not, really: they are language constructs. You cannot use any
-    of the following words as constants, class names, function or method names. 
+    of the following words as constants, class names, function or method names.
     Using them as variable names is generally OK, but could lead to confusion.
    </simpara>
 
@@ -263,7 +263,7 @@
      </tbody>
     </tgroup>
    </table>
-   
+
    <table>
     <title>Compile-time constants</title>
     <tgroup cols="5">
@@ -272,7 +272,7 @@
        <entry>
         <link linkend="language.constants.predefined">__CLASS__</link>
        </entry>
-       <entry> 
+       <entry>
         <link linkend="language.constants.predefined">__DIR__</link>
        </entry>
        <entry>
@@ -352,7 +352,7 @@
      </varlistentry>
     </variablelist>
    </sect2>
-   
+
    <sect2 xml:id="reserved.classes.predefined">
     <title>Predefined classes</title>
     <variablelist>
@@ -379,7 +379,7 @@
 
    <sect2 xml:id="reserved.classes.closure">
     <title>Closure</title>
-    
+
     <simpara>
      For more information, see its <link linkend="class.closure">class
      page</link>.
@@ -388,7 +388,7 @@
 
    <sect2 xml:id="reserved.classes.generator">
     <title>Generator</title>
-    
+
     <simpara>
      For more information, see its <link linkend="class.generator">class
      page</link>.
@@ -397,12 +397,12 @@
 
    <sect2 xml:id="reserved.classes.special">
     <title>Special classes</title>
-    
+
     <simpara>
      Following identifiers may not be used as a class name as they have
      special purpose.
     </simpara>
-    
+
     <variablelist>
      <varlistentry>
       <term><classname>self</classname></term>

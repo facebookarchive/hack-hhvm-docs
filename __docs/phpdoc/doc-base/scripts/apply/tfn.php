@@ -30,7 +30,7 @@ function apply($input)
 
 	$from = '/(<constant>)?(<literal>)?&(true|false|null);(<\/constant>)?(<\/literal>)?/';
 	$to = "&\\3;";
-	
+
 
 	$output = preg_replace($from,$to,$output);
 

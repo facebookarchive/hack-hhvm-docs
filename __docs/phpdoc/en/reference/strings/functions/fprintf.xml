@@ -5,7 +5,7 @@
   <refname>fprintf</refname>
   <refpurpose>Write a formatted string to a stream</refpurpose>
  </refnamediv>
- 
+
  <refsect1 role="description">
   &reftitle.description;
   <methodsynopsis>
@@ -35,7 +35,7 @@
      <term><parameter>format</parameter></term>
      <listitem>
       <para>
-       See <function>sprintf</function> for a description of 
+       See <function>sprintf</function> for a description of
        <parameter>format</parameter>.
       </para>
      </listitem>

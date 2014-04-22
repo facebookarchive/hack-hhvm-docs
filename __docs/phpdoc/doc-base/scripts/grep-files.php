@@ -1,6 +1,6 @@
 #!/usr/bin/php -q
 <?php
-/*  
+/*
   +----------------------------------------------------------------------+
   | PHP Version 4                                                        |
   +----------------------------------------------------------------------+
@@ -16,7 +16,7 @@
   +----------------------------------------------------------------------+
   | Authors:    Philip Olson <philip@php.net>                            |
   +----------------------------------------------------------------------+
- 
+
   $Id: grep-files.php 307070 2011-01-04 11:45:55Z rquadling $
 */
 
@@ -28,8 +28,8 @@ if (strtoupper(substr(PHP_OS, 0, 3)) === 'WIN') {
 $editor = getenv('EDITOR');
 
 if ($_SERVER['argc'] == 2 &&
-	in_array($_SERVER['argv'][1], array('--help', '-help', '-h', '-?')) 
-	|| 
+	in_array($_SERVER['argv'][1], array('--help', '-help', '-h', '-?'))
+	||
 	$_SERVER['argc'] < 2) {
 
 	echo "\nFind and edit files by grepping for a case insensitive string.\n";

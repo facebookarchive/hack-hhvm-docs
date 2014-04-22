@@ -5,7 +5,7 @@
   <refname>array_map</refname>
   <refpurpose>Applies the callback to the elements of the given arrays</refpurpose>
  </refnamediv>
- 
+
  <refsect1 role="description">
   &reftitle.description;
   <methodsynopsis>
@@ -277,8 +277,8 @@ Array
   </para>
   <para>
    If the array argument contains string keys then the returned array
-   will contain string keys if and only if exactly one array is passed. If 
-   more than one argument is passed then the returned array always has 
+   will contain string keys if and only if exactly one array is passed. If
+   more than one argument is passed then the returned array always has
    integer keys.
   </para>
   <para>

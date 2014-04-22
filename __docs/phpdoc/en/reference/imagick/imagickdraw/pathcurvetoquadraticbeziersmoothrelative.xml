@@ -19,9 +19,9 @@
    current point to (x, y). The control point is assumed to be the reflection
    of the control point on the previous command relative to the current point.
    (If there is no previous command or if the previous command was not a
-   DrawPathCurveToQuadraticBezierAbsolute, 
-   DrawPathCurveToQuadraticBezierRelative, 
-   DrawPathCurveToQuadraticBezierSmoothAbsolut or 
+   DrawPathCurveToQuadraticBezierAbsolute,
+   DrawPathCurveToQuadraticBezierRelative,
+   DrawPathCurveToQuadraticBezierSmoothAbsolut or
    DrawPathCurveToQuadraticBezierSmoothRelative, assume the control point is
    coincident with the current point). At the end of the command, the new
    current point becomes the final (x, y) coordinate pair used in the

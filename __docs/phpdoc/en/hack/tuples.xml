@@ -6,7 +6,7 @@
   </para>
   <note>
     <para>
-      The values inside a tuple are, of course, mutable. It is the &quot;shape&quot; of a tuple that is not mutable ... no removing, adding or changing the types of elements 
+      The values inside a tuple are, of course, mutable. It is the &quot;shape&quot; of a tuple that is not mutable ... no removing, adding or changing the types of elements
     </para>
   </note>
   <para>
@@ -18,7 +18,7 @@
       <programlisting role="php">
 <![CDATA[
 <?hh
- 
+
 class TupleTest {
   public function test(): void {
     $arr = array('3', 2, 3, 4, 'hi');
@@ -37,12 +37,12 @@ class TupleTest {
     var_dump($tup);
   }
 }
- 
+
 function main_tup() {
   $tp = new TupleTest();
   $tp->test();
 }
- 
+
 main_tup();
 
 main_tup();
@@ -69,7 +69,7 @@ Invalid index
   <sect1 xml:id="hack.tuples.usecases">
     <title>Use Cases</title>
     <para>
-      Why use a tuple? There are common use cases for when a tuple can be quite valuable. It is important to note, however, there can be other paradigms to accomplish what a tuple can accomplish in many cases. In addition, noting that they actually mutable at runtime, tuples in Hack should be used when wanting the comfort of an immutable type safety check by the Hack type checker. Because, as of now, tuples at runtime are not necessarily tuples as one would expect them to behave. 
+      Why use a tuple? There are common use cases for when a tuple can be quite valuable. It is important to note, however, there can be other paradigms to accomplish what a tuple can accomplish in many cases. In addition, noting that they actually mutable at runtime, tuples in Hack should be used when wanting the comfort of an immutable type safety check by the Hack type checker. Because, as of now, tuples at runtime are not necessarily tuples as one would expect them to behave.
       <itemizedlist>
         <listitem>
           <para>
@@ -88,7 +88,7 @@ Invalid index
         </listitem>
         <listitem>
           <para>
-            Thread safety. A known immutable object is inherently morethread-safe than a mutable object. (Although, given that tuples in Hack are, in fact, mutable at runtime, the thread safety use case is not as valuable.) 
+            Thread safety. A known immutable object is inherently morethread-safe than a mutable object. (Although, given that tuples in Hack are, in fact, mutable at runtime, the thread safety use case is not as valuable.)
           </para>
         </listitem>
       </itemizedlist>
@@ -98,19 +98,19 @@ Invalid index
   <sect1 xml:id="hack.tuples.implementation">
     <title>Tuples Are Implemented As Arrays</title>
     <para>
-      The discussion of tuples started with the premise that tuples are immutable. Well, that is true as far as Hack is concerned. In HHVM, tuples are arrays under the covers; thus, HHVM allows tuples to be mutated. In fact, tuples are currently a pure PHP implementation. 
+      The discussion of tuples started with the premise that tuples are immutable. Well, that is true as far as Hack is concerned. In HHVM, tuples are arrays under the covers; thus, HHVM allows tuples to be mutated. In fact, tuples are currently a pure PHP implementation.
       <informalexample>
         <programlisting role="php">
 <![CDATA[
 <?hh
- 
+
 function tuple(...) {
   return func_get_args();
 }
 ]]>
         </programlisting>
         <para>
-          <literal>func_get_args()</literal> returns an array comprising the a function's argument list. 
+          <literal>func_get_args()</literal> returns an array comprising the a function's argument list.
         </para>
       </informalexample>
     </para>
@@ -120,7 +120,7 @@ function tuple(...) {
         <programlisting role="php">
 <![CDATA[
 <?hh
- 
+
 class TupleTest {
   public function test(): void {
     $arr = array('3', 2, 3, 4, 'hi');
@@ -139,12 +139,12 @@ class TupleTest {
     var_dump($tup);
   }
 }
- 
+
 function main_tup() {
   $tp = new TupleTest();
   $tp->test();
 }
- 
+
 main_tup();
 
 main_tup();
@@ -234,7 +234,7 @@ array(6) {
         <para>
           Declaring a <literal>tuple()</literal> with five elements really calls <literal>func_get_args()</literal> where each of those five elements are part of an integer-indexed array. That is why tuples are indexed exactly like arrays. And arrays are mutable in every way in PHP.
         </para>
-      </informalexample> 
+      </informalexample>
     </para>
   </sect1>
 
@@ -256,7 +256,7 @@ function test_tup() {
       </informalexample>
     </para>
     <para>
-      However, when adding type annotations that require a tuple, the <literal>tuple</literal> reserved word is not used. 
+      However, when adding type annotations that require a tuple, the <literal>tuple</literal> reserved word is not used.
       <informalexample>
         <programlisting role="php">
 <![CDATA[
@@ -275,28 +275,28 @@ function test_tup((string, string) $tup): Vector<(string, string)> {
   <sect1 xml:id="hack.tuples.returningfrommethod">
     <title>Returning a Tuple From a Method</title>
     <para>
-      There may be times when it is necessary to multiple values from a method. There are a few options available to accomplish this task. Arrays can be used. Some sort of collection type (e.g. <literal>Vector</literal>) could be used. And, of course, tuples could be used. Here is code that makes use of some of the options: 
+      There may be times when it is necessary to multiple values from a method. There are a few options available to accomplish this task. Arrays can be used. Some sort of collection type (e.g. <literal>Vector</literal>) could be used. And, of course, tuples could be used. Here is code that makes use of some of the options:
       <informalexample>
         <programlisting role="php">
 <![CDATA[
 <?hh
- 
+
 class ReturnMultipleValues {
- 
+
   public function foo(): array<mixed> {
     $arr = array("Hello", 3);
     $arr[2] = 4;
     var_dump($arr);
     return $arr;
   }
- 
+
   public function bar(): Vector<mixed> {
     $vec = Vector {"Hello", 3};
     $vec->add(4);
     var_dump($vec);
     return $vec;
   }
- 
+
   // This is how a tuple is returned from a method
   public function baz(): (string, int) {
     $tup = tuple("Hello", 3);
@@ -304,19 +304,19 @@ class ReturnMultipleValues {
     return $tup;
   }
 }
- 
+
 function main_tup() {
   $rmv = new ReturnMultipleValues();
   $rmv->foo();
   $rmv->bar();
   $rmv->baz();
 }
- 
+
 main_tup();
 ]]>
         </programlisting>
         <para>
-          So, why use a tuple when one could use an <literal>array()</literal>or <literal>Vector</literal>? The answer is mutability. Tuples by their very nature are immutable. No adding elements. No removing elements. No changing the types of values within the tuple (the values themselves can be changed, as long as they are type compatible). And having an immutable-style return type may be exactly was is specified. As discussed tuples are currently mutable at runtime. However, the Hack type checker will catch the mutation of tuples before runtime. If the code <literal>$tup[2] = 4;</literal> is uncommented, Hack will give the following error: 
+          So, why use a tuple when one could use an <literal>array()</literal>or <literal>Vector</literal>? The answer is mutability. Tuples by their very nature are immutable. No adding elements. No removing elements. No changing the types of values within the tuple (the values themselves can be changed, as long as they are type compatible). And having an immutable-style return type may be exactly was is specified. As discussed tuples are currently mutable at runtime. However, the Hack type checker will catch the mutation of tuples before runtime. If the code <literal>$tup[2] = 4;</literal> is uncommented, Hack will give the following error:
         </para>
         &example.outputs;
         <screen>
@@ -332,7 +332,7 @@ Invalid index
   <sect1 xml:id="hack.tuples.initializerexpressions">
     <title>Initializer Expressions</title>
     <para>
-      Tuples can be used in initializer expressions. For example, in the below example, class <literal>C</literal> has two <literal>tuple</literal> properties being initialized, one <literal>static</literal> and one <literal>instance</literal>: 
+      Tuples can be used in initializer expressions. For example, in the below example, class <literal>C</literal> has two <literal>tuple</literal> properties being initialized, one <literal>static</literal> and one <literal>instance</literal>:
       <informalexample>
         <programlisting role="php">
 <![CDATA[

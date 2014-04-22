@@ -53,7 +53,7 @@ set_time_limit(0);
 $langcodes = array("en");
 
 // Parameter value copying
-if ($argc == 3) { 
+if ($argc == 3) {
     $langcodes = array($argv[2]);
     if ($argv[2] === 'all') {
         $langcodes = array("ar", "cs", "de", "el", "en", "es", "fi",
@@ -73,18 +73,18 @@ function check_dir($dir, $entity)
     // Collect files and diretcories in these arrays
     $directories = array();
     $files = array();
-    
+
     // Skip old and unused functions directories (theoretically
     // it should only be in the English tree, but we are smart
     // and check for other language trees too...)
     if (preg_match("!/([a-z]{2}|pt_BR)/functions!", $dir)) {
         return;
     }
-    
+
     // Open and traverse the directory
     $handle = @opendir($dir);
     while ($file = @readdir($handle)) {
-      
+
       // Collect directories and XML files
       if ($file != 'CVS' && $file != '.' &&
           $file != '..' && is_dir($dir.$file)) {
@@ -96,11 +96,11 @@ function check_dir($dir, $entity)
 
     }
     @closedir($handle);
-      
+
     // Sort files and directories
     sort($directories);
     sort($files);
-      
+
     // Files first...
     foreach ($files as $file) {
       check_file($dir.$file, $entity);
@@ -118,7 +118,7 @@ function check_file ($filename, $entity)
 
     // Read in file contents
     $contents = file_get_contents($filename);
-    
+
     // Find all entity usage in this file
     if (preg_match("/&$entity;/U", $contents) == 1) {
         echo $filename . "\n";
@@ -126,7 +126,7 @@ function check_file ($filename, $entity)
     }
 
 } // check_file() function end
-  
+
 /*********************************************************************/
 /* Here starts the program                                           */
 /*********************************************************************/
@@ -141,10 +141,10 @@ foreach ($langcodes as $langcode) {
         echo "The $langcode language code is not valid\n";
         continue;
     }
-      
+
     // If directory is OK, start with the header
     echo "\nSearching in $docdir$langcode ...\n";
-    
+
     // Check the requested directory
     check_dir("$docdir$langcode/", $argv[1]);
 

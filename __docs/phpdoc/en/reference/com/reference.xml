@@ -1,21 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- $Revision: 297028 $ -->
 
-<reference xml:id="ref.com" xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink"> 
- <title>COM &Functions;</title> 
-   
+<reference xml:id="ref.com" xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink">
+ <title>COM &Functions;</title>
+
  <partintro>
   <section xml:id="com.seealso">
    &reftitle.seealso;
    <para>
     For further information on COM read the <link xlink:href="&url.comspecs;">COM
-    specification</link> or perhaps take a look at Don Box's 
+    specification</link> or perhaps take a look at Don Box's
     <link xlink:href="&url.yacl;">Yet Another COM Library (YACL)</link>.
     If you're thinking of using MS Office applications on the server side,
     you should read the information here: <link
     xlink:href="&url.msoffice.serverside;">Considerations for Server-Side Automation
     of Office</link>.
-   </para> 
+   </para>
   </section>
  </partintro>
 

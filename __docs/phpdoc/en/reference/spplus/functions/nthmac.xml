@@ -5,7 +5,7 @@
   <refname>nthmac</refname>
   <refpurpose>Obtain a nthmac key (needs 2 arguments)</refpurpose>
  </refnamediv>
- 
+
  <refsect1 role="description">
   &reftitle.description;
   <methodsynopsis>

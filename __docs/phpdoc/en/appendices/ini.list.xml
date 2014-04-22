@@ -7,13 +7,13 @@
    <para>
       HHVM does not currently support all the listed HHVM directives. This is being actively worked on and should be coming very soon.
    </para>
-  </note>  
+  </note>
   <para>
    This list includes the &php.ini; directives you can set to configure your
    HHVM setup.
   </para>
   <para>
-   The "Changeable" column shows the modes determining when and where a directive may be set.  
+   The "Changeable" column shows the modes determining when and where a directive may be set.
    See the <link linkend="configuration.changes.modes">Changeable mode values</link> section for their definitions.
   </para>
   <para>

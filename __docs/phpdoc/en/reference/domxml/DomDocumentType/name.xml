@@ -20,7 +20,7 @@
  <refsect1 role="returnvalues">
   &reftitle.returnvalues;
   <para>
-   Returns the name of the <classname>DomDocumentType</classname>, as a 
+   Returns the name of the <classname>DomDocumentType</classname>, as a
    string.
   </para>
  </refsect1>
@@ -52,7 +52,7 @@ echo $doctype->name(); // chapter
  <refsect1 role="migration">
   <title>Migrating to PHP 5</title>
   <para>
-   Use the <property>name</property> property of the 
+   Use the <property>name</property> property of the
    <classname>DOMDocumentType</classname> object.
   </para>
  </refsect1>

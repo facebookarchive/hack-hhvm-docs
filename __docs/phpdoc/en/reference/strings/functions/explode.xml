@@ -5,7 +5,7 @@
   <refname>explode</refname>
   <refpurpose>Split a string by string</refpurpose>
  </refnamediv>
- 
+
  <refsect1 role="description">
   &reftitle.description;
   <methodsynopsis>
@@ -148,7 +148,7 @@ echo $pass; // *
     <programlisting role="php">
 <![CDATA[
 <?php
-/* 
+/*
    A string that doesn't contain the delimiter will simply
    return a one-length array of the original string.
 */

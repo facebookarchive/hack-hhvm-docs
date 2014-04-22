@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- $Revision: 330340 $ -->
- 
+
 <book xml:id="book.hw" xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink">
  <title>Hyperwave</title>
- 
+
  <!-- {{{ preface -->
  <preface xml:id="intro.hw">
   &reftitle.intro;
@@ -15,7 +15,7 @@
   </para>
   <para>
    Hyperwave is not free software. The current version, 5.5 is
-   available at <link xlink:href="&url.hyperwave;">&url.hyperwave;</link>.  
+   available at <link xlink:href="&url.hyperwave;">&url.hyperwave;</link>.
    A time limited version can be ordered for free (30 days).
   </para>
   <para>
@@ -171,7 +171,7 @@
       Several functions return object records. The names of those
       functions end with obj.
      </simpara>
-    </listitem> 
+    </listitem>
     <listitem>
      <simpara>
       object array: An associative array with all attributes of an
@@ -192,7 +192,7 @@
      </simpara>
     </listitem>
    </itemizedlist>
-  </para> 
+  </para>
   <para>
    Several functions which return an array of object records do also
    return an associative array with statistical information about
@@ -256,7 +256,7 @@
   </para>
  </preface>
  <!-- }}} -->
- 
+
  &reference.hw.setup;
  &reference.hw.constants;
  &reference.hw.apache;

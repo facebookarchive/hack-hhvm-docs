@@ -10,13 +10,13 @@
   <section xml:id="maptktv.intro">
    &reftitle.intro;
    <para>
-    <link linkend="hack.collections.map">Map</link> is an ordered dictionary-style collection. HHVM provides a native implementation for this class. The Hack class definition is not actually used at run time; it is simply provided for the Hack typechecker and for developer reference. 
+    <link linkend="hack.collections.map">Map</link> is an ordered dictionary-style collection. HHVM provides a native implementation for this class. The Hack class definition is not actually used at run time; it is simply provided for the Hack typechecker and for developer reference.
    </para>
    <para>
     Like all objects in Hack, Maps have reference-like semantics. When a caller passes a Map to a callee, the callee can modify the Map and the caller will see the changes. Maps do not have "copy-on-write" semantics.
    </para>
    <para>
-    Maps preserve insertion order of key/value pairs. When iterating over a Map, the key/value pairs appear in the order they were inserted. Also, Maps do not automagically convert integer-like string keys (ex. "123") into integer keys. 
+    Maps preserve insertion order of key/value pairs. When iterating over a Map, the key/value pairs appear in the order they were inserted. Also, Maps do not automagically convert integer-like string keys (ex. "123") into integer keys.
    </para>
    <para>
     Maps only support integer keys and string keys. If a key of a different type is used, an exception will be thrown.
@@ -25,10 +25,10 @@
      Maps support <literal>$m[$k]</literal> style syntax for getting and setting values by key. Maps also support <literal>isset($m[$k])</literal> and <literal>empty($m[$k])</literal> syntax, and they provide similar semantics as arrays. Adding an element using <literal>$m[] = ..</literal> syntax is not supported unless you assign a <link linkend="class.hack.pairtv1tv2">Pair</link>.
    </para>
    <para>
-    Maps do not support iterating while new keys are being added or elements are being removed. When a new key is added or an element is removed, all iterators that point to the Map shall be considered invalid. 
+    Maps do not support iterating while new keys are being added or elements are being removed. When a new key is added or an element is removed, all iterators that point to the Map shall be considered invalid.
    </para>
    <para>
-    Maps do not support taking elements by reference. If binding assignment (<literal>=&amp;</literal>) is used with an element of a Map, or if an element of a Map is passed by reference, or if a Map is used with foreach by reference, an exception will be thrown. 
+    Maps do not support taking elements by reference. If binding assignment (<literal>=&amp;</literal>) is used with an element of a Map, or if an element of a Map is passed by reference, or if a Map is used with foreach by reference, an exception will be thrown.
    </para>
   </section>
 <!-- }}} -->
@@ -58,13 +58,13 @@
      <xi:include xpointer="xmlns(db=http://docbook.org/ns/docbook) xpointer(id('class.hack.maptktv')/db:refentry/db:refsect1[@role='description']/descendant::db:constructorsynopsis[1])" />
      <xi:include xpointer="xmlns(db=http://docbook.org/ns/docbook) xpointer(id('class.hack.maptktv')/db:refentry/db:refsect1[@role='description']/descendant::db:methodsynopsis[1])" />
    </classsynopsis>
-  </section> 
+  </section>
  </partintro>
-  
+
  &hackref.collections.entities.maptktv;
- 
+
 </phpdoc:classref>
- 
+
 <!-- Keep this comment at the end of the file
 Local variables:
 mode: sgml

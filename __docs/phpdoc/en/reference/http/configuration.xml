@@ -25,7 +25,7 @@
       <entry>
        The hashing algorithm used to generate the ETag.  MD5, SHA1, and CRC32
        are always available.  If the <link linkend="ref.hash">hash</link>
-       extension is enabled, any hashing algorithms this extension provides 
+       extension is enabled, any hashing algorithms this extension provides
        are available, too.
       </entry>
      </row>
@@ -214,9 +214,9 @@
       <entry>"1"</entry>
       <entry>PHP_INI_ALL</entry>
       <entry>
-       Each occasion where "exits with a status of..." is mentioned, usually causes 
+       Each occasion where "exits with a status of..." is mentioned, usually causes
        the halt of the scripting engine.  Disable this option if you alternatively
-       want to start a discarding (dev/null) output handler and continue script 
+       want to start a discarding (dev/null) output handler and continue script
        execution.
       </entry>
      </row>

@@ -1,17 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- $Revision: 330340 $ -->
- 
+
 <book xml:id="book.posix" xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink">
  <?phpdoc extension-membership="bundled" ?>
  <title>POSIX</title>
- 
+
  <!-- {{{ preface -->
  <preface xml:id="intro.posix">
   &reftitle.intro;
   <para>
    This module contains an interface to those functions defined in
    the IEEE 1003.1 (POSIX.1) standards document which are not
-   accessible through other means. 
+   accessible through other means.
   </para>
   <warning>
    <para>
@@ -25,7 +25,7 @@
   &note.no-windows.extension;
  </preface>
  <!-- }}} -->
- 
+
  &reference.posix.setup;
  &reference.posix.constants;
  &reference.posix.reference;

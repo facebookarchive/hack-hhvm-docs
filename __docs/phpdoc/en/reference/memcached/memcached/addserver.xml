@@ -43,7 +43,7 @@
      <listitem>
       <para>
        The hostname of the memcache server. If the hostname is invalid, data-related
-       operations will set 
+       operations will set
        <constant>Memcached::RES_HOST_LOOKUP_FAILURE</constant> result code.
       </para>
      </listitem>

@@ -9,7 +9,7 @@
  <refsect1 role="description">
   &reftitle.description;
   <simpara>
-   &info.function.alias; 
+   &info.function.alias;
    <function>aggregate_info</function>.
   </simpara>
  </refsect1>

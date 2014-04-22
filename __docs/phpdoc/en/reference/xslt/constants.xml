@@ -6,7 +6,7 @@
  <variablelist>
   <varlistentry xml:id="constant.xslt-opt-silent">
    <term>
-    <constant>XSLT_OPT_SILENT</constant> 
+    <constant>XSLT_OPT_SILENT</constant>
     (<type>integer</type>)
    </term>
    <listitem>
@@ -18,7 +18,7 @@
   </varlistentry>
   <varlistentry xml:id="constant.xslt-sabopt-parse-public-entities">
    <term>
-    <constant>XSLT_SABOPT_PARSE_PUBLIC_ENTITIES</constant> 
+    <constant>XSLT_SABOPT_PARSE_PUBLIC_ENTITIES</constant>
     (<type>integer</type>)
    </term>
    <listitem>
@@ -30,7 +30,7 @@
   </varlistentry>
   <varlistentry xml:id="constant.xslt-sabopt-disable-adding-meta">
    <term>
-    <constant>XSLT_SABOPT_DISABLE_ADDING_META</constant> 
+    <constant>XSLT_SABOPT_DISABLE_ADDING_META</constant>
     (<type>integer</type>)
    </term>
    <listitem>
@@ -43,7 +43,7 @@
   </varlistentry>
   <varlistentry xml:id="constant.xslt-sabopt-disable-stripping">
    <term>
-    <constant>XSLT_SABOPT_DISABLE_STRIPPING</constant> 
+    <constant>XSLT_SABOPT_DISABLE_STRIPPING</constant>
     (<type>integer</type>)
    </term>
    <listitem>
@@ -54,7 +54,7 @@
   </varlistentry>
   <varlistentry xml:id="constant.xslt-sabopt-ignore-doc-not-found">
    <term>
-    <constant>XSLT_SABOPT_IGNORE_DOC_NOT_FOUND</constant> 
+    <constant>XSLT_SABOPT_IGNORE_DOC_NOT_FOUND</constant>
     (<type>integer</type>)
    </term>
    <listitem>

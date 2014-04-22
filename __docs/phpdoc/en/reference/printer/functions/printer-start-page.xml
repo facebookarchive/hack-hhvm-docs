@@ -5,7 +5,7 @@
   <refname>printer_start_page</refname>
   <refpurpose>Start a new page</refpurpose>
  </refnamediv>
- 
+
  <refsect1 role="description">
   &reftitle.description;
   <methodsynopsis>

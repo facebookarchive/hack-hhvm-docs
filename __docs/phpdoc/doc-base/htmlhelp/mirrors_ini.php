@@ -1,9 +1,9 @@
 <?php
 
-/* 
+/*
    This file is part of the Windows Compiled HTML Help
    Manual Generator of the PHP Documentation project.
-   
+
    This script generates mirrors.ini from mirrors.inc ( can be
    downloaded from http://MIRROR.php.net/include/mirrors.inc )
 */

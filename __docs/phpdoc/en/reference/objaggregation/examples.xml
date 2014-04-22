@@ -17,13 +17,13 @@
 <![CDATA[
 <?php
 class MyDateTime {
-  
-  function MyDateTime() 
+
+  function MyDateTime()
   {
       // empty constructor
   }
 
-  function now() 
+  function now()
   {
       return date("Y-m-d H:i:s");
   }
@@ -33,13 +33,13 @@ class Report {
   var $_dt;
   // more properties ...
 
-  function Report() 
+  function Report()
   {
       $this->_dt = new MyDateTime();
       // initialization code ...
   }
 
-  function generateReport() 
+  function generateReport()
   {
       $dateTime = $this->_dt->now();
       // more code ...
@@ -55,7 +55,7 @@ $rep = new Report();
      </example>
      We can also associate instances at runtime by passing a reference in a
      constructor (or any other method), which allow us to dynamically change
-     the association relationship between objects. We will modify the example 
+     the association relationship between objects. We will modify the example
      above to illustrate this point:
      <example>
       <title>Object association</title>
@@ -68,13 +68,13 @@ class MyDateTime {
 
 class MyDateTimePlus {
   var $_format;
-  
-  function MyDateTimePlus($format="Y-m-d H:i:s") 
+
+  function MyDateTimePlus($format="Y-m-d H:i:s")
   {
       $this->_format = $format;
   }
 
-  function now() 
+  function now()
   {
       return date($this->_format);
   }
@@ -84,17 +84,17 @@ class Report {
   var $_dt;    // we'll keep the reference to MyDateTime here
   // more properties ...
 
-  function Report() 
+  function Report()
   {
       // do some initialization
   }
 
-  function setMyDateTime(&$dt) 
+  function setMyDateTime(&$dt)
   {
       $this->_dt =& $dt;
   }
 
-  function generateReport() 
+  function generateReport()
   {
       $dateTime = $this->_dt->now();
       // more code ...
@@ -117,14 +117,14 @@ echo $rep->generateReport();
 $rep->setMyDateTime($dtp);
 $output = $rep->generateReport();
 // save $output in database
-// ... etc ... 
+// ... etc ...
 ?>
 ]]>
       </programlisting>
      </example>
     </para>
     <para>
-     <emphasis>Aggregation</emphasis>, on the other hand, implies 
+     <emphasis>Aggregation</emphasis>, on the other hand, implies
      encapsulation (hidding) of the
      parts of the composition. We can aggregate classes by using a (static)
      inner class (PHP does not yet support inner classes), in this case the
@@ -134,7 +134,7 @@ $output = $rep->generateReport();
      process, expanding the properties and methods of that object.
     </para>
     <para>
-     Object aggregation is a natural way of representing a whole-part relationship, 
+     Object aggregation is a natural way of representing a whole-part relationship,
      (for example, molecules are aggregates of atoms), or can be used to
      obtain an effect equivalent to multiple inheritance, without having to
      permanently bind a subclass to two or more parent classes and their
@@ -157,12 +157,12 @@ $output = $rep->generateReport();
 class FileStorage {
    var $data;
 
-   function FileStorage($data) 
+   function FileStorage($data)
    {
        $this->data = $data;
    }
-   
-   function write($name) 
+
+   function write($name)
    {
        $fp = fopen(name, "w");
        fwrite($fp, $this->data);
@@ -175,13 +175,13 @@ class WDDXStorage {
    var $version = "1.0";
    var $_id; // "private" variable
 
-   function WDDXStorage($data) 
+   function WDDXStorage($data)
    {
        $this->data = $data;
        $this->_id = $this->_genID();
    }
 
-   function store() 
+   function store()
    {
        if ($this->_id) {
            $pid = wddx_packet_start($this->_id);
@@ -196,7 +196,7 @@ class WDDXStorage {
    }
 
    // a private method
-   function _genID() 
+   function _genID()
    {
        return md5(uniqid(rand(), true));
    }
@@ -206,12 +206,12 @@ class DBStorage {
    var $data;
    var $dbtype = "mysql";
 
-   function DBStorage($data) 
+   function DBStorage($data)
    {
        $this->data = $data;
    }
 
-   function save() 
+   function save()
    {
        $dbh = mysql_connect();
        mysql_select_db("storage", $dbh);
@@ -241,14 +241,14 @@ include "storageclasses.inc";
 
 // some utilty functions
 
-function p_arr($arr) 
+function p_arr($arr)
 {
    foreach ($arr as $k => $v)
        $out[] = "\t$k => $v";
    return implode("\n", $out);
 }
 
-function object_info($obj) 
+function object_info($obj)
 {
    $out[] = "Class: " . get_class($obj);
    foreach (get_object_vars($obj) as $var=>$val) {
@@ -305,7 +305,7 @@ echo object_info($fs) . "\n";
      First, the newly created <varname>$fs</varname> and <varname>$ws</varname>
      objects give the expected output (according to their respective class
      declaration). Note that for the purposes of object aggregation,
-     <emphasis>private elements of a class/object begin with an underscore 
+     <emphasis>private elements of a class/object begin with an underscore
      character ("_")</emphasis>, even though there is not real distinction between
      public and private class/object elements in PHP.
     </para>
@@ -421,7 +421,7 @@ method: save
      aggregation will not override existing properties or methods in the
      objects. For example, the class <classname>FileStorage</classname> defines a
      <varname>$data</varname> property, and the class
-     <classname>WDDXStorage</classname> also defines a similar property 
+     <classname>WDDXStorage</classname> also defines a similar property
      which will not override the one in the object acquired during
      instantiation from the class <classname>FileStorage</classname>.
     </para>

@@ -5,7 +5,7 @@
   <refname>wddx_deserialize</refname>
   <refpurpose>Unserializes a WDDX packet</refpurpose>
  </refnamediv>
- 
+
  <refsect1 role="description">
   &reftitle.description;
   <methodsynopsis>

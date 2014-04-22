@@ -107,7 +107,7 @@ function params_source_to_doc($type_spec)
 		"f" => "callable",
 		"x" => "string",
 		"p" => "string",
-		
+
 		"|" => "optional"
 	);
 	$return = array();
@@ -210,7 +210,7 @@ foreach ((isset($extension) ? glob($extension) : array_merge(array($zend_dir), g
 				$macros[$val[1]] = array(trim(str_replace(array("\r", "\\\n"), "", $val[3])), $params);
 			}
 		}
-		
+
 		preg_match_all('~ZEND_BEGIN_ARG_INFO(?:_EX)?\\(([^,]*),\\s*([^,)]+)(.*?)ZEND_END_ARG_INFO~s', $file, $matches, PREG_SET_ORDER);
 		foreach ($matches as $val) {
 			$function_name = trim($val[1]);
@@ -226,10 +226,10 @@ foreach ((isset($extension) ? glob($extension) : array_merge(array($zend_dir), g
 				$local_refs[$function_name] = ($local_refs[$function_name] ? min($local_refs[$function_name]) : $i+2);
 			}
 		}
-		
+
 		if (substr($filename, -2) != ".h") {
 			$files[$filename] = $file;
-			
+
 			// named functions
 			preg_match_all('~(?:PHP|ZEND)_NAMED_FE\\((\\w*)\\s*,\\s*(\\w*)~', $file, $matches, PREG_SET_ORDER);
 			foreach ($matches as $val) {
@@ -237,7 +237,7 @@ foreach ((isset($extension) ? glob($extension) : array_merge(array($zend_dir), g
 			}
 		}
 	}
-	
+
 	foreach ($files as $filename => $file) {
 		// methods
 		preg_match_all('~INIT(?:_OVERLOADED)?_CLASS_ENTRY\\(.*"([^"]+)"\\s*,\\s*([^)]+)~', $file, $matches, PREG_SET_ORDER);
@@ -251,12 +251,12 @@ foreach ((isset($extension) ? glob($extension) : array_merge(array($zend_dir), g
 			}
 		}
 	}
-	
+
 	foreach ($files as $filename => $file) {
 		if ($macros) {
 			$file = preg_replace_callback('~\\b(' . implode('|', array_keys($macros)) . ')\\b(\\(.*\\))?~', 'expand_macros', $file);
 		}
-		
+
 		// references
 		preg_match_all("~^[ \t]*(?:ZEND|PHP)_FE\\((\\w+)\\s*,\\s*(\\w+)\\s*[,)]~m", $file, $matches, PREG_SET_ORDER | PREG_OFFSET_CAPTURE);
 		preg_match_all("~^[ \t]*(?:ZEND|PHP)_FALIAS\\((\\w+)\\s*,[^,]+,\\s*(\\w+)\\s*[,)]~m", $file, $matches2, PREG_SET_ORDER | PREG_OFFSET_CAPTURE);
@@ -273,7 +273,7 @@ foreach ((isset($extension) ? glob($extension) : array_merge(array($zend_dir), g
 				}
 			}
 		}
-		
+
 		// read parameters
 		preg_match_all('~^(?:static )?(?:ZEND|PHP)(_NAMED)?_(?:FUNCTION|METHOD)\\(([^)]+)\\)(.*)^\\}~msU', $file, $matches, PREG_SET_ORDER | PREG_OFFSET_CAPTURE); // }}} is not in all sources so ^} is used instead
 		foreach ($matches as $val) {
@@ -284,7 +284,7 @@ foreach ((isset($extension) ? glob($extension) : array_merge(array($zend_dir), g
 			$function_name = strtolower($function_name);
 			$function_body = $val[3][0];
 			$lineno = substr_count(substr($file, 0, $val[3][1]), "\n") + 1;
-			
+
 			// return type
 			if (preg_match('~(.+)::__construct$~', $function_name, $match)) {
 				$return_types[$function_name] = array($match[1], $filename, $lineno);
@@ -314,7 +314,7 @@ foreach ((isset($extension) ? glob($extension) : array_merge(array($zend_dir), g
 					$return_types[$function_name] = array("void", $filename, $lineno);
 				}
 			}
-			
+
 			// other function call
 			if (preg_match('~(\\w+)\\(INTERNAL_FUNCTION_PARAM_PASSTHRU~', $function_body, $matches2)
 			&& !preg_match('~ZEND_NUM_ARGS\\(\\)~', $function_body) && $matches2[1] != "php_exec_ex"
@@ -324,7 +324,7 @@ foreach ((isset($extension) ? glob($extension) : array_merge(array($zend_dir), g
 				$function_body = $matches2[1][0];
 				$lineno = substr_count(substr($file, 0, $matches2[1][1]), "\n") + 1;
 			}
-			
+
 			// types and optional
 			if (!in_array($function_name, $difficult_params)
 			&& strpos($function_body, 'zend_parse_parameters_ex') === false // indicate difficulty
@@ -338,7 +338,7 @@ foreach ((isset($extension) ? glob($extension) : array_merge(array($zend_dir), g
 					}
 				}
 			} elseif (!in_array($function_name, $difficult_arg_count)) {
-			
+
 				// arguments count
 				$zend_num_args = "ZEND_NUM_ARGS()";
 				if (preg_match('~([a-zA-Z0-9_.]+)\\s*=\\s*ZEND_NUM_ARGS()~', $function_body, $matches2)) { // int argc = ZEND_NUM_ARGS();
@@ -406,7 +406,7 @@ foreach (array_merge(glob("$reference_path/*/*.xml", GLOB_BRACE), glob("$referen
 		$return_type = $matches[3];
 		$function_name = strtolower(($matches[2] ? "$matches[2]::" : "") . trim(preg_replace('~-(>|&gt;)~', '::', $matches[4])));
 		$methodsynopsis = $matches[5];
-		
+
 		// return type
 		if (isset($return_types[$function_name])) {
 			$counts["return"]++;
@@ -417,7 +417,7 @@ foreach (array_merge(glob("$reference_path/*/*.xml", GLOB_BRACE), glob("$referen
 		} elseif (preg_match("~<type>($invalid_types)</type>~", $return_type)) {
 			echo "Wrong return type in $filename on line $lineno.\n";
 		}
-		
+
 		// references
 		$source_ref = (isset($source_refs[$function_name]) ? $source_refs[$function_name] : array(null));
 		preg_match_all('~<parameter( role="reference")?>~', $methodsynopsis, $matches);
@@ -427,7 +427,7 @@ foreach (array_merge(glob("$reference_path/*/*.xml", GLOB_BRACE), glob("$referen
 				$byref[] = $key + 1;
 			}
 		}
-		if (!in_array($function_name, $wrong_refs) 
+		if (!in_array($function_name, $wrong_refs)
 		&& (is_int($source_ref[0]) ? $byref[0] != $source_ref[0] || count($byref) != count($matches[1]) - $source_ref[0] + 1 : $byref != $source_ref[0])
 		) {
 			echo ($source_ref[0] ? "Parameter(s) " . (is_int($source_ref[0]) ? "$source_ref[0] and rest" : implode(", ", $source_ref[0])) : "Nothing") . " should be passed by reference in $filename on line $lineno" . (isset($source_ref[1]) ? "\n$source_ref[1]:$source_ref[2]: source" : "") . ".\n";
@@ -435,7 +435,7 @@ foreach (array_merge(glob("$reference_path/*/*.xml", GLOB_BRACE), glob("$referen
 		if (isset($source_refs[$function_name])) {
 			$counts["refs"]++;
 		}
-		
+
 		// parameter types and optional
 		preg_match_all('~<methodparam(\\s+choice=[\'"]opt[\'"])?>\\s*<type>([^<]+)</type>\\s*<parameter(?: role="reference")?>([^<]+)</parameter>(?:<initializer>(.*?)</initializer>)?~i', $methodsynopsis, $matches); // (PREG_OFFSET_CAPTURE can be used to get precise line numbers)
 		foreach ($matches[2] as $i => $val) {
@@ -485,7 +485,7 @@ foreach (array_merge(glob("$reference_path/*/*.xml", GLOB_BRACE), glob("$referen
 			if ($error) {
 				echo "$error$source_type[1]:$source_type[2]: source\n";
 			}
-		
+
 		// arguments count
 		} elseif (isset($source_arg_counts[$function_name])) {
 			$source_arg_count =& $source_arg_counts[$function_name];

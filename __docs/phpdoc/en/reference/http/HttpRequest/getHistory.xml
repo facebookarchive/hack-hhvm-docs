@@ -22,7 +22,7 @@
    <classname>HttpRequest</classname>::<varname>recordHistory</varname> to &true;.
   </para>
   <para>
-   The returned object references the last received response, use <function>HttpMessage::getParentMessage</function> 
+   The returned object references the last received response, use <function>HttpMessage::getParentMessage</function>
    to access the data of previously sent requests and received responses.
   </para>
 

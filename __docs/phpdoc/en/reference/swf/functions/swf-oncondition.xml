@@ -5,7 +5,7 @@
   <refname>swf_oncondition</refname>
   <refpurpose>Describe a transition used to trigger an action list</refpurpose>
  </refnamediv>
- 
+
  <refsect1 role="description">
   &reftitle.description;
   <methodsynopsis>
@@ -14,7 +14,7 @@
   </methodsynopsis>
   <para>
    The <function>swf_oncondition</function> function describes a
-   transition that will trigger an action list.  
+   transition that will trigger an action list.
   </para>
  </refsect1>
 

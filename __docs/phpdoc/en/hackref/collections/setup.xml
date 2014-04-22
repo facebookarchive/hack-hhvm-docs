@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- $Revision$ -->
- 
+
 <chapter xml:id="collections.setup" xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink">
  &reftitle.setup;
- 
+
  <section xml:id="collections.requirements">
   &reftitle.required;
   <!-- Use &no.requirement; if there no requirement -->
@@ -11,7 +11,7 @@
    Requirements...
   </para>
  </section>
- 
+
  <section xml:id="collections.resources">
   &reftitle.resources;
   <!-- Use &no.resource; if there no resources -->
@@ -19,9 +19,9 @@
    Mention the resource here.
   </para>
  </section>
- 
+
 </chapter>
- 
+
 <!-- Keep this comment at the end of the file
 Local variables:
 mode: sgml

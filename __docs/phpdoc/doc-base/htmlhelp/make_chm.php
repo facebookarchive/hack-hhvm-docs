@@ -3,7 +3,7 @@
 /*
    This is the main file of the Windows Compiled HTML Help
    Manual Generator of the PHP Documentation project.
-   
+
    Written by Gabor Hojtsy <goba@php.net>
    Credits go to people worked on previous versions:
    Derick Rethans, Jirka Kosek, Thomas Schoefbeck and
@@ -39,7 +39,7 @@ adjustment, see README.txt and the phpdoc howto for
 more information.
 ____________________________________________________________
 ";
-  
+
 // Process parameters
 echo "\n| Processing local parameters...\n";
 
@@ -69,7 +69,7 @@ if (!@is_dir($HTML_TARGET)) {
 }
 
 if ($USE_NOTES) {
-    
+
     if (!@is_dir($NOTES_SRC)) {
         mkdir($NOTES_SRC, 0700);
         echo "> $NOTES_SRC directory created...\n";
@@ -78,7 +78,7 @@ if ($USE_NOTES) {
         passthru("rmdir /S /Q $NOTES_SRC");
         mkdir($NOTES_SRC, 0700);
     }
-    
+
     if (!@is_dir($NOTES_TARGET)) {
         mkdir($NOTES_TARGET, 0700);
         echo "> $NOTES_TARGET directory created...\n";
@@ -127,7 +127,7 @@ if ($USE_NOTES) {
 > Now the user notes project file and HTML files
   are being created. Please be patient, as it
   can take as much time as the previous step...
-  
+
 ";
     require_once "user_notes.php";
     echo "> $WITH_NOTES files created with notes

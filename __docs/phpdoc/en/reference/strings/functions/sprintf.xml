@@ -5,7 +5,7 @@
   <refname>sprintf</refname>
   <refpurpose>Return a formatted string</refpurpose>
  </refnamediv>
- 
+
  <refsect1 role="description">
   &reftitle.description;
   <methodsynopsis>
@@ -180,8 +180,8 @@
           <row>
            <entry><literal>integer</literal></entry>
            <entry>
-            <literal>d</literal>, 
-            <literal>u</literal>, 
+            <literal>d</literal>,
+            <literal>u</literal>,
             <literal>c</literal>,
             <literal>o</literal>,
             <literal>x</literal>,

@@ -16,16 +16,16 @@
 	 * | Authors: Kalle Sommer Nielsen <kalle@php.net>                        |
 	 * |          Hannes Magnusson <bjori@php.net>                            |
 	 * +----------------------------------------------------------------------+
-	 * 
+	 *
 	 * $Id: build-chms.php 331863 2013-10-18 20:33:30Z mumumu $
 	 */
 
 
 	/**
-	 * This script is based off the original build.chms.bat 
+	 * This script is based off the original build.chms.bat
 	 * in the root of doc-base
 	 *
-	 * This script does not work with Git, meaning enabling PHD_BETA 
+	 * This script does not work with Git, meaning enabling PHD_BETA
 	 * will fetch the old version from SVN (March, Anno 2012)
 	 */
 
@@ -77,7 +77,7 @@
 	}
 
 	/**
-	 * Update doc-base, to prevent build errors with 
+	 * Update doc-base, to prevent build errors with
 	 * entities
 	 */
 	chdir(PATH_DOC . '\\doc-base\\');
@@ -148,14 +148,14 @@
 
 			continue;
 		}
-		
+
 		/**
 		 * Anything smaller than ~5MB is broken. Common broken sizes are 2MB and 15K. Common good size are 10-12MB.
 		 */
 		if(filesize(PATH_DOC . '\\tmp\\' . $lang_code . '\\php-chm\\php_manual_' . $lang_code . '.chm') < 5000000)
 		{
 			echo(date('r') . ' - Build error: CHM file too small, something went wrong' . PHP_EOL);
-			
+
 			continue;
 		}
 
@@ -192,14 +192,14 @@
 
 				goto cleanup;
 			}
-		
+
 			/**
 			 * Anything smaller than ~5MB is broken. Common broken sizes are 2MB and 15K. Common good size are 10-12MB.
 			 */
 			if(filesize(PATH_DOC . '\\tmp\\' . $lang_code . '\\php-enhancedchm\\php_manual_' . $lang_code . '.chm') < 5000000)
 			{
 				echo(date('r') . ' - Build error: Enhanced: CHM file too small, something went wrong' . PHP_EOL);
-			
+
 				goto cleanup;
 			}
 
@@ -255,7 +255,7 @@
 
 
 	/**
-	 * Removes all files within a directory and then 
+	 * Removes all files within a directory and then
 	 * deletes the directory
 	 *
 	 * @param	callable		Callback to the apply function

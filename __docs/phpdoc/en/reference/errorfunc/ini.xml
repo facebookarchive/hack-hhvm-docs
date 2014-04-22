@@ -151,11 +151,11 @@
       ~<constant>E_DEPRECATED</constant>. This setting does not
       show <constant>E_NOTICE</constant>, <constant>E_STRICT</constant>
       and <constant>E_DEPRECATED</constant> level errors. You may want
-      to show them during development. 
+      to show them during development.
       Prior to PHP 5.3.0, the default value
       is <constant>E_ALL</constant> &amp;
       ~<constant>E_NOTICE</constant> &amp;
-      ~<constant>E_STRICT</constant>. 
+      ~<constant>E_STRICT</constant>.
       In PHP 4 the default value is <constant>E_ALL</constant>
       &amp; ~<constant>E_NOTICE</constant>.
      </para>
@@ -190,7 +190,7 @@
       <title>PHP Constants outside of PHP</title>
       <para>
        Using PHP Constants outside of PHP, like in <filename>httpd.conf</filename>,
-       will have no useful meaning so in such cases the <type>integer</type> values 
+       will have no useful meaning so in such cases the <type>integer</type> values
        are required. And since error levels will be added over time, the maximum
        value (for <constant>E_ALL</constant>) will likely change. So in place of
        <constant>E_ALL</constant> consider using a larger value to cover all bit
@@ -219,7 +219,7 @@
      </para>
      <note>
       <para>
-      This is a feature to support your development and should never be used 
+      This is a feature to support your development and should never be used
       on production systems (e.g. systems connected to the internet).
       </para>
      </note>
@@ -396,14 +396,14 @@
     </term>
     <listitem>
      <para>
-      The new error format contains a reference to a page describing the error or 
-      function causing the error. In case of manual pages you can download the 
+      The new error format contains a reference to a page describing the error or
+      function causing the error. In case of manual pages you can download the
       manual in your language and set this ini directive to the URL of your local
       copy. If your local copy of the manual can be reached by <literal>"/manual/"</literal>
-      you can simply use <userinput>docref_root=/manual/</userinput>. Additional you have 
-      to set docref_ext to match the fileextensions of your copy 
-      <userinput>docref_ext=.html</userinput>. It is possible to use external 
-      references. For example you can use 
+      you can simply use <userinput>docref_root=/manual/</userinput>. Additional you have
+      to set docref_ext to match the fileextensions of your copy
+      <userinput>docref_ext=.html</userinput>. It is possible to use external
+      references. For example you can use
       <userinput>docref_root=http://manual/en/</userinput> or
       <userinput>docref_root="http://landonize.it/?how=url&amp;theme=classic&amp;filter=Landon
       &amp;url=http%3A%2F%2Fwww.php.net%2F"</userinput>
@@ -414,8 +414,8 @@
      </para>
      <note>
       <para>
-       This is a feature to support your development since it makes it easy to 
-       lookup a function description. However it should never be used on 
+       This is a feature to support your development since it makes it easy to
+       lookup a function description. However it should never be used on
        production systems (e.g. systems connected to the internet).
       </para>
      </note>
@@ -477,7 +477,7 @@
       syslog(3) and on Windows NT it means the event log. The
       system logger is not supported on Windows 95. See also:
       <function>syslog</function>.
-      If this directive is not set, errors are sent to the SAPI error logger. 
+      If this directive is not set, errors are sent to the SAPI error logger.
       For example, it is an error log in Apache or <literal>stderr</literal>
       in CLI.
       See also <function>error_log</function>.

@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- $Revision: 330340 $ -->
- 
+
 <book xml:id="book.dbase" xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink">
  <?phpdoc extension-membership="bundledexternal" ?>
  <title>dBase</title>
- 
+
  <!-- {{{ preface -->
  <preface xml:id="intro.dbase">
   &reftitle.intro;
@@ -13,7 +13,7 @@
    (dbf) databases.
   </para>
   <para>
-   dBase files are simple sequential files of fixed length records. 
+   dBase files are simple sequential files of fixed length records.
    Records are appended to the end of the file and delete records are
    kept until you call <function>dbase_pack</function>.
   </para>
@@ -62,7 +62,7 @@
       <row>
        <entry><literal>L</literal></entry>
        <entry>Boolean</entry>
-       <entry><literal>T</literal> or <literal>Y</literal> for &true;, 
+       <entry><literal>T</literal> or <literal>Y</literal> for &true;,
        <literal>F</literal> or <literal>N</literal> for &false;</entry>
        <entry>Stored and returned as an integer (1 or 0)</entry>
       </row>
@@ -89,7 +89,7 @@
    </para>
    <para>
     We recommend that you do not use dBase files as your production
-    database. Choose any real SQL server instead; <link 
+    database. Choose any real SQL server instead; <link
     xlink:href="&url.mysql;">MySQL</link> or <link xlink:href="&url.pgsql;">Postgres</link>
     are common choices with PHP. dBase support is here to allow you to
     import and export data to and from your web database, because the
@@ -99,7 +99,7 @@
   </warning>
  </preface>
  <!-- }}} -->
- 
+
  &reference.dbase.setup;
  &reference.dbase.constants;
  &reference.dbase.reference;

@@ -5,7 +5,7 @@
   <refname>posix_isatty</refname>
   <refpurpose>Determine if a file descriptor is an interactive terminal</refpurpose>
  </refnamediv>
- 
+
  <refsect1 role="description">
   &reftitle.description;
   <methodsynopsis>
@@ -17,7 +17,7 @@
     terminal type device.
   </para>
  </refsect1>
-    
+
  <refsect1 role="parameters">
   &reftitle.parameters;
   <para>
@@ -33,7 +33,7 @@
    </variablelist>
   </para>
  </refsect1>
-       
+
  <refsect1 role="returnvalues">
   &reftitle.returnvalues;
   <para>
@@ -41,7 +41,7 @@
    to a terminal and &false; otherwise.
   </para>
  </refsect1>
-       
+
  <refsect1 role="seealso">
   &reftitle.seealso;
   <para>

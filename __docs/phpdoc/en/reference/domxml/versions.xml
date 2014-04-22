@@ -206,7 +206,7 @@
  <function name='xpath_new_context' from='PHP 4'/>
  <function name='xpath_register_ns' from='PHP 4 &gt;= 4.2.0'/>
  <function name='xpath_register_ns_auto' from='PHP 4 &gt;= 4.3.0'/>
- 
+
  <function name='xptr_eval' from='PHP 4'/>
  <function name='xptr_new_context' from='PHP 4'/>
 </versions>

@@ -5,7 +5,7 @@
   <refname>mssql_get_last_message</refname>
   <refpurpose>Returns the last message from the server</refpurpose>
  </refnamediv>
- 
+
  <refsect1 role="description">
   &reftitle.description;
   <methodsynopsis>
@@ -25,7 +25,7 @@
  <refsect1 role="returnvalues">
   &reftitle.returnvalues;
   <para>
-   Returns last error message from server, or an empty string if 
+   Returns last error message from server, or an empty string if
    no error messages are returned from MSSQL.
   </para>
  </refsect1>

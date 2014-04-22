@@ -5,7 +5,7 @@
   <refname>signeurlpaiement</refname>
   <refpurpose>Obtain the payment url (needs 2 arguments)</refpurpose>
  </refnamediv>
- 
+
  <refsect1 role="description">
   &reftitle.description;
   <methodsynopsis>

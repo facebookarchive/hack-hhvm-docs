@@ -25,7 +25,7 @@ if (!empty($_FORM['pattern'])) {
 
     // Never allow a comma in the show string, that would confuse our JS
     $_FORM['show'] = str_replace(",", "", $_FORM['show']);
-    
+
     $ucp = urlencode($_FORM['pattern']);
 
     // Do redirections for external search engines
@@ -41,7 +41,7 @@ if (!empty($_FORM['pattern'])) {
         case "404manual":
             mirror_redirect($MYSITE . "results.php?q={$ucp}&p={$_FORM['show']}&l=$LANG");
             break;
-            
+
         // Covers the rest
         default:
             $p = urlencode($_FORM['show']);
@@ -50,7 +50,7 @@ if (!empty($_FORM['pattern'])) {
     }
 }
 
-// No pattern provided, print search page 
+// No pattern provided, print search page
 else {
 
     // Print out common header

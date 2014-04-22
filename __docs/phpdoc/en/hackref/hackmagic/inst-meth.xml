@@ -5,7 +5,7 @@
   <refname>inst_meth</refname>
   <refpurpose>Creates a callable to call an instance method on a specific object</refpurpose>
  </refnamediv>
- 
+
  <refsect1 role="description">
   &reftitle.description;
   <methodsynopsis>

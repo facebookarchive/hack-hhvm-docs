@@ -10,7 +10,7 @@
  <para>
   &pecl.source.4;
   In order to use these functions you must compile PHP with expect support
-  by using the <option role="configure">--with-expect[=DIR]</option> 
+  by using the <option role="configure">--with-expect[=DIR]</option>
   configure option.
  </para>
  <para>

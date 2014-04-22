@@ -5,7 +5,7 @@
   <refname>wddx_packet_end</refname>
   <refpurpose>Ends a WDDX packet with the specified ID</refpurpose>
  </refnamediv>
- 
+
  <refsect1 role="description">
   &reftitle.description;
   <methodsynopsis>

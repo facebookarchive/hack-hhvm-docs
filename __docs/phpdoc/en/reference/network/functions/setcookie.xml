@@ -5,7 +5,7 @@
   <refname>setcookie</refname>
   <refpurpose>Send a cookie</refpurpose>
  </refnamediv>
- 
+
  <refsect1 role="description">
   &reftitle.description;
   <methodsynopsis>
@@ -121,7 +121,7 @@
        Cookies available to a lower domain, such as
        <literal>'example.com'</literal> will be available to higher subdomains,
        such as <literal>'www.example.com'</literal>.
-       
+
        Older browsers still implementing the deprecated
        <link xlink:href="&url.rfc;2109">RFC 2109</link> may require a leading
        <literal>.</literal> to match all subdomains.

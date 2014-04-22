@@ -5,7 +5,7 @@
   <refname>sem_acquire</refname>
   <refpurpose>Acquire a semaphore</refpurpose>
  </refnamediv>
- 
+
  <refsect1 role="description">
   &reftitle.description;
   <methodsynopsis>
@@ -57,7 +57,7 @@
     <member><function>sem_release</function></member>
    </simplelist>
   </para>
- </refsect1>  
+ </refsect1>
 
 </refentry>
 

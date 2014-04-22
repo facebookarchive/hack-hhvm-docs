@@ -5,7 +5,7 @@
   <refname>ClassName::methodName</refname>
   <refpurpose>The methodName purpose</refpurpose>
  </refnamediv>
- 
+
  <refsect1 role="description">
   &reftitle.description;
 <!-- If its a normal method, use this -->
@@ -24,7 +24,7 @@
    <ooclass><classname>className</classname></ooclass>
    <fieldsynopsis><type>string</type><varname>name</varname></fieldsynopsis>
   </classsynopsis>
- 
+
 <!-- Note: If this method/property as an alternate procedural mapping then the method/property synopsis MUST be listed BEFORE the function synopsis -->
   <para>
    The method description goes here.

@@ -79,13 +79,13 @@ $db = dbase_open('/tmp/test.dbf', 2);
 if ($db) {
   // gets the old row
   $row = dbase_get_record_with_names($db, 1);
-  
+
   // remove the 'deleted' entry
   unset($row['deleted']);
-  
+
   // Update the date field with the current timestamp
   $row['date'] = date('Ymd');
-  
+
   // Replace the record
   dbase_replace_record($db, $row, 1);
   dbase_close($db);

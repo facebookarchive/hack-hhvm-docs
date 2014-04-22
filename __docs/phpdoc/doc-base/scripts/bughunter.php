@@ -15,7 +15,7 @@
   +----------------------------------------------------------------------+
   | Authors:    Maxim Maletsky <maxim@php.net>                           |
   +----------------------------------------------------------------------+
-  
+
  $Id: bughunter.php 307070 2011-01-04 11:45:55Z rquadling $
 */
 
@@ -23,11 +23,11 @@
 	REQUIRES: PHP 4.3.1-dev or higher
 
 	Bug Hunter script is an attempt to "mechanically" scan
-	and compare the documentation and C sources in order to 
+	and compare the documentation and C sources in order to
 	hunt down the documentation imperfections.
 
 	This program parses the XML documentation and compares it to the C source code.
-	Its goal is to hunt down inconsistencies between the current documentation and the 
+	Its goal is to hunt down inconsistencies between the current documentation and the
 	actual source code in the CVS.
 
 	BUGHUNTER v1.0 : Hunts down the inconsistencies between the docs and the source
@@ -333,9 +333,9 @@ if($_SERVER['REQUEST_METHOD'] == 'GET') {
 
 
 // debugging
-function getmicrotime(){ 
-	list($usec, $sec) = explode(" ",microtime()); 
-	return ((float)$usec + (float)$sec); 
+function getmicrotime(){
+	list($usec, $sec) = explode(" ",microtime());
+	return ((float)$usec + (float)$sec);
 }
 
 $t_start = getmicrotime();

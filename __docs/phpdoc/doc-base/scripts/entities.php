@@ -1,6 +1,6 @@
 #!/usr/bin/php -q
 <?php
-/*  
+/*
   +----------------------------------------------------------------------+
   | PHP Version 4                                                        |
   +----------------------------------------------------------------------+
@@ -16,7 +16,7 @@
   +----------------------------------------------------------------------+
   | Authors:    Gabor Hojtsy <goba@php.net>                              |
   +----------------------------------------------------------------------+
- 
+
   $Id: entities.php 307070 2011-01-04 11:45:55Z rquadling $
 */
 
@@ -39,7 +39,7 @@ list used and unused entities.
   The script will generate an entity_usage.txt
   file, containing the entities defined in the
   <entity-file>.
-  
+
 <?php
   exit;
 }
@@ -63,7 +63,7 @@ $langcodes = array("en");
 $filename = "entities/global.ent";
 
 // Parameter value copying
-if ($argc == 3) { 
+if ($argc == 3) {
     $langcodes = array($argv[2]);
     if ($argv[2] === 'all') {
         $langcodes = array("ar", "cs", "de", "en", "es", "fr",
@@ -75,7 +75,7 @@ if ($argc == 3) {
 if ($argc >= 2) {
     $filename = $argv[1];
 }
-  
+
 /*********************************************************************/
 /* Here starts the functions part                                    */
 /*********************************************************************/
@@ -86,14 +86,14 @@ function extract_entity_definitions ($filename, &$entities)
     // Read in the file, or die
     $file_array = file ($filename);
     if (!$file_array) { die ("Cannot open entity file ($filename)."); }
-    
+
     // The whole file in a string
     $file_string = preg_replace("/[\r\n]/", "", join ("", $file_array));
-    
+
     // Find entity names
     preg_match_all("/<!ENTITY\s+(.*)\s+/U", $file_string, $entities_found);
     $entities_found = $entities_found[1];
-    
+
     // Convert to hash
     foreach ($entities_found as $entity_name) {
       $entities[$entity_name] = array();
@@ -101,7 +101,7 @@ function extract_entity_definitions ($filename, &$entities)
 
     // Return with a useful regexp part
     return "&(" . join("|", $entities_found) . ");";
-    
+
 } // extract_entity_definitions() function end
 
 // Checks a diretory of phpdoc XML files
@@ -110,18 +110,18 @@ function check_dir($dir, &$defined_entities, $entity_regexp)
     // Collect files and diretcories in these arrays
     $directories = array();
     $files = array();
-    
+
     // Skip old and unused functions directories (theoretically
     // it should only be in the English tree, but we are smart
     // and check for other language trees too...)
     if (preg_match("!/([a-z]{2}|pt_BR)/functions!", $dir)) {
         return;
     }
-    
+
     // Open and traverse the directory
     $handle = @opendir($dir);
     while ($file = @readdir($handle)) {
-      
+
       // Collect directories and XML files
       if ($file != 'CVS' && $file != '.' &&
           $file != '..' && is_dir($dir.$file)) {
@@ -133,11 +133,11 @@ function check_dir($dir, &$defined_entities, $entity_regexp)
 
     }
     @closedir($handle);
-      
+
     // Sort files and directories
     sort($directories);
     sort($files);
-      
+
     // Files first...
     foreach ($files as $file) {
       check_file($dir.$file, $defined_entities, $entity_regexp);
@@ -153,20 +153,20 @@ function check_file ($filename, &$defined_entities, $entity_regexp)
 {
     // Read in file contents
     $contents = preg_replace("/[\r\n]/", "", join("", file($filename)));
-    
+
     // Find all entity usage in this file
     preg_match_all("/$entity_regexp/U", $contents, $entities_found);
-    
+
     // No entities found
     if (count($entities_found[1]) == 0) { return; }
-    
+
     // New occurrences found, so increase the number
     foreach ($entities_found[1] as $entity_name) {
         if (isset($defined_entities[$entity_name])) { $defined_entities[$entity_name][] = $filename; }
     }
 
 } // check_file() function end
-  
+
 /*********************************************************************/
 /* Here starts the program                                           */
 /*********************************************************************/
@@ -184,17 +184,17 @@ foreach ($langcodes as $langcode) {
     } else {
         $tested_trees[] = $langcode;
     }
-      
+
     // If directory is OK, start with the header
     echo "Searching in $docdir$langcode ...\n";
-    
+
     // Check the requested directory
     check_dir("$docdir$langcode/", $defined_entities, $entity_regexp);
 
 }
-    
+
 echo "Generating entity_usage.txt ...\n";
-    
+
 $fp = fopen("entity_usage.txt", "w");
 fwrite($fp, "ENTITY USAGE STATISCTICS
 

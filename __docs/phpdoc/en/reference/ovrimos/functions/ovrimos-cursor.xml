@@ -5,7 +5,7 @@
   <refname>ovrimos_cursor</refname>
   <refpurpose>Returns the name of the cursor</refpurpose>
  </refnamediv>
- 
+
  <refsect1 role="description">
   &reftitle.description;
   <methodsynopsis>

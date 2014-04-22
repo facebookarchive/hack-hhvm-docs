@@ -18,7 +18,7 @@
    Get sent HTTP message.
   </para>
   <para>
-   If redirects were allowed and several responses were received, the data 
+   If redirects were allowed and several responses were received, the data
    references the last received response. Use <function>HttpMessage::getParentMessage</function>
    to access the data of previously sent requests within this request cycle.
   </para>

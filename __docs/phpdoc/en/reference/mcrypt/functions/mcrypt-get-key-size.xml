@@ -5,7 +5,7 @@
   <refname>mcrypt_get_key_size</refname>
   <refpurpose>Gets the key size of the specified cipher</refpurpose>
  </refnamediv>
- 
+
  <refsect1 role="description">
   &reftitle.description;
   <methodsynopsis>
@@ -82,7 +82,7 @@
 24
 ]]>
     </screen>
-   </example>   
+   </example>
   </para>
  </refsect1>
  <refsect1 role="seealso">

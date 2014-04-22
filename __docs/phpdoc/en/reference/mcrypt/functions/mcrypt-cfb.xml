@@ -5,7 +5,7 @@
   <refname>mcrypt_cfb</refname>
   <refpurpose>Encrypts/decrypts data in CFB mode</refpurpose>
  </refnamediv>
- 
+
  <refsect1 role="description">
   &reftitle.description;
   <methodsynopsis>

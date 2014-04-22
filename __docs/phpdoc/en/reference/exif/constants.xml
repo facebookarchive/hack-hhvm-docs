@@ -7,12 +7,12 @@
   <variablelist>
    <varlistentry xml:id="constant.exif-use-mbstring">
     <term>
-     <constant>EXIF_USE_MBSTRING</constant> 
+     <constant>EXIF_USE_MBSTRING</constant>
      (<type>integer</type>)
     </term>
     <listitem>
      <simpara>
-     
+
      </simpara>
     </listitem>
    </varlistentry>

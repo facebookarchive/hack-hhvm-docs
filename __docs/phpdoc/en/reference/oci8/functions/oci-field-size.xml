@@ -5,7 +5,7 @@
   <refname>oci_field_size</refname>
   <refpurpose>Returns field's size</refpurpose>
  </refnamediv>
- 
+
  <refsect1 role="description">
   &reftitle.description;
   <methodsynopsis>
@@ -14,7 +14,7 @@
    <methodparam><type>mixed</type><parameter>field</parameter></methodparam>
   </methodsynopsis>
   <para>
-   Returns the size of a <parameter>field</parameter>. 
+   Returns the size of a <parameter>field</parameter>.
   </para>
  </refsect1>
 

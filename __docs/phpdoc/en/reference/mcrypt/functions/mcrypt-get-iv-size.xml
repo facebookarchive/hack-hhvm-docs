@@ -5,7 +5,7 @@
   <refname>mcrypt_get_iv_size</refname>
   <refpurpose>Returns the size of the IV belonging to a specific cipher/mode combination</refpurpose>
  </refnamediv>
- 
+
  <refsect1 role="description">
   &reftitle.description;
   <methodsynopsis>
@@ -14,7 +14,7 @@
    <methodparam><type>string</type><parameter>mode</parameter></methodparam>
   </methodsynopsis>
   <para>
-   Gets the size of the IV belonging to a specific 
+   Gets the size of the IV belonging to a specific
    <parameter>cipher</parameter>/<parameter>mode</parameter> combination.
   </para>
   <para>
@@ -23,7 +23,7 @@
    <function>mcrypt_module_open</function>.
   </para>
  </refsect1>
- 
+
  <refsect1 role="parameters">
   &reftitle.parameters;
   <para>

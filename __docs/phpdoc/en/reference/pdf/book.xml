@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- $Revision: 330340 $ -->
- 
+
 <book xml:id="book.pdf" xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink">
  <title>PDF</title>
- 
+
  <!-- {{{ preface -->
  <preface xml:id="intro.pdf">
   &reftitle.intro;
@@ -15,7 +15,7 @@
   <para>
    The documentation in this section is only meant to be an overview
    of the available functions in the PDFlib library and should not be
-   considered an exhaustive reference. For the full and detailed 
+   considered an exhaustive reference. For the full and detailed
    explanation of each function, consult the PDFlib Reference Manual
    which is included in all PDFlib packages distributed by PDFlib GmbH.
    It provides a very good overview of what PDFlib is capable of doing
@@ -24,26 +24,26 @@
   <para>
    For a jump start we urge you to take a look at the programming samples
    which are contained in all PDFlib distribution packages. These samples
-   demonstrate basic text, vector, and graphics output as well as 
+   demonstrate basic text, vector, and graphics output as well as
    higher-level functions, such as the PDF import facility (PDI).
   </para>
   <para>
    All of the functions in PDFlib and the PHP module have identical
    function names and parameters. Unless configured otherwise, all
    lengths and coordinates are measured in PostScript points. There are
-   generally 72 PostScript points to an inch, but this depends on the 
+   generally 72 PostScript points to an inch, but this depends on the
    output resolution. Please see the PDFlib Reference Manual
    included in the PDFlib distribution for a more thorough explanation
    of the coordinate system used.
   </para>
   <para>
-   With version 6, PDFlib offers an object-oriented API for PHP 5 in 
+   With version 6, PDFlib offers an object-oriented API for PHP 5 in
    addition to the function-oriented API for PHP 4. The main difference is
    the following:
   </para>
   <para>
    In PHP 4, first a PDF resource has to be retrieved with a function call
-   like 
+   like
   </para>
   <para>
    $p = PDF_new().
@@ -71,13 +71,13 @@
    In addition, exceptions have been introduced in PHP 5 which are
    supported by PDFlib 6 and later as well.
   </para>
-  <para> 
+  <para>
    Please see the <link linkend="pdf.examples">examples</link> below for
    more information.
   </para>
  </preface>
  <!-- }}} -->
- 
+
  &reference.pdf.setup;
  &reference.pdf.constants;
  &reference.pdf.examples;

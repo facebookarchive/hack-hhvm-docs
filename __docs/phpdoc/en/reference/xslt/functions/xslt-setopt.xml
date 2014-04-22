@@ -5,7 +5,7 @@
   <refname>xslt_setopt</refname>
   <refpurpose>Set options on a given XSLT processor</refpurpose>
  </refnamediv>
- 
+
  <refsect1 role="description">
   &reftitle.description;
   <methodsynopsis>
@@ -96,7 +96,7 @@ xslt_setopt($xh, xslt_getopt($xh) | XSLT_SABOPT_DISABLE_STRIPPING);
    </example>
   </para>
  </refsect1>
- 
+
  <refsect1 role="seealso">
   &reftitle.seealso;
   <para>

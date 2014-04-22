@@ -34,7 +34,7 @@
   &reftitle.returnvalues;
   <para>
    Returns the name of the class of which <parameter>object</parameter> is an
-   instance. Returns &false; if <parameter>object</parameter> is not an 
+   instance. Returns &false; if <parameter>object</parameter> is not an
    object.
   </para>
   <para>

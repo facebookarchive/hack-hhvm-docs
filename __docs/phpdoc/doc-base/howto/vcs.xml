@@ -10,18 +10,18 @@
    contributors to make changes to the different files that make up
    the PHP documentation without stepping on each other's toes.
   </para>
-  
+
   <para>
    A SVN system contains a central server, where all the files
    are stored. A SVN server can host many modules,
    the name of the main module used by the PHP Documentation
    people is <literal>doc-base</literal> which contains the
-   base (like the tools to validate the DocBook, this HOWTO, etc.). 
+   base (like the tools to validate the DocBook, this HOWTO, etc.).
    And then there are other modules for each language, each named after the
    language code (eg. <literal>de</literal> for German).
    To access this server, you need a SVN client program on your system.
   </para>
-  
+
   <para>
    When you decide to work on a file, you need to check
    it out (~download the file). Then you can make modifications
@@ -62,7 +62,7 @@
     </listitem>
    </itemizedlist>
   </para>
-  
+
   <para>
    You can also type <literal>man svn</literal> anytime
    you would like to get help about your SVN client. This
@@ -72,14 +72,14 @@
 
   <sect1 xml:id="svn-account">
    <title>Obtaining a SVN Account</title>
-   
+
    <para>
     First, before you can actually make documentation changes, you
     need write access to the <link xlink:href="&url.php.svn;">svn.php.net</link>
     SVN repository. You can always checkout a module anonymously,
     but you can not commit changes unless you have an account.
     If you only would like to check files out, you can simply check
-    out the sources anonymously. See the 
+    out the sources anonymously. See the
     <link xlink:href="&url.php.svn;">php.net SVN page</link>
     for more information.
    </para>
@@ -129,7 +129,7 @@
     and ask for consideration.
    </para>
 
-  </sect1> 
+  </sect1>
 
   <sect1 xml:id="svn-login">
    <title>SVN Login</title>
@@ -137,7 +137,7 @@
     Now that you have write access to the SVN module, let's setup
     a few variables in your <filename>.subversion/config</filename> file:
    </para>
-   
+
    <!-- TODO: Talk about why we want this stuff. -->
 
    <para>
@@ -206,7 +206,7 @@ $ svn checkout https://svn.php.net/repository/phpdoc/modules/doc-en phpdoc
      </programlisting>
     </informalexample>
    </para>
-   
+
    <!-- FIXME: This topic deserves better information. Also, talk about trunk and sparse checkouts. Somewhere. -->
    <note>
     <title>The directory named phpdoc</title>
@@ -243,12 +243,12 @@ $ svn checkout https://svn.php.net/repository/phpdoc/modules/doc-en phpdoc
      is restricted on your system or not.
     </para>
    </note>
-   
+
    <para>
     If you would like to work with a translation group, checking out
     the sources is a little different. Again, using SVN externals we
     simply change phpdoc-en to phpdoc-{langcode} where {langcode} is
-    for the desired language. These translations include English so 
+    for the desired language. These translations include English so
     there is no need to checkout both seperately. For example, for Italian:
     <informalexample>
      <programlisting>
@@ -285,7 +285,7 @@ $ svn checkout https://svn.php.net/repository/phpdoc/modules/doc-all phpdoc-all
   </sect1>
 
   <sect1 xml:id="svn-update">
-   <title>Updating the Tree</title> 
+   <title>Updating the Tree</title>
 
    <para>
     It's a good idea from time to time to update your copy of the
@@ -304,7 +304,7 @@ $ svn update
      </programlisting>
     </informalexample>
    </para>
-   
+
    <note>
     <para>
      If you have also checked out any translation modules, those
@@ -383,7 +383,7 @@ M           289871   289871 philip       howto/vcs.xml
   </sect1>
 
   <sect1 xml:id="svn-commit">
-   <title>Committing Changes</title> 
+   <title>Committing Changes</title>
 
    <para>
     Once you have made changes to a file and <emphasis>validated
@@ -408,7 +408,7 @@ $ svn commit -m 'added explanation of the new ..blah.. feature' file1 file2
      </programlisting>
     </informalexample>
    </para>
-   
+
    <para>
     Sometimes it is more convenient to omit the
     <parameter>-m</parameter> parameter, as this way
@@ -424,7 +424,7 @@ $ svn commit -m 'added explanation of the new ..blah.. feature' file1 file2
     For more information on the conventions used in the XML files
     that you commit, see <xref linkend="chapter-conventions" />.
    </para>
-   
+
    <note>
     <para>
      Please check twice, that you commit changes in the human language
@@ -442,7 +442,7 @@ $ svn commit -m 'added explanation of the new ..blah.. feature' file1 file2
   </sect1>
 
   <sect1 xml:id="svn-add">
-   <title>Adding files or directories</title> 
+   <title>Adding files or directories</title>
 
    <para>
     It is sometimes needed to add files to the English files
@@ -460,13 +460,13 @@ $ svn add file1 file2
      </programlisting>
     </informalexample>
    </para>
-   
+
    <para>
     This only schedules the file for addition. To
     complete the addition of the file(s), you need
     to do a commit, as described above.
    </para>
-   
+
    <warning>
     <para>
      Before adding new files, you should choose the new
@@ -478,7 +478,7 @@ $ svn add file1 file2
   </sect1>
 
   <sect1 xml:id="svn-remove">
-   <title>Removing files</title> 
+   <title>Removing files</title>
 
    <para>
     It is sometimes needed to remove files from the
@@ -499,16 +499,16 @@ $ svn remove file1 file2
      </programlisting>
     </informalexample>
    </para>
-   
+
    <para>
     This only schedules the file for removing. To
     complete the removing of the file(s), you need
     to do a commit, as described above.
    </para>
-   
+
    <!-- TODO: Add info about rename -->
    <!-- TODO: Removing files is rarely recommended, as it loses history. Mention this. Also think about how this differs from CVS Attic -->
-   
+
   </sect1>
  </chapter>
 

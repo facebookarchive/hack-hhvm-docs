@@ -3,7 +3,7 @@
 <!--
   Do NOT translate this file
 -->
-<versions> 
+<versions>
  <function name='bcadd' from='PHP 4, PHP 5'/>
  <function name='bccomp' from='PHP 4, PHP 5'/>
  <function name='bcdiv' from='PHP 4, PHP 5'/>

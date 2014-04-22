@@ -17,7 +17,7 @@
  <function name='intval' from='PHP 4, PHP 5'/>
  <function name='is_array' from='PHP 4, PHP 5'/>
  <function name='is_bool' from='PHP 4, PHP 5'/>
- <!-- FIXME PHP_6 
+ <!-- FIXME PHP_6
  <function name='is_binary' from='PHP 6 &gt;= 6.0.0'/>
  <function name='is_buffer' from='PHP 6 &gt;= 6.0.0'/>
  <function name='is_unicode' from='PHP 6 &gt;= 6.0.0'/>

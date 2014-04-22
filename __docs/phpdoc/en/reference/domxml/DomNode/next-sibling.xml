@@ -15,8 +15,8 @@
   </methodsynopsis>
   <para>
    This function returns the next sibling of the current node. If there is
-   no next sibling it returns &false; (&lt; 4.3) or null (&gt;= 4.3). You can 
-   use this function to iterate over all children of a node as shown in the 
+   no next sibling it returns &false; (&lt; 4.3) or null (&gt;= 4.3). You can
+   use this function to iterate over all children of a node as shown in the
    example.
   </para>
   <para>

@@ -18,20 +18,20 @@
  %isopub;
 
 
- <!ENTITY howto.preface    SYSTEM "preface.xml"> 
- <!ENTITY howto.framework  SYSTEM "framework.xml"> 
- <!ENTITY howto.tools      SYSTEM "tools.xml"> 
- <!ENTITY howto.vcs        SYSTEM "vcs.xml"> 
- <!ENTITY howto.docbook    SYSTEM "docbook.xml"> 
- <!ENTITY howto.working    SYSTEM "working.xml"> 
- <!ENTITY howto.scripts    SYSTEM "scripts.xml"> 
- <!ENTITY howto.generating SYSTEM "generating.xml"> 
- <!ENTITY howto.editors    SYSTEM "editors.xml"> 
- 
+ <!ENTITY howto.preface    SYSTEM "preface.xml">
+ <!ENTITY howto.framework  SYSTEM "framework.xml">
+ <!ENTITY howto.tools      SYSTEM "tools.xml">
+ <!ENTITY howto.vcs        SYSTEM "vcs.xml">
+ <!ENTITY howto.docbook    SYSTEM "docbook.xml">
+ <!ENTITY howto.working    SYSTEM "working.xml">
+ <!ENTITY howto.scripts    SYSTEM "scripts.xml">
+ <!ENTITY howto.generating SYSTEM "generating.xml">
+ <!ENTITY howto.editors    SYSTEM "editors.xml">
+
 ]>
 
 <!-- TODO
-  
+
   Quickrefs:
       http://www.mulberrytech.com/quickref/index.html
       http://www.dpawson.co.uk/docbook/reference.html#d3e60
@@ -40,20 +40,20 @@
       http://www.dpawson.co.uk/docbook/
       http://www.sagehill.net/xml/docbookxsl/
       http://www.sagehill.net/docbookxsl/index.html
-      
+
   DSSSL and openjade information page:
       http://www.netfolder.com/DSSSL/index.html
-      
+
   Good visual SVN tools:
-  
+
   DocBook editors list to check:
       http://www.docbook.org/wiki/moin.cgi/DocBookAuthoringTools
-      
+
   DocBook and OpenOffice.org
       http://www.zzoss.com/projects/oowdbk/
-  
+
   Document new behaviour
-  
+
   Sections need to be added:
     Documentation of the new CHM format generation
     How to add a new section/funcref/anything to the docs
@@ -61,11 +61,11 @@
     Practical advice for manual writers
     Separate conventions to parts, eg.
        - larger sections (eg. function explanations)
-       - type, function and other tags, 
+       - type, function and other tags,
        - PHP code writing guidelines
     A short section about the most important docbook tags
-    
-  More info 
+
+  More info
     About configure command line options
     On file names, and phpdoc logical directory stucture
 
@@ -73,10 +73,10 @@
     Look inside the TODO file, and use it
     Use the function table
     Use the manual notes when writing doc
-    
+
   A good weblog about software documentation:
     http://trieloff.net/docbook/
-    
+
   A great SVN shell integration tool for Windows (GPL):
     http://www.tortoisesvn.org/
 
@@ -97,11 +97,11 @@
    <author>
      <personname><firstname>Stig</firstname><surname>Sæther Bakken</surname></personname>
    </author>
- 
+
    <author>
      <personname><firstname>Daniel</firstname><surname>Beckham</surname></personname>
    </author>
-  
+
    <author>
     <personname><firstname>Gábor</firstname><surname>Hojtsy</surname></personname>
    </author>
@@ -109,7 +109,7 @@
    <author>
     <personname><firstname>Martin</firstname><surname>Jansen</surname></personname>
    </author>
- 
+
    <author>
     <personname><firstname>Jirka</firstname><surname>Kosek</surname></personname>
    </author>
@@ -131,7 +131,7 @@
    </author>
 
   </authorgroup>
-  
+
   <pubdate><?dbtimestamp format="Y-m-d"?></pubdate>
 
   <!--authorgroup xml:id="editors">
@@ -139,12 +139,12 @@
     <personname><firstname>Gábor</firstname><surname>Hojtsy</surname></personname>
    </editor>
   </authorgroup-->
-  
+
   <copyright>
    <year>2001-<?dbtimestamp format="Y"?></year>
    <holder>the PHP Documentation Group</holder>
   </copyright>
-  
+
   <legalnotice xml:id="copyright">
    <title>Copyright</title>
    <simpara>
@@ -156,7 +156,7 @@
  </info>
 
  &howto.preface;
- 
+
  <!--
   "The quicky" series.
   Mostly Docbook markupified version of various mails from bjori :]

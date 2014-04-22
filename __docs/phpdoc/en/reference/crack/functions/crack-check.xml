@@ -17,7 +17,7 @@
    <type>bool</type><methodname>crack_check</methodname>
    <methodparam><type>string</type><parameter>password</parameter></methodparam>
   </methodsynopsis>
-  <para> 
+  <para>
    Performs an obscure check with the given password on the specified
    dictionary.
   </para>

@@ -5,7 +5,7 @@
 
   <sect1 xml:id="functions.user-defined">
    <title>User-defined functions</title>
- 
+
    <para>
     A function may be defined using syntax such as the following:
    </para>
@@ -25,7 +25,7 @@ function foo($arg_1, $arg_2, /* ..., */ $arg_n)
      </programlisting>
     </example>
    </para>
-   
+
    <simpara>
     Any valid PHP code may appear inside a function, even other
     functions and <link linkend="language.oop5.basic.class">class</link>
@@ -58,7 +58,7 @@ function foo($arg_1, $arg_2, /* ..., */ $arg_n)
 
 $makefoo = true;
 
-/* We can't call foo() from here 
+/* We can't call foo() from here
    since it doesn't exist yet,
    but we can call bar() */
 
@@ -76,7 +76,7 @@ if ($makefoo) {
 
 if ($makefoo) foo();
 
-function bar() 
+function bar()
 {
   echo "I exist immediately upon program start.\n";
 }
@@ -92,9 +92,9 @@ function bar()
      <programlisting role="php">
 <![CDATA[
 <?php
-function foo() 
+function foo()
 {
-  function bar() 
+  function bar()
   {
     echo "I don't exist until foo() is called.\n";
   }
@@ -111,7 +111,7 @@ foo();
 
 bar();
 
-?>  
+?>
 ]]>
      </programlisting>
     </example>
@@ -129,7 +129,7 @@ bar();
      Function names are case-insensitive, though it is usually good form
      to call functions as they appear in their declaration.
     </simpara>
-   </note>   
+   </note>
    <simpara>
     Both <link linkend="functions.variable-arg-list">variable number of
     arguments</link> and <link linkend="functions.arguments.default">default
@@ -139,7 +139,7 @@ bar();
     <function>func_get_arg</function>, and
     <function>func_get_args</function> for more information.
    </simpara>
-   
+
    <para>
     It is possible to call recursive functions in PHP. However avoid recursive
     function/method calls with over 100-200 recursion levels as it can smash
@@ -163,15 +163,15 @@ function recursion($a)
    </para>
 
   </sect1>
- 
+
   <sect1 xml:id="functions.arguments">
    <title>Function arguments</title>
- 
+
    <simpara>
     Information may be passed to functions via the argument list,
     which is a comma-delimited list of expressions. The arguments are
     evaluated from left to right.
-   </simpara> 
+   </simpara>
    <para>
     PHP supports passing arguments by value (the default), <link
     linkend="functions.arguments.by-reference">passing by
@@ -198,10 +198,10 @@ function takes_array($input)
      </programlisting>
     </example>
    </para>
- 
+
    <sect2 xml:id="functions.arguments.by-reference">
     <title>Making arguments be passed by reference</title>
- 
+
     <simpara>
      By default, function arguments are passed by value (so that if
      the value of the argument within the function is changed, it does
@@ -230,12 +230,12 @@ echo $str;    // outputs 'This is a string, and something extra.'
       </programlisting>
      </example>
     </para>
- 
+
    </sect2>
- 
+
    <sect2 xml:id="functions.arguments.default">
     <title>Default argument values</title>
- 
+
     <para>
      A function may define C++-style default values for scalar
      arguments as follows:
@@ -287,7 +287,7 @@ echo makecoffee(array("cappuccino", "lavazza"), "teapot");
 ]]>
       </programlisting>
      </example>
-    
+
     </para>
     <simpara>
      The default value must be a constant expression, not (for
@@ -308,7 +308,7 @@ function makeyogurt($type = "acidophilus", $flavour)
 {
     return "Making a bowl of $type $flavour.\n";
 }
- 
+
 echo makeyogurt("raspberry");   // won't work as expected
 ?>
 ]]>
@@ -316,7 +316,7 @@ echo makeyogurt("raspberry");   // won't work as expected
       &example.outputs;
       <screen>
 <![CDATA[
-Warning: Missing argument 2 in call to makeyogurt() in 
+Warning: Missing argument 2 in call to makeyogurt() in
 /usr/local/etc/httpd/htdocs/phptest/functest.html on line 41
 Making a bowl of raspberry .
 ]]>
@@ -336,7 +336,7 @@ function makeyogurt($flavour, $type = "acidophilus")
 {
     return "Making a bowl of $type $flavour.\n";
 }
- 
+
 echo makeyogurt("raspberry");   // works as expected
 ?>
 ]]>
@@ -377,10 +377,10 @@ Making a bowl of acidophilus raspberry.
    </sect2>
 
   </sect1>
- 
+
   <sect1 xml:id="functions.returning-values">
    <title>Returning values</title>
- 
+
    <para>
     Values are returned by using the optional return statement. Any
     type may be returned, including arrays and objects. This causes the
@@ -410,7 +410,7 @@ echo square(4);   // outputs '16'.
      </programlisting>
     </example>
    </para>
-      
+
    <para>
     A function can not return multiple values, but similar results can be
     obtained by returning an array.
@@ -458,7 +458,7 @@ $newref =& returns_reference();
     linkend="language.references">References Explained</link>.
    </simpara>
   </sect1>
- 
+
   <sect1 xml:id="functions.variable-functions">
    <title>Variable functions</title>
 
@@ -470,7 +470,7 @@ $newref =& returns_reference();
     be used to implement callbacks, function tables, and so forth.
    </para>
    <para>
-    Variable functions won't work with language constructs such 
+    Variable functions won't work with language constructs such
     as <function>echo</function>, <function>print</function>,
     <function>unset</function>, <function>isset</function>,
     <function>empty</function>, <function>include</function>,
@@ -525,7 +525,7 @@ class Foo
         $name = 'Bar';
         $this->$name(); // This calls the Bar() method
     }
-    
+
     function Bar()
     {
         echo "This is Bar";
@@ -566,29 +566,29 @@ Foo::$variable();  // This calls $foo->Variable() reading $variable in this scop
      </programlisting>
     </example>
    </para>
-      
+
    <para>
     See also <function>is_callable</function>, <function>call_user_func</function>,
     <link linkend="language.variables.variable">
     variable variables</link> and <function>function_exists</function>.
    </para>
   </sect1>
-  
+
   <sect1 xml:id="functions.internal">
    <title>Internal (built-in) functions</title>
-   
+
    <para>
     PHP comes standard with many functions and constructs. There are also
-    functions that require specific PHP extensions compiled in, otherwise 
-    fatal "undefined function" errors will appear. For example, to use 
-    <link linkend="ref.image">image</link> functions such as 
+    functions that require specific PHP extensions compiled in, otherwise
+    fatal "undefined function" errors will appear. For example, to use
+    <link linkend="ref.image">image</link> functions such as
     <function>imagecreatetruecolor</function>, PHP must be compiled with
     <productname>GD</productname> support. Or, to use
     <function>mysql_connect</function>, PHP must be compiled with
     <link linkend="ref.mysql">MySQL</link> support. There are many core functions
     that are included in every version of PHP, such as the
-    <link linkend="ref.strings">string</link> and 
-    <link linkend="ref.var">variable</link> functions. A call 
+    <link linkend="ref.strings">string</link> and
+    <link linkend="ref.var">variable</link> functions. A call
     to <function>phpinfo</function> or
     <function>get_loaded_extensions</function> will show which extensions are
     loaded into PHP. Also note that many extensions are enabled by default and
@@ -602,7 +602,7 @@ Foo::$variable();  // This calls $foo->Variable() reading $variable in this scop
     manual section titled <link linkend="about.prototypes">how to read a
     function definition</link>. It's important to realize what a function
     returns or if a function works directly on a passed in value. For example,
-    <function>str_replace</function> will return the modified string while 
+    <function>str_replace</function> will return the modified string while
     <function>usort</function> works on the actual passed in variable
     itself. Each manual page also has specific information for each
     function like information on function parameters, behavior changes,
@@ -612,21 +612,21 @@ Foo::$variable();  // This calls $foo->Variable() reading $variable in this scop
    </para>
    <note>
     <simpara>
-     If the parameters given to a function are not what it expects, such as 
-     passing an <type>array</type> where a <type>string</type> is expected, 
+     If the parameters given to a function are not what it expects, such as
+     passing an <type>array</type> where a <type>string</type> is expected,
      the return value of the function is undefined. In this case it will
-     likely return &null; but this is just a convention, and cannot be relied 
+     likely return &null; but this is just a convention, and cannot be relied
      upon.
     </simpara>
    </note>
    <para>
-    See also <function>function_exists</function>, 
+    See also <function>function_exists</function>,
     <link linkend="phpfuncref">the function reference</link>,
-    <function>get_extension_funcs</function>, and 
+    <function>get_extension_funcs</function>, and
     <function>dl</function>.
    </para>
   </sect1>
-  
+
   <sect1 xml:id="functions.anonymous">
    <title>Anonymous functions</title>
 
@@ -652,7 +652,7 @@ echo preg_replace_callback('~-([a-z])~', function ($match) {
    </example>
 
    <simpara>
-    Closures can also be used as the values of variables; PHP automatically 
+    Closures can also be used as the values of variables; PHP automatically
     converts such expressions into instances of the
     <classname>Closure</classname> internal class. Assigning a closure to a
     variable uses the same syntax as any other assignment, including the
@@ -675,12 +675,12 @@ $greet('PHP');
 ]]>
     </programlisting>
    </example>
-   
+
    <simpara>
-    Closures may also inherit variables from the parent scope. 
-    Any such variables must be passed to the <literal>use</literal> language construct. 
-    Inheriting variables from the parent scope is <emphasis>not</emphasis> 
-    the same as using global variables. 
+    Closures may also inherit variables from the parent scope.
+    Any such variables must be passed to the <literal>use</literal> language construct.
+    Inheriting variables from the parent scope is <emphasis>not</emphasis>
+    the same as using global variables.
     Global variables exist in the global scope, which is the same no
     matter what function is executing. The parent scope of a closure is the
     function in which the closure was declared (not necessarily the function it
@@ -703,22 +703,22 @@ class Cart
     const PRICE_EGGS    = 6.95;
 
     protected $products = array();
-    
+
     public function add($product, $quantity)
     {
         $this->products[$product] = $quantity;
     }
-    
+
     public function getQuantity($product)
     {
         return isset($this->products[$product]) ? $this->products[$product] :
                FALSE;
     }
-    
+
     public function getTotal($tax)
     {
         $total = 0.00;
-        
+
         $callback =
             function ($quantity, $product) use ($tax, &$total)
             {
@@ -726,7 +726,7 @@ class Cart
                     strtoupper($product));
                 $total += ($pricePerItem * $quantity) * ($tax + 1.0);
             };
-        
+
         array_walk($this->products, $callback);
         return round($total, 2);
     }
@@ -746,12 +746,12 @@ print $my_cart->getTotal(0.05) . "\n";
 ]]>
     </programlisting>
    </example>
-   
+
    <simpara>
     Anonymous functions are implemented using the <link linkend="class.closure">
     <classname>Closure</classname></link> class.
    </simpara>
-   
+
    <sect2 role="changelog">
     &reftitle.changelog;
     <para>
@@ -796,7 +796,7 @@ print $my_cart->getTotal(0.05) . "\n";
   </sect1>
 
  </chapter>
- 
+
 <!-- Keep this comment at the end of the file
 Local variables:
 mode: sgml

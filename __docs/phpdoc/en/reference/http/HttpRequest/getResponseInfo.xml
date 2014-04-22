@@ -21,7 +21,7 @@
    See <function>http_get</function> for a full list of returned <link linkend="http.request.info">info</link>.
   </para>
   <para>
-   If redirects were allowed and several responses were received, the data 
+   If redirects were allowed and several responses were received, the data
    references the last received response.
   </para>
 

@@ -3,7 +3,7 @@
 <sect1 xml:id="install.linux.ubuntu" xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink">
   <title>Ubuntu Linux Installation</title>
   <para>
-    This section contains notes and hints specific to installing HHVM on Ubuntu. 
+    This section contains notes and hints specific to installing HHVM on Ubuntu.
   </para>
   <sect2 xml:id="install.linux.ubuntu.prebuilt">
     <title>Prebuilt Packages</title>

@@ -107,7 +107,7 @@ if ($argc == 3) {
 	if ($argv[2] == '--show-uptodate') {
          $SHOW_UPTODATE = TRUE;
     } else {
-         $MAINT = $argv[2];	
+         $MAINT = $argv[2];
 	}
 } elseif ($argc == 4) {
     $MAINT = $argv[2];

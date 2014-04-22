@@ -28,13 +28,13 @@
       <para>
        The node being appended. It can be created with e.g.
        <xref linkend="function.domdocument-create-element" />,
-       <xref linkend="function.domdocument-create-text-node" /> etc. or 
+       <xref linkend="function.domdocument-create-text-node" /> etc. or
        simply by using any other node.
       </para>
       <note>
        <para>
         You can not append a <classname>DOMAttribute</classname> using this
-        method. Use <xref linkend="function.domelement-set-attribute" /> 
+        method. Use <xref linkend="function.domelement-set-attribute" />
         instead.
        </para>
       </note>
@@ -70,32 +70,32 @@
       <row>
        <entry>4.3.0</entry>
        <entry>
-        Prior to PHP 4.3.0, the new child is duplicated before being 
+        Prior to PHP 4.3.0, the new child is duplicated before being
         appended.
-        Therefore the new child is a completely new copy which can be 
+        Therefore the new child is a completely new copy which can be
         modified without changing the node which was passed to this function.
-        If the node passed has children itself, they will be duplicated as 
-        well, which makes it quite easy to duplicate large parts of an XML 
+        If the node passed has children itself, they will be duplicated as
+        well, which makes it quite easy to duplicate large parts of an XML
         document. The return value is the appended child. If you plan to do
-        further modifications on the appended child you must use the returned 
+        further modifications on the appended child you must use the returned
         node.
        </entry>
       </row>
       <row>
        <entry>4.3.0 and 4.3.1</entry>
        <entry>
-        The new child <parameter>newnode</parameter> is first unlinked from 
+        The new child <parameter>newnode</parameter> is first unlinked from
         its existing context, if it's already a child of DomNode. Therefore
         the <parameter>newnode</parameter> is moved and not copies anymore.
-        This is the behaviour according to the W3C specifications. If you 
-        need the old behaviour, use <xref 
+        This is the behaviour according to the W3C specifications. If you
+        need the old behaviour, use <xref
         linkend="function.domnode-clone-node" /> before appending.
        </entry>
       </row>
       <row>
        <entry>4.3.2</entry>
        <entry>
-        The new child <parameter>newnode</parameter> is first unlinked from 
+        The new child <parameter>newnode</parameter> is first unlinked from
         its existing context, if it's already in the tree. Same rules apply.
        </entry>
       </row>
@@ -103,7 +103,7 @@
     </tgroup>
    </informaltable>
   </para>
- </refsect1> 
+ </refsect1>
  <refsect1 role="examples">
   &reftitle.examples;
   <para>

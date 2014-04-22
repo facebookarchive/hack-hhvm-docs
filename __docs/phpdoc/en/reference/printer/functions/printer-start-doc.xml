@@ -5,7 +5,7 @@
   <refname>printer_start_doc</refname>
   <refpurpose>Start a new document</refpurpose>
  </refnamediv>
- 
+
  <refsect1 role="description">
   &reftitle.description;
   <methodsynopsis>
@@ -16,7 +16,7 @@
   <para>
    The function creates a new document in the printer spooler. A document
    can contain multiple pages, it's used to schedule the print job in the
-   spooler. 
+   spooler.
   </para>
  </refsect1>
 
@@ -73,7 +73,7 @@ printer_close($handle);
    </example>
   </para>
  </refsect1>
- 
+
 </refentry>
 
 <!-- Keep this comment at the end of the file

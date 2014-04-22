@@ -7,35 +7,35 @@
   <abstract>
    <para>
     <acronym>PHP</acronym> is well known for having excellent documentation,
-    documentation that is created by volunteers who collectively make changes 
-    every day. This HOWTO is designed for people who work on the official PHP 
-    documentation. See also <link xlink:href="&url.php.docs;">&url.php.docs;</link> 
+    documentation that is created by volunteers who collectively make changes
+    every day. This HOWTO is designed for people who work on the official PHP
+    documentation. See also <link xlink:href="&url.php.docs;">&url.php.docs;</link>
     for viewable and downloadable versions of the PHP manual.
    </para>
-   
+
    <para>
     This HOWTO contains information about every aspect of the documentation
     process, which includes editing the DocBook <acronym>XML</acronym>
-    sources, validating changes made to these sources, using the build system 
-    to generate documentation into other formats, and general tips like how to 
+    sources, validating changes made to these sources, using the build system
+    to generate documentation into other formats, and general tips like how to
     use <acronym>SVN</acronym>.
    </para>
-  
+
    <para>
-    Related to this HOWTO is the simple <filename>README</filename> file that 
-    lives within the phpdoc SVN module. It's a quick guide for those already 
+    Related to this HOWTO is the simple <filename>README</filename> file that
+    lives within the phpdoc SVN module. It's a quick guide for those already
     familiar with the basics of XML and SVN.
    </para>
-   
+
    <para>
-    The latest copy of this HOWTO is available here:  
+    The latest copy of this HOWTO is available here:
     <link xlink:href="&url.php.howto.online;">&url.php.howto.online;</link>,
-    and it may be downloaded from here: 
-    <link xlink:href="&url.php.howto;">&url.php.howto;</link>. 
+    and it may be downloaded from here:
+    <link xlink:href="&url.php.howto;">&url.php.howto;</link>.
    </para>
   </abstract>
   </info>
-  
+
   <sect1 xml:id="disclaimer">
    <title>Disclaimer</title>
 
@@ -68,7 +68,7 @@
 
   <sect1 xml:id="credits">
    <title>Credits</title>
-   
+
    <para>
     This document is based on many files, previously hosted
     in the phpdoc module at cvs.php.net, containing information
@@ -78,10 +78,10 @@
     include the original authors in the authors list of this file.
    </para>
   </sect1>
-  
+
   <sect1 xml:id="feedback">
    <title>Feedback</title>
-   
+
    <para>
     Feedback is most certainly welcome on this document. Without your
     submissions and input, this document wouldn't exist. Please send

@@ -5,7 +5,7 @@
   <refname>ibase_server_info</refname>
   <refpurpose>Request information about a database server</refpurpose>
  </refnamediv>
- 
+
  <refsect1 role="description">
   &reftitle.description;
   <methodsynopsis>

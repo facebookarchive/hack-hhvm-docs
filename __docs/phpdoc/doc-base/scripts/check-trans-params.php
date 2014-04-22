@@ -53,7 +53,7 @@ foreach (glob("*/functions/*.xml") as $filename) {
 		$errors['file_not_exist_en'][] = array('filename' => $filename, 'filename_en' => 'n/a', 'line' => 'n/a', 'line_en' => 'n/a');
 		continue;
 	}
-	
+
 	if (!is_translatable($filename_en)) {
 		continue;
 	}

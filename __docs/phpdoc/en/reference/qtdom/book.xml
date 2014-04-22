@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- $Revision: 330340 $ -->
 <!-- State: experimental -->
- 
+
 <book xml:id="book.qtdom" xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink">
  <title>qtdom</title>
- 
+
  <!-- {{{ preface -->
  <preface xml:id="intro.qtdom">
   &reftitle.intro;
@@ -19,7 +19,7 @@
   </note>
  </preface>
  <!-- }}} -->
- 
+
  &reference.qtdom.setup;
  &reference.qtdom.constants;
  &reference.qtdom.reference;

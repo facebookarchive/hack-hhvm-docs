@@ -24,8 +24,8 @@ if (PHP_SAPI !== 'cli') {
 }
 
 if ($_SERVER['argc'] == 2 &&
-      in_array($_SERVER['argv'][1], array('--help', '-help', '-h', '-?')) 
-      || 
+      in_array($_SERVER['argv'][1], array('--help', '-help', '-h', '-?'))
+      ||
       $_SERVER['argc'] < 2) {
 
     echo "<Description>\n\n";
@@ -47,9 +47,9 @@ if (!is_dir($fullpath_dir)) {
 $log = array('nonfiles'  => array(),
              'error'     => array(),
              'rewritten' => array());
-    
+
 // Start the processing
-list_files($fullpath_dir, '', $log);    
+list_files($fullpath_dir, '', $log);
 
 
 
@@ -67,9 +67,9 @@ if (!empty($log['error'])) {
  *
  * @return bool
  */
-function list_files($prefix, $path, &$userdata) 
+function list_files($prefix, $path, &$userdata)
 {
-    
+
     if (is_dir($prefix.$path) && is_resource($handle = @opendir($prefix.$path))) {
 
         while ($name = readdir($handle)) {
@@ -87,7 +87,7 @@ function list_files($prefix, $path, &$userdata)
     } else {
         return false;
     }
-    
+
 }
 
 /**
@@ -95,22 +95,22 @@ function list_files($prefix, $path, &$userdata)
  *
  * @return null
  */
-function scan_file($prefix, $path, &$userdata) 
+function scan_file($prefix, $path, &$userdata)
 {
-    
+
     if (!is_file($prefix.$path)) {
         $userdata['nonfiles'][] = $path;
         return false;
     }
-    
+
     $content = file_get_contents($prefix.$path);
     echo "scanning $path\n";
     if ($number = preg_match_all('/regex/', $content, $matches)) {
-        
+
         // Process
 
         $userdata['rewritten'][] = $path;
     }
-    
+
 }
 

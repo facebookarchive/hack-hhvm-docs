@@ -12,7 +12,7 @@
 
    <varlistentry>
     <term>
-     <constant>CONSTANT_NAME</constant> 
+     <constant>CONSTANT_NAME</constant>
      (<type>itstype</type>)
     </term>
     <listitem>
@@ -24,7 +24,7 @@
 
    <varlistentry>
     <term>
-     <constant>CONSTANT2_NAME</constant> 
+     <constant>CONSTANT2_NAME</constant>
      (<type>itstype</type>)
     </term>
     <listitem>

@@ -5,7 +5,7 @@
   <refname>swf_mulcolor</refname>
   <refpurpose>Sets the global multiply color to the rgba value specified</refpurpose>
  </refnamediv>
- 
+
  <refsect1 role="description">
   &reftitle.description;
   <methodsynopsis>
@@ -18,7 +18,7 @@
   <para>
    Sets the global multiply color to the given one. This color is then
    implicitly used by the <function>swf_placeobject</function>,
-   <function>swf_modifyobject</function> and 
+   <function>swf_modifyobject</function> and
    <function>swf_addbuttonrecord</function> functions.
   </para>
   <para>

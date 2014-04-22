@@ -5,14 +5,14 @@
 
   <para>
    Any text editor will work, and often times specialized "XML Editors"
-   will alter unintended parts of the text (especially the whitespace) so 
+   will alter unintended parts of the text (especially the whitespace) so
    be sure to always check the diff (svn diff foo.xml) before commit.
   </para>
 
   <sect1 xml:id="editors-all-configuration">
    <title>Configuration</title>
    <para>
-    When editing files within the PHP Manual sources, set the default tab 
+    When editing files within the PHP Manual sources, set the default tab
     to one space, and use Unix line endings.
    </para>
   </sect1>
@@ -36,7 +36,7 @@
    <title>Basic Commands</title>
    <para>
     If you are using PSGML, it can help you a lot finding out
-    what tags you can use where. By pressing 
+    what tags you can use where. By pressing
     <keycombo><keysym>C-c</keysym> <keysym>C-e</keysym></keycombo>
     <footnote><simpara>C-<replaceable>x</replaceable> is Emacs's way
     of saying you should press <keysym>Control</keysym> and the
@@ -89,9 +89,9 @@
      <filename>_emacs</filename>, and resides in the directory given
      by the <envar>HOME</envar> environment variable or <filename class="directory">C:/</filename>.
     </para>
- 
+
 -->
- 
+
  <chapter xml:id="chapter-vi">
   <title>Working with vi</title>
 

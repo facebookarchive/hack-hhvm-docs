@@ -19,7 +19,7 @@ class OO {
    var $elem = array('b' => 9, 'c' => 42);
 
    // Callback method for getting a property
-   function __get($prop_name, &$prop_value) 
+   function __get($prop_name, &$prop_value)
    {
        if (isset($this->elem[$prop_name])) {
            $prop_value = $this->elem[$prop_name];
@@ -30,7 +30,7 @@ class OO {
    }
 
    // Callback method for setting a property
-   function __set($prop_name, $prop_value) 
+   function __set($prop_name, $prop_value)
    {
        $this->elem[$prop_name] = $prop_value;
        return true;
@@ -47,7 +47,7 @@ echo "\$o->c: $o->c\n"; // print: $o->c: 42
 echo "\$o->d: $o->d\n"; // print: $o->d:
 
 // add a new item to the $elem array in OO
-$o->x = 56; 
+$o->x = 56;
 
 // instantiate stdclass (it is built-in PHP 4)
 // $val is not overloaded!

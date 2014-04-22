@@ -5,7 +5,7 @@
   <refname>w32api_register_function</refname>
   <refpurpose>Registers function function_name from library with PHP</refpurpose>
  </refnamediv>
- 
+
  <refsect1 role="description">
   &reftitle.description;
   <methodsynopsis>
@@ -16,7 +16,7 @@
   </methodsynopsis>
   <para>
    This function tries to find the <parameter>function_name</parameter> function
-   in <parameter>library</parameter>, and tries to import it into PHP. 
+   in <parameter>library</parameter>, and tries to import it into PHP.
   </para>
  </refsect1>
 
@@ -44,7 +44,7 @@
      <term><parameter>return_type</parameter></term>
      <listitem>
       <para>
-       The function will be registered with the given 
+       The function will be registered with the given
        <parameter>return_type</parameter>. This type can be a generic PHP
        type, or a type defined with <function>w32api_deftype</function>.
        All type names are case sensitive. Built in type names should be

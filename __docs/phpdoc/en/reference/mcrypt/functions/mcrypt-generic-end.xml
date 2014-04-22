@@ -5,7 +5,7 @@
   <refname>mcrypt_generic_end</refname>
   <refpurpose>This function terminates encryption</refpurpose>
  </refnamediv>
- 
+
  <refsect1 role="description">
   &reftitle.description;
   <methodsynopsis>

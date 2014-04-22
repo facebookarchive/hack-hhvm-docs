@@ -83,7 +83,7 @@
 <?php
 echo 'this is a simple string';
 
-echo 'You can also have embedded newlines in 
+echo 'You can also have embedded newlines in
 strings this way as it is
 okay to do';
 
@@ -195,7 +195,7 @@ echo 'Variables do not $expand $either';
     details.
    </para>
   </sect3>
-  
+
   <sect3 xml:id="language.types.string.syntax.heredoc">
    <title>Heredoc</title>
 
@@ -203,7 +203,7 @@ echo 'Variables do not $expand $either';
     A third way to delimit <type>string</type>s is the heredoc syntax:
     <literal>&lt;&lt;&lt;</literal>. After this operator, an identifier is
     provided, then a newline. The <type>string</type> itself follows, and then
-    the same identifier again to close the quotation. 
+    the same identifier again to close the quotation.
    </simpara>
 
    <simpara>
@@ -212,17 +212,17 @@ echo 'Variables do not $expand $either';
     other label in PHP: it must contain only alphanumeric characters and
     underscores, and must start with a non-digit character or underscore.
    </simpara>
-   
+
    <warning>
     <simpara>
      It is very important to note that the line with the closing identifier must
-     contain no other characters, except a semicolon (<literal>;</literal>). 
+     contain no other characters, except a semicolon (<literal>;</literal>).
      That means especially that the identifier
      <emphasis>may not be indented</emphasis>, and there may not be any spaces
      or tabs before or after the semicolon. It's also important to realize that
      the first character before the closing identifier must be a newline as
      defined by the local operating system. This is <literal>\n</literal> on
-     UNIX systems, including Mac OS X. The closing delimiter must also be 
+     UNIX systems, including Mac OS X. The closing delimiter must also be
      followed by a newline.
     </simpara>
 
@@ -237,7 +237,7 @@ echo 'Variables do not $expand $either';
      Heredocs can not be used for initializing class properties. Since PHP 5.3,
      this limitation is valid only for heredocs containing variables.
     </para>
-    
+
     <example>
      <title>Invalid example</title>
      <programlisting role="php">
@@ -262,7 +262,7 @@ bar
     inside a heredoc as with <type>string</type>s.
    </para>
 
-   <example> 
+   <example>
     <title>Heredoc string quoting example</title>
     <programlisting role="php">
 <![CDATA[
@@ -307,11 +307,11 @@ This should print a capital 'A': A]]>
    </example>
 
    <para>
-    It is also possible to use the Heredoc syntax to pass data to function 
+    It is also possible to use the Heredoc syntax to pass data to function
     arguments:
    </para>
 
-   <example> 
+   <example>
     <title>Heredoc in arguments example</title>
     <programlisting role="php">
 <![CDATA[
@@ -326,11 +326,11 @@ EOD
    </example>
 
    <para>
-    As of PHP 5.3.0, it's possible to initialize static variables and class 
+    As of PHP 5.3.0, it's possible to initialize static variables and class
     properties/constants using the Heredoc syntax:
    </para>
 
-   <example> 
+   <example>
     <title>Using Heredoc to initialize static values</title>
     <programlisting role="php">
 <![CDATA[
@@ -360,11 +360,11 @@ FOOBAR;
    </example>
 
    <para>
-    Starting with PHP 5.3.0, the opening Heredoc identifier may optionally be 
+    Starting with PHP 5.3.0, the opening Heredoc identifier may optionally be
     enclosed in double quotes:
    </para>
 
-   <example> 
+   <example>
     <title>Using double quotes in Heredoc</title>
     <programlisting role="php">
 <![CDATA[
@@ -378,10 +378,10 @@ FOOBAR;
    </example>
 
   </sect3>
-  
+
   <sect3 xml:id="language.types.string.syntax.nowdoc">
    <title>Nowdoc</title>
-   
+
    <para>
     Nowdocs are to single-quoted strings what heredocs are to double-quoted
     strings. A nowdoc is specified similarly to a heredoc, but <emphasis>no
@@ -391,7 +391,7 @@ FOOBAR;
     <literal>&lt;![CDATA[ ]]&gt;</literal> construct, in that it declares a
     block of text which is not for parsing.
    </para>
-   
+
    <para>
     A nowdoc is identified with the same <literal>&lt;&lt;&lt;</literal>
     sequence used for heredocs, but the identifier which follows is enclosed in
@@ -399,7 +399,7 @@ FOOBAR;
     heredoc identifiers also apply to nowdoc identifiers, especially those
     regarding the appearance of the closing identifier.
    </para>
-   
+
    <example>
     <title>Nowdoc string quoting example</title>
     <programlisting role="php">
@@ -443,14 +443,14 @@ Now, I am printing some {$foo->bar[1]}.
 This should not print a capital 'A': \x41]]>
     </screen>
    </example>
-   
+
    <note>
     <para>
      Unlike heredocs, nowdocs can be used in any static data context. The
      typical example is initializing class properties or constants:
     </para>
    </note>
-    
+
    <example>
     <title>Static data example</title>
     <programlisting role="php">
@@ -479,7 +479,7 @@ EOT;
 
    <simpara>
     When a <type>string</type> is specified in double quotes or with heredoc,
-    <link linkend="language.variables">variables</link> are parsed within it. 
+    <link linkend="language.variables">variables</link> are parsed within it.
    </simpara>
 
    <simpara>
@@ -548,7 +548,7 @@ class people {
     public $john = "John Smith";
     public $jane = "Jane Smith";
     public $robert = "Robert Paulsen";
-    
+
     public $smith = "Smith";
 }
 
@@ -616,7 +616,7 @@ echo "This is {$great}";
 echo "This is ${great}";
 
 // Works
-echo "This square is {$square->width}00 centimeters broad."; 
+echo "This square is {$square->width}00 centimeters broad.";
 
 
 // Works, quoted keys only work using the curly brace syntax
@@ -630,7 +630,7 @@ echo "This works: {$arr[4][3]}";
 // In other words, it will still work, but only because PHP first looks for a
 // constant named foo; an error of level E_NOTICE (undefined constant) will be
 // thrown.
-echo "This is wrong: {$arr[foo][3]}"; 
+echo "This is wrong: {$arr[foo][3]}";
 
 // Works. When using multi-dimensional arrays, always use braces around arrays
 // when inside of strings
@@ -651,8 +651,8 @@ echo "This is the value of the var named by the return value of \$object->getNam
 echo "This is the return value of getName(): {getName()}";
 ?>
 ]]>
-<!-- maybe it's better to leave this out?? 
-// this works, but i disencourage its use, since this is NOT 
+<!-- maybe it's better to leave this out??
+// this works, but i disencourage its use, since this is NOT
 // involving functions, rather than mere variables, arrays and objects.
 $beer = 'Heineken';
 echo "I'd like to have another {${ strrev('reeb') }}, hips";
@@ -689,7 +689,7 @@ I am bar.
 ]]>
    </screen>
    </informalexample>
-    
+
     <note>
      <para>
       Functions, method calls, static class variables, and class
@@ -729,7 +729,7 @@ echo "I'd like an {${beers::$ale}}\n";
 
    </sect4>
   </sect3>
-  
+
   <sect3 xml:id="language.types.string.substr">
    <title>String access and modification by character</title>
 
@@ -784,7 +784,7 @@ $third = $str[2];
 
 // Get the last character of a string.
 $str = 'This is still a test.';
-$last = $str[strlen($str)-1]; 
+$last = $str[strlen($str)-1];
 
 // Modify the last character of a string
 $str = 'Look at the sea';
@@ -794,7 +794,7 @@ $str[strlen($str)-1] = 'e';
 ]]>
     </programlisting>
    </example>
-   
+
    <para>
     As of PHP 5.4 string offsets have to either be integers or integer-like strings, otherwise a warning
     will be thrown. Previously an offset like <literal>"foo"</literal> was silently cast to <literal>0</literal>.
@@ -906,7 +906,7 @@ bool(false)
 
  <sect2 xml:id="language.types.string.casting">
   <title>Converting to string</title>
-  
+
   <para>
    A value can be converted to a <type>string</type> using the
    <literal>(string)</literal> cast or the <function>strval</function> function.
@@ -918,7 +918,7 @@ bool(false)
    <link linkend="language.types.type-juggling">Type Juggling</link> will make
    the following clearer. See also the <function>settype</function> function.
   </para>
-  
+
   <para>
    A <type>boolean</type> &true; value is converted to the <type>string</type>
    <literal>"1"</literal>. <type>Boolean</type> &false; is converted to
@@ -926,7 +926,7 @@ bool(false)
    forth between <type>boolean</type> and <type>string</type> values.
   </para>
 
-  <para> 
+  <para>
    An <type>integer</type> or <type>float</type> is converted to a
    <type>string</type> representing the number textually (including the
    exponent part for <type>float</type>s). Floating point numbers can be
@@ -970,7 +970,7 @@ bool(false)
   <para>
    &null; is always converted to an empty string.
   </para>
-  
+
   <para>
    As stated above, directly converting an <type>array</type>,
    <type>object</type>, or <type>resource</type> to a <type>string</type> does
@@ -978,7 +978,7 @@ bool(false)
    functions <function>print_r</function> and <function>var_dump</function> for
    more effective means of inspecting the contents of these types.
   </para>
-  
+
   <para>
    Most PHP values can also be converted to <type>string</type>s for permanent
    storage. This method is called serialization, and is performed by the
@@ -1025,7 +1025,7 @@ $foo = 1 + "bob3";                // $foo is integer (1)
 $foo = 1 + "10 Small Pigs";       // $foo is integer (11)
 $foo = 4 + "10.2 Little Piggies"; // $foo is float (14.2)
 $foo = "10.0 pigs " + 1;          // $foo is float (11)
-$foo = "10.0 pigs " + 1.0;        // $foo is float (11)     
+$foo = "10.0 pigs " + 1.0;        // $foo is float (11)
 ?>
 ]]>
    </programlisting>
@@ -1061,9 +1061,9 @@ echo "\$foo==$foo; type is " . gettype ($foo) . "<br />\n";
  </sect2>
 
  <sect2 xml:id="language.types.string.details">
-  
+
   <title>Details of the String Type</title>
-  
+
   <para>
    The <type>string</type> in PHP is implemented as an array of bytes and an
    integer indicating the length of the buffer. It has no information about how
@@ -1110,7 +1110,7 @@ echo "\$foo==$foo; type is " . gettype ($foo) . "<br />\n";
     <simpara>
      Some functions assume that the string is encoded in some (any) single-byte
      encoding, but they do not need to interpret those bytes as specific
-     characters. This is case of, for instance, <function>substr</function>, 
+     characters. This is case of, for instance, <function>substr</function>,
      <function>strpos</function>, <function>strlen</function> or
      <function>strcmp</function>. Another way to think of these functions is
      that operate on memory buffers, i.e., they work with bytes and byte
@@ -1166,7 +1166,7 @@ echo "\$foo==$foo; type is " . gettype ($foo) . "<br />\n";
   </para>
  </sect2>
 </sect1><!-- end string -->
- 
+
 <!-- Keep this comment at the end of the file
 Local variables:
 mode: sgml

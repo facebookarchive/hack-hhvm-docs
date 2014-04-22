@@ -1,5 +1,5 @@
 #!/usr/bin/php -q
-<?php 
+<?php
 /*
   +----------------------------------------------------------------------+
   | PHP Version 4                                                        |
@@ -53,16 +53,16 @@ if (!$dh) { die("ERROR: Unable to open directory\n"); }
 
 // For all the files
 while (($filename = readdir($dh)) !== FALSE) {
-    
+
     $fullname = "$startdir/$filename";
-    
+
     // If this is a php file
     if (preg_match("!.php$!", $fullname) && is_file($fullname)) {
         $contents = file($fullname);
-        
+
         // If !DOCTYPE is not found, skip file rewrite
         if (strpos($contents[0], "<!DOCTYPE") === FALSE && strpos($contents[0], "<?xml ") === FALSE) { continue; }
-        
+
         // Otherwise, rewrite the contents of the
         // file, skiping the first line
         $fp = fopen($fullname, "w");
