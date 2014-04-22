@@ -79,7 +79,12 @@ Hello World
     The point of the example is to show the special Hack (or could have been PHP) tag format. In this example we used <literal>&lt;?hh</literal> to indicate the start of a Hack tag. Then we put the Hack statement. Closing tags (<literal>?&gt;</literal>) are not supported in Hack, and generally omitted in newer PHP code. For more details, read the manual section on the <link linkend="language.basic-syntax"> basic PHP syntax</link>.
    </para>
    <note>
-    <info><title>A Note on Line Feeds</title></info>
+    <info><title>A Note on Line Feeds in PHP files</title></info>
+    <blockquote>
+      <para>
+        This is referring to PHP files only, as Hack code cannot have closing tags. In fact, Hack code cannot be interspersed in HTML code at all.
+      </para>
+    </blockquote>
     <para>
      Line feeds have little meaning in HTML, however it is still a good idea to make your HTML look nice and clean by putting line feeds in.  A linefeed that follows immediately after a closing <literal>?&gt;</literal> will be removed by HHVM.  This can be extremely useful when you are putting in many blocks of PHP code or include files containing PHP code that aren't supposed to output anything.  At the same time it can be a bit confusing.  You can put a space after the closing <literal>?&gt;</literal> to force a space and a line feed to be output, or you can put an explicit line feed in the last echo/print from within your PHP block.
     </para>
