@@ -82,14 +82,14 @@ a {
   line-height: 18px;
 }
 
-.navbar h1 {
+.navbar .brand {
   background-size: 300px 75px;
   background-image: url(/images/logos/hhvmhack.png);
   background-position: 0 50%;
   background-repeat: no-repeat;
-  line-height: 60px;
+  line-height: 0px;
   margin: 0 10px 0 0;
-  padding: 0;
+  padding:20px;
   overflow: hidden;
   text-indent: 100%;
   white-space: nowrap;

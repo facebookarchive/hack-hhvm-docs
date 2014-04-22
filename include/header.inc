@@ -49,7 +49,7 @@ if ($config["cache"]) {
   <meta property='og:description' content='The documentation for the Hack language and HHVM'>
   <meta property='og:image' content='http://docs.hhvm.com/images/og.png'>
 
-<?php 
+<?php
 // Google Analytics Tracking
 include $_SERVER['DOCUMENT_ROOT'] . '/include/ga.inc';
 ?>
@@ -80,8 +80,7 @@ include $_SERVER['DOCUMENT_ROOT'] . '/include/ga.inc';
 
 <nav id="head-nav" class="navbar navbar-fixed-top">
   <div class="navbar-inner clearfix">
-    <a href='/'><h1>Hack &amp; HHVM docs</h1></a>
-
+    <a href='/' class="brand"></a>
     <form class="navbar-search" id="topsearch" action="/search.php">
       <input type="hidden" name="show" value="quickref">
       <input type="search" name="pattern" class="search-query" placeholder="Search" accesskey="s">
