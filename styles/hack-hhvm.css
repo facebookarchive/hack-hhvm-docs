@@ -74,7 +74,6 @@ a {
 
 .navbar .navbar-inner {
   padding: 10px 0;
-  line-height: 0px;
 }
 
 .navbar-search .search-query {
@@ -139,5 +138,4 @@ footer {
   .navbar a h1 {
     margin: 0 auto;
   }
-
 }

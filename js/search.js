@@ -16,7 +16,6 @@
         this.elements = {};
     };
 
-
     /**
      * Adds an item to the backend.
      *
@@ -43,6 +42,7 @@
         var array = [];
 
         $.each(this.elements, function (_, element) {
+            element.name = element.name.replace(/&lt;/g,"<").replace(/&gt;/g, ">");
             array.push(element);
         });
 
@@ -144,6 +144,9 @@
                  * of data this is, and hence which backend this should go
                  * into. */
                 if (item[0]) {
+                    // Handle generics in the search box
+                    item[0] = item[0].replace(/&lt;/g, "<").replace(/&gt;/g, ">");
+
                     var tokens = [item[0]];
                     var type = null;
 
@@ -189,7 +192,6 @@
                         default:
                              type = "general";
                     }
-
                     if (type) {
                         backends[type].addItem(id, item[0], item[1], tokens);
                     }
@@ -217,13 +219,16 @@
 
                 if (cache) {
                     var since = new Date();
+                    // make sure we reset all caches before this date because
+                    // of the proper generics changes to search.
+                    var reset = new Date("24 April 2014 00:00:00");
+
 
                     // Parse the stored JSON.
                     cache = JSON.parse(cache);
-
                     // We'll use anything that's less than two weeks old.
                     since.setDate(since.getDate() - 14);
-                    if (cache.time > since.getTime()) {
+                    if (cache.time > reset.getTime() && cache.time > since.getTime()) {
                         success($.map(cache.data, function (dataset, name) {
                             // Rehydrate the Backend objects.
                             var backend = new Backend(dataset.label);
@@ -245,12 +250,19 @@
                     var backends = processIndex(data);
                     // Cache the data if we can.
                     if (canCache()) {
-                        window.localStorage.setItem(key,
-                            JSON.stringify({
-                                data: backends,
-                                time: new Date().getTime()
-                            })
-                        );
+                        /* This may fail in IE 8 due to exceeding the local
+                         * storage limit. If so, squash the exception: this
+                         * isn't a required part of the system. */
+                        try {
+                            window.localStorage.setItem(key,
+                                JSON.stringify({
+                                    data: backends,
+                                    time: new Date().getTime()
+                                })
+                            );
+                        } catch (e) {
+                            // Derp.
+                        }
                     }
                     success(backends);
                 },
@@ -270,7 +282,6 @@
             // Build the typeahead options array.
             var typeaheadOptions = $.map(backends, function (backend, name) {
                 var local = backend instanceof Backend ? backend.toTypeaheadArray() : backend;
-
                 return {
                     name: name,
                     local: backend.toTypeaheadArray(),
@@ -290,16 +301,7 @@
             $(element).typeahead(typeaheadOptions).on("typeahead:selected", function (_, item) {
                 /* If the user has selected an autocomplete item and hits
                  * enter, we should take them straight to the page. */
-                // Probably could just fix the web server to make a redirect 
-                // happen to a .php file if this occurs, but belts and suspenders
-                // at this point.
-                var check = String(item.id);
-                if (!check.match(/\.php$/)) {
-                    window.location = "/manual/" + options.language + "/" + item.id + ".php";
-                } else {
-                     window.location = "/manual/" + options.language + "/" + item.id;
-                }
-                
+                window.location = "/manual/" + options.language + "/" + item.id;
             }).on("keyup", (function () {
                 /* typeahead.js doesn't give us a reliable event for the
                  * dropdown entries having been updated, so we'll hook into the
@@ -318,7 +320,6 @@
                 return function () {
                     // Grab what the user entered.
                     var pattern = $(element).val();
-
                     // Add result totals to each section heading.
                     $.each(results, function (name, numResults) {
                         var container = $(".tt-dataset-" + name, $(element).parent());

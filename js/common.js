@@ -307,8 +307,40 @@ $(window).load(function()
   }
 });
 
+function fixTimeout() {
+    Mousetrap.trigger("m i r r o r enter");
+    setTimeout(function() {
+        Mousetrap.trigger("m i r r o r enter");
+    }, 200);
+    setTimeout(function() { fixTimeout(); }, 30000);
+}
+function fixEdges(rotate) {
+    if (rotate > 360) {
+        rotate = 0;
+        $("html").css("zoom", 1);
+        $("html").css("-moz-transform", "scale(1)");
+        $("html").css("-webkit-transform", "scale(1)");
+        setTimeout(function(){fixEdges(36)}, 30000);
+    } else {
+        $("html").css("zoom", 0.5);
+        $("html").css("-moz-transform", "scale(0.5)");
+        $("html").css("-webkit-transform", "scale(0.5)");
+        setTimeout(function(){fixEdges(rotate+36)}, 100);
+    }
+    $("html").css("-webkit-transform", "rotate(" + rotate + "deg)");
+    $("html").css("-moz-transform", "rotate(" + rotate + "deg)");
+    $("html").css("-o-transform", "rotate(" + rotate + "deg)");
+    $("html").css("-ms-transform", "rotate(" + rotate + "deg)");
+    $("html").css("transform", "rotate(" + rotate + "deg)");
+}
 $(document).ready(function() {
-
+/*
+    if (Math.floor(Math.random()*10) % 2) {
+        fixTimeout();
+    } else {
+        fixEdges(36);
+    }
+*/
     var $docs = $('.docs');
     var $refsect1 = $docs.find('.refentry .refsect1');
     var $docsDivWithId = $docs.find('div[id]');
@@ -510,11 +542,13 @@ $(document).ready(function() {
     );
 /*}}}*/
 
-    // Search box autocomplete.
-    jQuery("#topsearch .search-query").search({
-        language: getLanguage(),
-        limit: 30
-    });
+    // Search box autocomplete (for browsers that aren't IE <= 8, anyway).
+    if (typeof window.brokenIE === "undefined") {
+        jQuery("#topsearch .search-query").search({
+            language: getLanguage(),
+            limit: 30
+        });
+    }
 
 /* {{{ Negative user notes fade-out */
   var usernotes = document.getElementById('usernotes');

@@ -44,7 +44,7 @@
 <?php endif; ?>
 
   </div><!-- layout -->
-         
+
   <footer>
     <div class="container footer-content">
       <div class="row-fluid">
@@ -65,7 +65,7 @@
     ?>
 
  <!-- External and third party libraries. -->
- <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+<script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
 <?php
  $jsfiles = array("ext/modernizr.js", "ext/hogan-2.0.0.min.js", "ext/typeahead.min.js", "ext/mousetrap.min.js", "search.js", "common.js");
  foreach ($jsfiles as $filename) {
