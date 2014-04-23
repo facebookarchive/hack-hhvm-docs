@@ -6,7 +6,7 @@
 include_once $_SERVER['DOCUMENT_ROOT'] . '/include/errors.inc';
 
 // Try to find some variations of keyword with $prefix in the $lang manual
-function tryprefix($lang, $keyword, $prefix)
+function tryprefix($lang, $keyword, $prefix, $suffix="")
 {
     // Replace all underscores with hyphens (phpdoc convention)
     $keyword = str_replace("_", "-", $keyword);
@@ -15,27 +15,27 @@ function tryprefix($lang, $keyword, $prefix)
     $keyword = preg_replace("!\\(.*\\)!", "-", $keyword);
 
     // Try the keyword with the prefix
-    $try = "/manual/${lang}/${prefix}${keyword}.php";
+    $try = "/manual/${lang}/${prefix}${keyword}${suffix}.php";
     if (@file_exists($_SERVER['DOCUMENT_ROOT'] . $try)) { return $try; }
 
     // Drop out spaces, and try that keyword (if different)
     $nosp = str_replace(" ", "", $keyword);
     if ($nosp != $keyword) {
-        $try = "/manual/${lang}/${prefix}${nosp}.php";
+        $try = "/manual/${lang}/${prefix}${nosp}${suffix}.php";
         if (@file_exists($_SERVER['DOCUMENT_ROOT'] . $try)) { return $try; }
     }
 
     // Replace spaces with hyphens, and try that (if different)
     $dasp = str_replace(" ", "-", $keyword);
     if ($dasp != $keyword) {
-        $try = "/manual/${lang}/${prefix}${dasp}.php";
+        $try = "/manual/${lang}/${prefix}${dasp}${suffix}.php";
         if (@file_exists($_SERVER['DOCUMENT_ROOT'] . $try)) { return $try; }
     }
 
     // Remove hyphens (and underscores), and try that (if different)
     $noul = str_replace("-", "", $keyword);
     if ($noul != $keyword) {
-        $try = "/manual/${lang}/${prefix}${noul}.php";
+        $try = "/manual/${lang}/${prefix}${noul}${suffix}.php";
         if (@file_exists($_SERVER['DOCUMENT_ROOT'] . $try)) { return $try; }
     }
 
@@ -54,10 +54,20 @@ function find_manual_page_slow($lang, $keyword)
     // Remove .. for security reasons
     $keyword = str_replace("..", "", $keyword);
 
+    // Have some suffixes for generic type classes
+    $suffixes = array("tv", "tktv", "tv1tv2", "tu", "te");
+
     // Try to find a manual page with the specified prefix
     foreach ($sections as $section) {
         $found = tryprefix($lang, $keyword, $section);
         if ($found) { return $found; }
+    }
+
+    foreach ($sections as $section) {
+        foreach ($suffixes as $suffix) {
+            $found = tryprefix($lang, $keyword, $section, $suffix);
+            if ($found) { return $found; }
+        }
     }
 
     // Fall back to English, if the language was not English,
@@ -66,6 +76,13 @@ function find_manual_page_slow($lang, $keyword)
         foreach ($sections as $section) {
             $found = tryprefix("en", $keyword, $section);
             if ($found) { return $found; }
+        }
+
+        foreach ($sections as $section) {
+            foreach ($suffixes as $suffix) {
+                $found = tryprefix($lang, $keyword, $section, $suffix);
+                if ($found) { return $found; }
+            }
         }
     }
 
