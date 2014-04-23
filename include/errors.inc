@@ -68,7 +68,7 @@ function error_nomirror($mirror) {
 	site_header("No such mirror", array("noindex"));
 	echo "<h1>No such mirror</h1>\n<p>The mirror you tried to access (" .
 		 htmlspecialchars($mirror) .
-		 ") is not registered php.net mirror.
+		 ") is not registered php.net mirror.";
 	site_footer();
 	exit;
 }
