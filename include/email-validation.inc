@@ -20,7 +20,7 @@ function is_emailable_address($email)
     $email_regex = ":^([-!#\$%&'*+./0-9=?A-Z^_`a-z{|}~ ])+" .
                    "@([-!#\$%&'*+/0-9=?A-Z^_`a-z{|}~ ]+\\.)+" .
                    "[a-zA-Z]{2,6}\$:i";
-    
+
     // If address is not under excluded hosts, and fits the regex,
     // then we belive that it is a good email address
     if (!$excluded_hosts && !empty($email)) {

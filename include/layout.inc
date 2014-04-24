@@ -235,7 +235,7 @@ function download_link($file, $title, $showsize = TRUE, $mirror = '')
             }
             echo ']';
         }
-        
+
     }
 }
 
@@ -540,7 +540,7 @@ function site_header($title = '', $config = array())
     if (isset($_SERVER['BASE_PAGE']) && $shortname = get_shortname($_SERVER["BASE_PAGE"])) {
         $shorturl = "http://docs.hhvm.com/" . $shortname;
     }
-    
+
     require dirname(__FILE__) ."/header.inc";
 }
 function site_footer($config = array())
@@ -658,7 +658,7 @@ function doc_toc_list($lang, $index, $file) {
     // Basically define $TOC before it is redefined again the include
     // file.
     $TOC = array();
-    
+
     include dirname(__FILE__) . "/../manual/$lang/toc/$file.inc";
 
     doc_toc_title($lang, $index, $file);

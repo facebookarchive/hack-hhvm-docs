@@ -43,7 +43,7 @@ if (!isset($_SERVER["SERVER_ADDR"])) {
     $_SERVER["SERVER_ADDR"] = "127.0.0.1";
 }
 
-// As of PHP 5.3.0 multibyte sequence errors are no longer 
+// As of PHP 5.3.0 multibyte sequence errors are no longer
 // silent. Prior to that version this bitfield does not exist
 // so define it to prevent notices on older versions
 if (!defined("ENT_IGNORE")) {
@@ -184,7 +184,7 @@ function google_cse($default = '', $lang = 'en') {
 </noscript>
 <div id="cse" style="width: 100%;"></div>
 <script src="http://www.google.com/jsapi" type="text/javascript"></script>
-<script type="text/javascript"> 
+<script type="text/javascript">
   document.getElementById("cse").innerHTML = "Loading...";
   google.load('search', '1', {language : '<?php echo $lang; ?>', style : google.loader.themes.MINIMALIST});
   google.setOnLoadCallback(function() {
