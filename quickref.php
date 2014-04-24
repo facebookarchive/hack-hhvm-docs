@@ -47,12 +47,12 @@ function quickref_table($functions, $sort = true)
     return $funcs;
 }
 
-function primary_content($notfound_enc) {
+function primary_content($notfound_dec) {
     global $LANG;
     // Could probably use search.php here (add another case to the switch)
     // but for now...
     $l = $LANG;
-    $q = $notfound_enc;
+    $q = $notfound_dec;
 
     echo '<h1>Search results</h1>';
 
@@ -138,8 +138,8 @@ else { $head_options = array(); }
 site_header("Manual Quick Reference", $head_options+array("current" => "help"));
 
 // Note: $notfound is defined (with htmlspecialchars) inside manual-lookup.php
-$notfound_enc = urlencode($notfound);
-
+// Let's decode it for a nice search text box display.
+$notfound_dec = htmlspecialchars_decode($notfound);
 
 if ($snippet = is_known_snippet($notfound)) {
     echo "<h1>Related snippet found for '{$notfound}'</h1>";
@@ -147,7 +147,7 @@ if ($snippet = is_known_snippet($notfound)) {
 }
 
 // Left side content
-primary_content($notfound_enc);
+primary_content($notfound_dec);
 // Right side content (sidebar)
 $config = array(
     "sidebar" => '<p class="panel">'. sidebar_content($notfound, $maybe),

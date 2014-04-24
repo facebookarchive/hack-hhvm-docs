@@ -179,7 +179,7 @@ function myphpnet_save()
 function google_cse($default = '', $lang = 'en') {
 ?>
 <noscript>
-  php.net's search functionality requires JavaScript to operate. Please enable
+  doc.hhvm.com's search functionality requires JavaScript to operate. Please enable
   JavaScript and reload to continue.
 </noscript>
 <div id="cse" style="width: 100%;"></div>
