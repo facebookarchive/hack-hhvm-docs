@@ -172,10 +172,21 @@ function errh($errno, $msg, $file, $line, $ctx = null) {
             return false;
     }
 
-    if ($output !== null) {
-        $timestamp = term_color(sprintf("[%s - %s]", $time, $err[$errno]), $color);
-        fprintf($output, "%s %s\n", $timestamp, $data);
+    if ($output === null) {
+        // fallback to stdout. Why do I need this, when $output should
+        // be set in the switch above? Well.......
+        // Possible bug with the STDERR|IN|OUT constants and FASTCGI
+        // https://github.com/facebook/hhvm/issues/2502
+        // http://www.perlmonks.org/?node_id=108278
+        // DevServer without FASTCGI - STDOUT is a normal resource strean
+        // ProdServer with HHVM/FASTCGI - STDOUT is NULL. That's not good.
+        // See Config::$optionArrayDefault in Config.php where STDOUT, etc.
+        // are set for php_error_output, php_info_output, etc.
+        $output = fopen('php://stdout', 'w');
     }
+    $timestamp = term_color(sprintf("[%s - %s]", $time, $err[$errno]), $color);
+    fprintf($output, "%s %s\n", $timestamp, $data);
+
     // Abort on fatal errors
     if ($errno & (E_USER_ERROR|E_RECOVERABLE_ERROR)) {
         exit(1);
