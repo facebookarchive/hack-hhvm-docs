@@ -4,7 +4,6 @@
 &hackref.collections.immvectortv.count;
 &hackref.collections.immvectortv.filter;
 &hackref.collections.immvectortv.filterwithkey;
-&hackref.collections.immvectortv.fromarray;
 &hackref.collections.immvectortv.fromitems;
 &hackref.collections.immvectortv.get;
 &hackref.collections.immvectortv.getiterator;

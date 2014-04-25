@@ -2,7 +2,6 @@
 &hackref.collections.immsettv.contains;
 &hackref.collections.immsettv.count;
 &hackref.collections.immsettv.filter;
-&hackref.collections.immsettv.fromarray;
 &hackref.collections.immsettv.fromarrays;
 &hackref.collections.immsettv.fromitems;
 &hackref.collections.immsettv.getiterator;

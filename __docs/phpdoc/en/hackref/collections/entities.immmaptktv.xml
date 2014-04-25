@@ -6,7 +6,6 @@
 &hackref.collections.immmaptktv.differencebykey;
 &hackref.collections.immmaptktv.filter;
 &hackref.collections.immmaptktv.filterwithkey;
-&hackref.collections.immmaptktv.fromarray;
 &hackref.collections.immmaptktv.fromitems;
 &hackref.collections.immmaptktv.get;
 &hackref.collections.immmaptktv.getiterator;
