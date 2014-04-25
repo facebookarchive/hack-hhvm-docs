@@ -3,3 +3,4 @@ logs/
 *.hdf
 www.pid
 .commit-template
+google*.html
