@@ -72,6 +72,8 @@ function removeDir($path) {
 
 /* {{{ The PhD errorhandler */
 function errh($errno, $msg, $file, $line, $ctx = null) {
+    // will be set to a resource handle if we have an error
+    $output = null;
     static $err = array(
         // PHP Triggered Errors
         E_DEPRECATED                  => 'E_DEPRECATED          ',
@@ -118,7 +120,9 @@ function errh($errno, $msg, $file, $line, $ctx = null) {
         return false;
     }
     $recursive = true;
-
+    if (! ini_get('date.timezone')) {
+        date_default_timezone_set('America/Los_Angeles');
+    }
     $time = date(Config::date_format());
     switch($errno) {
         case VERBOSE_INDEXING:
@@ -168,9 +172,10 @@ function errh($errno, $msg, $file, $line, $ctx = null) {
             return false;
     }
 
-    $timestamp = term_color(sprintf("[%s - %s]", $time, $err[$errno]), $color);
-    fprintf($output, "%s %s\n", $timestamp, $data);
-
+    if ($output !== null) {
+        $timestamp = term_color(sprintf("[%s - %s]", $time, $err[$errno]), $color);
+        fprintf($output, "%s %s\n", $timestamp, $data);
+    }
     // Abort on fatal errors
     if ($errno & (E_USER_ERROR|E_RECOVERABLE_ERROR)) {
         exit(1);
