@@ -33,10 +33,10 @@ header("Last-Modified: " . $tsstring);
 
 if (substr($abs, -3) == ".js" || substr($abs, -5) == ".json") {
     header("Content-Type: application/javascript");
+    readfile($abs);
 } elseif (substr($abs, -4) == ".css") {
     header("Content-Type: text/css");
+    readfile($abs);
 }
-
-readfile($abs);
 
 
