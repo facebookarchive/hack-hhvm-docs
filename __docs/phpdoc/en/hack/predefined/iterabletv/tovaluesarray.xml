@@ -3,7 +3,7 @@
 
 <refentry xml:id="hack.iterabletv.tovaluesarray" xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink">
  <refnamediv>
-  <refname>Iterable&lt;TV&gt;::toValuesArray</refname>
+  <refname>Iterable&lt;Tv&gt;::toValuesArray</refname>
   <refpurpose>Convert an iterable to an array of the values of the iterable, keyed by integers.</refpurpose>
  </refnamediv>
 

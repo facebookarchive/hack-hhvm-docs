@@ -1,20 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- $Revision: 288721 $ -->
 
-<refentry xml:id="hack.iterabletv.toset" xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink">
+<refentry xml:id="hack.iterabletv.toimmset" xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink">
  <refnamediv>
-  <refname>Iterable&lt;Tv&gt;::toSet</refname>
-  <refpurpose>Convert an iterable to a set</refpurpose>
+  <refname>Iterable&lt;Tv&gt;::toImmSet</refname>
+  <refpurpose>Convert an iterable to a an immutable set</refpurpose>
  </refnamediv>
 
  <refsect1 role="description">
   &reftitle.description;
   <methodsynopsis>
-   <modifier>abstract</modifier> <modifier>public</modifier> <type>Set&lt;Tv&gt;</type><methodname>Iterable&lt;Tv&gt;::toSet</methodname>
+   <modifier>abstract</modifier> <modifier>public</modifier> <type>ImmSet&lt;Tv&gt;</type><methodname>Iterable&lt;Tv&gt;::toImmSet</methodname>
    <void />
   </methodsynopsis>
   <para>
-   Converts an iterable to a set.
+   Converts an iterable to an immutable set.
   </para>
  </refsect1>
 
@@ -26,7 +26,7 @@
  <refsect1 role="returnvalues">
   &reftitle.returnvalues;
   <para>
-   A Set&lt;Tv&gt;
+   An ImmSet&lt;Tv&gt;
   </para>
  </refsect1>
 

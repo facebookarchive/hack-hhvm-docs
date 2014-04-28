@@ -57,6 +57,7 @@
  &hack.predefined.iterabletv.tovector;
  &hack.predefined.iterabletv.toimmvector;
  &hack.predefined.iterabletv.toset;
+ &hack.predefined.iterabletv.toimmset;
  &hack.predefined.iterabletv.values;
  &hack.predefined.iterabletv.lazy;
  &hack.predefined.iterabletv.map;
