@@ -10,7 +10,7 @@
  <refsect1 role="description">
   &reftitle.description;
   <methodsynopsis>
-   <modifier>abstract</modifier><modifier>public</modifier><type>WaitHandle&lt;Tt&gt;</type><methodname>Awaitable&lt;T&gt;::getWaitHandle</methodname>
+   <modifier>abstract</modifier> <modifier>public</modifier> <type>WaitHandle&lt;T&gt;</type><methodname>Awaitable&lt;T&gt;::getWaitHandle</methodname>
    <void />
   </methodsynopsis>
  </refsect1>
