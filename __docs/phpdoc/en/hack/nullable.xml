@@ -2,7 +2,7 @@
 <chapter xml:id="hack.nullable">
   <title>Nullable</title>
   <para>
-    Hack introduces a safer way to deal with nulls through a concept known as the &quot;Nullable&quot; type (sometimes called &quot;maybe&quot; or &quot;option&quot;). Nullable allows any type to have <literal>null</literal> assigned and checked on it. Nullable is very useful for primitive types that don't generally allow <literal>null</literal> as one of their values, such as <literal>bool</literal> and <literal>int</literal>, but it can be also be useful for user-defined classes. Below is an example. Note the <literal>?</literal> operand used to represent nullable.
+    Hack introduces a safer way to deal with nulls through a concept known as the &quot;Nullable&quot; type. Nullable allows any type to have <literal>null</literal> assigned and checked on it. Nullable is very useful for primitive types that don't generally allow <literal>null</literal> as one of their values, such as <literal>bool</literal> and <literal>int</literal>, but it can be also be useful for user-defined classes. Below is an example. Note the <literal>?</literal> operand used to represent nullable.
     <informalexample>
       <programlisting role="php">
 <![CDATA[
@@ -644,6 +644,40 @@ function create_updateA(string $key, string $comments = null) {
           </programlisting>
           <para>
             Again, as shown in the example above on nullable method parameters, using a default value of <literal>null</literal> in this case is not type correct and should not be done under normal circumstances.
+          </para>
+        </informalexample>
+      </para>
+    </sect2>
+    <sect2 xml:id="hack.nullable.examples.converse">
+      <title>Reducing Null Checks</title>
+      <para>
+        There is a converse argument for having a nullable type mechanism. Since Hack checks whether a type is annotated with the ability to return null, there are now cases where you won't have to do extraneous null checks in your code.
+        <informalexample>
+          <programlisting role="php">
+<![CDATA[
+<?hh
+
+function foo(int $x): bool {
+  if ($x > 4) {
+    return false;
+  }
+  return true;
+}
+
+function bar(): bool {
+  return foo(5);
+  // In the past, you might have had to do this check
+  //$x = foo(5);
+  //if ($x !== null) {
+  //  return $x;
+  //} else {
+  //  throw;
+  //}
+}
+]]>
+          </programlisting>
+          <para>
+            Before Hack, with code like this (granted this is an unrealistic example, but used to prove a point), you might check for <literal>null</literal> and throw an exception in <literal>bar()</literal> just in case <literal>foo()</literal> might give you a <literal>null</literal> back. But since the Hack type checker would produce an error if <literal>foo()</literal> tried to return <literal>null</literal> without being a nullable <literal>bool</literal>, you do not need that check.
           </para>
         </informalexample>
       </para>
