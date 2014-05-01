@@ -1,0 +1,1153 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<appendix xml:id="phpoverview" xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink">
+  <title>Quick PHP Overview</title>
+  <sect1 xml:id="phpoverview.intro">
+    <title>Introduction</title>
+    <para>
+      Hack has its core foundations on the PHP programming language. It is a dialect of PHP. While <link xlink:href="&url.hhvm.manual;">docs.hhvm.com</link> is the definitive source of Hack and PHP information, it might be useful to have a quick overview of some topics in one place.
+    </para>
+    <para>
+      PHP is a general purpose scripting language designed primarily for web development, but can also be used as a language for command line tools, etc.  At its simplest, a PHP program can be written by creating a .php file, enclosing PHP code around a <literal>&lt;?php</literal> tag (the closing <literal>?&gt;</literal> tag is optional and actually not standard usage any longer unless your code is interspersed within something like an HTML file). You run the program at the command line using <literal>php [filename]</literal> or within a web browser. Here is the canonical "Hello World" example.
+      <informalexample>
+        <programlisting role="php">
+<![CDATA[
+<?php
+echo "Hello World!\n";
+]]>
+        </programlisting>
+        &example.outputs;
+        <screen>
+<![CDATA[
+Hello World!
+
+]]>
+        </screen>
+      </informalexample>
+    </para>
+  </sect1>
+  <sect1 xml:id="phpoverview.phptag">
+    <title>The <literal>&lt;?php</literal> tag</title>
+    <para>
+      The first construct to notice is the  beginning <literal>&lt;?php</literal> tag. All PHP files will have this tag to dictate that PHP is about to follow. There is generally no need to end your PHP code with <literal>?&gt;</literal>. In fact, for code that is only PHP (i.e., not intermixed with HTML), the accepted coding standard is to require no tag. Omitting the tag prevents unwanted whitespace at the end of files.
+    </para>
+  </sect1>
+  <sect1 xml:id="phpoverview.requireonce">
+    <title><literal>require_once</literal></title>
+    <para>
+      <literal>require_once</literal> indicates that a file or script is to be loaded into the current PHP file and an error is to be thrown if the file or script does not exist.
+      <informalexample>
+        <programlisting role="php">
+<![CDATA[
+require_once $_SERVER['PHP_ROOT'].'/myotherscript.php';
+]]>
+        </programlisting>
+      </informalexample>
+      In this case, loading the file called <literal>myotherscript.php</literal> will be the first action taken by this particular PHP file. <literal>myotherscript</literal> is located in the path of your primary PHP code root. Notice the <literal>.</literal> in the path, between the root and the rest of the path. The <literal>.</literal> is the concatenate operator in PHP. Here the path to <literal>PHP_ROOT</literal> is being concatenated with the rest of the path to <literal>myotherscript.php</literal>.
+    </para>
+  </sect1>
+  <sect1 xml:id="phpoverview.variables">
+    <title>Variables</title>
+    <para>
+      Variables are containers for values. In PHP, a variable name is preceded with a dollar sign <literal>$</literal>.
+      <informalexample>
+        <programlisting role="php">
+<![CDATA[
+$user = get_loggedin_user();
+]]>
+        </programlisting>
+      </informalexample>
+      Here <literal>$user</literal> is assigned the return value from the function call to <literal>get_loggedin_user()</literal>.
+    </para>
+    <para>
+      Variables in PHP can be assigned to a value of any type and then reassigned on-the-fly to a value of of another type. In other words, PHP has dynamic typing. (Hack, of course, adds a static typing component to PHP to try to alleviate some of the insanity that can come with this type of power). So, in PHP, this is perfectly valid:
+            <informalexample>
+        <programlisting role="php">
+<![CDATA[
+<?php
+$x = 3;
+echo $x;
+$x = "Hello";
+echo $x;
+]]>
+        </programlisting>
+      </informalexample>
+    </para>
+  </sect1>
+  <sect1 xml:id="phpoverview.controlflow">
+    <title>Control Flow</title>
+    <para>
+      Most useful programming languages provide paradigms to control the flow of a program and perform repetitive processes. PHP is no different. This document assumes understanding of why these paradigms exist and how they are used. Here are some PHP control flow constructs:
+      <informalexample>
+        <programlisting role="php">
+<![CDATA[
+if (expr) {…}
+
+if (expr) {…} else
+
+if (expr) {…} else if (expr) {…}
+
+switch (expr or $var) {
+  case [val]:
+  case [val2]:
+  default:
+}
+]]>
+        </programlisting>
+      </informalexample>
+    </para>
+    <para>
+      With respect to looping, PHP provides the following common constructs:
+      <informalexample>
+        <programlisting role="php">
+<![CDATA[
+for (expr1; expr2; expr3) {…}
+
+while (expr) {…}
+
+do { … } while (expr);
+
+foreach (expr as $var) {…}
+]]>
+        </programlisting>
+      </informalexample>
+    </para>
+  </sect1>
+  <sect1 xml:id="phpoverview.arrays">
+    <title>Arrays</title>
+    <para>
+      In PHP, arrays are the end-all-be-all of collection types. Need a simple list of integers? Use an array. Need a dictionary? Use an array. Need to hold a collection of different object types? Use an array.  Technically, an array in PHP is an ordered map, but can be used to create all of the common collections (e.g., stack, vector, hash table, etc.). Of course, variables can be assigned to arrays.
+      <informalexample>
+        <programlisting role="php">
+<![CDATA[
+<?php
+$arr1 = array('lh' => 3);
+]]>
+        </programlisting>
+      </informalexample>
+      As seen in the above code, an array is being used to hold a key/value pair. The string <literal>lh</literal> is the key. And the integer <literal>3</literal> is the value.
+    </para>
+    <para>
+      Take another simple example.
+      <informalexample>
+        <programlisting role="php">
+<![CDATA[
+<?php
+$arr = array(1,2,3);
+echo $arr[1];
+]]>
+        </programlisting>
+        &example.outputs;
+        <screen>
+<![CDATA[
+2
+]]>
+        </screen>
+      </informalexample>
+      Here we are initializing <literal>$arr</literal> with three values. If a key is not explicitly associated with the values, then the value is indexed by integers, starting from 0. And then we are printing out the value of the second element of the array (remember, arrays in PHP are 0-index based).
+    </para>
+    <para>
+      If an array has a mix of explicit and implicit keys, then the next implicit key after the explicit key will be the next greatest integer after the last integer key, starting from 0.
+      <informalexample>
+        <programlisting role="php">
+<![CDATA[
+<?php
+$arr = array("a", "b", 6 =>"c", "d");
+echo $arr[0]; // "a"
+echo $arr[7]; // "d"
+]]>
+        </programlisting>
+      </informalexample>
+    </para>
+    <para>
+      Keys must be of a string or integer type. Values can be of any type. Keys can be mixed between string and integer within the same array. Values can be mixed of any type within the same array. Arrays can, of course, be multidimensional.
+      <informalexample>
+        <programlisting role="php">
+<![CDATA[
+<?php
+$arr = array(1 => "hi", "str" => 4, 100 => array(1,2,3));
+echo $arr[1];
+echo $arr["str"];
+echo $arr[100][1];
+// echo $arr[0]; This would throw an error because 0 is an undefined index
+]]>
+        </programlisting>
+        &example.outputs;
+        <screen>
+<![CDATA[
+hi42
+]]>
+        </screen>
+      </informalexample>
+    </para>
+    <para>
+      Arrays have associated functions such as <literal><link linkend="function.sort">sort()</link></literal>, <literal><link linkend="function.count">count()</link></literal>, <literal><link linkend="function.shuffle">shuffle()</link></literal>, <literal><link linkend="function.array-pop">array_pop()</link></literal>, etc. Arrays are a big topic. See the section on <link linkend="book.array">arrays</link> for more information.
+    </para>
+  </sect1>
+  <sect1 xml:id="phpoverview.functions">
+    <title>Functions</title>
+    <para>
+      In addition to built-in functions provided by PHP, developers can create their own functions.
+      <informalexample>
+        <programlisting role="php">
+<![CDATA[
+$user = get_loggedin_user();
+]]>
+        </programlisting>
+      </informalexample>
+      The function <literal>get_loggedin_user()</literal> is being called with the return value being stored in the variable <literal>$user</literal>. Here is an example definition of the <literal>get_loggedin_user()</literal> function.
+      <informalexample>
+        <programlisting role="php">
+<![CDATA[
+<?php
+/**
+ * Get a logged in user
+ */
+function get_loggedin_user() {
+  return getenv("USER");
+}
+]]>
+        </programlisting>
+      </informalexample>
+    </para>
+    <para>
+      Functions are declared with the <literal>function</literal> keyword, a function name with optional arguments and then the function body. Functions have global scope when not declared inside a class.Functions can optionally return a value or object. If there is no return statement in a function, null is implicitly returned back to the caller.
+    </para>
+    <para>
+      Of course, functions can have arguments.
+      <informalexample>
+        <programlisting role="php">
+<![CDATA[
+<?php
+function rediculous_example($a, $b, $c) {
+  $b = $b + 3;
+  $x = $a + $b - $c;
+  return $x + 1;
+}
+]]>
+        </programlisting>
+      </informalexample>
+      The function above takes three arguments. These arguments are all passed by value. This means that any changes to the values within the function will not affect the associated passed in values from the caller. So the change in <literal>$b</literal> above will not affect the value of the variable that was passed in as <literal>$b</literal> at the call site.
+    </para>
+    <para>
+      Functions can have arguments that are passed by reference, denoted by the <literal>&amp;</literal> in front of the argument. As probably guessed, any change made to an argument that is passed by reference will affect the value of the variable passed at the call site.
+      <informalexample>
+        <programlisting role="php">
+<![CDATA[
+<?php
+function another_rediculous_example($a, &$b, $c) {
+  $b = $b + 3;
+  $x = $a + $b - $c;
+  return $x + 1;
+}
+
+$val = 3;
+echo $val;
+echo "\n";
+another_rediculous_example(3, $val, 1);
+echo $val;
+]]>
+        </programlisting>
+        &example.outputs;
+        <screen>
+<![CDATA[
+3
+6
+]]>
+        </screen>
+      </informalexample>
+    </para>
+    <para>
+      Arguments in functions need not be explicitly typed. Functions can provide type hints for object-type arguments, but not for scalar types like integers and strings (Hack remedies this situation). Also, because of the dynamic nature of PHP, specifying return types for functions is not supported in PHP5 (but is supported in Hack).
+    </para>
+  </sect1>
+  <sect1 xml:id="phpoverview.classes">
+    <title>Classes</title>
+    <para>
+      Like many other programming languages, PHP has the concept of classes. And they have similarities to classes in object-oriented languages like Java and C#. A class may contain its own constants, variables (properties) and functions, all with varying degrees of scope. Classes can have inheritance. Classes can have constructors and destructors. Members can be static, thus not requiring a class instantiation to use them.
+      <informalexample>
+        <programlisting role="php">
+<![CDATA[
+<?php
+CookieMonster::eatCookie();
+]]>
+        </programlisting>
+        &example.outputs;
+        <screen>
+<![CDATA[
+]]>
+        </screen>
+      </informalexample>
+      A call is made to a static method of the <literal>CookieMonster</literal> class called <literal>eatCookie()</literal>. Below is a representation of the class <literal>CookieMonster</literal>.
+      <informalexample>
+        <programlisting role="php">
+<![CDATA[
+<?php
+/**
+ *
+ *                           .---. .---.
+ *                          :     : o   :    me want cookie!
+ *                      _..-:   o :     :-.._    /
+ *                  .-''  '  `---' `---' "   ``-.
+ *                .'   "   '  "  .    "  . '  "  `.
+ *               :   '.---.,,.,...,.,.,.,..---.  ' ;
+ *               `. " `.                     .' " .'
+ *                `.  '`.                   .' ' .'
+ *                 `.    `-._           _.-' "  .'  .----.
+ *                   `. "    "--...--"'  . ' .'  .'  o   `.
+ *                   .'`-._'    " .     " _.-'`. :       o  :
+ *                 .'      ```--.....--'''    ' `:_ o       :
+ *               .'    "     '         "     "   ; `.;";";";'
+ *              ;         '       "       '     . ; .' ; ; ;
+ *             ;     '         '       '   "    .'      .-'
+ *             '  "     "   '      "           "    _.-'
+ */
+class CookieMonster {
+  protected $cookies = array();
+  private static $eaten_cookies;
+
+  public static function eatCookie() {
+    $eaten_cookies++;
+  }
+
+  public function addCookies($type, $number) {
+    return $array_push($this->cookies, $type, $number);
+  }
+]]>
+        </programlisting>
+      </informalexample>
+      <literal>CookieMonster</literal> contains many of the traits provided by a PHP class: static functions, instance functions, private properties, protected properties, etc. If one were inclined, a developer could create a subclass of CookieMonster called OatmealCookieMonster.
+      <informalexample>
+        <programlisting role="php">
+<![CDATA[
+<?php
+class OatmealCookieMonster extends CookieMonster {
+   private $love_oatmeal;
+
+   public function __construct() {
+    $love_oatmeal = "I love Oatmeal Cookies!!";
+   }
+
+  public function addCookies($type, $number) {
+    if (strpos($type, "oatmeal") !== false) {
+      return $array_push($this->cookies, $type, $number);
+    }
+    return -1;
+  }
+}
+]]>
+        </programlisting>
+      </informalexample>
+      To create a subclass, use the keyword <literal>extends</literal>.  <literal>__construct()</literal> is the constructor method in PHP. The above constructor sets <literal>$love_oatmeal</literal> to a concrete value.  The function <literal>addCookies()</literal> in <literal>OatmealCookieMonster</literal> overrides the one in <literal>CookieMonster</literal>.
+    </para>
+    <para>
+      There is much more on classes and objects <link linkend="language.oop5">here</link>.
+    </para>
+  </sect1>
+  <sect1 xml:id="phpoverview.traits">
+    <title>Traits</title>
+    <para>
+      PHP is a language, like Java and C#, of single inheritance, multiple interfaces. This means that a PHP class can inherit from one and only one parent class, but can implement as many interfaces as desired. Here is an example:
+      <informalexample>
+        <programlisting role="php">
+<![CDATA[
+<?php
+interface InterfaceTest {
+  public function add(int $x, int $y);
+  public function squr(int $x);
+}
+
+class ITParent implements InterfaceTest {
+  public function add($x, $y) {
+    return $x + $y;
+  }
+
+  public function squr($x) {
+    return $x * $x;
+  }
+}
+
+class ITChild extends ITParent {
+  public function add($x, $y) {
+    if ($x < 3 && $y < 3) {
+      return -1;
+    }
+    else {
+      return $x + $y;
+    }
+  }
+}
+
+$itc = new ITChild();
+echo $itc->add(5, 6)."\n";
+echo $itc->add(2, 1)."\n";
+echo $itc->squr(10)."\n";
+]]>
+        </programlisting>
+        &example.outputs;
+        <screen>
+<![CDATA[
+ 11
+-1
+100
+]]>
+        </screen>
+      </informalexample>
+      The downside of this type of language design is that all of the methods of the interface must be implemented by the class that implements it. There was no way to have methods implemented in one place for multiple classes to use, regardless of the hierarchy of those classes. This limitation was resolved in PHP 5.4 with a method of code reuse called traits.
+    </para>
+    <para>
+      Traits are sometimes called "interfaces with implementation". A trait is similar to a class as it defines methods to be called, but traits cannot be instantiated in and of themselves. Traits are intended to group functionality in order to enable what is called horizontal composition of behavior. Taking two unrelated classes that might have the use for a bit of similar functionality, here is a contrived example of how traits are used:
+      <informalexample>
+        <programlisting role="php">
+<![CDATA[
+<?php
+trait TemperatureConversion {
+  protected function convertCelciusToFahrenheit(int $temp) {
+    return ($temp * (9 / 5)) + 32;
+  }
+
+  protected function convertFahrenheitToCelcius(int $temp) {
+    return ($temp - 32) * (5 / 9);
+  }
+}
+
+class Oven {
+  protected $isOvenAmericanOrBelizian;
+
+  public function __construct($is_oven_american_or_belizian) {
+    $this->isOvenAmericanOrBelizian = $is_oven_american_or_belizian;
+  }
+
+  use TemperatureConversion;
+
+  public function convertTemp($temp) {
+    if ($this->isOvenAmericanOrBelizian) {
+      return $this->convertFahrenheitToCelcius($temp);
+    }
+    else {
+      return $this->convertCelciusToFahrenheit($temp);
+    }
+  }
+
+}
+
+class Weather {
+
+  protected $areWeInCanada;
+
+  public function __construct($are_we_in_canada) {
+    $this->areWeInCanada = $are_we_in_canada;
+  }
+
+  use TemperatureConversion;
+
+  public function getTemperature() {
+    if ($this->areWeInCanada) {
+      return $this->convertFahrenheitToCelcius($this->getTempF());
+    }
+    else {
+      return $this->getTempF();
+    }
+  }
+
+  private function getTempF() {
+    return mt_rand(-100, 120);
+  }
+}
+
+$o = new Oven(true);
+echo $o->convertTemp(212)."\n";
+$w = new Weather(true);
+echo $w->getTemperature();
+]]>
+        </programlisting>
+        &example.outputs;
+        <screen>
+<![CDATA[
+100
+6.6666666666667
+]]>
+        </screen>
+      </informalexample>
+      While the example above is contrived, it does demonstrate the use case for traits. Converting between temperature systems is common functionality. An interface could have been used, but that would have required all classes to implement the same two methods. A base class could have been used, but that would have required duplicative code for classes not in the same hierarchy. Traits were used because two distinctly different classes were able to use the same functionality, and leaving open the possibility of extending different classes in the future.
+    </para>
+    <para>
+      Classes don't have to use all of the methods in a trait; they can just come along for the ride. And, since traits are basically just dropped in pieces of code, <literal>$this</literal> can be used in a trait definition, and when classes use the trait, $this automatically refers to that class object.
+    </para>
+    <para>
+      One final example of traits combines using multiple traits, composition and precedence.
+      <informalexample>
+        <programlisting role="php">
+<![CDATA[
+<?php
+
+trait Hello {
+  function sayHello() {
+    return "Hello";
+  }
+}
+
+trait World {
+  function sayWorld() {
+    return "World";
+  }
+}
+
+trait HelloWorld {
+  use Hello, World;
+
+  function sayHelloWorld() {
+    echo $this->sayHello() . " " . $this->sayWorld() . "\n";
+  }
+
+  function sayBaseWorld() {
+    echo $this->sayHello() . " " . parent::sayWorld() . "\n";
+  }
+}
+
+
+class Base {
+  function sayWorld() {
+    return "Base world";
+  }
+}
+
+class Child extends Base {
+  use HelloWorld;
+  function sayWorld() {
+    return "World";
+  }
+}
+
+$h =  new Child();
+$h->sayHelloWorld();
+$h->sayBaseWorld();
+]]>
+        </programlisting>
+        &example.outputs;
+        <screen>
+<![CDATA[
+Hello World
+Hello Base world
+Random!
+]]>
+        </screen>
+      </informalexample>
+    </para>
+    <para>
+      Here are some key points about traits.
+      <itemizedlist>
+        <listitem><simpara>Traits can be composed from each other.</simpara></listitem>
+        <listitem><simpara>Classes can use multiple traits.</simpara></listitem>
+        <listitem><simpara>The methods of a trait override inherited methods from a parent class.</simpara></listitem>
+        <listitem><simpara>The methods defined in a class override methods from a trait.</simpara></listitem>
+        <listitem><simpara>Traits can implement interfaces</simpara></listitem>
+      </itemizedlist>
+    </para>
+  </sect1>
+  <sect1 xml:id="phpoverview.closures">
+    <title>Closures</title>
+    <para>
+      Closures (sometimes called anonymous functions) are functions that capture a containing scope and provides access to that scope upon invocation. Closures were added to PHP 5.3. Before delving into an example of a closure, it is useful to trace the history of how functions are able to be defined and used in PHP.
+    </para>
+    <sect2 xml:id="phpoverview.closures.varfuncs">
+      <title>Variable Functions</title>
+      <para>
+        <informalexample>
+          <programlisting role="php">
+<![CDATA[
+<?php
+function Hello_varfunc($name) {
+  echo "Hello $name";
+}
+
+$func = "Hello_varfunc";
+echo $func;
+echo "\n";
+$func("Facebook");
+]]>
+          </programlisting>
+        </informalexample>
+        Here we have a varialbe called <literal>$func</literal> that is assigned a string with the same variable name as a function. <literal>$func</literal> can be used as a string or, by wrapping parenthesis, it can be used as a shorthand to the function it is named after.
+      </para>
+    </sect2>
+    <sect2 xml:id="phpoverview.closures.createfunction">
+      <title><literal>create_function()</literal></title>
+      <para>
+        Before anonymous functions and closures were implemented in PHP, <link linkend="function.create-function"><literal>create_function()</literal></link> was the way to create an anonymous function. These were used primarily for quick, once-needed functions (e.g., a callback).
+        <informalexample>
+          <programlisting role="php">
+<![CDATA[
+<?php
+function basic_math($x, $y, $funcs) {
+  foreach ($funcs as $func) {
+    echo $func($x, $y)."\n";
+  }
+}
+
+$funcs = array(create_function('$x,$y', 'return ($x + $y);'),
+               create_function('$x,$y', 'return ($x - $y);'),
+               create_function('$x,$y', 'return ($x * $y);'),
+               create_function('$x,$y', 'return ($x / $y);'));
+
+basic_math(9, 3, $funcs);
+]]>
+          </programlisting>
+        </informalexample>
+        <literal>create_function()</literal> takes two strings. The first string represents the parameters to the created function. The second string represents the actual function.
+      </para>
+    </sect2>
+    <sect2 xml:id="phpoverview.closures.anonfuncs">
+      <title>Anonymous Functions</title>
+      <para>
+        <literal>create_function()</literal> is not an ideal way of creating anonymous functions. One particular reason is that passing strings around as functions are at best error-prone and at worst dangerous. Another reason is that memory leaks may occur when creating functions from strings over and over again as these may not be garbage collected correctly.
+      </para>
+      <para>
+        A real PHP implementation of anonymous functions were created to alleviate these problems and additionally provide a consistent syntax as well. Take the above example and see how it would be implemented with this better syntax.
+        <informalexample>
+          <programlisting role="php">
+<![CDATA[
+<?php
+function basic_math($x, $y, $funcs) {
+  foreach ($funcs as $func) {
+    echo $func($x, $y)."\n";
+  }
+}
+
+$add = function($x, $y) {
+  return $x + $y;
+};
+
+$sub = function($x, $y) {
+  return $x - $y;
+};
+
+$mul = function ($x, $y) {
+  return $x * $y;
+};
+
+$div = function ($x, $y) {
+  return $x / $y;
+};
+
+$funcs = array($add, $sub, $mul, $div);
+
+basic_math(9, 3, $funcs);
+]]>
+          </programlisting>
+        </informalexample>
+        The code is a little longer than when using <literal>create_function()</literal>, but it is cleaner and safer since real, actual functions are being declared and implemented; not strings.
+      </para>
+    </sect2>
+    <sect2 xml:id="phpoverview.closures.closures">
+      <title>Back to Closures</title>
+      <para>
+        Now back to closures. Closures are anonymous functions that provide a scoped and context-aware environment for multiple invocations. Basically closures "close" over variables which are neither local nor arguments to the anonymous function. These "free" variables are declared with the <literal>use</literal>statement. This is best illustrated with a couple of examples.
+        <informalexample>
+          <programlisting role="php">
+<![CDATA[
+<?php
+
+function foo($adder_str) {
+  return function($to_str) use ($adder_str) {
+    return strlen($to_str) + strlen($adder_str);
+  };
+}
+
+$hello = foo("Hello");
+$facebook = foo("Facebook");
+$fox = foo("Fox");
+
+echo $hello("World") . "\n";
+echo $facebook("World") . "\n";
+echo $fox("World") . "\n";
+]]>
+          </programlisting>
+        </informalexample>
+        While the example above is quite contrived, it shows how the parameter $adder_str to function foo() is being used as a closed variable to the anonymous function that does the string length additions. Here is a possibly more realistic example:
+        <informalexample>
+          <programlisting role="php">
+<![CDATA[
+<?php
+function filter($condition, $numbers)
+{
+  $len = count($numbers);
+  $filtered = array();
+
+  /* Iterate through all the array elements */
+  for($i = 0; $i < $len; $i++)
+  {
+    $num = $numbers[$i];
+
+    /* If the number satisfies the $condition, store
+        it in the $filtered array
+    */
+    if($condition($num)) {
+      $filtered[] = $num;
+    }
+  }
+  return $filtered;
+}
+
+
+/* create_filter returns a anonymous function */
+function create_filter($lower_bound)
+{
+    return function($x) use ($lower_bound)
+    {
+        return ($x > $lower_bound) ? true : false;
+    };
+}
+
+
+/* An array of random numbers */
+$random_numbers = array(34, 56, 22, 1, 5, 67, 897, 123, 4, 55);
+
+/* Create a new function and store it*/
+$greater_than_400 = create_filter(400);
+$greater_than_100 = create_filter(100);
+$greater_than_50 = create_filter(50);
+
+var_dump(filter($greater_than_400, $random_numbers));
+var_dump(filter($greater_than_100, $random_numbers));
+var_dump(filter($greater_than_50, $random_numbers));
+]]>
+          </programlisting>
+          &example.outputs;
+          <screen>
+<![CDATA[
+array(1) {
+  [0]=>
+  int(897)
+}
+array(2) {
+  [0]=>
+  int(897)
+  [1]=>
+  int(123)
+}
+array(5) {
+  [0]=>
+  int(56)
+  [1]=>
+  int(67)
+  [2]=>
+  int(897)
+  [3]=>
+  int(123)
+  [4]=>
+  int(55)
+}
+]]>
+          </screen>
+        </informalexample>
+        This code creates an anonymous filter rule function using <literal>$lower_bound</literal> as a closed variable. Notice how <literal>filter()</literal> can be called with different representations of the anonymous function that was created in <literal>create_filter()</literal>.
+      </para>
+    </sect2>
+  </sect1>
+  <sect1 xml:id="phpoverview.objectaccess">
+    <title>Object Access</title>
+    <para>
+      PHP provides four (4) primary ways to access the members of an object, from either a static or instance context.
+      <itemizedlist>
+        <listitem><simpara><literal>$this</literal>: Refers to the current, instantiated object, whether or not $this is used in that object or a parent. <literal>$this</literal> is not available in methods declared as static.</simpara></listitem>
+        <listitem><simpara><literal>static</literal>: Refers to a current class object, whether or not the static keyword is used in that class or a parent.</simpara></listitem>
+        <listitem><simpara><literal>self</literal>: Refers to the exact class where the self keyword is used.</simpara></listitem>
+        <listitem><simpara><literal>parent</literal>: Refers to the parent of the exact class where the is used.</simpara></listitem>
+      </itemizedlist>
+      Here is a nice example showing how these keywords can be used:
+      <informalexample>
+        <programlisting role="php">
+<![CDATA[
+<?php
+
+class A {
+
+    public static function newStaticClass()
+    {
+        return new static;
+    }
+
+    public static function newSelfClass()
+    {
+        return new self;
+    }
+
+    public function newThisClass()
+    {
+        return $this;
+    }
+}
+
+class B extends A
+{
+    public function newParentClass()
+    {
+        return new parent;
+    }
+}
+
+
+$b = new B;
+
+var_dump(B::newStaticClass()); // B
+var_dump(B::newSelfClass()); // A because self belongs to "A"
+var_dump($b->newThisClass()); // B
+var_dump($b->newParentClass()); // A
+
+
+class C extends B
+{
+    public static function newSelfClass()
+    {
+        return new self;
+    }
+}
+
+
+$c = new C;
+
+var_dump(C::newStaticClass()); // C
+var_dump(C::newSelfClass()); // C because self now points to "C" class
+var_dump($c->newThisClass()); // C
+var_dump($b->newParentClass()); // A because parent was defined *way back* in class "B"
+]]>
+        </programlisting>
+        &example.outputs;
+        <screen>
+<![CDATA[
+object(B)#2 (0) {
+}
+object(A)#2 (0) {
+}
+object(B)#2 (0) {
+}
+object(A)#2 (0) {
+}
+object(C)#3 (0) {
+}
+object(C)#3 (0) {
+}
+object(C)#3 (0) {
+}
+object(A)#3 (0) {
+}
+]]>
+        </screen>
+      </informalexample>
+    </para>
+    <para>
+      It is worth elaborating the difference between <literal>static</literal> and <literal>self</literal>. <literal>static</literal> will refer to the class object of the caller. <literal>self</literal> will always refer to the class object where <literal>self</literal> is being used. Here is an example using <literal>static</literal>:
+      <informalexample>
+        <programlisting role="php">
+<![CDATA[
+<?php
+class A {
+  public function callFoo() {
+    static::foo();
+  }
+  protected static function foo() {
+    echo 'A';
+  }
+}
+
+class B extends A {
+  protected static function foo() {
+    echo 'B';
+  }
+}
+
+$b = new B();
+$b->callFoo();
+]]>
+        </programlisting>
+        &example.outputs;
+        <screen>
+<![CDATA[
+B
+]]>
+        </screen>
+      </informalexample>
+      Here is an example using self:
+      <informalexample>
+        <programlisting role="php">
+<![CDATA[
+<?php
+class A {
+  public function callFoo() {
+    self::foo();
+  }
+  protected static function foo() {
+    echo 'A';
+  }
+}
+
+class B extends A {
+  protected static function foo() {
+    echo 'B';
+  }
+}
+
+$b = new B();
+$b->callFoo();
+]]>
+        </programlisting>
+        &example.outputs;
+        <screen>
+<![CDATA[
+A
+]]>
+        </screen>
+      </informalexample>
+      Thus, a use case of <literal>self</literal> is to surpress polymorphic calls, as seen in the example above (<literal>B::Foo()</literal> overrides <literal>A::Foo()</literal>, but using <literal>self</literal> forces the <literal>A:Foo()</literal> to be called even when the caller is using a <literal>B</literal> class object).
+    </para>
+    <para>
+      Finally, it worthing noting some nuances of PHP when it comes to using these object access mechanisms. It may seem natural to think that using <literal>$this</literal> should be in the context of instance members and methods. And <literal>static</literal> should be used in the context of static members and methods. However, PHP allows these seemingly natural keyword use in a specific context to be mixed. Thus, <literal>static::</literal> can be used to call an instance method. Even an instance of a class (i.e., instantiated by <literal>new</literal> can call a static method). Here is a non-exhaustive example that demonstrates these nuances:
+      <informalexample>
+        <programlisting role="php">
+<![CDATA[
+
+<?php
+class A {
+
+  protected $x;
+  protected static;
+
+  public function __construct()
+  {
+    $this->x = 4;
+    self::$y = 6;
+  }
+
+  public function callFoo() {
+    self::foo();
+    static::foo();
+    $this->foo(); // Yep, calling a static function with an instance of A
+  }
+
+  public static function callBaz() {
+    self::foo();
+    static::foo();
+    // $this->foo();  NOT ALLOWED
+  }
+
+  protected static function foo() {
+    echo "Static A::foo()\n";
+  }
+
+  protected function baz() {
+    echo "Instance A:baz()\n";
+  }
+
+  protected function bar() {
+    echo "Instance A::bar()\n";
+  }
+
+  protected static function stBar() {
+    echo "Static A:stBar()\n";
+  }
+}
+
+class B extends A {
+
+  public function __construct() {
+    // Gotta use Parent:: in an instance contructor to call parent constructor
+    parent::__construct();
+    echo $this->x."\n";
+    echo A::$y."\n";
+  }
+
+    public function callBar() {
+     parent::bar(); // Parent:: can call instance or...
+     parent::stBar(); // ... static parent members.
+    }
+
+  protected static function foo() {
+    echo "Static B::foo()\n";
+  }
+}
+
+$b = new B();
+
+$b->callFoo();
+
+B::callBaz();
+$b->callBaz(); // Really, I can do this too? An instance calling a static? Yep.
+
+$b->callBar();
+]]>
+        </programlisting>
+        &example.outputs;
+        <screen>
+<![CDATA[
+4
+6
+Static A::foo()
+Static B::foo()
+Static B::foo()
+Static A::foo()
+Static B::foo()
+Static A::foo()
+Static B::foo()
+Instance A::bar()
+Static A:stBar()
+]]>
+        </screen>
+      </informalexample>
+      As shown by the above example, PHP is very "flexible" when it comes to using seemingly "static" keywords in instance contexts, and vice-versa. While there may be use-cases for this behavior, here are some general guidelines to follow in order to keep a bit of sanity.
+      <itemizedlist>
+        <listitem><simpara>Use <literal>::</literal> in static contexts.</simpara></listitem>
+        <listitem><simpara>Use <literal>-></literal> in instance contexts.</simpara></listitem>
+        <listitem><simpara><literal>parent::</literal> has no choice to be used in both instance and static contexts due to the fact that there is no syntax for calling the parent constructor other than with <literal>parent::</literal>.</simpara></listitem>
+        <listitem><simpara>Use <literal>static::</literal> in static contexts.</simpara></listitem>
+        <listitem><simpara>Use <literal>self::</literal> in static contexts, unless really necessary to suppress instance method polymorphism or when wanting to return an entirely new object not represented by $this.</simpara></listitem>
+        <listitem><simpara>Use $this in instance contexts.</simpara></listitem>
+      </itemizedlist>
+      Here is an example of using <literal>self::</literal> in an instance context:
+      <informalexample>
+        <programlisting role="php">
+<![CDATA[
+<?php
+class A {
+  public $x = 0;
+
+  public function foo() {
+    $this->x = 4;
+    return $this;
+  }
+  public function foo2() {
+    return new self;
+  }
+}
+
+$a = new A();
+$a1 = $a->foo();
+var_dump($a1);
+$a2 = $a->foo2();
+var_dump($a2);
+]]>
+        </programlisting>
+      </informalexample>
+    </para>
+  </sect1>
+  <sect1 xml:id="phpoverview.copyonwrite">
+    <title>Copy on Write</title>
+    <para>
+      In PHP, objects and resources are copied by reference, while all other types (<literal>null</literal>, <literal>boolean</literal>, <literal>integer</literal>, <literal>double</literal>, <literal>string</literal>, <literal>array</literal>) are copied by value.
+      <informalexample>
+        <programlisting role="php">
+<![CDATA[
+class Obj {}
+
+$arr = array();
+$str = "foo";
+$int = 3;
+$obj = new Obj();
+$vec = Vector {};
+
+$c_arr = $arr; // $c_arr is a logically dinstict copy of $arr
+$c_str = $str; // $c_str is a logically distinct copy of $str
+$c_int = $int; // $c_int is a logically distinct copy of $int
+$c_obj = $obj; // $c_obj and $obj point to the same object of type "Obj"
+$c_vec = $vec; // $c_vec and $vec point to the same Vector object
+]]>
+        </programlisting>
+      </informalexample>
+    </para>
+    <para>
+      Knowing the above, PHP uses a lazy copy mechanism when it comes to strings and arrays. It is commonly called "copy-on-write" semantics.  This means that any copy of an array or string to another variable will point to the original array/string until the first modification happens. It is a memory optimization that PHP provides. Assume this piece of code:
+      <informalexample>
+        <programlisting role="php">
+<![CDATA[
+<?php
+echo "Begin memory: ".memory_get_usage()."\n";
+$arr = array_fill(0,100000,0);
+echo "Memory after first array: ".memory_get_usage()."\n";
+$anotherArr = $arr;
+echo "Memory after copy to second array: ".memory_get_usage()."\n";
+$anotherArr[9] = 10;
+echo "Memory after change to second array: ".memory_get_usage()."\n";
+echo $arr[9]."\n";
+echo $anotherArr[9]."\n";
+]]>
+        </programlisting>
+        &example.outputs;
+        <screen>
+<![CDATA[
+Begin memory: 653072
+
+Memory after first array: 13702608
+
+Memory after copy to second array: 13702744
+
+Memory after change to second array: 26752024
+
+0
+
+10
+]]>
+        </screen>
+      </informalexample>
+      Notice that after <literal>$arr</literal> is assigned to <literal>$anotherArr</literal>, the memory usage is the same. After a write to <literal>$anotherArr</literal>, the memory usage doubles because that is when the real copy is made.
+    </para>
+    <para>
+      With respect to objects, since they are passed by reference, memory usage won't change when assigning one object to another variable. In fact, memory will stay the same since both will point to the same locations in memory. Take this piece of code:
+      <informalexample>
+        <programlisting role="php">
+<![CDATA[
+<?php
+
+class Vec {
+  public $arr;
+  public $x;
+
+  public function __construct() {
+   $this->arr = array_fill(0,100000,0);
+   $this->x = 5;
+  }
+}
+
+echo "Begin memory: ".memory_get_usage()."\n";
+$c = new Vec();
+echo "Memory after first instantiation: ".memory_get_usage()."\n";
+$cc = $c;
+echo "Memory after copy of class to another var: ".memory_get_usage()."\n";
+$cc->x = 1;
+$cc->arr[9] = 10;
+echo "Memory after change to second var: ".memory_get_usage()."\n";
+echo $c->x."\n";
+echo $cc->x."\n\n";
+echo $c->arr[9]."\n";
+echo $cc->arr[9]."\n\n";
+]]>
+        </programlisting>
+        &example.outputs;
+        <screen>
+<![CDATA[
+Begin memory: 660928
+Memory after first instantiation: 13711152
+Memory after copy of class to another var: 13711280
+Memory after change to second var: 13711360
+1
+1
+
+10
+10
+]]>
+        </screen>
+      </informalexample>
+    </para>
+  </sect1>
+  <sect1 xml:id="phpoverview.other">
+    <title>Other Items To Explore</title>
+    <para>
+      This provided a hopefully helpful overview of PHP. There is so much more to explore and learn. Here are some more valuable PHP concepts.
+      <itemizedlist>
+        <listitem><simpara><link linkend="language.exceptions">Exceptions</link>: PHP provides an exception handling mechanism like languages such as Java and C#.</simpara></listitem>
+        <listitem><simpara><link linkend="language.types.null"><literal>null</literal></link> : Null has some special considerations in PHP.</simpara></listitem>
+        <listitem><simpara><link linkend="language.variables.scope">scoping</link>How are variables scoped? Is there a global scope?</simpara></listitem>
+        <listitem><simpara><link linkend="function.var-dump"><literal>var_dump()</literal></link>A very useful function to get a complete look at a variable.</simpara></listitem>
+      </itemizedlist>
+    </para>
+  </sect1>
+</appendix>

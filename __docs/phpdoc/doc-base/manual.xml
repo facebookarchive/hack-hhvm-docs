@@ -525,6 +525,7 @@
  <book xml:id="appendices">
   <title>&Appendices;</title>
   &appendices.history;
+  &appendices.phpoverview;
   &appendices.migrationhhvm;
   &appendices.debugger;
   &appendices.ini;

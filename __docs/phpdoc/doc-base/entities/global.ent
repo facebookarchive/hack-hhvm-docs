@@ -163,7 +163,7 @@
 <!ENTITY url.hack.vim "https://github.com/hhvm/vim-hack">
 <!ENTITY url.haru.lib "http://libharu.org">
 <!ENTITY url.hhvm "http://hhvm.com">
-<!ENTITY url.hhvm.manual "hhtp://hhvm.com/manual">
+<!ENTITY url.hhvm.manual "http://docs.hhvm.com">
 <!ENTITY url.hhvm.downloads "https://github.com/facebook/hhvm">
 <!ENTITY url.hhvm.irc "http://webchat.freenode.net/?channels=hhvm">
 <!ENTITY url.hhvm.install.prebuilt.debian7 "https://github.com/facebook/hhvm/wiki/Prebuilt-Packages-on-Debian-7">
