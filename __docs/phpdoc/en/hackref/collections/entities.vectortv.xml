@@ -7,7 +7,6 @@
 &hackref.collections.vectortv.count;
 &hackref.collections.vectortv.filter;
 &hackref.collections.vectortv.filterwithkey;
-&hackref.collections.vectortv.fromarray;
 &hackref.collections.vectortv.fromitems;
 &hackref.collections.vectortv.get;
 &hackref.collections.vectortv.getiterator;

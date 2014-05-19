@@ -8,7 +8,6 @@
 &hackref.collections.maptktv.count;
 &hackref.collections.maptktv.filter;
 &hackref.collections.maptktv.filterwithkey;
-&hackref.collections.maptktv.fromarray;
 &hackref.collections.maptktv.fromitems;
 &hackref.collections.maptktv.get;
 &hackref.collections.maptktv.getiterator;

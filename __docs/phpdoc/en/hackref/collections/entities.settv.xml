@@ -5,7 +5,6 @@
 &hackref.collections.settv.contains;
 &hackref.collections.settv.count;
 &hackref.collections.settv.filter;
-&hackref.collections.settv.fromarray;
 &hackref.collections.settv.fromarrays;
 &hackref.collections.settv.fromitems;
 &hackref.collections.settv.getiterator;
