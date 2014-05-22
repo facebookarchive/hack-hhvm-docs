@@ -2,7 +2,7 @@
 <!-- $Revision:$ -->
 <refentry xml:id="hack.immsettv.toset" xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink">
  <refnamediv>
-  <refname>ImmSet&lt;Tv&gt;::toImmSet</refname>
+  <refname>ImmSet&lt;Tv&gt;::toSet</refname>
   <refpurpose>Return a mutable Set based on this ImmSet</refpurpose>
  </refnamediv>
 
@@ -11,7 +11,7 @@
   <methodsynopsis>
    <modifier>public</modifier>
    <type>Set&lt;Tv&gt;</type>
-   <methodname>ImmSet&lt;Tv&gt;::toImmSet</methodname>
+   <methodname>ImmSet&lt;Tv&gt;::toSet</methodname>
    <void />
   </methodsynopsis>
 
