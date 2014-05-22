@@ -17,7 +17,7 @@ Fatal error: Class undefined: xhp_html in /
     you need to include the XHP library in your project.
   </para>
   <para>
-    You can find the XHP library in <link xlink:href="&url.xhp;">Github</link>. Put the files found here somewhere in your source true.
+    You can find the XHP library in <link xlink:href="&url.xhp;">Github</link>. Put the files found here somewhere in your source tree.
   </para>
   <para>
     Finally, either (1) change the XHP files from <literal>&lt;?php</literal> to <literal>&lt;?hh // decl</literal> (since XHP class name is supported out of the box in Hack) or (2) set <literal>hhvm.eval.enable_xhp=true</literal> in your <literal>.ini</literal> file or directly on the command line when running HHVM.
