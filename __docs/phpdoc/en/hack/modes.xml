@@ -10,7 +10,7 @@
   <sect1 xml:id="hack.modes.strict">
     <title>Strict</title>
     <para>
-      Strict mode is just what it sounds like. The Hack type checker will catch every type error (see the <literal>//decl</literal> exception below). Any and all code written in strict mode must be correctly type annotated (unless <literal>// UNSAFE</literal> is used - see below). Another rule is that code written in strict mode cannot call into non-Hack code, and still pass the type checker. Here is how strict mode is declared.
+      Strict mode is just what it sounds like. The Hack type checker will catch every type error (see the <literal>// decl</literal> exception below). Any and all code written in strict mode must be correctly type annotated (unless <literal>// UNSAFE</literal> is used - see below). Another rule is that code written in strict mode cannot call into non-Hack code, and still pass the type checker. Here is how strict mode is declared.
       <informalexample>
         <programlisting role="php">
 <![CDATA[
