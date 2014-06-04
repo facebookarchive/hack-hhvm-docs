@@ -106,7 +106,7 @@ echo "Hi, I'm a Hack script!";
 ]]>
             </programlisting>
             <para>
-              This code works fine in HHVM. You may jump in and out of Hack mode in an HTML file like this anywhere you want. But if you replace the <literal>&lt;?php</literal> with <literal>&lt;?hh</literal>, the code above will not work.
+              This code works fine in HHVM. You may jump in and out of PHP mode in an HTML file like this anywhere you want. But if you replace the <literal>&lt;?php</literal> with <literal>&lt;?hh</literal>, the code above will not work.
             </para>
           </informalexample>
         </para>
