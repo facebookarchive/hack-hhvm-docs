@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- $Revision:$ -->
-<refentry xml:id="hack.vectortv.fiterwithkey" xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink">
+<refentry xml:id="hack.vectortv.filterwithkey" xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink">
  <refnamediv>
-  <refname>Vector&lt;Tv&gt;::fiterWithKey</refname>
+  <refname>Vector&lt;Tv&gt;::filterWithKey</refname>
   <refpurpose>Return a Vector containing the values of this Vector that cause the provided function to return true.</refpurpose>
  </refnamediv>
 
@@ -11,7 +11,7 @@
   <methodsynopsis>
    <modifier>public</modifier>
    <type>Vector&lt;Tv&gt;</type>
-   <methodname>Vector&lt;Tv&gt;::fiterWithKey</methodname>
+   <methodname>Vector&lt;Tv&gt;::filterWithKey</methodname>
    <methodparam><type>(function(int, Tv): bool)</type><parameter>callback</parameter></methodparam>
   </methodsynopsis>
 

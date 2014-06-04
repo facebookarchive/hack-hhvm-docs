@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- $Revision:$ -->
-<refentry xml:id="hack.immvectortv.fiterwithkey" xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink">
+<refentry xml:id="hack.immvectortv.filterwithkey" xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink">
  <refnamediv>
-  <refname>ImmVector&lt;Tv&gt;::fiterWithKey</refname>
+  <refname>ImmVector&lt;Tv&gt;::filterWithKey</refname>
   <refpurpose>Return a ImmVector containing the values of this ImmVector that cause the provided function to return true.</refpurpose>
  </refnamediv>
 
@@ -11,7 +11,7 @@
   <methodsynopsis>
    <modifier>public</modifier>
    <type>ImmVector&lt;Tv&gt;</type>
-   <methodname>ImmVector&lt;Tv&gt;::fiterWithKey</methodname>
+   <methodname>ImmVector&lt;Tv&gt;::filterWithKey</methodname>
    <methodparam><type>(function(int, Tv): bool)</type><parameter>callback</parameter></methodparam>
   </methodsynopsis>
 

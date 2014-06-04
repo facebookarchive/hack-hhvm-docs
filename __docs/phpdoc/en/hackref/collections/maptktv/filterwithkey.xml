@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- $Revision:$ -->
-<refentry xml:id="hack.maptktv.fiterwithkey" xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink">
+<refentry xml:id="hack.maptktv.filterwithkey" xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink">
  <refnamediv>
-  <refname>Map&lt;Tk, Tv&gt;::fiterWithKey</refname>
+  <refname>Map&lt;Tk, Tv&gt;::filterWithKey</refname>
   <refpurpose>Return a Map containing the values of this Map that cause the provided function to return true.</refpurpose>
  </refnamediv>
 
@@ -11,7 +11,7 @@
   <methodsynopsis>
    <modifier>public</modifier>
    <type>Map&lt;Tk, Tv&gt;</type>
-   <methodname>Map&lt;Tk, Tv&gt;::fiterWithKey</methodname>
+   <methodname>Map&lt;Tk, Tv&gt;::filterWithKey</methodname>
    <methodparam><type>(function(Tk, Tv): bool)</type><parameter>callback</parameter></methodparam>
   </methodsynopsis>
 

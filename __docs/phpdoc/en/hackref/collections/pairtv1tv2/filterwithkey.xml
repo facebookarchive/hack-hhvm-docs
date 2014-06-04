@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- $Revision:$ -->
-<refentry xml:id="hack.pairtv1tv2.fiterwithkey" xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink">
+<refentry xml:id="hack.pairtv1tv2.filterwithkey" xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink">
  <refnamediv>
-  <refname>Pair&lt;Tv1, Tv2&gt;::fiterWithKey</refname>
+  <refname>Pair&lt;Tv1, Tv2&gt;::filterWithKey</refname>
   <refpurpose>Return a Vector containing the values of this Pair that cause the provided function to return true.</refpurpose>
  </refnamediv>
 
@@ -11,7 +11,7 @@
   <methodsynopsis>
    <modifier>public</modifier>
    <type>Vector&lt;Tv&gt;</type>
-   <methodname>Pair&lt;Tv1, Tv2&gt;::fiterWithKey</methodname>
+   <methodname>Pair&lt;Tv1, Tv2&gt;::filterWithKey</methodname>
    <methodparam><type>(function(int, Tv): bool)</type><parameter>callback</parameter></methodparam>
   </methodsynopsis>
 
