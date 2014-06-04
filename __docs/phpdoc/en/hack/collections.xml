@@ -453,10 +453,10 @@ main();
 <![CDATA[
 true
 
-D
 A
-E
 C
+D
+E
 ]]>
         </screen>
       </informalexample>
