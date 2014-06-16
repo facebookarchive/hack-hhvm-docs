@@ -2,7 +2,7 @@
 <chapter xml:id="hack.overrideattribute">
   <title>Override Attribute</title>
   <para>
-    The <literal>Override</literal> attribute is the child class'counterpart to the parent class' <literal>abstract</literal> declaration. It is an optional annotation on a method, implemented with the <literal>&lt;&lt;Override&gt;&gt;</literal> user attribute. If the <literal>&lt;&lt;Override&gt;&gt;</literal> attribute is found on a method, and that method does not exist in the set of (non-abstract) methods inherited from parents, an error is thrown. In Hack partial mode, this has the effect of throwing when the parent is defined in PHP, since the typechecker cannot access the parent's method declarations. Consider the following:
+    The <literal>Override</literal> attribute is the child class' counterpart to the parent class' <literal>abstract</literal> declaration. It is an optional annotation on a method, implemented with the <literal>&lt;&lt;Override&gt;&gt;</literal> user attribute. If the <literal>&lt;&lt;Override&gt;&gt;</literal> attribute is found on a method, and that method does not exist in the set of (non-abstract) methods inherited from parents, an error is thrown. In Hack partial mode, this has the effect of throwing when the parent is defined in PHP, since the typechecker cannot access the parent's method declarations. Consider the following:
     <informalexample>
       <programlisting role="php">
 <![CDATA[
