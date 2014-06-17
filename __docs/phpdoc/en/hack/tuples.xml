@@ -44,8 +44,6 @@ function main_tup() {
 }
 
 main_tup();
-
-main_tup();
 ]]>
       </programlisting>
       <para>
@@ -144,8 +142,6 @@ function main_tup() {
   $tp = new TupleTest();
   $tp->test();
 }
-
-main_tup();
 
 main_tup();
 ]]>
