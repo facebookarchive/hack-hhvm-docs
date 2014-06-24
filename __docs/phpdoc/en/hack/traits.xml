@@ -54,7 +54,7 @@ trait TTT {
 
 class AAA {
   protected function bar(): int {
-    return 1;
+    return 5;
   }
 }
 
@@ -68,7 +68,7 @@ class BBB extends AAA {
 
 function main_t(): void {
   $bbb = new BBB();
-  echo $bbb->baz();
+  var_dump($bbb->baz());
 }
 
 main_t();
@@ -104,7 +104,7 @@ trait TTT {
 
 class AAA {
   protected function bar(): int {
-    return 1;
+    return 5;
   }
 }
 
@@ -118,7 +118,7 @@ class BBB extends AAA {
 
 function main_t(): void {
   $bbb = new BBB();
-  echo $bbb->baz();
+  var_dump($bbb->baz());
 }
 
 main_t();
@@ -128,6 +128,11 @@ main_t();
       <screen>
 <![CDATA[
 No errors!
+]]>
+      </screen>
+	<screen>
+<![CDATA[
+int(5)
 ]]>
       </screen>
     </informalexample>
@@ -156,7 +161,7 @@ trait Foo implements Bar {
   }
 
   public function babs(Vector<int> $vec): int {
-    if (count($vec) < 0) {
+    if (count($vec) > 0) {
       return $vec[0];
     }
     return -1;
