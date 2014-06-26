@@ -3,7 +3,7 @@
 <refentry xml:id="hack.maptktv.set" xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink">
  <refnamediv>
   <refname>Map&lt;Tk, Tv&gt;::set</refname>
-  <refpurpose>Store a value into the Vector with the specified key, overwriting the previous value</refpurpose>
+  <refpurpose>Store a value into the Map with the specified key, overwriting the previous value</refpurpose>
  </refnamediv>
 
  <refsect1 role="description">
