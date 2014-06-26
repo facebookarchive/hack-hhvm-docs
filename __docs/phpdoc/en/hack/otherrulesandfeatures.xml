@@ -1170,7 +1170,7 @@ This should not print a capital 'A': \x41
         <programlisting role="php">
 <![CDATA[
 <?hh
-$obj = newv(FooClass::class, $constructor_args);
+$obj = new (FooClass::class, $constructor_args);
 BaseFacebookTestCase::assertInstanceOf(FooClass::class, $obj, 'I hope that constructor worked');
 ]]>
         </programlisting>
