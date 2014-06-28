@@ -588,15 +588,37 @@ Invalid argument
         <programlisting role="php">
 <![CDATA[
 <?hh
-function foo(): void {}
+
+function foo(string $var): void {
+  echo $var."\n";
+}
 
 function main(): void {
-  $func = fun('foo');
-  $str = "foo";
-  // $wontwork = func($str);
+  $name='foo';
+  $func1 = fun($name); // the Hack type checker would balk
+  $func1('bar');
+
+  $func2 = fun('foo'); // This is correct
+  $func2('biz');
+
+  // func2('baz'); //this will not work
 }
+
+main();
 ]]>
         </programlisting>
+		&example.outputs;
+		<screen>
+<![CDATA[
+/source/fun.hh:9:18,22: The argument to fun() must be a single-quoted, constant literal string representing a valid function name.
+]]>
+		</screen>
+		<screen>
+<![CDATA[
+bar
+biz
+]]>
+		 </screen>
       </informalexample>
     </para>
     <para>
