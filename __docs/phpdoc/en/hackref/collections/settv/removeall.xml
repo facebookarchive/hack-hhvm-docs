@@ -2,7 +2,7 @@
 <!-- $Revision:$ -->
 <refentry xml:id="hack.settv.removeall" xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink">
  <refnamediv>
-  <refname>Set&lt;Tv&gt;::removeKey</refname>
+  <refname>Set&lt;Tv&gt;::removeAll</refname>
   <refpurpose>Remove all the values contained in a Traversable from the Set</refpurpose>
  </refnamediv>
 
