@@ -1179,7 +1179,7 @@ This should not print a capital 'A': \x41
   <sect1 xml:id="hack.otherrulesandfeatures.classnameresolution">
     <title>Class Name Resolution</title>
     <para>
-      Class name resolution provides a way of accesing the name of a class, interface or trait.
+      Class name resolution provides a way of accessing the name of a class, interface or trait.
     </para>
     <note>
       <para>
@@ -1187,19 +1187,38 @@ This should not print a capital 'A': \x41
       </para>
     </note>
     <para>
-      Here is an example:
+      Here are some examples:
       <informalexample>
+		<para><emphasis>Example with ReflectionClass</emphasis></para>
         <programlisting role="php">
 <![CDATA[
 <?hh
-$obj = newv(FooClass::class, $constructor_args);
-BaseFacebookTestCase::assertInstanceOf(FooClass::class, $obj, 'I hope that constructor worked');
+
+use MyVendor\SomeComponent\TargetNs as T;
+ 
+// Create a new ReflectionClass
+$r = new ReflectionClass(T\Foo::class); 
+// instead of 
+$r = new ReflectionClass('MyVendor\SomeComponent\TargetNs\Foo');
+]]>
+		</programlisting>
+        <para><emphasis>Example with Doctrine</emphasis></para>
+        <programlisting role="php">
+<![CDATA[
+<?hh
+
+use MyVendor\SomeComponent\TargetEntityNs as Entity;
+
+// Example fetching a user
+$user = $entityManager->find(Entity\User::class, 5);
+// instead of 
+$user = $entityManager->find('MyVendor\SomeComponent\TargetEntityNs\User', 5);
 ]]>
         </programlisting>
       </informalexample>
     </para>
     <para>
-      As you might imagine, <literal>Foo::class</literal> is significantly easier to statically typecheck than <literal>'Foo'</literal>; we know that <literal>Foo::class</literal> is a class name, but interpreting the literal string <literal>'Foo'</literal> requires divining that it is in fact a class name “pointer” based on how that string is used several hops away. As such, there’s now a better way than using string literals like <literal>'ClassName'</literal> or <literal>'InterfaceName'</literal> in your code.
+      As you might imagine, <literal>Foo::class</literal> is significantly easier to statically type check than <literal>'Foo'</literal>; we know that <literal>Foo::class</literal> is a class name, but interpreting the literal string <literal>'Foo'</literal> requires divining that it is in fact a class name “pointer” based on how that string is used several hops away. As such, there’s now a better way than using string literals like <literal>'ClassName'</literal> or <literal>'InterfaceName'</literal> in your code.
     </para>
   </sect1>
 </chapter>
