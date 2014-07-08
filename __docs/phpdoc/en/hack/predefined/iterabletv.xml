@@ -12,7 +12,7 @@
   <section xml:id="hack.iterabletv.intro">
    &reftitle.intro;
    <para>
-    Interface to create an an iterable object that will work with mechanisms like foreach (e.g., <literal>foreach($c as $v)</literal>).
+    Interface to create an iterable object that will work with mechanisms like foreach (e.g., <literal>foreach($c as $v)</literal>).
    </para>
   </section>
 <!-- }}} -->
