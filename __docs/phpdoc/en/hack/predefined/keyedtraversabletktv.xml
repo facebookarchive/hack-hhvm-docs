@@ -12,7 +12,7 @@
   <section xml:id="hack.keyedtraversabletktv.intro">
    &reftitle.intro;
    <para>
-    Interface to detect if a class is traversable using &foreach;, of the form <literal>foreach($c => $k as $v)</literal>.
+    Interface to detect if a class is traversable using &foreach;, of the form <literal>foreach($c as $k => $v)</literal>.
    </para>
    <para>
     Abstract base interface that cannot be implemented alone. Instead it must
