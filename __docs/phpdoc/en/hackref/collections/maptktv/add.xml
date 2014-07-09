@@ -12,7 +12,7 @@
    <modifier>public</modifier>
    <type>Map&lt;Tk, Tv&gt;</type>
    <methodname>Map&lt;Tk, Tv&gt;::add</methodname>
-   <methodparam><type>Pair&lt;Tk, Tv&gt;Tv</type><parameter>p</parameter></methodparam>
+   <methodparam><type>Pair&lt;Tk, Tv&gt;</type><parameter>p</parameter></methodparam>
   </methodsynopsis>
 
 <!-- Note: If this method/property as an alternate procedural mapping then the method/property synopsis MUST be listed BEFORE the function synopsis -->
