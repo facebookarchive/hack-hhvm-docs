@@ -820,65 +820,6 @@ This is not a container, this is a mixed value
     </para>
   </sect1>
 
-  <sect1 xml:id="hack.otherrulesandfeatures.functionsignatureordering">
-    <title>Function Signature Ordering</title>
-    <para>
-      PHP allows some flexibility when it comes to the ordering of a function signature. For example, the following ways of defining the <literal>foo()</literal> signature are perfectly valid:
-      <informalexample>
-        <programlisting role="php">
-<![CDATA[
-<?php
-class A {
-  public static function foo() {}
-}
-]]>
-        </programlisting>
-        <programlisting role="php">
-<![CDATA[
-<?php
-class A {
-  static public function foo() {}
-}
-]]>
-        </programlisting>
-      </informalexample>
-    </para>
-    <para>
-      However, in Hack, there are rules for function signature ordering:
-    </para>
-    <orderedlist>
-      <listitem>
-        <para>
-          The keywords can be in any order.
-        </para>
-      </listitem>
-      <listitem>
-        <para>
-          A keyword cannot be repeated (e.g. no <literal>public public function foo()</literal>).
-        </para>
-      </listitem>
-      <listitem>
-        <para>
-          Specific keywords cannot collide. (i.e., no collision between <literal>public/protected/private</literal>. No collision between <literal>abstract/final</literal>).
-        </para>
-      </listitem>
-    </orderedlist>
-    <para>
-      Here is a sane function signature ordering for Hack.
-      <informalexample>
-        <programlisting role="php">
-<![CDATA[
-<?hh
-class A {
-  // (access) [static] function (name) {}
-  public static function foo() {}
-}
-]]>
-        </programlisting>
-      </informalexample>
-    </para>
-  </sect1>
-
   <sect1 xml:id="hack.otherrulesandfeatures.initialization">
     <title>Calling Non-Private Methods During Initialization</title>
     <para>
@@ -1195,10 +1136,10 @@ This should not print a capital 'A': \x41
 <?hh
 
 use MyVendor\SomeComponent\TargetNs as T;
- 
+
 // Create a new ReflectionClass
-$r = new ReflectionClass(T\Foo::class); 
-// instead of 
+$r = new ReflectionClass(T\Foo::class);
+// instead of
 $r = new ReflectionClass('MyVendor\SomeComponent\TargetNs\Foo');
 ]]>
 		</programlisting>
@@ -1211,7 +1152,7 @@ use MyVendor\SomeComponent\TargetEntityNs as Entity;
 
 // Example fetching a user
 $user = $entityManager->find(Entity\User::class, 5);
-// instead of 
+// instead of
 $user = $entityManager->find('MyVendor\SomeComponent\TargetEntityNs\User', 5);
 ]]>
         </programlisting>
