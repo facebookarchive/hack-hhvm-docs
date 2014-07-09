@@ -3,7 +3,7 @@
  <chapter xml:id="tutorial" xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink">
   <info><title>A simple tutorial</title></info>
   <para>
-   Here we would like to show the very basics of HHVM in a short, simple tutorial. This text only deals with dynamic web page creation with HHVM, though HHVM is not only capable of creating web pages. See the section titled <link linkend="intro-what-can-hhvm-do">What can HHVM do</link> for more information.
+   Here we would like to show the very basics of HHVM in a short, simple tutorial. This text only deals with dynamic web page creation with HHVM, though HHVM is not only capable of creating web pages. See the section titled <link linkend="intro-what-can-hhvm-do">What can HHVM do?</link> for more information.
   </para>
   <para>
    HHVM-enabled web pages are treated just like regular HTML pages and you can create and edit them the same way you normally create regular HTML pages.
@@ -42,7 +42,7 @@
 ]]>
         </programlisting>
         <para>
-          This code works fine in HHVM. You may jump in and out of Hack mode in an HTML file like this anywhere you want. But if you replace the <literal>&lt;?php</literal> with <literal>&lt;?hh</literal>, the code above will not work.
+          This code works fine in HHVM. You may jump in and out of HHVM's PHP mode in an HTML file like this anywhere you want. But if you replace the <literal>&lt;?php</literal> with <literal>&lt;?hh</literal>, the code above will not work.
         </para>
       </informalexample>
     </para>
