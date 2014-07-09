@@ -64,10 +64,11 @@
    </para>
    <para>
     Although PHP's development is focused on server-side scripting,
-    you can do much more with it. Read on, and see more in the
-    <link linkend="intro-what-can-hhvm-do">What can PHP do?</link> section,
-    or go right to the <link linkend="tutorial">introductory
-    tutorial</link> if you are only interested in web programming.
+    you can do even more with it. Read on, and see more in the
+    <link linkend="intro-what-can-hhvm-do">What can HHVM do?</link> section,
+    which describes a runtime for PHP called HHVM. Or go right to the
+    <link linkend="tutorial"> introductory tutorial</link> if you are only
+    interested in web programming.
    </para>
   </section>
 
