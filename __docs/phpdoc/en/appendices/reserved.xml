@@ -4,7 +4,7 @@
  <appendix xml:id="reserved" xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink">
   <title>List of Reserved Words</title>
   <para>
-   The following is a listing of predefined identifiers in HHVM. None
+   The above is a listing of predefined identifiers in HHVM. None
    of the identifiers listed here should be used as identifiers in any of
    your scripts. These lists include keywords and predefined variable,
    constant, and class names. These lists are neither exhaustive or
@@ -13,6 +13,46 @@
 
   <sect1 xml:id="reserved.keywords">
   <title>List of Keywords</title>
+   <para>
+    These primitives have special meaning when using Hack (e.g.,
+    <literal>&lt;?hh</literal>) or if using HHVM and <literal>&lt;?php</literal>
+    with either the <literal>force_hh</literal> ini setting or the
+    <literal>EnableHipHopSyntax</literal> runtime option enabled.
+   </para>
+
+   <table>
+    <title>Hack Keywords</title>
+    <tgroup cols="5">
+     <tbody>
+      <row>
+       <entry>
+        <link linkend="language.types.integer">int</link>
+       </entry>
+       <entry>
+        <link linkend="language.types.float">float</link>
+       </entry>
+       <entry>
+        <link linkend="language.types.string">string</link>
+       </entry>
+       <entry>
+        <link linkend="language.types.boolean">bool</link>
+       </entry>
+       <entry>
+        <link linkend="language.types.array">array</link>
+       </entry>
+      </row>
+      <row>
+       <entry>
+        <link linkend="hack.annotations.mixedtypes">mixed</link>
+       </entry>
+       <entry>
+        <link linkend="hack.otherrulesandfeatures.numberhandling">num</link>
+       </entry>
+      </row>
+     </tbody>
+    </tgroup>
+   </table>
+
    <simpara>
     These words have special meaning in HHVM. Some of them represent things
     which look like functions, some look like constants, and so on - but
