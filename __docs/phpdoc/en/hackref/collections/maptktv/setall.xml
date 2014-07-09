@@ -17,7 +17,7 @@
 
 <!-- Note: If this method/property as an alternate procedural mapping then the method/property synopsis MUST be listed BEFORE the function synopsis -->
   <para>
-   Stores values into the Map from the specified KeyedTraversable, overwriting previous values. If any key in the <literal>KeyedTraversable&lt;Tk, Tv&gt;</literal> is not present in this Map, an exception is thrown.
+   Stores values into the Map from the specified KeyedTraversable, overwriting previous values.
   </para>
  </refsect1>
 </refentry>
