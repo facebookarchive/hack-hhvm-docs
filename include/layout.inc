@@ -151,35 +151,11 @@ function make_submit($file, $alt = FALSE, $align = FALSE, $extras = FALSE,
 function make_link ($url, $linktext = FALSE, $target = FALSE, $extras = FALSE)
 {
     return sprintf("<a href=\"%s\"%s%s>%s</a>",
-        xss_protect($url),
+        $url,
         ($target   ? ' target="' . $target . '"' : ''),
         ($extras   ? ' ' . $extras               : ''),
         ($linktext ? $linktext                   : $url)
     );
-}
-
-/**
-* http://jstiles.com/Blog/How-To-Protect-Your-Site-From-XSS-With-PHP
-*
-* Method: xss_protect
-*    Purpose: Attempts to filter out code used for cross-site scripting attacks
-*    @param $data - the string of data to filter
-*    @param $strip_tags - true to use PHP's strip_tags function for added security
-*    @param $allowed_tags - a list of tags that are allowed in the string of data
-*    @return a fully encoded, escaped and (optionally) stripped string of data
-*/
-function xss_protect($data, $strip_tags = false, $allowed_tags = "") {
-    if ($strip_tags) {
-        $data = strip_tags($data, $allowed_tags . "<b>");
-    }
-
-    if (stripos($data, "script") !== false) {
-        $result = str_replace("script", "scr<b></b>ipt",
-                              htmlentities($data, ENT_QUOTES));
-    } else {
-        $result = htmlentities($data, ENT_QUOTES);
-    }
-    return $result;
 }
 
 // Print a hyperlink to something, within the site

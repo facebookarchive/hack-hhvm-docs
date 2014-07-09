@@ -27,7 +27,7 @@ function error_404_manual()
     status_header(404);
     site_header('404 Not Found', array("noindex"));
     $glink = 'https://github.com/facebook/hack-hhvm-docs/issues/new?title=' .
-             $_SERVER['REQUEST_URI'] . " not found";
+             urlencode($_SERVER['REQUEST_URI']) . " not found";
     $gsnippet = make_link(
         $glink,
         "File a GitHub Issue",
@@ -48,7 +48,7 @@ function error_noservice()
     global $MYSITE;
     site_header('Service not working', array("noindex"));
     $glink = 'https://github.com/facebook/hack-hhvm-docs/issues/new?title=' .
-             $_SERVER['REQUEST_URI'] . " not available";
+             urlencode($_SERVER['REQUEST_URI']) . " not available";
     $gsnippet = make_link(
         $glink,
         "File a GitHub Issue",
