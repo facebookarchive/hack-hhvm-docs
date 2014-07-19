@@ -1551,6 +1551,7 @@ foo();
             <row>
               <entry>
                 <para>
+                  <literal>string</literal>
                 </para>
               </entry>
               <entry>
