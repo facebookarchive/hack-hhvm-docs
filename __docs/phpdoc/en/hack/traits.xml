@@ -210,25 +210,15 @@ int(5)
 
   <sect1 xml:id="hack.traits.requriements">
     <title>Trait Requirements</title>
-    <para>
-      The Hack typechecker is effective because it is able to take annotated facts sprinkled across the codebase in logical places (function entry and exit points, class definitions, etc), throw them together to reconcile them, and detect any mismatches. Traits are a sizeable wrench in the works, because the nature of traits in PHP is &quot;declare a bunch of stuff to be thrown into another scope at a later time, then check if it works at runtime&quot;, whereas the typechecker is only happy if it can take a piece of code and statically verify it independently of its usage sites. A syntactic way of having traits state that they only apply inside a particular type hierarchy allows their declarations to be both more explicit and more amenable to static analysis.
-    </para>
-    <para>
-      While traits can theoretically be used for aspect oriented programming to add functionality to a class that is entirely orthogonal to the rest of the class definition, in practice it seems that a major, if not the dominant, use case for traits is to provide an implementation of functionality that applies only within the context of a particular class hierarchy. For example, if there are 50 subclasses of X, and X::foo() has 3 different recommended implementations, the 3 traits that make those implementations possible are meaningless outside of the class hierarchy and over time may start to justifiably use the functionality of X.
-    </para>
-    <para>
-      Trait requirement declarations serve to tie traits to class hierarchies and move the issues of assumptions about the using class from being discoverable only at run time to being easily discoverable in static analysis. In the example above, <literal>T</literal>'s trait requirements indicate that <literal>I</literal> is something that classes using <literal>T</literal> are <emphasis role="strong">required</emphasis> to implement.
-    </para>
-    <para>
-      For the purposes of the Hack typechecker, trait requirements now mean that any functions inside <literal>T</literal> above now know that <literal>$this instanceof C</literal> and <literal>$this instanceof I</literal> are true, and duplicating the implementations of <literal>C</literal> and <literal>I</literal> using redundant <literal>abstract function</literal> declarations is no longer unnecessary.
-    </para>
-    <sect2 xml:id="hack.traits.requirements.examples">
-      <informalexample>
-        <programlisting role="php">
+	  <para>
+	    The Hack type checker is effective because it is able to take annotated facts sprinkled across a codebase (function entry and exit points, class definitions, etc), reconcile them, and detect any mismatches. Traits are a sizeable wrench in the works. The nature of traits in PHP is to "declare a bunch of stuff to be thrown into another scope at a later time, then check if it works at runtime"; the Hack typechecker is only happy if it can take a piece of code and statically verify it independently of its usage sites. A syntactic way of having traits state that they only apply inside a particular type hierarchy allows their declarations to be both more explicit and more amenable to static analysis.
+	    <informalexample>
+	      <programlisting role="php">
 <![CDATA[
 <?hh
+
 // Definitions of class C and interface I
-class C {}
+class C { ... }
 interface I {
   public function foo();
 }
@@ -242,13 +232,16 @@ trait T {
   // ... this functionality can be safely typechecked even if there are no classes that use T !
 }
 ]]>
-        </programlisting>
-        <para>
-          When enforcing trait requirements, all T cares about is that <literal>X instanceof C</literal> is true and <literal>X instanceof I</literal> is true for any using class X. It doesn't care about how exactly compliance with X's declared interfaces is achieved, or how many layers of inheritance there might be between X and C.
-        </para>
-        <programlisting role="php">
+	      </programlisting>
+	    </informalexample>
+	  </para>
+	  <para>
+	    When enforcing trait requirements, all <literal>T</literal> cares about is that <literal>X</literal> instanceof <literal>C</literal> is true and <literal>X</literal> instanceof <literal>I</literal> is true for any using class <literal>X</literal>. It doesn't care about how exactly compliance with <literal>X</literal>'s declared interfaces is achieved, or how many layers of inheritance there might be between <literal>X</literal> and <literal>C</literal>.
+	    <informalexample>
+	      <programlisting role="php">
 <![CDATA[
 <?hh
+
 // Classes X1, X2, X3, and X4 all satisfy T's requirements:
 class X1 extends C implements I {
   use T;
@@ -305,9 +298,18 @@ class X9 extends C implements I {
   use T;
 }
 ]]>
-        </programlisting>
-      </informalexample>
-    </sect2>
+	      </programlisting>
+	    </informalexample>
+	  </para>
+	  <para>
+	    So what is the rationale for trait requirements? While traits can theoretically be used for aspect oriented programming to add functionality to a class that is entirely orthogonal to the rest of the class definition, in practice it seems that a major, if not the dominant, use case for traits is to provide an implementation of functionality that applies only within the context of a particular class hierarchy. For example, if there are 50 subclasses of <literal>X</literal>, and <literal>X::foo()</literal> has 3 different recommended implementations, the 3 traits that make those implementations possible are meaningless outside of the class hierarchy and over time may start to justifiably use the functionality of <literal>X</literal>.
+	  </para>
+	  <para>
+	    Trait requirement declarations serve to tie traits to class hierarchies and move the issues of assumptions about the using class from being discoverable only at run time to being easily discoverable in static analysis. In the example above, <literal>T</literal>'s trait requirements indicate that <literal>I</literal> is something that classes using <literal>T</literal> are required to implement.
+	  </para>
+	  <para>
+	    For the purposes of the Hack type checker, trait requirements now mean that any functions inside <literal>T</literal> above now know that <literal>$this</literal> instanceof <literal>C</literal> and <literal>$this</literal> instanceof <literal>I</literal> are true, and duplicating the implementations of <literal>C</literal> and <literal>I</literal> using redundant abstract function declarations is no longer necessary.
+	  </para>
   </sect1>
 </chapter>
 
