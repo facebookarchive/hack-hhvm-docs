@@ -208,7 +208,7 @@ int(5)
     Notice how, in <literal>Baz</literal>, <literal>$this</literal> is being used to access methods that were defined in the trait <literal>Foo</literal>. Remember, Hack allows using <literal>$this</literal> on such methods since traits are basically checked as a standalone entity; in this case, the trait has type consistency.
   </para>
 
-  <sect1 xml:id="hack.traits.requriements">
+  <sect1 xml:id="hack.traits.requirements">
     <title>Trait Requirements</title>
 	  <para>
 	    The Hack type checker is effective because it is able to take annotated facts sprinkled across a codebase (function entry and exit points, class definitions, etc), reconcile them, and detect any mismatches. Traits are a sizeable wrench in the works. The nature of traits in PHP is to "declare a bunch of stuff to be thrown into another scope at a later time, then check if it works at runtime"; the Hack typechecker is only happy if it can take a piece of code and statically verify it independently of its usage sites. A syntactic way of having traits state that they only apply inside a particular type hierarchy allows their declarations to be both more explicit and more amenable to static analysis.
