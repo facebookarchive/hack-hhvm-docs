@@ -2,7 +2,7 @@
 <chapter xml:id="hack.xhp">
   <title>Typing XHP</title>
   <para>
-    XHP augments the syntax of Hack and PHP such that XML document fragments become valid PHP expressions. Hack currently understands and type checks against two XHP types: <literal>:xhp</literal> and <literal>XHPChild</literal>. <literal>:xhp</literal> is the parent of all XHP elements. For example, <literal>&lt;div&gt;</literal>, <literal>&lt;ui:link&gt;,</literal>, etc. all derive from <literal>:xhp</literal>. <literal>XHPChild</literal> is a special interface implemented by <literal>array</literal>s, <literal>string</literal>s, <literal>int</literal>s and <literal>float</literal>s, as well as <literal>:xhp</literal> itself. This interface's primary use is to provide a concrete type for the <literal>{}</literal> operator (e.g., <literal>&lt;div&gt;{$foo}&lt;/div&gt;</literal>). It also provides a way to type <literal>appendChild</literal>'s argument. In the future, Hack will also provide a way to statically check some XHP rules (e.g., categories, etc.).
+    XHP augments the syntax of Hack and PHP such that XML document fragments become valid PHP expressions. Hack currently understands and type checks against two XHP types: <literal>:xhp</literal> and <literal>XHPChild</literal>. <literal>:xhp</literal> is the parent of all XHP elements. For example, <literal>&lt;div&gt;</literal>, <literal>&lt;ui:link&gt;</literal>, etc. all derive from <literal>:xhp</literal>. <literal>XHPChild</literal> is a special interface implemented by <literal>array</literal>s, <literal>string</literal>s, <literal>int</literal>s and <literal>float</literal>s, as well as <literal>:xhp</literal> itself. This interface's primary use is to provide a concrete type for the <literal>{}</literal> operator (e.g., <literal>&lt;div&gt;{$foo}&lt;/div&gt;</literal>). It also provides a way to type <literal>appendChild</literal>'s argument. In the future, Hack will also provide a way to statically check some XHP rules (e.g., categories, etc.).
   </para>
   <note>
     <para>
@@ -17,7 +17,7 @@
     <orderedlist>
       <listitem>
         <para>
-          The <literal>:xhp</literal> class is the root class for all XHP elements. For example, <literal>&lt;div&gt;</literal>, <literal>&lt;ui:link>&gt;</literal>, etc. all derive from <literal>:xhp</literal>.
+          The <literal>:xhp</literal> class is the root class for all XHP elements. For example, <literal>&lt;div&gt;</literal>, <literal>&lt;ui:link&gt;</literal>, etc. all derive from <literal>:xhp</literal>.
         </para>
       </listitem>
       <listitem>
