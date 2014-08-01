@@ -4,7 +4,7 @@
 <refentry xml:id="hack.mutablemaptktv.filter" xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink">
  <refnamediv>
   <refname>MutableMap&lt;Tk, Tv&gt;::filter</refname>
-  <refpurpose>Return a MutableMap containing the values of this MutableMap that cause the provided function to return true.</refpurpose>
+  <refpurpose>Return a MutableMap containing the key/value pairs of this MutableMap that cause the provided function to return true.</refpurpose>
  </refnamediv>
 
  <refsect1 role="description">
@@ -14,7 +14,7 @@
    <methodparam><type>function(Tv): bool</type><parameter>callback</parameter></methodparam>
   </methodsynopsis>
   <para>
-   Returns an MutableMap containing the values of this MutableMap that cause the provided function to return true.
+   Returns an MutableMap containing the key/value pairs of this MutableMap that cause the provided function to return true.
   </para>
  </refsect1>
 
