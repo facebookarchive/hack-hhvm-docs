@@ -4,7 +4,7 @@
 <refentry xml:id="hack.constmaptktv.filterwithkey" xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink">
  <refnamediv>
   <refname>ConstMap&lt;Tk, Tv&gt;::filterWithKey</refname>
-  <refpurpose>Return a ConstMap containing the values of this ConstMap that cause the provided function to return true.</refpurpose>
+  <refpurpose>Return a ConstMap containing the key/value pairs of this ConstMap that cause the provided function to return true.</refpurpose>
  </refnamediv>
 
  <refsect1 role="description">
@@ -14,7 +14,7 @@
    <methodparam><type>function(Tk, Tv): bool</type><parameter>callback</parameter></methodparam>
   </methodsynopsis>
   <para>
-   Returns an ConstMap containing the values of this ConstMap that cause the provided function to return true.
+   Returns an ConstMap containing the key/value pairs of this ConstMap that cause the provided function to return true.
   </para>
  </refsect1>
 

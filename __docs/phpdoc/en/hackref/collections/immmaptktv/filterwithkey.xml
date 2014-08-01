@@ -3,7 +3,7 @@
 <refentry xml:id="hack.immmaptktv.filterwithkey" xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink">
  <refnamediv>
   <refname>ImmMap&lt;Tk, Tv&gt;::filterWithKey</refname>
-  <refpurpose>Return a ImmMap containing the values of this ImmMap that cause the provided function to return true.</refpurpose>
+  <refpurpose>Return a ImmMap containing the key/value pairs of this ImmMap that cause the provided function to return true.</refpurpose>
  </refnamediv>
 
  <refsect1 role="description">
@@ -17,7 +17,7 @@
 
 <!-- Note: If this method/property as an alternate procedural mapping then the method/property synopsis MUST be listed BEFORE the function synopsis -->
   <para>
-   Returns a ImmMap containing the values of this ImmMap that cause the provided function to return true..
+   Returns a ImmMap containing the key/value pairs of this ImmMap that cause the provided function to return true..
   </para>
  </refsect1>
 </refentry>
