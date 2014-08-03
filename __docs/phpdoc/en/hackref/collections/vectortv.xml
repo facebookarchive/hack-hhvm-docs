@@ -10,7 +10,7 @@
   <section xml:id="vectortv.intro">
    &reftitle.intro;
    <para>
-    <link linkend="hack.collections.vector">Vector</link> is a stack-like collection. HHVM provides a native implementation for this class. The Hack class definition is not actually used at run time by HHVM; it is simply provided for the Hack typechecker and for developer reference.
+    <link linkend="hack.collections.vector">Vector</link> is a stack-like collection. HHVM provides a native implementation for this class. The Hack class definition is not actually used at run time by HHVM; it is simply provided for the Hack type checker and for developer reference.
    </para>
    <para>
     Like all objects in Hack, Vectors have reference-like semantics. When a caller passes a Vector to a callee, the callee can modify the Vector and the caller will see the changes. Vectors do not have "copy-on-write" semantics.

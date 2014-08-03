@@ -76,7 +76,7 @@
       </listitem>
       <listitem>
         <para>
-          Case-insensitive function calls (the Hack typechecker is case-sensitive).
+          Case-insensitive function calls (the Hack type checker is case-sensitive).
         </para>
       </listitem>
       <listitem>

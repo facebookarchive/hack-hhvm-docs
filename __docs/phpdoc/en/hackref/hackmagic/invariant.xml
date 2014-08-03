@@ -18,7 +18,7 @@
    <function>invariant</function> tests whether <parameter>cond</parameter> is true. If it is not, it calls <function>invariant_violation</function>, otherwise it does nothing.
   </para>
   <para>
-   The Hack typechecker is aware of many common expressions for <parameter>cond</parameter> and will modify its knowledge of local variable types after a call to <function>invariant</function>.
+   The Hack type checker is aware of many common expressions for <parameter>cond</parameter> and will modify its knowledge of local variable types after a call to <function>invariant</function>.
   </para>
  </refsect1>
 

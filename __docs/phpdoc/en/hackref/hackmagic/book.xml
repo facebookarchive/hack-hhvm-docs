@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 
 <book xml:id="book.hackmagic" xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink">
- <title>Functions Special-Cased by the Typechecker</title>
+ <title>Functions Special-Cased by the type checker</title>
 
  <preface xml:id="intro.hackmagic">
   &reftitle.intro;
@@ -11,7 +11,7 @@
    </para>
   </note>
   <para>
-   These functions are provided by default by the runtime in Hack code, but are also treated specially by the typechecker during static analysis time (or, in the case of <function>invariant_callback_register</function>, are inextricably linked with those which are).
+   These functions are provided by default by the runtime in Hack code, but are also treated specially by the type checker during static analysis time (or, in the case of <function>invariant_callback_register</function>, are inextricably linked with those which are).
   </para>
   <para>
    In PHP code, these functions are available in the <literal>HH</literal> namespace.

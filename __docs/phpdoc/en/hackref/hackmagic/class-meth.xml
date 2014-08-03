@@ -14,7 +14,7 @@
    <methodparam><type>string</type><parameter>method_name</parameter></methodparam>
   </methodsynopsis>
   <para>
-   <function>class_meth</function> takes a class name and a method name, and returns a callable which will invoke that static method of that class. Like <function>fun</function>, this is in order to aide the typechecker in statically analyzing callbacks passed into and out of functions.
+   <function>class_meth</function> takes a class name and a method name, and returns a callable which will invoke that static method of that class. Like <function>fun</function>, this is in order to aide the type checker in statically analyzing callbacks passed into and out of functions.
   </para>
  </refsect1>
 
@@ -63,7 +63,7 @@ class C {
 }
 
 function test(): void {
-  // The typechecker cannot determine what function $f refers to. It will reject
+  // The type checker cannot determine what function $f refers to. It will reject
   // this in strict mode, but in partial mode will admit it, even though it
   // fails at runtime.
   $f = array('C', 'f');
@@ -90,7 +90,7 @@ function run_callback((function (string): void) $f, string $s) {
 }
 
 function test2(): void {
-  // Although this works at runtime, the typechecker will reject this, since an
+  // Although this works at runtime, the type checker will reject this, since an
   // array is not a function.
   run_callback(array('C', 'f'), 'test');
 

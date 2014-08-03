@@ -10,7 +10,7 @@
   <section xml:id="immvectortv.intro">
    &reftitle.intro;
    <para>
-     ImmVector is an immutable Vector. HHVM provides a native implementation for this class. The Hack class definition is not actually used at run time; it is simply provided for the Hack typechecker and for developer reference.
+     ImmVector is an immutable Vector. HHVM provides a native implementation for this class. The Hack class definition is not actually used at run time; it is simply provided for the Hack type checker and for developer reference.
    </para>
    <para>
      A ImmVector cannot be mutated. No elements can be added or removed from it, nor can elements be overwritten using assignment (i.e. <literal>$c[$k] = $v</literal> is not allowed).
