@@ -211,7 +211,7 @@ int(5)
   <sect1 xml:id="hack.traits.requirements">
     <title>Trait Requirements</title>
 	  <para>
-	    The Hack type checker is effective because it is able to take annotated facts sprinkled across a codebase (function entry and exit points, class definitions, etc), reconcile them, and detect any mismatches. Traits are a sizeable wrench in the works. The nature of traits in PHP is to "declare a bunch of stuff to be thrown into another scope at a later time, then check if it works at runtime"; the Hack typechecker is only happy if it can take a piece of code and statically verify it independently of its usage sites. A syntactic way of having traits state that they only apply inside a particular type hierarchy allows their declarations to be both more explicit and more amenable to static analysis.
+	    The Hack type checker is effective because it is able to take annotated facts sprinkled across a codebase (function entry and exit points, class definitions, etc), reconcile them, and detect any mismatches. Traits are a sizeable wrench in the works. The nature of traits in PHP is to "declare a bunch of stuff to be thrown into another scope at a later time, then check if it works at runtime"; the Hack type checker is only happy if it can take a piece of code and statically verify it independently of its usage sites. A syntactic way of having traits state that they only apply inside a particular type hierarchy allows their declarations to be both more explicit and more amenable to static analysis.
 	    <informalexample>
 	      <programlisting role="php">
 <![CDATA[
@@ -229,7 +229,7 @@ trait T {
   require extends C;
   require implements I;
   // ... trait functionality that potentially relies on $this extending C and implementing I ...
-  // ... this functionality can be safely typechecked even if there are no classes that use T !
+  // ... this functionality can be safely type checked even if there are no classes that use T !
 }
 ]]>
 	      </programlisting>

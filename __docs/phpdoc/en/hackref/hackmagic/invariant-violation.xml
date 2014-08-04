@@ -20,7 +20,7 @@
    The recommended use of <function>invariant</function> and <function>invariant_violation</function> are only to indicate programmer error for conditions that should <emphasis>never</emphasis> occur. Their error handling semantics are likely too coarse for general use.
   </para>
   <para>
-   The Hack typechecker is aware that <function>invariant_violation</function> can never return and always throws, and takes this into account in its program flow analysis.
+   The Hack type checker is aware that <function>invariant_violation</function> can never return and always throws, and takes this into account in its program flow analysis.
   </para>
  </refsect1>
 
@@ -59,12 +59,12 @@
 function f(): int {
   if (the_world_has_ended()) {
     invariant_violation('The world has ended, how is this script running?');
-    // No need to return anything here, the typechecker knows we can't get here.
+    // No need to return anything here, the type checker knows we can't get here.
   } else {
     return 1;
   }
 
-  // No need to return anything here either, since the typechecker knows all
+  // No need to return anything here either, since the type checker knows all
   // relevant cases are covered above.
 }
 ]]>

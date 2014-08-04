@@ -13,7 +13,7 @@
    <methodparam><type>string</type><parameter>function_name</parameter></methodparam>
   </methodsynopsis>
   <para>
-   <function>fun</function> takes a constant string and returns a callable representing the function named by the constant string. In the typechecker, the return value of this function has a proper function type, based upon looking up the function prototype named in the argument. This allows the typechecker to properly check callbacks which may be passed around; traditional PHP passes around strings, which are impossible to statically analyze and check invocations of.
+   <function>fun</function> takes a constant string and returns a callable representing the function named by the constant string. In the type checker, the return value of this function has a proper function type, based upon looking up the function prototype named in the argument. This allows the type checker to properly check callbacks which may be passed around; traditional PHP passes around strings, which are impossible to statically analyze and check invocations of.
   </para>
  </refsect1>
 
@@ -25,7 +25,7 @@
      <term><parameter>function_name</parameter></term>
      <listitem>
       <para>
-       Function of which to return a typecheckable callable form. Must be a constant, single-quoted string.
+       Function of which to return a type checkable callable form. Must be a constant, single-quoted string.
       </para>
      </listitem>
     </varlistentry>
@@ -36,7 +36,7 @@
  <refsect1 role="returnvalues">
   &reftitle.returnvalues;
   <para>
-   Callable representing the input function, with full typechecking information.
+   Callable representing the input function, with full type checking information.
   </para>
  </refsect1>
 
@@ -44,7 +44,7 @@
   &reftitle.examples;
   <para>
    <example>
-    <title><function>fun</function> gives the typechecker visibility into a callback and function call</title>
+    <title><function>fun</function> gives the type checker visibility into a callback and function call</title>
     <programlisting role="php">
 <![CDATA[
 <?hh
@@ -52,7 +52,7 @@
 function f(string $s): void {}
 
 function test(): void {
-  // The typechecker cannot determine what function $f refers to. It will reject
+  // The type checker cannot determine what function $f refers to. It will reject
   // this in strict mode; partial mode will reject it, but with an error that may
   // not be as helpful (see first type checker error below). This fails at runtime.
   $f = 'f';
@@ -94,7 +94,7 @@ function run_callback((function(string): void) $f, string $s): void {
 }
 
 function test2(): void {
-  // Although this works at runtime, the typechecker will reject this, since 'f'
+  // Although this works at runtime, the type checker will reject this, since 'f'
   // is a string, not a function.
   run_callback('f', 'test');
 

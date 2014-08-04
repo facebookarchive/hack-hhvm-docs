@@ -526,7 +526,7 @@ HipHop Fatal error: Argument 1 passed to cufun1() must be an instance of string,
       </informalexample>
     </para>
     <para>
-     In order to make these type of callbacks type-checkable and type-safe, Hack has introduced <function>fun</function>. <function>fun</function> is a special function used to create a &quot;pointer&quot; to a function in a type-safe way. <function>fun</function> takes a <literal>string</literal> corresponding to the name of the function to be called. It returns a &quot;type-safe&quot; <literal>string</literal> that can be used in, for example, <literal>call_user_func()</literal>. Building upon the example above to use <function>fun</function>:
+     In order to make these type of callbacks type checkable and type-safe, Hack has introduced <function>fun</function>. <function>fun</function> is a special function used to create a &quot;pointer&quot; to a function in a type-safe way. <function>fun</function> takes a <literal>string</literal> corresponding to the name of the function to be called. It returns a &quot;type-safe&quot; <literal>string</literal> that can be used in, for example, <literal>call_user_func()</literal>. Building upon the example above to use <function>fun</function>:
       <informalexample>
         <programlisting role="php">
 <![CDATA[
@@ -717,7 +717,7 @@ class AA {
   <sect1 xml:id="hack.otherrulesandfeatures.invariant">
     <title><literal>invariant()</literal></title>
     <para>
-      There are times when it is desirable to have an object be type-checked as a more specific type than it is currently declared. For example, an interface needs to be type-checked as one of its implementing classes. <literal>invariant()</literal> is used to help the Hack type-checker make this more specific type determination.
+      There are times when it is desirable to have an object be type checked as a more specific type than it is currently declared. For example, an interface needs to be type checked as one of its implementing classes. <literal>invariant()</literal> is used to help the Hack type checker make this more specific type determination.
       <informalexample>
         <programlisting role="php">
 <![CDATA[

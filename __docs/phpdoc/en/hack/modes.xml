@@ -195,7 +195,7 @@ function bar(): string {
         </informalexample>
       </para>
       <para>
-        So, <literal>// UNSAFE</literal> is used for "letting me do unsafe things one function at a time"; <literal>// decl</literal> is used to, in essence, "unsafe the entire file". If possible, try to use <literal>// UNSAFE</literal> over <literal>// decl</literal> in order to narrow down as much as possible the code that is not type-checked.
+        So, <literal>// UNSAFE</literal> is used for "letting me do unsafe things one function at a time"; <literal>// decl</literal> is used to, in essence, "unsafe the entire file". If possible, try to use <literal>// UNSAFE</literal> over <literal>// decl</literal> in order to narrow down as much as possible the code that is not type checked.
       </para>
     </note>
   </sect1>

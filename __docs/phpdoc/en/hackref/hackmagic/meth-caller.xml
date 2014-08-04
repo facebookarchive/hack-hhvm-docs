@@ -14,7 +14,7 @@
    <methodparam><type>string</type><parameter>method_name</parameter></methodparam>
   </methodsynopsis>
   <para>
-   <function>meth_caller</function> takes a class name and a method name, and returns a callable which will invoke that method on any object of that class passed to the callable. (This is hard to explain, see examples below.) Like <function>fun</function>, this is in order to aide the typechecker in statically analyzing callbacks passed into and out of functions.
+   <function>meth_caller</function> takes a class name and a method name, and returns a callable which will invoke that method on any object of that class passed to the callable. (This is hard to explain, see examples below.) Like <function>fun</function>, this is in order to aide the type checker in statically analyzing callbacks passed into and out of functions.
   </para>
   <para>
    Unlike <function>inst_meth</function>, this returns a callable which calls a specific method on an object to be provided later.

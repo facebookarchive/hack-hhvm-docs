@@ -14,7 +14,7 @@
    <methodparam><type>string</type><parameter>method_name</parameter></methodparam>
   </methodsynopsis>
   <para>
-   <function>inst_meth</function> takes an object and a method name, and returns a callable which will invoke that method on that class instance. Like <function>fun</function>, this is in order to aide the typechecker in statically analyzing callbacks passed into and out of functions.
+   <function>inst_meth</function> takes an object and a method name, and returns a callable which will invoke that method on that class instance. Like <function>fun</function>, this is in order to aide the type checker in statically analyzing callbacks passed into and out of functions.
   </para>
   <para>
    Unlike <function>meth_caller</function>, this returns a callable which calls a specific method on the specific object passed in.
@@ -68,7 +68,7 @@ class C {
 function test(): void {
   $c = new C();
 
-  // The typechecker cannot determine what function $f refers to. It will reject
+  // The type checker cannot determine what function $f refers to. It will reject
   // this in strict mode, but in partial mode will admit it, even though it
   // fails at runtime.
   $f = array($c, 'f');
@@ -106,7 +106,7 @@ function run_callback((function (string): void) $f, string $s) {
 function test2(): void {
   $c = new C();
 
-  // Although this works at runtime, the typechecker will reject this, since an
+  // Although this works at runtime, the type checker will reject this, since an
   // array is not a function.
   run_callback(array($c, 'f'), 'test');
 

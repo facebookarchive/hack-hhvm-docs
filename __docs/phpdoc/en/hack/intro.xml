@@ -40,7 +40,7 @@
   <title> Hack Background </title>
     <para>
       Facebook was initially built with PHP. Parameters and return types were specified
-      in comments. Parsers could use this to create documentation. But type-checking was non existent.
+      in comments. Parsers could use this to create documentation. But type checking was non existent.
       <informalexample>
         <programlisting role="php">
 <![CDATA[

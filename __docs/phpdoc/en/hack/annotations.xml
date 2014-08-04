@@ -1845,7 +1845,7 @@ class Base {
     return new static();
   }
   public function newCopy(): this {
-    // This would not typecheck with self::, but static:: is ok
+    // This would not type check with self::, but static:: is ok
     return static::newInstance();
   }
   // You can also say Awaitable<this>;
@@ -1936,7 +1936,7 @@ function sum(mixed $x): void {
   <sect1 xml:id="hack.annotations.passingbyreference">
     <title>Passing By Reference</title>
     <para>
-      The Hack typechecker largely does not understand references and pretends that they do not exist. For example, the following code passes the typechecker:
+      The Hack type checker largely does not understand references and pretends that they do not exist. For example, the following code passes the type checker:
             <informalexample>
         <programlisting role="php">
 <![CDATA[
@@ -2010,7 +2010,7 @@ array(4) {
         </screen>
       </informalexample>
     </para>
-    <para>Furthermore, references are just incredibly difficult to typecheck. They can arbitrarily change the types of the parameters passed into them at-a-distance. Being sound would require either looking into the called function (too expensive perf-wise) or completely forgetting the type of any reference parameters (too restrictive). Thus this compromise was reached.</para>
+    <para>Furthermore, references are just incredibly difficult to type check. They can arbitrarily change the types of the parameters passed into them at-a-distance. Being sound would require either looking into the called function (too expensive perf-wise) or completely forgetting the type of any reference parameters (too restrictive). Thus this compromise was reached.</para>
   </sect1>
 
   <sect1 xml:id="hack.annotations.generators">
