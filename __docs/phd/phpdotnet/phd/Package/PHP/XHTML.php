@@ -310,14 +310,17 @@ abstract class Package_PHP_XHTML extends Package_Generic_XHTML {
         // raw value is used instead.
         $ret = $this->TEXT($value);
 
-        // Only check existance of a function if we are not looking
+        // Only check existence of a function if we are not looking
         // at a hack function , or if they are not one of those
         // language constructs masquerading as a function.
         // And only check if we are running the renderer with hhvm.
+        // And only check if we are looking at a function. Figure that
+        // out via "verinfo" since only functions have that set to true.
         // Checking hhvm support would not make sense if running PHP5,
         // obviously
         if (!in_array($this->CURRENT_ID, $this->not_really_functions) &&
             strpos($this->CURRENT_ID, "hack.") === false &&
+            $this->cchunk["verinfo"] === true &&
             (strpos(phpversion(), "hiphop") !== false ||
             strpos(phpversion(), "hhvm") !== false)) {
           $this->cchunk["hhvmsupport"] = $this->check_hhvm_function_support($value);
