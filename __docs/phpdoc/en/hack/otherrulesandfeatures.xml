@@ -1113,7 +1113,7 @@ This should not print a capital 'A': \x41
   <sect1 xml:id="hack.otherrulesandfeatures.casting">
     <title>Casting</title>
     <para>
-      Hack currently follows the PHP rules for casting, with a few minor exceptions. Hack does not allow the use of certain primitives where there is an equivalent primitive type (e.g. <literal>float</literal> instead of <literal>double</literal> or <literal>real</literal>). There is discussion about providing the capability to cast to non-primitive types, but that is not implemented as of yet.
+      Hack currently follows the PHP rules for casting, with a few minor exceptions. Hack does not allow the use of certain primitives where there is an equivalent primitive type (e.g. <literal>float</literal> instead of <literal>double</literal> or <literal>real</literal>).
     </para>
   </sect1>
 
