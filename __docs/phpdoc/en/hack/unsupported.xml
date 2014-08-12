@@ -265,11 +265,6 @@ Don't use dynamic classes
         </screen>
       </informalexample>
     </para>
-    <note>
-      <para>
-        There is debate as to whether this is a bug of Hack or should be by design. Some think static calls shouldn't be done by class instances. Others believe that they should because there are <literal>getClass()</literal> style methods in other languages that allow for similar functionality.
-      </para>
-    </note>
   </sect1>
 </chapter>
 <!-- Keep this comment at the end of the file
