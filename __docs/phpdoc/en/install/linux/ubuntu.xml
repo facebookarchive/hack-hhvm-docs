@@ -19,6 +19,11 @@
             <link xlink:href="&url.hhvm.install.prebuilt.ubuntu13_10;">Ubuntu 13.10</link>
           </simpara>
         </listitem>
+        <listitem>
+          <simpara>
+            <link xlink:href="&url.hhvm.install.prebuilt.ubuntu14_04;">Ubuntu 14.04</link>
+          </simpara>
+        </listitem>
       </itemizedlist>
     </para>
   </sect2>
@@ -41,7 +46,23 @@
             <link xlink:href="&url.hhvm.install.compile.ubuntu13_10;">Ubuntu 13.10</link>
           </simpara>
         </listitem>
+        <listitem>
+          <simpara>
+            <link xlink:href="&url.hhvm.install.compile.ubuntu14_04;">Ubuntu 14.04</link>
+          </simpara>
+        </listitem>
+        <listitem>
+          <simpara>
+            <link xlink:href="&url.hhvm.install.compile.ubuntu14_10;">Ubuntu 14.10</link>
+          </simpara>
+        </listitem>
       </itemizedlist>
+    </para>
+  </sect2>
+  <sect2 xml:id="install.linux.ubuntu.other">
+    <title>Other Ubuntu Distros</title>
+    <para>
+      <link xlink:href="&url.hhvm.install.compile.other;">Other Compilation Instructions</link>
     </para>
   </sect2>
 </sect1>

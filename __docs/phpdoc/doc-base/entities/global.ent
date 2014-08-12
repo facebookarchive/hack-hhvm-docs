@@ -171,9 +171,12 @@
 <!ENTITY url.hhvm.install.compile.debian7 "https://github.com/facebook/hhvm/wiki/Building-and-installing-HHVM-on-Debian-7">
 <!ENTITY url.hhvm.install.prebuilt.ubuntu12_04 "https://github.com/facebook/hhvm/wiki/Prebuilt-Packages-on-Ubuntu-12.04">
 <!ENTITY url.hhvm.install.prebuilt.ubuntu13_10 "https://github.com/facebook/hhvm/wiki/Prebuilt-Packages-on-Ubuntu-13.10">
+<!ENTITY url.hhvm.install.prebuilt.ubuntu14_04 "https://github.com/facebook/hhvm/wiki/Prebuilt-Packages-on-Ubuntu-14.04">
 <!ENTITY url.hhvm.install.compile.ubuntu12_04 "https://github.com/facebook/hhvm/wiki/Building-and-installing-HHVM-on-Ubuntu-12.04">
 <!ENTITY url.hhvm.install.compile.ubuntu13_04 "https://github.com/facebook/hhvm/wiki/Building-and-installing-HHVM-on-Ubuntu-13.04">
 <!ENTITY url.hhvm.install.compile.ubuntu13_10 "https://github.com/facebook/hhvm/wiki/Building-and-installing-HHVM-on-Ubuntu-13.10">
+<!ENTITY url.hhvm.install.compile.ubuntu14_04 "https://github.com/facebook/hhvm/wiki/Building-and-installing-HHVM-on-Ubuntu-14.04">
+<!ENTITY url.hhvm.install.compile.ubuntu14_10 "https://github.com/facebook/hhvm/wiki/Building-and-installing-HHVM-on-Ubuntu-14.10">
 <!ENTITY url.hhvm.install.prebuilt.fedora20 "https://github.com/facebook/hhvm/wiki/Prebuilt-Packages-on-Fedora-20">
 <!ENTITY url.hhvm.install.compile.fedora19 "https://github.com/facebook/hhvm/wiki/Building-and-installing-HHVM-on-Fedora-19">
 <!ENTITY url.hhvm.install.prebuilt.mint16 "https://github.com/facebook/hhvm/wiki/Prebuilt-Packages-on-Mint-16">
@@ -188,6 +191,7 @@
 <!ENTITY url.hhvm.install.compile.amazon "https://github.com/facebook/hhvm/wiki/Building-and-installing-HHVM-on-Amazon-Linux-2013.09.1">
 <!ENTITY url.hhvm.install.compile.macos "https://github.com/facebook/hhvm/wiki/Building-and-installing-HHVM-on-OSX-10.9">
 <!ENTITY url.hhvm.install.compile.freebsd "https://github.com/facebook/hhvm/wiki/Building-and-installing-HHVM-on-FreeBSD-from-ports">
+<!ENTITY url.hhvm.install.compile.other "https://github.com/facebook/hhvm/wiki/Building-and-Installing-HHVM#other">
 <!ENTITY url.hhvm.install.cloud.heroku "https://github.com/hhvm/heroku-buildpack-hhvm">
 <!ENTITY url.hhvm.install.extensions "https://github.com/facebook/hhvm/wiki/Extensions">
 <!ENTITY url.hhvm.install.fastcgi "https://github.com/facebook/hhvm/wiki/FastCGI">
