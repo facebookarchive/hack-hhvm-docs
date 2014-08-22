@@ -268,7 +268,7 @@ var_dump($bar(4)); // outputs 59
       </informalexample>
     </para>
     <para>
-      Use parenthesis if you need to provide parameter or return type hints, or if you need to provide default values for parameters <emphasis role="strong">(this syntax is not supported by the Hack type checker yet)</emphasis>
+      Use parentheses if you need to provide parameter or return type hints, or if you need to provide default values for parameters:
       <informalexample>
         <programlisting role="php">
 <![CDATA[
