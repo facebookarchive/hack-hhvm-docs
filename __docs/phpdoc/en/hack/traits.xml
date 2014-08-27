@@ -20,7 +20,7 @@ trait Foo {
     return $this->x;
   }
 
-  public function getBin(Vector<bool>; $vec): string {
+  public function getBin(Vector<bool> $vec): string {
     return $vec[0];
   }
 }
