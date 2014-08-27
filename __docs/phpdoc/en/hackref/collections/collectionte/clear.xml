@@ -10,7 +10,7 @@
  <refsect1 role="description">
   &reftitle.description;
   <methodsynopsis>
-   <modifier>abstract</modifier><modifier>public</modifier> <type>this</type><methodname>Collection&lt;Te&gt;::clear</methodname>
+   <modifier>abstract</modifier> <modifier>public</modifier> <type>this</type><methodname>Collection&lt;Te&gt;::clear</methodname>
    <void />
   </methodsynopsis>
  </refsect1>
