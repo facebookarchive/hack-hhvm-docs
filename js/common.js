@@ -23,7 +23,7 @@ function scroll(target, interval)
   
   var offsetTop = 
     target.offset().top 
-    - 52
+    - 88
     - target.css('margin-top').toInt()
   ;
 
