@@ -15,7 +15,7 @@ The key ones are `language` and `reference`.
 
 You will update `.xml` files. See `__docs/phpdoc/doc-base/README` for 
 instructions on how to get started. Or just look at the `.xml` files that 
-already exist and copy pasta as much as you need to.
+already exist and copy past as much as you need to.
 
 If you are adding a new high level topic or extension, you will probably
 have to add it to `doc-base/manual.xml.in` as well. `manual.xml` and
