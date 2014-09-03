@@ -18,7 +18,7 @@
 
 <!-- Note: If this method/property as an alternate procedural mapping then the method/property synopsis MUST be listed BEFORE the function synopsis -->
   <para>
-    Stores a value into the Map with the specified key, overwriting the previous value associated with the key. If the key is not present, an exception is thrown. <literal>$m-&gt;set($k,$v)</literal> is semantically equivalent to <literal>$m[$k] = $v</literal> (except that <literal>set()</literal> returns the Map).
+    Stores a value into the Vector with the specified key, overwriting the previous value associated with the key. If the key is not present, an exception is thrown. <literal>$m-&gt;set($k,$v)</literal> is semantically equivalent to <literal>$m[$k] = $v</literal> (except that <literal>set()</literal> returns the Vector).
  </para>
  </refsect1>
 </refentry>
