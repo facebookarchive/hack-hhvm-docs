@@ -870,7 +870,7 @@ The method foo is undefined in an object of type A
         </para>
         <note>
           <para>
-            Since generic types are dropped at runtime, HHVM will not thrown an error when <literal>$b2-foo()</literal> is called. Instead it will provide the expected output:
+            Since generic types are dropped at runtime, HHVM will not thrown an error when <literal>$b2-&gt;foo()</literal> is called. Instead it will provide the expected output:
             <informalexample>
               &example.outputs;
               <screen>
