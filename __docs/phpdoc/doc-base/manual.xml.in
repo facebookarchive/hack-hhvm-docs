@@ -4,6 +4,13 @@
 
 <!-- $Revision: 332605 $ -->
 
+<!-- All global entities for the XML files -->
+<!ENTITY % global.entities  SYSTEM "./entities/global.ent">
+
+<!-- These are language independent -->
+<!ENTITY % frontpage.entities SYSTEM "../@EN_DIR@/contributors.ent">
+<!ENTITY % file.entities      SYSTEM "./entities/file-entities.ent">
+
 <!-- Add translated specific definitions and snippets -->
 @TRANSLATION_ONLY_INCL_BEGIN@
 <!ENTITY % language-defs     SYSTEM "../@LANGDIR@/language-defs.ent">
@@ -23,13 +30,6 @@
 %language-defs.default;
 %extensions.default;
 %language-snippets.default;
-
-<!-- All global entities for the XML files -->
-<!ENTITY % global.entities  SYSTEM "./entities/global.ent">
-
-<!-- These are language independent -->
-<!ENTITY % frontpage.entities SYSTEM "../@EN_DIR@/contributors.ent">
-<!ENTITY % file.entities      SYSTEM "./entities/file-entities.ent">
 
 <!-- Include all external DTD parts defined previously -->
 %global.entities;
