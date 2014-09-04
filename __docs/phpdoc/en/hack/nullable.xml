@@ -2,7 +2,7 @@
 <chapter xml:id="hack.nullable">
   <title>Nullable</title>
   <para>
-    Hack introduces a safer way to deal with nulls through a concept known as the &quot;Nullable&quot; type. Nullable allows any type to have <literal>null</literal> assigned and checked on it. Nullable is very useful for primitive types that don't generally allow <literal>null</literal> as one of their values, such as <literal>bool</literal> and <literal>int</literal>, but it can be also be useful for user-defined classes. Below is an example. Note the <literal>?</literal> operand used to represent nullable.
+    Hack introduces a safer way to deal with nulls through a concept known as the &quot;Nullable&quot; type. Nullable allows any type to have <literal>null</literal> assigned and checked on it. Nullable is very useful for primitive types that don't generally allow <literal>null</literal> as one of their values, such as <literal>bool</literal> and <literal>int</literal>, but it can also be useful for user-defined classes. Below is an example. Note the <literal>?</literal> operand used to represent nullable.
     <informalexample>
       <programlisting role="php">
 <![CDATA[
