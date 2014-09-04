@@ -1,5 +1,5 @@
 The repo for hhvm.com. This contains the website, blog and HHVM/Hack 
-documentation. You'll need PHP v5.3 or greater, and have SQLite installed.
+documentation. You'll need HHVM 3.0 or greater, and have SQLite installed.
 
 # Contributing to HHVM and Hack Manual Documentation
 
@@ -27,11 +27,12 @@ To make sure all the XML you have changed or added jives (both in legit XML
 and in context with the structure of the documentation), you need to run 
 the validator.
 
-The validator is in `__docs/phpdoc/doc-base/configure.php`
+The validator is in `__docs/phpdoc/doc-base/configure.php`. Since HHVM 3.3, we have disabled entity loading by default. Instead we whitelist entity types that
+are allowed. Thus, we have a `.ini` file to specify those entity types.
 
 To run it:
 
-`php configure.php`
+`hhvm -c ../phpdoc.ini configure.php`
 
 If successful, this will update the `__docs/phpdoc/doc-base/.manual.xml` file 
 that is basically all of the `.xml` files squashed together. This file will 
@@ -52,12 +53,12 @@ validation step above to generate the `.manual.xml` file.
 
 In `__docs/phd`:
 
-`php render.php -d ../phpdoc/doc-base/.manual.xml -f php -P PHP -o ../../manual/en`
+`hhvm render.php -d ../phpdoc/doc-base/.manual.xml -f php -P PHP -o ../../manual/en`
 
 The `.php` files will outputted to the `manual/en` directory.
 
 > To speed up validation, you can try something like:
->   `php render.php -d ../phpdoc/doc-base/.manual.xml -f php -P PHP -o ../../manual/en -t -p language.hack`
+>   `hhvm render.php -d ../phpdoc/doc-base/.manual.xml -f php -P PHP -o ../../manual/en -t -p language.hack`
 > to only render topics that you changed. However, this is not really 
 > shippable yet. So before pushing, do a full validation.
 > This is good for quick iteration.
