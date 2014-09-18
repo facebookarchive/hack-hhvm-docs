@@ -121,7 +121,7 @@ function bar_partial($a, $b) {
   <sect1 xml:id="hack.modes.decl">
     <title>Decl</title>
     <para>
-      Decl mode is used to allow Hack code written in strict mode to call into legacy code, without having to fix the issues that would be pointed out by partial mode. The type checker will &quot;absorb&quot; the signatures of the code, but will not type check the code. Decl is mainly used when annotating old, existing APIs (i.e., when the code does note meet Hack's stricter subset of PHP). As the following example shows, this could lead to bugs, so be careful.
+      Decl mode is used to allow Hack code written in strict mode to call into legacy code, without having to fix the issues that would be pointed out by partial mode. The type checker will &quot;absorb&quot; the signatures of the code, but will not type check the code. Decl is mainly used when annotating old, existing APIs (i.e., when the code does not meet Hack's stricter subset of PHP). As the following example shows, this could lead to bugs, so be careful.
       <informalexample>
         <para>
           <emphasis>File1.php</emphasis>
