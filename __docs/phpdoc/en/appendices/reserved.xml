@@ -49,8 +49,10 @@
         <link linkend="hack.otherrulesandfeatures.numberhandling">num</link>
        </entry>
        <entry>
+        <link linkend="hack.typealiasing.typealiasing">type</link>
        </entry>
        <entry>
+        <link linkend="hack.typealiasing.opaquetypealiasing">newtype</link>
        </entry>
        <entry>
        </entry>
