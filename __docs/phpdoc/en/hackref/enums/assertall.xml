@@ -67,8 +67,8 @@
   &reftitle.seealso;
   <para>
    <simplelist>
-    <member><function>assert</function></member>
-    <member><function>coerce</function></member>
+    <member><function>Enum::assert</function></member>
+    <member><function>Enum::coerce</function></member>
    </simplelist>
   </para>
  </refsect1>

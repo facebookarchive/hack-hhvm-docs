@@ -42,7 +42,7 @@
   &reftitle.seealso;
   <para>
    <simplelist>
-    <member><function>getValues</function></member>
+    <member><function>Enum::getValues</function></member>
    </simplelist>
   </para>
  </refsect1>
