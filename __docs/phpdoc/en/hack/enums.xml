@@ -14,7 +14,7 @@
 <![CDATA[
 <?php
 
-abstract class DaysOfWeek {
+abstract class DayOfWeek {
   const Sunday = 0;
   const Monday = 1;
   const Tuesday = 2;
@@ -25,7 +25,7 @@ abstract class DaysOfWeek {
 }
 
 function foo() {
-  return DaysOfWeek::Wednesday; // returns a 3
+  return DayOfWeek::Wednesday; // returns a 3
 }
 ]]>
       </programlisting>
@@ -45,7 +45,7 @@ function foo() {
 <![CDATA[
 <?hh
 
-enum DaysOfWeek: int {
+enum DayOfWeek: int {
   Sunday = 0;
   Monday = 1;
   Tuesday = 2;
@@ -55,8 +55,8 @@ enum DaysOfWeek: int {
   Saturday = 6;
 }
 
-function foo(): DaysOfWeek {
-  return DaysOfWeek::Wednesday; // returns a 3
+function foo(): DayOfWeek {
+  return DayOfWeek::Wednesday; // returns a 3
 }
 ]]>
       </programlisting>
