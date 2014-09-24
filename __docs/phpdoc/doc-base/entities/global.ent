@@ -188,7 +188,7 @@
 <!ENTITY url.hhvm.install.compile.arch "https://aur.archlinux.org/packages/hhvm">
 <!ENTITY url.hhvm.install.compile.gentoo "https://github.com/facebook/hhvm/wiki/Building-and-installing-HHVM-on-Gentoo">
 <!ENTITY url.hhvm.install.compile.vagrant "https://github.com/javer/hhvm-vagrant-vm">
-<!ENTITY url.hhvm.install.compile.amazon "https://github.com/facebook/hhvm/wiki/Building-and-installing-HHVM-on-Amazon-Linux-2013.09.1">
+<!ENTITY url.hhvm.install.compile.amazon "https://github.com/facebook/hhvm/wiki/Building-and-installing-HHVM-on-Amazon-Linux-2014.03">
 <!ENTITY url.hhvm.install.compile.macos "https://github.com/facebook/hhvm/wiki/Building-and-installing-HHVM-on-OSX-10.9">
 <!ENTITY url.hhvm.install.compile.freebsd "https://github.com/facebook/hhvm/wiki/Building-and-installing-HHVM-on-FreeBSD-from-ports">
 <!ENTITY url.hhvm.install.compile.other "https://github.com/facebook/hhvm/wiki/Building-and-Installing-HHVM#other">
