@@ -969,6 +969,124 @@ main_con();
     </para>
   </sect1>
 
+  <sect1 xml:id="hack.generics.covariance">
+    <title>Covariance and Contravariance</title>
+    <para>
+      Initially, type parameters were invariant in Hack. There was no implicit
+      conversion from one type argument to another. This made things simple from
+      a type checking perspective, but limited functionality.
+    </para>
+    <para>
+      Understanding that many first-class languages supports variance, Hack
+      supports covariance and contravariance on type arguments. Covariance
+      preserves assignment compatability while contravariance reverses
+      assignment compatibility.
+    </para>
+    <para>
+      <simplelist>
+        <member><literal>+</literal> (plus) is the symbol for covariance
+        </member>
+        <member><literal>-</literal> (minus) is the symbol for contravariance
+        </member>
+      </simplelist>
+    </para>
+    <para>
+      Here is a covariance example:
+      <informalexample>
+        <programlisting role="php">
+<![CDATA[
+<?hh
+class MyClass<+T> {
+  public function __construct(T $t) {}
+}
+class A {}
+class B extends A {}
+
+function foo(MyClass<A>): void {}
+
+function bar(): void {
+  $b = new B();
+  $x = new MyClass($b);
+  foo($x);
+}
+]]>
+        </programlisting>
+        <para>
+          <literal>foo()</literal> can be called with any object assignment
+          compatible with <literal>A</literal>. Since <literal>B</literal> is a
+          subclass of <literal>A</literal>, this works.
+        </para>
+      </informalexample>
+    </para>
+    <para>
+      Here is a contravariance example:
+      <informalexample>
+        <programlisting role="php">
+<![CDATA[
+<?hh
+class MyClass<-T> {
+  public function __construct(T $t) {}
+}
+class A {}
+class B extends A {}
+
+function foo(MyClass<B>): void {}
+
+function bar(): void {
+  $a = new A();
+  $x = new MyClass($a);
+  foo($x);
+}
+]]>
+        </programlisting>
+        <para>
+          <literal>foo()</literal> can be called with any object reverse
+          assignment compatible with <literal>B</literal>. Since <literal>A
+          </literal> is a parent of <literal>B</literal>, this works.
+        </para>
+      </informalexample>
+    </para>
+    <para>
+      Let's change the first example a bit so it doesn't work:
+      <informalexample>
+        <programlisting role="php">
+<![CDATA[
+<?hh
+class MyClass<+T> {
+  public function __construct(T $t) {}
+}
+class A {}
+class B extends A {}
+class C {}
+
+function foo(MyClass<A>): void {}
+
+function bar(): void {
+  $c = new C();
+  $x = new MyClass($c);
+  foo($x);
+}
+]]>
+        </programlisting>
+        &example.outputs;
+        <screen>
+<![CDATA[
+File "co.php", line 14, characters 7-8:
+Invalid argument (Typing[4110])
+File "co.php", line 9, characters 22-22:
+This is an object of type A
+File "co.php", line 12, characters 8-14:
+It is incompatible with an object of type C
+]]>
+        </screen>
+        <para>
+          <literal>C</literal> is not assignment compatible with <literal>A
+          </literal>.
+        </para>
+      </informalexample>
+    </para>
+  </sect1>
+
   <sect1 xml:id="hack.generics.openandclosedtypes">
     <title>Open and Closed Types</title>
     <para>
