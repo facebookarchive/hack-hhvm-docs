@@ -56,40 +56,40 @@
  <book xml:id="install">
   <title>&InstallAndConfigure;</title>
   &install.intro;
+  &install.hack.index;
+  &install.xhp;
+  &install.fastcgi.index;
+  &install.cloud.index;
   &install.linux.index;
   &install.macos.index;
   &install.windows.index;
-  &install.cloud.index;
-  &install.fastcgi.index;
   &install.extensions;
   &install.ini;
-  &install.hack.index;
-  &install.xhp;
  </book>
  <book xml:id="hacklangref">
   <title>&HackLanguageReference;</title>
   &hack.intro;
-  &hack.annotations;
-  &hack.modes;
-  &hack.generics;
-  &hack.nullable;
-  &hack.collections;
   &hack.arrays;
-  &hack.shapes;
-  &hack.typealiasing;
   &hack.async;
-  &hack.continuations;
-  &hack.traits;
-  &hack.enums;
-  &hack.lambda;
-  &hack.tuples;
-  &hack.overrideattribute;
-  &hack.methoddispatch;
-  &hack.xhp;
+  &hack.collections;
   &hack.constructorargumentpromotion;
+  &hack.continuations;
+  &hack.enums;
+  &hack.generics;
+  &hack.lambda;
+  &hack.methoddispatch;
+  &hack.modes;
+  &hack.nullable;
   &hack.otherrulesandfeatures;
-  &hack.unsupported;
+  &hack.overrideattribute;
   &hack.predefined.interfaces;
+  &hack.shapes;
+  &hack.traits;
+  &hack.tuples;
+  &hack.typealiasing;
+  &hack.annotations;
+  &hack.unsupported;
+  &hack.xhp;
  </book>
 
  <set xml:id="hackfuncref">
@@ -106,8 +106,8 @@
    </abstract>
   </info>
   &hackref.collections.book;
-  &hackref.hackmagic.book;
   &hackref.enums.book;
+  &hackref.hackmagic.book;
  </set>
 
  <book xml:id="phplangref">
