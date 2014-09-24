@@ -171,6 +171,44 @@ class Foo {
       </informalexample>
     </para>
   </sect1>
+  <sect1 xml:id="hack.unsupportedphpfeatures.explicitconstructors">
+    <title>Explicitly Named Constructors</title>
+    <para>
+      Unlike <link linkend="language.oop5.decon">PHP</link>, Hack does not allow
+      naming a constructor explicitly (e.g., by the name of the class):
+      <informalexample>
+        <programlisting role="php">
+<![CDATA[
+<?php
+class Foo {
+  public function Foo() {} // Perfectly fine in PHP 5
+}
+]]>
+        </programlisting>
+        <para>
+          However, this is not acceptable in Hack:
+        </para>
+        <programlisting role="php">
+<![CDATA[
+<?hh
+class Foo {
+  public function Foo() {}
+}
+]]>
+        </programlisting>
+        &example.outputs;
+        <screen>
+<![CDATA[
+File "c.php", line 3, characters 21-29:
+This is a dangerous method name, if you want to define a constructor, use __construct
+]]>
+        </screen>
+      </informalexample>
+    </para>
+    <para>
+      Use <literal>__construct()</literal> instead.
+    </para>
+  </sect1>
   <sect1 xml:id="hack.unsupportedphpfeatures.parentstaticmethods">
     <title>Parent Static Methods</title>
     <para>
