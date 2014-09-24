@@ -1,5 +1,11 @@
 <?xml version="1.0"?>
 <versions>
+  <function name="Enum::getvalues" from="HHVM &gt;= 3.3"/>
+  <function name="Enum::getnames" from="HHVM &gt;= 3.3"/>
+  <function name="Enum::isvalid" from="HHVM &gt;= 3.3"/>
+  <function name="Enum::coerce" from="HHVM &gt;= 3.3"/>
+  <function name="Enum::assert" from="HHVM &gt;= 3.3"/>
+  <function name="Enum::assertall" from="HHVM &gt;= 3.3"/>
   <function name="include" from="PHP 4, PHP 5"/>
   <function name="include_once" from="PHP 4, PHP 5"/>
   <function name="require" from="PHP 4, PHP 5"/>

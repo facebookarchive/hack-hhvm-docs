@@ -80,6 +80,7 @@
   &hack.async;
   &hack.continuations;
   &hack.traits;
+  &hack.enums;
   &hack.lambda;
   &hack.tuples;
   &hack.overrideattribute;
@@ -106,12 +107,7 @@
   </info>
   &hackref.collections.book;
   &hackref.hackmagic.book;
-  <!--
-  <set xml:id="refs.hack.other">
-   <title>&HackOther;</title>
-   &hackreference.other.book;
-  </set>
-  -->
+  &hackref.enums.book;
  </set>
 
  <book xml:id="phplangref">
