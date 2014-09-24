@@ -92,7 +92,7 @@ enum Foo: int {
         </para>
         <para>
           <literal>Foo</literal> is a type and can be used as a type hint.
-          <programlisting>
+          <programlisting role="php">
 <![CDATA[
 <?hh
 
