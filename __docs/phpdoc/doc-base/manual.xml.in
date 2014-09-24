@@ -76,9 +76,9 @@
   &hack.continuations;
   &hack.enums;
   &hack.generics;
+  &hack.modes;
   &hack.lambda;
   &hack.methoddispatch;
-  &hack.modes;
   &hack.nullable;
   &hack.otherrulesandfeatures;
   &hack.overrideattribute;
