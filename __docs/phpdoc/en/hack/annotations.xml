@@ -163,6 +163,11 @@ class AnnotatedClass {
         </listitem>
         <listitem>
           <para>
+            Language-defined unions of primitive types: <literal>num</literal> is either an integer or a float, and <literal>arraykey</literal> is either an integer or a string.
+          </para>
+        </listitem>
+        <listitem>
+          <para>
             User-defined classes: <literal>Foo</literal>, <literal>Vector&lt;some type&gt;</literal>
           </para>
         </listitem>
