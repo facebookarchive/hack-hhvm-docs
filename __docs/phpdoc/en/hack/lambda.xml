@@ -84,16 +84,6 @@ var_dump(lam(42)); // return 178
       <itemizedlist>
         <listitem>
           <para>
-            Lambda expressions don't support parameter type hints, return type hints, or default values at present (HHVM supports these, but the Hack type checker and other tools cannot parse them yet). We plan to add support for this soon.
-          </para>
-        </listitem>
-        <listitem>
-          <para>
-            Lambda expressions don't support taking an expression or list of statements that contains an &quot;await&quot; statement. We plan to add support for this in the future.
-          </para>
-        </listitem>
-        <listitem>
-          <para>
             Lambda expressions don't support capturing variables by reference. If the programmer wants to capture variables by reference, they must use PHP 5.3 closure syntax and put "&amp;" in front of the variable in the &quot;use(..)&quot; list.
           </para>
         </listitem>
