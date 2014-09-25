@@ -118,7 +118,16 @@ Remove all toplevel statements except for requires
     </para>
     <note>
       <para>
-        As you can see from the error message in the above example, the only top-level statement allowed by the Hack type checker is <literal>require</literal> and <literal>require_once</literal>
+        As you can see from the error message in the above example, the only
+        top-level statement allowed by the Hack type checker in <literal>
+        // strict</literal> mode is <literal>require</literal> and <literal>
+        require_once</literal>, while, as stated above, any top-level code in
+        other Hack modes (e.g., <literal>// partial</literal>) are ignored.
+      </para>
+      <para>
+        The way to get around this is to wrap all top-level code around a
+        function call. <literal>main()</literal> can be used to serve this
+        purpose.
       </para>
     </note>
   </sect1>
