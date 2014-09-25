@@ -119,8 +119,7 @@ function tuple(...) {
 <![CDATA[
 <?hh
 
-class TupleTest {
-  public function test(): void {
+function main_tup() {
     $arr = array('3', 2, 3, 4, 'hi');
     $tup = tuple('3', 2, 3, 4, 'hi');
     var_dump($arr);
@@ -135,12 +134,6 @@ class TupleTest {
     $tup[5] = 'Whoops!';
     var_dump($arr);
     var_dump($tup);
-  }
-}
-
-function main_tup() {
-  $tp = new TupleTest();
-  $tp->test();
 }
 
 main_tup();
