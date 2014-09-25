@@ -10,7 +10,7 @@
   &reftitle.description;
   <methodsynopsis>
    <modifier>public</modifier>
-   <type>ImmMap&lt;tk, Tv&gt;</type>
+   <type>ImmMap&lt;Tk, Tv&gt;</type>
    <methodname>Vector&lt;Tv&gt;::toImmMap</methodname>
    <void />
   </methodsynopsis>
