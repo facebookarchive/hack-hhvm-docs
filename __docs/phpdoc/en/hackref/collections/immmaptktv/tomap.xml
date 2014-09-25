@@ -11,7 +11,7 @@
   <methodsynopsis>
    <modifier>public</modifier>
    <type>Map&lt;Tk, Tv&gt;</type>
-   <methodname>ImmMap&lt;Tk, Tv&gt;s::toMap</methodname>
+   <methodname>ImmMap&lt;Tk, Tv&gt;::toMap</methodname>
    <void />
   </methodsynopsis>
 

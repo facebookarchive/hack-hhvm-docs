@@ -11,7 +11,7 @@
   <methodsynopsis>
    <modifier>public</modifier>
    <type>array</type>
-   <methodname>Map&lt;Tk, Tv&gt;s::toKeysArray</methodname>
+   <methodname>Map&lt;Tk, Tv&gt;::toKeysArray</methodname>
    <void />
   </methodsynopsis>
 
