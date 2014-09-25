@@ -1729,8 +1729,8 @@ class ABCD {
     </para>
   </sect1>
 
-  <sect1 xml:id="hack.annotations.closures">
-    <title>Annotating Closures</title>
+  <sect1 xml:id="hack.annotations.functiontypes">
+    <title>Annotating Function Types</title>
     <para>
       Annotating closures and callables require their own callout beyond the brief summary above about using PHP types with Hack. Take this unannotated, non-Hack PHP code that uses a closure:
       <informalexample>
