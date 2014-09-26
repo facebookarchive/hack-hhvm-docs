@@ -135,10 +135,11 @@ class C3 extends C2 {
   <sect1 xml:id="hack.customattributes.memoize">
     <title>__Memoize Attribute</title>
     <para>
-      The <literal>__Memoize</literal> attribute allows functions to cache their
-      results, without having to explicitly define custom caching mechanisms. An
-      example is the best way to illustrate <literal>__Memoize</literal>.
-      Formerly, caching was done in this sort of manner:
+      As of HHVM 3.3, the <literal>__Memoize</literal> attribute allows
+      functions to cache their results, without having to explicitly define
+      custom caching mechanisms. An example is the best way to illustrate
+      <literal>__Memoize</literal>. Formerly, caching was done in this sort of
+      manner:
       <informalexample>
         <programlisting role="php">
 <![CDATA[
