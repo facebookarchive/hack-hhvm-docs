@@ -209,13 +209,13 @@ class Foo {
 class Baz {}
 class Parent {
   // Memozing will *not* occur on this function
-  protected function foo(string $key): Baz {
+  public function foo(string $key): Baz {
     return function_that_returns_baz($key);
   }
 }
 class Child extends Parent {
   <<__Override, __Memoize>>
-  protected function foo(string $key): Baz {
+  public function foo(string $key): Baz {
     return another_function_that_returns_baz($key);
   }
 }
