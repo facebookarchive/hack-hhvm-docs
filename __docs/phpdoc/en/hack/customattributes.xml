@@ -5,14 +5,14 @@
     Attributes in Hack provide the ability to give the Hack type checker and
     HHVM runtime additional, contextual information about a class, method,
     property or function. Attributes are declarative tags of the form <literal
-    >&lt;&lt;AttributeName&gt;&gt;</literal>, placed above the signature of the
-    code on which the attribute is to be applied. For example:
+    >&lt;&lt;__AttributeName&gt;&gt;</literal>, placed above the signature of
+    the code on which the attribute is to be applied. For example:
     <informalexample>
       <programlisting role="php">
 <![CDATA[
 <?hh
 class Foo {
-  <<Memoize>>
+  <<__Memoize>>
   public function bar(string $key) {
     return baz($key);
   }
@@ -20,7 +20,7 @@ class Foo {
 ]]>
       </programlisting>
       <para>
-        The &lt;&lt;Memoize&gt;&gt; attribute above <literal>bar()</literal>
+        The &lt;&lt;__Memoize&gt;&gt; attribute above <literal>bar()</literal>
         tells the HHVM runtime to cache the result of the call to <literal>baz()
         </literal>.
       </para>
@@ -28,16 +28,25 @@ class Foo {
   </para>
   <para>
     Multiple attributes can even be applied to a piece of code. The form is
-    <literal>&lt;&lt;Attribute1, Attribute2&gt;&gt;</literal>.
+    <literal>&lt;&lt;__Attribute1, __Attribute2&gt;&gt;</literal>.
   </para>
-  <sect1 xml:id="hack.customattributes.override">
-    <title>Override Attribute</title>
+  <note>
     <para>
-      The <literal>Override</literal> attribute is the child class' counterpart
+      Note that, currently, Hack custom attributes are prefixed with <literal>__
+      </literal>. This is to signify that the custom attribute has meaning to
+      the HHVM compiler rather than just user space decoration. It is analogous
+      to the underscores on <literal>__call()</literal> hinting that
+      it is special.
+    </para>
+  </note>
+  <sect1 xml:id="hack.customattributes.override">
+    <title>__Override Attribute</title>
+    <para>
+      The <literal>__Override</literal> attribute is the child class' counterpart
       to the parent class' <literal>abstract</literal> declaration. It is an
       optional annotation on a method, implemented with the
-      <literal>&lt;&lt;Override&gt;&gt;</literal> user attribute. If the
-      <literal>&lt;&lt;Override&gt;&gt;</literal> attribute is found on a
+      <literal>&lt;&lt;__Override&gt;&gt;</literal> user attribute. If the
+      <literal>&lt;&lt;__Override&gt;&gt;</literal> attribute is found on a
       method, and that method does not exist in the set of (non-interface)
       methods inherited from parents, an error is thrown. In Hack partial mode,
       this has the effect of throwing when the parent is defined in PHP, since
@@ -61,7 +70,8 @@ class CParent {
 // file2.php
 <?hh
 class Child extends CParent {
-  <<Override>> protected function implementation(): void {
+  <<__Override>>
+  protected function implementation(): void {
     echo 'child implementation', "\n";
   }
 }
@@ -81,17 +91,19 @@ class CParent {
 ]]>
         </programlisting>
         <para>
-        ... the <literal>&lt;&lt;Override&gt;&gt;</literal> annotation will result in a type checker error, alerting the refactorer of <literal>CParent</literal> of the existence of <literal>Child</literal>.
+        ... the <literal>&lt;&lt;__Override&gt;&gt;</literal> annotation will
+        result in a type checker error, alerting the refactorer of
+        <literal>CParent</literal> of the existence of <literal>Child</literal>.
         </para>
       </informalexample>
     </para>
     <sect2 xml:id="hack.customeattributes.override.traits">
       <title>In Traits</title>
       <para>
-        The <literal>&lt;&lt;Override&gt;&gt;</literal> annotation may also be
+        The <literal>&lt;&lt;__Override&gt;&gt;</literal> annotation may also be
         added to trait methods, although with slightly different behavior than
         in standard classes. For trait methods annotated with
-        <literal>&lt;&lt;Override&gt;&gt;</literal>, the check of whether the
+        <literal>&lt;&lt;__Override&gt;&gt;</literal>, the check of whether the
         overridden method exists is deferred to the classes that
         <literal>use</literal> the trait.
         <informalexample>
@@ -99,7 +111,7 @@ class CParent {
 <![CDATA[
 <?hh
 trait T1 {
-  <<Override>> // checked on use classes
+  <<__Override>> // checked on use classes
   function foo(): void {}
 }
 
