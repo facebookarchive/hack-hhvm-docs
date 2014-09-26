@@ -195,6 +195,11 @@ class Foo {
       <simplelist>
         <member>The arguments must be explicit (i.e., no varargs).</member>
         <member>The arguments cannot be passed by reference.</member>
+        <member>The supported argument types are <literal>null</literal>,
+        <literal>bool</literal>, <literal>int</literal>,
+        <literal>float</literal>, <literal>string</literal>, any object
+        implementing the <literal>IMemoizeParam</literal> interface, and arrays/
+        collections containing any supported argument type.</member>
       </simplelist>
     </para>
     <note>
