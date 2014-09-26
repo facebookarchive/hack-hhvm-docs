@@ -74,6 +74,7 @@
   &hack.collections;
   &hack.constructorargumentpromotion;
   &hack.continuations;
+  &hack.customattributes;
   &hack.enums;
   &hack.generics;
   &hack.modes;
@@ -81,7 +82,6 @@
   &hack.methoddispatch;
   &hack.nullable;
   &hack.otherrulesandfeatures;
-  &hack.overrideattribute;
   &hack.predefined.interfaces;
   &hack.shapes;
   &hack.traits;
