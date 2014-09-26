@@ -38,7 +38,7 @@ class Foo {
       optional annotation on a method, implemented with the
       <literal>&lt;&lt;Override&gt;&gt;</literal> user attribute. If the
       <literal>&lt;&lt;Override&gt;&gt;</literal> attribute is found on a
-      method, and that method does not exist in the set of (non-abstract)
+      method, and that method does not exist in the set of (non-interface)
       methods inherited from parents, an error is thrown. In Hack partial mode,
       this has the effect of throwing when the parent is defined in PHP, since
       the type checker cannot access the parent's method declarations.
