@@ -81,7 +81,7 @@ array(1) {
       </para>
     </informalexample>
   </para>
-  <sect1 xml:id="hack.customattributes.override">
+  <sect1 xml:id="hack.attributes.override">
     <title>__Override Special Attribute</title>
     <warning>
       <para>
@@ -153,7 +153,7 @@ class CParent {
         </para>
       </informalexample>
     </para>
-    <sect2 xml:id="hack.customeattributes.override.traits">
+    <sect2 xml:id="hack.attributes.override.traits">
       <title>In Traits</title>
       <para>
         The <literal>&lt;&lt;__Override&gt;&gt;</literal> annotation may also be
@@ -188,7 +188,7 @@ class C3 extends C2 {
       </para>
     </sect2>
   </sect1>
-  <sect1 xml:id="hack.customattributes.memoize">
+  <sect1 xml:id="hack.attributes.memoize">
     <title>__Memoize Special Attribute</title>
     <para>
       As of HHVM 3.3, the <literal>__Memoize</literal> attribute allows
