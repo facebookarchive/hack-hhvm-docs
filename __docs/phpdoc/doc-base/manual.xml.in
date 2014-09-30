@@ -71,10 +71,10 @@
   &hack.intro;
   &hack.arrays;
   &hack.async;
+  &hack.attributes;
   &hack.collections;
   &hack.constructorargumentpromotion;
   &hack.continuations;
-  &hack.customattributes;
   &hack.enums;
   &hack.generics;
   &hack.modes;

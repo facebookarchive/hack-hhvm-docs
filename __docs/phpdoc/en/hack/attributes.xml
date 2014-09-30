@@ -1,46 +1,102 @@
 <?xml version="1.0" encoding="utf-8"?>
-<chapter xml:id="hack.customattributes">
-  <title>Custom Attributes</title>
+<chapter xml:id="hack.attributes">
+  <title>Attributes</title>
   <para>
-    Attributes in Hack provide the ability to give the Hack type checker and
-    HHVM runtime additional, contextual information about a class, method,
-    property or function. Attributes are declarative tags of the form <literal
-    >&lt;&lt;__AttributeName&gt;&gt;</literal>, placed above the signature of
-    the code on which the attribute is to be applied. For example:
+    Attributes in Hack provide the ability to give any
+    <link linkend="intro.reflection">reflectable</link> piece of code
+    additional contextual information. For example, attributes can be used to
+    declare a function a test method or provide versioning information on a
+    class.
+  </para>
+  <para>
+    Attributes are declarative tags of the form <literal>
+    &lt;&lt;Attribute&gt;&gt;</literal>. To specify a value for an attribute,
+    use parenthesis <literal>(value)</literal>. Multiple attributes can be
+    declared using a <literal>,</literal>; e.g. <literal>
+    &lt;&lt;Attribute1, Attribute2&gt;&gt;</literal>.
+  </para>
+  <para>
+    The value of an attrubute can be accessed using the <literal>
+    Reflection::getAttribute(string $name)</literal> method. The full attribute
+    information for any reflectable item can be accessed via <literal>
+    Reflection::getAttributes()</literal>
+  </para>
+  <note>
+    <para>
+      There are special attributes provided directly by Hack that have special
+      meaning to the Hack type checker and HHVM. These special attributes are
+      prefixed by a double underscore (<literal>__</literal>). This is to
+      signify that the custom attribute has meaning to the HHVM compiler rather
+      than just user space decoration. It is analogous to the underscores on
+      <literal>__call()</literal> hinting that it is special.
+    </para>
+  </note>
+  <para>
+    Here is an example of the use of attributes:
     <informalexample>
       <programlisting role="php">
 <![CDATA[
 <?hh
 class Foo {
-  <<__Memoize>>
+  <<TestFunction, key("6")>>
   public function bar(string $key) {
     return baz($key);
   }
 }
+
+$rc = new ReflectionClass('Foo');
+$attrs = $rc->getMethod('bar')->getAttributes();
+var_dump($attrs);
+$attr = $rc->getMethod('bar')->getAttribute("key");
+var_dump($attr);
 ]]>
       </programlisting>
+      <informalexample>
+        &example.outputs;
+        <screen>
+<![CDATA[
+array(2) {
+  ["TestFunction"]=>
+  array(0) {
+  }
+  ["key"]=>
+  array(1) {
+    [0]=>
+    string(1) "6"
+  }
+}
+array(1) {
+  [0]=>
+  string(1) "6"
+}
+]]>
+        </screen>
+      </informalexample>
       <para>
-        The &lt;&lt;__Memoize&gt;&gt; attribute above <literal>bar()</literal>
-        tells the HHVM runtime to cache the result of the call to <literal>baz()
-        </literal>.
+        The class <literal>Foo</literal> has one function <literal>bar()
+        </literal> that has two attributes associated with it. And <literal>
+        getAttributes()</literal> gives an array of those attributes. And
+        <literal>getAttribute("key")</literal> gives an array of the values of
+        the <literal>key</literal> which, in this case, is <literal>6</literal>.
       </para>
     </informalexample>
   </para>
-  <para>
-    Multiple attributes can even be applied to a piece of code. The form is
-    <literal>&lt;&lt;__Attribute1, __Attribute2&gt;&gt;</literal>.
-  </para>
-  <note>
-    <para>
-      Note that, currently, Hack custom attributes are prefixed with <literal>__
-      </literal>. This is to signify that the custom attribute has meaning to
-      the HHVM compiler rather than just user space decoration. It is analogous
-      to the underscores on <literal>__call()</literal> hinting that
-      it is special.
-    </para>
-  </note>
   <sect1 xml:id="hack.customattributes.override">
-    <title>__Override Attribute</title>
+    <title>__Override Special Attribute</title>
+    <warning>
+      <para>
+        Before HHVM 3.4, this special attribute was named
+        <literal>Override </literal> without the double underscores
+        <literal>__</literal>. However, we are making a change where all
+        special, "magical" attributes that have real meaning to the Hack type
+        checker and/or HHVM must be prefixed by <literal>__</literal>. Using
+        <literal>Override</literal> will not cause any runtime problems, but
+        from HHVM 3.4 and beyond, it would be treated just as any normal user
+        attribute. To ensure a proper migration path, one options is to use
+        both attributes, such as
+        <literal>&lt;&lt;__Override, Override&gt;&gt;</literal>.
+      </para>
+    </warning>
     <para>
       The <literal>__Override</literal> attribute is the child class' counterpart
       to the parent class' <literal>abstract</literal> declaration. It is an
@@ -133,7 +189,7 @@ class C3 extends C2 {
     </sect2>
   </sect1>
   <sect1 xml:id="hack.customattributes.memoize">
-    <title>__Memoize Attribute</title>
+    <title>__Memoize Special Attribute</title>
     <para>
       As of HHVM 3.3, the <literal>__Memoize</literal> attribute allows
       functions to cache their results, without having to explicitly define
