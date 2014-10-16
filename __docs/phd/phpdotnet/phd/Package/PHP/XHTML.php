@@ -740,7 +740,9 @@ abstract class Package_PHP_XHTML extends Package_Generic_XHTML {
 
     // For HHVM
     private function check_hhvm_function_support($function_or_method_name) {
-      if (strpos($function_or_method_name, "::") === false) {
+      if ($function_or_method_name[0] == '$') {
+        return true;
+      } else if (strpos($function_or_method_name, "::") === false) {
         return function_exists($function_or_method_name);
       } else {
         // If we have a ::, it is a class name
