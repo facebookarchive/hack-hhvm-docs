@@ -15,7 +15,7 @@
    <methodparam><type>?Traversable&lt;Tv&gt;</type><parameter>it</parameter></methodparam>
   </methodsynopsis>
   <para>
-    Append all the values of contained in the <literal>Traversable&lt;Tv&gt;</literal> to the end of the set.
+    Append all the values of contained in the <literal>Traversable&lt;Tv&gt;</literal> to the end of the Set. Adding a value already contained in the Set will be ignored.
   </para>
  </refsect1>
 </refentry>

@@ -22,7 +22,7 @@
     Sets only support integer values and string values. If a value of a different type is used, an exception will be thrown.
    </para>
    <para>
-    In general, Sets do not support <literal>$c[$k]</literal> style syntax. Adding an element using <literal>$c[] = ..</literal> syntax is supported.
+    In general, Sets do not support <literal>$c[$k]</literal> style syntax. Adding an element using <literal>$c[] = ..</literal> syntax is supported. Adding a duplicate will be ignored.
    </para>
    <para>
     Set do not support iteration while elements are being added or removed. When an element is added or removed, all iterators that point to the Set shall be considered invalid.

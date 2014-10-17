@@ -15,7 +15,7 @@
    <methodparam><type>Tv</type><parameter>value</parameter></methodparam>
   </methodsynopsis>
   <para>
-   Append a copy of a value to the end of the Set, assigning the next available integer key.
+   Append a copy of a value to the end of the Set, assigning the next available integer key. Adding a value already contained in the Set will be ignored.
   </para>
   <note>
     <para>

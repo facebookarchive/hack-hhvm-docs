@@ -3,7 +3,7 @@
 <refentry xml:id="hack.vectortv.addall" xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink">
  <refnamediv>
   <refname>Vector&lt;Tv&gt;::addAll</refname>
-  <refpurpose>Append all the values of the traversable to the end of the vector</refpurpose>
+  <refpurpose>Append all the values of the Traversable to the end of the Vector</refpurpose>
  </refnamediv>
 
  <refsect1 role="description">
