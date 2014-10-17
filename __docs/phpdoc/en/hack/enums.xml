@@ -144,7 +144,7 @@ foo(Foo::BAR);
 <![CDATA[
 <?hh
 
-function foo(FOO $x): void {}
+function foo(Foo $x): void {}
 foo(3);
 ]]>
           </programlisting>
