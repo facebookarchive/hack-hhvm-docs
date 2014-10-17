@@ -318,6 +318,15 @@ test();
 
    <sect2 xml:id="language.variables.scope.global">
     <title>The <literal>global</literal> keyword</title>
+    <warning xml:id="warn.hack">
+     <title>Hack</title>
+     <para>
+      The global keyword is not supported in Hack.
+      You can use <link linkend="reserved.variables.globals">
+      <literal>$GLOBALS</literal></link> in <link linkend="hack.modes">
+      partial mode.</link>
+     </para>
+    </warning>
     <simpara>
      First, an example use of <literal>global</literal>:
     </simpara>
