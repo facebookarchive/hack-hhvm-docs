@@ -305,6 +305,23 @@ class AnnotatedClass {
             <row>
               <entry>
                 <para>
+                  Number
+                </para>
+              </entry>
+              <entry>
+                <para>
+                  <literal>num</literal>
+                </para>
+              </entry>
+              <entry>
+                <para>
+                  <literal>protected num $n;</literal>
+                </para>
+              </entry>
+            </row>
+            <row>
+              <entry>
+                <para>
                   String
                 </para>
               </entry>
@@ -452,6 +469,23 @@ class AnnotatedClass {
               <entry>
                 <para>
                   <literal>protected Pair&lt;int, string&gt; $pair;</literal>
+                </para>
+              </entry>
+            </row>
+            <row>
+              <entry>
+                <para>
+                  Arraykey
+                </para>
+              </entry>
+              <entry>
+                <para>
+                  <literal>arraykey</literal>
+                </para>
+              </entry>
+              <entry>
+                <para>
+                  <literal>protected arraykey $k;</literal>
                 </para>
               </entry>
             </row>
@@ -655,6 +689,23 @@ class AnnotatedClass {
             <row>
               <entry>
                 <para>
+                  Number
+                </para>
+              </entry>
+              <entry>
+                <para>
+                  <literal>num</literal>
+                </para>
+              </entry>
+              <entry>
+                <para>
+                  <literal>function foo(num $n)</literal>
+                </para>
+              </entry>
+            </row>
+            <row>
+              <entry>
+                <para>
                   String
                 </para>
               </entry>
@@ -802,6 +853,23 @@ class AnnotatedClass {
               <entry>
                 <para>
                   <literal>function foo(Pair&lt;int, string&gt; $pair)</literal>
+                </para>
+              </entry>
+            </row>
+            <row>
+              <entry>
+                <para>
+                  Arraykey
+                </para>
+              </entry>
+              <entry>
+                <para>
+                  <literal>arraykey</literal>
+                </para>
+              </entry>
+              <entry>
+                <para>
+                  <literal>function foo(arraykey $k)</literal>
                 </para>
               </entry>
             </row>
@@ -1002,6 +1070,23 @@ class AnnotatedClass {
             <row>
               <entry>
                 <para>
+                  Number
+                </para>
+              </entry>
+              <entry>
+                <para>
+                  <literal>num</literal>
+                </para>
+              </entry>
+              <entry>
+                <para>
+                  <literal>: num</literal>
+                </para>
+              </entry>
+            </row>
+            <row>
+              <entry>
+                <para>
                   String
                 </para>
               </entry>
@@ -1149,6 +1234,23 @@ class AnnotatedClass {
               <entry>
                 <para>
                   <literal>: Pair&lt;int, string&gt;</literal>
+                </para>
+              </entry>
+            </row>
+            <row>
+              <entry>
+                <para>
+                  Arraykey
+                </para>
+              </entry>
+              <entry>
+                <para>
+                  <literal>arraykey</literal>
+                </para>
+              </entry>
+              <entry>
+                <para>
+                  <literal>: arraykey</literal>
                 </para>
               </entry>
             </row>
