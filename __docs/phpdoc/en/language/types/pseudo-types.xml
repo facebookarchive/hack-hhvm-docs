@@ -7,8 +7,9 @@
   <title>mixed</title>
 
   <para>
-   <literal>mixed</literal> indicates that a parameter may accept multiple (but
-   not necessarily all) types.
+   <literal><link linkend="hack.annotations.mixedtypes">mixed</link></literal>
+   indicates that a parameter may accept multiple (but not necessarily all) 
+   types.
   </para>
 
   <para>
@@ -23,7 +24,7 @@
   <title>number</title>
 
   <para>
-   <literal>number</literal> indicates that a parameter can be either
+   <literal>num</literal> indicates that a parameter can be either
    <type>integer</type> or <type>float</type>.
   </para>
 
