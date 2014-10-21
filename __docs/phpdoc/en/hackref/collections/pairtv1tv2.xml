@@ -10,7 +10,7 @@
   <section xml:id="pairtv1tv2.intro">
    &reftitle.intro;
    <para>
-    <link linkend="hack.collections.pair">Pair</link> is a fixed-size collection with exactly two elements (possibly of different types). HHVM provides a native implementation for this class. The Hack class definition is not actually used at run time; it is simply provided for the Hack type checker and for developer reference.
+    <link linkend="hack.collections.pair">Pair</link> is a fixed-size collection with exactly two elements (possibly of different types). HHVM provides a native implementation for this class.
    </para>
    <para>
     Like all objects in PHP, Pairs have reference-like semantics. The elements or a Pair cannot be mutated (i.e. you can assign to the elements of a Pair) though Pairs may contain mutable objects.

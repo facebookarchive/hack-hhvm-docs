@@ -10,7 +10,7 @@
   <section xml:id="maptktv.intro">
    &reftitle.intro;
    <para>
-    <link linkend="hack.collections.map">Map</link> is an ordered dictionary-style collection. HHVM provides a native implementation for this class. The Hack class definition is not actually used at run time; it is simply provided for the Hack type checker and for developer reference.
+    <link linkend="hack.collections.map">Map</link> is an ordered dictionary-style collection. HHVM provides a native implementation for this class.
    </para>
    <para>
     Like all objects in Hack, Maps have reference-like semantics. When a caller passes a Map to a callee, the callee can modify the Map and the caller will see the changes. Maps do not have "copy-on-write" semantics.
