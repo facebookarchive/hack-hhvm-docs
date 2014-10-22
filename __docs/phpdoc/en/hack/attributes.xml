@@ -268,13 +268,13 @@ class Foo {
 <![CDATA[
 <?hh
 class Baz {}
-class Parent {
+class MParent {
   // Memozing will *not* occur on this function
   public function foo(string $key): Baz {
     return function_that_returns_baz($key);
   }
 }
-class Child extends Parent {
+class Child extends MParent {
   <<__Override, __Memoize>>
   public function foo(string $key): Baz {
     return another_function_that_returns_baz($key);
@@ -303,8 +303,8 @@ class Child extends Parent {
       As of HHVM 3.4, the <literal>__ConsistentConstruct</literal> attribute
       provides the Hack type checker a signal to ensure all
       <literal>__construct()</literal> definitions for all subclasses of a
-      parent class <literal>Parent</literal> are compatible with the
-      <literal>__construct() </literal> of <literal>Parent</literal>.
+      parent class <literal>Foo</literal> are compatible with the
+      <literal>__construct() </literal> of <literal>Foo</literal>.
     </para>
     <para>
       This attribute is useful particularly for <literal>new static()</literal>
@@ -313,17 +313,17 @@ class Child extends Parent {
         <programlisting role="php">
 <![CDATA[
 <?hh
-class Parent {
+class Foo {
   public static function make(): this {
     return new static();
   }
 }
-class Child extends Parent {
+class ChildOfFoo extends Foo {
   public function __construct(private A $a) {}
 }
 
 function main() {
-  $child = Child::make();
+  $child = ChildOfFoo::make();
 }
 main();
 ]]>
@@ -332,16 +332,16 @@ main();
         <screen>
 <![CDATA[
 File "cc.php", line 4, characters 12-23:
-Can't use new static() for Parent; __construct arguments are not guaranteed to be consistent in child classes (Typing[4060])
+Can't use new static() for Foo; __construct arguments are not guaranteed to be consistent in child classes (Typing[4060])
 File "cc.php", line 2, characters 7-12:
 This declaration neither defines an abstract/final __construct nor uses <<__ConsistentConstruct>> attribute
 ]]>
         </screen>
         <para>
           This code is also going to fail at runtime because the call to
-          <literal>make()</literal> in <literal>Parent</literal> doesn't provide
+          <literal>make()</literal> in <literal>Foo</literal> doesn't provide
           the required <literal>A</literal> parameter necessary to construct
-          <literal>Child</literal>.
+          <literal>ChildOfFoo</literal>.
         </para>
       </informalexample>
       <note>
@@ -362,17 +362,17 @@ This declaration neither defines an abstract/final __construct nor uses <<__Cons
 <![CDATA[
 <?hh
 <<__ConsistentConstruct>>
-class Parent {
+class Foo {
   public static function make(): this {
     return new static();
   }
 }
-class Child extends Parent {
+class ChildOfFoo extends Foo {
   public function __construct(private A $a) {}
 }
 
 function main() {
-  $child = Child::make();
+  $child = ChildOfFoo::make();
 }
 main();
 ]]>
@@ -381,9 +381,9 @@ main();
         <screen>
 <![CDATA[
 File "cc.php", line 8, characters 7-11:
-This object is of type Child (Typing[4041])
+This object is of type ChildOfFoo (Typing[4041])
 File "cc.php", line 8, characters 21-26:
-It is incompatible with this object of type Parent
+It is incompatible with this object of type Foo
 because some of their methods are incompatible.
 Read the following to see why:
 File "cc.php", line 9, characters 19-29:
@@ -402,17 +402,17 @@ Because of this definition
 <![CDATA[
 <?hh
 <<__ConsistentConstruct>>
-class Parent {
+class Foo {
   public static function make(): this {
     return new static();
   }
 }
-class Child extends Parent {
+class ChildOfFoo extends Foo {
   public function __construct() {}
 }
 
 function main() {
-  $child = Child::make();
+  $child = ChildOfFoo::make();
 }
 main();
 ]]>
@@ -430,9 +430,9 @@ No errors
         If you want a child class not to follow the <literal>
         __ConsistentConstruct</literal> behavior, you can mark the <literal>
         __construct()</literal> of that child class
-        <literal>&lt;&lt;UNSAFE_Construct&gt;&gt;</literal>. This is not really
-        an attribute, per se, like the other special attributes; it is more
-        like the <link linkend="hack.modes.unsafe"><literal>UNSAFE</literal>
+        <literal>&lt;&lt;UNSAFE_Construct&gt;&gt;</literal>. Keep in mind that
+        this attribute is very similar to the
+        <link linkend="hack.modes.unsafe"><literal>UNSAFE</literal>
         </link> annotation that basically tells the Hack type checker to
         "trust" that the programmer knows what he/she is doing and ignore this
         piece of code.
