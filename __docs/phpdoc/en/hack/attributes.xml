@@ -308,7 +308,7 @@ class Child extends MParent {
     </para>
     <para>
       This attribute is useful particularly for <literal>new static()</literal>
-      calls. Consider this is example and the output of the Hack type checker:
+      calls. Consider this example and the output of the Hack type checker:
       <informalexample>
         <programlisting role="php">
 <![CDATA[
