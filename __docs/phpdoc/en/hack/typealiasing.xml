@@ -220,87 +220,86 @@ It is incompatible with a string because this is the result of a concatenation
     <para>
       Normally, an opaque type alias does not allow the underlying representation of its type to be accessed (modulo the file in which the opaque type alias is defined). This is still true in principle. However, Hack has added the ability to add type constraints to opaque type aliases. Opaque type aliases with constraints still don't allow access to the underlying representation of the type alias, but they do allow access to the representation represented by the constraint. This is best illustrated with an example.
       <informalexample>
-        <para><emphasis>ot_constaints_transaction_1.php</emphasis></para>
+        <para><emphasis>ot1.php</emphasis></para>
         <programlisting role="php">
 <![CDATA[
 <?hh // strict
 
-newtype TransactionActive<T as Transactable> as T = T;
+newtype EvenInt as int = int;
+newtype OddInt = int;
 
-abstract class Transactable {
-  /*
-   * Begin a Transaction.  You must do this before you can commit or
-   * rollback a transaction.
-   */
-  public static function begin<T as Transactable>(T $t): TransactionActive<T> {
-    $t->implBeginTransaction();
-    return $t;
+function checkIfEven(int $x): EvenInt {
+  if ($x % 2 === 0) {
+    return $x;
   }
+  throw new Exception("Not Even");
+}
 
-  /*
-   * Rollback, or commit.  These two functions require that the type
-   * system has added a `TransactionActive' annotation in the form of
-   * a newtype---it is a statically-verifiable precondition (to the
-   * degree that the code using this class is in strict mode).
-   */
-  public static function rollback<T as Transactable>(
-    TransactionActive<T> $t
-  ): void {
-    $t->implRollback();
+function checkIfOdd(int $x): OddInt {
+  if ($x % 2 === 1) {
+    return $x;
   }
-  public static function commit<T as Transactable>(
-    TransactionActive<T> $t
-  ): void {
-    $t->implCommit();
-  }
+  throw new Exception("Not Odd");
+}
 
-  // Subclass for this transaction-oriented class must implement
-  // these.
-  protected abstract function implBeginTransaction(): void;
-  protected abstract function implRollback(): void;
-  protected abstract function implCommit(): void;
+function add(int $x, int $y): int {
+  return $x + $y;
 }
 ]]>
         </programlisting>
-        <para><emphasis>ot_constraints_transaction_2.php</emphasis></para>
+        <para><emphasis>ot2.php</emphasis></para>
         <programlisting role="php">
 <![CDATA[
-<?hh
-// Copyright 2004-present Facebook. All Rights Reserved.
+<?hh // strict
 
-// Comment out if testing outside a normal environment
-// where the files are autoloaded.
-// require_once "ot_constraints_transaction_1.php";
+require_once "ot1.php";
 
-class MySqlDB extends Transactable {
-  protected function implBeginTransaction(): void {}
-  protected function implRollback(): void {}
-  protected function implCommit(): void {}
-}
-
-function open_mysql(): MySqlDB {
-  return new MySqlDB();
-}
-
-function ot_transact_main(): void {
-  $db = open_mysql();  // Returns MySqlDB which extends Transactable
-
-  $db = Transactable::begin($db);
-  // $db now has type TransactionActive<MySqlDB>.
-
-  /* Other code here */
-
-  Transactable::rollback($db); // If anyone removes the
-                               // begin() call, Hack will
-                               // throw an error.
+function test_me(): void {
+  add(checkIfEven(4), checkIfEven(6));
+  add(checkIfOdd(3), checkIfOdd(5));
 }
 ]]>
         </programlisting>
+        &example.outputs;
+        <screen>
+<![CDATA[
+/tmp/ot2/ot2.php:7:22,34: Invalid argument (Typing[4110])
+  /tmp/ot2/ot1.php:20:22,24: This is an int
+  /tmp/ot2/ot1.php:13:30,35: It is incompatible with an object of type OddInt
+/tmp/ot2/ot2.php:7:7,19: Invalid argument (Typing[4110])
+  /tmp/ot2/ot1.php:20:14,16: This is an int
+  /tmp/ot2/ot1.php:13:30,35: It is incompatible with an object of type OddInt
+]]>
+        </screen>
         <para>
-          The code above should look relatively familiar in the context of opaque type aliasing. Using <literal>newtype</literal>, an opaque type alias is declared called <literal>TransactionActive</literal>. However, this time the alias has a <literal>T</literal> constraint on it. In the <literal>ot_transact_main()</literal> function in <emphasis>ot_constraints_transaction_2.php</emphasis>, <literal>$db</literal> is first set to an instance of <literal>MySqlDB</literal> (which, in turn, sets <literal>T</literal> to be <literal>MySqlDB</literal>). Then, <literal>$db</literal> is set to the <literal>TransactionActive</literal> type alias via the call to <literal>Transactable::begin()</literal>. Only at this point are the calls to <literal>rollback()</literal> and <literal>commit</literal> allowed by Hack. Even though <literal>$db</literal> is technically a <literal>Transactable</literal> (by being an instance <literal>MySqlDB</literal>), and, at runtime, could successfully call a method such as <literal>rollback()</literal>, Hack will disallow this. Calling <literal>begin()</literal> with a <literal>Transactable</literal> such as <literal>$db</literal> type alias forces all instances of <literal>T</literal> (in this case, <literal>MySqlDB</literal>) to be a <literal>TransactionActive</literal> in order to call those methods and use the underlying representation of <literal>T</literal>. Note here that the underlying representation of the type alias and the constraint are both the same, <literal>T</literal>.
+          The code above should look relatively familiar in the context of
+          opaque type aliasing. Using <literal>newtype</literal>, opaque type
+          aliases are declared called <literal> EvenInt</literal> and
+          <literal>OddInt</literal>. However, this time the alias
+          <literal>EvenInt</literal> has a <literal>int</literal> constraint on
+          it. This means that <literal>EvenInt</literal>s can be used as
+          <literal>int</literal>s in, for example, function calls (e.g.
+          <literal>add(int, int)</literal>) that take an
+          <literal>int</literal>. However, since <literal>OddInt</literal> does
+          not have the <literal>int</literal> constraint,
+          <literal>OddInt</literal>s cannot be passed into functions that take
+          an <literal>int</literal>.
         </para>
       </informalexample>
     </para>
+    <warning>
+      <para>
+        The following syntax is not yet supported by the Hack type checker...
+        <informalexample>
+        <programlisting role="php">
+<![CDATA[
+<?hh
+newtype Foo<T as Bar> as T = T
+]]>
+        </programlisting>
+      </informalexample>
+      </para>
+    </warning>
   </sect1>
 
   <sect1 xml:id="hack.typealiasing.examples">
