@@ -294,7 +294,7 @@ function test_me(): void {
         <programlisting role="php">
 <![CDATA[
 <?hh
-newtype Foo<T as Bar> as T = T
+newtype Foo<T as Bar> as T = T;
 ]]>
         </programlisting>
       </informalexample>
