@@ -427,27 +427,15 @@ No errors
     </para>
     <note>
       <para>
-        There was consideration of having this attribute be a default on every
-        class, but it was determined that there are many fewer ways of calling a
-        constructor polymorphically than the standard method. <literal>new $x()
-        </literal> is not as common as something like
-        <literal>$some_object->method()</literal>. As a result, the vast
-        majority of classes are never constructed dynamically.
-      </para>
-    </note>
-    <note>
-      <para>
-        <literal>__ConsistentConstruct</literal> can also be used for class
-        hierarchies that expect to be constructed via <literal>new $classname()
-       </literal>.
-      </para>
-    </note>
-    <note>
-      <para>
         If you want a child class not to follow the <literal>
         __ConsistentConstruct</literal> behavior, you can mark the <literal>
         __construct()</literal> of that child class
-        <literal>&lt;&lt;UNSAFE_Construct&gt;&gt;</literal>.
+        <literal>&lt;&lt;UNSAFE_Construct&gt;&gt;</literal>. This is not really
+        an attribute, per se, like the other special attributes; it is more
+        like the <link linkend="hack.modes.unsafe"><literal>UNSAFE</literal>
+        </link> annotation that basically tells the Hack type checker to
+        "trust" that the programmer knows what he/she is doing and ignore this
+        piece of code.
       </para>
     </note>
   </sect1>
