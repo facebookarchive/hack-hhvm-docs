@@ -297,6 +297,160 @@ class Child extends Parent {
       </para>
     </warning>
   </sect1>
+  <sect1 xml:id="hack.attributes.consistentconstruct">
+    <title>__ConsistentConstruct Special Attribute</title>
+    <para>
+      As of HHVM 3.4, the <literal>__ConsistentConstruct</literal> attribute
+      provides the Hack type checker a signal to ensure all
+      <literal>__construct()</literal> definitions for all subclasses of a
+      parent class <literal>Parent</literal> are compatible with the
+      <literal>__construct() </literal> of <literal>Parent</literal>.
+    </para>
+    <para>
+      This attribute is useful particularly for <literal>new static()</literal>
+      calls. Consider this is example and the output of the Hack type checker:
+      <informalexample>
+        <programlisting role="php">
+<![CDATA[
+<?hh
+class Parent {
+  public static function make(): this {
+    return new static();
+  }
+}
+class Child extends Parent {
+  public function __construct(private A $a) {}
+}
+
+function main() {
+  $child = Child::make();
+}
+main();
+]]>
+        </programlisting>
+        &example.outputs;
+        <screen>
+<![CDATA[
+File "cc.php", line 4, characters 12-23:
+Can't use new static() for Parent; __construct arguments are not guaranteed to be consistent in child classes (Typing[4060])
+File "cc.php", line 2, characters 7-12:
+This declaration neither defines an abstract/final __construct nor uses <<__ConsistentConstruct>> attribute
+]]>
+        </screen>
+        <para>
+          This code is also going to fail at runtime because the call to
+          <literal>make()</literal> in <literal>Parent</literal> doesn't provide
+          the required <literal>A</literal> parameter necessary to construct
+          <literal>Child</literal>.
+        </para>
+      </informalexample>
+      <note>
+        <para>
+          This example uses
+          <link linkend="hack.constructorargumentpromotion">Constructor
+          Argument Promotion</link> in the constructor of
+          <literal>Child</literal>.
+        </para>
+      </note>
+    </para>
+    <para>
+      Now, if we use the <literal>__ConsistentConstruct</literal> attribute,
+      the Hack type checker can make sure everything is aligned with the parent
+      and children constructors:
+      <informalexample>
+        <programlisting role="php">
+<![CDATA[
+<?hh
+<<__ConsistentConstruct>>
+class Parent {
+  public static function make(): this {
+    return new static();
+  }
+}
+class Child extends Parent {
+  public function __construct(private A $a) {}
+}
+
+function main() {
+  $child = Child::make();
+}
+main();
+]]>
+        </programlisting>
+        &example.outputs;
+        <screen>
+<![CDATA[
+File "cc.php", line 8, characters 7-11:
+This object is of type Child (Typing[4041])
+File "cc.php", line 8, characters 21-26:
+It is incompatible with this object of type Parent
+because some of their methods are incompatible.
+Read the following to see why:
+File "cc.php", line 9, characters 19-29:
+Too many mandatory arguments
+File "cc.php", line 3, characters 7-12:
+Because of this definition
+]]>
+        </screen>
+      </informalexample>
+    </para>
+    <para>
+      Finally, if we use the <literal>__ConsistentConstruct</literal> attribute,
+      and the code is correct, the Hack type checker should be happy:
+      <informalexample>
+        <programlisting role="php">
+<![CDATA[
+<?hh
+<<__ConsistentConstruct>>
+class Parent {
+  public static function make(): this {
+    return new static();
+  }
+}
+class Child extends Parent {
+  public function __construct() {}
+}
+
+function main() {
+  $child = Child::make();
+}
+main();
+]]>
+        </programlisting>
+        &example.outputs;
+        <screen>
+<![CDATA[
+No errors
+]]>
+        </screen>
+      </informalexample>
+    </para>
+    <note>
+      <para>
+        There was consideration of having this attribute be a default on every
+        class, but it was determined that there are many fewer ways of calling a
+        constructor polymorphically than the standard method. <literal>new $x()
+        </literal> is not as common as something like
+        <literal>$some_object->method()</literal>. As a result, the vast
+        majority of classes are never constructed dynamically.
+      </para>
+    </note>
+    <note>
+      <para>
+        <literal>__ConsistentConstruct</literal> can also be used for class
+        hierarchies that expect to be constructed via <literal>new $classname()
+       </literal>.
+      </para>
+    </note>
+    <note>
+      <para>
+        If you want a child class not to follow the <literal>
+        __ConsistentConstruct</literal> behavior, you can mark the <literal>
+        __construct()</literal> of that child class
+        <literal>&lt;&lt;UNSAFE_Construct&gt;&gt;</literal>.
+      </para>
+    </note>
+  </sect1>
 </chapter>
 <!-- Keep this comment at the end of the file
 Local variables:
