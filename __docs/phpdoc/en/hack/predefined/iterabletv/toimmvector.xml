@@ -10,7 +10,7 @@
  <refsect1 role="description">
   &reftitle.description;
   <methodsynopsis>
-   <modifier>abstract</modifier> <modifier>public</modifier> <type>Vector&lt;Tv&gt;</type><methodname>Iterable&lt;Tv&gt;::toImmVector</methodname>
+   <modifier>abstract</modifier> <modifier>public</modifier> <type>ImmVector&lt;Tv&gt;</type><methodname>Iterable&lt;Tv&gt;::toImmVector</methodname>
    <void />
   </methodsynopsis>
   <para>
