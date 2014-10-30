@@ -5,6 +5,7 @@
 &reference.reflection.reflectionproperty.getdoccomment;
 &reference.reflection.reflectionproperty.getmodifiers;
 &reference.reflection.reflectionproperty.getname;
+&reference.reflection.reflectionproperty.gettypetext;
 &reference.reflection.reflectionproperty.getvalue;
 &reference.reflection.reflectionproperty.isdefault;
 &reference.reflection.reflectionproperty.isprivate;

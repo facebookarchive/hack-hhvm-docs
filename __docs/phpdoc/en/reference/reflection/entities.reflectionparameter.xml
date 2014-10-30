@@ -10,6 +10,8 @@
 &reference.reflection.reflectionparameter.getdefaultvalueconstantname;
 &reference.reflection.reflectionparameter.getname;
 &reference.reflection.reflectionparameter.getposition;
+&reference.reflection.reflectionparameter.gettypehinttext;
+&reference.reflection.reflectionparameter.gettypetext;
 &reference.reflection.reflectionparameter.isarray;
 &reference.reflection.reflectionparameter.iscallable;
 &reference.reflection.reflectionparameter.isdefaultvalueavailable;
