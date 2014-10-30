@@ -4,3 +4,4 @@ logs/
 www.pid
 .commit-template
 google*.html
+*~
