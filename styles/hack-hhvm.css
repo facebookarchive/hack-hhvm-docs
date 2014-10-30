@@ -139,3 +139,11 @@ footer {
     margin: 0 auto;
   }
 }
+
+#breadcrumbs {
+  clear: both;
+}
+
+#layout {
+  background-color: #f2f2f2;
+}
