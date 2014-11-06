@@ -16,11 +16,7 @@
   <para>
     Returns the type of a property.
   </para>
-  <note>
-   <simpara>
-    This function is only available in Hack.
-   </simpara>
-  </note>
+  &hack.only;
 
  </refsect1>
 
