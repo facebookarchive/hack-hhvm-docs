@@ -427,7 +427,8 @@ abstract class Package_PHP_XHTML extends Package_Generic_XHTML {
             break;
         default:
             /* Check if its a classname. */
-            $href = Format::getFilename("class.$t");
+            $stripped_t = str_replace('?', '', $t);
+            $href = Format::getFilename("class.$stripped_t");
         }
         // For HHVM
         // To handle generics
