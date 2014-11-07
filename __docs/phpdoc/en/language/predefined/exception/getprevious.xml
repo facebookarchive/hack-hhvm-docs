@@ -10,7 +10,7 @@
  <refsect1 role="description">
   &reftitle.description;
   <methodsynopsis>
-   <modifier>final</modifier> <modifier>public</modifier> <type>Exception</type><methodname>Exception::getPrevious</methodname>
+   <modifier>final</modifier> <modifier>public</modifier> <type>?Exception</type><methodname>Exception::getPrevious</methodname>
    <void />
   </methodsynopsis>
   <para>
