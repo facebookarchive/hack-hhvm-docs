@@ -84,6 +84,11 @@
           Mixed HTML and Hack code. Use a templating engine or <link linkend="hack.xhp">XHP</link>.
         </para>
       </listitem>
+      <listitem>
+        <para>
+          Incrementing and decrementing a string (e.g. <literal>$s = "abcd"; $s++;</literal>).
+        </para>
+      </listitem>
     </itemizedlist>
   </para>
   <sect1 xml:id="hack.unsupportedphpfeatures.toplevelcode">
