@@ -1,4 +1,6 @@
 &reference.reflection.reflectionfunctionabstract.clone;
+&reference.reflection.reflectionfunctionabstract.getattribute;
+&reference.reflection.reflectionfunctionabstract.getattributes;
 &reference.reflection.reflectionfunctionabstract.getclosurescopeclass;
 &reference.reflection.reflectionfunctionabstract.getclosurethis;
 &reference.reflection.reflectionfunctionabstract.getdoccomment;

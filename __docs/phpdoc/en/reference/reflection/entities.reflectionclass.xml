@@ -1,5 +1,9 @@
 &reference.reflection.reflectionclass.construct;
 &reference.reflection.reflectionclass.export;
+&reference.reflection.reflectionclass.getattribute;
+&reference.reflection.reflectionclass.getattributerecursive;
+&reference.reflection.reflectionclass.getattributes;
+&reference.reflection.reflectionclass.getattributesrecursive;
 &reference.reflection.reflectionclass.getconstant;
 &reference.reflection.reflectionclass.getconstants;
 &reference.reflection.reflectionclass.getconstructor;

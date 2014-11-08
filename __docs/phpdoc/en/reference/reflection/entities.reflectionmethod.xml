@@ -1,5 +1,7 @@
 &reference.reflection.reflectionmethod.construct;
 &reference.reflection.reflectionmethod.export;
+&reference.reflection.reflectionmethod.getattributerecursive;
+&reference.reflection.reflectionmethod.getattributesrecursive;
 &reference.reflection.reflectionmethod.getclosure;
 &reference.reflection.reflectionmethod.getdeclaringclass;
 &reference.reflection.reflectionmethod.getmodifiers;
