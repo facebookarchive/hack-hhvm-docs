@@ -19,7 +19,7 @@
 
    &install.hack.bootstrapping;
    &install.hack.conversion;
-
+   &install.hack.h2tp;
   </chapter>
 
 <!-- Keep this comment at the end of the file
