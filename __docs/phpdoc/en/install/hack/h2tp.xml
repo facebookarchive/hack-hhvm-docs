@@ -32,7 +32,7 @@
           <para>
             <emphasis role="bold">HHVM</emphasis>:
             <literal>h2tp</literal> is available in the
-            <link xlink:href="&url.hhvm.nightlies.blog;">nightly-build
+            <link xlink:href="&url.hhvm.install.prebuilt;">nightly-build
             </link> of <link xlink:href="&url.hhvm;">HHVM</link> as of 11 November 2014 and will be standard starting in HHVM 3.5. <literal>h2tp</literal> will be located in
             <literal>/usr/bin/</literal> by default.
           </para>
