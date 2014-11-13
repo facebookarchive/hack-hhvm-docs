@@ -6,6 +6,7 @@
 
  <section xml:id="mysqlnd-qc.requirements">
   &reftitle.required;
+  &no.extension;
   <para>
    <literal>PHP 5.3.3</literal> or a newer version of <literal>PHP</literal>.
   </para>

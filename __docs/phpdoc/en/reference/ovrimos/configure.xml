@@ -2,12 +2,7 @@
 <!-- $Revision: 297028 $ -->
 <section xml:id="ovrimos.installation" xmlns="http://docbook.org/ns/docbook">
  &reftitle.install;
- <para>
-  To enable Ovrimos support in PHP just compile PHP with the
-  <option role="configure">--with-ovrimos[=DIR]</option>
-  parameter to your configure line. DIR is the Ovrimos' libsqlcli install
-  directory.
- </para>
+ &no.extension;
 </section>
 
 <!-- Keep this comment at the end of the file

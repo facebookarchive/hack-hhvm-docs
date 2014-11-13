@@ -2,12 +2,7 @@
 <!-- $Revision: 297028 $ -->
 <section xml:id="filepro.installation" xmlns="http://docbook.org/ns/docbook">
  &reftitle.install;
- <para>
-  filePro support in PHP is not enabled by default. To
-  enable the bundled <emphasis>read-only</emphasis> filePro support you need
-  to use the<option role="configure">--enable-filepro</option> configuration
-  option when compiling PHP.
- </para>
+ &no.extension;
 </section>
 
 <!-- Keep this comment at the end of the file

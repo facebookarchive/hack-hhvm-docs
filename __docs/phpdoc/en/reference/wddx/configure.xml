@@ -2,12 +2,7 @@
 <!-- $Revision: 300860 $ -->
 <section xml:id="wddx.installation" xmlns="http://docbook.org/ns/docbook">
  &reftitle.install;
- <para>
-  After installing the required expat library, compile PHP with
-  <option role="configure">--enable-wddx</option>, and use
-  <option role="configure">--with-libexpat-dir</option> for expat.
- </para>
- &windows.builtin;
+ &no.install;
 </section>
 
 <!-- Keep this comment at the end of the file

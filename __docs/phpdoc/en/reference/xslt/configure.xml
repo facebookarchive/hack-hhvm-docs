@@ -2,38 +2,7 @@
 <!-- $Revision: 297028 $ -->
 <section xml:id="xslt.installation" xmlns="http://docbook.org/ns/docbook">
  &reftitle.install;
- <para>
-  On Unix, run <command>configure</command> with the
-  <option role="configure">--enable-xslt</option>
-  <option role="configure">--with-xslt-sablot</option>
-  options. The <productname>Sablotron</productname>
-  library should be installed somewhere your compiler can find it.
- </para>
- <para>
-  Make sure you have the same libraries linked to the
-  <productname>Sablotron</productname> library as those, which are linked
-  with PHP. The configuration options:
-  <option role="configure">--with-expat-dir=DIR</option>
-  <option role="configure">--with-iconv-dir=DIR</option>
-  are there to help you specify them. When asking for support, always
-  mention these directives, and whether there are other versions of those
-  libraries installed on your system somewhere. Naturally, provide all the
-  version numbers.
- </para>
- <caution>
-  <para>
-   Be sure your <productname>Sablotron</productname> library is linked to <literal>-lstdc++</literal> as
-   otherwise your configure will fail, or PHP will fail to run or load.
-  </para>
- </caution>
- <note>
-  <title>JavaScript E-XSLT support</title>
-  <simpara>
-   If you compiled <productname>Sablotron</productname> with JavaScript
-   support, you must specify the option:
-   <option role="configure">--with-sablot-js=DIR</option>.
-  </simpara>
- </note>
+ &no.extension;
 </section>
 
 <!-- Keep this comment at the end of the file

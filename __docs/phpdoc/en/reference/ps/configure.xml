@@ -2,13 +2,7 @@
 <!-- $Revision: 297028 $ -->
 <section xml:id="ps.installation" xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink">
  &reftitle.install;
- <para>
-  &pecl.info;
-  <link xlink:href="&url.pecl.package;ps">&url.pecl.package;ps</link>.
- </para>
- <para>
-  &pecl.windows.download;
- </para>
+ &no.extension;
 </section>
 
 

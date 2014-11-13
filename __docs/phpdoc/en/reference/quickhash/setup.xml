@@ -13,10 +13,7 @@
 
  <section xml:id="quickhash.installation">
   &reftitle.install;
-  <para>
-   &pecl.info;
-   <link xlink:href="&url.pecl.package;quickhash">&url.pecl.package;quickhash</link>
-  </para>
+  &no.extension;
  </section>
 
  <section xml:id="quickhash.configuration">

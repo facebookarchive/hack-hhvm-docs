@@ -2,10 +2,7 @@
 <!-- $Revision: 304369 $ -->
 <section xml:id="openssl.installation" xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink">
  &reftitle.install;
- <para>
-  To use PHP's OpenSSL support you must also compile PHP <option
-  role="configure">--with-openssl[=DIR]</option>.
- </para>
+ &no.install;
  <para>
   The OpenSSL library also has additional requirements for normal operation at
   run-time. Most notably, OpenSSL requires access to a random or pseudo-random

@@ -16,16 +16,7 @@
  <!-- {{{ Installation -->
  <section xml:id="stats.installation">
   &reftitle.install;
-   <para>
-    &pecl.moved;
-   </para>
-   <para>
-    &pecl.info;
-    <link xlink:href="&url.pecl.package;stats">&url.pecl.package;stats</link>.
-   </para>
-   <para>
-    &pecl.windows.download;
-   </para>
+  &no.extension;
  </section>
  <!-- }}} -->
 

@@ -2,28 +2,7 @@
 <!-- $Revision: 297028 $ -->
 <section xml:id="mnogosearch.installation" xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink">
  &reftitle.install;
- <para>
-  &pecl.info;
-  <link xlink:href="&url.pecl.package;mnogosearch">&url.pecl.package;mnogosearch</link>.
- </para>
- <para>
-  &pecl.moved-ver;5.1.0
- </para>
- <para>
-  &pecl.windows.download;
- </para>
- <note>
-  <para>
-   PHP contains built-in MySQL access library, which can be used to
-   access MySQL. It is known that mnoGoSearch is not compatible with
-   this built-in library and can work only with generic MySQL
-   libraries. Thus, if you use mnoGoSearch with MySQL, during PHP
-   configuration you have to indicate the directory of your MySQL
-   installation, that was used during mnoGoSearch configuration, i.e. for
-   example:
-   <option role="configure">--with-mnogosearch --with-mysql=/usr</option>.
-  </para>
- </note>
+ &no.extension;
 </section>
 
 <!-- Keep this comment at the end of the file

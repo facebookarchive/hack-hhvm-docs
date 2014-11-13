@@ -13,14 +13,7 @@
  </section>
  <section xml:id="ev.installation">
   &reftitle.install;
-  <para>
-   &pecl.moved;
-  </para>
-  <para>
-   &pecl.info;
-   <link xlink:href="&url.pecl.package;ev">&url.pecl.package;ev</link>
-   .
-  </para>
+  &no.extension;
  </section>
  <section xml:id="ev.configuration">
   &reftitle.runtime;

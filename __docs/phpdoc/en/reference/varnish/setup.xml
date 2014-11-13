@@ -13,18 +13,7 @@
 
  <section xml:id="varnish.installation">
   &reftitle.install;
-  <para>
-   &pecl.moved;
-  </para>
-  <para>
-   &pecl.info;
-   <link xlink:href="&url.pecl.package;varnish">&url.pecl.package;varnish</link>.
-  </para>
-  <para>
-   <!--&pecl.windows.download;-->
-   A DLL for this PECL extension is available under <link
-    xlink:href="http://windows.php.net/downloads/pecl/releases/varnish/">http://windows.php.net/downloads/pecl/releases/varnish/</link>.
-  </para>
+  &no.extension;
  </section>
 
  <section xml:id="varnish.configuration">

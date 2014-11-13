@@ -3,19 +3,7 @@
 
 <section xml:id="mysqlnd-ms.installation" xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink">
  &reftitle.install;
-
- <para>
-  &pecl.moved;
- </para>
-
- <para>
-  &pecl.info;
-  <link xlink:href="&url.pecl.package;mysqlnd_ms">&url.pecl.package;mysqlnd_ms</link>
- </para>
-
- <para>
-  &pecl.windows.download;
- </para>
+ &no.extension;
 
 </section>
 

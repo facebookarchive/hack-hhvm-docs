@@ -34,10 +34,7 @@ ldconfig --print | grep libsvm
 
  <section xml:id="svm.installation">
    &reftitle.install;
-   <para>
-    &pecl.info;
-    <link xlink:href="&url.pecl.package;svm">&url.pecl.package;svm</link>
-   </para>
+   &no.extension;
   </section>
 
  <section xml:id="svm.configuration">

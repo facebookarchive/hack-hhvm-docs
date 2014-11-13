@@ -32,7 +32,7 @@
 
  <section xml:id="lapack.configuration">
   &reftitle.runtime;
-  &no.config;
+  &no.extension;
  </section>
 
  <section xml:id="lapack.resources">

@@ -11,16 +11,7 @@
 
  <section xml:id="weakref.installation">
   &reftitle.install;
-  <para>
-   &pecl.moved;
-  </para>
-  <para>
-   &pecl.info;
-   <link xlink:href="&url.pecl.package;weakref">&url.pecl.package;weakref</link>.
-  </para>
-  <para>
-   &pecl.windows.download;
-  </para>
+  &no.extension;
  </section>
 
  <section xml:id="weakref.resources">

@@ -2,11 +2,7 @@
 <!-- $Revision: 297028 $ -->
 <section xml:id="gmp.installation" xmlns="http://docbook.org/ns/docbook">
  &reftitle.install;
- <para>
-  In order to have these functions available, you must compile PHP with
-  <acronym>GMP</acronym> support by using the <option
-  role="configure">--with-gmp</option> option.
- </para>
+ &no.install;
 </section>
 
 <!-- Keep this comment at the end of the file

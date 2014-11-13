@@ -2,14 +2,7 @@
 <!-- $Revision: 297028 $ -->
 <section xml:id="ncurses.installation" xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink">
  &reftitle.install;
- <para>
-  &pecl.info;
-  <link xlink:href="&url.pecl.package;ncurses">&url.pecl.package;ncurses</link>.
- </para>
- <para>
-  Wide character <acronym>CRT</acronym> screen handling (ncursesw) support
-  was added in version 1.0.1 of this PECL extension.
- </para>
+ &no.extension;
 </section>
 
 <!-- Keep this comment at the end of the file

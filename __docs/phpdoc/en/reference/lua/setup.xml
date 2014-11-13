@@ -13,16 +13,7 @@
 
  <section xml:id="lua.installation">
   &reftitle.install;
-  <para>
-   &pecl.moved;
-  </para>
-  <para>
-   &pecl.info;
-   <link xlink:href="&url.pecl.package;lua">&url.pecl.package;lua</link>.
-  </para>
-  <para>
-   &pecl.windows.download;
-  </para>
+  &no.extension;
  </section>
 
  <section xml:id="lua.configuration">

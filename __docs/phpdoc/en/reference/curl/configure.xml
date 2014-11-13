@@ -2,29 +2,7 @@
 <!-- $Revision: 330269 $ -->
 <section xml:id="curl.installation" xmlns="http://docbook.org/ns/docbook">
  &reftitle.install;
- <para>
-  To use PHP's cURL support you must also compile PHP <option
-  role="configure">--with-curl[=DIR]</option> where DIR is the
-  location of the directory containing the <filename>lib</filename> and <filename>include</filename>
-  directories. In the <filename>include</filename> directory there should be a folder
-  named <filename>curl</filename> which should contain the <filename>easy.h</filename> and
-  <filename>curl.h</filename> files. There should be a file named
-  <filename>libcurl.a</filename> located in the <filename>lib</filename> directory. Beginning
-  with PHP 4.3.0 you can configure PHP to use cURL for URL streams
-  <option role="configure">--with-curlwrappers</option>.
-  This feature was moved to PECL as of PHP 5.5.0.
- </para>
- <note>
-  <title>Note to Win32 Users</title>
-  <simpara>
-  In order to enable this module on a Windows environment,
-  <filename>libeay32.dll</filename> and <filename>ssleay32.dll</filename>
-  must be present in your PATH.
-  </simpara>
-  <simpara>
-  You don't need <filename>libcurl.dll</filename> from the cURL site.
-  </simpara>
-  </note>
+ &no.install;
 </section>
 
 <!-- Keep this comment at the end of the file

@@ -3,11 +3,7 @@
 
 <section xml:id="gearman.installation" xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink">
  &reftitle.install;
-
- <para>
-  &pecl.info;
-  <link xlink:href="&url.pecl.package;gearman">&url.pecl.package;gearman</link>
- </para>
+ &no.extension;
 
 </section>
 

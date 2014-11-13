@@ -2,12 +2,7 @@
 <!-- $Revision: 297028 $ -->
 <section xml:id="cyrus.installation" xmlns="http://docbook.org/ns/docbook">
  &reftitle.install;
- <para>
-  To enable Cyrus IMAP support and to use these functions you have to compile
-  PHP with the <option role="configure">--with-cyrus</option> option.
- </para>
-
- &warn.imaprecodeyaz;
+ &no.extension;
 
 </section>
 

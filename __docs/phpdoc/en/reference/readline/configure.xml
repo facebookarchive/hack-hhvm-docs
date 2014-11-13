@@ -2,13 +2,7 @@
 <!-- $Revision: 298047 $ -->
 <section xml:id="readline.installation" xmlns="http://docbook.org/ns/docbook">
  &reftitle.install;
- <para>
-  To use these functions you must compile the CGI or CLI version of PHP
-  with readline support. You need to configure PHP
-  <option role="configure">--with-readline[=DIR]</option>.
-  If you want to use the libedit readline replacement, configure PHP
-  <option role="configure">--with-libedit[=DIR]</option>.
- </para>
+ &no.install;
 </section>
 
 <!-- Keep this comment at the end of the file

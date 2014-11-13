@@ -14,34 +14,7 @@
  <!-- {{{ Installation -->
  <section xml:id="rar.installation">
   &reftitle.install;
-  <para>
-   Rar is currently available through PECL
-   <link xlink:href="&url.pecl.package;rar">&url.pecl.package;rar</link>.
-  </para>
-  <para>
-   Also you can use the PECL installer to install the Rar extension,
-   using the following command: <command>pecl -v install rar</command>.
-  </para>
-  <para>
-   You can always download the <filename>tar.gz</filename> package and install Rar by hand:
-   <example>
-    <title>Rar installation</title>
-    <programlisting role="shell">
-<![CDATA[
-gunzip rar-xxx.tgz
-tar -xvf rar-xxx.tar
-cd rar-xxx
-phpize
-./configure && make && make install
-]]>
-    </programlisting>
-   </example>
-  </para>
-  <para>
-   Windows users will enable <filename>php_rar.dll</filename> inside
-   of &php.ini; in order to use these functions.
-   &pecl.windows.download;
-  </para>
+  &no.extension;
  </section>
  <!-- }}} -->
 

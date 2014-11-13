@@ -1,16 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- $Revision: 297028 $ -->
-<section xml:id="pgsql.installation" xmlns="http://docbook.org/ns/docbook">
+<section xml:id="pgsql.installation" xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink">
  &reftitle.install;
  <para>
-  In order to enable PostgreSQL support,
-  <option role="configure">--with-pgsql[=DIR]</option> is required when you compile
-  PHP. <literal>DIR</literal> is the PostgreSQL base install directory, defaults to
-  <filename>/usr/local/pgsql</filename>. If shared object module is
-  available, PostgreSQL module may be loaded using
-  <link linkend="ini.extension">extension</link> directive in &php.ini; or
-  <function>dl</function>
-  function.
+  Look <link xlink:href="https://github.com/PocketRent/hhvm-pgsql">here</link> to see how to install pgsql.
  </para>
 </section>
 

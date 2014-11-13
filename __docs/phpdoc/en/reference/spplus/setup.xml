@@ -24,18 +24,7 @@
  <!-- {{{ Installation -->
  <section xml:id="spplus.installation">
  &reftitle.install;
- <para>
-  &pecl.info;
-  <link xlink:href="&url.pecl.package;spplus">&url.pecl.package;spplus</link>.
- </para>
- <para>
-  &pecl.windows.download;
- </para>
- <note>
-  <para>
-   PHP 4.3.0 or greater is required for the compression to work.
-  </para>
- </note>
+ &no.extension;
 </section>
  <!-- }}} -->
 

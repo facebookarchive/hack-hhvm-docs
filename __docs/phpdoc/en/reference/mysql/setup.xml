@@ -8,8 +8,7 @@
  <section xml:id="mysql.requirements">
   &reftitle.required;
   <para>
-   In order to have these functions available, you must compile PHP with
-   MySQL support.
+   In order to have these functions available, you need MySQL.
   </para>
  </section>
  <!-- }}} -->

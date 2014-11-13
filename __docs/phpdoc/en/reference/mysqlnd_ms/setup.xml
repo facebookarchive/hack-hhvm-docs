@@ -6,6 +6,7 @@
 
  <section xml:id="mysqlnd-ms.requirements">
   &reftitle.required;
+  &no.extension;
   <para>
     <literal>PHP 5.3.6</literal> or newer.
     Some advanced functionality requires <literal>PHP 5.4.0</literal> or newer.

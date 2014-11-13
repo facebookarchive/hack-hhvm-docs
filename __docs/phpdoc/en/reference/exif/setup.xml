@@ -7,12 +7,7 @@
  <!-- {{{ Requirements -->
  <section xml:id="exif.requirements">
   &reftitle.required;
-  <para>
-   Your PHP must be compiled in with <literal>--enable-exif</literal>.
-   PHP does not require any additional library for the exif module. Windows
-   users must also have the <link linkend="ref.mbstring"> mbstring</link>
-   extension enabled.
-  </para>
+  &no.requirement;
  </section>
  <!-- }}} -->
 

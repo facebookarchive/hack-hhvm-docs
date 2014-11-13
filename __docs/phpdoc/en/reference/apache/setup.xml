@@ -14,10 +14,7 @@
  <!-- {{{ Installation -->
  <section xml:id="apache.installation">
   &reftitle.install;
-  <para>
-   For PHP installation on Apache see the <link
-    linkend="install">installation chapter</link>.
-  </para>
+  &no.install;
  </section>
  <!-- }}} -->
 

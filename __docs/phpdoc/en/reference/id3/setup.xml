@@ -14,13 +14,7 @@
  <!-- {{{ Installation -->
  <section xml:id="id3.installation">
   &reftitle.install;
-  <para>
-   &pecl.info;
-   <link xlink:href="&url.pecl.package;id3">&url.pecl.package;id3</link>.
-  </para>
-  <para>
-   &pecl.windows.download;
-  </para>
+  &no.extension;
  </section>
  <!-- }}} -->
 

@@ -2,10 +2,7 @@
 <!-- $Revision: 297028 $ -->
 <section xml:id="posix.installation" xmlns="http://docbook.org/ns/docbook">
  &reftitle.install;
- <para>
-  POSIX functions are enabled by default. You can disable POSIX-like
-  functions with <option role="configure">--disable-posix</option>.
- </para>
+ &no.install;
 </section>
 
 <!-- Keep this comment at the end of the file

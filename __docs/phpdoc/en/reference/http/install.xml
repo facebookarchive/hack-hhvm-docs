@@ -6,19 +6,7 @@
 
  <section xml:id="http.install.extensions">
   &reftitle.install;
-  <para>
-   &pecl.moved;
-  </para>
-  <para>
-   &pecl.info;
-   <link xlink:href="&url.pecl.package;pecl_http">&url.pecl.package;pecl_http</link>.
-  </para>
-  <note>
-   <simpara>The official name of this extension is <emphasis>pecl_http</emphasis>.</simpara>
-  </note>
-  <para>
-   &pecl.windows.download;
-  </para>
+  &no.extension;
  </section>
 </section>
 

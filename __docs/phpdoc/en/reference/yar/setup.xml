@@ -6,24 +6,12 @@
 
  <section xml:id="yar.requirements">
   &reftitle.required;
-  <para>
-   if you want to use msgpack as packager, you need compile Yar by your self
-   with ./configure --enable-msgpack
-  </para>
+  &no.extension;
  </section>
 
  <section xml:id="yar.installation">
   &reftitle.install;
-  <para>
-   &pecl.moved;
-  </para>
-  <para>
-   &pecl.info;
-   <link xlink:href="&url.pecl.package;yar">&url.pecl.package;yar</link>.
-  </para>
-  <para>
-   &pecl.windows.download;
-  </para>
+  &no.extension;
  </section>
 
  &reference.yar.ini;

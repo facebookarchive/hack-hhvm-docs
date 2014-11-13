@@ -3,19 +3,7 @@
 
 <section xml:id="chdb.installation" xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink">
  &reftitle.install;
-
- <para>
-  &pecl.info;
-  <link xlink:href="&url.pecl.package;chdb">&url.pecl.package;chdb</link>
- </para>
-
- <para>
-  <link xlink:href="&url.cmph;">cmph</link> (version 0.9) is required
-   for installing this extension. If cmph is installed in a
-   non-standard directory, use the
-   <option role="configure">--with-libcmph-dir=DIR</option> switch,
-   where DIR is the cmph install prefix.
- </para>
+ &no.extension;
 
 </section>
 

@@ -7,9 +7,7 @@
  <!-- {{{ Requirements -->
  <section xml:id="rpmreader.requirements">
   &reftitle.required;
-  <para>
-   The RPMReader extension requires PHP 5.
-   </para>
+  &no.requirement;
  </section>
  <!-- }}} -->
 
