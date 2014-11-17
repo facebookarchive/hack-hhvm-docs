@@ -2,16 +2,7 @@
 <!-- $Revision: 297028 $ -->
 <section xml:id="vpopmail.installation" xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink">
  &reftitle.install;
- <para>
-  &pecl.moved;
- </para>
- <para>
-  &pecl.info;
-  <link xlink:href="&url.pecl.package;vpopmail">&url.pecl.package;vpopmail</link>.
- </para>
- <para>
-  &pecl.windows.download;
- </para>
+ &no.extension;
 </section>
 
 <!-- Keep this comment at the end of the file

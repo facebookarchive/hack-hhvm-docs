@@ -11,7 +11,6 @@
    You need to install libharu first to be able to use PECL/haru.
    PECL/haru is tested with libharu 2.0.8, older versions might or might not
    work for you.
-   PECL/haru also requires PHP 5.1.3 or newer.
   </para>
  </section>
  <!-- }}} -->
@@ -19,11 +18,7 @@
  <!-- {{{ Installation -->
  <section xml:id="haru.installation">
   &reftitle.install;
-  <para>
-   &pecl.info;
-   <link
-    xlink:href="&url.pecl.package;haru">&url.pecl.package;haru</link>.
-  </para>
+  &no.extension;
  </section>
  <!-- }}} -->
 

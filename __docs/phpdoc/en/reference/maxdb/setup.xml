@@ -8,8 +8,7 @@
  <section xml:id="maxdb.requirements">
   &reftitle.required;
   <para>
-   In order to have these functions available, you must compile PHP with
-   MaxDB support. Additionally, you must have the MaxDB SQLDBC runtime library
+   In order to have these functions available, you must have the MaxDB SQLDBC runtime library
    available to access the MaxDB server.
   </para>
   <para>

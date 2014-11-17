@@ -15,16 +15,6 @@
    download at <link xlink:href="&url.pdf;">&url.pdf;</link>, but requires that
    you purchase a license for commercial use.
   </para>
-  <section xml:id="pdf.oldlibs.hints">
-   <title>Issues with older versions of PDFlib</title>
-   <para>
-    Any version of PHP 4 after March 9, 2000 does not support versions
-    of PDFlib older than 3.0.
-   </para>
-   <para>
-    PDFlib 4.0 or greater is supported by PHP 4.3.0 and later.
-   </para>
-  </section>
  </section>
  <!-- }}} -->
 

@@ -2,17 +2,7 @@
 <!-- $Revision: 297028 $ -->
 <section xml:id="pdf.installation" xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink">
  &reftitle.install;
- <para>
-  &pecl.moved;
-  &pecl.info;
-  <link xlink:href="&url.pecl.package;pdflib">&url.pecl.package;pdflib</link>.
- </para>
- <para>
-  To get these functions to work in PHP &lt; 4.3.9, you have to compile
-  PHP with <option role="configure">--with-pdflib[=DIR]</option>. DIR is
-  the PDFlib base install directory, defaults to
-  <filename>/usr/local</filename>.
- </para>
+ &no.extension;
 </section>
 
 <!-- Keep this comment at the end of the file

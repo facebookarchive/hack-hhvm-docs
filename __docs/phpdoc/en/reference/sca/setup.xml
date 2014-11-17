@@ -28,13 +28,7 @@
  <!-- {{{ Installation -->
  <section xml:id="sca.installation">
   &reftitle.install;
-  <para>
-   &pecl.info;
-   <link xlink:href="&url.pecl.package;sca">&url.pecl.package;sca</link>.
-  </para>
-  <para>
-   &pecl.windows.download;
-  </para>
+  &no.extension;
  </section>
  <!-- }}} -->
 

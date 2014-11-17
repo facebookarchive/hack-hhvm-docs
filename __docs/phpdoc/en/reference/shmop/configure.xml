@@ -2,11 +2,7 @@
 <!-- $Revision: 297028 $ -->
 <section xml:id="shmop.installation" xmlns="http://docbook.org/ns/docbook">
  &reftitle.install;
- <para>
-  To use shmop you will need to compile PHP with the
-  <option role="configure">--enable-shmop</option> parameter in your
-  configure line.
- </para>
+ &no.extension;
 </section>
 
 <!-- Keep this comment at the end of the file

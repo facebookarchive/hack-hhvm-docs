@@ -6,8 +6,9 @@
   <title>Installing PDO on Unix systems</title>
   <step>
    <para>
-    PDO and the <link linkend="ref.pdo-sqlite">PDO_SQLITE</link> driver
-    is enabled by default as of PHP 5.1.0. You may need
+    PDO, the <link linkend="ref.pdo-sqlite">PDO_SQLITE</link> driver
+    and the <link linkend="ref.pdo-mysql">PDO_MYSQL</link> driver are enabled by default.
+    You may need
     to enable the PDO driver for your database of choice; consult the
     documentation for
     <link linkend="pdo.drivers">database-specific PDO drivers</link>

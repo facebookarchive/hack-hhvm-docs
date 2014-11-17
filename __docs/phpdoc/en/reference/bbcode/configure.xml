@@ -2,10 +2,7 @@
 <!-- $Revision: 297028 $ -->
 <section xml:id="bbcode.installation" xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink">
  &reftitle.install;
- <para>
-  &pecl.info;
-  <link xlink:href="&url.pecl.package;bbcode">&url.pecl.package;bbcode</link>
- </para>
+ &no.extension;
  <para>
   An alternative solution, written in PHP, is the PEAR package
   <link xlink:href="&url.pear.package;HTML_BBCodeParser">HTML_BBCodeParser</link>.

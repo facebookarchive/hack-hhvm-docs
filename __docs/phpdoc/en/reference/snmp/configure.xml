@@ -2,39 +2,7 @@
 <!-- $Revision: 315253 $ -->
 <section xml:id="snmp.installation" xmlns="http://docbook.org/ns/docbook">
  &reftitle.install;
- <para>
-  PHP 5.3.0, 5.3.1 and 5.3.2 do not have SNMP support. SNMP support has restored in PHP 5.3.3.
- </para>
- <para>
-  The Windows distribution of Net-SNMP contains support files for SNMP in the
-  <filename class="directory">mibs</filename> directory. This directory
-  should be moved to <filename class="directory">DRIVE:\usr\mibs</filename>,
-  where DRIVE must be replaced with the driveletter where PHP is installed on,
-  e.g.<filename class="directory">c:\usr\mibs</filename>. Alternatively you
-  may set MIBDIRS environment variable pointed to your MIBs folder.
- </para>
-
- <para>
-  Important notes for PHP prior to 5.4.0: In order to use the UCD <acronym>SNMP</acronym> package, you need to define
-  <literal>NO_ZEROLENGTH_COMMUNITY</literal> to <literal>1</literal> before
-  compiling it. After configuring UCD <acronym>SNMP</acronym>, edit <filename>config.h</filename>
-  or <filename>acconfig.h</filename> and search for
-  <literal>NO_ZEROLENGTH_COMMUNITY</literal>. Uncomment the <literal>#define</literal> line. It
-  should look like this afterwards:
-  <programlisting role="c">
-<![CDATA[
-#define NO_ZEROLENGTH_COMMUNITY 1
-]]>
-  </programlisting>
-  Now compile PHP <option role="configure">--with-snmp[=DIR]</option>.
- </para>
- <para>
-  If you see strange segmentation faults in combination with <acronym>SNMP</acronym> commands,
-  you did not follow the above instructions. If you do not want to recompile
-  UCD <acronym>SNMP</acronym>, you can compile PHP with the
-  <option role="configure">--enable-ucd-snmp-hack</option> switch which
-  will work around the misfeature.
- </para>
+ &no.extension;
 </section>
 
 <!-- Keep this comment at the end of the file

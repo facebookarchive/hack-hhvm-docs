@@ -3,18 +3,7 @@
 
 <section xml:id="mysqlnd-uh.installation" xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink">
  &reftitle.install;
-
- <para>
-  &pecl.info;
-  <link xlink:href="&url.pecl.package;mysqlnd-uh">&url.pecl.package;mysqlnd-uh</link>
- </para>
- <para>
-  PECL/mysqlnd_uh is currently not available on Windows.
-  The source code of the extension makes use of <literal>C99</literal>
-  constructs not allowed with PHP Windows builds.
- </para>
-
-
+ &no.extension;
 </section>
 
 

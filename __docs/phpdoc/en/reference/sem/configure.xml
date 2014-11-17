@@ -2,15 +2,7 @@
 <!-- $Revision: 297028 $ -->
 <section xml:id="sem.installation" xmlns="http://docbook.org/ns/docbook">
  &reftitle.install;
- <para>
-  Support for this functions are not enabled by default.
-  To enable System V semaphore support compile PHP with the option
-  <option role="configure">--enable-sysvsem</option>.
-  To enable the System V shared memory support compile PHP with the option
-  <option role="configure">--enable-sysvshm</option>.
-  To enable the System V messages support compile PHP with the option
-  <option role="configure">--enable-sysvmsg</option>.
- </para>
+ &no.install;
 </section>
 
 <!-- Keep this comment at the end of the file

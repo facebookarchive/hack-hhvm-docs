@@ -2,13 +2,7 @@
 <!-- $Revision: 297028 $ -->
 <section xml:id="fam.installation" xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink">
  &reftitle.install;
- <para>
-  &pecl.info.dead;
-  <link xlink:href="&url.pecl.vcs;fam">&url.pecl.vcs;fam</link>.
- </para>
- <para>
-  &pecl.moved-ver;5.1.0
- </para>
+ &no.extension;
 </section>
 
 <!-- Keep this comment at the end of the file

@@ -2,28 +2,7 @@
 <!-- $Revision: 317487 $ -->
 <section xml:id="fdf.installation" xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink">
  &reftitle.install;
- <para>
-  &pecl.info.dead;
-  <link xlink:href="&url.pecl.vcs;fdf">&url.pecl.vcs;fdf</link>.
- </para>
- <para>
-  &pecl.moved-ver;5.3.0
- </para>
- <note>
-  <simpara>
-   If you run into problems configuring PHP with fdftk support, check
-   whether the header file <filename>fdftk.h</filename> and the library
-   <filename>libfdftk.so</filename> are at the right place.
-   The <command>configure</command> script supports both the directory structure of the
-   FDF SDK distribution and the usual <filename>DIR/include</filename> /
-   <filename>DIR/lib</filename> layout, so you can point it either
-   directly to the unpacked distribution directory or put the header
-   file and the appropriate library for your platform into e.g.
-   <filename>/usr/local/include</filename> and
-   <filename>/usr/local/lib</filename> and configure with
-   <option role="configure">--with-fdftk=/usr/local</option>.
-  </simpara>
- </note>
+ &no.extension;
 </section>
 
 <!-- Keep this comment at the end of the file

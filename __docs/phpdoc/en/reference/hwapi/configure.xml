@@ -2,16 +2,7 @@
 <!-- $Revision: 297028 $ -->
 <section xml:id="hwapi.installation" xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink">
  &reftitle.install;
- <para>
-  &pecl.info;
-  <link xlink:href="&url.pecl.package;hwapi">&url.pecl.package;hwapi</link>.
- </para>
- <para>
-  &pecl.moved-ver;5.2.0
- </para>
- <para>
-  &pecl.windows.download;
- </para>
+ &no.extension;
 </section>
 
 <!-- Keep this comment at the end of the file

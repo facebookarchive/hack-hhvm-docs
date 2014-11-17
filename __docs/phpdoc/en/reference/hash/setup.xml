@@ -7,13 +7,7 @@
  <!-- {{{ Requirements -->
  <section xml:id="hash.requirements">
   &reftitle.required;
-  <simpara>
-   The Hash extension requires no external libraries and is enabled by
-   default as of PHP 5.1.2.  It may be explicitly disabled by using the
-   --disable-hash switch to configure.  Earlier versions of PHP may
-   incorporate the Hash extension by installing the
-   <link xlink:href="&url.pecl.package;hash">PECL module</link>.
-  </simpara>
+  &no.requirement;
  </section>
  <!-- }}} -->
 

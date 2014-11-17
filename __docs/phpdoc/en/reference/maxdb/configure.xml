@@ -2,16 +2,7 @@
 <!-- $Revision: 297028 $ -->
 <section xml:id="maxdb.installation" xmlns="http://docbook.org/ns/docbook">
  &reftitle.install;
- <para xml:id="maxdb.configure">
-  By using the <option role="configure">--with-maxdb[=DIR]</option>
-  configuration option you enable PHP to access MaxDB
-  databases. <literal>[DIR]</literal> points to the directory
-  that contains the installed MaxDB SQLDBC package.
- </para>
- <para>
-  Windows users will need
-  to enable <filename>php_maxdb.dll</filename> inside of &php.ini;.
- </para>
+ &no.extension;
 </section>
 
 <!-- Keep this comment at the end of the file

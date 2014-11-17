@@ -6,14 +6,7 @@
 
  <section xml:id="inclued.requirements">
   &reftitle.required;
-  <para>
-   PHP version 5.1.0 or greater.
-  </para>
-  <para>
-   The included <filename>gengraph.php</filename> file utilizes
-   the <link xlink:href="&url.graphviz;">graphviz</link> library,
-   however, this is not required.
-  </para>
+  &no.requirement;
  </section>
 
  &reference.inclued.configure;

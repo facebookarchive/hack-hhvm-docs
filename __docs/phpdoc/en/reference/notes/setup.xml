@@ -14,13 +14,7 @@
  <!-- {{{ Installation -->
  <section xml:id="notes.installation">
   &reftitle.install;
-  <para>
-   &pecl.info.dead;
-   <link xlink:href="&url.pecl.vcs;notes">&url.pecl.vcs;notes</link>.
-  </para>
-  <para>
-   &pecl.moved-ver;5.0.0
-  </para>
+  &no.extension;
  </section>
  <!-- }}} -->
 

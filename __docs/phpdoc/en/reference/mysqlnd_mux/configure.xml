@@ -3,12 +3,7 @@
 
 <section xml:id="mysqlnd-mux.installation" xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink">
  &reftitle.install;
-
- <para>
-  &pecl.info;
-  <link xlink:href="&url.pecl.package;mysqlnd_mux">&url.pecl.package;mysqlnd_mux</link>
- </para>
-
+ &no.extension;
 </section>
 
 

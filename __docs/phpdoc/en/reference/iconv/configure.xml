@@ -2,25 +2,7 @@
 <!-- $Revision: 299027 $ -->
 <section xml:id="iconv.installation" xmlns="http://docbook.org/ns/docbook">
  &reftitle.install;
- <para>
-  This extension is enabled by default, although it may be disabled by
-  compiling with <option role="configure">--without-iconv</option>.
- </para>
- <para>
-  The optional <option role="configure">--with-iconv-dir</option> directive
-  is used to specify the location of <emphasis>iconv</emphasis> on the system
-  that PHP is being compiled on, otherwise only the default locations are scanned.
- </para>
- <note>
-  <title>Note to PHP 4 users</title>
-  <simpara>
-   Enabling this extension requires building with
-   <option role="configure">--with-iconv=[DIR]</option>, or Windows
-   users may enable by having <filename>iconv.dll</filename>
-   available in the systems PATH, and <filename>php_iconv.dll</filename>
-   enabled in &php.ini;.
-  </simpara>
- </note>
+ &no.install;
 </section>
 
 <!-- Keep this comment at the end of the file

@@ -13,13 +13,7 @@
 
  <section xml:id="ssdeep.installation">
   &reftitle.install;
-  <para>
-   &pecl.moved;
-  </para>
-  <para>
-   &pecl.info;
-   <link xlink:href="&url.pecl.package;ssdeep">&url.pecl.package;ssdeep</link>.
-  </para>
+  &no.extension;
  </section>
 
  <section xml:id="ssdeep.configuration">

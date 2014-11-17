@@ -11,33 +11,7 @@
 
  <section xml:id="apc.installation">
   &reftitle.install;
-  <para>
-   &pecl.moved;
-  </para>
-  <para>
-   &pecl.info;
-   <link xlink:href="&url.pecl.package;apc">&url.pecl.package;apc</link>.
-  </para>
-  <para>
-   &pecl.windows.download;
-  </para>
-  <note>
-   <simpara>
-    On Windows, APC needs a temp path to exist, and be
-    writable by the web server.  It checks the TMP, TEMP
-    and USERPROFILE environment variables in that order
-    and finally tries the WINDOWS directory if none of
-    those are set.
-   </simpara>
-  </note>
-  <note>
-   <simpara>
-    For more in-depth, highly technical implementation details, see the
-    <link xlink:href="&url.apc.technotes;">
-     developer-supplied TECHNOTES file
-    </link>.
-   </simpara>
-  </note>
+  &no.install;
  </section>
 
  &reference.apc.ini;

@@ -2,17 +2,7 @@
 <!-- $Revision: 297028 $ -->
 <section xml:id="fbsql.installation" xmlns="http://docbook.org/ns/docbook">
  &reftitle.install;
- <para>
-  In order to have these functions available, you must compile PHP with
-  fbsql support by using the
-  <option role="configure">--with-fbsql[=DIR]</option> option. If you use
-  this option without specifying the path to fbsql, PHP will search for the
-  fbsql client libraries in the default installation location for the
-  platform. Users who installed FrontBase in a non standard directory should
-  always specify the path to fbsql:
-  <option role="configure">--with-fbsql=/path/to/fbsql</option>. This will
-  force PHP to use the client libraries installed by FrontBase, avoiding any
-  conflicts.
+ &no.extension;
  </para>
 </section>
 

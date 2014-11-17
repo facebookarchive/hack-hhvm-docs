@@ -3,55 +3,7 @@
 
 <section xml:id="tokyo-tyrant.installation" xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink">
  &reftitle.install;
-
- <para>
-  &pecl.info;
-  <link xlink:href="&url.pecl.package;tokyo_tyrant">&url.pecl.package;tokyo_tyrant</link>
- </para>
-
- <section xml:id="tokyo-tyrant.configure-options">
-  <title>Configure options</title>
-  <simplelist>
-   <member><literal>--with-tokyo-tyrant[=DIR]</literal> DIR is the prefix to the Tokyo Tyrant installation</member>
-   <member><literal>--with-tokyo-cabinet-dir[=DIR]</literal> DIR is the prefix to the Tokyo Cabinet installation</member>
-   <member><literal>--disable-tokyo-tyrant-session</literal> Disable Tokyo Tyrant session handler support</member>
-  </simplelist>
- </section>
-
- <section xml:id="tokyo-tyrant.enabling-the-extension">
-  <title>Enabling the extension</title>
-  <para>
-   The extension can be enabled by adding <literal>extension=tokyo_tyrant.so</literal> to the INI-configuration
-  </para>
- </section>
-
- <section xml:id="tokyo-tyrant.session-running">
-  <title>Running Tokyo Tyrant for the session handler</title>
-  <para>
-   <literal>ttserver -port 2000 -ext /path/to/expire.lua -extpc expire 30.0 '/tmp/sessions.tct#idx=ts:dec'</literal>
-  </para>
-  <note>
-   <simpara>
-    expire.lua is included in the tokyo_tyrant extension source distribution
-   </simpara>
-  </note>
- </section>
-
- <section xml:id="tokyo-tyrant.configuring-session-handler">
-  <title>Configuring session handler</title>
-  <para>
-    <simplelist>
-     <member>tokyo_tyrant.session_salt="randomlongstring"</member>
-     <member>session.save_handler=tokyo_tyrant</member>
-     <member>session.save_path="tcp://hostname1:2000,tcp://hostname2:2000"</member>
-    </simplelist>
-  </para>
-  <note>
-   <simpara>
-    It is important to make sure that <link linkend="ini.tokyo-tyrant.session-salt">tokyo_tyrant.session_salt</link> matches on all servers.
-   </simpara>
-  </note>
- </section>
+ &no.extension;
 
  <section xml:id="tokyo-tyrant.how-session-handler-works">
   <title>How it works?</title>

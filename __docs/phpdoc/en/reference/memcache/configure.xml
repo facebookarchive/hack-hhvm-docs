@@ -2,20 +2,7 @@
 <!-- $Revision: 288721 $ -->
 <section xml:id="memcache.installation" xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink">
  &reftitle.install;
- <para>
-  &pecl.moved;
-  &pecl.info;
-  <link xlink:href="&url.pecl.package;memcache">&url.pecl.package;memcache</link>.
- </para>
- <note>
-  <para>
-   It's possible to disable memcache session handler support. The 'pecl install' option
-   prompts for this (default is enabled) however when compiling statically into PHP the
-   <option role="configure">--disable-memcache-session</option> configure option may be
-   used.
-  </para>
- </note>
-
+ &no.install;
 </section>
 
 <!-- Keep this comment at the end of the file

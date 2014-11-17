@@ -2,12 +2,7 @@
 <!-- $Revision: 297028 $ -->
 <section xml:id="ifx.installation" xmlns="http://docbook.org/ns/docbook">
  &reftitle.install;
- <para>
-  To be able to use the functions defined in this module you must compile
-  your PHP interpreter using the configure line
-  <option role="configure">--with-informix[=DIR]</option>, where DIR is the
-  Informix base install directory, defaults to nothing.
- </para>
+ &no.extension;
 </section>
 
 <!-- Keep this comment at the end of the file

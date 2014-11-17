@@ -14,16 +14,7 @@
 
  <section xml:id="yaml.installation">
   &reftitle.install;
-  <para>
-   &pecl.moved;
-  </para>
-  <para>
-   &pecl.info;
-   <link xlink:href="&url.pecl.package;yaml">&url.pecl.package;yaml</link>.
-  </para>
-  <para>
-   &pecl.windows.download;
-  </para>
+  &no.extension;
  </section>
 
  <!-- {{{ Configuration -->

@@ -10,8 +10,7 @@
   <para>
    The GNU <link xlink:href="&url.idn;">IDN library</link> must be installed.
    This extension is not compatible with <link
-   linkend="book.intl">Internationalization extension</link> which is part of
-   PHP 5.3.0.
+   linkend="book.intl">Internationalization extension</link>.
   </para>
  </section>
  <!-- }}} -->
@@ -19,13 +18,7 @@
  <!-- {{{ Installation -->
  <section xml:id="idn.install">
   &reftitle.install;
-  <para>
-   &pecl.moved;
-  </para>
-  <para>
-   &pecl.info;
-   <link xlink:href="&url.pecl.package;idn">&url.pecl.package;idn</link>.
-  </para>
+  &no.install;
  </section>
  <!-- }}} -->
 

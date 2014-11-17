@@ -2,13 +2,7 @@
 <!-- $Revision: 297028 $ -->
 <section xml:id="sockets.installation" xmlns="http://docbook.org/ns/docbook">
  &reftitle.install;
- <para>
-  The socket functions described here are part of an extension to
-  PHP which must be enabled at compile time by giving the <option
-  role="configure">--enable-sockets</option> option to
-  <command>configure</command>.
- </para>
- &ipv6.php5;
+ &no.install;
 </section>
 
 <!-- Keep this comment at the end of the file
