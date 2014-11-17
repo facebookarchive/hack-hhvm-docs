@@ -14,16 +14,7 @@
 
  <section xml:id="taint.installation">
   &reftitle.install;
-  <para>
-   &pecl.moved;
-  </para>
-  <para>
-   &pecl.info;
-   <link xlink:href="&url.pecl.package;taint">&url.pecl.package;taint</link>.
-  </para>
-  <para>
-   &pecl.windows.download;
-  </para>
+  &no.extension;
  </section>
 
  <!-- {{{ Configuration -->

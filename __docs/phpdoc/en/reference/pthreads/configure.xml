@@ -3,13 +3,7 @@
 
 <section xml:id="pthreads.installation" xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink">
  &reftitle.install;
-
- <para>
-  &pecl.info;
-  <link xlink:href="&url.pecl.package;pthreads">&url.pecl.package;pthreads</link>
- </para>
-
-
+ &no.extension;
 </section>
 
 

@@ -6,9 +6,7 @@
 
  <section xml:id="scream.requirements">
   &reftitle.required;
-  <para>
-   PHP version 5.2.0 or greater.
-  </para>
+  &no.requirement;
  </section>
 
  &reference.scream.configure;

@@ -7,10 +7,6 @@
  <!-- {{{ Requirements -->
  <section xml:id="mysqli.requirements">
   &reftitle.required;
-  <para>
-   In order to have these functions available, you must compile PHP with
-   support for the mysqli extension.
-  </para>
   <note>
    <para>
     The mysqli extension is designed to work with MySQL version 4.1.13 or

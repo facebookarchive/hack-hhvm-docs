@@ -2,30 +2,7 @@
 <!-- $Revision: 297028 $ -->
 <section xml:id="yaz.installation" xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink">
  &reftitle.install;
- <para>
-  &pecl.info;
-  <link xlink:href="&url.pecl.package;yaz">&url.pecl.package;yaz</link>
- </para>
- <para>
-  &pecl.windows.download;
- </para>
- <note>
-  <title>Information specific to Windows users</title>
-  <para>
-   <filename>php_yaz.dll</filename> depends on
-   <filename>yaz.dll</filename>. The <filename>yaz.dll</filename>
-   is part of the Win32 ZIP from the PHP site. It is also part
-   of the Windows YAZ install available from the
-   <link xlink:href="&url.yaz.ftp.win32;">YAZ WIN32 area</link>.
-  </para>
-  <para>
-   On windows, don't forget to add the PHP directory to the PATH, so that the
-   <filename>yaz.dll</filename> file can be found by the system.
-  </para>
- </note>
-
- &warn.imaprecodeyaz;
-
+ &no.extension;
 </section>
 
 <!-- Keep this comment at the end of the file

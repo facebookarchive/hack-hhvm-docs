@@ -7,7 +7,7 @@
  <section xml:id="cairo.requirements">
   &reftitle.required;
   <para>
-    Cairo is only available for PHP 5.2+ and PHP 5.3+ The extension also requires
+    The extension also requires
     the cairo graphics library version 1.4 or higher. The cairo graphics library
     uses an even and odd numbering scheme to denote stable and unstable library
     versions. Both unstable and stable versions can be used with the extension,
@@ -24,25 +24,7 @@
 
  <section xml:id="cairo.installation">
   &reftitle.install;
-  <para>
-   &pecl.info;
-   <link xlink:href="&url.pecl.package;cairo">&url.pecl.package;cairo</link>.
-  </para>
-  <para>
-   &pecl.windows.download;
-  </para>
-  <para>
-   Notes specific to installation on Windows
-  </para>
-  <para>
-   Binary builds of the extension can be found at
-   <link xlink:href="&url.cairo.dl;">&url.cairo.dl;</link>.
-   Download the correct zip file, place php_cairo.dll in the extensions
-   directory, and enable it via the php.ini file in use. Please be sure the PHP
-   minor version (5.2, 5.3) match, the thread safety (Thread Safe TS or
-   Non-Thread Safe NTS), the architecture (x86 or x64), and the compiler
-   version (VC6 or VC9) match or the extension will not load.
-  </para>
+  &no.extension;
  </section>
 
  <!-- {{{ Configuration -->

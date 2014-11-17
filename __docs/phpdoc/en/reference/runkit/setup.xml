@@ -6,37 +6,12 @@
 
  <section xml:id="runkit.requirements">
   &reftitle.required;
-  <simpara>
-   <emphasis>Modifying Constants, Functions, Classes, and Methods</emphasis>
-   works with all releases of PHP 4 and PHP 5.  No special requirements are
-   necessary.
-  </simpara>
-
-  <simpara>
-   <emphasis>Custom Superglobals</emphasis> are only available in PHP 4.2.0 or later.
-  </simpara>
-
-  <simpara>
-   <emphasis>Sandboxing</emphasis> requires PHP 5.1.0 or later, or
-   PHP 5.0.0 with a special TSRM patch applied.
-   Regardless of which version of PHP is in use it must be compiled with the
-   <literal>--enable-maintainer-zts</literal> option.
-   See the <literal>README</literal> file in the runkit package for additional information.
-  </simpara>
+  &no.requirement;
  </section>
 
  <section xml:id="runkit.installation">
   &reftitle.install;
-  <para>
-   &pecl.moved;
-  </para>
-  <para>
-   &pecl.info;
-   <link xlink:href="&url.pecl.package;runkit">&url.pecl.package;runkit</link>.
-  </para>
-  <para>
-   &pecl.windows.download;
-  </para>
+  &no.extension;
  </section>
 
  &reference.runkit.ini;

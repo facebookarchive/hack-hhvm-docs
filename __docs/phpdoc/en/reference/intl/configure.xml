@@ -2,30 +2,7 @@
 <!-- $Revision: 304877 $ -->
 <section xml:id="intl.installation" xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink">
  &reftitle.install;
- <para>
-  This extension may be installed using the bundled version as of PHP 5.3.0,
-  or as a PECL extension as of PHP 5.2.0. In other words, there are two methods
-  to install the intl extension.
- </para>
- <para>
-  &pecl.info;
-  <link xlink:href="&url.pecl.package;intl">&url.pecl.package;intl</link>.
- </para>
- <para>
-  Alternatively, <literal>--enable-intl</literal> will enable the bundled
-  version while compiling PHP.
- </para>
- <para>
-  If your ICU is installed to a non-standard directory then you might want to
-  specify its location in
-  <constant>LD_LIBRARY_PATH</constant>
-  environment variable so that dynamic linker can find it:
- </para>
- <screen>$ export LD_LIBRARY_PATH=/opt/icu/lib</screen>
- <para>
-  Otherwise, if PHP and ICU are installed to their default locations, then the
-  additional options to `configure' are not needed.
- </para>
+ &no.install;
 </section>
 
 <!-- Keep this comment at the end of the file

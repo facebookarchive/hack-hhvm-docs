@@ -6,16 +6,12 @@
 
  <section xml:id="stomp.requirements">
   &reftitle.required;
-  <para>PECL/stomp requires PHP 5.2.2 or newer.</para>
   <para>The <link xlink:href="&url.openssl;">OpenSSL</link> package >= 0.9.6 and the <link linkend="book.openssl">openssl</link> extension may also be required to use stomp over SSL.</para>
  </section>
 
  <section xml:id="stomp.installation">
   &reftitle.install;
-  <para>
-   &pecl.info;
-   <link xlink:href="&url.pecl.package;stomp">&url.pecl.package;stomp</link>
-  </para>
+  &no.extension;
  </section>
 
  <!-- {{{ Configuration -->

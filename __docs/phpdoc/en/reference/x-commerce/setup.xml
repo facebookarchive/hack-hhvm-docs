@@ -7,9 +7,6 @@
  <section xml:id="x-commerce.requirements">
   &reftitle.required;
   <para>
-   ext/xcom requires PHP 5.1 or newer.
-  </para>
-  <para>
    ext/xcom requires libcurl (which must be built with HTTPS
    support).
   </para>
