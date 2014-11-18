@@ -3,7 +3,8 @@
 <section xml:id="pgsql.installation" xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink">
  &reftitle.install;
  <para>
-  Look <link xlink:href="https://github.com/PocketRent/hhvm-pgsql">here</link> to see how to install pgsql.
+  &extension.extern;
+  Look <link xlink:href="https://github.com/PocketRent/hhvm-pgsql">here</link> for more information.
  </para>
 </section>
 

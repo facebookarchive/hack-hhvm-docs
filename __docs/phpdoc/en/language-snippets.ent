@@ -872,6 +872,7 @@ language construct and not a function, it cannot be called using
 <!ENTITY no.install '<para xmlns="http://docbook.org/ns/docbook">There is no installation needed to use these
 functions; they are part of the HHVM core.</para>'>
 <!ENTITY no.extension '<para xmlns="http://docbook.org/ns/docbook">This extension is not available in HHVM yet.</para>'>
+<!ENTITY extension.extern 'This extension is externally-provided.'>
 <!ENTITY hack.only '<note xmlns="http://docbook.org/ns/docbook"><simpara>This function is only available in Hack.</simpara></note>'>
 
 <!-- Used in every chapter that has directive descriptions -->

@@ -1,8 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- $Revision: 297028 $ -->
-<section xml:id="dbase.installation" xmlns="http://docbook.org/ns/docbook">
+<section xml:id="dbase.installation" xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink">
  &reftitle.install;
- &no.extension;
+ <para>
+  &extension.extern;
+  Look <link xlink:href="https://github.com/skyfms/hhvm-ext_dbase">here</link> for more information.
+ </para>
 </section>
 
 <!-- Keep this comment at the end of the file

@@ -22,7 +22,10 @@
 
  <section xml:id="geoip.installation">
   &reftitle.install;
-  &no.extension;
+   <para>
+  &extension.extern;
+  Look <link xlink:href="https://github.com/vipsoft/hhvm-ext-geoip">here</link> for more information.
+ </para>
  </section>
 
  <section xml:id="geoip.configuration">

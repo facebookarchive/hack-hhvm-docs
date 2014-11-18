@@ -3,8 +3,10 @@
 
 <section xml:id="ssdeep.installation" xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink">
  &reftitle.install;
- &no.extension;
-
+ <para>
+  &extension.extern;
+  Look <link xlink:href="https://github.com/treffynnon/hhvm-ssdeep">here</link> for more information.
+ </para>
 </section>
 
 
