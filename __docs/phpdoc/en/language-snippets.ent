@@ -874,6 +874,7 @@ functions; they are part of the HHVM core.</para>'>
 <!ENTITY no.extension '<para xmlns="http://docbook.org/ns/docbook">This extension is not available in HHVM yet.</para>'>
 <!ENTITY extension.extern 'This extension is externally-provided.'>
 <!ENTITY hack.only '<note xmlns="http://docbook.org/ns/docbook"><simpara>This function is only available in Hack.</simpara></note>'>
+<!ENTITY in.zendcompat '<para xmlns="http://docbook.org/ns/docbook">This extension is available in the Zend Extension Source Compatibility Layer. Look <link linkend="configuration.zend.compat">here</link> to find out how to enable it.</para>'>
 
 <!-- Used in every chapter that has directive descriptions -->
 <!ENTITY ini.descriptions.title '<para xmlns="http://docbook.org/ns/docbook">Here&apos;s a short explanation of

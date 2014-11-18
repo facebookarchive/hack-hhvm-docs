@@ -3,7 +3,7 @@
 
 <section xml:id="oauth.installation" xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink">
  &reftitle.install;
- &no.extension;
+ &in.zendcompat;
 </section>
 
 

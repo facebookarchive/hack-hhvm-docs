@@ -14,7 +14,7 @@
 
  <section xml:id="yaml.installation">
   &reftitle.install;
-  &no.extension;
+  &in.zendcompat;
  </section>
 
  <!-- {{{ Configuration -->

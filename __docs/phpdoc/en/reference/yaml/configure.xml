@@ -3,17 +3,7 @@
 
 <section xml:id="yaml.installation" xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink">
  &reftitle.install;
-
- <para>
-  &pecl.info;
-  <link xlink:href="&url.pecl.package;yaml">&url.pecl.package;yaml</link>
- </para>
-
- <para>
-  The latest PECL/yaml Win32 DLL is available here:
-  <link xlink:href="&url.pecl.win.ext;php_yaml.dll">php_yaml.dll</link>
- </para>
-
+ &in.zendcompat;
 </section>
 
 

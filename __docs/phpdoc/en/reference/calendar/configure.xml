@@ -2,11 +2,7 @@
 <!-- $Revision: 297028 $ -->
 <section xml:id="calendar.installation" xmlns="http://docbook.org/ns/docbook">
  &reftitle.install;
- <para>
-  To get these functions to work, you have to compile PHP with
-  <option role="configure">--enable-calendar</option>.
- </para>
- &windows.builtin;
+ &in.zendcompat;
 </section>
 <!-- Keep this comment at the end of the file
 Local variables:

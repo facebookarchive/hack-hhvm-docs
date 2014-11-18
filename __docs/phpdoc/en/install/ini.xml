@@ -129,6 +129,23 @@ include_path = ".;c:\hhvm\lib"
   </sect2>
  </sect1>
 
+ <sect1 xml:id="configuration.zend.compat">
+  <title>Zend Extension Source Compatibility Layer</title>
+  <para>
+   HHVM can use existing zend extensions without writing it from scratch.
+   To use these extensions you have to enable the compatiblity layer in
+   your <literal>php.ini</literal>.
+   <programlisting role="ini">
+    hhvm.enable_zend_compat = true
+   </programlisting>
+  </para>
+  <para>
+   You can find a list with extensions that are available in zend compat 
+   <link xlink:href="https://github.com/facebook/hhvm/tree/master/hphp/runtime/ext_zend_compat">here</link>. For every PECL extensions available, a folder with
+   the original name exists.
+  </para>
+ </sect1>
+
 </chapter>
 
 <!-- Keep this comment at the end of the file
