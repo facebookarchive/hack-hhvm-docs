@@ -264,11 +264,15 @@ and suppressing this warning.</para></warning>'>
 currently not documented; only its argument list is available.
 </simpara></warning>'>
 
-<!ENTITY warn.hack.async '<warning>
+<!ENTITY note.hack.async "<note xmlns='http://docbook.org/ns/docbook'>
     <simpara>
-      There is currently basic support for async. For example, you can currently write basic async functions that call other async functions. However, we are currently finalizing other foundations (e.g. async database, scheduling, and memory handling APIs) which will be required to reach the full potential of async in production. We felt, though, it would be useful to introduce the concept and technology of async (even with basic functionality) in order to get developers used to the syntax and some of the technical details.
+      There is currently basic support for async. More support is coming. To see
+      our current status, checkout 
+      <link xlink:href='&url.hack.async.blog.post;' xmlns:xlink='http://www.w3.org/1999/xlink'>
+      our latest async update blog post</link>. The contents of this blog post will
+      be integrated into these docs soon.
     </simpara>
-  </warning>'>
+  </note>">
 
 <!-- Misc -->
 

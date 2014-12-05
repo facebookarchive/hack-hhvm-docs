@@ -157,6 +157,7 @@
 <!ENTITY url.graphviz "http://www.graphviz.org/">
 <!ENTITY url.gupnp "http://www.gupnp.org/">
 <!ENTITY url.hack "http://hacklang.org">
+<!ENTITY url.hack.async.blog.post "http://hhvm.com/blog/7091/async-cooperative-multitasking-for-hack">
 <!ENTITY url.hack.install "http://hacklang.org/install/">
 <!ENTITY url.hack.tutorial "http://hacklang.org/tutorial">
 <!ENTITY url.hack.hhvm.docs "https://github.com/facebook/hack-hhvm-docs">
