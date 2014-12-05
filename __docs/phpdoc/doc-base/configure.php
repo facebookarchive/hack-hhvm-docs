@@ -525,8 +525,6 @@ if ($ac["GENERATE"] != "no") {
 // Notice how doing it this way results in generating less than half as many files.
 $infiles = array(
     'manual.xml.in',
-    'install-linux.xml.in',
-    'install-win.xml.in',
     'developer.template.xml.in',
     'scripts/file-entities.php.in',
 );

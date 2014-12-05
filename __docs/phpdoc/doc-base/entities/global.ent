@@ -166,9 +166,11 @@
 <!ENTITY url.hhvm "http://hhvm.com">
 <!ENTITY url.hhvm.manual "http://docs.hhvm.com">
 <!ENTITY url.hhvm.downloads "https://github.com/facebook/hhvm">
+<!ENTITY url.hhvm.getting-started "https://github.com/facebook/hhvm/wiki/Getting-Started">
 <!ENTITY url.hhvm.irc "http://webchat.freenode.net/?channels=hhvm">
 <!ENTITY url.hhvm.nightlies.blog "http://hhvm.com/blog/3203/nightly-packages">
 <!ENTITY url.hhvm.install.prebuilt "https://github.com/facebook/hhvm/wiki/Prebuilt-Packages-for-HHVM">
+<!ENTITY url.hhvm.install.compile "https://github.com/facebook/hhvm/wiki/Building-and-Installing-HHVM">
 <!ENTITY url.hhvm.install.prebuilt.debian7 "https://github.com/facebook/hhvm/wiki/Prebuilt-Packages-on-Debian-7">
 <!ENTITY url.hhvm.install.compile.debian6 "https://github.com/facebook/hhvm/wiki/Building-and-installing-HHVM-on-Debian-6">
 <!ENTITY url.hhvm.install.compile.debian7 "https://github.com/facebook/hhvm/wiki/Building-and-installing-HHVM-on-Debian-7">

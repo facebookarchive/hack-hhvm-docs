@@ -46,26 +46,12 @@
   &preface;
  </book>
 
- <book xml:id="getting-started">
-  <title>&GettingStarted;</title>
-  &chapters.intro;
-  &chapters.tutorial;
-  &chapters.hack-hhvm-tutorial;
+ <book xml:id="install-intro">
+  <title>&InstallAndIntro;</title>
+  &install-intro.install;
+  &install-intro.intro;
  </book>
 
- <book xml:id="install">
-  <title>&InstallAndConfigure;</title>
-  &install.intro;
-  &install.hack.index;
-  &install.xhp;
-  &install.fastcgi.index;
-  &install.cloud.index;
-  &install.linux.index;
-  &install.macos.index;
-  &install.windows.index;
-  &install.extensions;
-  &install.ini;
- </book>
  <book xml:id="hacklangref">
   <title>&HackLanguageReference;</title>
   &hack.intro;
@@ -534,7 +520,12 @@
   &appendices.userlandnaming;
   &appendices.about;
   &appendices.license;
+  &appendices.tutorial;
   &global.function-index;
+  &install.ini;
+  &install.extensions;
+  &install.hack.index;
+  &install.xhp;
  </book>
 
 </set>

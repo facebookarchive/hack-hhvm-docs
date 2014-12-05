@@ -4,7 +4,7 @@
   <para>The static type system of Hack is enforced by a type checker external to the HHVM runtime itself. It runs in the background, watching for file modifications and updating its state. Getting this static type checker running requires a little bit of additional setup.</para>
   <sect2 xml:id="install.hack.bootstrapping.hhvm">
     <title>Running your project under HHVM</title>
-    <para>The first step is to <link linkend="install">get HHVM running your project</link>. You should have the latest version of HHVM installed, have a <literal>php.ini</literal> or <literal>config.hdf</literal> set up if necessary, and HHVM running as a webserver serving your project.</para>
+    <para>The first step is to <link linkend="install-intro.install">get HHVM running your project</link>. You should have the latest version of HHVM installed, have a <literal>php.ini</literal> or <literal>config.hdf</literal> set up if necessary, and HHVM running as a webserver serving your project.</para>
   </sect2>
   <sect2 xml:id="install.hack.bootstrapping.hh_server">
     <title>Getting the type checker running</title>

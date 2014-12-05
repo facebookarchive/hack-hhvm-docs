@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- $Revision: 306611 $ -->
- <chapter xml:id="introduction" xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink">
+ <chapter xml:id="install-intro.intro" xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink">
   <info><title>Introduction</title></info>
 
-  <section xml:id="intro-whatis">
+  <section xml:id="install-intro.intro.php">
    <info><title>What is PHP?</title></info>
    <para>
     <acronym>PHP</acronym> (recursive acronym for <literal>PHP: Hypertext
@@ -65,17 +65,17 @@
    <para>
     Although PHP's development is focused on server-side scripting,
     you can do even more with it. Read on, and see more in the
-    <link linkend="intro-what-can-hhvm-do">What can HHVM do?</link> section,
+    <link linkend="install-intro.intro.hhvm">What can HHVM do?</link> section,
     which describes a runtime for PHP called HHVM. Or go right to the
-    <link linkend="tutorial"> introductory tutorial</link> if you are only
+    <link linkend="appendices.tutorial"> introductory tutorial</link> if you are only
     interested in web programming.
    </para>
   </section>
 
-  <section xml:id="intro-what-is-hack">
+  <section xml:id="install-intro.intro.hack">
     <info><title>What is Hack?</title></info>
     <para>
-      Hack is a programming language for HHVM that interoperates seamlessly with PHP. In general, anything you can write in PHP, you can also write in Hack. Take the example in the <link linkend="intro-whatis">What is PHP section</link>.
+      Hack is a programming language for HHVM that interoperates seamlessly with PHP. In general, anything you can write in PHP, you can also write in Hack. Take the example in the <link linkend="install-intro.intro.php">What is PHP section</link>.
     </para>
     <para>
       <example>
@@ -123,7 +123,7 @@ echo "Hi, I'm a Hack script!";
       </para>
     </note>
   </section>
-  <section xml:id="intro-what-can-hhvm-do">
+  <section xml:id="install-intro.intro.hhvm">
    <info><title>What can HHVM do?</title></info>
    <para>
     Nearly anything. HHVM is mainly focused on server-side scripting, so you can collect form data, generate dynamic page content, or send and receive cookies. But HHVM can do much more. </para>
@@ -132,7 +132,7 @@ echo "Hi, I'm a Hack script!";
     <itemizedlist>
      <listitem>
       <simpara>
-       Server-side scripting. This is the most traditional and main target field for HHVM. You need three things to make this work. The HHVM parser, a web server and a web browser. You need to run the web server, with a connected HHVM installation. You can access the Hack program output with a web browser, viewing the Hack page through the server. All these can run on your home machine if you are just experimenting with Hack programming. See the <link linkend="install">installation instructions</link> section for more information on how to install HHVM.
+       Server-side scripting. This is the most traditional and main target field for HHVM. You need three things to make this work. The HHVM parser, a web server and a web browser. You need to run the web server, with a connected HHVM installation. You can access the Hack program output with a web browser, viewing the Hack page through the server. All these can run on your home machine if you are just experimenting with Hack programming. See the <link linkend="install-intro.install">installation instructions</link> section for more information on how to install HHVM.
       </simpara>
      </listitem>
      <listitem>
@@ -143,7 +143,7 @@ echo "Hi, I'm a Hack script!";
     </itemizedlist>
    </para>
    <para>
-    HHVM is fully <link linkend="install">available</link> on major variants of the Linux operating system, including Ubuntu, CentOS, Debian, etc. HHVM can be installed on Mac OS X to run in interpreted mode (no JIT, but that is being actively developed). Windows support is actively being developed. HHVM has also support for most of the web servers today. This includes any web server that can utilize the FastCGI protocol, like Apache, lighttpd and nginx.</para>
+    HHVM is fully <link linkend="install-intro.install">available</link> on major variants of the Linux operating system, including Ubuntu, CentOS, Debian, etc. HHVM can be installed on Mac OS X to run in interpreted mode (no JIT, but that is being actively developed). Windows support is actively being developed. HHVM has also support for most of the web servers today. This includes any web server that can utilize the FastCGI protocol, like Apache, lighttpd and nginx.</para>
    <para>
     So with HHVM, you have the freedom of choosing an operating system and a web server. Furthermore, you also have the choice of using procedural programming or object oriented programming (OOP), or a mixture of them both. And, of course, you can choose to use Hack or PHP as your programming language. </para>
    <para>
@@ -162,7 +162,7 @@ echo "Hi, I'm a Hack script!";
     And many other interesting extensions exist, which are categorized both <link linkend="extensions">alphabetically</link> and by <link linkend="phpfuncref">PHP category</link> and <link linkend="hackfuncref">Hack category</link>.
    </para>
    <para>
-    As you can see this page is not enough to list all the features and benefits PHP and Hack can offer. Read on in the sections about <link linkend="install">installing HHVM</link>, and see the <link linkend="phpfuncref">PHP function reference</link> and the <link linkend="hackfuncref">Hack function reference</link> for explanation of the extensions mentioned here.
+    As you can see this page is not enough to list all the features and benefits PHP and Hack can offer. Read on in the sections about <link linkend="install-intro.install">installing HHVM</link>, and see the <link linkend="phpfuncref">PHP function reference</link> and the <link linkend="hackfuncref">Hack function reference</link> for explanation of the extensions mentioned here.
    </para>
   </section>
 

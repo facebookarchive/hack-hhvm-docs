@@ -5,9 +5,7 @@
 <!ENTITY HHVMManual                               "HHVM and Hack Manual">
 <!ENTITY Seealso                                  "See also">
 <!ENTITY Date                                     "Date:">
-<!ENTITY GettingStarted                           "Getting Started">
-<!ENTITY InstallAndConfigure                      "Installation and Configuration">
-<!ENTITY Installation                             "Installation">
+<!ENTITY InstallAndIntro                          "Installation and Introduction">
 <!ENTITY PHPLanguageReference                     "PHP Language Reference">
 <!ENTITY HackLanguageReference                    "Hack Language Reference">
 <!ENTITY HackFunctionReference                    "Hack Class and Function Reference">

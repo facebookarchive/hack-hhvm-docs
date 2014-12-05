@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!-- $Revision: 332294 $ -->
- <chapter xml:id="tutorial" xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink">
+ <chapter xml:id="appendices.tutorial" xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink">
   <info><title>A simple tutorial</title></info>
   <para>
-   Here we would like to show the very basics of HHVM in a short, simple tutorial. This text only deals with dynamic web page creation with HHVM, though HHVM is not only capable of creating web pages. See the section titled <link linkend="intro-what-can-hhvm-do">What can HHVM do?</link> for more information.
+   Here we would like to show the very basics of HHVM in a short, simple tutorial. This text only deals with dynamic web page creation with HHVM, though HHVM is not only capable of creating web pages. See the section titled <link linkend="install-intro.intro.hhvm">What can HHVM do?</link> for more information.
   </para>
   <para>
    HHVM-enabled web pages are treated just like regular HTML pages and you can create and edit them the same way you normally create regular HTML pages.
@@ -18,7 +18,7 @@
     Let us say you want to save precious bandwidth and develop locally. In this case, you will want to install a web server, such as <link xlink:href="&url.apache;">Apache</link>, and of course <link xlink:href="&url.hhvm.downloads;">HHVM</link>. You will most likely want to install a database as well, such as <link xlink:href="&url.mysql.docs;">MySQL</link>.
    </para>
    <para>
-    Our manual has <link linkend="install">installation instructions for HHVM</link>. If you have problems with installing HHVM yourself, we would suggest you ask your questions on our <link xlink:href="&url.hhvm.irc;">HHVM IRC channel</link>. It is easy to setup a web server with HHVM support on Linux. On Linux, you may find <link xlink:href="&url.rpmfind;">rpmfind</link> and <link xlink:href="&url.rpmfind.pbone;">PBone</link> helpful for locating RPMs. You may also want to visit <link xlink:href="&url.apt-get;">apt-get</link> to find packages for Debian.
+    Our manual has <link linkend="install-intro.install">installation instructions for HHVM</link>. If you have problems with installing HHVM yourself, we would suggest you ask your questions on our <link xlink:href="&url.hhvm.irc;">HHVM IRC channel</link>. It is easy to setup a web server with HHVM support on Linux. On Linux, you may find <link xlink:href="&url.rpmfind;">rpmfind</link> and <link xlink:href="&url.rpmfind.pbone;">PBone</link> helpful for locating RPMs. You may also want to visit <link xlink:href="&url.apt-get;">apt-get</link> to find packages for Debian.
    </para>
   </section>
 
@@ -73,7 +73,7 @@ Hello World
     This program is extremely simple and you really did not need to use HHVM to create a page like this. All it does is display: <literal>Hello World</literal> using the HHVM <function>echo</function> statement. Note that the file <emphasis>does not need to be executable</emphasis> or special in any way. The server finds out that this file needs to be interpreted by HHVM because you used the ".php" extension, which the server is configured to pass on to HHVM. Think of this as a normal HTML file which happens to have a set of special tags available to you that do a lot of interesting things.
    </para>
    <para>
-    If you tried this example and it did not output anything, it prompted for download, or you see the whole file as text, chances are that the server you are on does not have HHVM enabled, or is not configured properly. Ask your administrator to enable it for you using the <link linkend="install">Installation</link> chapter of the manual. If you are developing locally, also read the installation chapter to make sure everything is configured properly. Make sure that you access the file via http with the server providing you the output. If you just call up the file from your file system, then it will not be parsed by PHP. If the problems persist anyway, do not hesitate to use our <link xlink:href="&url.hhvm.irc;">HHVM IRC channel</link> for support.
+    If you tried this example and it did not output anything, it prompted for download, or you see the whole file as text, chances are that the server you are on does not have HHVM enabled, or is not configured properly. Ask your administrator to enable it for you using the <link linkend="install-intro.install">Installation</link> chapter of the manual. If you are developing locally, also read the installation chapter to make sure everything is configured properly. Make sure that you access the file via http with the server providing you the output. If you just call up the file from your file system, then it will not be parsed by PHP. If the problems persist anyway, do not hesitate to use our <link xlink:href="&url.hhvm.irc;">HHVM IRC channel</link> for support.
    </para>
    <para>
     The point of the example is to show the special Hack (or could have been PHP) tag format. In this example we used <literal>&lt;?hh</literal> to indicate the start of a Hack tag. Then we put the Hack statement. Closing tags (<literal>?&gt;</literal>) are not supported in Hack, and generally omitted in newer PHP code. For more details, read the manual section on the <link linkend="language.basic-syntax"> basic PHP syntax</link>.

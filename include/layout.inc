@@ -610,7 +610,7 @@ function doc_toc($lang) {
     require dirname(__FILE__) . "/../manual/$lang/toc/index.inc";
 
     echo "<dl>\n";
-    doc_toc_list($lang, $TOC, "getting-started");
+    doc_toc_list($lang, $TOC, "install-intro");
     doc_toc_list($lang, $TOC, "hacklangref");
     doc_toc_list($lang, $TOC, "phplangref");
     echo "</dl>\n";
