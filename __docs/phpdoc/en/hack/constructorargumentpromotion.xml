@@ -34,12 +34,14 @@ class Person {
 <![CDATA[
 <?hh
 class Person {
-  public function __construct(private string $name, private int $age) {}
+  public function __construct(public string $name,
+                              protected int $age,
+                              private bool $gender) {}
 }
 ]]>
       </programlisting>
       <para>
-        That's it. One line. The class members will automatically be created and assigned to what is passed into the constructor. Syntatic sugar, yes. Typing and productivity win, for sure.
+        That's it. The class members will automatically be created and assigned to what is passed into the constructor. Syntatic sugar, yes. Typing and productivity win, for sure.
       </para>
     </informalexample>
   </para>
