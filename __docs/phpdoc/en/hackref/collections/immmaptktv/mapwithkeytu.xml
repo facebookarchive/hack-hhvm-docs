@@ -3,7 +3,7 @@
 <refentry xml:id="hack.immmaptktv.mapwithkeytu" xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink">
  <refnamediv>
   <refname>ImmMap&lt;Tk, Tv&gt;::mapWithKey&lt;Tu&gt;</refname>
-  <refpurpose>Return an ImmMap based on the return results of calling a provided function on every value of this ImmMap.</refpurpose>
+  <refpurpose>Return an ImmMap based on the return results of calling a provided function on every key of this ImmMap.</refpurpose>
  </refnamediv>
 
  <refsect1 role="description">
@@ -17,7 +17,7 @@
 
 <!-- Note: If this method/property as an alternate procedural mapping then the method/property synopsis MUST be listed BEFORE the function synopsis -->
   <para>
-   Returns an ImmMap based on the return results of calling a provided function on every value of this ImmMap.
+   Returns an ImmMap with values based on the return results of calling a provided function on every key of this ImmMap.
   </para>
  </refsect1>
 </refentry>
