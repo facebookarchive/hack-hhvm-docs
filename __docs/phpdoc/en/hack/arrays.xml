@@ -46,9 +46,9 @@
 
 class Foo {}
 class HackArrays<T> {
-  private array $arr = null;
-  private array<T> $arr2 = null;
-  private array<string, string> $arr3 = null;
+  private array $arr = array();
+  private array<T> $arr2 = array();
+  private array<string, Foo> $arr3 = array();
 
   public function __construct(T $data) {
     $this->arr2[0] = $data;
