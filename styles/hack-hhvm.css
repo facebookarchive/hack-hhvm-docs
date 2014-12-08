@@ -152,7 +152,7 @@ code.linenumbers {
   float: left;
   color: #999;
   margin-right: 5px;
-  padding: 0px 3px 0px 5px;
+  padding: 0.75em 3px 0.75em 5px;
   border-right: 1px solid #ccc;
   min-width: 20px;
   text-align: right;

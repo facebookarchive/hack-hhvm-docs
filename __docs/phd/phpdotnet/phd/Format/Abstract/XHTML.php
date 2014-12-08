@@ -46,7 +46,7 @@ abstract class Format_Abstract_XHTML extends Format {
                 . htmlspecialchars($str, ENT_QUOTES, "UTF-8")
                 . '</pre></div>';
         default:
-            $numbers = implode(range(1, substr_count($str, "\n")), '<br />');
+            $numbers = implode(range(1, substr_count($str, "\n") - 1), '<br />');
             $ret = '<code class="linenumbers">' . $numbers . '</code>';
             $ret .= '<div class="' . $this->role . 'code">'
                 . $this->highlight(trim($str), $this->role, 'xhtml')
