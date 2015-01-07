@@ -118,9 +118,6 @@ double
       Hack has an internal <literal>num</literal> type. For example, if Hack throws an errors saying something to the effect of &quot;It is incompatible with an <literal>int</literal>/<literal>float</literal> because it is the result of a division (/)&quot;, this means that the type represented in the error message is either an <literal>int</literal> or <literal>float</literal>, but cannot be determined statically.
     </para>
     <para>
-      <emphasis role="strong">Note: At this point, <literal>num</literal> is not an annotatable type. For example, a function cannot return <literal>foo(): num{...}</literal>. This may be implemented in the future. This discussion is with respect to <literal>num</literal> as an internal type to Hack.</emphasis>
-    </para>
-    <para>
       In Hack, mathematical operations are handled in the following way:
       <orderedlist>
         <listitem>
