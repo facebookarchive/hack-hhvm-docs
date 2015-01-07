@@ -456,7 +456,7 @@ function manual_bugs_and_notes() {
     // Get needed values
     list($filename, $title) = $GLOBALS['PGI']['this'];
     // Doc bugs will become Github issues in our doc repo.
-    $filebuglink = 'https://github.com/facebook/hack-hhvm-docs/issues/new?title=Bug in ' . $title;
+    $filebuglink = 'https://github.com/facebook/hack-hhvm-docs/issues/new?title=Bug in ' . $filename;
     $filebugsnippet = make_link(
         $filebuglink,
         "File A Documentation Bug",
