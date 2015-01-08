@@ -775,7 +775,7 @@ Considering the constraint on the type 'T'
 <?hh
 
 interface IFaz {}
-interface IFar implements IFaz {}
+interface IFar extends IFaz {}
 class Faz implements IFaz {}
 class Far implements IFar {}
 class NoIFaz {}
