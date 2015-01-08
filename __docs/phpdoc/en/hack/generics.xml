@@ -1002,7 +1002,7 @@ class MyClass<+T> {
 class A {}
 class B extends A {}
 
-function foo(MyClass<A>): void {}
+function foo(MyClass<A> $x): void {}
 
 function bar(): void {
   $b = new B();
@@ -1030,7 +1030,7 @@ class MyClass<-T> {
 class A {}
 class B extends A {}
 
-function foo(MyClass<B>): void {}
+function foo(MyClass<B> $x): void {}
 
 function bar(): void {
   $a = new A();
@@ -1059,7 +1059,7 @@ class A {}
 class B extends A {}
 class C {}
 
-function foo(MyClass<A>): void {}
+function foo(MyClass<A> $x): void {}
 
 function bar(): void {
   $c = new C();
