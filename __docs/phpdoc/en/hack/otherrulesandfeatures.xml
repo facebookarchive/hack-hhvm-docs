@@ -783,13 +783,15 @@ function mixed_method(int $x): mixed {
   if ($x === 3) {
     $a = array();
     $a[0] = new Foo();
+    return $a;
   } else {
     return false;
   }
 }
 
 function bar(): bool {
-  $untyped_array = mixed_method(3); // Let's assume that this method can return an array of Foo
+  $untyped_array = mixed_method(3);
+  // Let's assume that this method can return an array of Foo
   invariant(is_array($untyped_array), "must be an array of Foo()");
   $untyped_array[0]->foo_method(); // Hack now understands that $untyped_array is an array
   return true;
@@ -803,7 +805,7 @@ bar();
         &example.outputs;
         <screen>
 <![CDATA[
-File "h5.php", line 20, characters 5-21:
+File "h5.php", line 21, characters 5-21:
 This is not a container, this is a mixed value
   File "h5.php", line 7, characters 32-36:
   You might want to check this out
