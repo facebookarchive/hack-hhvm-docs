@@ -64,7 +64,7 @@ The `.php` files will outputted to the `manual/en` directory.
 > This is good for quick iteration.
 
 
-# Server up the files locally.
+# Serve-up the files locally.
 
 Run a local HHVM server in the root directory, so that `/manual` is a top 
 level path. Navigate to `http://<your local sandbox>/manual/en`.
