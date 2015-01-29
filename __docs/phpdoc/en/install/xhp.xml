@@ -17,13 +17,15 @@ Fatal error: Class undefined: xhp_html in /
     you need to include the XHP library in your project.
   </para>
   <para>
-    You can find the XHP library in <link xlink:href="&url.xhp;">Github</link>. Put the files found here somewhere in your source tree.
+    You can find the XHP library in <link xlink:href="&url.xhp;">Github</link>. Add the following lines to your <literal>composer.json</literal> to install the library.
+   <programlisting>
+   "require": {
+     "facebook/xhp-lib": "dev-master"
+   }
+   </programlisting>
   </para>
   <para>
     Finally, either (1) change the XHP files from <literal>&lt;?php</literal> to <literal>&lt;?hh // decl</literal> (since XHP class name is supported out of the box in Hack) or (2) set <literal>hhvm.eval.enable_xhp=true</literal> in your <literal>.ini</literal> file or directly on the command line when running HHVM.
-  </para>
-  <para>
-    Finally <literal>include init.php;</literal> before you use any XHP functionality.
   </para>
 </chapter>
 
