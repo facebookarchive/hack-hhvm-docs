@@ -1284,7 +1284,20 @@ abstract class Package_Generic_XHTML extends Format_Abstract_XHTML {
                 $this->role = false;
             }
 
-            return '<div class="example-contents">';
+            $ret = '<div class="example-contents">';
+
+            if (isset($attrs[Reader::XMLNS_DOCBOOK]["location"])) {
+                $full_loc = Config::sample_code_root()
+                          . $attrs[Reader::XMLNS_DOCBOOK]["location"];
+                if (file_exists($full_loc)) {
+                    $code = file_get_contents($full_loc);
+                    // Extra newline to CDATA because this would normally follow
+                    // a CDATA tag and line numbers expect it.
+                    $ret .= "\n" . $this->CDATA("\n" . $code);
+                }
+            }
+
+            return $ret;
         }
         $this->role = false;
         return "</div>\n";

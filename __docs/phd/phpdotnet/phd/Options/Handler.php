@@ -130,6 +130,7 @@ class Options_Handler implements Options_Interface
         }
         Config::set_xml_root(dirname($v));
         Config::set_xml_file($v);
+        Config::set_sample_code_root(dirname($v) . "/../sample-code/");
     }
 
     public function option_o($k, $v)

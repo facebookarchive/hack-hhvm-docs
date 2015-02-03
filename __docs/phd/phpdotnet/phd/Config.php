@@ -54,6 +54,7 @@ class Config
         'quit'              => false,
         'indexcache'        => '',
         'memoryindex'       => '',
+        'sample_code_root'  => './../sample-code/', // one level above xml_root
     );
 
     private static $optionArray = null;
