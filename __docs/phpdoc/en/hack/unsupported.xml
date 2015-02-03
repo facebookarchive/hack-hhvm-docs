@@ -96,19 +96,7 @@
     <para>
       There is something else to note about what Hack doesn't support: top-level code. This may be surprising, but the Hack type checker wants everything in a class or function (global scope static analysis can prove to be very difficult). The implication here is that the Hack type checker will ignore any top-level code when in <link linkend="hack.modes.partial"><literal>partial</literal></link> or <link linkend="hack.modes.decl"><literal>decl</literal></link> modes, and actually throw an error in <link linkend="hack.modes.strict"><literal>strict</literal></link> mode. For example:
       <informalexample>
-        <programlisting role="php">
-<![CDATA[
-<?hh // strict
-
-// Top-level code is not supported in Hack
-// It is ignored in partial and decl modes
-// And a type checker error is thrown in strict mode
-for ($i=1; $i<=5; $i++)
-{
-  echo "The number is " . $i . "\n";
-}
-]]>
-        </programlisting>
+        <programlisting role="php" location="hack.unsupported1.php" />
         &example.outputs;
         <screen>
 <![CDATA[
@@ -141,25 +129,11 @@ Remove all toplevel statements except for requires
     <para>
       Unlike PHP, Hack does not allow one to define a function on a class that collides with the class name. For example, this is acceptable in PHP:
       <informalexample>
-        <programlisting role="php">
-<![CDATA[
-<?php
-class Foo {
-  public function foo() {}
-}
-]]>
-        </programlisting>
+        <programlisting role="php" location="hack.unsupported2.php" />
         <para>
           However, this is not acceptable in Hack:
         </para>
-        <programlisting role="php">
-<![CDATA[
-<?hh
-class Foo {
-  public function foo() {}
-}
-]]>
-        </programlisting>
+        <programlisting role="php" location="hack.unsupported3.php" />
         &example.outputs;
         <screen>
 <![CDATA[
@@ -172,16 +146,7 @@ This is a dangerous method name, if you want to define a constructor, use __cons
     <para>
       The reason for Hack disallowing this comes down to constructors. In the above example, <literal>foo()</literal> behaves like a constructor and gets called upon instantiation using <literal>new Foo()</literal>. This could be very confusing especially when there is an explicit constructor as well.
       <informalexample>
-        <programlisting role="php">
-<![CDATA[
-<?hh
-class Foo {
-  // 2 constructors?
-  public function __construct() {}
-  public function foo() {}
-}
-]]>
-        </programlisting>
+        <programlisting role="php" location="hack.unsupported4.php" />
       </informalexample>
     </para>
   </sect1>
@@ -191,25 +156,11 @@ class Foo {
       Unlike <link linkend="language.oop5.decon">PHP</link>, Hack does not allow
       naming a constructor explicitly (e.g., by the name of the class):
       <informalexample>
-        <programlisting role="php">
-<![CDATA[
-<?php
-class Foo {
-  public function Foo() {} // Perfectly fine in PHP 5
-}
-]]>
-        </programlisting>
+        <programlisting role="php" location="hack.unsupported5.php" />
         <para>
           However, this is not acceptable in Hack:
         </para>
-        <programlisting role="php">
-<![CDATA[
-<?hh
-class Foo {
-  public function Foo() {}
-}
-]]>
-        </programlisting>
+        <programlisting role="php" location="hack.unsupported6.php" />
         &example.outputs;
         <screen>
 <![CDATA[
@@ -228,22 +179,7 @@ This is a dangerous method name, if you want to define a constructor, use __cons
     <para>
       PHP allows children to call static methods in the parent. For example:
       <informalexample>
-        <programlisting role="php">
-<![CDATA[
-<?php
-class StaticFoo {
-  public static function staticMethod() {
-    return "Hello";
-  }
-}
-
-class StaticBar extends StaticFoo {
-  public function fooStatic() {
-    return parent::staticMethod();
-  }
-}
-]]>
-        </programlisting>
+        <programlisting role="php" location="hack.unsupported7.php" />
         <para>
           Hack does not currently allow this. The following error will be displayed:
         </para>
@@ -264,50 +200,13 @@ The closest thing is staticMethod but it's a static method
     <para>
       In PHP, static methods can be called at the class level or the instance level. For example, the following two ways to call <literal>bar()</literal> are both acceptable:
       <informalexample>
-        <programlisting role="php">
-<![CDATA[
-<?php
-class Foo {
-  public static function bar() {
-    echo "Hello";
-  }
-}
-
-// Instance level
-$f = new Foo();
-$f::bar();
-
-// Class level
-Foo::bar();
-]]>
-        </programlisting>
+        <programlisting role="php" location="hack.unsupported8.php" />
       </informalexample>
     </para>
     <para>
       Hack does not allow the instance level static calls in <literal>// strict</literal> mode (this is allowed in <literal>// partial</literal> mode). Hack will balk about using &quot;dynamic classes&quot;.
       <informalexample>
-        <programlisting role="php">
-<![CDATA[
-<?hh // strict
-class Foo {
-  public static function bar() {
-    echo "Hello";
-  }
-}
-
-function main_csm() {
-  // Instance level
-  $f = new Foo();
-  // Hack will balk here
-  $f::bar();
-
-  // Class level
-  Foo::bar();
-}
-
-main_csm();
-]]>
-        </programlisting>
+        <programlisting role="php" location="hack.unsupported9.php" />
         &example.outputs;
         <screen>
 <![CDATA[

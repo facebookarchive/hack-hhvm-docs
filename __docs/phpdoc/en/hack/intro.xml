@@ -42,38 +42,13 @@
       Facebook was initially built with PHP. Parameters and return types were specified
       in comments. Parsers could use this to create documentation. But type checking was non existent.
       <informalexample>
-        <programlisting role="php">
-<![CDATA[
-<?php
-/**
- * Wraps a name in a box
- *
- * @param raw-str $name
- * @return html-str
- */
-function say_hello($name) {
-  return "<div class=\"box\">Hello ".htmlize($name)."</div>";
-}
-]]>
-        </programlisting>
+        <programlisting role="php" location="hack.intro1.php" />
       </informalexample>
     </para>
     <para>
       In 2009, a PHP compiler called HipHop was released. In 2010, minor changes to the PHP language were introduced by the HPHP team to improve development time and provide basic type safety. The changes were XHP and parameter type constraints.
       <informalexample>
-        <programlisting role="php">
-<![CDATA[
-<?php
-/**
- * Wraps a name in a box
- *
- * @return xhp
- */
-function say_hello(string $name) {
-  return <div class="box">Hello {$name}</div>;
-}
-]]>
-        </programlisting>
+        <programlisting role="php" location="hack.intro2.php" />
       </informalexample>
     </para>
     <para>

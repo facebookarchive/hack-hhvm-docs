@@ -18,26 +18,9 @@
    <para>
      Construction is as follows:
      <informalexample>
-        <programlisting role="php">
-<![CDATA[
-<?hh
-$v = Vector {1, 2, 3};
-$iv = $v->toImmVector();
-]]>
-        </programlisting>
-        <programlisting role="php">
-<![CDATA[
-<?hh
-$a = array(1, 2, 3); // A Traversable
-$iv = new ImmVector($a);
-]]>
-        </programlisting>
-        <programlisting role="php">
-<![CDATA[
-<?hh
-$iv = ImmVector {1, 2, 3};
-]]>
-        </programlisting>
+        <programlisting role="php" location="class.hack.immvectortv1.php" />
+        <programlisting role="php" location="class.hack.immvectortv2.php" />
+        <programlisting role="php" location="class.hack.immvectortv3.php" />
       </informalexample>
    </para>
   </section>

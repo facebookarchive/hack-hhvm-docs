@@ -51,20 +51,7 @@
   <para>
    <example>
     <title>Using <function>invariant_callback_register</function> to throw a custom exception</title>
-    <programlisting role="php">
-<![CDATA[
-<?hh
-
-class CustomInvariantException extends Exception {}
-
-function custom_callback(string $format, ...): void {
-  throw new CustomInvariantException(sprintf(func_get_args()));
-}
-
-invariant_callback_register('custom_callback');
-invariant_violation('Failure');
-]]>
-    </programlisting>
+    <programlisting role="php" location="function.hack.invariant_callback_register1.php" />
    </example>
   </para>
  </refsect1>

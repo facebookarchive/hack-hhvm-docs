@@ -8,42 +8,7 @@
   <para>
     To enable asynchronous programming in HHVM, the concept of creating async functions was used. The two HHVM PHP language keywords that enable async functions are <literal>async</literal> and <literal>await</literal>. <literal>async</literal> declares a function as asynchronous. <literal>await</literal> suspends the execution of an async function until the result of the asynchronous operation represented by <literal>await</literal> is available. The return value of a function that <literal>await</literal> can be used upon is an object that implements <literal>Awaitable&lt;T&gt;</literal>.
     <informalexample>
-      <programlisting role="php">
-<![CDATA[
-<?hh
-
-class Foo{}
-class Bar {
-  public function getFoo(): Foo {
-    return new Foo();
-  }
-}
-
-async function gen_foo(int $a): Awaitable<?Foo> {
-  if ($a === 0) {
-    return null;
-  }
-
-  $bar = await gen_bar($a);
-  if ($bar !== null) {
-    return $bar->getFoo();
-  }
-
-  return null;
-}
-
-async function gen_bar(int $a): Awaitable<?Bar> {
-  if ($a === 0) {
-    return null;
-  }
-
-  return new Bar();
-}
-
-
-gen_foo(4);
-]]>
-      </programlisting>
+      <programlisting role="php" location="hack.async2.php" />
       <para>
         <literal>gen_foo()</literal> is an async function as shown by the <literal>async</literal> keyword preceding the function signature. Async functions always return an object that implements <literal>Awaitable&lt;T&gt;</literal> (the normal concrete implementation is <literal>WaitHandle&lt;T&gt;</literal>, but it is almost always preferred to use the <literal>Awaitable&lt;T&gt;</literal> interface).
       </para>
@@ -87,20 +52,7 @@ gen_foo(4);
     <title>Signature Examples</title>
     &note.hack.async;
     <informalexample>
-      <programlisting role="php">
-<![CDATA[
-<?hh
-async function genFoo(): Awaitable<Foo> { return new Foo(); }
-async function cached_result<T>(T $x): Awaitable<T> { return $x; }
-async function gen_void(): Awaitable<void> { return; }
-async function gen_add(Awaitable<int> $genA, Awaitable<int> $genB): Awaitable<int> {
-  list($a, $b) = await genva($genA, $genB);
-  return $a + $b;
-}
-class Preparable<T> implements Awaitable<T> { ... }
-class MyPreparable extends Preparable<MyPreparable> { ... }
-]]>
-      </programlisting>
+      <programlisting role="php" location="hack.async3.php" />
     </informalexample>
   </sect1>
 

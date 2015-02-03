@@ -8,24 +8,7 @@
   <para>
     Hack will correctly type check all the code within a trait:
     <informalexample>
-      <programlisting role="php">
-<![CDATA[
-<?hh
-
-trait Foo {
-  private int $x = 5;
-  private bool $b = false;
-
-  protected function getVal(): int {
-    return $this->x;
-  }
-
-  public function getBin(Vector<bool> $vec): string {
-    return $vec[0];
-  }
-}
-]]>
-      </programlisting>
+      <programlisting role="php" location="hack.traits1.php" />
       &example.outputs;
       <screen>
 <![CDATA[
@@ -42,38 +25,7 @@ It is incompatible with a bool
   <para>
     Hack will also throw an error on the following code, although the code runs perfectly fine.
     <informalexample>
-      <programlisting role="php">
-<![CDATA[
-<?hh
-
-trait TTT {
-  protected function foo(): int {
-    return $this->bar();
-  }
-}
-
-class AAA {
-  protected function bar(): int {
-    return 5;
-  }
-}
-
-class BBB extends AAA {
-  use TTT;
-
-  public function baz(): int {
-    return $this->foo();
-  }
-}
-
-function main_t(): void {
-  $bbb = new BBB();
-  var_dump($bbb->baz());
-}
-
-main_t();
-]]>
-      </programlisting>
+      <programlisting role="php" location="hack.traits2.php" />
       &example.outputs;
       <screen>
 <![CDATA[
@@ -91,39 +43,7 @@ int(5)
   <para>
     Using <literal>$this</literal> in a trait on a method defined in the class where the trait will be used is not supported in Hack (remember traits are basically standalone entities to Hack). In order to remedy the above limitation from the Hack type checker, <literal>// UNSAFE</literal> could be used within <literal>foo()</literal>, or the file could be put in Hack's <literal>// decl</literal> mode. However, a better option is to use an <emphasis>abstract method</emphasis> within the trait. Traits support the use of abstract methods in order to impose requirements upon the class(es) where the trait will be used.
     <informalexample>
-      <programlisting role="php">
-<![CDATA[
-<?hh
-trait TTT {
-  abstract protected function bar(): int;
-
-  protected function foo(): int {
-    return $this->bar();
-  }
-}
-
-class AAA {
-  protected function bar(): int {
-    return 5;
-  }
-}
-
-class BBB extends AAA {
-  use TTT;
-
-  public function baz(): int {
-    return $this->foo();
-  }
-}
-
-function main_t(): void {
-  $bbb = new BBB();
-  var_dump($bbb->baz());
-}
-
-main_t();
-]]>
-      </programlisting>
+      <programlisting role="php" location="hack.traits3.php" />
       &example.outputs;
       <screen>
 <![CDATA[
@@ -140,57 +60,7 @@ int(5)
   <para>
     It is important to note that HHVM allows traits to implement interfaces (something not currently available in PHP), and Hack does support that feature with traits. The following example shows a trait implementing an interface.
     <informalexample>
-      <programlisting role="php">
-<![CDATA[
-<?hh
-
-interface Bar {
-  public function babs(Vector<int> $vec): int;
-  public function get(): int;
-}
-
-trait Foo implements Bar {
-  private int $x = 5;
-
-  private function getVal(): int {
-    return $this->x;
-  }
-
-  public function get(): int {
-    return $this->getVal();
-  }
-
-  public function babs(Vector<int> $vec): int {
-    if (count($vec) > 0) {
-      return $vec[0];
-    }
-    return -1;
-  }
-}
-
-class Baz implements Bar {
-  use Foo;
-
-  private Vector<int> $v;
-
-  public function __construct() {
-    $this->v = Vector {};
-    $this->v[] = $this->get();
-  }
-
-  public function sass(): int {
-    return $this->babs($this->v);
-  }
-}
-
-function main_traits() {
-  $b = new Baz();
-  var_dump($b->sass());
-}
-
-main_traits();
-]]>
-      </programlisting>
+      <programlisting role="php" location="hack.traits4.php" />
       &example.outputs;
       <screen>
 <![CDATA[
@@ -213,92 +83,13 @@ int(5)
 	  <para>
 	    The Hack type checker is effective because it is able to take annotated facts sprinkled across a codebase (function entry and exit points, class definitions, etc), reconcile them, and detect any mismatches. Traits are a sizeable wrench in the works. The nature of traits in PHP is to "declare a bunch of stuff to be thrown into another scope at a later time, then check if it works at runtime"; the Hack type checker is only happy if it can take a piece of code and statically verify it independently of its usage sites. A syntactic way of having traits state that they only apply inside a particular type hierarchy allows their declarations to be both more explicit and more amenable to static analysis.
 	    <informalexample>
-	      <programlisting role="php">
-<![CDATA[
-<?hh
-
-// Definitions of class C and interface I
-class C { ... }
-interface I {
-  public function foo();
-}
-
-// Trait T requires that any using class is a descendent of class C and implements
-// interface I
-trait T {
-  require extends C;
-  require implements I;
-  // ... trait functionality that potentially relies on $this extending C and implementing I ...
-  // ... this functionality can be safely type checked even if there are no classes that use T !
-}
-]]>
-	      </programlisting>
+	      <programlisting role="php" location="hack.traits5.php" />
 	    </informalexample>
 	  </para>
 	  <para>
 	    When enforcing trait requirements, all <literal>T</literal> cares about is that <literal>X</literal> instanceof <literal>C</literal> is true and <literal>X</literal> instanceof <literal>I</literal> is true for any using class <literal>X</literal>. It doesn't care about how exactly compliance with <literal>X</literal>'s declared interfaces is achieved, or how many layers of inheritance there might be between <literal>X</literal> and <literal>C</literal>.
 	    <informalexample>
-	      <programlisting role="php">
-<![CDATA[
-<?hh
-
-// Classes X1, X2, X3, and X4 all satisfy T's requirements:
-class X1 extends C implements I {
-  use T;
-  public function foo() { .. } // I satisfied via inline implementation
-}
-
-trait U {
-  public function foo() { .. }
-}
-class X2 extends C implements I {
-  use T;
-  use U; // I satisfied via another trait
-}
-
-interface J extends I {}
-class X3 extends C implements J { // interface inheritance is fine
-  use T;
-  public function foo() { .. } // with an inline implementation in this case
-}
-
-class D extends C implements I {
-  public function foo() { .. }
-}
-class X4 extends D { // number of inheritance hops wouldn't matter to instanceof ...
-  use T; // ... so they don't matter to trait requirements
-}
-
-// Classes X5, X6, and X7 do not satisfy all of T's requirements
-class X5 { // neither extends C nor implements I
-  use T;
-}
-
-class X6 extends C { // doesn't implement I
-  use T;
-}
-
-class X7 implements I { // doesn't extend C
-  use T;
-  public function foo() { .. }
-}
-
-// While class X8 provides a compatible implementation for all of interface I's methods,
-// it is not considered to satisfy T's requirements because it does not formally implement
-// interface I
-class X8 extends C {
-  use T;
-  use U;
-}
-
-// Class X9 would technically satisfy T's requirements if it were a valid declaration
-// ... but it's not! It will fail to load at run time because it doesn't provide an
-// implementation for I::foo()
-class X9 extends C implements I {
-  use T;
-}
-]]>
-	      </programlisting>
+	      <programlisting role="php" location="hack.traits6.php" />
 	    </informalexample>
 	  </para>
 	  <para>

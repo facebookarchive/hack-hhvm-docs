@@ -8,15 +8,7 @@
  </para>
  <example>
   <title>{extname} Example</title>
-  <programlisting role="php">
-<![CDATA[
-<?php
-
-/* ... */
-
-?>
-]]>
-  </programlisting>
+  <programlisting role="php" location="collections.examples1.php" />
   &example.outputs.similar;
   <screen>
 <![CDATA[

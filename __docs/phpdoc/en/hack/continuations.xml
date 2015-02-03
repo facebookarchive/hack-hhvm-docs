@@ -7,22 +7,7 @@
   <para>
     Continuations are used in generator functions. They represent types that can be used with the PHP <literal>yield</literal> keyword. A function that is a continuation will return a type of <literal>Continuation&lt;T&gt;</literal>.
     <informalexample>
-      <programlisting role="php">
-<![CDATA[
-<?hh
-function yieldInfiniteInts(): Continuation<int> {
-  $i = 0;
-  while (true) {
-    yield $i++;
-  }
-}
-
-$generator = yieldInfiniteInts();
-foreach ($generator as $value) {
-  echo "$value\n";
-}
-]]>
-      </programlisting>
+      <programlisting role="php" location="hack.continuations1.php" />
     </informalexample>
   </para>
   <para>

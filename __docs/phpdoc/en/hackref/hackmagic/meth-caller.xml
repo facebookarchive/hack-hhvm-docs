@@ -57,65 +57,19 @@
   <para>
    <example>
     <title>Simple <function>meth_caller</function> usage</title>
-    <programlisting role="php">
-<![CDATA[
-<?hh
-
-class C {
-  function f(): string {
-    return 'hi test';
-  }
-}
-
-function test(): void {
-  $c = new C();
-
-  // meth_caller will invoke method 'f' on objects of type 'C'.
-  $f = meth_caller('C', 'f');
-  echo $f($c); // Prints "hi test"
-}
-]]>
-    </programlisting>
+    <programlisting role="php" location="function.hack.meth_caller1.php" />
    </example>
   </para>
   <para>
    <example>
     <title>More realistic callback usage</title>
-    <programlisting role="php">
-<![CDATA[
-<?hh
-
-function run_callback((function (C): string) $f, C $c) {
-  return $f($c);
-}
-
-function test2(): void {
-  $c = new C();
-
-  // A more realistic example, where meth_caller can be used to generate a
-  // callback that can be passed around with full type information.
-  $f = meth_caller('C', 'f');
-  echo run_callback($f, $c); // Prints "hi test"
-}
-]]>
-    </programlisting>
+    <programlisting role="php" location="function.hack.meth_caller2.php" />
    </example>
   </para>
   <para>
    <example>
     <title><function>meth_caller</function> used as callback for a map</title>
-    <programlisting role="php">
-<![CDATA[
-<?hh
-
-$v = Vector {
-  Vector {42, 42, 42},
-  Vector {42}
-};
-
-$v->map(meth_caller('Vector', 'count')); // returns Vector {3, 1}
-]]>
-    </programlisting>
+    <programlisting role="php" location="function.hack.meth_caller3.php" />
    </example>
   </para>
  </refsect1>

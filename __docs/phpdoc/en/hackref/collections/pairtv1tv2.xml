@@ -16,17 +16,7 @@
     Like all objects in PHP, Pairs have reference-like semantics. The elements of a Pair cannot be mutated (i.e. you can't assign to the elements of a Pair) though Pairs may contain mutable objects.
    </para>
    <informalexample>
-      <programlisting role="php">
-<![CDATA[
-<?hh
-$v1 = Vector {1,2,3};
-$v2 = Vector {4,5,6};
-$v3 = Vector {7,8,9};
-$p = Pair {$v1, $v2};
-// $p[1] = $v3; // EXCEPTION HERE
-$p[1][2] = 999;
-]]>
-      </programlisting>
+      <programlisting role="php" location="class.hack.pairtv1tv21.php" />
    </informalexample>
    <para>
     Pairs only support integer keys of 0 and 1. If a non-integer key is used, an exception will be thrown.

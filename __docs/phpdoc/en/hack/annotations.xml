@@ -4,38 +4,10 @@
   <para>
     Type annotations allow for PHP code to be explicitly typed on parameters, class member variables and return values (types are inferred for locals). These annotated types are checked via a type checker. Here are examples of the same code without and with type annotations:
     <informalexample>
-      <programlisting role="php">
-<![CDATA[
-<?php
-class MyClass {
-  const MyConst = 0;
-
-  private $x;
-
-  public function increment($x) {
-    $y = $x + 1;
-    return $y;
-  }
-}
-]]>
-      </programlisting>
+      <programlisting role="php" location="hack.annotations1.php" />
     </informalexample>
     <informalexample>
-      <programlisting role="php">
-<![CDATA[
-<?hh
-class MyClass {
-  const int MyConst = 0;
-
-  private string $x = '';
-
-  public function increment(int $x): int {
-    $y = $x + 1;
-    return $y;
-  }
-}
-]]>
-      </programlisting>
+      <programlisting role="php" location="hack.annotations2.php" />
     </informalexample>
   </para>
   <para>
@@ -63,24 +35,7 @@ class MyClass {
   <sect1 xml:id="hack.annotations.introexample">
     <title>Introductory Example</title>
     <informalexample>
-      <programlisting role="php">
-<![CDATA[
-<?hh
-class AnnotatedClass {
-  public int $x;
-  private string $s;
-  protected array $arr;
-  public AnotherClass $ac;
-
-  function bar(string $str, bool $b): float {
-    if ($b && $str === "Hi") {
-       return 3.2;
-    }
-    return 0.3;
-  }
-}
-]]>
-      </programlisting>
+      <programlisting role="php" location="hack.annotations3.php" />
       <para>
         What should be noticeably different from PHP is that <literal>AnnotatedClass</literal> has type information on all member variables (whether public, private or protected), as well as its function parameters and return types. The annotated types in this example are:
         <itemizedlist>
@@ -1380,32 +1335,7 @@ class AnnotatedClass {
     <para>
       Most of the time, initialization of the class members will be done in a constructor (i.e., <literal>__construct()</literal>). For brevity, most of the initialization in the table above was done inline. However, sometimes brevity doesn't work very well. For the generic type, user object, nullable and closure class members, here are example initializations in the constructor:
       <informalexample>
-        <programlisting role="php">
-<![CDATA[
-<?hh
-class FooClass{}
-
-class MyClass {
-  T $t;
-  FooClass $a
-  ?int $ni;
-  (function(int, int): string) $x;
-
-  public function __construct() {
-    $this->t = $val;
-    $this->a = new FooClass();
-    $this->ni = $val === 3 ? null : 4;
-    $this->x = function(int $n, int $m): string {
-      $r = '';
-      for ($i=0; $i < $n+$m; $i++) {
-        $r .= "hi";
-      }
-      return $r;
-    };
-  }
-}
-]]>
-        </programlisting>
+        <programlisting role="php" location="hack.annotations4.php" />
       </informalexample>
     </para>
   </sect1>
@@ -1416,167 +1346,31 @@ class MyClass {
       Below are some basic, contrived examples using some of the above types within the context of the Hack type annotation framework:
       <informalexample>
         <para> Annotating With Basic Types </para>
-        <programlisting role="php">
-<![CDATA[
-<?hh
-function increment(int $x): int {
-  return $x + 1;
-}
-
-function average(float $x, float $y): float {
-  return ($x + $y) / 2;
-}
-
-function say_hello(string $name): string {
-  return "Hello ".$name;
-}
-
-function invert(bool $b): bool {
-  if ($b) {
-    return false;
-  } else {
-    return true;
-  }
-}
-
-function sort(array $arr): array {
-  sort($arr);
-  return $arr;
-}
-
-// A piece of code that computes the average of three numbers
-function avg(int $n1, int $n2, int $n3): float {
-  $s = $n1 + $n2 + $n3;
-  return $s / 3.0;
-}
-]]>
-        </programlisting>
+        <programlisting role="php" location="hack.annotations5.php" />
       </informalexample>
       <informalexample>
         <para>Annotating with <literal>void</literal></para>
-        <programlisting role="php">
-<![CDATA[
-<?hh
-
-// void is used to indicate that a function does not return anything.
-function say_hello(): void {
-  echo "hello world";
-}
-]]>
-        </programlisting>
+        <programlisting role="php" location="hack.annotations6.php" />
       </informalexample>
       <informalexample>
         <para>Annotating with Nullable</para>
-        <programlisting role="php">
-<![CDATA[
-<?hh
-
-// The nullable type is used to indicate that a parameter can be null.
-// It is also useful as a return type, where the error case returns null.
-// The type checker will force you to handle the null case explicitly.
-
-function f1(int $x): ?string {
-  if ($x == 0) {
-    return null;
-  }
-  return "hi";
-}
-
-function f2(int $x): void {
-  $y = f1($x);
-  // $y here has a type of ?string
-  if ($y !== null) {
-    // $y can be used as an string. No casts required.
-  }
-}
-]]>
-        </programlisting>
+        <programlisting role="php" location="hack.annotations7.php" />
       </informalexample>
       <informalexample>
         <para>Annotating with <literal>mixed</literal></para>
-        <programlisting role="php">
-<![CDATA[
-<?hh
-
-// The mixed type should be used for function parameters where the behavior depends on the type.
-// The code is forced to check the type of the parameter before using it
-function encode(mixed $x): string {
-  if (is_int($x)) {
-    return "i:".($x + 1);
-  } else if (is_string($x)) {
-    return "s:".$x;
-  } else {
-    ...
-  }
-}
-]]>
-        </programlisting>
+        <programlisting role="php" location="hack.annotations8.php" />
       </informalexample>
       <informalexample>
         <para> Annotating Classes </para>
-        <programlisting role="php">
-<![CDATA[
-<?hh
-
-class A {}
-
-function foo(A $x): void {
-  ...
-}
-
-function sum(Vector<int> $arr): int {
-  $s = 0;
-  foreach ($arr as $v) {
-    $s += $v;
-  }
-  return $s;
-}
-]]>
-        </programlisting>
+        <programlisting role="php" location="hack.annotations9.php" />
       </informalexample>
       <informalexample>
         <para> Annotating Tuples </para>
-        <programlisting role="php">
-<![CDATA[
-<?hh
-class TupleTest {
-  // This is a Vector of tuples. Notice how the "tuple" reserved
-  // word is not used when annotating.
-  private Vector<(string, string)> $test = Vector {};
-  // The return type is a tuple. Again, the "tuple" reserved
-  // word is not used.
-  public function bar(): (string, string) {
-    return $this->test[0];
-  }
-  public function foo() {
-    // But to use an actual tuple, use the "tuple" reserved word
-    $this->test->add(tuple('hello', 'world'));
-  }
-}
-]]>
-        </programlisting>
+        <programlisting role="php" location="hack.annotations10.php" />
       </informalexample>
       <informalexample>
         <para> Annotating Resources </para>
-        <programlisting role="php">
-<![CDATA[
-<?hh
-function f1(): ?resource {
-  // UNSAFE
-  return fopen('/dev/null', 'r');
-}
-
-function f2(resource $x): void {
-}
-
-function f3(): void {
-  $x = f1();
-  if (is_resource($x)) {
-    f2($x);
-  }
-}
-]]>
-        </programlisting>
+        <programlisting role="php" location="hack.annotations11.php" />
       </informalexample>
     </para>
   </sect1>
@@ -1586,18 +1380,7 @@ function f3(): void {
     <para>
       HHVM allows <link linkend="language.types.typecasting">type casting</link>, basically allowing for a variable to be cast to another, appropriate type (e.g., <literal>int</literal> to <literal>bool</literal>). Hack allows type casts as well. For example, the type checker will give no errors for this type of code.
             <informalexample>
-        <programlisting role="php">
-<![CDATA[
-<?hh
-function foo(): bool {
-  $foo = 10;   // $foo is an integer
-  $bar = (bool) $foo;   // $bar is a boolean
-  return $bar;
-}
-
-foo();
-]]>
-        </programlisting>
+        <programlisting role="php" location="hack.annotations12.php" />
       </informalexample>
     </para>
     <para>
@@ -1674,18 +1457,7 @@ foo();
     <para>
       Here is an example of how the type checker will throw an error if you try to use a synonym of a type that is not supported.
             <informalexample>
-        <programlisting role="php">
-<![CDATA[
-<?hh
-function foo(): bool {
-  $foo = 10;   // $foo is an integer
-  $bar = (boolean) $foo;   // $bar is a boolean
-  return $bar;
-}
-
-foo();
-]]>
-        </programlisting>
+        <programlisting role="php" location="hack.annotations13.php" />
         &example.outputs;
         <screen>
 <![CDATA[
@@ -1722,46 +1494,7 @@ Invalid Hack type. Using "boolean" in Hack is considered an error. Use "bool" in
     <para>
       Here is an example of how various arrays are annotated. Remember that, in Hack, the use of arrays are more restricted in <literal>// strict</literal> mode.
       <informalexample>
-        <programlisting role="php">
-<![CDATA[
-<?hh
-
-class FooFoo {}
-class HackArrayAnnotations {
-  private array<FooFoo> $arr;
-  private array<string, FooFoo> $arr2;
-
-  public function __construct() {
-    $this->arr = array();
-    $this->arr2 = array();
-  }
-
-  public function bar<T>(T $val): array<T> {
-    return array($val);
-  }
-
-  public function sort(array<int, float> $a): array<int, float> {
-    sort($a);
-    return $a;
-  }
-
-  public function baz(FooFoo $val): array<FooFoo> {
-    $this->arr[] = $val;
-    return $this->arr;
-  }
-}
-
-function main_aa() {
-  $haa = new HackArrayAnnotations();
-  var_dump($haa->bar(3));
-  var_dump($haa->bar(new FooFoo()));
-  var_dump($haa->sort(array(1.3, 5.6, 2.3, 0.2, 1.4)));
-  var_dump($haa->baz(new FooFoo()));
-}
-
-main_aa();
-]]>
-        </programlisting>
+        <programlisting role="php" location="hack.annotations14.php" />
         &example.outputs;
         <screen>
 <![CDATA[
@@ -1798,32 +1531,7 @@ array(1) {
     <para>
       Examining a typed array a bit more...
       <informalexample>
-        <programlisting role="php">
-<![CDATA[
-<?hh
-
-class BarBar {}
-
-class ABCD {
-  private array<BarBar> $arr;
-  private int $i;
-
-  public function __construct() {
-    $this->arr = array(new BarBar());
-    $this->i = 4;
-  }
-  public function getBars(): array<BarBar> {
-    if ($this->i < 5) {
-      return array();
-    } else if ($this->i < 10) {
-      return $this->arr;
-    } else {
-      return array(null); // Type Error
-    }
-  }
-}
-]]>
-        </programlisting>
+        <programlisting role="php" location="hack.annotations15.php" />
         <para>
           An empty array can be returned from a method that is annotated to return a typed array. However, an array with the first element <literal>null</literal> is not compatible. In order to make that work, a nullable typed array must be used as the annotation (e.g., <literal>: array&lt;?BarBar&gt;</literal>).
         </para>
@@ -1836,54 +1544,10 @@ class ABCD {
     <para>
       Annotating closures and callables require their own callout beyond the brief summary above about using PHP types with Hack. Take this unannotated, non-Hack PHP code that uses a closure:
       <informalexample>
-        <programlisting role="php">
-<![CDATA[
-<?php
-
-function foo_closure($adder_str) {
-  return function($to_str) use ($adder_str) {
-    return strlen($to_str) + strlen($adder_str);
-  };
-}
-
-function main_closure_example() {
-  $hello = foo_closure("Hello");
-  $facebook = foo_closure("Facebook");
-  $fox = foo_closure("Fox");
-
-  echo $hello("World") . "\n";
-  echo $facebook("World") . "\n";
-  echo $fox("World") . "\n";
-}
-
-main_closure_example();
-]]>
-        </programlisting>
+        <programlisting role="php" location="hack.annotations16.php" />
         <para>
           How is the function <literal>foo_closure()</literal> and the closure function actually annotated? Here is the proper Hack type annotation for such a function:
-          <programlisting role="php">
-<![CDATA[
-<?hh
-
-function foo_closure(string $adder_str): (function (string): int) {
-  return function($to_str) use ($adder_str) {
-    return strlen($to_str) + strlen($adder_str);
-  };
-}
-
-function main_closure_example() {
-  $hello = foo_closure("Hello");
-  $facebook = foo_closure("Facebook");
-  $fox = foo_closure("Fox");
-
-  echo $hello("World") . "\n";
-  echo $facebook("World") . "\n";
-  echo $fox("World") . "\n";
-}
-
-main_closure_example();
-]]>
-          </programlisting>
+          <programlisting role="php" location="hack.annotations17.php" />
           <note>
             <para>
               The return type annotation of <literal>foo_closure()</literal> is actually a skeleton signature of the actual closure being returned. Thus, for example, trying to return <literal>true</literal> from the closure will throw a Hack error since the return type annotation clearly specifies that the closure returns an <literal>int</literal>. Note that the actual closure is not type annotated, nor are any <literal>use</literal> parameters part of the type annotation for a closure.
@@ -1895,28 +1559,7 @@ main_closure_example();
     <para>
       The same style of annotating closures are used in function/method parameters (if the function/method takes a closure as a parameter), as well as class member variables. Here is a final example:
       <informalexample>
-        <programlisting role="php">
-<![CDATA[
-<?hh
-
-// Completely contrived
-
-function f1((function(int, int): string) $x): string {
-  return $x(2,3);
-}
-
-function f2(): string {
-  $c = function(int $n, int $m): string {
-    $r = '';
-    for ($i=0; $i<$n+$m; $i++) {
-      $r .= "hi";
-    }
-    return $r;
-  };
-  return f1($c);
-}
-]]>
-        </programlisting>
+        <programlisting role="php" location="hack.annotations18.php" />
       </informalexample>
     </para>
   </sect1>
@@ -1936,41 +1579,7 @@ function f2(): string {
     <para>
       The <literal>this</literal> type is a pretty useful type, which you'll usually see as a return type. Here are some examples of it being used:
       <informalexample>
-        <programlisting role="php">
-<![CDATA[
-<?hh
-
-class Base {
-  private int $x = 0;
-  public function setX(int $new_x): this {
-    $this->x = $new_x;
-    // $this has type "this"
-    return $this;
-  }
-  public static function newInstance(): this {
-    // new static() has type "this"
-    return new static();
-  }
-  public function newCopy(): this {
-    // This would not type check with self::, but static:: is ok
-    return static::newInstance();
-  }
-  // You can also say Awaitable<this>;
-  public async function genThis(): Awaitable<this> {
-    return $this;
-  }
-}
-
-final class Child {
-  public function newChild(): this {
-    // This is OK because Child is final.
-    // However, if Grandchild extends Child, then this would be wrong, since
-    // $grandchild->newChild() should returns a Child instead of a Grandchild
-    return new Child();
-  }
-}
-]]>
-        </programlisting>
+        <programlisting role="php" location="hack.annotations19.php" />
         <para>
           <literal>this</literal> is the type of <literal>$this</literal> and <literal>new static()</literal>. If <literal>Base::setX()</literal> returns <literal>this</literal>, that means that at callsites, <literal>$child-&gt;setX()</literal> is known to return an instance of <literal>Child</literal>.
         </para>
@@ -1980,32 +1589,7 @@ final class Child {
       Here are some invalid uses of <literal>this</literal>:
       <informalexample>
         <para><emphasis role="strong">COUNTER EXAMPLES</emphasis></para>
-        <programlisting role="php">
-<![CDATA[
-<?hh
-
-class Base {
-  public static function newBase(): this {
-    // ERROR! The "this" return type means that $child->newBase()
-    // should return a Child, but it always returns a Base!
-    return new Base();
-  }
-
-  public static function newBase2(): this {
-    // ERROR! This is wrong for the same reason that new Base() is wrong
-    return new self();
-  }
-
-  // This function is fine
-  abstract public static function goodNewInstance(): this;
-
-  public static function badNewInstance(): this {
-    // ERROR! Child::badNewInstance() would call Base::goodNewInstance() which is wrong
-    return self::goodNewInstance();
-  }
-}
-]]>
-        </programlisting>
+        <programlisting role="php" location="hack.annotations20.php" />
       </informalexample>
     </para>
     <para>
@@ -2021,21 +1605,7 @@ class Base {
     <para>
       Sometimes the type of a function parameter or a return type can be &quot;various&quot;. And this could be quite intentional. When confronted with this situation, there are two choices. One is to leave the type blank and let the Hack type checker assume the engineer knows what he/she is doing. The other is to use the PHP provided mechanism called <literal>mixed</literal> in order to have the type checker force the engineer to check the type before using it. The following example shows <literal>mixed</literal> being used as the parameter type and the subsequent needed <literal>if</literal> check.
       <informalexample>
-        <programlisting role="php">
-<![CDATA[
-<?hh
-function sum(mixed $x): int {
-  if (is_array($x) || $x instanceof Vector) {
-    $s = 0;
-    foreach ($x as $v) {
-      $s += $v;
-    }
-    return $s;
-  }
-  //... do something else or throw an exception...
-}
-]]>
-        </programlisting>
+        <programlisting role="php" location="hack.annotations21.php" />
       </informalexample>
     </para>
   </sect1>
@@ -2045,30 +1615,7 @@ function sum(mixed $x): int {
     <para>
       The Hack type checker largely does not understand references and pretends that they do not exist. For example, the following code passes the type checker:
             <informalexample>
-        <programlisting role="php">
-<![CDATA[
-<?hh
-
-function swap(int &$x, int &$y): void {
-  $x = $y;
-  $y = 'boom';
-}
-
-function main(): void {
-  $x = 1;
-  $y = 1;
-
-  swap($x, $y);
-
-  var_dump($x);
-  var_dump($y);
-
-  swap($x, $y);
-}
-
-main();
-]]>
-        </programlisting>
+        <programlisting role="php" location="hack.annotations22.php" />
         <para>
           It seems pretty clear that this shouldn't be done (trying to swap an <literal>int</literal> but writing in a <literal>string</literal>, when the <literal>swap()</literal> method takes two <literal>int</literal>s.). In fact, HHVM will balk at runtime when trying to execute this code. But getting an error at runtime defeats the whole purpose of the benefits of Hack.
         </para>
@@ -2080,22 +1627,7 @@ main();
     <para>
       Why are these type of references bad? Consider the following PHP code snippet:
       <informalexample>
-        <programlisting role="php">
-<![CDATA[
-<?php
-function foo() {
-  $arr = array(1,2,3,4);
-  foreach ($arr as &$k) {
-    echo $k;
-  }
-  echo "\n";
-  $k = 'foo';
-  var_dump($arr);
-}
-
-foo();
-]]>
-        </programlisting>
+        <programlisting role="php" location="hack.annotations23.php" />
         <para>
          After the <literal>foreach</literal> completes, there will still be a dangling reference to the last element in the array. So, if a developer then writes<literal>$k = 'foo';</literal>, the array will be mutated ... behavior probably not desired.
        </para>
@@ -2125,15 +1657,7 @@ array(4) {
     <para>
       Generators can be somewhat tricky to type check. For example:
             <informalexample>
-        <programlisting role="php">
-<![CDATA[
-<?hh
-function gen() {
-  yield 1;
-  yield "a";
-}
-]]>
-        </programlisting>
+        <programlisting role="php" location="hack.annotations24.php" />
       </informalexample>
     </para>
     <para>
@@ -2218,36 +1742,8 @@ function gen() {
     <para>
       The following two examples are correctly typed:
       <informalexample>
-        <programlisting role="php">
-<![CDATA[
-<?hh
-function gen(): Continuation<int> {
-  yield 1;
-  yield 2;
-  yield 3;
-}
-
-function foo(): void {
-  foreach (gen() as $x) {
-    echo $x, "\n";
-  }
-}
-]]>
-        </programlisting>
-        <programlisting role="php">
-<![CDATA[
-<?hh
-async function f(): Awaitable<int> {
-  return 42;
-}
-
-async function g(): Awaitable<string> {
-  $f = await f();
-  $f++;
-  return 'hi test ' . $f;
-}
-]]>
-        </programlisting>
+        <programlisting role="php" location="hack.annotations25.php" />
+        <programlisting role="php" location="hack.annotations26.php" />
       </informalexample>
     </para>
   </sect1>

@@ -4,39 +4,7 @@
   <para>
     The PHP language provides one primary mechanism for expressing containers of elements: the PHP array. Traditionally, the term &quot;array&quot; in programming languages is thought of as a collection of elements, indexed using consecutive integers (starting at 0 or 1), and possibly of a fixed size (e.g., Java). PHP arrays are significantly different than the traditional concept of arrays. A PHP array is essentially a dictionary-style collection associating keys with values that maintains insertion order. The keys can be either integers or strings; the values can be of any type. PHP arrays are dynamically-sized and grow as needed without requiring a function call to increase their size/capacity. In all Hack documentation, the term "array" will be considered to refer to a PHP array unless explicitly noted otherwise. Arrays in PHP are created using the <literal>array()</literal> language construct. Here are a few examples:
     <informalexample>
-      <programlisting role="php">
-<![CDATA[
-<?php
-
-// Simple array with the values 1, 2, 3 and default
-// indexed by integers, starting with 0
-$arr1 = array(1, 2, 3);
-
-// Another simple array with the values "a", "b", "c"
-// and again default indexed by integers
-$arr2 = array("a", "b", "c");
-
-// Array with strings as both keys and values
-$arr3 = array("a" => "aaa", "b" => "bbb", "c" => "ccc");
-
-// Array containing the values 1, 2, 3 but now indexed
-// by a mix of integer keys and string keys
-$arr4 = array("foo" => 1, 73 => 2, "bar" => 3);
-
-// Array having mixed-typed values, default indexed by
-// integers.
-$arr5 = array(1, "hello", array(2, 3), "goodbye");
-
-// Dynamically grow arrays by just adding new values. The
-// keys do not have to be sequential or of the same type.
-$arr1[] = 4; // The key will be 3
-$arr1[4] = 5;
-$arr2["bap"] = 6;
-$arr3["d"] = "ddd";
-$arr4[] = "blah"; // The key will be 74
-$arr5[9] = 3;
-]]>
-      </programlisting>
+      <programlisting role="php" location="hack.collections1.php" />
       <para>
         Even with the relatively simple examples above, it is easy to see that PHP arrays are different than the &quot;arrays&quot; in other popular programming languages. In addition to offering dictionary-like operations, PHP arrays also offer stack-like operations. For example, values on PHP arrays can be pushed, popped or shifted.
       </para>
@@ -52,15 +20,7 @@ $arr5[9] = 3;
     <para>
       In Hack and PHP5, arrays are not objects. Hack collections are typed as objects. So,
             <informalexample>
-        <programlisting role="php">
-<![CDATA[
-<?hh
-$a = array(1, 2);
-$v = Vector {1, 2};
-var_dump(is_object($a));
-var_dump(is_object($v));
-]]>
-        </programlisting>
+        <programlisting role="php" location="hack.collections2.php" />
         &example.outputs;
         <screen>
 <![CDATA[
@@ -122,29 +82,7 @@ bool(true)
   <para>
     Here is an example of using Hack collections:
     <informalexample>
-      <programlisting role="php">
-<![CDATA[
-<?hh
-
-function main_col() {
-
-  $vector = Vector {5, 10};
-
-  $vector->add(15);
-  $vector->add(20);
-
-  $vector[] = 25;
-
-  $vector->removeKey(2);
-
-  foreach ($vector as $item) {
-    echo $item . "\n";
-  }
-}
-
-main_col();
-]]>
-      </programlisting>
+      <programlisting role="php" location="hack.collections3.php" />
       &example.outputs;
       <screen>
 <![CDATA[
@@ -207,56 +145,7 @@ main_col();
     <para>
       Here are some basic examples that show how <literal>Vector</literal> can be used:
       <informalexample>
-        <programlisting role="php">
-<![CDATA[
-<?hh
-
-function main() {
-  // Create a Vector using collection literal syntax
-  $vector = Vector {5, 10, 15};
-
-  // Add elements using "$c[]=$v" syntax
-  $vector[] = 20;
-  $vector[] = 25;
-
-  // Access value by key using "$c[$k]" syntax; note that "$c[$k]"
-  // syntax will throw an OutOfBoundsException if the key is out of bounds
-  echo $vector[0] . "\n";
-
-  // Access value by key using get(); null will be returned if the key is
-  // out of bounds
-  echo $vector->get(1) . "\n\n";
-
-  // Set value by key using "$c[$k]=$v" syntax, overwriting the previous
-  // value; note that "$c[$k]=$v" syntax for Vectors will throw an
-  // OutOfBoundsException if the key is out of bounds
-  $vector[0] = 999;
-
-  // Remove an element by key
-  $vector->removeKey(2);
-
-  // Iterate over the values using "foreach ($c as $v)" syntax
-  foreach ($vector as $v) {
-    echo $v . "\n";
-  }
-  echo "\n";
-
-  // Iterate over the values using "for" and "$c[$x]" syntax
-  for ($i = 0; $i < count($vector); ++$i) {
-    echo $vector[$i] . "\n";
-  }
-
-  // Iterate over the keys and values using "foreach ($c as $k=>$v)"
-  // syntax
-  foreach ($vector as $k => $v) {
-    echo $k . ": " . $v . "\n";
-  }
-  echo "\n";
-}
-
-main();
-]]>
-        </programlisting>
+        <programlisting role="php" location="hack.collections4.php" />
         &example.outputs;
         <screen>
 <![CDATA[
@@ -281,21 +170,7 @@ main();
         </screen>
       </informalexample>
       <informalexample>
-        <programlisting role="php">
-<![CDATA[
-<?hh
-
-function main() {
-  $v = Vector {40, 80, 20, 60};
-  $filtered_vec = $v->filter(function($x) { return $x >= 50; });
-  foreach ($filtered_vec as $key => $val) {
-    echo $key . " " . $val . "\n";
-  }
-}
-
-main();
-]]>
-        </programlisting>
+        <programlisting role="php" location="hack.collections5.php" />
         &example.outputs;
         <screen>
 <![CDATA[
@@ -316,50 +191,7 @@ main();
     <para>
       Here are some basic examples showing how <literal>Map</literal> can be used:
       <informalexample>
-        <programlisting role="php">
-<![CDATA[
-<?hh
-
-function main() {
-  // Create a Map using collection literal syntax
-  $map = Map {"A" => 1, "B" => 2, "C" => 3};
-
-  // Add elements using "$c[$k]=$v" syntax; note that if $k is
-  // already present, "$c[$k]=$v" syntax will overwrite the previous
-  // value
-  $map["D"] = 4;
-  $map["E"] = 5;
-
-  // Access value by key using "$c[$k]" syntax; note that "$c[$k]"
-  // syntax will throw an OutOfBoundsException if the key is not present
-  echo $map["A"] . "\n";
-
-  // Access value by key via get(); null will be returned if the key is
-  // not present
-  echo $map->get("B") . "\n\n";
-
-  // Remove element by key; if the key is not present the remove()
-  // method will do nothing and return
-  $map->remove("B");
-
-  // Testing if a key is present
-  echo ($map->contains("A") ? "true" : "false") . "\n\n";
-
-  // Iterate over the values using "foreach ($c as $v)" syntax
-  foreach ($map as $v) {
-    echo $v . "\n";
-  }
-
-  // Iterate over the keys and values using "foreach ($c as $k=>$v)"
-  // syntax
-  foreach ($map as $k => $v) {
-    echo $k . ": " . $v . "\n";
-  }
-}
-
-main(); // REMEMBER, insertion order is maintained.
-]]>
-        </programlisting>
+        <programlisting role="php" location="hack.collections6.php" />
         &example.outputs;
         <screen>
 <![CDATA[
@@ -381,18 +213,7 @@ E: 5
         </screen>
       </informalexample>
             <informalexample>
-        <programlisting role="php">
-<![CDATA[
-<?hh
-
-function main() {
-  $m = Map {1 => 'a', 2 => 'b', 3 => 'c', 4 => 'd'};
-  var_dump($m->filterWithKey(function($k, $v) { return $k >= 3; }));
-}
-
-main();
-]]>
-        </programlisting>
+        <programlisting role="php" location="hack.collections7.php" />
         &example.outputs;
         <screen>
 <![CDATA[
@@ -416,38 +237,7 @@ object(Map)#1 (2) {
     <para>
       Here is a basic example showing how <literal>Set</literal> can be used:
             <informalexample>
-        <programlisting role="php">
-<![CDATA[
-<?hh
-
-function main() {
-  // Create a Set using collection literal syntax
-  $set = Set {"A", "B"};
-
-  // Add elements using "$c[]=$v" syntax
-  $set[] = "C";
-
-  // This will have no effect since "B" exists already
-  $set[] = "B";
-
-  // Add elements using the add() method
-  $set->add("D")->add("E");
-
-  // Remove element by value
-  $set->remove("B");
-
-  // Testing if a value is present
-  echo ($set->contains("A") ? "true" : "false") . "\n\n";
-
-  // Iterate over the values using "foreach ($c as $v)" syntax
-  foreach ($set as $item) {
-    echo $item . "\n";
-  }
-}
-
-main();
-]]>
-        </programlisting>
+        <programlisting role="php" location="hack.collections8.php" />
         &example.outputs;
         <screen>
 <![CDATA[
@@ -464,20 +254,7 @@ E
     <para>
       Here is an example of taking the difference between two sets using <literal>removeAll</literal>
       <informalexample>
-        <programlisting role="php">
-<![CDATA[
-<?hh
-function foo(): void {
-  $s = Set {2, 3, 4};
-  $v = Set {2, 3, 5};
-  $s->add(6);
-  $z = $s->RemoveAll($v); //difference between $v and $s
-  var_dump($s, $v, $z);
-}
-
-foo();
-]]>
-        </programlisting>
+        <programlisting role="php" location="hack.collections9.php" />
         &example.outputs;
         <screen>
 <![CDATA[
@@ -508,23 +285,7 @@ object(Set)#1 (2) {
     <para>
       Here is a simple example showing how <literal>Pair</literal> can be used:
       <informalexample>
-        <programlisting role="php">
-<![CDATA[
-<?hh
-
-function main() {
-  $p = Pair {7, 'a'};
-  echo $p[0] . "\n";
-  echo $p[1] . "\n";
-  echo "\n";
-  foreach ($p as $val) {
-    echo $val . "\n";
-  }
-}
-
-main();
-]]>
-        </programlisting>
+        <programlisting role="php" location="hack.collections10.php" />
         &example.outputs;
         <screen>
 <![CDATA[
@@ -666,12 +427,7 @@ a
     <para>
       Hack collections has introduced a literal syntax in order to make it easy to create a new collection without the need for temporary arrays or helper functions. HHVM natively understands collection literals. Here is an example:
       <informalexample>
-        <programlisting role="php">
-<![CDATA[
-<?hh
-$vec = Vector {1, 2, 3};
-]]>
-        </programlisting>
+        <programlisting role="php" location="hack.collections11.php" />
         <para>
             The code above requires no hidden arrays or helper functions to build a Vector containing 1, 2, and 3.
         </para>
@@ -680,22 +436,7 @@ $vec = Vector {1, 2, 3};
     <para>
       Here are some basic examples showing how collection literal syntax can be used:
       <informalexample>
-        <programlisting role="php">
-  <![CDATA[
-<?hh
-
-// This example creates collections using literal syntax and
-// stores these collections in normal local variables
-function f() {
-  $vec = Vector {1, 2, 3};
-  var_dump($vec);
-  $map = Map {42 => 'foo', 73 => 'bar', 144 => 'baz'};
-  var_dump($map);
-}
-
-f();
-  ]]>
-        </programlisting>
+        <programlisting role="php" location="hack.collections12.php" />
         &example.outputs;
         <screen>
   <![CDATA[
@@ -719,29 +460,7 @@ object(Map)#1 (3) {
         </screen>
       </informalexample>
       <informalexample>
-        <programlisting role="php">
-  <![CDATA[
-  <?hh
-class C {
-  public static $bar = Map {'a' => 1, 'b' => 2};
-
-  // Each instance of class C will get its own copy
-  // of Vector {1, 2, 3} in property $foo
-  public $foo = Vector {1, 2, 3};
-
-  // Each invocation of h() with no parameters will
-  // return a distinct empty Vector
-  function h($x = Vector {}) {
-    return $x;
-  }
-
-  function j() {
-    static $y = Map {1 => 'a', 2 => 'b'};
-    return $y;
-  }
-}
-  ]]>
-        </programlisting>
+        <programlisting role="php" location="hack.collections13.php" />
       </informalexample>
     </para>
     <para>
@@ -1003,23 +722,7 @@ class C {
     <sect2 xml:id="hack.collections.examples.collectionsareobjects">
       <title>Collections are objects</title>
             <informalexample>
-        <programlisting role="php">
-<![CDATA[
-<?hh
-
-function main() {
-  // Collections are objects.
-  $v = Vector {1, 2, 3};
-  echo is_array($v) ? '$v is an array' : '$v is not an array';
-  echo "\n";
-  echo is_object($v) ? '$v is an object' : '$v is not an object';
-  echo "\n";
-  var_dump($v);
-}
-
-main();
-]]>
-        </programlisting>
+        <programlisting role="php" location="hack.collections14.php" />
         &example.outputs;
         <screen>
 <![CDATA[
@@ -1040,33 +743,7 @@ object(Vector)#1 (3) {
     <sect2 xml:id="hack.collections.examples.referencesemantics">
       <title>Reference-like Semantics</title>
       <informalexample>
-        <programlisting role="php">
-<![CDATA[
-<?hh
-// Like all objects, collections has "reference-like"
-// semantics for assignment, parameter passing, and
-// foreach.
-function foo($v) {
-  $v[1] = 7;
-}
-
-function main() {
-  $v1 = Vector {1, 2, 3};
-  $v2 = $v1;
-  foo($v2);
-  var_dump($v1);
-  echo "\n";
-  foreach ($v1 as $key => $value) {
-    echo $key . " => " . $value . "\n";
-    if ($key == 0) {
-      $v1[2] = 9;
-    }
-  }
-}
-
-main();
-]]>
-        </programlisting>
+        <programlisting role="php" location="hack.collections15.php" />
         &example.outputs;
         <screen>
 <![CDATA[
@@ -1089,25 +766,7 @@ object(Vector)#1 (3) {
     <sect2 xml:id="hack.collections.examples.iterator">
       <title>Iterator Invalidation</title>
       <informalexample>
-        <programlisting role="php">
-<![CDATA[
-<?hh
-// Certain kinds of modification, such as
-// removing an element, will cause iterators to
-// be invalidated (including foreach loops).
-function main() {
-  $m = Map {'a' => 1, 'b' => 2, 'c' => 3, 'd' => 4};
-  foreach ($m as $key => $value) {
-    echo $key . " => " . $value . "\n";
-    if ($key == 'a') {
-      $m->remove('d');
-    }
-  }
-}
-
-main();
-]]>
-        </programlisting>
+        <programlisting role="php" location="hack.collections16.php" />
         &example.outputs;
         <screen>
 <![CDATA[
@@ -1120,37 +779,7 @@ HipHop Fatal error: Uncaught exception 'InvalidOperationException' with message 
     <sect2 xml:id="hack.collections.examples.keynotpresent">
       <title>Key Not Present</title>
       <informalexample>
-        <programlisting role="php">
-<![CDATA[
-<?hh
-// Using "$c[$k]" syntax or using the at() method
-// will throw an exception if the specified key is
-// not present. Using the get() method will return
-// NULL if the specified key is not present.
-function main() {
-  $m = Vector {};
-  try {
-    var_dump($m[0]);
-  } catch (OutOfBoundsException $e) {
-    echo "Caught exception 1\n";
-  }
-
-  try {
-    var_dump($m->at(0));
-  } catch (OutOfBoundsException $e) {
-    echo "Caught exception 2\n";
-  }
-
-  try {
-    var_dump($m->get(0));
-  } catch (OutOfBoundsException $e) {
-    echo "Caught exception 3\n";
-  }
-}
-
-main();
-]]>
-        </programlisting>
+        <programlisting role="php" location="hack.collections17.php" />
         &example.outputs;
         <screen>
 <![CDATA[
@@ -1164,22 +793,7 @@ NULL
     <sect2 xml:id="hack.collections.examples.const">
       <title>Const Interfaces</title>
             <informalexample>
-        <programlisting role="php">
-<![CDATA[
-<?hh
-// The "read-only" style interfaces (such as ConstMap)
-// can be used to indicate that a function will not
-// modify the collection.
-function foo(ConstMap<string,int> $m, string $k): int {
-  echo $m[$k] . "\n";
-}
-
-function main() {
-  $m = Map {'a' => 1, 'b' => 2, 'c' => 3, 'd' => 4};
-  foo($m, 'c');
-}
-]]>
-        </programlisting>
+        <programlisting role="php" location="hack.collections18.php" />
         &example.outputs;
         <screen>
 <![CDATA[
@@ -1191,20 +805,7 @@ function main() {
     <sect2 xml:id="hack.collections.examples.keys">
       <title><literal>keys()</literal> method</title>
       <informalexample>
-        <programlisting role="php">
-<![CDATA[
-<?hh
-// The keys() method can be used on Vector and Map
-// to get a Vector of the keys.
-function main() {
-  $m = Map {'a' => 1, 'b' => 2, 'c' => 3, 'd' => 4};
-  $v = $m->keys();
-  var_dump($v);
-}
-
-main();
-]]>
-        </programlisting>
+        <programlisting role="php" location="hack.collections19.php" />
         &example.outputs;
         <screen>
 <![CDATA[
@@ -1225,22 +826,7 @@ object(Vector)#2 (4) {
     <sect2 xml:id="hack.collections.examples.mapmethod">
       <title><literal>map()</literal> method</title>
       <informalexample>
-        <programlisting role="php">
-<![CDATA[
-<?hh
-// The map() method can be used on any collection to
-// get a concrete collection (usually the same type as
-// the original) containing each value with some
-// operation applied.
-function main() {
-  $m = Map {'a' => 1, 'b' => 2, 'c' => 3, 'd' => 4};
-  $m2 = $m->map(function(int $x):int { return $x + 10; });
-  var_dump($m2);
-}
-
-main();
-]]>
-        </programlisting>
+        <programlisting role="php" location="hack.collections20.php" />
         &example.outputs;
         <screen>
 <![CDATA[
@@ -1261,21 +847,7 @@ object(Map)#2 (4) {
     <sect2 xml:id="hack.collections.examples.filter">
       <title><literal>filter()</literal> method</title>
       <informalexample>
-        <programlisting role="php">
-<![CDATA[
-// The filter() method can be used on any collection to
-// get a concrete collection (usually the same type as
-// the original) containing the values that meet some
-// condition.
-function main() {
-  $m = Map {'a' => 1, 'b' => 2, 'c' => 3, 'd' => 4};
-  $m2 = $m->filter(function(int $x):bool { return $x % 2 == 0; });
-  var_dump($m2);
-}
-
-main();
-]]>
-        </programlisting>
+        <programlisting role="php" location="hack.collections21.php" />
         &example.outputs;
         <screen>
 <![CDATA[
@@ -1292,24 +864,7 @@ object(Map)#2 (2) {
     <sect2 xml:id="hack.collections.examples.iterables">
       <title>Iterables</title>
       <informalexample>
-        <programlisting role="php">
-<![CDATA[
-<?hh
-// All Iterables support map() and filter() to support
-// chaining.
-
-function main() {
-  $m = Map {'a' => 1, 'b' => 2, 'c' => 3, 'd' => 4};
-  $result = $m->filter(function(int $x):bool { return $x % 2 == 0; })
-              ->map(function(int $x):int { return $x + 1; });
-  foreach ($result as $key => $value) {
-    echo $key . " => " . $value . "\n";
-  }
-}
-
-main();
-]]>
-        </programlisting>
+        <programlisting role="php" location="hack.collections22.php" />
         &example.outputs;
         <screen>
 <![CDATA[
@@ -1322,35 +877,7 @@ d => 5
     <sect2 xml:id="hack.collections.examples.lazyviews">
       <title>Lazy Views</title>
       <informalexample>
-        <programlisting role="php">
-<![CDATA[
-<?hh
-// The Iterable objects returned by view() and
-// items() are 'lazy' views of the original
-// collection; this means that if a value in the
-// underlying collection is changed, the lazy view
-// will reflect this change. Also, certain kinds
-// of modifications that invalidate iterators
-// (such as removing an element) will also
-// invalidate lazy views.
-function main() {
-  $m = Map {'a' => 1, 'b' => 2, 'c' => 3, 'd' => 4};
-  $iterable = $m->items();
-  $m['a'] = 100;
-  $i = 0;
-  foreach ($iterable as $t) {
-    echo $t[0] . " => " . $t[1] . "\n";
-    if ($i == 2) {
-      echo "Removing key 'a'\n";
-      $m->remove('a');
-    }
-    ++$i;
-  }
-}
-main();
-
-]]>
-        </programlisting>
+        <programlisting role="php" location="hack.collections23.php" />
         &example.outputs;
         <screen>
 <![CDATA[
@@ -1366,18 +893,7 @@ HipHop Fatal error: Uncaught exception 'InvalidOperationException' with message 
     <sect2 xml:id="hack.collections.examples.vector">
       <title><literal>Vector</literal></title>
       <informalexample>
-        <programlisting role="php">
-<![CDATA[
-<?hh
-function main() {
-  $vec = Vector {11};
-  $vec->addAll(Vector {22, 33, 44});
-  var_dump($vec);
-}
-
-main();
-]]>
-        </programlisting>
+        <programlisting role="php" location="hack.collections24.php" />
         &example.outputs;
         <screen>
 <![CDATA[
@@ -1398,17 +914,7 @@ object(Vector)#1 (4) {
     <sect2 xml:id="hack.collections.examples.map">
       <title><literal>Map</literal></title>
       <informalexample>
-        <programlisting role="php">
-<![CDATA[
-function main() {
-  $map = Map {'a' => 11};
-  $map->setAll(Map {'b' => 22, 'c' => 33});
-  var_dump($map);
-}
-
-main();
-]]>
-        </programlisting>
+        <programlisting role="php" location="hack.collections25.php" />
         &example.outputs;
         <screen>
 <![CDATA[
@@ -1427,21 +933,7 @@ object(Map)#1 (3) {
     <sect2 xml:id="hack.collections.examples.buildingconcretecollection">
       <title>Building a Concrete Collection</title>
       <informalexample>
-        <programlisting role="php">
-<![CDATA[
-<?hh
-// A concrete collection can be built from an
-// Iterable or KeyedIterable by passing it to a
-// collection constructor.
-function main() {
-  $m = Map {'a' => 11, 'b' => 22, 'c' => 33};
-  $v = new Vector($m);
-  var_dump($v);
-}
-
-main();
-]]>
-        </programlisting>
+        <programlisting role="php" location="hack.collections26.php" />
         &example.outputs;
         <screen>
 <![CDATA[
@@ -1460,31 +952,7 @@ object(Vector)#1 (3) {
     <sect2 xml:id="hack.collections.examples.generalinterface">
       <title>General Collection Interfaces</title>
       <informalexample>
-        <programlisting role="php">
-<![CDATA[
-<?hh
-// Example showing add(), items(), and the general collection interfaces
-function process_elements<T>(ConstCollection<T> $in): OutputCollection<T> {
-  $out = Vector {};
-  if (!($in instanceof ConstVector)) {
-   return null;
-  }
-  foreach ($in->items() as $elm) {
-    if ($elm > 1) {
-      $out->add($elm);
-    }
-  }
-  return $out;
-}
-
-function main(): void {
-  $x = Vector {1, 2, 3};
-  var_dump(process_elements($x));
-}
-
-main();
-]]>
-        </programlisting>
+        <programlisting role="php" location="hack.collections27.php" />
         &example.outputs;
         <screen>
 <![CDATA[
@@ -1501,23 +969,7 @@ object(HH\Vector)#2 (2) {
     <sect2 xml:id="hack.collections.examples.generators">
       <title>Generators</title>
       <informalexample>
-        <programlisting role="php">
-<![CDATA[
-<?hh
-// Generators implement the Iterator interface;
-// a generator can be passed anywhere where an
-// Iterator is expected.
-function foo(Iterator<int> $it) { .. }
-function g() { yield 1; yield 2; }
-
-function main() {
-  $gen = g();
-  foo($gen);
-}
-
-main();
-]]>
-        </programlisting>
+        <programlisting role="php" location="hack.collections28.php" />
       </informalexample>
     </sect2>
     <sect2 xml:id="hack.collections.examples.indexish">
@@ -1525,100 +977,25 @@ main();
       <para>
         <emphasis>Real-world, existing code</emphasis>
         <informalexample>
-          <programlisting role="php">
-<![CDATA[
-<?hh
-// This function does a relational join on two mappish style arrays into one
-// mappish style array
-function array_compose($f, $g): array {
-  $ret = array();
-  foreach ($f as $x => $y) {
-    if (array_key_exists($y, $g)) {
-      $ret[$x] = $g[$y];
-    }
-  }
-  return $ret;
-}
-]]>
-          </programlisting>
+          <programlisting role="php" location="hack.collections29.php" />
         </informalexample>
       </para>
       <para>
         <emphasis>Possible <literal>Indexish</literal> modification #1</emphasis>
         <informalexample>
-          <programlisting role="php">
-  <![CDATA[
-<?hh
-// Use Indexish to be able to pass Map or Vector, in addition
-// to arrays, to this function and return an array like before. Notice how
-// foreach and bracket syntax is being used.
-function array_compose<T1, T2, T3>(
-  Indexish<T1, T2> $f,
-  Indexish<T2, T3> $g
-): array<T1, T3> {
-  $ret = array();
-  foreach ($f as $x => $y) {
-    if (array_key_exists($y, $g)) {
-      $ret[$x] = $g[$y];
-    }
-  }
-  return $ret;
-}
-  ]]>
-          </programlisting>
+          <programlisting role="php" location="hack.collections30.php" />
         </informalexample>
       </para>
       <para>
         <emphasis>Possible <literal>Indexish</literal> modification #2</emphasis>
         <informalexample>
-          <programlisting role="php">
-<![CDATA[
-<?hh
-// Use Indexish to be able to pass Map or Vector in addition
-// to arrays, to this function and return a Map, which is what this
-// function is actually returning in practice. Notice how
-// foreach and bracket syntax is being used.
-function map_compose<T1, T2, T3>(
-  Indexish<T1, T2> $f,
-  Indexish<T2, T3> $g
-): Map<T1, T3> {
-  $ret = Map {};
-  foreach ($f as $x => $y) {
-    if (array_key_exists($y, $g)) {
-      $ret[$x] = $g[$y];
-    }
-  }
-  return $ret;
-}
-]]>
-          </programlisting>
+          <programlisting role="php" location="hack.collections31.php" />
         </informalexample>
       </para>
       <para>
         <emphasis>Test Code</emphasis>
         <informalexample>
-          <programlisting role="php">
-<![CDATA[
-<?hh
-// Copyright 2004-present Facebook. All Rights Reserved.
-
-function main_indexish(): void {
-  $arr1 = array(1, 2, 3, 4, 5);
-  $arr2 = array(6, 7, 8, 9, 10);
-  var_dump(array_compose($arr1, $arr2)); // original
-  var_dump(array_compose($arr1, $arr2)); // modified
-  var_dump(map_compose($arr1, $arr2));
-
-  $map1 = Map {0 => 1, 1 => 2, 2 => 3, 3 => 4, 4 => 5};
-  $map2 = Map {0 => 6, 1 => 7, 2 => 8, 3 => 9, 4 => 10};
-  var_dump(array_compose($map1, $map2)); // original
-  var_dump(array_compose($map1, $map2)); // modified
-  var_dump(map_compose($map1, $map2));
-}
-
-main_indexish()
-]]>
-          </programlisting>
+          <programlisting role="php" location="hack.collections32.php" />
           &example.outputs;
           <screen>
 <![CDATA[

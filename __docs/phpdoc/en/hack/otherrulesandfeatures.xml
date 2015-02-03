@@ -9,27 +9,7 @@
     <para>
       Hack provides the capability to indicate that a function takes a variable number of arguments. This is done using <literal>...</literal> (three dots).
       <informalexample>
-        <programlisting role="php">
-<![CDATA[
-<?hh
-
-function var_foo(int $x, ...) : int {
-  // use func_get_args() to get the actual arguments returned as an array
-  // Remember, in this case, the $x will be counted as an argument too.
-  $arg_arr = func_get_args();
-  return $x + count($arg_arr);
-}
-
-function main_vna() {
-  $y = var_foo(3, 2, 'hi', array(), 1.3); // $y = 8 (3+5)
-  $z = var_foo(3); // $z = 4 (3+1)
-  echo $y."\n";
-  echo $z;
-}
-
-main_vna();
-]]>
-        </programlisting>
+        <programlisting role="php" location="hack.otherrulesandfeatures1.php" />
         <para>
           The general gotcha here will be that any explicitly defined parameters are counted in the call to <literal>func_get_args()</literal>.
         </para>
@@ -38,26 +18,7 @@ main_vna();
     <para>
       Here is another example:
       <informalexample>
-        <programlisting role="php">
-<![CDATA[
-<?hh
-
-function sum(...): int {
-  $s = 0;
-  foreach (func_get_args() as $e) {
-    $s += $e;
-  }
-  return $s;
-}
-
-function main_vna() {
-  $x = sum(3, 2, 5, 3, 1.3);
-  echo $x; //$x = 14.3
-}
-
-main_vna();
-]]>
-        </programlisting>
+        <programlisting role="php" location="hack.otherrulesandfeatures2.php" />
         <para>
           With the above example, HHVM will give an error (probably <literal>Invalid Operand Type</literal>) if anything &quot;non-summable&quot; (e.g., <literal>array()</literal>) is passed to <literal>sum()</literal> as a variable argument.
         </para>
@@ -78,14 +39,7 @@ main_vna();
     <para>
       In PHP, <literal>float</literal> and <literal>int</literal> are incompatible at the type hint level:
       <informalexample>
-        <programlisting role="php">
-<![CDATA[
-<?php
-function f1(float $x) {
-}
-f1(10);
-]]>
-        </programlisting>
+        <programlisting role="php" location="hack.otherrulesandfeatures3.php" />
         &example.outputs;
         <screen>
 <![CDATA[
@@ -97,14 +51,7 @@ HipHop Fatal error: Argument 1 passed to f1() must be an instance of float, int 
     <para>
       This incompatibility implies that the distinction between <literal>int</literal> and <literal>float</literal> must be tracked. However, some math operators have a return type which depends on their input:
       <informalexample>
-        <programlisting role="php">
-<![CDATA[
-<?php
-$x = 10;
-echo gettype($x/2), "\n";
-echo gettype($x/3), "\n";
-]]>
-        </programlisting>
+        <programlisting role="php" location="hack.otherrulesandfeatures4.php" />
         &example.outputs;
         <screen>
 <![CDATA[
@@ -147,23 +94,7 @@ double
         </listitem>
       </orderedlist>
       <informalexample>
-        <programlisting role="php">
-<![CDATA[
-<?hh
-
-function f1(float $x) {
-}
-
-function f2(int $x, float $y): int {
-  $a = 2 * $x; // $a is an int
-  $b = 2 * $y; // $b is a float
-  $c = $x / $a; // $c is a num
-  $d = $c * $y; // $d is a float
-  f1($d);  // this is allowed
-  return (int) $c;  // $c needs to be cast here
-}
-]]>
-        </programlisting>
+        <programlisting role="php" location="hack.otherrulesandfeatures5.php" />
       </informalexample>
     </para>
     <sect2 xml:id="hack.otherrulesandfeatures.numberhandling.equivalenttypes">
@@ -216,46 +147,14 @@ function f2(int $x, float $y): int {
       <para>
         Assume a nullable <literal>?int</literal> variable and a function which takes an <literal>int</literal>. There are two choices for calling this function with a nullable. <literal>?int</literal> can be cast to an <literal>int</literal>, in which case <literal>null</literal> will be converted to 0. Or code can be written like this:
         <informalexample>
-          <programlisting role="php">
-<![CDATA[
-<?hh
-
-function foo(int $y): void { }
-
-function bar(?int $x): void {
-  if (is_int($x)) {
-    foo($x);
-  } else {
-    ...
-  }
-}
-]]>
-          </programlisting>
+          <programlisting role="php" location="hack.otherrulesandfeatures6.php" />
         </informalexample>
       </para>
       <para>
         When <literal>is_int($x)</literal> is written inside a conditional statement, the Hack type checker will know that within
         the <literal>if</literal>/<literal>then</literal> branch, <literal>$x</literal> is an <literal>int</literal>. In the <literal>if</literal>/<literal>else</literal> branch, the type will be <literal>null</literal>. Here is another example:
         <informalexample>
-          <programlisting role="php">
-<![CDATA[
-<?hh
-
-class Foo {}
-class Bar extends Foo { public function blah(): void {} }
-
-function foo(Foo $x): void {
-  if ($x instanceof Bar) {
-    // $x is now a Bar
-    $x->blah();
-    ...
-  } else {
-    // $x is still just a Foo
-    ...
-  }
-}
-]]>
-          </programlisting>
+          <programlisting role="php" location="hack.otherrulesandfeatures7.php" />
         </informalexample>
       </para>
     </sect2>
@@ -267,71 +166,19 @@ function foo(Foo $x): void {
       <para>
         This code is fine:
         <informalexample>
-          <programlisting role="php">
-<![CDATA[
-<?hh
-
-class Foo {
-  public function f1(?int $x): void {
-    if (is_int($x)) {
-      $this->doSomething();
-      $y = $x * 2;
-    }
-  }
-
-  public function doSomething(): void {}
-}
-]]>
-          </programlisting>
+          <programlisting role="php" location="hack.otherrulesandfeatures8.php" />
         </informalexample>
       </para>
       <para>
         This code however is incorrect:
         <informalexample>
-          <programlisting role="php">
-<![CDATA[
-<?hh
-
-class Foo {
-  protected ?int $x;
-
-  public function f1(): void {
-    if (is_int($this->x)) {
-      $this->doSomething();
-      // can no longer assume $this->x is an int, doSomething might have changed it back to null.
-      // note: can't analyze doSomething() because a child class of Foo might change its behavior.
-      $y = $this->x * 2;
-    }
-  }
-
-  public function doSomething(): void {}
-}
-]]>
-          </programlisting>
+          <programlisting role="php" location="hack.otherrulesandfeatures9.php" />
         </informalexample>
       </para>
       <para>
         Here is a possible fix to the above problem:
         <informalexample>
-          <programlisting role="php">
-<![CDATA[
-<?hh
-
-class Foo {
-  protected ?int $x;
-
-  public function f1(): void {
-    $x = $this->x;
-    if (is_int($x)) {
-      $this->doSomething();
-      $y = $x * 2;
-    }
-  }
-
-  public function doSomething(): void {}
-  }
-]]>
-          </programlisting>
+          <programlisting role="php" location="hack.otherrulesandfeatures10.php" />
         </informalexample>
       </para>
     </sect2>
@@ -342,21 +189,7 @@ class Foo {
     <para>
       Hack enforces strict rules regarding class initialization. The following piece of code is correct:
       <informalexample>
-        <programlisting role="php">
-<![CDATA[
-<?hh
-
-abstract class A {
-  protected int $x;
-}
-
-class B extends A {
-  public function __construct() {
-    $this->x = 10;
-  }
-}
-]]>
-        </programlisting>
+        <programlisting role="php" location="hack.otherrulesandfeatures11.php" />
       </informalexample>
     </para>
     <para>
@@ -366,83 +199,30 @@ class B extends A {
         <para>
           In the non-abstract case, the following piece of code is accepted:
         </para>
-        <programlisting role="php">
-<![CDATA[
-<?hh
-class Foo {
-  protected int $x = 10;
-}
-]]>
-        </programlisting>
+        <programlisting role="php" location="hack.otherrulesandfeatures12.php" />
         <para>
           However, this piece of code is not accepted:
         </para>
-        <programlisting role="php">
-<![CDATA[
-<?hh
-class Foo {
-  protected int $x;
-}
-]]>
-        </programlisting>
+        <programlisting role="php" location="hack.otherrulesandfeatures13.php" />
       </informalexample>
     </para>
     <para>
       Again, the type checker will complain about the &quot;class member is not always properly initialized&quot;. The solution is to write the accepted case above or use <literal>__construct()</literal>:
       <informalexample>
-        <programlisting role="php">
-<![CDATA[
-<?hh
-class Foo {
-  protected int $x;
-
-  public function __construct() {
-    $this->x = 10;
-  }
-}
-]]>
-        </programlisting>
+        <programlisting role="php" location="hack.otherrulesandfeatures14.php" />
       </informalexample>
     </para>
     <para>
       There is another implication here. A <literal>protected</literal> or a <literal>public</literal> instance method cannot be
       called before the constructor has finished initializing the member variables. The following piece of code is correct:
       <informalexample>
-        <programlisting role="php">
-<![CDATA[
-<?hh
-class Foo {
-  protected int $x;
-
-  public function __construct() {
-    $this->x = 10;
-    $this->foo();
-  }
-  protected function foo() {
-    ...
-  }
-}
-]]>
-        </programlisting>
+        <programlisting role="php" location="hack.otherrulesandfeatures15.php" />
       </informalexample>
     </para>
     <para>
       Finally, note that class initialization does not apply to nullable types. So, the following code is correct and acceptable:
       <informalexample>
-        <programlisting role="php">
-<![CDATA[
-<?hh
-class Foo {
-  protected ?int $x;
-
-  // no __construct() needed
-
-  protected function foo() {
-    ...
-  }
-}
-]]>
-        </programlisting>
+        <programlisting role="php" location="hack.otherrulesandfeatures16.php" />
       </informalexample>
     </para>
   </sect1>
@@ -460,38 +240,7 @@ class Foo {
      <para>
       Take the following example:
       <informalexample>
-        <programlisting role="php">
-<![CDATA[
-<?php
-
-function cufun1(string $x): string {
-  return $x.$x;
-}
-
-function cufun2(): (function(string): string) {
-  return function($x) { return $x.$x; };
-}
-
-class CUFunFunFun {
-  public function testFun1() {
-    var_dump(call_user_func('cufun1', "blah"));
-  }
-
-  public function testFun2() {
-    $x = cufun2();
-    var_dump($x('blah'));
-  }
-}
-
-function main_cufff() {
-  $f = new CUFunFunFun();
-  $f->testFun1();
-  $f->testFun2();
-}
-
-main_cufff();
-]]>
-        </programlisting>
+        <programlisting role="php" location="hack.otherrulesandfeatures17.php" />
         <para>
           The above code shows the use of <literal>call_user_func()</literal> to call <literal>cufun1()</literal> from the function <literal>testFun1()</literal>. This code runs perfectly fine in HHVM. But, if <literal>&lt;?hh</literal> was used instead of <literal>&lt;?php</literal>, this code would not pass the Hack type checker:
         </para>
@@ -505,11 +254,7 @@ This call is invalid, this is not a function, it is a string
         <para>
           Hack throws an error here because its type inference and safety cannot be guaranteed when using a <literal>string</literal> as the function name to <literal>call_user_func()</literal>. For example, imagine changing the <literal>call_user_func()</literal> line to be:
         </para>
-        <programlisting role="php">
-<![CDATA[
-var_dump(call_user_func('cufun1', 3));
-]]>
-        </programlisting>
+        <programlisting role="php" location="hack.otherrulesandfeatures18.php" />
         <para>
           Normally Hack would catch such a problem (passing an <literal>int</literal> to a function that takes a <literal>string</literal>), but Hack cannot provide these guarantees with <literal>call_user_func()</literal>. Thus an HHVM fatal error will be thrown *<emphasis>at runtime</emphasis>*.
         </para>
@@ -525,47 +270,11 @@ HipHop Fatal error: Argument 1 passed to cufun1() must be an instance of string,
     <para>
      In order to make these type of callbacks type checkable and type-safe, Hack has introduced <function>fun</function>. <function>fun</function> is a special function used to create a &quot;pointer&quot; to a function in a type-safe way. <function>fun</function> takes a <literal>string</literal> corresponding to the name of the function to be called. It returns a &quot;type-safe&quot; <literal>string</literal> that can be used in, for example, <literal>call_user_func()</literal>. Building upon the example above to use <function>fun</function>:
       <informalexample>
-        <programlisting role="php">
-<![CDATA[
-<?hh
-
-function fun1(string $x): string {
-  return $x.$x;
-}
-
-function fun2(): (function(string): string) {
-  return fun('f1');
-}
-
-class FunFunFun {
-  public function testFun1() {
-    $x = fun('fun1');
-    var_dump(call_user_func($x, "blah"));
-  }
-
-  public function testFun2() {
-    $x = fun2();
-    var_dump($x('blah'));
-  }
-}
-
-function main_fff() {
-  $f = new FunFunFun();
-  $f->testFun1();
-  $f->testFun2();
-}
-
-main_fff();
-]]>
-        </programlisting>
+        <programlisting role="php" location="hack.otherrulesandfeatures19.php" />
         <para>
          Before calling <literal>call_user_func()</literal>, <function>fun</function> is called. Returned from <function>fun</function> is a <literal>string()</literal> that can be used and analyzed by the Hack type checker. This code runs exactly the same in HHVM as the first example, but, now the Hack type checker can catch typing errors. In <literal>testFun1()</literal>, imagine passing an <literal>int</literal> instead of a <literal>string</literal>. Hack will throw an error.
         </para>
-        <programlisting role="php">
-<![CDATA[
-var_dump(call_user_func($x, 3));
-]]>
-        </programlisting>
+        <programlisting role="php" location="hack.otherrulesandfeatures20.php" />
         &example.outputs;
         <screen>
 <![CDATA[
@@ -582,28 +291,7 @@ Invalid argument
     <para>
      <emphasis>It is important to note</emphasis> that the argument to <function>fun</function> must be a single-quoted, constant literal string representing a valid function name. For example:
       <informalexample>
-        <programlisting role="php">
-<![CDATA[
-<?hh
-
-function foo(string $var): void {
-  echo $var."\n";
-}
-
-function main(): void {
-  $name='foo';
-  $func1 = fun($name); // the Hack type checker would balk
-  $func1('bar');
-
-  $func2 = fun('foo'); // This is correct
-  $func2('biz');
-
-  // func2('baz'); //this will not work
-}
-
-main();
-]]>
-        </programlisting>
+        <programlisting role="php" location="hack.otherrulesandfeatures21.php" />
 		&example.outputs;
 		<screen>
 <![CDATA[
@@ -628,21 +316,7 @@ biz
     <para>
       Hack provides the ability to annotate return types on functions. This brings with it another added feature. Under a specific circumstance, Hack provides the ability to override functions based on just return type. That circumstance is a subclass overriding a method in a parent class with a return type compatible with the return type of the parent class. For example:
       <informalexample>
-        <programlisting role="php">
-<![CDATA[
-<?hh
-class Foo {}
-class FooChild extends Foo {}
-
-class AA {
-  protected function bar(): Foo { return new Foo(); }
-}
-
-class BB extends AA {
-  protected function bar(): FooChild { return new FooChild(); }
-}
-]]>
-        </programlisting>
+        <programlisting role="php" location="hack.otherrulesandfeatures22.php" />
       </informalexample>
     </para>
     <para>
@@ -651,43 +325,13 @@ class BB extends AA {
     <para>
       Here are some <emphasis>unsupported</emphasis> examples:
       <informalexample>
-        <programlisting role="php">
-<![CDATA[
-<?hh
-
-class Foo {}
-class FooChild extends Foo {}
-
-class AA {
-  protected function bar(): Foo { return new Foo(); }
-}
-
-class BB extends AA {
-  protected function bar(): int { return 1; }
-}
-]]>
-        </programlisting>
+        <programlisting role="php" location="hack.otherrulesandfeatures23.php" />
         <para>
           In the above, Hack will balk since <literal>int</literal> and <literal>Foo</literal> are not compatible types.
         </para>
       </informalexample>
       <informalexample>
-        <programlisting role="php">
-<![CDATA[
-<?hh
-
-class Foo {}
-class FooChild extends Foo {}
-
-class AA {
-  protected function bar(): FooChild { return new FooChild(); }
-}
-
-class BB extends AA {
-  protected function bar(): Foo { return new Foo(); }
-}
-]]>
-        </programlisting>
+        <programlisting role="php" location="hack.otherrulesandfeatures24.php" />
         <para>
           In the above, Hack will again balk since returning <literal>Foo</literal> from <literal>BB:bar()</literal> is not compatible with <literal>AA:bar()</literal> returning <literal>FooChild</literal>. The other way around, as shown above, does, of course, make Hack happy.
         </para>
@@ -697,15 +341,7 @@ class BB extends AA {
       <para>
         Overloading on return type within the same class is not supported by Hack (in fact, like PHP, no overloading exists at all; thus, this holds for function arguments as well). For example:
         <informalexample>
-          <programlisting role="php">
-<![CDATA[
-<?hh
-class AA {
-  function bar(): string { return 's';}
-  function bar(): int { return 1;}
-}
-]]>
-          </programlisting>
+          <programlisting role="php" location="hack.otherrulesandfeatures25.php" />
         </informalexample>
       </para>
     </note>
@@ -716,44 +352,7 @@ class AA {
     <para>
       There are times when it is desirable to have an object be type checked as a more specific type than it is currently declared. For example, an interface needs to be type checked as one of its implementing classes. <literal>invariant()</literal> is used to help the Hack type checker make this more specific type determination.
       <informalexample>
-        <programlisting role="php">
-<![CDATA[
-<?hh
-
-interface I {
-  public function foo();
-}
-
-class A implements I {
-  public function foo(): void {
-    echo "A";
-  }
-}
-
-class B implements I {
-  public function foo(): void {
-    echo "B";
-  }
-
-  public function yay(): void {
-    echo "B->yay!";
-  }
-}
-
-function baz(int $a): I {
-  return $a === 1 ? new A() : new B();
-}
-
-function bar(): B {
-  $iface = baz(2);
-  invariant($iface instanceof B, "must be a B");
-  $iface->yay();
-  return $iface;
-}
-
-bar();
-]]>
-      </programlisting>
+        <programlisting role="php" location="hack.otherrulesandfeatures26.php" />
       <para>
         Without the <literal>invariant()</literal>, Hack will give an error similar to the following:
       </para>
@@ -771,35 +370,7 @@ Check this out
     <para>
       Here is another example where a variable can be <literal>mixed</literal> and <literal>invariant</literal> is used to help Hack understand <literal>$untyped_array</literal>is a typed <literal>array</literal>.
       <informalexample>
-        <programlisting role="php">
-<![CDATA[
-<?hh
-
-class Foo {
-  public function foo_method(): void {}
-}
-
-function mixed_method(int $x): mixed {
-  if ($x === 3) {
-    $a = array();
-    $a[0] = new Foo();
-    return $a;
-  } else {
-    return false;
-  }
-}
-
-function bar(): bool {
-  $untyped_array = mixed_method(3);
-  // Let's assume that this method can return an array of Foo
-  invariant(is_array($untyped_array), "must be an array of Foo()");
-  $untyped_array[0]->foo_method(); // Hack now understands that $untyped_array is an array
-  return true;
-}
-
-bar();
-]]>
-        </programlisting>
+        <programlisting role="php" location="hack.otherrulesandfeatures27.php" />
         <para> Without the <literal>invariant()</literal>, the Hack type checker would give an error similar to the following:
         </para>
         &example.outputs;
@@ -824,22 +395,7 @@ This is not a container, this is a mixed value
     <para>
       The Hack type checker will throw an error when trying to call non-private methods during the initialization of an object. Here is an example:
       <informalexample>
-        <programlisting role="php">
-<![CDATA[
-<?hh
-
-class PettingZoo {
-  private FluffyBunny $fluffy;
-
-  public function __construct(FluffyBunny $bunny) {
-    $this->doOtherInit();
-    $this->fluffy = new FluffyBunny();
-  }
-
-  protected function doOtherInit(): void { }
-}
-]]>
-        </programlisting>
+        <programlisting role="php" location="hack.otherrulesandfeatures28.php" />
         &example.outputs;
         <screen>
 <![CDATA[
@@ -872,22 +428,7 @@ The initialization is not over because $this->fluffy can still potentially be nu
     <para>
       Here is an example of the first fix:
       <informalexample>
-        <programlisting role="php">
-<![CDATA[
-<?hh
-
-class PettingZoo {
-  private FluffyBunny $fluffy;
-
-  public function __construct(FluffyBunny $bunny) {
-    $this->doOtherInit();
-    $this->fluffy = new FluffyBunny();
-  }
-
-  private function doOtherInit(): void { }
-}
-]]>
-        </programlisting>
+        <programlisting role="php" location="hack.otherrulesandfeatures29.php" />
       </informalexample>
     </para>
   </sect1>
@@ -897,41 +438,7 @@ class PettingZoo {
     <para>
       Hack does not support union types. The following piece of code will run in HHVM. However it will not pass the Hack type checker, even though many would believe that it should:
       <informalexample>
-        <programlisting role="php">
-<![CDATA[
-<?hh
-
-interface UTI {
-  public function utBar();
-}
-
-class UTA {
-  public function utFoo(): void {
-    echo "UTA:ut_foo()\n";
-  }
-}
-
-class UTB extends UTA implements UTI {
-  public function utBar(): void {
-    echo "UTB:utBar()\n";
-  }
-}
-
-function ut_xyz(UTA $a) {
-  if ($a instanceof UTI) {
-    $a->utBar();
-  }
-  $a->utFoo();
-}
-
-function main_ut() {
-  $b = new UTB();
-  ut_xyz($b);
-}
-
-main_ut();
-]]>
-        </programlisting>
+        <programlisting role="php" location="hack.otherrulesandfeatures30.php" />
         &example.outputs;
         <screen>
 <![CDATA[
@@ -960,42 +467,7 @@ The method utFoo is undefined in an object of type UTI
     <para>
       The scenario describes above represents union types. Union types allow a variable to possibly have several, distinct representations. For performance reasons, Hack does not support this paradigm. To alleviate the type error presented above, local variables can be used.
       <informalexample>
-        <programlisting role="php">
-<![CDATA[
-<?hh
-
-interface UTI {
-  public function utBar();
-}
-
-class UTA {
-  public function utFoo(): void {
-    echo "UTA:ut_foo()\n";
-  }
-}
-
-class UTB extends UTA implements UTI {
-  public function utBar(): void {
-    echo "UTB:utBar()\n";
-  }
-}
-
-function ut_xyz(UTA $a) {
-  $a_local = $a;
-  if ($a_local instanceof UTI) {
-    $a_local->utBar();
-  }
-  $a->utFoo();
-}
-
-function main_ut() {
-  $b = new UTB();
-  ut_xyz($b);
-}
-
-main_ut();
-]]>
-        </programlisting>
+        <programlisting role="php" location="hack.otherrulesandfeatures31.php" />
         <para>
           The local variable <literal>$a_local</literal> is assigned to <literal>$a</literal>. Now since these two variables are distinct, each can represent a different type. Hack will not throw a type error in this case.
         </para>
@@ -1008,18 +480,7 @@ main_ut();
     <para>
       Hack supports the type checking of the PHP string building technique called heredocs (e.g., <literal>$x = &lt;&lt;&lt;EOF ..... EOF;</literal>). Hack does not balk when encountering a heredoc within PHP code, and throws an error when using heredocs incorrectly. Here is an example of Hack catching a heredoc error:
       <informalexample>
-        <programlisting role="php">
-<![CDATA[
-<?hh
-
-function heredoc(): void {
-  $x = <<<MYHD
-Hello, I am in here
-}
-
-echo heredoc();
-]]>
-        </programlisting>
+        <programlisting role="php" location="hack.otherrulesandfeatures32.php" />
         &example.outputs;
         <screen>
 <![CDATA[
@@ -1030,38 +491,13 @@ Unterminated heredoc
         <para>
           Of course, to fix this error, one needs to terminate the heredoc:
         </para>
-        <programlisting role="php">
-<![CDATA[
-<?hh
-
-function heredoc(): void {
-  $x = <<<MYHD
-Hello, I am in here
-MYHD;
-}
-
-echo heredoc();
-]]>
-        </programlisting>
+        <programlisting role="php" location="hack.otherrulesandfeatures33.php" />
       </informalexample>
     </para>
     <para>
       There is a known current limitation with Hack's support of heredocs. The following code will not parse:
       <informalexample>
-        <programlisting role="php">
-<![CDATA[
-<?hh
-
-function heredoc(): void {
-  $foo = 3;
-  $x = <<<MYHD
-{$foo}
-MYHD;
-}
-
-echo heredoc();
-]]>
-        </programlisting>
+        <programlisting role="php" location="hack.otherrulesandfeatures34.php" />
         &example.outputs;
         <screen>
 <![CDATA[
@@ -1077,23 +513,7 @@ Syntax error
     <para>
       Hack supports nowdocs. In summary, nowdocs are similar to heredocs but without the parsing. Here is an example:
       <informalexample>
-        <programlisting role="php">
-<![CDATA[
-<?hh
-
-function foo(): void {
-  $name = 'MyName';
-
-  echo <<<'EOT'
-My name is "$name". I am printing some text.
-Now, I am printing some {$foo->bar[1]}.
-This should not print a capital 'A': \x41
-EOT;
-}
-
-foo();
-]]>
-        </programlisting>
+        <programlisting role="php" location="hack.otherrulesandfeatures35.php" />
         &example.outputs;
         <screen>
 <![CDATA[
@@ -1130,31 +550,9 @@ This should not print a capital 'A': \x41
       Here are some examples:
       <informalexample>
 		<para><emphasis>Example with ReflectionClass</emphasis></para>
-        <programlisting role="php">
-<![CDATA[
-<?hh
-
-use MyVendor\SomeComponent\TargetNs as T;
-
-// Create a new ReflectionClass
-$r = new ReflectionClass(T\Foo::class);
-// instead of
-$r = new ReflectionClass('MyVendor\SomeComponent\TargetNs\Foo');
-]]>
-		</programlisting>
+        <programlisting role="php" location="hack.otherrulesandfeatures36.php" />
         <para><emphasis>Example with Doctrine</emphasis></para>
-        <programlisting role="php">
-<![CDATA[
-<?hh
-
-use MyVendor\SomeComponent\TargetEntityNs as Entity;
-
-// Example fetching a user
-$user = $entityManager->find(Entity\User::class, 5);
-// instead of
-$user = $entityManager->find('MyVendor\SomeComponent\TargetEntityNs\User', 5);
-]]>
-        </programlisting>
+        <programlisting role="php" location="hack.otherrulesandfeatures37.php" />
       </informalexample>
     </para>
     <para>

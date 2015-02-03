@@ -4,22 +4,7 @@
   <para>
     Hack introduces generics to PHP (in the same vein as statically type languages such as C# and Java). Generics allow classes and methods to be parameterized (i.e., a type associated when a class is instantiated or a method is called). Here is an example:
     <informalexample>
-      <programlisting role="php">
-<![CDATA[
-<?hh
-class Box<T> {
-  protected T $data;
-
-  public function __construct(T $data) {
-    $this->data = $data;
-  }
-
-  public function getData(): T {
-    return $this->data;
-  }
-}
-]]>
-      </programlisting>
+      <programlisting role="php" location="hack.generics1.php" />
     </informalexample>
   </para>
   <para>
@@ -28,22 +13,7 @@ class Box<T> {
     method will return the same type as associated with <literal>Box</literal> at instantiation. Note, though,
     that the <literal>getData()</literal> method is not itself generic; it is just accessing the top-level type parameter of <literal>Box</literal>. A client use of <literal>Box</literal> would look like the following:
     <informalexample>
-      <programlisting role="php">
-<![CDATA[
-<?hh
-
-function main_gen() {
-  $gi = new Box(3);
-  $gs = new Box("Hi");
-  $ga = new Box(array());
-  echo $gi->getData()."\n";
-  echo $gs->getData()."\n";
-  echo $ga->getData()."\n";
-}
-
-main_gen();
-]]>
-      </programlisting>
+      <programlisting role="php" location="hack.generics2.php" />
       &example.outputs;
       <screen>
 <![CDATA[
@@ -80,61 +50,11 @@ Array
     <para>
       An example of a generic class is <literal>Vector&lt;T&gt;</literal>, from the Hack collections implementation. The <literal>T</literal> is what makes <literal>Vector</literal> generic, as it can hold any type of object, from <literal>int</literal> to a user-defined class. However, for any instantiation of the class, once a type has been associated with <literal>T</literal>, it cannot hold any other type.
       <informalexample>
-        <programlisting role="php">
-<![CDATA[
-<?hh
-/* Signature of Vector
-*
-* class Vector<Tv> implements MutableCollection<Tv> {
-* :
-* }
-*
-*/
-
-function main_vec() {
-  $x = Vector {1, 2, 3, 4}; // T is associated with int
-  $y = Vector {'a', 'b', 'c', 'd'}; // T is associated with string
-}
-
-main_vec();
-]]>
-        </programlisting>
+        <programlisting role="php" location="hack.generics3.php" />
         <para>
           <literal>$x</literal> is a <literal>Vector&lt;int&gt;</literal>, while <literal>$y</literal> is a <literal>Vector&lt;string&gt;</literal>. A <literal>Vector&lt;int&gt;</literal> and <literal>Vector&lt;string&gt;</literal> are not the same type. Methods can also be generic, even when the class is not. Normally, the situation is to have a generic class with non-generic methods or a non-generic class with generic methods. While it is possible, having a generic class with generic methods is usually the exception more than the rule. Having both a generic class and a generic method in that class might be useful when the method is something like a compare method and the generic type parameter to the method is thus different than the class. Here is a contrived example of a generic method in a non-generic class:
         </para>
-        <programlisting role="php">
-<![CDATA[
-<?hh
-
-// Testing generic methods in a non-generic class.
-
-class Box<T> {
-  public T $value;
-  public function __construct(T $v) {
-    $this->value = $v;
-  }
-}
-
-class FooGenMethod {
-  public function swap<T>(Box<T> $a, Box<T> $b) : void {
-    $temp = $a->value;
-    $a->value = $b->value;
-    $b->value = $temp;
-  }
-}
-
-function main_genmeth() {
-  $f = new FooGenMethod();
-  $y = new Box(3);
-  $z = new Box(4);
-  echo $y->value." ".$z->value;
-  $f->swap($y, $z);
-  echo $y->value." ".$z->value;
-}
-
-main_genmeth();
-]]>
-        </programlisting>
+        <programlisting role="php" location="hack.generics4.php" />
         <para>
           The above example shows a generic method <literal>swap&lt;T&gt;()</literal> in a non-generic class <literal>FooGenMethod</literal>.
         </para>
@@ -183,32 +103,7 @@ main_genmeth();
     <para>
       Here is an example of a generic class:
       <informalexample>
-        <programlisting role="php">
-<![CDATA[
-<?hh
-
-// The mailbox can contain any type, but, per instantiation, once associated
-// with a type, it cannot change. Mailbox<int>, Mailbox<string>, Mailbox<mixed>
-class Mailbox<T> {
-  private ?T $data;
-
-  public function __construct() {
-    $this->data = null;
-  }
-
-  public function put(T $mail): void {
-    $this->data = $mail;
-  }
-
-  public function check(): ?T {
-    if ($this->data !== null) {
-      return $this->data;
-    }
-    return null;
-  }
-}
-]]>
-        </programlisting>
+        <programlisting role="php" location="hack.generics5.php" />
       </informalexample>
     </para>
   </sect1>
@@ -218,70 +113,7 @@ class Mailbox<T> {
     <para>
       Like classes, traits and interfaces can be generic as well. The guidelines are similar to that of classes. Here is an example:
       <informalexample>
-        <programlisting role="php">
-<![CDATA[
-<?hh
-// Copyright 2004-present Facebook. All Rights Reserved.
-
-// generic interface
-interface Box<T> {
-  public function add(T $item): void;
-  public function remove(): T;
-}
-
-// generic trait
-trait Commerce<T> {
-  public function buy(T $item): void {
-    echo 'Bought a '.get_class($item)."\n";
-  }
-
-  public function sell(T $item): void {
-    echo 'Sold a '.get_class($item)."\n";
-  }
-}
-
-// generic class that uses generic trait and implements generic interface
-class BestBuy<T> implements Box<T> {
-  protected Vector<T> $vec;
-  private int $last;
-
-  public function __construct() {
-    $this->vec = Vector{};
-    $this->last = -1;
-  }
-
-  use Commerce<T>;
-
-  public function add(T $item): void {
-    $this->vec->add($item);
-    $this->last++;
-  }
-
-  public function remove(): T {
-    $item = $this->vec->at($this->last);
-    $this->vec->removeKey($this->last--);
-    return $item;
-  }
-}
-
-// For example purposes
-abstract class Computer {}
-class Apple extends Computer{}
-class Lenovo extends Computer {}
-class Dell extends Computer {}
-
-function main_gti() {
-  $store = new BestBuy();
-  $store->add(new Lenovo());
-  $store->add(new Apple());
-  $store->add(new Dell());
-  echo get_class($store->remove())."\n";
-  $store->sell($store->remove());
-}
-
-main_gti();
-]]>
-        </programlisting>
+        <programlisting role="php" location="hack.generics6.php" />
         &example.outputs;
         <screen>
 <![CDATA[
@@ -326,20 +158,7 @@ Sold a Apple
     <para>
       Here is an example of a generic method:
       <informalexample>
-        <programlisting role="php">
-<![CDATA[
-<?hh
-
-class FooGenMethod {
-  public function swap<T>(Box<T> $a, Box<T> $b) : T {
-    $temp = $a->value;
-    $a->value = $b->value;
-    $b->value = $temp;
-    return $temp;
-  }
-}
-]]>
-        </programlisting>
+        <programlisting role="php" location="hack.generics7.php" />
       </informalexample>
     </para>
   </sect1>
@@ -349,38 +168,7 @@ class FooGenMethod {
     <para>
       Generics may have some surprising semantics when it comes to type inference. This code example will be used to discuss how generics and type inference are handled within Hack.
       <informalexample>
-        <programlisting role="php">
-<![CDATA[
-<?hh // strict
-
-class A {}
-class Z extends A {}
-
-function foo_gi(): void {
-  $x = Vector {};
-  $x->add(new A());
-  $x->add(new Z());
-}
-
-function foo_gi2(): void {
-  $x = Vector {};
-  $x->add(new Z());
-  $x->add(new A());
-  foo_gi4($x);
-}
-
-function foo_gi3(bool $b): void {
-  $x = Vector {};
-  $x->add(new Z());
-  $x->add(new A());
-  foo_gi5($x);
-}
-
-function foo_gi4(Vector<Z> $vec): void {}
-function foo_gi5(Vector<A> $vec): void {}
-function foo_gi6(Vector<mixed> $vec): void {}
-]]>
-        </programlisting>
+        <programlisting role="php" location="hack.generics8.php" />
         <para>
           As probably expected, Hack allows an element of type <literal>Z</literal> to be added to a <literal>Vector&lt;A&gt;</literal>. Possibly surprisingly, the reverse is also true &#8212; to a point. Some programming languages require the type of the associated with the generic class be known at instantiation time. Hack, on the other hand, can begin determining the type of the generic upon first usage.
         </para>
@@ -405,49 +193,13 @@ function foo_gi6(Vector<mixed> $vec): void {}
     <para>
       Hack brings about a feature to override on return type in a particular circumstance. In essence, a method can be overridden by return type in a subclass if the return type is strictly compatible with the return type of the same method in the superclass. So, this works:
       <informalexample>
-        <programlisting role="php">
-<![CDATA[
-<?hh
-class Foo {}
-class FooChild extends Foo {}
-
-class AA {
-  protected function bar(): Foo { return new Foo(); }
-}
-
-class BB extends AA {
-  protected function bar(): FooChild { return new FooChild(); }
-}
-]]>
-        </programlisting>
+        <programlisting role="php" location="hack.generics9.php" />
       </informalexample>
     </para>
     <para>
       Take a look at this seemingly similar example:
       <informalexample>
-        <programlisting role="php">
-<![CDATA[
-<?hh
-class FooG {}
-class FooGChild extends FooG {}
-
-class AAG {
-  protected function bar(): Vector<FooG> {
-    $x = new Vector();
-    $x->add(new FooG());
-    return $x;
-  }
-}
-
-class BBG extends AAG {
-  protected function bar(): Vector<FooGChild> {
-    $x = new Vector();
-    $x->add(new FooGChild());
-    return $x;
-  }
-}
-]]>
-        </programlisting>
+        <programlisting role="php" location="hack.generics10.php" />
         <para>
           On the surface, it may seem like the above should be accepted by the Hack type checker. However, a closer look indicates otherwise. The parent, <literal>AAG</literal> has a <literal>bar()</literal> that returns a vector containing <literal>FooG</literal>. The child, <literal>BBG</literal>, has a <literal>bar()</literal> that returns a vector containing <literal>FooGChild</literal>. In other words, both return <literal>Vector</literal>, not individual instances of <literal>FooG</literal> or <literal>FooGChild</literal>. Thus, since the return type is a <literal>Vector</literal>, it is impossible to guarantee that the returned vector from <literal>BBG:bar()</literal> won't contain, for example, a mix of <literal>FooChild</literal> and <literal>FooG</literal> &#8212; even to a caller which called it as <literal>AAG::bar()</literal>.
         </para>
@@ -475,42 +227,7 @@ It is incompatible with an object of type FooGChild
     <para>
       <literal>mixed</literal> is sometimes a source of confusion when it comes to compatibility with other types. This confusion can become exacerbated when it comes to generics. For example, should this pass the Hack type checker?
       <informalexample>
-        <programlisting role="php">
-<![CDATA[
-<?hh
-
-class Mailbox<T> {
-  private ?T $data;
-
-  public function __construct() {
-    $this->data = null;
-  }
-  public function put(T $mail): void {
-    $this->data = $mail;
-  }
-
-  public function check(): ?T {
-    if ($this->data !== null) {
-      return $this->data;
-    }
-    return null;
-  }
-}
-
-function mbint(): Mailbox<int> {
-  $mbi = new Mailbox();
-  $mbi->put(3);
-  return $mbi;
-}
-
-function mbmixed(Mailbox<mixed> $mbm): void {}
-
-function main() {
-  $m = mbint();
-  mbmixed($m);
-}
-]]>
-        </programlisting>
+        <programlisting role="php" location="hack.generics11.php" />
         <para>
           Reading the code, one might believe that passing a <literal>Mailbox&lt;int&gt;</literal> to a function that takes a <literal>Mailbox&lt;mixed&gt;</literal> should pass the type checker since <literal>mixed</literal> should be a superset of <literal>int</literal>. However, that belief would be incorrect. A <literal>Mailbox&lt;int&gt;</literal> <emphasis role="strong">is not</emphasis> a subtype of <literal>Mailbox&lt;mixed&gt;</literal>.
         </para>
@@ -519,52 +236,7 @@ function main() {
     <para>
       Imagine if the code above was modified to look like this:
       <informalexample>
-        <programlisting role="php">
-<![CDATA[
-<?hh
-
-// The mailbox can contain any type, but, per instantiation, once associated
-// with a type, it cannot change. Mailbox<int>, Mailbox<string>, Mailbox<mixed>
-class Mailbox<T> {
-  private ?T $data;
-
-  public function __construct() {
-    $this->data = null;
-  }
-  public function put(T $mail): void {
-    $this->data = $mail;
-  }
-
-  public function check(): ?T {
-    if ($this->data !== null) {
-      return $this->data;
-    }
-    return null;
-  }
-}
-
-function mbint(): Mailbox<int> {
-  $mbi = new Mailbox();
-  $mbi->put(3);
-  return $mbi;
-}
-
-function mbmixed(Mailbox<mixed> $mbm): void {
-  // Put a string into the mixed Mailbox
-  $mbm->put("Hello");
-}
-
-function main() {
-  $m = mbint();
-  // This function puts a string into the Mailbox
-  mbmixed($m);
-  // Now what was a Mailbox<int> becomes a Mailbox<string>. Probably not expected behavior.
-  var_dump($m);
-}
-
-main();
-]]>
-        </programlisting>
+        <programlisting role="php" location="hack.generics12.php" />
         <para>
           Since generic objects are passed by reference, adding a <literal>string</literal> to the <literal>Mailbox&lt;mixed&gt;</literal> in <literal>mbmixed()</literal> actually transforms the <literal>Mailbox&lt;int&gt;</literal> in <literal>main()</literal> to one that can now take a <literal>string</literal>. This is probably not expected behavior and should not be able to pass the type checker. And, in fact, this code does not pass the Hack type checker!
         </para>
@@ -596,49 +268,7 @@ object(Mailbox)#1 (1) {
     <para>
       Even though Hack is able to catch a <literal>T&lt;int&gt;</literal> to <literal>T&lt;mixed&gt;</literal> conversion attempt before runtime, a cleaner way to write the above code is to use a generic method:
       <informalexample>
-        <programlisting role="php">
-<![CDATA[
-<?hh
-
-// The mailbox can contain any type, but, per instantiation, once associated
-// with a type, it cannot change. Mailbox<int>, Mailbox<string>, Mailbox<mixed>
-class Mailbox<T> {
-  private ?T $data;
-
-  public function __construct() {
-    $this->data = null;
-  }
-  public function put(T $mail): void {
-    $this->data = $mail;
-  }
-
-  public function check(): ?T {
-    if ($this->data !== null) {
-      return $this->data;
-    }
-    return null;
-  }
-}
-
-function mbint(): Mailbox<int> {
-  $mbi = new Mailbox();
-  $mbi->put(3);
-  return $mbi;
-}
-
-function mbgen<T>(Mailbox<T> $mbm, T $item): void {
-  $mbm->put($item);
-}
-
-function main() {
-  $m = mbint();
-  mbgen($m, 4);
-  var_dump($m);
-}
-
-main();
-]]>
-        </programlisting>
+        <programlisting role="php" location="hack.generics13.php" />
       </informalexample>
     </para>
   </sect1>
@@ -648,52 +278,7 @@ main();
     <para>
       Generic class and methods can have restrictions to the types that are able to be used for the parameterized type argument upon instantiation or call, respectively. These are called constraints on type parameters. Here is an example:
       <informalexample>
-        <programlisting role="php">
-<![CDATA[
-<?hh
-
-abstract class Identity<T> {
-  private T $id;
-  public function __construct(T $id) {
-    $this->id = $id;
-  }
-  public function getID(): T {
-    return $this->id;
-  }
-}
-
-interface IFoo {}
-
-class CA {}
-class CB extends CA {}
-
-class Bar implements IFoo {}
-class Baz implements IFoo {}
-class Biz {}
-
-final class AnyIdentity<T> extends Identity<T> {}
-final class CAIdentity<T as CA> extends Identity<T> {}
-final class CBIdentity<T as CB> extends Identity<T> {}
-final class FooIdentity<T as IFoo> extends Identity<T> {}
-
-function main_constraints(): void {
-  $ai = new AnyIdentity("Hello");
-  $ai2 = new AnyIdentity(new Biz());
-
-  $cb = new CBIdentity(new CB());
-  $cb2 = new CBIdentity(new CA());  // HACK ERROR!
-
-  $ca = new CAIdentity(new CA());
-  $ca2 = new CAIdentity(new CB());
-
-  $fi = new FooIdentity(new Bar());
-  $fi2 = new FooIdentity(new Baz());
-  $fi3 = new FooIdentity(new Biz()); // HACK ERROR!
-}
-
-main_constraints();
-]]>
-        </programlisting>
+        <programlisting role="php" location="hack.generics14.php" />
       </informalexample>
     </para>
     <para>
@@ -719,11 +304,7 @@ main_constraints();
     <para>
       For the above example, there will be two errors thrown by the Hack type checker. The first is on this line of code:
       <informalexample>
-        <programlisting role="php">
-<![CDATA[
-$cb2 = new CBIdentity(new CA());
-]]>
-        </programlisting>
+        <programlisting role="php" location="hack.generics15.php" />
         &example.outputs;
         <screen>
 <![CDATA[
@@ -743,11 +324,7 @@ Considering the constraint on the type 'T'
     <para>
       The second Hack error is on this line of code:
       <informalexample>
-        <programlisting role="php">
-<![CDATA[
-$fi3 = new FooIdentity(new Biz());
-]]>
-        </programlisting>
+        <programlisting role="php" location="hack.generics16.php" />
         &example.outputs;
         <screen>
 <![CDATA[
@@ -770,32 +347,7 @@ Considering the constraint on the type 'T'
     <para>
       Here is an example of a constraint on a generic method:
       <informalexample>
-        <programlisting role="php">
-<![CDATA[
-<?hh
-
-interface IFaz {}
-interface IFar extends IFaz {}
-class Faz implements IFaz {}
-class Far implements IFar {}
-class NoIFaz {}
-
-class Bip {
-  public function get<T as IFaz>(T $x): T {
-    return $x;
-  }
-}
-
-function main_constraints_gm(): void {
-  $bip = new Bip();
-  $bip->get(new Faz());
-  $bip->get(new Far());
-  $bip->get(new NoIFaz()); // Hack error;
-}
-
-main_constraints_gm();
-]]>
-        </programlisting>
+        <programlisting role="php" location="hack.generics17.php" />
         <para>
           The generic method <literal>get()</literal> has a constraint that only types that implement <literal>IFaz</literal> (or their children!) may be used as a the type parameter <literal>T</literal> to the method. Since the class <literal>Far</literal> implements <literal>IFar</literal> and <literal>IFar</literal> implements <literal>IFaz</literal>, a <literal>Far</literal> is able to be passed to <literal>get()</literal>. However, a <literal>NoIFaz</literal> is not able to be passed to <literal>get()</literal> since it has no chain that leads to an <literal>IFaz</literal>. Here is the Hack error that will occur:
         </para>
@@ -815,49 +367,7 @@ Considering the constraint on the type 'T'
     <para>
       A possible question that one may have when reading about constraints is, &quot;Why have a constraint? Why not just have the class in question extend the class that is being used as the constraint?&quot; Here is an example that addresses that question:
       <informalexample>
-        <programlisting role="php">
-<![CDATA[
-<?hh
-
-class A {
-  public function getVal(): int {
-    return 1;
-  }
-}
-
-class B extends A {
-  public function getVal(): int {
-    return 2;
-  }
-  public function foo(): void {}
-}
-
-class Box<T> {
-  private T $data;
-  public function __construct(T $x) {
-    $this->data = $x;
-  }
-  public function get(): T {
-    return $this->data;
-  }
-}
-
-class BoxOfA<T> extends Box<A> {
-  private int $sum = 0;
-  public function __construct(T $e) {
-    parent::__construct($e);
-    $this->sum += $e->getVal();
-  }
-}
-
-function main_con(): void {
-  $b = new B();
-  $box = new BoxOfA($b);
-  $b2 = $box->get();
-  $b2->foo();
-}
-]]>
-        </programlisting>
+        <programlisting role="php" location="hack.generics18.php" />
         &example.outputs;
         <screen>
 <![CDATA[
@@ -895,57 +405,7 @@ bool(true)
         <para>
           Constraints can remedy this situation. Making a few small changes to the example, now a <literal>BoxOfA</literal> is constrained to taking an <literal>A</literal> <emphasis role="strong">or its children!</emphasis> So when a <literal>B</literal> (a child of <literal>A</literal>) is passed to <literal>BoxOfA</literal>, a <literal>B</literal> is returned when calling <literal>$box->get()</literal>. Thus, <literal>$b2->foo()</literal> is a perfectly legitimate call. No Hack errors!
         </para>
-        <programlisting role="php">
-<![CDATA[
-<?hh
-
-class A {
-  public function getVal(): int {
-    return 1;
-  }
-}
-
-class B extends A {
-  public function getVal(): int {
-    return 2;
-  }
-  public function foo(): bool {
-    return true;
-  }
-}
-
-class Box<T> {
-  private T $data;
-  public function __construct(T $x) {
-    $this->data = $x;
-  }
-  public function get(): T {
-    return $this->data;
-  }
-}
-
-// class BoxOfA<T> extends Box<A>
-class BoxOfA<T as A> extends Box<T> {
-  private int $sum = 0;
-  public function __construct(T $e) {
-    parent::__construct($e);
-    $this->sum += $e->getVal();
-  }
-}
-
-function main_con(): void {
-  $b = new B();
-  var_dump($b);
-  $box = new BoxOfA($b);
-  var_dump($box);
-  $b2 = $box->get();
-  var_dump($b2);
-  var_dump($b2->foo());
-}
-
-main_con();
-]]>
-        </programlisting>
+        <programlisting role="php" location="hack.generics19.php" />
       </informalexample>
     </para>
     <para>
@@ -993,24 +453,7 @@ main_con();
     <para>
       Here is a covariance example:
       <informalexample>
-        <programlisting role="php">
-<![CDATA[
-<?hh
-class MyClass<+T> {
-  public function __construct(T $t) {}
-}
-class A {}
-class B extends A {}
-
-function foo(MyClass<A> $x): void {}
-
-function bar(): void {
-  $b = new B();
-  $x = new MyClass($b);
-  foo($x);
-}
-]]>
-        </programlisting>
+        <programlisting role="php" location="hack.generics20.php" />
         <para>
           <literal>foo()</literal> can be called with any object assignment
           compatible with <literal>A</literal>. Since <literal>B</literal> is a
@@ -1021,24 +464,7 @@ function bar(): void {
     <para>
       Here is a contravariance example:
       <informalexample>
-        <programlisting role="php">
-<![CDATA[
-<?hh
-class MyClass<-T> {
-  public function __construct(T $t) {}
-}
-class A {}
-class B extends A {}
-
-function foo(MyClass<B> $x): void {}
-
-function bar(): void {
-  $a = new A();
-  $x = new MyClass($a);
-  foo($x);
-}
-]]>
-        </programlisting>
+        <programlisting role="php" location="hack.generics21.php" />
         <para>
           <literal>foo()</literal> can be called with any object reverse
           assignment compatible with <literal>B</literal>. Since <literal>A
@@ -1049,25 +475,7 @@ function bar(): void {
     <para>
       Let's change the first example a bit so it doesn't work:
       <informalexample>
-        <programlisting role="php">
-<![CDATA[
-<?hh
-class MyClass<+T> {
-  public function __construct(T $t) {}
-}
-class A {}
-class B extends A {}
-class C {}
-
-function foo(MyClass<A> $x): void {}
-
-function bar(): void {
-  $c = new C();
-  $x = new MyClass($c);
-  foo($x);
-}
-]]>
-        </programlisting>
+        <programlisting role="php" location="hack.generics22.php" />
         &example.outputs;
         <screen>
 <![CDATA[
@@ -1092,22 +500,7 @@ It is incompatible with an object of type C
     <para>
       With generics, it is useful to discuss the concept of open and closed types. A type is open if it is a type parameter (e.g. <literal>T</literal>). Obviously enough, a type is closed if it is not open (e.g. <literal>int</literal>) . Here is an example of using open and closed types when it comes to generics:
       <informalexample>
-        <programlisting role="php">
-<![CDATA[
-<?hh
-
-class Foo<T> {
-
-  public function getOpen(Vector<T> $vec): T {
-      return $vec[0];
-  }
-
-  public function getClosed(Vector<int> $vec): int {
-      return $vec[0];
-  }
-}
-]]>
-        </programlisting>
+        <programlisting role="php" location="hack.generics23.php" />
         <para>
           The method <literal>getOpen()</literal> takes an open type and returns an open type. The method <literal>getClosed()</literal> takes a closed type and returns a closed type.
         </para>
@@ -1116,27 +509,7 @@ class Foo<T> {
     <para>
       What happens, though, when a method takes an open type and tries to return a closed type using that open type? Take this example using two generic methods:
       <informalexample>
-        <programlisting role="php">
-<![CDATA[
-<?hh
-
-function foo<T>(T $a): void {
-  echo "foo<T>()";
-}
-function bar<T>(T $a): int {
-  echo "bar<T>()";
-  return $a;
-}
-
-function main_oct() {
-  $x = 5;
-  foo($x);
-  bar($x);
-}
-
-main_oct();
-]]>
-        </programlisting>
+        <programlisting role="php" location="hack.generics24.php" />
         &example.outputs;
         <screen>
 <![CDATA[
@@ -1151,28 +524,7 @@ It is incompatible with of type T
         <para>
           Since <literal>bar()</literal> takes an open type argument, <literal>$a</literal> is not guaranteed to be compatible with an <literal>int</literal>. So it cannot be returned as an <literal>int</literal>, even if <literal>$a</literal> is an <literal>int</literal> when passed in.       <literal>foo()</literal> returns <literal>void</literal>. Thus, as written, <literal>foo()</literal> can type check correctly. However, what happens if <literal>$a</literal> is attempted to be used as an <literal>int</literal> within <literal>foo()</literal>?
         </para>
-        <programlisting role="php">
-<![CDATA[
-<?hh
-
-function foo<T>(T $a): void {
-  $x = $a + 10;
-  echo "foo<T>()";
-}
-/*function bar<T>(T $a): int {
-  echo "bar<T>()";
-  return $a;
-}*/
-
-function main_oct() {
-  $x = 5;
-  foo($x);
-  //bar($x);
-}
-
-main_oct();
-]]>
-        </programlisting>
+        <programlisting role="php" location="hack.generics25.php" />
         &example.outputs;
         <screen>
 <![CDATA[

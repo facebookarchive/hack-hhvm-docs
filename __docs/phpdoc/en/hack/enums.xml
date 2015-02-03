@@ -10,25 +10,7 @@
     Before first-class enums were available, the workaround to emulate an enum
     went something like this:
     <informalexample>
-      <programlisting role="php">
-<![CDATA[
-<?php
-
-abstract class DayOfWeek {
-  const Sunday = 0;
-  const Monday = 1;
-  const Tuesday = 2;
-  const Wednesday = 3;
-  const Thursday = 4;
-  const Friday = 5;
-  const Saturday = 6;
-}
-
-function foo() {
-  return DayOfWeek::Wednesday; // returns a 3
-}
-]]>
-      </programlisting>
+      <programlisting role="php" location="hack.enums1.php" />
       <para>
         Class constants would generally be used to mimic enumerations. Or, with
         Hack before first-class enums, <literal>
@@ -41,25 +23,7 @@ function foo() {
     With first-class enums, declarations and usage are as familiar as other
     languages.
     <informalexample>
-      <programlisting role="php">
-<![CDATA[
-<?hh
-
-enum DayOfWeek: int {
-  Sunday = 0;
-  Monday = 1;
-  Tuesday = 2;
-  Wednesday = 3;
-  Thursday = 4;
-  Friday = 5;
-  Saturday = 6;
-}
-
-function foo(): DayOfWeek {
-  return DayOfWeek::Wednesday; // returns a 3
-}
-]]>
-      </programlisting>
+      <programlisting role="php" location="hack.enums2.php" />
     </informalexample>
   </para>
   <para>
@@ -74,17 +38,7 @@ function foo(): DayOfWeek {
     <para>
       Enumerations are declared like:
       <informalexample>
-        <programlisting role="php">
-<![CDATA[
-<?hh
-
-enum Foo: int {
-  FOO = 1;
-  BAR = 2;
-  BAZ = 3;
-}
-]]>
-        </programlisting>
+        <programlisting role="php" location="hack.enums3.php" />
         <para>
           This creates a new type <literal>Foo</literal>, represented by
           <literal>int</literal> values. The enum constants
@@ -92,15 +46,7 @@ enum Foo: int {
         </para>
         <para>
           <literal>Foo</literal> is a type and can be used as a type hint.
-          <programlisting role="php">
-<![CDATA[
-<?hh
-
-function foo(): Foo {
-  return Foo::BAR;
-}
-]]>
-          </programlisting>
+          <programlisting role="php" location="hack.enums4.php" />
         </para>
       </informalexample>
     </para>
@@ -115,39 +61,15 @@ function foo(): Foo {
       expected, you have to use <link linkend="hack.generics.constraints">
       constraints</link>.
       <informalexample>
-        <programlisting role="php">
-<![CDATA[
-<?hh
-
-enum Foo: int as int{
-  FOO = 1;
-  BAR = 2;
-  BAZ = 3;
-}
-]]>
-        </programlisting>
+        <programlisting role="php" location="hack.enums5.php" />
         <para>
           This makes <literal>Foo</literal> a subtype of <literal>int</literal>,
           where this would work:
-          <programlisting role="php">
-<![CDATA[
-<?hh
-
-function foo(int $x): void {}
-foo(Foo::BAR);
-]]>
-          </programlisting>
+          <programlisting role="php" location="hack.enums6.php" />
         </para>
         <para>
           ...but this would not work:
-          <programlisting role="php">
-<![CDATA[
-<?hh
-
-function foo(Foo $x): void {}
-foo(3);
-]]>
-          </programlisting>
+          <programlisting role="php" location="hack.enums7.php" />
         </para>
       </informalexample>
     </para>

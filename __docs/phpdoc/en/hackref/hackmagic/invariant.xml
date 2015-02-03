@@ -58,53 +58,13 @@
   <para>
    <example>
     <title><function>invariant</function> used to remove null</title>
-    <programlisting role="php">
-<![CDATA[
-<?hh
-
-function int_not_null(?int $x): int {
-  invariant($x !== null, 'Cannot work with a null int');
-
-  // After the invariant call, we know $x cannot be null, so this is fine:
-  return $x;
-}
-]]>
-    </programlisting>
+    <programlisting role="php" location="function.hack.invariant1.php" />
    </example>
   </para>
   <para>
    <example>
     <title><function>invariant</function> used to assert a specific class</title>
-    <programlisting role="php">
-<![CDATA[
-<?hh
-
-interface IFun {
-  public function haveFun(): void;
-}
-
-class FunHaver implements IFun {
-  public function haveFun(): void {}
-  public function haveLotsOfFun(): void {}
-}
-
-function get_fun(): IFun {
-  return new FunHaver();
-}
-
-function do_fun(): void {
-  $f = get_fun();
-
-  // $f is an IFun, so we can go ahead and do this:
-  $f->haveFun();
-
-  // But we need to use invariant if we want to use it as a FunHaver without a
-  // type error.
-  invariant($f instanceof FunHaver, 'Expected a FunHaver');
-  $f->haveLotsOfFun();
-}
-]]>
-    </programlisting>
+    <programlisting role="php" location="function.hack.invariant2.php" />
    </example>
   </para>
  </refsect1>

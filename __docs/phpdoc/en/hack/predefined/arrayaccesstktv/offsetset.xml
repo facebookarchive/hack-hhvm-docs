@@ -58,15 +58,7 @@
     The <parameter>key</parameter> parameter will be set to &null; if
     another value is not available, like in the following example.
     <informalexample>
-     <programlisting role="php">
-<![CDATA[
-<?hh
-$arrayaccess[] = "first value";
-$arrayaccess[] = "second value";
-print_r($arrayaccess);
-?>
-]]>
-     </programlisting>
+     <programlisting role="php" location="hack.arrayaccesstktv.offsetset1.php" />
      &example.outputs;
      <screen>
 <![CDATA[

@@ -18,28 +18,13 @@
    <para>
      Construct it with a <literal>Traversable</literal>:
      <informalexample>
-        <programlisting role="php">
-<![CDATA[
-<?hh
-function foo(): void {
-  $a = array('a' => 1, 'b' => 2);
-  $fm = new ImmMap($a);
-}
-]]>
-        </programlisting>
+        <programlisting role="php" location="class.hack.immmaptktv1.php" />
       </informalexample>
    </para>
    <para>
      Or construct an ImmMap with literal syntax:
      <informalexample>
-        <programlisting role="php">
-<![CDATA[
-<?hh
-function foo(): void {
-  $fm = ImmMap {'a' => 1, 'b' => 2};
-}
-]]>
-        </programlisting>
+        <programlisting role="php" location="class.hack.immmaptktv2.php" />
      </informalexample>
    </para>
   </section>

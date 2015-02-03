@@ -54,70 +54,19 @@
   <para>
    <example>
     <title>Simple <function>class_meth</function> usage</title>
-    <programlisting role="php">
-<![CDATA[
-<?hh
-
-class C {
-  public static function f(string $s) {}
-}
-
-function test(): void {
-  // The type checker cannot determine what function $f refers to. It will reject
-  // this in strict mode, but in partial mode will admit it, even though it
-  // fails at runtime.
-  $f = array('C', 'f');
-  $f(1);
-
-  // But, with a call to class_meth(), we can know what function $f refers to,
-  // and check its arguments statically. This will produce a type error.
-  $f = class_meth('C', 'f');
-  $f(1);
-}
-]]>
-    </programlisting>
+    <programlisting role="php" location="function.hack.class_meth1.php" />
    </example>
   </para>
   <para>
    <example>
     <title><function>class_meth</function> is most useful for callbacks</title>
-    <programlisting role="php">
-<![CDATA[
-<?hh
-
-function run_callback((function (string): void) $f, string $s) {
-  $f($s);
-}
-
-function test2(): void {
-  // Although this works at runtime, the type checker will reject this, since an
-  // array is not a function.
-  run_callback(array('C', 'f'), 'test');
-
-  // But this is acceptable:
-  run_callback(class_meth('C', 'f'), 'test');
-}
-]]>
-    </programlisting>
+    <programlisting role="php" location="function.hack.class_meth2.php" />
    </example>
   </para>
   <para>
    <example>
     <title><function>class_meth</function> used as callback for a filter</title>
-    <programlisting role="php">
-<![CDATA[
-<?hh
-
-class C {
-  public static function isOdd(int $i): bool {
-    return $i % 2 == 1;
-  }
-}
-
-$v = Vector { 1, 2, 3 };
-$v->filter(class_meth('C', 'isOdd')); // returns Vector { 1, 3 }
-]]>
-    </programlisting>
+    <programlisting role="php" location="function.hack.class_meth3.php" />
    </example>
   </para>
  </refsect1>

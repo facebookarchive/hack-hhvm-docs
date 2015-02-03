@@ -29,19 +29,7 @@
   <para>
     Here is an example of constructing an <literal>ImmVector</literal> using an <literal>array</literal>
     <informalexample>
-      <programlisting role="php">
-<![CDATA[
-<?hh
-
-function main(): void {
-  $x = array("a", "b", "c");
-  $y = new ImmVector($x);
-  var_dump($y);
-}
-
-main();
-]]>
-      </programlisting>
+      <programlisting role="php" location="hack.immvectortv.construct1.php" />
       &example.outputs;
       <screen>
 <![CDATA[

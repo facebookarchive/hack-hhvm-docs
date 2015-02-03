@@ -23,24 +23,7 @@
     <para>
       For example, the following code should be expected to type check and run correctly on HHVM. It does type check with no errors, but you will get a fatal error in HHVM.
       <informalexample>
-        <programlisting role="php">
-<![CDATA[
-<?hh
-
-class Bar{}
-class Foo implements ArrayAccess<string, Bar> {
-  public function offsetExists(string $offset): bool { return true;}
-  public function offsetGet(string $offset): Bar { return new Bar();}
-  public function offsetSet(string $offset, Bar $value): this { return $this;}
-  public function offsetUnset(string $offset): this { return $this;}
-}
-
-function main(): void {
-  $x = new Foo();
-  $x->offsetSet("Hi", new Bar());
-}
-]]>
-        </programlisting>
+        <programlisting role="php" location="class.hack.arrayaccesstktv1.php" />
         &example.outputs;
         <screen>
 <![CDATA[
@@ -52,24 +35,7 @@ Fatal error: Declaration of Foo::offsetExists() must be compatible with that of 
     <para>
       Currently HHVM is too strict when matching interface methods. Right now, for example, <literal>offsetExists(string)</literal> is not compatible with <literal>offsetExists(Tk)</literal>. So if we change the code to remedy the HHVM problem, we will get a Hack type checker issue.
       <informalexample>
-        <programlisting role="php">
-<![CDATA[
-<?hh
-
-class Bar{}
-class Foo<Tk, Tv> implements ArrayAccess<string, Bar> {
-  public function offsetExists(Tk $offset): bool { return true;}
-  public function offsetGet(Tk $offset): Tv { return new Bar();}
-  public function offsetSet(Tk $offset, Tv $value): this { return $this;}
-  public function offsetUnset(Tk $offset): this { return $this;}
-}
-
-function main(): void {
-  $x = new Foo();
-  $x->offsetSet("Hi", new Bar());
-}
-]]>
-        </programlisting>
+        <programlisting role="php" location="class.hack.arrayaccesstktv2.php" />
         &example.outputs;
         <screen>
 <![CDATA[
@@ -86,24 +52,7 @@ Read the following to see why:
     <para>
       In order to solve this problem (for now), just remove the generic type annotations (i.e. <literal>Tk</literal> and <literal>Tv</literal> from the method parameters and returns in the class that implement <literal>ArrayAccess</literal>. The following code will both type check (in non <literal>// strict</literal> mode) and run correctly.
       <informalexample>
-        <programlisting role="php">
-<![CDATA[
-<?hh
-
-class Bar{}
-class Foo<Tk, Tv> implements ArrayAccess<string, Bar> {
-  public function offsetExists($offset): bool { return true;}
-  public function offsetGet($offset) { return new Bar();}
-  public function offsetSet($offset, $value): this { return $this;}
-  public function offsetUnset($offset): this { return $this;}
-}
-
-function main(): void {
-  $x = new Foo();
-  $x->offsetSet("Hi", new Bar());
-}
-]]>
-        </programlisting>
+        <programlisting role="php" location="class.hack.arrayaccesstktv3.php" />
       </informalexample>
     </para>
    </warning>
@@ -111,19 +60,7 @@ function main(): void {
     <para>
       The Hack type checker will allow for objects to implement the <literal>ArrayAccess</literal> (e.g., the type checker will make sure the interface is implemented correctly), but the type checker does not support using array semantics on such an object.... and there are no plans to allow this behavior. For example:
       <informalexample>
-        <programlisting role="php">
-<![CDATA[
-<?hh
-// Assume Obj implements ArrayAccess<Tk, Tv>
-
-function main(): void {
-  $o = new Obj();
-  $o->offsetSet(3, 3); // works fine
-  $o[4] = 4; // NOT SUPPORTED BY HACK
-}
-]]>
-
-        </programlisting>
+        <programlisting role="php" location="class.hack.arrayaccesstktv4.php" />
         &example.outputs;
         <screen>
 <![CDATA[
@@ -164,41 +101,7 @@ You might want to check this out
   <section xml:id="hack.arrayaccesstktv.examples">
    <example xml:id="arrayaccesstktv.example.basic"><!-- {{{ -->
     <title>Basic usage</title>
-    <programlisting role="php">
-<![CDATA[
-<?hh
-class Obj<Tk, Tv> implements ArrayAccess<Tk, Tv> {
-  private Map<Tk, Tv> $container;
-  public function __construct() {
-    $this->container = Map {};
-  }
-  public function offsetSet(Tk $key, Tv $value): this {
-    if (!is_null($key)) {
-      $this->container[$key] = $value;
-    }
-    return $this;
-  }
-  public function offsetExists(Tk $offset): bool {
-    return isset($this->container[$offset]);
-  }
-  public function offsetUnset(Tk $offset): this {
-    unset($this->container[$offset]);
-    return $this;
-  }
-  public function offsetGet(Tk $offset): ?Tv {
-    return isset($this->container[$offset]) ? $this->container[$offset] : $
-  }
-}
-
-function main(): void {
-  $o = new Obj();
-  $o->offsetSet(3, 3);
-  var_dump($o);
-}
-
-main();
-]]>
-    </programlisting>
+    <programlisting role="php" location="class.hack.arrayaccesstktv5.php" />
     &example.outputs.similar;
     <screen>
 <![CDATA[

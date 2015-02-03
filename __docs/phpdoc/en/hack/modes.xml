@@ -12,35 +12,7 @@
     <para>
       Strict mode is just what it sounds like. The Hack type checker will catch every type error (see the <literal>// decl</literal> exception below). Any and all code written in strict mode must be correctly type annotated (unless <literal>// UNSAFE</literal> is used - see below). Another rule is that code written in strict mode cannot call into non-Hack code, and still pass the type checker. Here is how strict mode is declared.
       <informalexample>
-        <programlisting role="php">
-<![CDATA[
-<?hh // strict
-
-// Everything is annotated and type checked
-class StrictClass {
-  private string $str;
-
-  // Need this constructor or the type checker
-  // will complain about uninitialized member
-  // variables
-  public function __construct() {
-    $this->str = "Hello";
-  }
-
-  public function foo(int $x, int $y): int {
-    if ($x < $y) {
-      return 27;
-    }
-    return 34;
-  }
-
-  public function bar(string $a, string $b): string {
-    return $a . $b;
-  }
-}
-]]>
-
-        </programlisting>
+        <programlisting role="php" location="hack.modes1.php" />
       </informalexample>
     </para>
     <para>
@@ -69,47 +41,13 @@ class StrictClass {
     <para>
       Partial mode is the default of Hack. In partial mode, the type checker checks all types other than that encompassed by an <literal>// UNSAFE</literal> comment. Partial mode also allows for the partially typing of a class, method or function (e.g., only type a subset of its arguments). And, also unlike strict mode, partial mode allows engineers to call code that has not yet been &quot;Hack-ified&quot; (in other words, they can call into untyped code).
       <informalexample>
-        <programlisting role="php">
-<![CDATA[
-<?hh // partial
-
-// Annotated and type checked.
-function foo_partial(int $x, int $y): int {
-  if ($x > $y) {
-    return 27;
-  }
-  return 34;
-}
-
-// Not annotated. Not type checked.
-function bar_partial($a, $b) {
-  return $a + $b;
-}
-]]>
-        </programlisting>
+        <programlisting role="php" location="hack.modes2.php" />
       </informalexample>
     </para>
     <para>
       or, since partial is the default, the <literal>// partial</literal> can be omitted. <emphasis>In fact, omitting <literal>// partial</literal> is preferred</emphasis>.
       <informalexample>
-        <programlisting role="php">
-<![CDATA[
-<?hh
-
-// Annotated and type checked.
-function foo_partial(int $x, int $y): int {
-  if ($x > $y) {
-    return 27;
-  }
-  return 34;
-}
-
-// Not annotated. Not type checked.
-function bar_partial($a, $b) {
-  return $a + $b;
-}
-]]>
-        </programlisting>
+        <programlisting role="php" location="hack.modes3.php" />
       </informalexample>
     </para>
     <note>
@@ -126,33 +64,11 @@ function bar_partial($a, $b) {
         <para>
           <emphasis>File1.php</emphasis>
         </para>
-        <programlisting role="php">
-<![CDATA[
-<?hh // decl
-
-// Partial mode would catch this. Decl, though, allows // strict
-// to call into this.
-function bar_partial($a, $b): int {
-  return "Hello";
-}
-]]>
-        </programlisting>
+        <programlisting role="php" location="hack.modes4.php" />
         <para>
           <emphasis>File2.php</emphasis>
         </para>
-        <programlisting role="php">
-<![CDATA[
-<?hh // strict
-
-function foo_strict(bool $b): int {
-  if ($b) {
-    return 4;
-  } else {
-    return bar_partial(3, 4);
-  }
-}
-]]>
-        </programlisting>
+        <programlisting role="php" location="hack.modes5.php" />
       </informalexample>
     </para>
     <para>
@@ -164,34 +80,8 @@ function foo_strict(bool $b): int {
       <para>
         In practical terms, using <literal>// Decl </literal> is equivalent to putting <literal><link linkend="hack.modes.unsafe">// UNSAFE</link></literal> at the top of every function (actually, in this respect, this is really close to how the Hack type checker works). The following example demonstrates this equivalency:
         <informalexample>
-          <programlisting role="php">
-<![CDATA[
-<?hh // decl
-
-function foo(): int {
-  return "Hi";
-}
-
-function bar(): string {
-  return 3;
-}
-]]>
-          </programlisting>
-          <programlisting role="php">
-<![CDATA[
-<?hh
-
-function foo(): int {
-  // UNSAFE
-  return "Hi";
-}
-
-function bar(): string {
-  // UNSAFE
-  return 3;
-}
-]]>
-          </programlisting>
+          <programlisting role="php" location="hack.modes6.php" />
+          <programlisting role="php" location="hack.modes7.php" />
         </informalexample>
       </para>
       <para>
@@ -210,33 +100,8 @@ function bar(): string {
      <para>
       Here are two examples that demonstrate how the coverage of <literal> // UNSAFE </literal>.
       <informalexample>
-        <programlisting role="php">
-<![CDATA[
-<?hh
-function unsafe_foo(int $x, int $y): int {
-  if ($x > $y) {
-    // UNSAFE
-    return "I am not checked by the type checker"; // Covered by UNSAFE
-  }
-  return 34; // NOT covered by UNSAFE
-}
-]]>
-        </programlisting>
-        <programlisting role="php">
-<![CDATA[
-<?hh
-function unsafe_foo(int $x, int $y): int {
-  if ($x === 3) {
-    return 6; // NOT covered by the UNSAFE
-  }
-  // UNSAFE
-  if ($x > $y) {
-    return "I am not checked by the type checker"; // Covered by the UNSAFE
-  }
-  return true; // Covered by the UNSAFE
-}
-]]>
-        </programlisting>
+        <programlisting role="php" location="hack.modes8.php" />
+        <programlisting role="php" location="hack.modes9.php" />
       </informalexample>
     </para>
   </sect1>

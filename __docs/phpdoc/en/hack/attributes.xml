@@ -34,23 +34,7 @@
   <para>
     Here is an example of the use of attributes:
     <informalexample>
-      <programlisting role="php">
-<![CDATA[
-<?hh
-class Foo {
-  <<TestFunction, key("6")>>
-  public function bar(string $key) {
-    return baz($key);
-  }
-}
-
-$rc = new ReflectionClass('Foo');
-$attrs = $rc->getMethod('bar')->getAttributes();
-var_dump($attrs);
-$attr = $rc->getMethod('bar')->getAttribute("key");
-var_dump($attr);
-]]>
-      </programlisting>
+      <programlisting role="php" location="hack.attributes1.php" />
       <informalexample>
         &example.outputs;
         <screen>
@@ -109,43 +93,11 @@ array(1) {
       the type checker cannot access the parent's method declarations.
       Consider the following:
       <informalexample>
-        <programlisting role="php">
-<![CDATA[
-// file1.php
-<?hh
-
-class CParent {
-  public function doStuff(): void {
-    return $this->implementation();
-  }
-  protected function implementation(): void {
-    echo 'parent implementation', "\n";
-  }
-}
-
-// file2.php
-<?hh
-class Child extends CParent {
-  <<__Override>>
-  protected function implementation(): void {
-    echo 'child implementation', "\n";
-  }
-}
-]]>
-        </programlisting>
+        <programlisting role="php" location="hack.attributes2.php" />
         <para>
           If the parent class is (inadvertently) refactored to the following...
         </para>
-        <programlisting role="php">
-<![CDATA[  // file1.php
-<?hh
-class CParent {
-  public function doStuff(): void {
-    echo 'parent implementation', "\n";
-  }
-}
-]]>
-        </programlisting>
+        <programlisting role="php" location="hack.attributes3.php" />
         <para>
         ... the <literal>&lt;&lt;__Override&gt;&gt;</literal> annotation will
         result in a type checker error, alerting the refactorer of
@@ -163,27 +115,7 @@ class CParent {
         overridden method exists is deferred to the classes that
         <literal>use</literal> the trait.
         <informalexample>
-          <programlisting role="php">
-<![CDATA[
-<?hh
-trait T1 {
-  <<__Override>> // checked on use classes
-  function foo(): void {}
-}
-
-class C1 {
-  use T1; // error! foo is not an override
-}
-
-class C2 {
-  function foo(): void {}
-}
-
-class C3 extends C2 {
-  use T1; // OK! C2's implementation is being overridden
-}
-]]>
-          </programlisting>
+          <programlisting role="php" location="hack.attributes4.php" />
         </informalexample>
       </para>
     </sect2>
@@ -197,22 +129,7 @@ class C3 extends C2 {
       <literal>__Memoize</literal>. Formerly, caching was done in this sort of
       manner:
       <informalexample>
-        <programlisting role="php">
-<![CDATA[
-<?hh
-class Baz {}
-class Foo {
-  private Map $cache;
-
-  public function bar(string $key): Baz {
-    if (!isset($this->cache[$key])) {
-      $this->cache[$key] = function_that_returns_baz($key);
-    }
-    return $this->cache[$key];
-  }
-}
-]]>
-        </programlisting>
+        <programlisting role="php" location="hack.attributes5.php" />
         <para>
           This code employs an explicit caching mechanism to avoid possibly
           expensive function calls.
@@ -223,18 +140,7 @@ class Foo {
       Now see how much simpler and succinct <literal>__Memoize</literal> makes
       the code above:
       <informalexample>
-        <programlisting role="php">
-<![CDATA[
-<?hh
-class Baz {}
-class Foo {
-  <<__Memoize>>
-  public function bar(string $key): Baz {
-    return function_that_returns_baz($key);
-  }
-}
-]]>
-        </programlisting>
+        <programlisting role="php" location="hack.attributes6.php" />
         <para>
           After the first call to <literal>bar()</literal>, the result will be
           automatically cached so that subsequent calls to
@@ -264,24 +170,7 @@ class Foo {
         it is applied. It is not applied to other named functions in its class
         hierarchy. Here is an example:
         <informalexample>
-          <programlisting role="php">
-<![CDATA[
-<?hh
-class Baz {}
-class MParent {
-  // Memozing will *not* occur on this function
-  public function foo(string $key): Baz {
-    return function_that_returns_baz($key);
-  }
-}
-class Child extends MParent {
-  <<__Override, __Memoize>>
-  public function foo(string $key): Baz {
-    return another_function_that_returns_baz($key);
-  }
-}
-]]>
-          </programlisting>
+          <programlisting role="php" location="hack.attributes7.php" />
         </informalexample>
       </para>
     </note>
@@ -310,24 +199,7 @@ class Child extends MParent {
       This attribute is useful particularly for <literal>new static()</literal>
       calls. Consider this example and the output of the Hack type checker:
       <informalexample>
-        <programlisting role="php">
-<![CDATA[
-<?hh
-class Foo {
-  public static function make(): this {
-    return new static();
-  }
-}
-class ChildOfFoo extends Foo {
-  public function __construct(private A $a) {}
-}
-
-function main() {
-  $child = ChildOfFoo::make();
-}
-main();
-]]>
-        </programlisting>
+        <programlisting role="php" location="hack.attributes8.php" />
         &example.outputs;
         <screen>
 <![CDATA[
@@ -358,25 +230,7 @@ This declaration neither defines an abstract/final __construct nor uses <<__Cons
       the Hack type checker can make sure everything is aligned with the parent
       and children constructors:
       <informalexample>
-        <programlisting role="php">
-<![CDATA[
-<?hh
-<<__ConsistentConstruct>>
-class Foo {
-  public static function make(): this {
-    return new static();
-  }
-}
-class ChildOfFoo extends Foo {
-  public function __construct(private A $a) {}
-}
-
-function main() {
-  $child = ChildOfFoo::make();
-}
-main();
-]]>
-        </programlisting>
+        <programlisting role="php" location="hack.attributes9.php" />
         &example.outputs;
         <screen>
 <![CDATA[
@@ -398,25 +252,7 @@ Because of this definition
       Finally, if we use the <literal>__ConsistentConstruct</literal> attribute,
       and the code is correct, the Hack type checker should be happy:
       <informalexample>
-        <programlisting role="php">
-<![CDATA[
-<?hh
-<<__ConsistentConstruct>>
-class Foo {
-  public static function make(): this {
-    return new static();
-  }
-}
-class ChildOfFoo extends Foo {
-  public function __construct() {}
-}
-
-function main() {
-  $child = ChildOfFoo::make();
-}
-main();
-]]>
-        </programlisting>
+        <programlisting role="php" location="hack.attributes10.php" />
         &example.outputs;
         <screen>
 <![CDATA[

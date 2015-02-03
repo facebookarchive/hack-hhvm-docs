@@ -4,34 +4,7 @@
   <para>
     Does this style of PHP code look familiar?
     <informalexample>
-      <programlisting role="php">
-<![CDATA[
-<?hh
-
-function why_shapes(array $arr_as_struct): array {
-  if ($arr_as_struct['id'] === '573065673A34Z') {
-    $arr_as_struct['count']++;
-  }
-  else {
-    $arr_as_struct['url'] = "http://google.com";
-    $arr_as_struct['count']--;
-  }
-  return $arr_as_struct;
-}
-
-function main_why_shapes() {
-  $my_struct = array('id' => null, 'url' => null, 'count' => 0);
-  $my_struct['id'] = '573065673A34Y';
-  $my_struct['url'] = 'http://facebook.com';
-
-  var_dump($my_struct);
-  $my_struct = why_shapes($my_struct);
-  var_dump($my_struct);
-}
-
-main_why_shapes();
-]]>
-      </programlisting>
+      <programlisting role="php" location="hack.shapes1.php" />
       &example.outputs;
       <screen>
 <![CDATA[
@@ -66,23 +39,11 @@ int(-1)
   <para>
     Shapes have the following general syntax:
     <informalexample>
-      <programlisting role="php">
-<![CDATA[
-<?hh
-type MyShape = shape('id1' => <type>, 'id2' => <type>);
-function foo(MyShape $x): void {}
-]]>
-      </programlisting>
+      <programlisting role="php" location="hack.shapes2.php" />
       <para>
         or
       </para>
-      <programlisting role="php">
-<![CDATA[
-<?hh
-newtype MyShape = shape('id1' => <type>, 'id2' => <type>);
-function foo(MyShape $x): void {}
-]]>
-      </programlisting>
+      <programlisting role="php" location="hack.shapes3.php" />
     </informalexample>
     <note>
       <para>
@@ -97,25 +58,7 @@ function foo(MyShape $x): void {}
       This example creates a shape that represents a point in the
       two-dimensional plane.
       <informalexample>
-        <programlisting role="php">
-<![CDATA[
-<?hh
-
-type Point2D = shape('x' => int, 'y' => int);
-
-function dotProduct(Point2D $a, Point2D $b): int {
-  var_dump($a);
-  var_dump($b);
-  return $a['x'] * $b['x'] + $a['y'] * $b['y'];
-}
-
-function main_sse(): void {
-  echo dotProduct(shape('x' => 3, 'y' => 3), shape('x' => 4, 'y' => 4));
-}
-
-main_sse();
-]]>
-        </programlisting>
+        <programlisting role="php" location="hack.shapes4.php" />
         &example.outputs;
         <screen>
 <![CDATA[
@@ -135,59 +78,11 @@ main_sse();
       Building on the example at the introduction of shapes, instead of using an array as a struct-like entity, a shape will be used instead. Also, this example spans across files.
       <informalexample>
         <para><emphasis>shapesAcrossFiles1.php</emphasis></para>
-        <programlisting role="php">
-<![CDATA[
-<?hh
-
-type RandomData = shape('id' => string, 'url' => string, 'count' => int);
-
-function foo_saf(RandomData $rd): RandomData {
-  if ($rd['id'] === '573065673A34Z') {
-    $rd['count']++;
-  }
-  else {
-    $rd['url'] = "http://google.com";
-    $rd['count']--;
-  }
-  return $rd;
-}
-]]>
-        </programlisting>
+        <programlisting role="php" location="hack.shapes5.php" />
         <para><emphasis>shapesAcrossFiles2.php</emphasis></para>
-        <programlisting role="php">
-<![CDATA[
-<?hh
-
-function setup_saf() {
-  $rd = shape('id' => null, 'url' => null, 'count' => 0);
-  $rd['id'] = '573065673A34Y';
-  $rd['url'] = 'http://facebook.com';
-  var_dump($rd);
-  var_dump(foo_saf($rd));
-
-
-  // This should cause a Hack error
-  // But this will still run in HHVM
-  $rd['count'] = 'I should error';
-  var_dump(foo_saf($rd));
-}
-]]>
-        </programlisting>
+        <programlisting role="php" location="hack.shapes6.php" />
         <para><emphasis>shapesAcrossFiles3.php</emphasis></para>
-        <programlisting role="php">
-<![CDATA[
-<?hh
-
-require_once 'shapesAcrossFiles1.php';
-require_once 'shapesAcrossFiles2.php';
-
-function main_saf() {
-  setup_saf();
-}
-
-main_saf();
-]]>
-        </programlisting>
+        <programlisting role="php" location="hack.shapes7.php" />
         <para>
           Running <literal>main_saf()</literal> should produce a Hack error in <literal>setup_saf()</literal> since <literal>$rd['count']</literal> was set to a <literal>string</literal> and the shape <literal>RandomData</literal> expects <literal>count</literal> to be an <literal>int</literal> when <literal>foo()</literal> is called.
         </para>
@@ -240,33 +135,7 @@ array(3) {
     <para>
       Shapes can be used with <link linkend="hack.generics">generics</link> as shown here:
       <informalexample>
-        <programlisting role="php">
-<![CDATA[
-<?hh
-
-type Point<T> = shape ('x' => T, 'y' => T);
-
-function gen_shape_add<T>(Point<T> $pt1, Point<T> $pt2): Point<T> {
-  $sumx = $pt1['x'] + $pt2['x'];
-  $sumy = $pt1['y'] + $pt2['y'];
-  return shape ('x' => $sumx, 'y' => $sumy);
-}
-
-function main_gs() {
-  // Float based shape
-  $pt1 = shape('x' => 1.0, 'y' => 2.0);
-  $pt2 = shape('x' => 3.0, 'y' => 4.0);
-  var_dump(gen_shape_add($pt1, $pt2));
-
-  // Int based shape
-  $pt3 = shape('x' => 1, 'y' => 2);
-  $pt4 = shape('x' => 3, 'y' => 4);
-  var_dump(gen_shape_add($pt3, $pt4));
-}
-
-main_gs();
-]]>
-        </programlisting>
+        <programlisting role="php" location="hack.shapes8.php" />
         &example.outputs;
         <screen>
 <![CDATA[

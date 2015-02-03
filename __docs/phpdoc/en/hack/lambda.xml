@@ -7,20 +7,7 @@
   <para>
     In PHP 5.3 the closures feature was introduced, which allowed the programmer to write anonymous functions like so:
     <informalexample>
-      <programlisting role="php">
-<![CDATA[
-<?hh
-// Example 1
-function foo() {
-  $x = 'bar';
-  return function ($y) use ($x) {
-    return $x . $y;
-  };
-}
-$fn = foo();
-echo $fn('baz'); // Outputs barbaz
-]]>
-      </programlisting>
+      <programlisting role="php" location="hack.lambda1.php" />
       &example.outputs;
       <screen>
 <![CDATA[
@@ -38,44 +25,10 @@ barbaz
   <para>
     Here are two simple examples of how to use lambda expressions. You can find more examples <link linkend="hack.lambda.examples">here</link>.
     <informalexample>
-        <programlisting role="php">
-<![CDATA[
-<?hh
-// Never do this, but just illustrating that this won't be captured.
-$b = 34;
-function lam(int $b): int {
-  // $b is captured from the parameter in this function body
-  $fn = $a ==> $a + $b;
-  // Do other stuff
-  // .....
-  return $fn(10);
-}
-
-var_dump(lam(42)); // return 52
-]]>
-        </programlisting>
+        <programlisting role="php" location="hack.lambda2.php" />
       </informalexample>
       <informalexample>
-        <programlisting role="php">
-<![CDATA[
-<?hh
-// Never do this, but just illustrating that this won't be captured.
-$b = 34;
-function lam(int $b): int {
-  // Multi-statement lambda body
-  // $b is captured from the parameter in this function body
-  $fn = $a ==> {$b = mult($b); return ($a + $b);};
-  // Do other stuff
-  // .....
-  return $fn(10);
-}
-
-function mult(int $x): int {
-  return $x * 4;
-}
-var_dump(lam(42)); // return 178
-]]>
-        </programlisting>
+        <programlisting role="php" location="hack.lambda3.php" />
       </informalexample>
     </para>
   <note>
@@ -101,18 +54,7 @@ var_dump(lam(42)); // return 178
     <para>
       A lambda expression is denoted in the source code by using the <literal>==></literal> binary operator, aka the lambda arrow. The left hand argument of the lambda arrow is the parameter list, and the right hand argument is either an expression or a curly brace-enclosed list of statements.
       <informalexample>
-        <programlisting role="php">
-<![CDATA[
-<?hh
-// Example 2
-function foo(): (function(string): string){
-  $x = 'bar';
-  return $y ==> $x . $y;
-}
-$fn = foo();
-echo $fn('baz'); // Outputs barbaz
-]]>
-        </programlisting>
+        <programlisting role="php" location="hack.lambda4.php" />
         &example.outputs;
         <screen>
 <![CDATA[
@@ -127,18 +69,7 @@ barbaz
     <para>
       Lambda expressions were designed to allow for extra brevity in common cases. In most cases the parameter list on the left hand side must be wrapped in parentheses, however if no return type is being specified AND there is exactly one parameter with no type hint and no default value then the parentheses can be omitted. Also when the right hand side is just a single expression, the result of expression will be returned as the return value when the <literal>Closure</literal> object is invoked, which allows the programmer to avoid having to type "return"explicitly in many cases. The example above is equivalent to the following:
       <informalexample>
-        <programlisting role="php">
-<![CDATA[
-<?hh
-// Example 3
-function foo(): (function(string): string) {
-  $x = 'bar';
-  return ($y) ==> { return $x . $y; };
-}
-$fn = foo();
-echo $fn('baz'); // Outputs barbaz
-]]>
-        </programlisting>
+        <programlisting role="php" location="hack.lambda5.php" />
         &example.outputs;
         <screen>
 <![CDATA[
@@ -150,15 +81,7 @@ barbaz
     <para>
       The <literal>==></literal> operator has relatively low precedence compared with other operators. In example #2 above, the <literal>==></literal> has lower precedence than the <literal>.</literal> operator, so the second line of function foo() is parsed as <literal>return ($y ==> ($x . $y));</literal>. This is convenient because it allows lambda expressions to have complex right hand sides without the need to wrap the right hand side in parentheses in many cases. Also, the <literal>==></literal> operator is right associative and if desired can be chained together, for example:
       <informalexample>
-        <programlisting role="php">
-<![CDATA[
-<?hh
-// Example 4
-$f = $x ==> $y ==> $x + $y;
-$g = $f(7);
-echo $g(4); // Outputs 11
-]]>
-        </programlisting>
+        <programlisting role="php" location="hack.lambda6.php" />
         &example.outputs;
         <screen>
 <![CDATA[
@@ -196,77 +119,31 @@ echo $g(4); // Outputs 11
     <para>
       Expression-like lambdas with a single argument:
       <informalexample>
-        <programlisting role="php">
-<![CDATA[
-<?hh
-$foo = $x ==> $x + 1;
-$foo(12); // returns 13
-
-$squared = array_map($x ==> $x*$x, array(1,2,3));
-var_dump($squared); // $squared is array(1,4,9)
-]]>
-        </programlisting>
+        <programlisting role="php" location="hack.lambda7.php" />
       </informalexample>
     </para>
     <para>
       Expression-like lambdas with no arguments or more than one argument require parentheses around the parameter list:
       <informalexample>
-        <programlisting role="php">
-<![CDATA[
-<?hh
-$foo = () ==> 73;
-$foo(); // returns 73
-
-$bar = ($x,$y) ==> $x + $y;
-var_dump($bar(3,8)); // outputs 11
-]]>
-        </programlisting>
+        <programlisting role="php" location="hack.lambda8.php" />
       </informalexample>
     </para>
     <para>
       A compound statement can be given as the body of lambda expression by using curly braces like so:
       <informalexample>
-        <programlisting role="php">
-<![CDATA[
-<?hh
-$dump_map = ($name, $x) ==> {
-  echo "Map $name has:\n";
-  foreach ($x as $k => $v) {
-    echo "  $k => $v\n";
-  }
-};
-$dump_map(
-  "My Map",
-  Map {'a' => 'b', 'c' => 'd'},
-);
-]]>
-        </programlisting>
+        <programlisting role="php" location="hack.lambda9.php" />
       </informalexample>
     </para>
     <para>
       Variables are captured automatically and transitively (including <literal>$this</literal>):
       <informalexample>
-        <programlisting role="php">
-<![CDATA[
-<?hh
-$z = 11;
-$foo = $x ==> $y ==> $x * $z + $y;
-$bar = $foo(5);
-var_dump($bar(4)); // outputs 59
-]]>
-        </programlisting>
+        <programlisting role="php" location="hack.lambda10.php" />
       </informalexample>
     </para>
     <para>
       Use parentheses if you need to provide parameter or return type hints, or if you need to provide default values for parameters:
       <informalexample>
-        <programlisting role="php">
-<![CDATA[
-<?hh
-$captured = "test: ";
-$bar = (string $k = "foo"): string ==> $captured . $k;
-]]>
-        </programlisting>
+        <programlisting role="php" location="hack.lambda11.php" />
       </informalexample>
     </para>
   </sect1>

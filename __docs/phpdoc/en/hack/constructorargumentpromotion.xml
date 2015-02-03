@@ -4,21 +4,7 @@
   <para>
     Most PHP programmers are familiar with defining class properties.
     <informalexample>
-      <programlisting role="php">
-<![CDATA[
-<?hh
-
-class Person {
-  private string $name;
-  private int $age;
-
-  public function __construct(string $name, int $age) {
-    $this->name = $name;
-    $this->age = $age;
-  }
-}
-]]>
-      </programlisting>
+      <programlisting role="php" location="hack.constructorargumentpromotion1.php" />
     </informalexample>
   </para>
   <para>
@@ -30,16 +16,7 @@ class Person {
   <para>
     <emphasis role="bold">Introducing constructor argument promotion</emphasis>. This is a small, yet very useful syntatic improvement provided by the Hack language. Now instead of writing code like the example above, you can write:
     <informalexample>
-      <programlisting role="php">
-<![CDATA[
-<?hh
-class Person {
-  public function __construct(public string $name,
-                              protected int $age,
-                              private bool $gender) {}
-}
-]]>
-      </programlisting>
+      <programlisting role="php" location="hack.constructorargumentpromotion2.php" />
       <para>
         That's it. The class members will automatically be created and assigned to what is passed into the constructor. Syntatic sugar, yes. Typing and productivity win, for sure.
       </para>

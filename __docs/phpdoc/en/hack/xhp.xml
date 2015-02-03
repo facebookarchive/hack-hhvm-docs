@@ -38,11 +38,7 @@
     <para>
       The purpose of <literal>XHPChild</literal> is to provide a concrete type for the <literal>{}</literal> operator. In the following XHP fragment:
       <informalexample>
-        <programlisting role="php">
-<![CDATA[
-{$foo}
-]]>
-        </programlisting>
+        <programlisting role="php" location="hack.xhp1.php" />
         <para>
           <literal>$foo</literal> is an <literal>XHPChild</literal> object.
         </para>
@@ -51,38 +47,19 @@
     <para>
       The XHP method <literal>appendChild()</literal> also takes an <literal>XHPChild</literal>. Thus, given the example XHP fragment above, the following code can be written as an equivalent alternative:
           <informalexample>
-        <programlisting role="php">
-<![CDATA[
-$div = <div />
-$div->appendChild($foo);
-]]>
-        </programlisting>
+        <programlisting role="php" location="hack.xhp2.php" />
       </informalexample>
     </para>
     <para>
       When writing an API that takes an argument flowing into the <literal>{}</literal> operator, use the <literal>XHPChild</literal> type hint.
       <informalexample>
-        <programlisting role="php">
-<![CDATA[
-<?hh
-function render_in_a_box(XHPChild $msg): :xhp {
-  return <ui:box>{$msg}</ui:box>;
-}
-]]>
-        </programlisting>
+        <programlisting role="php" location="hack.xhp3.php" />
       </informalexample>
     </para>
     <para>
       Of course, there will be cases when a specific type other than <literal>XHPChild</literal> needs to be used, and that is obviously ok.
       <informalexample>
-        <programlisting role="php">
-<![CDATA[
-<?hh
-function do_some_alignment(:ui:slideshow $x) {
-  // do something with $x->getCurrentCount()
-}
-]]>
-        </programlisting>
+        <programlisting role="php" location="hack.xhp4.php" />
       </informalexample>
     </para>
   </sect1>
@@ -102,19 +79,7 @@ function do_some_alignment(:ui:slideshow $x) {
         <para>
           Returning <literal>XHPChild</literal> is useful in cases such as:
           <informalexample>
-            <programlisting role="php">
-<![CDATA[
-<?hh
-function foo(int $x): mixed {
-  if ($x > 4) {
-    return "some string";
-  } else {
-    $div = <div />;
-    return $div; // XHPChild
-  }
-}
-]]>
-            </programlisting>
+            <programlisting role="php" location="hack.xhp5.php" />
           </informalexample>
         </para>
       </listitem>
@@ -160,15 +125,7 @@ function foo(int $x): mixed {
     <para>
       XHP attributes have types. However, because they are written or read via <literal>setAttribute/getAttribute</literal>, which inherently cannot be typed except for <literal>mixed</literal>, it is difficult to type check attributes without special integration. A workaround is to integrate Hack with XHP such that attribute type checking occurs at call sites of those methods, or at <literal>__construct()</literal> call sites (i.e. native XHP syntax). In other words, the type checker could complain about the following intelligently instead of attempting to cast values or throwing a fatal exception/error at runtime:
             <informalexample>
-        <programlisting role="php">
-<![CDATA[
-<?hh
-$div = <div />;
-$div->setAttribute('class', 1); // Type error
-$div->getAttribute('class')->someMethod(); // Type error
-$num = <ui:number value={new Exception()} />; // Type error
-]]>
-        </programlisting>
+        <programlisting role="php" location="hack.xhp6.php" />
       </informalexample>
     </para>
     <para>
