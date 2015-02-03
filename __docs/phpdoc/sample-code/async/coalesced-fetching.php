@@ -1,4 +1,4 @@
-<?hh
+<?hh // strict
 
 class Batcher {
   private static ?Awaitable<array<int, int>> $pendingWH = null;
@@ -48,5 +48,5 @@ function main(): void {
   run()->getWaitHandle()->join();
 }
 
-// HH_FIXME[1002] ... To ignore type checker warning for top-level statements
+/* HH_FIXME[1002]: To ignore type checker warning for top-level statements */
 main();
