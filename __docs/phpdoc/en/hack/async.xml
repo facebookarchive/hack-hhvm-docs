@@ -151,6 +151,20 @@
     </para>
   </sect1>
 
+  <sect1 xml:id="hack.async.external.resources">
+    <title>External Resources</title>
+    <para>
+      Here are some external resources re: async:
+      <itemizedlist>
+        <listitem>
+          <para>
+            <link xlink:href="&url.hack.async.blog.post;" xmlns:xlink="http://www.w3.org/1999/xlink">Explanatory Blog Post</link>
+          </para>
+        </listitem>
+      </itemizedlist>
+    </para>
+  </sect1>
+
 </chapter>
 <!-- Keep this comment at the end of the file
 Local variables:
