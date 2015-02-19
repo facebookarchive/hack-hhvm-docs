@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <chapter xml:id="hack.async">
   <title>Async</title>
-  &note.hack.async;
   <para>
     Asynchronous programming refers to a programming design pattern that allows several distinct tasks to cooperatively transfer control to one another on a given thread of execution. The tasks are isolated from one another from the perspective of dependency minimization and task interaction. Asynchronous programming is most often used in the context of input/output (I/O). For synchronous (i.e., blocking) I/O APIs, asynchronous tasks can be batched together to perform a set of work. And, of course, asynchronous (i.e., non-blocking) I/O APIs fit nicely into the asynchronous programming model.
   </para>
@@ -20,7 +19,6 @@
 
   <sect1 xml:id="hack.async.asyncawait">
     <title><literal>async</literal> and <literal>await</literal></title>
-    &note.hack.async;
     <para>
       <literal>async</literal> declares a function as asynchronous. <literal>await</literal> suspends the execution of an async function until the result of the asynchronous operation represented by <literal>await</literal> is available. The return value of a function that <literal>await</literal> can be used upon is an object that implements <literal>Awaitable&lt;T&gt;</literal>.
     </para>
@@ -28,7 +26,6 @@
 
   <sect1 xml:id="hack.async.annotating">
     <title>Type Annotating Async Functions</title>
-    &note.hack.async;
     <para>
       Typing async functions so that the Hack type checker will understand them is fairly straightforward. Just ensure that the function signature is preceded by the <literal>async</literal> keyword and that the return type is an object that implements <literal>Awaitable&lt;T&gt;</literal> (normally this should just be <literal>Awaitable&lt;T&gt;</literal> directly).
     </para>
@@ -39,7 +36,6 @@
 
   <sect1 xml:id="hack.async.fetchingexample">
     <title>Example: Coalesced Fetching</title>
-    &note.hack.async;
     <para>
       Async provides an interesting mechanism to perform coalesced fetching. Let's take ids as the "things" we want to fetch. In essence, your code is written as if you are fetching one ID, but, under the covers, the query is being batched.
       <informalexample>
@@ -50,7 +46,6 @@
   </sect1>
   <sect1 xml:id="hack.async.signatureexamples">
     <title>Signature Examples</title>
-    &note.hack.async;
     <informalexample>
       <programlisting role="php" location="hack.async3.php" />
     </informalexample>
@@ -58,7 +53,6 @@
 
   <sect1 xml:id="hack.async.awaitablesvscontinuations">
     <title>Awaitables vs Continuations</title>
-    &note.hack.async;
     <para>
       This table briefly summarizes <literal>Continuation&lt;T&gt;</literal> and <literal>Awaitable&lt;T&gt;</literal>. Continuations are used in *synchronous, generator* based programming on functions that <literal>yield</literal> results.
     </para>
@@ -142,7 +136,6 @@
 
   <sect1 xml:id="hack.async.lambdas">
     <title>Async Lambdas</title>
-    &note.hack.async;
     <para>
       <link linkend="hack.lambda">Lambdas</link> can be used to make the syntax of an async function more terse and efficient.
     </para>
