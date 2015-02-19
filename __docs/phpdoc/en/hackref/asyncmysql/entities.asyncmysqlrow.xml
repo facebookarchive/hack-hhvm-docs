@@ -1,0 +1,8 @@
+&hackref.asyncmysql.asyncmysqlrow.at;
+&hackref.asyncmysql.asyncmysqlrow.count;
+&hackref.asyncmysql.asyncmysqlrow.fieldtype;
+&hackref.asyncmysql.asyncmysqlrow.getfieldasdouble;
+&hackref.asyncmysql.asyncmysqlrow.getfieldasint;
+&hackref.asyncmysql.asyncmysqlrow.getfieldasstring;
+&hackref.asyncmysql.asyncmysqlrow.getiterator;
+&hackref.asyncmysql.asyncmysqlrow.isnull;

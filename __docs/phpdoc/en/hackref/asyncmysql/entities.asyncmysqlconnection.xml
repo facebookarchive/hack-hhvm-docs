@@ -1,0 +1,12 @@
+&hackref.asyncmysql.asyncmysqlconnection.close;
+&hackref.asyncmysql.asyncmysqlconnection.escapestring;
+&hackref.asyncmysql.asyncmysqlconnection.host;
+&hackref.asyncmysql.asyncmysqlconnection.isreusable;
+&hackref.asyncmysql.asyncmysqlconnection.multiquery;
+&hackref.asyncmysql.asyncmysqlconnection.port;
+&hackref.asyncmysql.asyncmysqlconnection.query;
+&hackref.asyncmysql.asyncmysqlconnection.queryf;
+&hackref.asyncmysql.asyncmysqlconnection.releaseconnection;
+&hackref.asyncmysql.asyncmysqlconnection.serverinfo;
+&hackref.asyncmysql.asyncmysqlconnection.setreusable;
+&hackref.asyncmysql.asyncmysqlconnection.warningcount;

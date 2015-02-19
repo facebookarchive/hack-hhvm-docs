@@ -1,0 +1,3 @@
+&hackref.asyncmysql.asyncmysqlconnectionpool.construct;
+&hackref.asyncmysql.asyncmysqlconnectionpool.connect;
+&hackref.asyncmysql.asyncmysqlconnectionpool.getpoolstats;

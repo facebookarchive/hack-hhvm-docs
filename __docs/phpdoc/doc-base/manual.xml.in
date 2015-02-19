@@ -94,6 +94,7 @@
   &hackref.collections.book;
   &hackref.enums.book;
   &hackref.hackmagic.book;
+  &hackref.asyncmysql.book;
  </set>
 
  <book xml:id="phplangref">

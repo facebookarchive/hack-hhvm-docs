@@ -1,0 +1,5 @@
+&hackref.asyncmysql.asyncmysqlrowblockiterator.current;
+&hackref.asyncmysql.asyncmysqlrowblockiterator.key;
+&hackref.asyncmysql.asyncmysqlrowblockiterator.next;
+&hackref.asyncmysql.asyncmysqlrowblockiterator.rewind;
+&hackref.asyncmysql.asyncmysqlrowblockiterator.valid;

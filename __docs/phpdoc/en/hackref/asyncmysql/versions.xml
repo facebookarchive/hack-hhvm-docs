@@ -1,0 +1,106 @@
+<?xml version='1.0' encoding='utf-8'?>
+<versions>
+  <function name='AsyncMysqlClient' from='HHVM 3 &gt;= 3.6'/>
+  <function name='AsyncMysqlClient::setPoolsConnectionsLimit' from='HHVM 3 &gt;= 3.6'/>
+  <function name='AsyncMysqlClient::connect' from='HHVM 3 &gt;= 3.6'/>
+  <function name='AsyncMysqlClient::adoptConnection' from='HHVM 3 &gt;= 3.6'/>
+  <function name='AsyncMysqlConnectionPool' from='HHVM 3 &gt;= 3.6'/>
+  <function name='AsyncMysqlConnectionPool::__construct' from='HHVM 3 &gt;= 3.6'/>
+  <function name='AsyncMysqlConnectionPool::connect' from='HHVM 3 &gt;= 3.6'/>
+  <function name='AsyncMysqlConnectionPool::getPoolStats' from='HHVM 3 &gt;= 3.6'/>
+  <function name='AsyncMysqlConnection' from='HHVM 3 &gt;= 3.6'/>
+  <function name='AsyncMysqlConnection::close' from='HHVM 3 &gt;= 3.6'/>
+  <function name='AsyncMysqlConnection::escapeString' from='HHVM 3 &gt;= 3.6'/>
+  <function name='AsyncMysqlConnection::host' from='HHVM 3 &gt;= 3.6'/>
+  <function name='AsyncMysqlConnection::isReusable' from='HHVM 3 &gt;= 3.6'/>
+  <function name='AsyncMysqlConnection::multiQuery' from='HHVM 3 &gt;= 3.6'/>
+  <function name='AsyncMysqlConnection::port' from='HHVM 3 &gt;= 3.6'/>
+  <function name='AsyncMysqlConnection::query' from='HHVM 3 &gt;= 3.6'/>
+  <function name='AsyncMysqlConnection::queryf' from='HHVM 3 &gt;= 3.6'/>
+  <function name='AsyncMysqlConnection::relaseConnection' from='HHVM 3 &gt;= 3.6'/>
+  <function name='AsyncMysqlConnection::serverInfo' from='HHVM 3 &gt;= 3.6'/>
+  <function name='AsyncMysqlConnection::setReusable' from='HHVM 3 &gt;= 3.6'/>
+  <function name='AsyncMysqlConnection::warningCount' from='HHVM 3 &gt;= 3.6'/>
+  <function name='AsyncMysqlResult' from='HHVM 3 &gt;= 3.6'/>
+  <function name='AsyncMysqlResult::elapsedMicros' from='HHVM 3 &gt;= 3.6'/>
+  <function name='AsyncMysqlResult::endTime' from='HHVM 3 &gt;= 3.6'/>
+  <function name='AsyncMysqlResult::startTime' from='HHVM 3 &gt;= 3.6'/>
+  <function name='AsyncMysqlErrorResult' from='HHVM 3 &gt;= 3.6'/>
+  <function name='AsyncMysqlErrorResult::elapsedMicros' from='HHVM 3 &gt;= 3.6'/>
+  <function name='AsyncMysqlErrorResult::endTime' from='HHVM 3 &gt;= 3.6'/>
+  <function name='AsyncMysqlErrorResult::failureType' from='HHVM 3 &gt;= 3.6'/>
+  <function name='AsyncMysqlErrorResult::mysql_errno' from='HHVM 3 &gt;= 3.6'/>
+  <function name='AsyncMysqlErrorResult::mysql_error' from='HHVM 3 &gt;= 3.6'/>
+  <function name='AsyncMysqlErrorResult::startTime' from='HHVM 3 &gt;= 3.6'/>
+  <function name='AsyncMysqlQueryErrorResult' from='HHVM 3 &gt;= 3.6'/>
+  <function name='AsyncMysqlQueryErrorResult::getSuccessfulResults' from='HHVM 3 &gt;= 3.6'/>
+  <function name='AsyncMysqlQueryErrorResult::numSuccessfulQueries' from='HHVM 3 &gt;= 3.6'/>
+  <function name='AsyncMysqlQueryResult' from='HHVM 3 &gt;= 3.6'/>
+  <function name='AsyncMysqlQueryResult::elapsedMicros' from='HHVM 3 &gt;= 3.6'/>
+  <function name='AsyncMysqlQueryResult::endTime' from='HHVM 3 &gt;= 3.6'/>
+  <function name='AsyncMysqlQueryResult::lastInsertId' from='HHVM 3 &gt;= 3.6'/>
+  <function name='AsyncMysqlQueryResult::mapRows' from='HHVM 3 &gt;= 3.6'/>
+  <function name='AsyncMysqlQueryResult::mapRowsTyped' from='HHVM 3 &gt;= 3.6'/>
+  <function name='AsyncMysqlQueryResult::numRows' from='HHVM 3 &gt;= 3.6'/>
+  <function name='AsyncMysqlQueryResult::numRowsAffected' from='HHVM 3 &gt;= 3.6'/>
+  <function name='AsyncMysqlQueryResult::rowBlocks' from='HHVM 3 &gt;= 3.6'/>
+  <function name='AsyncMysqlQueryResult::startTime' from='HHVM 3 &gt;= 3.6'/>
+  <function name='AsyncMysqlQueryResult::vectorRows' from='HHVM 3 &gt;= 3.6'/>
+  <function name='AsyncMysqlQueryResult::vectorRowsTyped' from='HHVM 3 &gt;= 3.6'/>
+  <function name='AsyncMysqlRowBlock' from='HHVM 3 &gt;= 3.6'/>
+  <function name='AsyncMysqlRowBlock::at' from='HHVM 3 &gt;= 3.6'/>
+  <function name='AsyncMysqlRowBlock::count' from='HHVM 3 &gt;= 3.6'/>
+  <function name='AsyncMysqlRowBlock::fieldFlags' from='HHVM 3 &gt;= 3.6'/>
+  <function name='AsyncMysqlRowBlock::fieldName' from='HHVM 3 &gt;= 3.6'/>
+  <function name='AsyncMysqlRowBlock::fieldsCount' from='HHVM 3 &gt;= 3.6'/>
+  <function name='AsyncMysqlRowBlock::fieldType' from='HHVM 3 &gt;= 3.6'/>
+  <function name='AsyncMysqlRowBlock::getFieldsAsDouble' from='HHVM 3 &gt;= 3.6'/>
+  <function name='AsyncMysqlRowBlock::getFieldsAsInt' from='HHVM 3 &gt;= 3.6'/>
+  <function name='AsyncMysqlRowBlock::getFieldsAsString' from='HHVM 3 &gt;= 3.6'/>
+  <function name='AsyncMysqlRowBlock::getIterator' from='HHVM 3 &gt;= 3.6'/>
+  <function name='AsyncMysqlRowBlock::getRow' from='HHVM 3 &gt;= 3.6'/>
+  <function name='AsyncMysqlRowBlock::isEmpty' from='HHVM 3 &gt;= 3.6'/>
+  <function name='AsyncMysqlRowBlock::isNull' from='HHVM 3 &gt;= 3.6'/>
+  <function name='AsyncMysqlRowBlockIterator' from='HHVM 3 &gt;= 3.6'/>
+  <function name='AsyncMysqlRowBlockIterator::current' from='HHVM 3 &gt;= 3.6'/>
+  <function name='AsyncMysqlRowBlockIterator::key' from='HHVM 3 &gt;= 3.6'/>
+  <function name='AsyncMysqlRowBlockIterator::next' from='HHVM 3 &gt;= 3.6'/>
+  <function name='AsyncMysqlRowBlockIterator::rewind' from='HHVM 3 &gt;= 3.6'/>
+  <function name='AsyncMysqlRowBlockIterator::valid' from='HHVM 3 &gt;= 3.6'/>
+  <function name='AsyncMysqlRow' from='HHVM 3 &gt;= 3.6'/>
+  <function name='AsyncMysqlRow::at' from='HHVM 3 &gt;= 3.6'/>
+  <function name='AsyncMysqlRow::count' from='HHVM 3 &gt;= 3.6'/>
+  <function name='AsyncMysqlRow::fieldType' from='HHVM 3 &gt;= 3.6'/>
+  <function name='AsyncMysqlRow::getFieldsAsDouble' from='HHVM 3 &gt;= 3.6'/>
+  <function name='AsyncMysqlRow::getFieldsAsInt' from='HHVM 3 &gt;= 3.6'/>
+  <function name='AsyncMysqlRow::getFieldsAsString' from='HHVM 3 &gt;= 3.6'/>
+  <function name='AsyncMysqlRow::getIterator' from='HHVM 3 &gt;= 3.6'/>
+  <function name='AsyncMysqlRow::isNull' from='HHVM 3 &gt;= 3.6'/>
+  <function name='AsyncMysqlRowIterator' from='HHVM 3 &gt;= 3.6'/>
+  <function name='AsyncMysqlRowIterator::current' from='HHVM 3 &gt;= 3.6'/>
+  <function name='AsyncMysqlRowIterator::key' from='HHVM 3 &gt;= 3.6'/>
+  <function name='AsyncMysqlRowIterator::next' from='HHVM 3 &gt;= 3.6'/>
+  <function name='AsyncMysqlRowIterator::rewind' from='HHVM 3 &gt;= 3.6'/>
+  <function name='AsyncMysqlRowIterator::valid' from='HHVM 3 &gt;= 3.6'/>
+</versions>
+
+<!-- Keep this comment at the end of the file
+Local variables:
+mode: sgml
+sgml-omittag:t
+sgml-shorttag:t
+sgml-minimize-attributes:nil
+sgml-always-quote-attributes:t
+sgml-indent-step:1
+sgml-indent-data:t
+indent-tabs-mode:nil
+sgml-parent-document:nil
+sgml-default-dtd-file:"~/.phpdoc/manual.ced"
+sgml-exposed-tags:nil
+sgml-local-catalogs:nil
+sgml-local-ecat-files:nil
+End:
+vim600: syn=xml fen fdm=syntax fdl=2 si
+vim: et tw=78 syn=sgml
+vi: ts=1 sw=1
+-->
