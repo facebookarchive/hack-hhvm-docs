@@ -159,6 +159,7 @@
 <!ENTITY url.hack "http://hacklang.org">
 <!ENTITY url.hack.async.blog.post "http://hhvm.com/blog/7091/async-cooperative-multitasking-for-hack">
 <!ENTITY url.hack.install "http://hacklang.org/install/">
+<!ENTITY url.hack.lang.spec "https://github.com/hhvm/hack-langspec/blob/master/spec/00-specification-for-hack.md">
 <!ENTITY url.hack.tutorial "http://hacklang.org/tutorial">
 <!ENTITY url.hack.hhvm.docs "https://github.com/facebook/hack-hhvm-docs">
 <!ENTITY url.hack.vim "https://github.com/hhvm/vim-hack">

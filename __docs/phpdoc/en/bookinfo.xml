@@ -34,6 +34,11 @@
    </simpara>
   </legalnotice>
 
+  <abstract>
+    <para>
+      <link xlink:href="&url.hack.lang.spec;" xmlns:xlink="http://www.w3.org/1999/xlink">Hack Language Specification</link>
+    </para>
+  </abstract>
  </info>
 
 <!-- Keep this comment at the end of the file
