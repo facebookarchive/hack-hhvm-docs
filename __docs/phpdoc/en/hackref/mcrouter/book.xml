@@ -28,6 +28,11 @@
   </para>
   <para>
     This extension is bundled directly with HHVM.
+    <note>
+      <para>
+        For now, MCRouter we are planning not to build HHVM on some HHVM pre-built packages, including Debian Wheezy, etc.
+      </para>
+    </note>
   </para>
  </preface>
 
