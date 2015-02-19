@@ -43,7 +43,7 @@
     <para>
       Async provides an interesting mechanism to perform coalesced fetching. Let's take ids as the "things" we want to fetch. In essence, your code is written as if you are fetching one ID, but, under the covers, the query is being batched.
       <informalexample>
-        <programlisting role="php" location="async/coalesced-fetching.php">
+        <programlisting role="php" location="hack.async7.php">
         </programlisting>
       </informalexample>
     </para>
