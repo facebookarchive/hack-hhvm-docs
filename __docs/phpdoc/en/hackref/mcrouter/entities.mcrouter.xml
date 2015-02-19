@@ -1,0 +1,15 @@
+&hackref.mcrouter.mcrouter.add;
+&hackref.mcrouter.mcrouter.append;
+&hackref.mcrouter.mcrouter.construct;
+&hackref.mcrouter.mcrouter.createsimple;
+&hackref.mcrouter.mcrouter.decr;
+&hackref.mcrouter.mcrouter.del;
+&hackref.mcrouter.mcrouter.flushall;
+&hackref.mcrouter.mcrouter.getopname;
+&hackref.mcrouter.mcrouter.getresultname;
+&hackref.mcrouter.mcrouter.get;
+&hackref.mcrouter.mcrouter.incr;
+&hackref.mcrouter.mcrouter.prepend;
+&hackref.mcrouter.mcrouter.replace;
+&hackref.mcrouter.mcrouter.set;
+&hackref.mcrouter.mcrouter.version;

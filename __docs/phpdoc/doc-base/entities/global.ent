@@ -319,6 +319,9 @@
 <!ENTITY url.maxmind.geoip "http://www.maxmind.com/app/c">
 <!ENTITY url.maxmind.iso3166 "http://www.maxmind.com/en/iso3166">
 <!ENTITY url.mcal "http://mcal.chek.com/">
+<!ENTITY url.mcrouter "https://github.com/facebook/mcrouter">
+<!ENTITY url.mcrouter.wiki "https://github.com/facebook/mcrouter/wiki">
+<!ENTITY url.mcrouter.options.list "https://github.com/facebook/mcrouter/blob/master/ mcrouter/mcrouter_options_list.h">
 <!ENTITY url.mcve.home "http://www.mainstreetsoftworks.com/">
 <!ENTITY url.mcve.docs "http://www.mainstreetsoftworks.com/documentation.html">
 <!ENTITY url.mcrypt "http://mcrypt.sourceforge.net/">
