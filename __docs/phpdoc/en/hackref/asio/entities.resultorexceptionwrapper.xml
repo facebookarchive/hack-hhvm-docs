@@ -1,0 +1,4 @@
+&hackref.asio.resultorexceptionwrapper.getexception;
+&hackref.asio.resultorexceptionwrapper.getresult;
+&hackref.asio.resultorexceptionwrapper.isfailed;
+&hackref.asio.resultorexceptionwrapper.issucceeded;

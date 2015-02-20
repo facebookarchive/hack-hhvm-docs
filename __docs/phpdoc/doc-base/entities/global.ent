@@ -165,6 +165,7 @@
 <!ENTITY url.hack.vim "https://github.com/hhvm/vim-hack">
 <!ENTITY url.haru.lib "http://libharu.org">
 <!ENTITY url.hhvm "http://hhvm.com">
+<!ENTITY url.hhvm.asio.utilities "https://github.com/hhvm/asio-utilities">
 <!ENTITY url.hhvm.manual "http://docs.hhvm.com">
 <!ENTITY url.hhvm.downloads "https://github.com/facebook/hhvm">
 <!ENTITY url.hhvm.getting-started "https://github.com/facebook/hhvm/wiki/Getting-Started">

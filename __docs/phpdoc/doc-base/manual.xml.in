@@ -96,6 +96,7 @@
   &hackref.hackmagic.book;
   &hackref.asyncmysql.book;
   &hackref.mcrouter.book;
+  &hackref.asio.book;
  </set>
 
  <book xml:id="phplangref">
