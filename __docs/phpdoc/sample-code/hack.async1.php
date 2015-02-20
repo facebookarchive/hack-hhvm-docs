@@ -1,4 +1,22 @@
 <?hh
+/*
+   **********************************************************************
+   ***** IN MANY CASES USING THIS WILL MAKE YOUR APPLICATION SLOWER *****
+   **********************************************************************
+   *
+   * You should pretty much only use this if your multiget is blocking, slow,
+   * and you get a _significant_ improvement from batching. MEASURE THE EFFECTS.
+   *
+   * For example:
+   * - convertng blocking memcache gets to multigets would probably be a bad
+   *   idea (consider using the MCRouter extension to make these async instead)
+   * - converting async memcache gets to async multigets would be a _very_ bad
+   *   idea.
+   * - converting multiple 'WHERE x = %d' to 'WHERE x in (%d, %d, %d)' /may/ be
+   *   a good idea depending on your load. Measure it and see.
+   * - if you depend on an external API and have a rate limit, this can help you
+   *   meet it
+*/
 class Batcher {
   private static ?Awaitable<array<int, int>> $pendingWH = null;
   private static array<int, int> $ids = array();
