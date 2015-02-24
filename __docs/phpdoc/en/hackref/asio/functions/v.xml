@@ -7,12 +7,19 @@
   <refpurpose>Translate a vector of awaitables into a single awaitable of vector</refpurpose>
  </refnamediv>
 
+ <refsect1 role="namespace">
+  &reftitle.namespace;
+  <para>
+    HH\Asio
+  </para>
+ </refsect1>
+
  <refsect1 role="description">
   &reftitle.description;
   <methodsynopsis>
    <modifier>async</modifier>
    <type>Awaitable&lt;Vector&lt;Tv&gt;&gt;</type>
-   <methodname>v</methodname>
+   <methodname>v&lt;Tv&gt;</methodname>
    <methodparam>
     <type>Traversable&lt;Awaitable&lt;Tv&gt;&gt;</type>
     <parameter>awaitables</parameter>

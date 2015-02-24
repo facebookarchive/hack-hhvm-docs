@@ -7,12 +7,19 @@
   <refpurpose>Translate a map of awaitables into a single awaitable of map</refpurpose>
  </refnamediv>
 
+ <refsect1 role="namespace">
+  &reftitle.namespace;
+  <para>
+    HH\Asio
+  </para>
+ </refsect1>
+
  <refsect1 role="description">
   &reftitle.description;
   <methodsynopsis>
    <modifier>async</modifier>
    <type>Awaitable&lt;Map&lt;Tk, Tv&gt;&gt;</type>
-   <methodname>m</methodname>
+   <methodname>m&lt;Tk, Tv&gt;</methodname>
    <methodparam>
     <type>KeyedTraversable&lt;Tk, Awaitable&lt;Tv&gt;&gt;</type>
     <parameter>awaitables</parameter>

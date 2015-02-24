@@ -98,6 +98,7 @@ supplemental files to mark section titles -->
 <!ENTITY reftitle.interfacesynopsis '<title xmlns="http://docbook.org/ns/docbook">Interface synopsis</title>'>
 <!ENTITY reftitle.methods      '<title xmlns="http://docbook.org/ns/docbook">Methods</title>'>
 <!ENTITY reftitle.mysqlnd      '<title xmlns="http://docbook.org/ns/docbook">MySQL Native Driver Only</title>'>
+<!ENTITY reftitle.namespace  '<title xmlns="http://docbook.org/ns/docbook">Namespace</title>'>
 <!ENTITY reftitle.notes        '<title xmlns="http://docbook.org/ns/docbook">Notes</title>'>
 <!ENTITY reftitle.parameters   '<title xmlns="http://docbook.org/ns/docbook">Parameters</title>'>
 <!ENTITY reftitle.options      '<title xmlns="http://docbook.org/ns/docbook">Options</title>'>
