@@ -194,8 +194,8 @@ abstract class Package_PHP_XHTML extends Package_Generic_XHTML {
             if (
                 $r->moveToAttribute("name")
                 && ($funcname = str_replace(
-                    array("::", "->", "__", "_", '$'),
-                    array("-",  "-",  "-",  "-", ""),
+                    array("::", "->", "__", "_", '$', '&lt;', '&gt;'),
+                    array("-",  "-",  "-",  "-", "", '<', '>'),
                     $r->value))
                 && $r->moveToAttribute("from")
                 && ($from = $r->value)
@@ -459,8 +459,10 @@ abstract class Package_PHP_XHTML extends Package_Generic_XHTML {
 
     public function versionInfo($funcname) {
         $funcname = str_replace(
-                array("::", "-&gt;", "->", "__", "_", '$', '()'),
-                array("-",  "-",     "-",  "-",  "-", "",  ''),
+                array("::", "-&gt;", "->", "__", "_", '$', '()',
+                      '&lt;', '&gt;'),
+                array("-",  "-",     "-",  "-",  "-", "",  '',
+                      "<", ">"),
                 strtolower($funcname));
         // For HHVM
         // A hack to get us reasonable version numbers without having to manually enter them in a
