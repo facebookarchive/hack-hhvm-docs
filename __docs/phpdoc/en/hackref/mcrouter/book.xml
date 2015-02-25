@@ -19,7 +19,7 @@
     Mcrouter supports typical memcache protocol commands like get, set, delete, etc. and specific commands to access stats, version and so on.
   </para>
   <para>
-   There are 3 classes associated with async MySQL:
+   There are 3 classes associated with MCRouter:
    <itemizedlist>
      <listitem><para><link linkend="class.hack.mcrouter.mcrouter">MCRouter</link></para></listitem>
      <listitem><para><link linkend="class.hack.mcrouter.mcrouterexception">MCRouterException</link></para></listitem>
