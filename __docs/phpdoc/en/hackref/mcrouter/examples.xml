@@ -7,15 +7,20 @@
   Here is an example on how to use the HHVM MCRouter exception:
  </para>
  <example>
-  <title>Async MySQL Example</title>
-  <programlisting role="php" location="hack.mcrouter1.php" />
+  <title>Basic MCRouter example</title>
+  <programlisting role="php" location="hack.mcrouter.basic.php" />
   &example.outputs;
   <screen>
 <![CDATA[
-Success
-Success
+string(12) "value of BAR"
+int(1239) // Assuming an initial value of 5
 ]]>
   </screen>
+ </example>
+
+ <example>
+  <title>Example pulling from MySQL and caching in MCRouter</title>
+  <programlisting role="php" location="hack.mcrouter.getUser.php" />
  </example>
 </chapter>
 
