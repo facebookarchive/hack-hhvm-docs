@@ -8,6 +8,7 @@
 &reference.curl.functions.curl-getinfo;
 &reference.curl.functions.curl-init;
 &reference.curl.functions.curl-multi-add-handle;
+&reference.curl.functions.curl-multi-await;
 &reference.curl.functions.curl-multi-close;
 &reference.curl.functions.curl-multi-exec;
 &reference.curl.functions.curl-multi-getcontent;
