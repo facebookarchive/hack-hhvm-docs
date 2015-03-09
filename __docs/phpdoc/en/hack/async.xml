@@ -151,6 +151,32 @@
     </para>
   </sect1>
 
+  <sect1 xml:id="hack.async.builtins">
+    <title>Async Builtins</title>
+    <para>
+      By default, HHVM delivers a few async-aware extensions for the most common I/O bound tasks.
+    </para>
+    <itemizedlist>
+      <listitem><para><link linkend="book.hack.mcrouter">MCRouter</link></para></listitem>
+      <listitem><para><link linkend="book.hack.async.mysql">AsyncMySQL</link></para></listitem>
+    </itemizedlist>
+    <para>
+      Meanwhile, the cURL and Standard extensions have been extended to include awaitable polling.
+    </para>
+    <itemizedlist>
+      <listitem><para><function>stream_await</function></para></listitem>
+      <listitem><para><function>curl_multi_await</function></para></listitem>
+    </itemizedlist>
+    <para>
+      Additionally, a few helper function exist to make use of async functionality more easily.
+    </para>
+    <itemizedlist>
+      <listitem><para><function>HH\asio\curl_exec</function></para></listitem>
+      <listitem><para><function>HH\asio\v</function></para></listitem>
+      <listitem><para><function>HH\asio\m</function></para></listitem>
+    </itemizedlist>
+  </sect1>
+
   <sect1 xml:id="hack.async.external.resources">
     <title>External Resources</title>
     <para>
