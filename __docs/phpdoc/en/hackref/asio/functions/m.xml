@@ -3,7 +3,7 @@
 
 <refentry xml:id="hack.asio.function.m" xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink">
  <refnamediv>
-  <refname>HH\Asio\m&lt;Tk, Tv&gt;</refname>
+  <refname>HH\Asio\m</refname>
   <refpurpose>Translate a map of awaitables into a single awaitable of map</refpurpose>
  </refnamediv>
 

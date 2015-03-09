@@ -18,7 +18,7 @@
   <function name='WrappedResult::isFailed' from='Not Available'/>
   <function name='WrappedResult::isSucceeded' from='Not Available'/>
   <function name='later' from='Not Available'/>
-  <function name='HH\Asio\m&lt;Tk, Tv&gt;' from='HHVM 3 &gt;= 3.6'/>
+  <function name='HH\Asio\m' from='HHVM 3 &gt;= 3.6'/>
   <function name='mc' from='Not Available'/>
   <function name='mcw' from='Not Available'/>
   <function name='mf' from='Not Available'/>
@@ -27,7 +27,7 @@
   <function name='mmk' from='Not Available'/>
   <function name='mw' from='Not Available'/>
   <function name='usleep' from='Not Available'/>
-  <function name='HH\Asio\v&lt;Tv&gt;' from='HHVM 3 &gt;= 3.6'/>
+  <function name='HH\Asio\v' from='HHVM 3 &gt;= 3.6'/>
   <function name='va' from='Not Available'/>
   <function name='vac' from='Not Available'/>
   <function name='vacw' from='Not Available'/>

@@ -3,7 +3,7 @@
 
 <refentry xml:id="hack.asio.function.v" xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink">
  <refnamediv>
-  <refname>HH\Asio\v&lt;Tv&gt;</refname>
+  <refname>HH\Asio\v</refname>
   <refpurpose>Translate a vector of awaitables into a single awaitable of vector</refpurpose>
  </refnamediv>
 
