@@ -5,6 +5,7 @@
 -->
 <versions>
  <function name='set_socket_blocking' from='PHP 4, PHP 5'/>
+ <function name='stream_await' from='HHVM 3 &gt;=3.6'/>
  <function name='stream_bucket_append' from='PHP 5'/>
  <function name='stream_bucket_make_writeable' from='PHP 5'/>
  <function name='stream_bucket_new' from='PHP 5'/>

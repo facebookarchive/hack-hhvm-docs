@@ -1,4 +1,5 @@
 &reference.stream.functions.set-socket-blocking;
+&reference.stream.functions.stream-await;
 &reference.stream.functions.stream-bucket-append;
 &reference.stream.functions.stream-bucket-make-writeable;
 &reference.stream.functions.stream-bucket-new;
