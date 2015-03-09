@@ -28,3 +28,4 @@
 &reference.curl.functions.curl-strerror;
 &reference.curl.functions.curl-unescape;
 &reference.curl.functions.curl-version;
+&reference.curl.functions.hh-asio-curl-exec;

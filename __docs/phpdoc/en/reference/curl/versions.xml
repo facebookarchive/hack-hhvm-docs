@@ -10,6 +10,7 @@
  <function name='curl_error' from='PHP 4 &gt;= 4.0.3, PHP 5'/>
  <function name='curl_escape' from='PHP 5 &gt;= 5.5.0'/>
  <function name='curl_exec' from='PHP 4 &gt;= 4.0.2, PHP 5'/>
+ <function name='HH\Asio\curl_exec' from='HHVM 3 &gt;=3.6'/>
  <function name='curl_file_create' from='PHP 5 &gt;= 5.5.0'/>
  <function name='curl_getinfo' from='PHP 4 &gt;= 4.0.4, PHP 5'/>
  <function name='curl_init' from='PHP 4 &gt;= 4.0.2, PHP 5'/>
