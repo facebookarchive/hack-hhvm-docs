@@ -3,7 +3,7 @@
 
 <refentry xml:id="hack.async.mysql.asyncmysqlconnection.queryf" xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink">
  <refnamediv>
-  <refname>AsyncMysqlConnection::query</refname>
+  <refname>AsyncMysqlConnection::queryf</refname>
   <refpurpose>Execute a query with placeholders and parameters.</refpurpose>
  </refnamediv>
 
