@@ -46,6 +46,18 @@
   </para>
  </refsect1>
 
+ <refsect1 role="examples">
+  &reftitle.examples;
+  <example>
+   <title>Simple GET usage, with no options</title>
+   <programlisting role="php"  location="hack.curl.async.get.php"/>
+  </example>
+  <example>
+   <title>Using CURLOPT options, such as POST</title>
+   <programlisting role="php" location="hack.curl.async.post.php"/>
+  </example>
+ </refsect1>
+
  <refsect1 role="seealso">
   &reftitle.seealso;
   <para>
