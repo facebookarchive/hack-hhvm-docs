@@ -4,7 +4,7 @@
 <refentry xml:id="hack.asio.function.v" xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink">
  <refnamediv>
   <refname>HH\Asio\v</refname>
-  <refpurpose>Translate a vector of awaitables into a single awaitable of vector</refpurpose>
+  <refpurpose>Translate a Vector of awaitables into an awaitable Vector of yielded values.</refpurpose>
  </refnamediv>
 
  <refsect1 role="namespace">
@@ -46,10 +46,26 @@
  <refsect1 role="returnvalues">
    &reftitle.returnvalues;
    <para>
-    Vector of awaitables
+    Vector of yielded awaitable values
    </para>
  </refsect1>
 
+ <refsect1 role="examples">
+  &reftitle.examples;
+  <example>
+   <title>Retreive multiple webpages in parallel</title>
+   <programlisting role="php" location="hack.asio.v.getpages.php"/>
+  </example>
+ </refsect1>
+
+ <refsect1 role="seealso">
+  &reftitle.seealso;
+  <para>
+   <simplelist>
+    <member><function>HH\asio\m</function></member>
+   </simplelist>
+  </para>
+ </refsect1>
 </refentry>
 
 <!-- Keep this comment at the end of the file
