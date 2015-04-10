@@ -16,7 +16,7 @@
     &lt;&lt;Attribute1, Attribute2&gt;&gt;</literal>.
   </para>
   <para>
-    The value of an attrubute can be accessed using the <literal>
+    The value of an attribute can be accessed using the <literal>
     Reflection::getAttribute(string $name)</literal> method. The full attribute
     information for any reflectable item can be accessed via <literal>
     Reflection::getAttributes()</literal>
