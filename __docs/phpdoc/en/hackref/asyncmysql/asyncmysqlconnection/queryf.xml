@@ -27,18 +27,54 @@
 
       queryf("SELECT %C FROM %T WHERE %C %=s", $col1, $table, $col2, $value);
 
-    Supported placeholders:
-      %T   table name
-      %C   column name
-      %s   nullable string (will be escaped)
-      %d   integer
-      %f   float
-      %=s  nullable string comparison - expands to either:
-           = 'escaped_string'
-           IS NULL
-      %=d  nullable integer comparison
-      %=f  nullable float comparison
-      %Q   raw SQL query. The typechecker intentionally does not recognize this, however, you can use it in combination with // UNSAFE if absolutely required
+   <table>
+    <title>Supported placeholders</title>
+    <tgroup cols="2">
+     <thead>
+      <row>
+       <entry>Placeholder</entry>
+       <entry>Meaning</entry>
+      </row>
+     </thead>
+     <tbody>
+      <row>
+       <entry>%T</entry><entry>table name</entry>
+      </row>
+      <row>
+       <entry>%C</entry><entry>column name</entry>
+      </row>
+      <row>
+       <entry>%s</entry><entry>nullable string (will be escaped)</entry>
+      </row>
+      <row>
+       <entry>%d</entry><entry>integer</entry>
+      </row>
+      <row>
+       <entry>%f</entry><entry>float</entry>
+      </row>
+      <row>
+       <entry>%=s</entry>
+       <entry>
+        nullable string comparison - expands to either:
+            <code>= 'escaped_string'</code> or
+            <code>IS NULL</code>
+       </entry>
+      </row>
+      <row>
+       <entry>%=d</entry><entry>nullable integer comparison</entry>
+      </row>
+      <row>
+       <entry>%=f</entry><entry>nullable float comparison</entry>
+      </row>
+      <row>
+       <entry>%Q</entry>
+       <entry>
+        raw SQL query. The typechecker intentionally does not recognize this, however, you can use it in combination with // UNSAFE if absolutely required
+       </entry>
+      </row>
+     </tbody>
+    </tgroup>
+   </table>
   </para>
  </refsect1>
 
