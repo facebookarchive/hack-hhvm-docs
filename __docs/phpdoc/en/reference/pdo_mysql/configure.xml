@@ -2,67 +2,7 @@
 <!-- $Revision: 329924 $ -->
 <section xml:id="ref.pdo-mysql.installation" xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink">
  &reftitle.install;
- <para>
-  Use <option role="configure">--with-pdo-mysql[=DIR]</option> to install
-  the PDO MySQL extension, where the optional <literal>[=DIR]</literal>
-  is the MySQL base install directory. If <link linkend="book.mysqlnd">mysqlnd</link>
-  is passed as <literal>[=DIR]</literal>, then the MySQL native driver will be used.
- </para>
- <para>
-  Optionally, the <option role="configure">--with-mysql-sock[=DIR]</option> sets to location
-  to the MySQL unix socket pointer for all MySQL extensions, including PDO_MYSQL. If
-  unspecified, the default locations are searched.
- </para>
- <para>
-  Optionally, the <option role="configure">--with-zlib-dir[=DIR]</option> is used to set
-  the path to the libz install prefix.
- </para>
- <para>
-  <screen>
-<![CDATA[
-$ ./configure --with-pdo-mysql --with-mysql-sock=/var/mysql/mysql.sock
-]]>
-  </screen>
- </para>
- <para>
-  SSL support is enabled using the appropriate <link linkend="pdo-mysql.constants">PDO_MySQL constants</link>,
-  which is equivalent to calling the <link xlink:href="&url.mysql.docs.ssl.set;">MySQL C API function mysql_ssl_set()</link>.
-  Also, SSL cannot be enabled with <classname>PDO::setAttribute</classname> because the connection
-  already exists. See also the MySQL documentation about <link xlink:href="&url.mysql.docs.ssl.using;">connecting to
-  MySQL with SSL</link>.
- </para>
-
- <table>
-  <title>&Changelog;</title>
-  <tgroup cols="2">
-   <thead>
-    <row>
-     <entry>&Version;</entry>
-     <entry>&Description;</entry>
-    </row>
-   </thead>
-   <tbody>
-    <row>
-     <entry>5.4.0</entry>
-     <entry>
-      MySQL client libraries 4.1 and below are no longer supported.
-     </entry>
-    </row>
-    <row>
-     <entry>5.3.9</entry>
-     <entry>
-      Added SSL support with mysqlnd and OpenSSL.
-     </entry>
-    </row>
-    <row>
-     <entry>5.3.7</entry>
-     <entry>
-      Added SSL support with libmysqlclient and OpenSSL.
-     </entry>
-    </row>
-   </tbody>
-  </tgroup>
- </table>
+ &no.install;
 
 </section>
 

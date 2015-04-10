@@ -10,26 +10,7 @@
 
    <section xml:id="pdo-dblib.intro">
    &reftitle.intro;
-    <para>
-     &warn.experimental;
-     PDO_DBLIB is a driver that implements the <link linkend="intro.pdo">PHP
-     Data Objects (PDO) interface</link> to enable access from PHP to
-     Microsoft SQL Server and Sybase databases through the FreeTDS libary.
-    </para>
-    <para>
-     This extension is not available anymore on Windows with PHP 5.3 or later.
-    </para>
-    <para>
-     On Windows, you should use SqlSrv, an alternative driver for MS SQL is
-     available from Microsoft: <link xlink:href="&url.sqlsrv;">&url.sqlsrv;
-     </link>.
-    </para>
-    <para>
-     If it is not possible to use SqlSrv, you can use the
-     <link linkend="ref.pdo-odbc">PDO_ODBC</link> driver to connect to
-     Microsoft SQL Server and Sybase databases, as the native Windows DB-LIB
-     is ancient, thread un-safe and no longer supported by Microsoft.
-    </para>
+   &no.extension;
    </section>
   </partintro>
 

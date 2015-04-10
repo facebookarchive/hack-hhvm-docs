@@ -2,11 +2,7 @@
 <!-- $Revision: 307771 $ -->
 <section xml:id="ref.pdo-sqlite.installation" xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink">
  &reftitle.install;
- <para>
-  The PDO_SQLITE PDO driver is enabled by default. To disable,
-  <option role="configure">--without-pdo-sqlite[=DIR]</option> may be used,
-  where the optional <literal>[=DIR]</literal> is the sqlite base install directory.
- </para>
+ &no.install;
 </section>
 
 <!-- Keep this comment at the end of the file
