@@ -21,7 +21,7 @@
   <para>
     There are three primary ways to construct a <literal>Map</literal>:
     <itemizedlist>
-      <listitem><simpara><literal>$v = new Map(); // empty</literal></simpara></listitem>
+      <listitem><simpara><literal>$v = Map{}; // empty</literal></simpara></listitem>
       <listitem><simpara><literal>$v = Map {"a" => 1, "b" => 2}; // <link linkend="hack.collections.literalsyntax">literal syntax</link></literal></simpara></listitem>
       <listitem><simpara><literal>$v = new Map($traversable); // from a <link linkend="hack.collections.interfaces">Traversable</link></literal></simpara></listitem>
     </itemizedlist>
