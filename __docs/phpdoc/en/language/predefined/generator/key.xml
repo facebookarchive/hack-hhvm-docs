@@ -10,7 +10,7 @@
  <refsect1 role="description">
   &reftitle.description;
   <methodsynopsis>
-   <modifier>public</modifier> <type>mixed</type><methodname>Generator::key</methodname>
+   <modifier>public</modifier> <type>Tk</type><methodname>Generator::key</methodname>
    <void />
   </methodsynopsis>
   <para>

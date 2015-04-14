@@ -36,11 +36,11 @@
 <!-- {{{ Class synopsis -->
     <classsynopsisinfo>
      <ooclass>
-      <classname>Generator</classname>
+      <classname>Generator&lt;Tk, Tv, Ts&gt;</classname>
      </ooclass>
 
      <oointerface>
-      <interfacename>Iterator</interfacename>
+      <interfacename>KeyedIterator&lt;Tk, Tv&gt;</interfacename>
      </oointerface>
     </classsynopsisinfo>
 <!-- }}} -->
@@ -50,6 +50,18 @@
    </classsynopsis>
 <!-- }}} -->
 
+  </section>
+
+  <section xml:id="class.generator.examples">
+   &reftitle.examples;
+   <example xml:id="generator.example.basic"><!-- {{{ -->
+    <title>Basic usage</title>
+    <para>
+     This example demonstrates how to typehint certain types of generators.
+     Generator expect three generic arguments. <literal>Tk</literal>, <literal>Tv</literal> and <literal>Ts</literal>. <literal>Tk</literal> represents the type of the key, <literal>Tv</literal> the type of the value and <literal>Ts</literal> the nullable type of the parameter passed to the <link linkend="generator.send">send</link> method.
+    </para>
+    <programlisting role="php" location="class.hack.generator1.php" />
+   </example><!-- }}} -->
   </section>
 
  </partintro>

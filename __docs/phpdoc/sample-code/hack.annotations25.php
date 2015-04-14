@@ -1,5 +1,5 @@
 <?hh
-function gen(): Continuation<int> {
+function gen(): Generator<int, int, void> {
   yield 1;
   yield 2;
   yield 3;

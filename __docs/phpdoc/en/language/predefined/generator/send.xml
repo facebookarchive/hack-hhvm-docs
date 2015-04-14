@@ -11,7 +11,7 @@
   &reftitle.description;
   <methodsynopsis>
    <modifier>public</modifier> <type>mixed</type><methodname>Generator::send</methodname>
-   <methodparam><type>mixed</type><parameter>value</parameter></methodparam>
+   <methodparam><type>?Ts</type><parameter>value</parameter></methodparam>
   </methodsynopsis>
   <para>
    Sends the given value to the generator as the result of the current &yield;
@@ -50,12 +50,13 @@
 <?php
 function printer() {
     while (true) {
-        $string = yield;
+        $string = yield "key" => "value";
         echo $string;
     }
 }
 
 $printer = printer();
+$printer->next();
 $printer->send('Hello world!');
 $printer->send('Bye world!');
 ?>

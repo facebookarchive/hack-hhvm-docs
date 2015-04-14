@@ -1694,7 +1694,11 @@ array(4) {
           <row>
             <entry>
               <para>
-                <emphasis role="strong"><literal>Continuation&lt;T&gt;</literal></emphasis>
+                <emphasis role="strong">
+                 <link linkend="class.generator">
+                   <literal>Generator&lt;Tk, Tv, Ts&gt;</literal>
+                 </link>
+                </emphasis>
               </para>
             </entry>
             <entry>
@@ -1709,7 +1713,8 @@ array(4) {
             </entry>
             <entry>
               <para>
-                Generators must always yield the same type. Continuations yield items of a type <literal>T</literal>. Continuations are used only with <literal>yield</literal>, not <literal>async</literal>/<literal>await</literal>, etc.
+                Generators must always yield the same type. Generators yield items of a type <literal>Tv</literal>. Generators are used only with <literal>yield</literal>, not <literal>async</literal>/<literal>await</literal>, etc.
+                For more information look into the <link linkend="class.generator">definition</link>.
             </para>
             </entry>
           </row>
@@ -1740,9 +1745,10 @@ array(4) {
     </informaltable>
     </para>
     <para>
-      The following two examples are correctly typed:
+      The following examples are correctly typed:
       <informalexample>
         <programlisting role="php" location="hack.annotations25.php" />
+        <programlisting role="php" location="hack.annotations27.php" />
         <programlisting role="php" location="hack.annotations26.php" />
       </informalexample>
     </para>

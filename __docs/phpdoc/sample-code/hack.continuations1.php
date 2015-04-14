@@ -1,5 +1,5 @@
 <?hh
-function yieldInfiniteInts(): Continuation<int> {
+function yieldInfiniteInts(): Generator<int, int, void> {
   $i = 0;
   while (true) {
     yield $i++;
