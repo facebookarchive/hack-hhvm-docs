@@ -41,7 +41,8 @@
       </listitem>
       <listitem>
         <para>
-          Dynamic features such as <literal>eval</literal> and <literal>$$x</literal>
+          Dynamic features such as <literal>eval</literal>, <literal>$$x</literal>
+          and <literal>$object->{$var}</literal>
         </para>
       </listitem>
       <listitem>
