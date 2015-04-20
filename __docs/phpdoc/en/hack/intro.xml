@@ -18,7 +18,7 @@
       Hack is a language for HHVM that interoperates seamlessly with PHP. The barrier to entry for Hack is low. To get started, all that is needed is to generally understand the features that Hack provides and <link linkend="install.hack.bootstrapping">how to call the Hack type checker</link> (<literal>hh_client</literal> invokes the type checker at the command line)
     </para>
     <para>
-      The goal of Hack to offer developers a way to write cleaner, safer and refactorable code while trying to maintain a level of compatibility with current PHP codebases. The primary way that this goal is achieved is to provide developers a way to annotate PHP functions and classes with type information, providing a type checking tool to validate those annotations. In addition, Hack also provides specific language feature additions such as:
+      The goal of Hack is to offer developers a way to write cleaner, safer and refactorable code while trying to maintain a level of compatibility with current PHP codebases. The primary way that this goal is achieved is to provide developers a way to annotate PHP functions and classes with type information, providing a type checking tool to validate those annotations. In addition, Hack also provides specific language feature additions such as:
       <itemizedlist>
         <listitem><para><link linkend="hack.generics">generics</link></para></listitem>
         <listitem><para><link linkend="hack.collections">collections</link></para></listitem>
