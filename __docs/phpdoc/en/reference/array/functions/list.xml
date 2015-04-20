@@ -54,13 +54,9 @@ $info = array('coffee', 'brown', 'caffeine');
 list($drink, $color, $power) = $info;
 echo "$drink is $color and $power makes it special.\n";
 
-// Listing some of them
-list($drink, , $power) = $info;
+// Listing some of them, with an unused variable $_
+list($drink, $_, $power) = $info;
 echo "$drink has $power.\n";
-
-// Or let's skip to only the third one
-list( , , $power) = $info;
-echo "I need $power!\n";
 
 // list() doesn't work with strings
 list($bar) = "abcde";
