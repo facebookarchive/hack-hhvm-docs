@@ -26,8 +26,13 @@
 
 <!-- {{{ Class synopsis -->
     <classsynopsisinfo>
+     <modifier>interface</modifier>
      <ooclass>
       <classname>IndexAccess&lt;Tk, Tv&gt;</classname>
+     </ooclass>
+     <ooclass>
+      <modifier>extends</modifier>
+      <classname>ConstIndexAccess&lt;Tk, Tv&gt;</classname>
      </ooclass>
     </classsynopsisinfo>
 <!-- }}} -->
