@@ -1,38 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- $Revision: 330333 $ -->
 
-<refentry xml:id="hack.continuationtv.getarg" xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink">
+<refentry xml:id="language.predefined.generator.getlabel" xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink">
  <refnamediv>
-  <refname>Continuation&lt;Tv&gt;::get_arg</refname>
+  <refname>Generator&lt;Tv&gt;::getLabel</refname>
   <refpurpose>Coming soon</refpurpose>
  </refnamediv>
 
  <refsect1 role="description">
   &reftitle.description;
   <methodsynopsis>
-   <modifier>public</modifier> <type>mixed</type><methodname>Continuation&lt;Tv&gt;::get_arg</methodname>
-   <methodparam><type>int</type><parameter>index</parameter></methodparam>
+   <modifier>public</modifier> <type>int</type><methodname>Generator&lt;Tv&gt;::getLabel</methodname>
+   <void />
   </methodsynopsis>
-  <para>
-
-  </para>
-
  </refsect1>
 
  <refsect1 role="parameters">
   &reftitle.parameters;
-  <para>
-   <variablelist>
-    <varlistentry>
-     <term><parameter>index</parameter></term>
-     <listitem>
-      <para>
-       Coming soon
-      </para>
-     </listitem>
-    </varlistentry>
-   </variablelist>
-  </para>
+  &no.function.parameters;
  </refsect1>
 
  <refsect1 role="returnvalues">
@@ -41,8 +26,6 @@
    Coming soon
   </para>
  </refsect1>
-
-
 </refentry>
 
 <!-- Keep this comment at the end of the file

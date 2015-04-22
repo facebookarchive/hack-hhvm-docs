@@ -1,49 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- $Revision: 330333 $ -->
 
-<refentry xml:id="hack.continuationtv.update" xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink">
+<refentry xml:id="language.predefined.generator.getorigfuncname" xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink">
  <refnamediv>
-  <refname>Continuation&lt;Tv&gt;::update</refname>
+  <refname>Generator&lt;Tv&gt;::getOrigFuncName</refname>
   <refpurpose>Coming soon</refpurpose>
  </refnamediv>
 
  <refsect1 role="description">
   &reftitle.description;
   <methodsynopsis>
-   <modifier>public</modifier> <type>void</type><methodname>Continuation&lt;Tv&gt;::update</methodname>
-   <methodparam><type>int</type><parameter>label</parameter></methodparam>
-   <methodparam><type>Tv</type><parameter>value</parameter></methodparam>
+   <modifier>public</modifier> <type>string</type><methodname>Generator&lt;Tv&gt;::getOrigFuncName</methodname>
+   <void />
   </methodsynopsis>
-  <para>
-
-  </para>
-
  </refsect1>
 
  <refsect1 role="parameters">
   &reftitle.parameters;
-  <para>
-   <variablelist>
-    <varlistentry>
-     <term><parameter>label</parameter></term>
-     <listitem>
-      <para>
-       Coming soon
-      </para>
-     </listitem>
-    </varlistentry>
-   </variablelist>
-   <variablelist>
-    <varlistentry>
-     <term><parameter>value</parameter></term>
-     <listitem>
-      <para>
-       Coming soon
-      </para>
-     </listitem>
-    </varlistentry>
-   </variablelist>
-  </para>
+  &no.function.parameters;
  </refsect1>
 
  <refsect1 role="returnvalues">
@@ -52,8 +26,6 @@
    Coming soon
   </para>
  </refsect1>
-
-
 </refentry>
 
 <!-- Keep this comment at the end of the file

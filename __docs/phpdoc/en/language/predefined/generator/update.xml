@@ -1,17 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- $Revision: 330333 $ -->
 
-<refentry xml:id="hack.continuationtv.send" xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink">
+<refentry xml:id="language.predefined.generator.update" xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink">
  <refnamediv>
-  <refname>Continuation&lt;Tv&gt;::send</refname>
-  <refpurpose>????????</refpurpose>
+  <refname>Generator&lt;Tv&gt;::update</refname>
+  <refpurpose>Coming soon</refpurpose>
  </refnamediv>
 
  <refsect1 role="description">
   &reftitle.description;
   <methodsynopsis>
-   <modifier>public</modifier> <type>void</type><methodname>Continuation&lt;Tv&gt;::send</methodname>
-   <methodparam><type>mixed</type><parameter>v</parameter></methodparam>
+   <modifier>public</modifier> <type>void</type><methodname>Generator&lt;Tv&gt;::update</methodname>
+   <methodparam><type>int</type><parameter>label</parameter></methodparam>
+   <methodparam><type>Tv</type><parameter>value</parameter></methodparam>
   </methodsynopsis>
   <para>
 
@@ -24,10 +25,20 @@
   <para>
    <variablelist>
     <varlistentry>
-     <term><parameter>v</parameter></term>
+     <term><parameter>label</parameter></term>
      <listitem>
       <para>
-       ????????
+       Coming soon
+      </para>
+     </listitem>
+    </varlistentry>
+   </variablelist>
+   <variablelist>
+    <varlistentry>
+     <term><parameter>value</parameter></term>
+     <listitem>
+      <para>
+       Coming soon
       </para>
      </listitem>
     </varlistentry>
@@ -38,7 +49,7 @@
  <refsect1 role="returnvalues">
   &reftitle.returnvalues;
   <para>
-   ??????????
+   Coming soon
   </para>
  </refsect1>
 

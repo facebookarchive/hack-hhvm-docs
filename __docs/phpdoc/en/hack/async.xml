@@ -51,10 +51,10 @@
     </informalexample>
   </sect1>
 
-  <sect1 xml:id="hack.async.awaitablesvscontinuations">
-    <title>Awaitables vs Continuations</title>
+  <sect1 xml:id="hack.async.awaitablesvsgenerators">
+    <title>Awaitables vs Generators</title>
     <para>
-      This table briefly summarizes <literal>Continuation&lt;T&gt;</literal> and <literal>Awaitable&lt;T&gt;</literal>. Continuations are used in *synchronous, generator* based programming on functions that <literal>yield</literal> results.
+      This table briefly summarizes <literal>Generator&lt;Tk, Tv, Ts&gt;</literal> and <literal>Awaitable&lt;T&gt;</literal>. Generators are used in *synchronous, generator* based programming on functions that <literal>yield</literal> results.
     </para>
     <informaltable>
       <tgroup cols="4">
@@ -88,7 +88,7 @@
           <row>
             <entry>
               <para>
-                <emphasis role="strong"><literal>Continuation&lt;T&gt;</literal></emphasis>
+                <emphasis role="strong"><literal>Generator&lt;Tk, Tv, Ts&gt;</literal></emphasis>
               </para>
             </entry>
             <entry>
@@ -103,7 +103,7 @@
             </entry>
             <entry>
               <para>
-                Generators must always yield the same type. Continuations yield items of a type <literal>T</literal>. Continuations are used only with <literal>yield</literal>.
+                Generators must always yield the same type. Generators yield items of a type <literal>T</literal>. Generators are used only with <literal>yield</literal>.
               </para>
             </entry>
           </row>
@@ -125,7 +125,7 @@
             </entry>
             <entry>
               <para>
-                Only use Awaitables with async functions; Continuations should not be used for this purpose.
+                Only use Awaitables with async functions; Generators should not be used for this purpose.
               </para>
             </entry>
           </row>

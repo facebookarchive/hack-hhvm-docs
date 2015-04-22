@@ -74,6 +74,12 @@
  &language.predefined.generator.throw;
  &language.predefined.generator.valid;
  &language.predefined.generator.wakeup;
+ &language.predefined.generator.getorigfuncname;
+ &language.predefined.generator.raise;
+ &language.predefined.generator.getlabel;
+ &language.predefined.generator.update;
+ &language.predefined.generator.numargs;
+ &language.predefined.generator.getarg;
 
 </phpdoc:classref>
 
