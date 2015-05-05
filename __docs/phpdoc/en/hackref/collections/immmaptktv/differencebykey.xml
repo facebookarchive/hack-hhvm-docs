@@ -12,7 +12,7 @@
    <modifier>public</modifier>
    <type>Map&lt;Tk, Tv&gt;</type>
    <methodname>ImmMap&lt;Tk, Tv&gt;::differenceByKey</methodname>
-   <methodparam><type>KeyedTraversabke&lt;Tk, Tv&gt;</type><parameter>iterable</parameter></methodparam>
+   <methodparam><type>KeyedTraversable&lt;Tk, Tv&gt;</type><parameter>iterable</parameter></methodparam>
   </methodsynopsis>
 
 <!-- Note: If this method/property as an alternate procedural mapping then the method/property synopsis MUST be listed BEFORE the function synopsis -->
