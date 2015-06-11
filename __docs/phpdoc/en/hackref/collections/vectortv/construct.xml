@@ -21,7 +21,7 @@
   <para>
     There are three primary ways to construct a <literal>Vector</literal>:
     <itemizedlist>
-      <listitem><simpara><literal>$v = new Vector(); // empty</literal></simpara></listitem>
+      <listitem><simpara><literal>$v = Vector {}; // empty</literal></simpara></listitem>
       <listitem><simpara><literal>$v = Vector {1, 2}; // <link linkend="hack.collections.literalsyntax">literal syntax</link></literal></simpara></listitem>
       <listitem><simpara><literal>$v = new Vector($traversable); // from a <link linkend="hack.collections.interfaces">Traversable</link></literal></simpara></listitem>
     </itemizedlist>
