@@ -55,7 +55,7 @@
       <title><function>curl_multi_await</function> example </title>
       <programlisting role="php" location="function.hack.curl-multi-await1.php" />
     </example>
-    During lulls in network activity, the <code>await curl_multi_async($mh);</code> allows us to pass control to another <code>WaitHandle</code> (perhaps another curl request, perhaps something else), meanwhile the rest of the execution performs non-blocking actions, like calling <code>curl_multi_exec()</code>.
+    During lulls in network activity, the <code>await curl_multi_await($mh);</code> allows us to pass control to another <code>WaitHandle</code> (perhaps another curl request, perhaps something else), meanwhile the rest of the execution performs non-blocking actions, like calling <code>curl_multi_exec()</code>.
   </para>
  </refsect1>
 </refentry>
