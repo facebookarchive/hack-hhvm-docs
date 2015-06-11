@@ -3,7 +3,7 @@ function foo(): void {
   $s = Set {2, 3, 4};
   $v = Set {2, 3, 5};
   $s->add(6);
-  $z = $s->RemoveAll($v); //difference between $v and $s
+  $z = $s->removeAll($v); //difference between $v and $s
   var_dump($s, $v, $z);
 }
 
