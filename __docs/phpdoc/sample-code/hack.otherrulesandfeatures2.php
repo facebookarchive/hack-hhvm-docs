@@ -1,6 +1,6 @@
 <?hh
 
-function sum(...): int {
+function sum(...): float {
   $s = 0;
   foreach (func_get_args() as $e) {
     $s += $e;
