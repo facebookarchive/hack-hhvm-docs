@@ -200,11 +200,6 @@ function chopHead($subject) {
           </listitem>
           <listitem>
             <para>
-              <link linkend="hack.enums">Enums</link>
-            </para>
-          </listitem>
-          <listitem>
-            <para>
               <link linkend="hack.traits.requirements">Traits implementing
               interfaces</link>
             </para>
