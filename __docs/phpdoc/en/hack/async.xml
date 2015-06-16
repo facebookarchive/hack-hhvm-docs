@@ -157,7 +157,7 @@
       By default, HHVM delivers a few async-aware extensions for the most common I/O bound tasks.
     </para>
     <itemizedlist>
-      <listitem><para><link linkend="book.hack.mcrouter">MCRouter</link></para></listitem>
+      <listitem><para><link linkend="book.hack.mcrouter">MCRouter</link> (memcached client)</para></listitem>
       <listitem><para><link linkend="book.hack.async.mysql">AsyncMySQL</link></para></listitem>
     </itemizedlist>
     <para>
@@ -168,7 +168,7 @@
       <listitem><para><function>curl_multi_await</function></para></listitem>
     </itemizedlist>
     <para>
-      Additionally, a few helper function exist to make use of async functionality more easily.
+      Additionally, there are a few convenience wrappers for other async functionality.
     </para>
     <itemizedlist>
       <listitem><para><function>HH\asio\curl_exec</function></para></listitem>
