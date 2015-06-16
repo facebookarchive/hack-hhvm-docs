@@ -6,7 +6,7 @@ async function getPages(): Map<string> {
     'hhvm' => 'http://www.hhvm.com',
     'docs' => 'http://docs.hhvm.com',
   };
-  return await HH\asio\v($waitHandles);
+  return await HH\asio\m($waitHandles);
 }
 
 $pages = getPages()->join();
