@@ -3,7 +3,7 @@
 
 class CParent {
   public function doStuff(): void {
-    return $this->implementation();
+    $this->implementation();
   }
   protected function implementation(): void {
     echo 'parent implementation', "\n";
