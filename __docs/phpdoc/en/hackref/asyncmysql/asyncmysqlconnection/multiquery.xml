@@ -12,7 +12,7 @@
   <methodsynopsis>
    <modifier>public</modifier>
    <type>ExternalThreadEventWaitHandle</type>
-   <methodname>AsyncMysqlConnection::query</methodname>
+   <methodname>AsyncMysqlConnection::multiQuery</methodname>
    <methodparam>
     <type>array</type>
     <parameter>queries</parameter>
