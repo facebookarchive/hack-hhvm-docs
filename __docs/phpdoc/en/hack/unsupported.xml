@@ -26,11 +26,6 @@
       </listitem>
       <listitem>
         <para>
-          The <literal>@</literal> symbol to silence errors.
-        </para>
-      </listitem>
-      <listitem>
-        <para>
           Mixing static and instance function calls (<literal>A::foo()</literal> vs. <literal>$a->foo()</literal> )
         </para>
       </listitem>
