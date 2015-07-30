@@ -486,7 +486,7 @@ BUG_NOTES_HEADER;
   </ul>
  </div>
 NOTES_HEADER;
-    if (url_exists($noteslink)) {
+    if (false && url_exists($noteslink)) {
         echo $bug_notes_header;
     } else {
         echo $bug_header;
