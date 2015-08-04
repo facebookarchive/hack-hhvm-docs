@@ -911,7 +911,7 @@ A
 class A {
 
   protected $x;
-  protected static;
+  protected static $y;
 
   public function __construct()
   {
