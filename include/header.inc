@@ -81,6 +81,7 @@ include $_SERVER['DOCUMENT_ROOT'] . '/include/ga.inc';
 <nav id="head-nav" class="navbar navbar-fixed-top">
   <div class="navbar-inner clearfix">
     <a href='/' class="brand"></a>
+    <a href='http://on.fb.me/1Ujf32Y' class="survey"></a>
     <form class="navbar-search" id="topsearch" action="/search.php">
       <input type="hidden" name="show" value="quickref">
       <input type="search" name="pattern" class="search-query" placeholder="Search" accesskey="s">
