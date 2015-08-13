@@ -1,3 +1,33 @@
+# UPDATE AND DIRECTION OF THIS REPO
+
+**TL;DR: This repo will deprecated in favor of our new documentation repo
+of http://github.com/hhvm/user-documentation.**
+
+The HHVM open source team has a goal to ensure a better developer experience 
+so that people can more easily get started with and use Hack and HHVM. A big 
+part of this developer experience push is revamped and improved documentation.
+
+The current documentation at http://docs.hhvm.com has been serviceable in 
+many ways; but we really believe we can do better. How? By removing the 
+current barriers to entry to easily update and maintain the docs 
+(e.g., docbook); by ensuring a keen focus on user documentation for features 
+(e.g. tutorials, examples); by making the code the source of truth for 
+API documentation; by making the overall feel and navigation of the docs 
+more user-friendly.
+
+Once we are established with the new documentation this repo will become
+a legacy repo for historical purposes only. 
+
+With respect to current documentation issues, etc., we will be addressing
+many of them in the new documentation; unless the issue is a documentation
+showstopper, we are going to focus on making the new docs great as opposed
+to fixing issues with the current docs.
+
+All that said, this repo is still functional, can be forked and
+docs.hhvm.com is up and running as usual.
+
+# Intro
+
 The repo for hhvm.com. This contains the website, blog and HHVM/Hack 
 documentation. You'll need HHVM 3.0 or greater, and have SQLite installed.
 
