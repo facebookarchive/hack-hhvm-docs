@@ -109,6 +109,20 @@ a {
   width: 300px;
 }
 
+.navbar .beta-site {
+  background-size: 300px 75px;
+  background-image: url(/images/beta-site.png);
+  background-position: 0 50%;
+  background-repeat: no-repeat;
+  line-height: 0px;
+  margin: 10px 10px 0 0;
+  padding:20px;
+  overflow: hidden;
+  text-indent: 100%;
+  white-space: nowrap;
+  width: 300px;
+}
+
 .title {
   border-width: 1px 0;
   background-color: #f2f2f2;
