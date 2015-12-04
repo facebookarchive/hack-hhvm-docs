@@ -1,9 +1,0 @@
-&reference.dir.functions.chdir;
-&reference.dir.functions.chroot;
-&reference.dir.functions.closedir;
-&reference.dir.functions.dir;
-&reference.dir.functions.getcwd;
-&reference.dir.functions.opendir;
-&reference.dir.functions.readdir;
-&reference.dir.functions.rewinddir;
-&reference.dir.functions.scandir;

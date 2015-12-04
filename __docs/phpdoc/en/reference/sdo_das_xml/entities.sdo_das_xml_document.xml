@@ -1,6 +1,0 @@
-&reference.sdo-das-xml.sdo-das-xml-document.getRootDataObject;
-&reference.sdo-das-xml.sdo-das-xml-document.getRootElementName;
-&reference.sdo-das-xml.sdo-das-xml-document.getRootElementURI;
-&reference.sdo-das-xml.sdo-das-xml-document.setEncoding;
-&reference.sdo-das-xml.sdo-das-xml-document.setXMLDeclaration;
-&reference.sdo-das-xml.sdo-das-xml-document.setXMLVersion;

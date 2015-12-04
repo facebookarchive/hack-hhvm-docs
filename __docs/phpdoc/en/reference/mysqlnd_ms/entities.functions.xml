@@ -1,7 +1,0 @@
-&reference.mysqlnd-ms.functions.mysqlnd-ms-get-last-gtid;
-&reference.mysqlnd-ms.functions.mysqlnd-ms-get-last-used-connection;
-&reference.mysqlnd-ms.functions.mysqlnd-ms-get-stats;
-&reference.mysqlnd-ms.functions.mysqlnd-ms-match-wild;
-&reference.mysqlnd-ms.functions.mysqlnd-ms-query-is-select;
-&reference.mysqlnd-ms.functions.mysqlnd-ms-set-qos;
-&reference.mysqlnd-ms.functions.mysqlnd-ms-set-user-pick-server;

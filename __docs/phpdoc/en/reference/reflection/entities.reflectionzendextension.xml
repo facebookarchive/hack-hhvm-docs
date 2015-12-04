@@ -1,9 +1,0 @@
-&reference.reflection.reflectionzendextension.clone;
-&reference.reflection.reflectionzendextension.construct;
-&reference.reflection.reflectionzendextension.export;
-&reference.reflection.reflectionzendextension.getauthor;
-&reference.reflection.reflectionzendextension.getcopyright;
-&reference.reflection.reflectionzendextension.getname;
-&reference.reflection.reflectionzendextension.geturl;
-&reference.reflection.reflectionzendextension.getversion;
-&reference.reflection.reflectionzendextension.tostring;

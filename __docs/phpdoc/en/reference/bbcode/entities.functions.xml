@@ -1,7 +1,0 @@
-&reference.bbcode.functions.bbcode-add-element;
-&reference.bbcode.functions.bbcode-add-smiley;
-&reference.bbcode.functions.bbcode-create;
-&reference.bbcode.functions.bbcode-destroy;
-&reference.bbcode.functions.bbcode-parse;
-&reference.bbcode.functions.bbcode-set-arg-parser;
-&reference.bbcode.functions.bbcode-set-flags;

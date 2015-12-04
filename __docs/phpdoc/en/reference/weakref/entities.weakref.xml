@@ -1,5 +1,0 @@
-&reference.weakref.weakref.acquire;
-&reference.weakref.weakref.construct;
-&reference.weakref.weakref.get;
-&reference.weakref.weakref.release;
-&reference.weakref.weakref.valid;

@@ -1,7 +1,0 @@
-&reference.haru.haruimage.getbitspercomponent;
-&reference.haru.haruimage.getcolorspace;
-&reference.haru.haruimage.getheight;
-&reference.haru.haruimage.getsize;
-&reference.haru.haruimage.getwidth;
-&reference.haru.haruimage.setcolormask;
-&reference.haru.haruimage.setmaskimage;

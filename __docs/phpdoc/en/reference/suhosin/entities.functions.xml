@@ -1,4 +1,0 @@
-&reference.suhosin.functions.sha256-file;
-&reference.suhosin.functions.sha256;
-&reference.suhosin.functions.suhosin-encrypt-cookie;
-&reference.suhosin.functions.suhosin-get-raw-cookies;

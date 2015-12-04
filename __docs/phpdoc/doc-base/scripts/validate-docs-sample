@@ -1,1 +1,0 @@
-cd ~/local/hhvm-web/__docs/phpdoc/doc-base && php configure.php

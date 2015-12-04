@@ -1,8 +1,0 @@
-&reference.intl.transliterator.construct;
-&reference.intl.transliterator.create;
-&reference.intl.transliterator.createfromrules;
-&reference.intl.transliterator.createinverse;
-&reference.intl.transliterator.geterrorcode;
-&reference.intl.transliterator.geterrormessage;
-&reference.intl.transliterator.listids;
-&reference.intl.transliterator.transliterate;

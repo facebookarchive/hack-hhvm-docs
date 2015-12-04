@@ -1,8 +1,0 @@
-&reference.sdo-das-xml.sdo-das-xml.addTypes;
-&reference.sdo-das-xml.sdo-das-xml.create;
-&reference.sdo-das-xml.sdo-das-xml.createDataObject;
-&reference.sdo-das-xml.sdo-das-xml.createDocument;
-&reference.sdo-das-xml.sdo-das-xml.loadFile;
-&reference.sdo-das-xml.sdo-das-xml.loadString;
-&reference.sdo-das-xml.sdo-das-xml.saveFile;
-&reference.sdo-das-xml.sdo-das-xml.saveString;

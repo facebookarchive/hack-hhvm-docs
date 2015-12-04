@@ -1,8 +1,0 @@
-&reference.zmq.zmqdevice.construct;
-&reference.zmq.zmqdevice.getidletimeout;
-&reference.zmq.zmqdevice.gettimertimeout;
-&reference.zmq.zmqdevice.run;
-&reference.zmq.zmqdevice.setidlecallback;
-&reference.zmq.zmqdevice.setidletimeout;
-&reference.zmq.zmqdevice.settimercallback;
-&reference.zmq.zmqdevice.settimertimeout;

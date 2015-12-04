@@ -1,7 +1,0 @@
-&reference.sdo.sdo-das-changesummary.beginLogging;
-&reference.sdo.sdo-das-changesummary.endLogging;
-&reference.sdo.sdo-das-changesummary.getChangeType;
-&reference.sdo.sdo-das-changesummary.getChangedDataObjects;
-&reference.sdo.sdo-das-changesummary.getOldContainer;
-&reference.sdo.sdo-das-changesummary.getOldValues;
-&reference.sdo.sdo-das-changesummary.isLogging;

@@ -1,3 +1,0 @@
-&reference.pdo-sqlite.configure;
-&reference.pdo-sqlite.entities.PDO;
-&reference.pdo-sqlite.reference;

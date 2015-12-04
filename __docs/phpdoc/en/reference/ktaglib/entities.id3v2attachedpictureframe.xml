@@ -1,7 +1,0 @@
-&reference.ktaglib.id3v2attachedpictureframe.getDescription;
-&reference.ktaglib.id3v2attachedpictureframe.getMimeType;
-&reference.ktaglib.id3v2attachedpictureframe.getType;
-&reference.ktaglib.id3v2attachedpictureframe.savePicture;
-&reference.ktaglib.id3v2attachedpictureframe.setMimeType;
-&reference.ktaglib.id3v2attachedpictureframe.setPicture;
-&reference.ktaglib.id3v2attachedpictureframe.setType;

@@ -1,6 +1,0 @@
-&reference.unicode.functions.unicode-decode;
-&reference.unicode.functions.unicode-encode;
-&reference.unicode.functions.unicode-get-error-mode;
-&reference.unicode.functions.unicode-get-subst-char;
-&reference.unicode.functions.unicode-set-error-mode;
-&reference.unicode.functions.unicode-set-subst-char;

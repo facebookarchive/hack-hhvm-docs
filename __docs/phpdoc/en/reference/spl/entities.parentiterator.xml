@@ -1,6 +1,0 @@
-&reference.spl.parentiterator.accept;
-&reference.spl.parentiterator.construct;
-&reference.spl.parentiterator.getchildren;
-&reference.spl.parentiterator.haschildren;
-&reference.spl.parentiterator.next;
-&reference.spl.parentiterator.rewind;

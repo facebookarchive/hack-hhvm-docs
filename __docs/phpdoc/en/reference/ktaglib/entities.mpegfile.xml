@@ -1,4 +1,0 @@
-&reference.ktaglib.mpegfile.construct;
-&reference.ktaglib.mpegfile.getAudioProperties;
-&reference.ktaglib.mpegfile.getID3v1Tag;
-&reference.ktaglib.mpegfile.getID3v2Tag;

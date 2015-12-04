@@ -1,4 +1,0 @@
-&reference.pdo-mysql.configure;
-&reference.pdo-mysql.constants;
-&reference.pdo-mysql.ini;
-&reference.pdo-mysql.reference;

@@ -1,2 +1,0 @@
-<?hh
-type NotSoSecret = int;

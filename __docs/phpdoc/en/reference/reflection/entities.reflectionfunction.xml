@@ -1,7 +1,0 @@
-&reference.reflection.reflectionfunction.construct;
-&reference.reflection.reflectionfunction.export;
-&reference.reflection.reflectionfunction.getclosure;
-&reference.reflection.reflectionfunction.invoke;
-&reference.reflection.reflectionfunction.invokeargs;
-&reference.reflection.reflectionfunction.isdisabled;
-&reference.reflection.reflectionfunction.tostring;

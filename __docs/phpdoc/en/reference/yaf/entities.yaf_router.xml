@@ -1,7 +1,0 @@
-&reference.yaf.yaf-router.addconfig;
-&reference.yaf.yaf-router.addroute;
-&reference.yaf.yaf-router.construct;
-&reference.yaf.yaf-router.getcurrentroute;
-&reference.yaf.yaf-router.getroute;
-&reference.yaf.yaf-router.getroutes;
-&reference.yaf.yaf-router.route;

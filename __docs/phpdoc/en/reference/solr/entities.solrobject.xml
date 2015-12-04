@@ -1,7 +1,0 @@
-&reference.solr.solrobject.construct;
-&reference.solr.solrobject.destruct;
-&reference.solr.solrobject.getpropertynames;
-&reference.solr.solrobject.offsetexists;
-&reference.solr.solrobject.offsetget;
-&reference.solr.solrobject.offsetset;
-&reference.solr.solrobject.offsetunset;

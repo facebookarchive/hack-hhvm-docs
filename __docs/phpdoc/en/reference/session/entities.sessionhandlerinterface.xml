@@ -1,6 +1,0 @@
-&reference.session.sessionhandlerinterface.close;
-&reference.session.sessionhandlerinterface.destroy;
-&reference.session.sessionhandlerinterface.gc;
-&reference.session.sessionhandlerinterface.open;
-&reference.session.sessionhandlerinterface.read;
-&reference.session.sessionhandlerinterface.write;

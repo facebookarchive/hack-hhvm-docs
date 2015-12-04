@@ -1,5 +1,0 @@
-&reference.http.HttpInflateStream.construct;
-&reference.http.HttpInflateStream.factory;
-&reference.http.HttpInflateStream.finish;
-&reference.http.HttpInflateStream.flush;
-&reference.http.HttpInflateStream.update;

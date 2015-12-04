@@ -1,7 +1,0 @@
-&reference.lapack.lapack.eigenvalues;
-&reference.lapack.lapack.identity;
-&reference.lapack.lapack.leastsquaresbyfactorisation;
-&reference.lapack.lapack.leastsquaresbysvd;
-&reference.lapack.lapack.pseudoinverse;
-&reference.lapack.lapack.singularvalues;
-&reference.lapack.lapack.solvelinearequation;

@@ -1,1 +1,0 @@
-You agree to license any contributions that you make to the HHVM and Hack Manual Documentation under the Creative Commons Attribution 3.0 License found at http://creativecommons.org/licenses/by/3.0/legalcode.

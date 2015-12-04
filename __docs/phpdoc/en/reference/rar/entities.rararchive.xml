@@ -1,9 +1,0 @@
-&reference.rar.rararchive.close;
-&reference.rar.rararchive.getcomment;
-&reference.rar.rararchive.getentries;
-&reference.rar.rararchive.getentry;
-&reference.rar.rararchive.isbroken;
-&reference.rar.rararchive.issolid;
-&reference.rar.rararchive.open;
-&reference.rar.rararchive.setallowbroken;
-&reference.rar.rararchive.tostring;

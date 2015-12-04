@@ -1,4 +1,0 @@
-&reference.spl.splqueue.construct;
-&reference.spl.splqueue.dequeue;
-&reference.spl.splqueue.enqueue;
-&reference.spl.splqueue.setiteratormode;

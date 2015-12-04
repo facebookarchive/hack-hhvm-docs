@@ -1,9 +1,0 @@
-&reference.session-pgsql.book;
-&reference.session-pgsql.configure;
-&reference.session-pgsql.constants;
-&reference.session-pgsql.entities.functions;
-&reference.session-pgsql.ini;
-&reference.session-pgsql.reference;
-&reference.session-pgsql.setup;
-&reference.session-pgsql.tables;
-&reference.session-pgsql.versions;

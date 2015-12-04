@@ -1,7 +1,0 @@
-&reference.libxml.functions.libxml-clear-errors;
-&reference.libxml.functions.libxml-disable-entity-loader;
-&reference.libxml.functions.libxml-get-errors;
-&reference.libxml.functions.libxml-get-last-error;
-&reference.libxml.functions.libxml-set-external-entity-loader;
-&reference.libxml.functions.libxml-set-streams-context;
-&reference.libxml.functions.libxml-use-internal-errors;

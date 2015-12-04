@@ -1,8 +1,0 @@
-&reference.domxml.DomElement.get-attribute-node;
-&reference.domxml.DomElement.get-attribute;
-&reference.domxml.DomElement.get-elements-by-tagname;
-&reference.domxml.DomElement.has-attribute;
-&reference.domxml.DomElement.remove-attribute;
-&reference.domxml.DomElement.set-attribute-node;
-&reference.domxml.DomElement.set-attribute;
-&reference.domxml.DomElement.tagname;

@@ -1,6 +1,0 @@
-&reference.datetime.datetimeinterface.diff;
-&reference.datetime.datetimeinterface.format;
-&reference.datetime.datetimeinterface.getoffset;
-&reference.datetime.datetimeinterface.gettimestamp;
-&reference.datetime.datetimeinterface.gettimezone;
-&reference.datetime.datetimeinterface.wakeup;

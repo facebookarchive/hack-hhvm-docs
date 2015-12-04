@@ -1,7 +1,0 @@
-&reference.spl.iteratoriterator.construct;
-&reference.spl.iteratoriterator.current;
-&reference.spl.iteratoriterator.getinneriterator;
-&reference.spl.iteratoriterator.key;
-&reference.spl.iteratoriterator.next;
-&reference.spl.iteratoriterator.rewind;
-&reference.spl.iteratoriterator.valid;

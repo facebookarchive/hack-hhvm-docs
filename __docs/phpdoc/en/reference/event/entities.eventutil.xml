@@ -1,7 +1,0 @@
-&reference.event.eventutil.construct;
-&reference.event.eventutil.getlastsocketerrno;
-&reference.event.eventutil.getlastsocketerror;
-&reference.event.eventutil.getsocketfd;
-&reference.event.eventutil.getsocketname;
-&reference.event.eventutil.setsocketoption;
-&reference.event.eventutil.sslrandpoll;

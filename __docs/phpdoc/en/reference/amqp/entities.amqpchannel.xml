@@ -1,8 +1,0 @@
-&reference.amqp.amqpchannel.committransaction;
-&reference.amqp.amqpchannel.construct;
-&reference.amqp.amqpchannel.isconnected;
-&reference.amqp.amqpchannel.qos;
-&reference.amqp.amqpchannel.rollbacktransaction;
-&reference.amqp.amqpchannel.setprefetchcount;
-&reference.amqp.amqpchannel.setprefetchsize;
-&reference.amqp.amqpchannel.starttransaction;
